@@ -1,0 +1,75 @@
+
+.wrapper {
+    text-align: center;
+    margin: 0 auto;
+ 
+  }
+  
+  .icon {
+    position: relative;
+    display: inline-block;
+    font-size: 145px;
+    cursor: pointer;
+    margin: 15px 30px;
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+    border-radius: 50%;
+    text-align: center;
+    z-index: 2;
+    color: #fff;
+  }
+  
+  .icon:after {
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    content: '';
+    box-sizing: content-box;
+  }
+  
+  
+  /* Effect 1 */
+  .iconEffect1 .icon {
+    background: rgba(255,255,255,0.1);
+    transition: background 0.2s, color 0.2s;
+  }
+  
+  .iconEffect1 .icon:after {
+    top: -7px;
+    left: -7px;
+    padding: 7px;
+    box-shadow: 0 0 0 4px #fff;
+    transition: transform 0.2s, opacity 0.2s;
+    transform: scale(.8);
+    opacity: 0;
+  }
+  
+  /* Effect 1a - Ring out */
+  .noTouch .iconEffect1a .icon:hover {
+    background: rgba(255,255,255,1);
+    color: #333;
+  }
+  
+  .noTouch .iconEffect1a .icon:hover:after {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  /* Effect 1b - Ring in */
+  .noTouch .iconEffect1b .icon:hover {
+    background: rgba(255,255,255,1);
+    color: #333;
+  }
+  
+  .iconEffect1b .icon:after {
+    transform: scale(1.2);
+  }
+  
+  .noTouch .iconEffect1b .icon:hover:after {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
