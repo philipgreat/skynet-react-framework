@@ -4,7 +4,14 @@ import { Card, Spin } from 'antd';
 import styles from './index.less';
 
 const ChartCard = ({
-  loading = false, contentHeight, title, action, total, footer, children, ...rest
+  loading = false,
+  contentHeight,
+  title,
+  action,
+  total,
+  footer,
+  children,
+  ...rest
 }) => {
   const content = (
     <div className={styles.chartCard}>
@@ -12,30 +19,17 @@ const ChartCard = ({
         <span className={styles.title}>{title}</span>
         <span className={styles.action}>{action}</span>
       </div>
-      {
-        // eslint-disable-next-line
-        total && <p className={styles.total} dangerouslySetInnerHTML={{ __html: total }} />
-      }
+      {// eslint-disable-next-line
+      total && <p className={styles.total} dangerouslySetInnerHTML={{ __html: total }} />}
       <div className={styles.content} style={{ height: contentHeight || 'auto' }}>
-        <div className={contentHeight && styles.contentFixed}>
-          {children}
-        </div>
+        <div className={contentHeight && styles.contentFixed}>{children}</div>
       </div>
-      {
-        footer && (
-          <div className={styles.footer}>
-            {footer}
-          </div>
-        )
-      }
+      {footer && <div className={styles.footer}>{footer}</div>}
     </div>
   );
 
   return (
-    <Card
-      bodyStyle={{ padding: '20px 24px 8px 24px' }}
-      {...rest}
-    >
+    <Card bodyStyle={{ padding: '20px 24px 8px 24px' }} {...rest}>
       {<Spin spinning={loading}>{content}</Spin>}
     </Card>
   );

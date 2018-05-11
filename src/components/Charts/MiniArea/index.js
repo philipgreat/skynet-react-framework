@@ -25,13 +25,20 @@ class MiniArea extends PureComponent {
     }
   }
 
-  handleRef = (n) => {
+  handleRef = n => {
     this.node = n;
-  }
+  };
 
   renderChart(data) {
     const {
-      height = 0, fit = true, color, borderWidth = 2, line, xAxis, yAxis, animate = true,
+      height = 0,
+      fit = true,
+      color,
+      borderWidth = 2,
+      line,
+      xAxis,
+      yAxis,
+      animate = true,
     } = this.props;
     const borderColor = this.props.borderColor || color;
 
@@ -94,13 +101,21 @@ class MiniArea extends PureComponent {
     const view = chart.createView();
     view.source(data, dataConfig);
 
-    view.area().position('x*y').color(color).shape('smooth')
+    view
+      .area()
+      .position('x*y')
+      .color(color)
+      .shape('smooth')
       .style({ fillOpacity: 1 });
 
     if (line) {
       const view2 = chart.createView();
       view2.source(data, dataConfig);
-      view2.line().position('x*y').color(borderColor).size(borderWidth)
+      view2
+        .line()
+        .position('x*y')
+        .color(borderColor)
+        .size(borderWidth)
         .shape('smooth');
       view2.tooltip(false);
     }

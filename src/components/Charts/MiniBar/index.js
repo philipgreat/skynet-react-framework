@@ -20,9 +20,9 @@ class MiniBar extends PureComponent {
     }
   }
 
-  handleRef = (n) => {
+  handleRef = n => {
     this.node = n;
-  }
+  };
 
   renderChart(data) {
     const { height = 0, fit = true, color = '#1890FF' } = this.props;
@@ -65,7 +65,10 @@ class MiniBar extends PureComponent {
         name: 'x',
       },
     });
-    chart.interval().position('x*y').color(color);
+    chart
+      .interval()
+      .position('x*y')
+      .color(color);
     chart.render();
 
     this.chart = chart;

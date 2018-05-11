@@ -30,22 +30,27 @@ class TagCloud extends PureComponent {
 
   resize = () => {
     this.renderChart();
-  }
+  };
 
   initTagCloud = () => {
     const { Util, Shape } = G2;
 
     function getTextAttrs(cfg) {
-      const textAttrs = Util.mix(true, {}, {
-        fillOpacity: cfg.opacity,
-        fontSize: cfg.size,
-        rotate: cfg.origin._origin.rotate,
-        // rotate: cfg.origin._origin.rotate,
-        text: cfg.origin._origin.text,
-        textAlign: 'center',
-        fill: cfg.color,
-        textBaseline: 'Alphabetic',
-      }, cfg.style);
+      const textAttrs = Util.mix(
+        true,
+        {},
+        {
+          fillOpacity: cfg.opacity,
+          fontSize: cfg.size,
+          rotate: cfg.origin._origin.rotate,
+          // rotate: cfg.origin._origin.rotate,
+          text: cfg.origin._origin.text,
+          textAlign: 'center',
+          fill: cfg.color,
+          textBaseline: 'Alphabetic',
+        },
+        cfg.style
+      );
       return textAttrs;
     }
 
@@ -63,18 +68,18 @@ class TagCloud extends PureComponent {
         return shape;
       },
     });
-  }
+  };
 
-  saveRootRef = (node) => {
+  saveRootRef = node => {
     this.root = node;
-  }
+  };
 
-  saveNodeRef = (node) => {
+  saveNodeRef = node => {
     this.node = node;
-  }
+  };
 
   @Debounce(500)
-  renderChart = (newData) => {
+  renderChart = newData => {
     const data = newData || this.props.data;
     if (!data || data.length < 1) {
       return;
@@ -102,20 +107,20 @@ class TagCloud extends PureComponent {
       rotate: () => 0,
 
       // 设定文字大小配置函数(默认为12-24px的随机大小)
-      size: words => (((words.value - min) / (max - min)) * 50) + 30,
+      size: words => (words.value - min) / (max - min) * 50 + 30,
 
       // 设定文字内容
       text: words => words.name,
     });
 
-    layout.image(imgUrl, (imageCloud) => {
+    layout.image(imgUrl, imageCloud => {
       // clean
       if (this.node) {
         this.node.innerHTML = '';
       }
 
       // 执行词云布局函数，并在回调函数中调用G2对结果进行绘制
-      imageCloud.exec((texts) => {
+      imageCloud.exec(texts => {
         const chart = new G2.Chart({
           container: this.node,
           width,
@@ -149,7 +154,7 @@ class TagCloud extends PureComponent {
         chart.render();
       });
     });
-  }
+  };
 
   render() {
     return (
