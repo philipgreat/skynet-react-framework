@@ -7,6 +7,10 @@ import CustomComponents from './customindex'
 //console.log("the ootb result", OOTBComponents);
 const GlobalComponents = {...OOTBComponents,...CustomComponents};
 
+
+
+
+
 //console.log("the cust result", GlobalComponents);
 export default GlobalComponents;
 

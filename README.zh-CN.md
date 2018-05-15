@@ -9,9 +9,11 @@
 ![](https://gw.alipayobjects.com/zos/rmsportal/xEdBqwSzvoSapmnSnYjU.png)
 
 - 预览：http://preview.pro.ant.design
-- 首页：http://pro.ant.design
-- 使用文档：http://pro.ant.design/docs/getting-started
-- 常见问题：http://pro.ant.design/docs/faq
+- 首页：http://pro.ant.design/index-cn
+- 使用文档：http://pro.ant.design/docs/getting-started-cn
+- 更新日志: http://pro.ant.design/docs/changelog-cn
+- 常见问题：http://pro.ant.design/docs/faq-cn
+- 国内镜像：http://ant-design-pro.gitee.io
 
 ## 特性
 
@@ -60,7 +62,7 @@
 ## 使用
 
 ```bash
-$ git clone git@github.com:ant-design/ant-design-pro --depth=1
+$ git clone https://github.com/ant-design/ant-design-pro.git --depth=1
 $ cd ant-design-pro
 $ npm install
 $ npm start         # 访问 http://localhost:8000
@@ -71,7 +73,7 @@ $ npm start         # 访问 http://localhost:8000
 ```bash
 $ npm install ant-design-pro-cli -g
 $ mkdir pro-demo && cd pro-demo
-$ pro init
+$ pro new
 ```
 
 更多信息请参考 [使用文档](http://pro.ant.design/docs/getting-started)。

@@ -23,11 +23,11 @@ class TimelineChart extends Component {
     }
   }
 
-  sliderId = `timeline-chart-slider-${Math.random() * 1000}`
+  sliderId = `timeline-chart-slider-${Math.random() * 1000}`;
 
-  handleRef = (n) => {
+  handleRef = n => {
     this.node = n;
-  }
+  };
 
   renderChart(data) {
     const { height = 400, margin = [60, 20, 40, 40], titleMap, borderWidth = 2 } = this.props;
@@ -81,8 +81,16 @@ class TimelineChart extends Component {
       },
     });
 
-    chart.line().position('x*y1').color('#1890FF').size(borderWidth);
-    chart.line().position('x*y2').color('#2FC25B').size(borderWidth);
+    chart
+      .line()
+      .position('x*y1')
+      .color('#1890FF')
+      .size(borderWidth);
+    chart
+      .line()
+      .position('x*y2')
+      .color('#2FC25B')
+      .size(borderWidth);
 
     this.chart = chart;
 
@@ -105,7 +113,7 @@ class TimelineChart extends Component {
     return (
       <div className={styles.timelineChart} style={{ height }}>
         <div>
-          { title && <h4>{title}</h4>}
+          {title && <h4>{title}</h4>}
           <div ref={this.handleRef} />
           <div id={this.sliderId} />
         </div>

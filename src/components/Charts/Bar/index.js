@@ -7,7 +7,7 @@ import styles from '../index.less';
 class Bar extends PureComponent {
   state = {
     autoHideXLabels: false,
-  }
+  };
 
   componentDidMount() {
     this.renderChart(this.props.data);
@@ -54,11 +54,11 @@ class Bar extends PureComponent {
       });
       this.renderChart(data);
     }
-  }
+  };
 
-  handleRef = (n) => {
+  handleRef = n => {
     this.node = n;
-  }
+  };
 
   renderChart(data) {
     const { autoHideXLabels } = this.state;
@@ -66,9 +66,8 @@ class Bar extends PureComponent {
       height = 0,
       fit = true,
       color = 'rgba(24, 144, 255, 0.85)',
-      margin = [32, 0, (autoHideXLabels ? 8 : 32), 40],
+      margin = [32, 0, autoHideXLabels ? 8 : 32, 40],
     } = this.props;
-
 
     if (!data || (data && data.length < 1)) {
       return;
@@ -123,9 +122,13 @@ class Bar extends PureComponent {
         name: 'x',
       },
     });
-    chart.interval().position('x*y').color(color).style({
-      fillOpacity: 1,
-    });
+    chart
+      .interval()
+      .position('x*y')
+      .color(color)
+      .style({
+        fillOpacity: 1,
+      });
     chart.render();
 
     this.chart = chart;
@@ -137,7 +140,7 @@ class Bar extends PureComponent {
     return (
       <div className={styles.chart} style={{ height }}>
         <div>
-          { title && <h4>{title}</h4>}
+          {title && <h4>{title}</h4>}
           <div ref={this.handleRef} />
         </div>
       </div>

@@ -29,9 +29,9 @@ class Gauge extends PureComponent {
     }
   }
 
-  handleRef = (n) => {
+  handleRef = n => {
     this.node = n;
-  }
+  };
 
   initChart(nextProps) {
     const { title, color = primaryColor } = nextProps || this.props;
@@ -110,9 +110,8 @@ class Gauge extends PureComponent {
   }
 
   renderChart(nextProps) {
-    const {
-      height, color = primaryColor, bgColor = backgroundColor, title, percent, format,
-    } = nextProps || this.props;
+    const { height, color = primaryColor, bgColor = backgroundColor, title, percent, format } =
+      nextProps || this.props;
     const data = [{ name: title, value: percent }];
 
     if (this.chart) {
@@ -140,7 +139,7 @@ class Gauge extends PureComponent {
 
     chart.coord('gauge', {
       startAngle: -1.2 * Math.PI,
-      endAngle: 0.20 * Math.PI,
+      endAngle: 0.2 * Math.PI,
     });
     chart.col('value', {
       type: 'linear',
@@ -159,7 +158,10 @@ class Gauge extends PureComponent {
       labelOffset: -12,
       formatter: format,
     });
-    chart.point().position('value').shape('dashBoard');
+    chart
+      .point()
+      .position('value')
+      .shape('dashBoard');
     draw(data);
 
     /* eslint no-shadow: 0 */
@@ -168,23 +170,31 @@ class Gauge extends PureComponent {
       const lineWidth = 12;
       chart.guide().clear();
 
-      chart.guide().arc(() => {
-        return [0, 0.95];
-      }, () => {
-        return [val, 0.95];
-      }, {
-        stroke: color,
-        lineWidth,
-      });
+      chart.guide().arc(
+        () => {
+          return [0, 0.95];
+        },
+        () => {
+          return [val, 0.95];
+        },
+        {
+          stroke: color,
+          lineWidth,
+        }
+      );
 
-      chart.guide().arc(() => {
-        return [val, 0.95];
-      }, (arg) => {
-        return [arg.max, 0.95];
-      }, {
-        stroke: bgColor,
-        lineWidth,
-      });
+      chart.guide().arc(
+        () => {
+          return [val, 0.95];
+        },
+        arg => {
+          return [arg.max, 0.95];
+        },
+        {
+          stroke: bgColor,
+          lineWidth,
+        }
+      );
 
       chart.changeData(data);
     }
@@ -193,9 +203,7 @@ class Gauge extends PureComponent {
   }
 
   render() {
-    return (
-      <div ref={this.handleRef} />
-    );
+    return <div ref={this.handleRef} />;
   }
 }
 

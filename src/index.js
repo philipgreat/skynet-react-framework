@@ -16,7 +16,7 @@ import RouterConfig from './custcomponents/router'
 // 1. Initialize
 const app = dva({
   // history: browserHistory,
-})
+});
 
 // 2. Plugins
 // app.use({})
@@ -32,20 +32,10 @@ const {bindBizModels} = GlobalComponents;
 bindBizModels(app);
 
 // 3. Model move to router
-models.forEach((m) => {
-  app.model(m)
-})
+app.model(globalmodel);
 
 // 4. Router
-app.router(RouterConfig)
+app.router(RouterConfig);
 
 // 5. Start
-app.start('#root')
-
-
-
-
-
-
-
-
+app.start('#root');
