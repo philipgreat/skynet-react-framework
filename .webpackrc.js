@@ -14,7 +14,7 @@ export default {
   ignoreMomentLocale: true,
   theme: './src/theme.js',
   html: {
-    template: './src/index.ejs',
+    template: './public/index.html',
   },
   disableDynamicImport: true,
   publicPath: '',
