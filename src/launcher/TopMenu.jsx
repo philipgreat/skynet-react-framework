@@ -7,7 +7,7 @@ const MenuItemGroup = Menu.ItemGroup;
 
 class TopMenu extends React.Component {
   state = {
-    current: 'mail',
+    current: 'app1',
   }
   handleClick = (e) => {
     console.log('click ', e);
