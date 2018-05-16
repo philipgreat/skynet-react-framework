@@ -43,7 +43,7 @@ export default class ImagePreview extends React.Component {
       <div className="clearfix">
         <img
           src={imageLocation}
-          style={{height:40, width:40}}
+          style={{height:80, width:80}}
           title={imageLocation}
           alt={imageLocation}
           onClick={(event)=>this.handlePreview(event,imageLocation)}

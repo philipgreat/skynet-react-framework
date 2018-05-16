@@ -1,9 +1,8 @@
 
 import dva from 'dva'
 import 'moment/locale/zh-cn'
-import models from './models'
-import './polyfill'
-import './g2'
+import global from './models/global'
+
 // import { browserHistory } from 'dva/router'
 import './index.less'
 
@@ -16,7 +15,7 @@ import RouterConfig from './custcomponents/router'
 // 1. Initialize
 const app = dva({
   // history: browserHistory,
-});
+})
 
 // 2. Plugins
 // app.use({})
@@ -32,10 +31,21 @@ const {bindBizModels} = GlobalComponents;
 bindBizModels(app);
 
 // 3. Model move to router
-app.model(globalmodel);
+app.model(global)
 
 // 4. Router
-app.router(RouterConfig);
+app.router(RouterConfig)
 
 // 5. Start
-app.start('#root');
+app.start('#root')
+
+export default app._store
+
+
+
+
+
+
+
+
+

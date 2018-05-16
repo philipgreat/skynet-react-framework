@@ -11,7 +11,7 @@ const login=(username, password)=>{
 
 const logout=(username, password)=>{
     return get({
-        url: PREFIX+`secUserManager/showhome/`
+        url: PREFIX+`secUserManager/showlogin/`
 
     });
 }

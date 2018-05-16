@@ -1,5 +1,7 @@
 ---
-title: Charts
+title:
+  en-US: Charts
+  zh-CN: Charts
 subtitle: 图表
 order: 2
 cols: 2
@@ -17,10 +19,10 @@ Ant Design Pro 提供的业务中常用的图表类型，都是基于 [G2](https
 |----------|------------------------------------------|-------------|-------|
 | title | 卡片标题 | ReactNode\|string | - |
 | action | 卡片操作 | ReactNode | - |
-| total | 数据总量 | ReactNode \| number | - |
+| total | 数据总量 | ReactNode \| number \| function | - |
 | footer | 卡片底部 | ReactNode | - |
 | contentHeight | 内容区域高度 | number | - |
-
+| avatar | 右侧图标 | React.ReactNode | - |
 ### MiniBar
 
 | 参数      | 说明                                      | 类型         | 默认值 |
@@ -38,8 +40,8 @@ Ant Design Pro 提供的业务中常用的图表类型，都是基于 [G2](https
 | height | 图表高度 | number | - |
 | line | 是否显示描边 | boolean | false |
 | animate | 是否显示动画 | boolean | true |
-| xAxis | [x 轴配置](https://antv.alipay.com/g2/doc/tutorial/start/axis.html) | object | - |
-| yAxis | [y 轴配置](https://antv.alipay.com/g2/doc/tutorial/start/axis.html) | object | - |
+| xAxis | [x 轴配置](http://antvis.github.io/g2/doc/tutorial/start/axis.html) | object | - |
+| yAxis | [y 轴配置](http://antvis.github.io/g2/doc/tutorial/start/axis.html) | object | - |
 | data | 数据 | array<{x, y}> | - |
 
 ### MiniProgress
@@ -57,7 +59,7 @@ Ant Design Pro 提供的业务中常用的图表类型，都是基于 [G2](https
 |----------|------------------------------------------|-------------|-------|
 | title | 图表标题 | ReactNode\|string | - |
 | color | 图表颜色 | string | `rgba(24, 144, 255, 0.85)` |
-| margin | 图表内部间距 | array | \[32, 0, 32, 40\] |
+| padding | 图表内部间距 | [array](https://github.com/alibaba/BizCharts/blob/master/doc/api/chart.md#7padding-object--number--array-) | `'auto'` |
 | height | 图表高度 | number | - |
 | data | 数据 | array<{x, y}> | - |
 | autoLabel | 在宽度不足时，自动隐藏 x 轴的 label | boolean | `true` |
@@ -70,11 +72,13 @@ Ant Design Pro 提供的业务中常用的图表类型，都是基于 [G2](https
 | color | 图表颜色 | string | `rgba(24, 144, 255, 0.85)` |
 | height | 图表高度 | number | - |
 | hasLegend | 是否显示 legend | boolean | `false` |
-| margin | 图表内部间距 | array | \[24, 0, 24, 0\] |
+| padding | 图表内部间距 | [array](https://github.com/alibaba/BizCharts/blob/master/doc/api/chart.md#7padding-object--number--array-) | `'auto'` |
 | percent | 占比 | number | - |
 | tooltip | 是否显示 tooltip | boolean | true |
 | valueFormat | 显示值的格式化函数 | function | - |
+| title | 图表标题 | ReactNode\|string | - |
 | subTitle | 图表子标题 | ReactNode\|string | - |
+| total | 图标中央的总数 | string | function | - |
 
 ### Radar
 
@@ -83,7 +87,8 @@ Ant Design Pro 提供的业务中常用的图表类型，都是基于 [G2](https
 | title | 图表标题 | ReactNode\|string | - |
 | height | 图表高度 | number | - |
 | hasLegend | 是否显示 legend | boolean | `false` |
-| margin | 图表内部间距 | array | \[24, 30, 16, 30\] |
+| padding | 图表内部间距 | [array](https://github.com/alibaba/BizCharts/blob/master/doc/api/chart.md#7padding-object--number--array-) | `'auto'` |
+| data | 图标数据 | array<{name,label,value}> | - |
 
 ### Gauge
 
@@ -92,7 +97,7 @@ Ant Design Pro 提供的业务中常用的图表类型，都是基于 [G2](https
 | title | 图表标题 | ReactNode\|string | - |
 | height | 图表高度 | number | - |
 | color | 图表颜色 | string | `#2F9CFF` |
-| bgColor | 图表北京颜色 | string | `#F0F2F5` |
+| bgColor | 图表背景颜色 | string | `#F0F2F5` |
 | percent | 进度比例 | number | - |
 
 ### WaterWave
@@ -108,7 +113,7 @@ Ant Design Pro 提供的业务中常用的图表类型，都是基于 [G2](https
 
 | 参数      | 说明                                      | 类型         | 默认值 |
 |----------|------------------------------------------|-------------|-------|
-| tags | 标题 | Array<name, value\> | - |
+| data | 标题 | Array<name, value\> | - |
 | height | 高度值 | number | - |
 
 ### TimelineChart

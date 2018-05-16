@@ -1,5 +1,7 @@
 ---
-title: HeaderSearch
+title:
+  en-US: HeaderSearch
+  zh-CN: HeaderSearch
 subtitle: 顶部搜索框
 cols: 1
 order: 8
@@ -16,3 +18,4 @@ dataSource | 当前提示内容列表 | string[] | -
 onSearch | 选择某项或按下回车时的回调 | function(value) | -
 onChange | 输入搜索字符的回调 | function(value) | -
 onPressEnter | 按下回车时的回调 | function(value) | -
+defaultOpen | 输入框首次显示是否打开 | boolean | false
