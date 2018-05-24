@@ -11,9 +11,9 @@ import  PictureEdit from '../components/PictureEdit'
 import  ImageUpload from '../components/ImageUpload'
 import  OssPictureEdit from '../components/OSSPictureEdit'
 
-export const ImageComponent = OssPictureEdit 
+//export const ImageComponent = OssPictureEdit 
 //for BBT only
-//export const ImageComponent = ImageUpload
+export const ImageComponent = ImageUpload
 
 
 /**
@@ -81,9 +81,9 @@ export const getURLPrefix = () => {
         return `http://${url.hostname}:8080/naf/`
     }
     if (url.hostname === "localhost") {
-        //return `http://xm.jl51.com.cn/cis/`
+        return `https://xm.jl51.com.cn/cis/`
         //return `http://www.yourongzhixing.com/dssc/`
-        return `https://www.kxbbt.com/bbt/`
+        //return `https://www.kxbbt.com/bbt/`
         //return `http://${url.hostname}:8080/naf/`
     }
     //return `http://xm.jl51.com.cn/cis/`
@@ -206,8 +206,8 @@ export  const mapBackToImageValuesSkynetMediaServer = (convertedImagesValues) =>
         })
         return targetImages
       }
-//export  const mapBackToImageValues = mapBackToImageValuesSkynetMediaServer;
-export  const mapBackToImageValues = mapBackToImageValuesFlatResponse; 
+export  const mapBackToImageValues = mapBackToImageValuesSkynetMediaServer;
+//export  const mapBackToImageValues = mapBackToImageValuesFlatResponse; 
 //BBT
 
 

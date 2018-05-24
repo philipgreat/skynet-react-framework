@@ -65,7 +65,7 @@ class HomeScreen extends React.Component {
         const appList = this.props.launcher.data.userAppList;
         const calcLink = this.calcLink;
         const { systemName }=this.props.launcher;
-        return (<div style={{ height:"100%"} }>
+        return (<div style={{ backgroundImage: "url('home-background.png')","height":"100%"}} >
                 <Row key="1" >
                     <Col className="gutter-row" span={24} >
                         <TopMenu {...this.props} />
@@ -76,13 +76,12 @@ class HomeScreen extends React.Component {
                         <h1>{systemName}</h1>
                     </Col>
                 </Row>
-                <Row key="3" gutter={16} justify="center" align="center" >
+                <Row key="3" gutter={16} justify="center" align="center" 
+                    >
                     {appList.map((app, i) => (
                         <Col key={i} className="gutter-row" span={6} style={{ textAlign: "center"}}
                             onClick={(e)=>this.gotoApp(e,app)}
                         >
-                            
-
                                 <br /><br />
                                 <FontAwesome name={app.appIcon} size='5x' style={{color:'brown'}}/>
                                 <br />{app.title}

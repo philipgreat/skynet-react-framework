@@ -32,7 +32,7 @@ export default class ImagePreview extends React.Component {
 
   render() {
    
-    const {imageLocation,imageTitle} = this.props;
+    const {imageLocation,imageTitle,showTitleUnderImage} = this.props;
     const {previewVisible,previewImage} = this.state;
     //const {fileList} = this.state;
     const suffix = " | 图片预览";
@@ -40,7 +40,7 @@ export default class ImagePreview extends React.Component {
     
 
     return (
-      <div className="clearfix">
+      <div className="clearfix" style={{"text-align":"center"}}>
         <img
           src={imageLocation}
           style={{height:80, width:80}}
@@ -48,8 +48,9 @@ export default class ImagePreview extends React.Component {
           alt={imageLocation}
           onClick={(event)=>this.handlePreview(event,imageLocation)}
         >
-          
+           
         </img>
+        {showTitleUnderImage&&(<span style={{"display": "block"}}>{imageTitle}</span>)}
         <Modal visible={previewVisible} title={modalTitle} footer={null} onCancel={this.handleCancel}>
           <img alt={imageTitle}  style={{ width: '100%' }} src={previewImage} />
         </Modal>
