@@ -1,7 +1,7 @@
 //savefileifnotexist
-export const SYSTEM_SHORT_NAME = "cis" //Use for requssting different apps
-export const SYSTEM_LOCAL_NAME = "代审车服务平台" 
-export const BUILD_TIIME="Wed May 23 23:43:38 CST 2018"
+export const SYSTEM_SHORT_NAME = "pulupulu" //Use for requssting different apps
+export const SYSTEM_LOCAL_NAME = "濮瑞游戏" 
+export const BUILD_TIIME="Sun Jun 03 14:12:35 CST 2018"
 export const MEDIA_UPLOAD_URL="https://www.doublechaintech.com/mss/upload.html"
 export const MEDIA_PREFIX="https://www.doublechaintech.com/mss/"
 

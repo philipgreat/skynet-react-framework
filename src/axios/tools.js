@@ -5,7 +5,7 @@
 import axios from 'axios';
 import { message } from 'antd';
 import {SYSTEM_SHORT_NAME} from './config'
-
+import moment from 'moment';
 import SystemConfig from './config'
 import  PictureEdit from '../components/PictureEdit'
 import  ImageUpload from '../components/ImageUpload'
@@ -81,9 +81,10 @@ export const getURLPrefix = () => {
         return `http://${url.hostname}:8080/naf/`
     }
     if (url.hostname === "localhost") {
-        return `https://xm.jl51.com.cn/cis/`
+        //return `https://xm.jl51.com.cn/cis/`
         //return `http://www.yourongzhixing.com/dssc/`
         //return `https://www.kxbbt.com/bbt/`
+        return "http://t420.doublechaintech.cn:18080/pulupulu/"
         //return `http://${url.hostname}:8080/naf/`
     }
     //return `http://xm.jl51.com.cn/cis/`
@@ -103,15 +104,23 @@ export const joinParameters = (parameters) => {
     const result = arr.join(';')
     return result
 }
+const formatPostData = (value) => {
+    console.log("value", value)
+    if(value._isAMomentObject){
+        return moment(value).format('YYYY-MM-DDTHH:mm:ss');
+    }
+    return value
 
+}
 export const joinPostParameters = (parameters) => {
     const obj = parameters // {value1: 'prop1', value2: 'prop2', value3: 'prop3'}
     const arr = []
     for (const key in obj) {
         if (obj.hasOwnProperty(key)) {
             const value = obj[key]
+            const postValue = formatPostData(value)
             if (!Array.isArray(value)) {
-                arr.push(key + '=' + encodeURIComponent(value))
+                arr.push(key + '=' + encodeURIComponent(postValue))
                 continue
             }
             for (const subKey in value) {

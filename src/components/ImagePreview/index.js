@@ -40,7 +40,7 @@ export default class ImagePreview extends React.Component {
     
 
     return (
-      <div className="clearfix" style={{"text-align":"center"}}>
+      <div className="clearfix" style={{textAlign:"center"}}>
         <img
           src={imageLocation}
           style={{height:80, width:80}}
