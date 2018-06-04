@@ -1,14 +1,15 @@
-
+:global{
 .wrapper {
     text-align: center;
     margin: 0 auto;
+    background-color: #fff;
  
   }
   
   .icon {
     position: relative;
     display: inline-block;
-    font-size: 145px;
+    font-size: 80px;
     cursor: pointer;
     margin: 15px 30px;
     width: 90px;
@@ -30,46 +31,51 @@
     box-sizing: content-box;
   }
   
-  
   /* Effect 1 */
-  .iconEffect1 .icon {
-    background: rgba(255,255,255,0.1);
-    transition: background 0.2s, color 0.2s;
-  }
-  
-  .iconEffect1 .icon:after {
-    top: -7px;
-    left: -7px;
-    padding: 7px;
-    box-shadow: 0 0 0 4px #fff;
-    transition: transform 0.2s, opacity 0.2s;
-    transform: scale(.8);
-    opacity: 0;
-  }
-  
-  /* Effect 1a - Ring out */
-  .noTouch .iconEffect1a .icon:hover {
-    background: rgba(255,255,255,1);
-    color: #333;
-  }
-  
-  .noTouch .iconEffect1a .icon:hover:after {
-    transform: scale(1);
-    opacity: 1;
-  }
-  
-  /* Effect 1b - Ring in */
-  .noTouch .iconEffect1b .icon:hover {
-    background: rgba(255,255,255,1);
-    color: #333;
-  }
-  
-  .iconEffect1b .icon:after {
-    transform: scale(1.2);
-  }
-  
-  .noTouch .iconEffect1b .icon:hover:after {
-    transform: scale(1);
-    opacity: 1;
-  }
-  
+.icon-effect-1 .icon {
+  background: rgba(255,255,255,0.1);
+  transition: background 0.2s, color 0.2s;
+}
+
+
+
+
+.icon-effect-1 .icon:after {
+  top: -7px;
+  left: -7px;
+  padding: 7px;
+  box-shadow: 0 0 0 4px #333;
+  transition: transform 0.2s, opacity 0.2s;
+  transform: scale(.8);
+  opacity: 0;
+}
+
+/* Effect 1a - Ring out */
+.no-touch .icon-effect-1a .icon:hover {
+  background: rgb(163, 235, 253);
+  color: #eee;
+}
+
+.no-touch .icon-effect-1a .icon:hover:after {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Effect 1b - Ring in */
+.no-touch .icon-effect-1b .icon:hover {
+  background: rgba(255,255,255,1);
+  color: #333;
+}
+
+.icon-effect-1b .icon:after {
+  transform: scale(1.2);
+}
+
+.no-touch .icon-effect-1b .icon:hover:after {
+  transform: scale(1);
+  opacity: 1;
+}
+
+
+
+}

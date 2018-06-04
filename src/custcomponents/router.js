@@ -11,34 +11,13 @@ import GlobalComponents from './'
 
 function RouterConfig({ history }) {
 
-	const {GamePlatformBizApp} = GlobalComponents
-	const {CityBizApp} = GlobalComponents
-	const {StoreBizApp} = GlobalComponents
-	const {GameCategoryBizApp} = GlobalComponents
-	const {GameBizApp} = GlobalComponents
-	const {GameSessionBizApp} = GlobalComponents
-	const {GameSessionRecordBizApp} = GlobalComponents
-	const {GamePlayerRecordBizApp} = GlobalComponents
-	const {RearrangeSessionTicketRecordBizApp} = GlobalComponents
-	const {GameTokenBizApp} = GlobalComponents
-	const {GameTicketBizApp} = GlobalComponents
-	const {OnlineOrderBizApp} = GlobalComponents
-	const {OnlineOrderPaymentBizApp} = GlobalComponents
-	const {OnlineOrderRedeemHistoryBizApp} = GlobalComponents
-	const {TicketPrintingBizApp} = GlobalComponents
-	const {TicketPrintingHistoryBizApp} = GlobalComponents
-	const {OfflineStoreOrderBizApp} = GlobalComponents
-	const {CustomerBizApp} = GlobalComponents
-	const {CouponBizApp} = GlobalComponents
-	const {VipLevelBizApp} = GlobalComponents
-	const {PlayerBizApp} = GlobalComponents
-	const {EmployeeBizApp} = GlobalComponents
-	const {AdBizApp} = GlobalComponents
-	const {BannerBizApp} = GlobalComponents
-	const {NewsBizApp} = GlobalComponents
-	const {NewsContentBizApp} = GlobalComponents
-	const {CampaignBizApp} = GlobalComponents
-	const {ActionTokenBizApp} = GlobalComponents
+	const {DataPlatformBizApp} = GlobalComponents
+	const {CompanyBizApp} = GlobalComponents
+	const {ApplicationTypeBizApp} = GlobalComponents
+	const {DrugBizApp} = GlobalComponents
+	const {DrugTypeBizApp} = GlobalComponents
+	const {DrugApplicationBizApp} = GlobalComponents
+	const {NewsSubscriptionBizApp} = GlobalComponents
 	const {UserDomainBizApp} = GlobalComponents
 	const {SecUserBizApp} = GlobalComponents
 	const {SecUserBlockingBizApp} = GlobalComponents
@@ -58,34 +37,13 @@ function RouterConfig({ history }) {
       <Router history={history}>
         <Switch>
          <Route path="/home" component={Launcher} />
-          <Route path="/gamePlatform/" component={GamePlatformBizApp} />
-          <Route path="/city/" component={CityBizApp} />
-          <Route path="/store/" component={StoreBizApp} />
-          <Route path="/gameCategory/" component={GameCategoryBizApp} />
-          <Route path="/game/" component={GameBizApp} />
-          <Route path="/gameSession/" component={GameSessionBizApp} />
-          <Route path="/gameSessionRecord/" component={GameSessionRecordBizApp} />
-          <Route path="/gamePlayerRecord/" component={GamePlayerRecordBizApp} />
-          <Route path="/rearrangeSessionTicketRecord/" component={RearrangeSessionTicketRecordBizApp} />
-          <Route path="/gameToken/" component={GameTokenBizApp} />
-          <Route path="/gameTicket/" component={GameTicketBizApp} />
-          <Route path="/onlineOrder/" component={OnlineOrderBizApp} />
-          <Route path="/onlineOrderPayment/" component={OnlineOrderPaymentBizApp} />
-          <Route path="/onlineOrderRedeemHistory/" component={OnlineOrderRedeemHistoryBizApp} />
-          <Route path="/ticketPrinting/" component={TicketPrintingBizApp} />
-          <Route path="/ticketPrintingHistory/" component={TicketPrintingHistoryBizApp} />
-          <Route path="/offlineStoreOrder/" component={OfflineStoreOrderBizApp} />
-          <Route path="/customer/" component={CustomerBizApp} />
-          <Route path="/coupon/" component={CouponBizApp} />
-          <Route path="/vipLevel/" component={VipLevelBizApp} />
-          <Route path="/player/" component={PlayerBizApp} />
-          <Route path="/employee/" component={EmployeeBizApp} />
-          <Route path="/ad/" component={AdBizApp} />
-          <Route path="/banner/" component={BannerBizApp} />
-          <Route path="/news/" component={NewsBizApp} />
-          <Route path="/newsContent/" component={NewsContentBizApp} />
-          <Route path="/campaign/" component={CampaignBizApp} />
-          <Route path="/actionToken/" component={ActionTokenBizApp} />
+          <Route path="/dataPlatform/" component={DataPlatformBizApp} />
+          <Route path="/company/" component={CompanyBizApp} />
+          <Route path="/applicationType/" component={ApplicationTypeBizApp} />
+          <Route path="/drug/" component={DrugBizApp} />
+          <Route path="/drugType/" component={DrugTypeBizApp} />
+          <Route path="/drugApplication/" component={DrugApplicationBizApp} />
+          <Route path="/newsSubscription/" component={NewsSubscriptionBizApp} />
           <Route path="/userDomain/" component={UserDomainBizApp} />
           <Route path="/secUser/" component={SecUserBizApp} />
           <Route path="/secUserBlocking/" component={SecUserBlockingBizApp} />
