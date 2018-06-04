@@ -4,16 +4,17 @@ import { Row, Col, Card, Table, Popconfirm, Button } from 'antd';
 import React from 'react';
 import { Link } from 'react-router';
 import TopMenu from './TopMenu';
-
+import classNames from 'classnames'
 //import BizRouter from './BizRouter'
-
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import styles  from './HomeScreen.less'
 
 
 
 import { Layout } from 'antd';
+
 
 const { Content, Footer } = Layout;
 
@@ -65,7 +66,14 @@ class HomeScreen extends React.Component {
         const appList = this.props.launcher.data.userAppList;
         const calcLink = this.calcLink;
         const { systemName }=this.props.launcher;
-        return (<div style={{"height":"100%"}} >
+        const styleList="icon-effect-1 icon-effect-1a";
+        var effectClasses = classNames({
+            styleList
+          });
+      
+        console.log(styleList);
+
+        return (<div className={"wrapper"} style={{"height":"100%"}} >
                 <Row key="1" >
                     <Col className="gutter-row" span={24} >
                         <TopMenu {...this.props} />
@@ -78,11 +86,11 @@ class HomeScreen extends React.Component {
                 </Row>
                 <Row key="3" gutter={16} justify="center" align="center"   >
                     {appList.map((app, i) => (
-                        <Col key={i} className="gutter-row" span={6} style={{ textAlign: "center"}}
+                        <Col className={styleList} key={i}  span={6} style={{ textAlign: "center"}}
                             onClick={(e)=>this.gotoApp(e,app)}
                         >
                                 <br /><br />
-                                <FontAwesome name={app.appIcon} size='5x' style={{color:'brown'}}/>
+                                <FontAwesome name={app.appIcon}  style={{color:'brown'}} className={"icon"}/>
                                 <br />{app.title}
                             
                         </Col>))}
