@@ -27,7 +27,7 @@ export default {
         dispatch(routerRedux.push(newlocation))
       })
     },
-    setup({ history }) {
+    setup({ dispatch, history }) {
       history.listen((location) => {
         currentLocation = location.pathname
         const { pathname } = location
@@ -36,14 +36,38 @@ export default {
           return
           // dispatch action with userId
         }
-        console.log('launcher ==============>', location)
+        console.log('launcher location ==============>', location)
         // updateState
         // console.log(1, loggedIn)
-        // dispatch({type:"showlogin"})
+        dispatch({type:"home"})
       })
     },
   },
   effects: {
+
+    *home({ payload }, { call, put }) {
+      const {calcLocationPath,calcMenuData} = GlobalComponents
+      const data = yield call(LauncherService.home)
+      console.log('data.........................', data)
+      if (!data) {
+        return
+      }
+      if (!data.class) {
+        return
+      }
+      if (data.class.indexOf('LoginForm') > 0) {
+        yield put({ type: 'showlogin', payload: { data } })
+        return
+      }
+      if (data.class.indexOf('SecUser') > 0) {
+        yield put({ type: 'showhome', payload: { data } })
+        return
+      }
+      const locationPath = calcLocationPath(data.class, data.id, 'dashboard')
+      const location = { pathname: `/${locationPath}`, state: data }
+      yield put(routerRedux.push(location))
+    },
+
     *login({ payload }, { call, put }) {
       const {calcLocationPath,calcMenuData} = GlobalComponents
       const data = yield call(LauncherService.login, payload.username, payload.password)
@@ -66,6 +90,8 @@ export default {
       const location = { pathname: `/${locationPath}`, state: data }
       yield put(routerRedux.push(location))
     },
+
+
     *gotoApp({ payload }, { call, put }) {
       // console.log("gotoApp has been called", payload)
       const {calcLocationPath,calcMenuData} = GlobalComponents

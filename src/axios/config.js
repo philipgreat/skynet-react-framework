@@ -1,7 +1,7 @@
 //savefileifnotexist
-export const SYSTEM_SHORT_NAME = "drug" //Use for requssting different apps
-export const SYSTEM_LOCAL_NAME = "恺思医药数据管理平台" 
-export const BUILD_TIIME="Mon Jun 04 11:35:06 CST 2018"
+export const SYSTEM_SHORT_NAME = "shuxiang" //Use for requssting different apps
+export const SYSTEM_LOCAL_NAME = "书香社区" 
+export const BUILD_TIIME="Tue Jun 12 00:23:20 CST 2018"
 export const MEDIA_UPLOAD_URL="https://www.doublechaintech.com/mss/upload.html"
 export const MEDIA_PREFIX="https://www.doublechaintech.com/mss/"
 
