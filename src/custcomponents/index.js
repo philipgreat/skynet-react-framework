@@ -3,9 +3,10 @@
 import OOTBComponents from '../bizcomponents'
 import CustomComponents from './customindex'
 
+import ExtraRouter from './customrouter'
 
 //console.log("the ootb result", OOTBComponents);
-const GlobalComponents = {...OOTBComponents,...CustomComponents};
+const GlobalComponents = {...OOTBComponents,...CustomComponents,ExtraRouter};
 
 
 

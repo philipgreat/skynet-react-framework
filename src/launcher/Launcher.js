@@ -26,9 +26,9 @@ class Launcher extends React.Component {
         const state = this.props.launcher;
 
         console.log(this.props);
-        console.log(state)
+        console.log("state is",state)
 
-        if(state.loggedIn){
+        if(state&&state.loggedIn){
 
             return (<Layout style={ {height:'100%'}}>
                     <Content style={ {overflow: 'initial', height:'100%'}}>

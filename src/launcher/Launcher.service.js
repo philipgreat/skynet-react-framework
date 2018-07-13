@@ -8,6 +8,12 @@ const login=(username, password)=>{
     });
 }
 
+const home=()=>{
+    return get({
+        url: PREFIX+`secUserManager/home/`
+
+    });
+}
 
 const logout=(username, password)=>{
     return get({
@@ -23,5 +29,5 @@ const gotoApp=(appId)=>{
     });
 }
 
-const LauncherService={login,gotoApp,logout};
+const LauncherService={login,gotoApp,logout,home};
 export default LauncherService;
