@@ -48,6 +48,9 @@ class SecUserBlockingSearch extends PureComponent {
     listParameters[listName]=1;
     listParameters[`${listName}CurrentPage`]=pagination.current;
     listParameters[`${listName}RowsPerPage`]=pagination.pageSize;
+    listParameters[`${listName}.orderBy.0`]="id";
+    listParameters[`${listName}.descOrAsc.0`]="desc";
+   
     
     const params = {
       ...listParameters,
@@ -166,7 +169,7 @@ class SecUserBlockingSearch extends PureComponent {
       const { dispatch, owner,location } = this.props;
       console.log("trying to call handleCloseAlert",owner)
       const pathname = location.pathname
-      dispatch({ type: `${owner.type}/view`, payload: { id: owner.id,pathname,displayName:'用户屏蔽列表' } })
+      dispatch({ type: `${owner.type}/view`, payload: { id: owner.id,pathname,displayName:'SEC用户阻塞列表' } })
 
   };  
     
@@ -188,7 +191,7 @@ class SecUserBlockingSearch extends PureComponent {
     const {displayName} = owner.ref
     const { showDeleteResult, selectedRows, modalVisible } = this.state;
     const {SecUserBlockingTable} = GlobalComponents;
-    const {SecUserBlockingConfirmationTable} = GlobalComponents;
+    const {SecUserBlockingModalTable} = GlobalComponents;
     const {SecUserBlockingSearchForm} = GlobalComponents;
     
  
@@ -226,12 +229,12 @@ class SecUserBlockingSearch extends PureComponent {
           width={920}
           style={{ top: 40 }}
         >
-          <SecUserBlockingConfirmationTable data={selectedRows} owner={owner} />
+          <SecUserBlockingModalTable data={selectedRows} owner={owner} />
         </Modal>)
     }
     
     return (
-      <PageHeaderLayout title={`${displayName}: 用户屏蔽列表`}>
+      <PageHeaderLayout title={`${displayName}: SEC用户阻塞列表`}>
         <Card bordered={false}>
           <div className={styles.tableList}>
             <div className={styles.tableListForm}>

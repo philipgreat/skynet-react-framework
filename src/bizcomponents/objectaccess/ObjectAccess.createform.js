@@ -1,34 +1,18 @@
 import React, { Component } from 'react'
 import { AutoComplete, Card, Button, Form, Icon, Col, Row, DatePicker, TimePicker, Input, Select, Popover,Switch } from 'antd'
-
 import { connect } from 'dva'
 import PageHeaderLayout from '../../layouts/PageHeaderLayout'
-//import PictureEdit from '../../components/PictureEdit'
-//import OSSPictureEdit from '../../components/PictureEdit'
 import {ImageComponent} from '../../axios/tools'
 import FooterToolbar from '../../components/FooterToolbar'
-//import ImageUpload from '../../components/ImageUpload'
 import styles from './ObjectAccess.createform.less'
 import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import GlobalComponents from '../../custcomponents';
+import ObjectAccessBase from './ObjectAccess.base'
+
 const { Option } = Select
 const { RangePicker } = DatePicker
 const { TextArea } = Input
-const fieldLabels = {
-  id: 'ID',
-  name: '名称',
-  objectType: '访问对象类型',
-  list1: '列表1',
-  list2: '列表2',
-  list3: '列表3',
-  list4: '列表4',
-  list5: '列表5',
-  list6: '列表6',
-  list7: '列表7',
-  list8: '列表8',
-  list9: '列表9',
-  app: '申请',
-}
+
 const testValues = {};
 /*
 const testValues = {
@@ -126,6 +110,7 @@ class ObjectAccessCreateForm extends Component {
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
+    const {fieldLabels} = ObjectAccessBase
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -392,15 +377,15 @@ class ObjectAccessCreateForm extends Component {
                 <Form.Item label={fieldLabels.app} {...formItemLayout}>
                   {getFieldDecorator('appId', {
                   	initialValue: tryinit('app'),
-                    rules: [{ required: true, message: '请输入申请' }],
+                    rules: [{ required: true, message: '请输入应用程序' }],
                   })(
-                                
+                  
                   <AutoComplete
                     dataSource={candidateAppList.candidates}
                     
                     
                     onSearch={this.handleCandidateAppSearch}
-                    placeholder="请输入申请"
+                    placeholder="请输入应用程序"
                     
                     disabled={!availableForEdit('app')}
                   >

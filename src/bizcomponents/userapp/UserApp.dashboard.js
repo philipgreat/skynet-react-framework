@@ -5,7 +5,7 @@ import FontAwesome from 'react-fontawesome';
 import { connect } from 'dva'
 import moment from 'moment'
 import BooleanOption from 'components/BooleanOption';
-import { Row, Col, Icon, Card, Tabs, Table, Radio, DatePicker, Tooltip, Menu, Dropdown,Badge, Switch  } from 'antd'
+import { Row, Col, Icon, Card, Tabs, Table, Radio, DatePicker, Tooltip, Menu, Dropdown,Badge, Switch,Select,Form,AutoComplete,Modal } from 'antd'
 import { Link, Route, Redirect} from 'dva/router'
 import numeral from 'numeral'
 import {
@@ -18,9 +18,11 @@ import PageHeaderLayout from '../../layouts/PageHeaderLayout'
 import styles from './UserApp.dashboard.less'
 import DescriptionList from '../../components/DescriptionList';
 import ImagePreview from '../../components/ImagePreview';
+import GlobalComponents from '../../custcomponents';
 const { Description } = DescriptionList;
 const { TabPane } = Tabs
 const { RangePicker } = DatePicker
+const { Option } = Select
 
 const topColResponsiveProps = {
   xs: 8,
@@ -32,7 +34,7 @@ const topColResponsiveProps = {
 }
 
 
-const imageListOf = (userApp) =>{
+const internalImageListOf = (userApp) =>{
 
   const imageList = [
 	 ]
@@ -43,15 +45,15 @@ const imageListOf = (userApp) =>{
 
   return(<Card title='图片列表' className={styles.card}><Row type="flex" justify="start" align="bottom">
   {
-      filteredList.map((item)=>(<Col span={4}><ImagePreview imageTitle ={item.title} showTitleUnderImage={true} imageLocation={item.imageLocation} >{item.title}</ImagePreview></Col>))
+      filteredList.map((item,index)=>(<Col span={4} key={index}><ImagePreview imageTitle ={item.title} showTitleUnderImage={true} imageLocation={item.imageLocation} >{item.title}</ImagePreview></Col>))
   }</Row></Card> )
 
 }
 
-const settingListOf = (userApp) =>{
+const internalSettingListOf = (userApp) =>{
 
 	const optionList = [ 
-	  {"title":'完全访问',"value":userApp.fullAccess},
+	  {"title":'完全访问',"value":userApp.fullAccess,"parameterName":"fullAccess"},
 ]
 	
   if(optionList.length===0){
@@ -60,8 +62,8 @@ const settingListOf = (userApp) =>{
   return(<Card title='状态集合' className={styles.card}>
   	
   	{
-  	  optionList.map((item)=><Col span={6} style={{"height":"60px"}}>
-       <Switch title={item.title} checked={item.value} type={item.value?"success":"error"} checkedChildren="是" unCheckedChildren="否" />
+  	  optionList.map((item)=><Col key={item.parameterName} span={6} style={{"height":"60px"}}>
+       <Switch  title={item.title} checked={item.value} type={item.value?"success":"error"} checkedChildren="是" unCheckedChildren="否" />
        <span style={{"margin":"10px"}}>{item.title}</span>
        </Col>)
   	}
@@ -73,78 +75,172 @@ const settingListOf = (userApp) =>{
 
 }
 
-const largeTextOf = (userApp) =>{
+const internalLargeTextOf = (userApp) =>{
 
 	return null
 	
 
 }
 
+/////////////////////////////////////// BUILD FOR TRANSFERRING TO ANOTHER OBJECT////////////////////////////////////////////////
 
+const handleTransferSearch =(targetComponent,filterKey,newRequest)=>{
+  const {UserAppService} = GlobalComponents;
 
-const summaryOf = (userApp) =>{
+  const parameters = newRequest||targetComponent.state
 
-	return (
-	<DescriptionList className={styles.headerList} size="small" col="4">
-<Description term="ID">{userApp.id}</Description> 
-<Description term="标题">{userApp.title}</Description> 
-<Description term="申请图标">{userApp.appIcon}</Description> 
-<Description term="许可">{userApp.permission}</Description> 
-<Description term="访问对象类型">{userApp.objectType}</Description> 
-<Description term="对象ID">{userApp.objectId}</Description> 
-	
-        
-      </DescriptionList>
-	)
+  const {
+ 
+    candidateServiceName,
+    candidateObjectType,
+    targetLocalName,
+ 
+  } = parameters
+
+  console.log("current state", parameters)
+
+  const id = "";//not used for now
+  const pageNo = 1;
+  const candidateReferenceService = UserAppService[candidateServiceName] 
+  if(!candidateReferenceService){
+    console.log("current state", parameters)
+    return;
+  }
+  //get a function for fetching the candidate reference list
+  const future = candidateReferenceService(candidateObjectType, id, filterKey, pageNo);
+  console.log(future);
+  future.then(candidateReferenceList=>{
+    targetComponent.setState({
+     ...parameters,
+      candidateReferenceList,
+      transferModalVisiable:true,transferModalTitle:"重新分配<"+targetLocalName+">"
+     
+    })
+
+  })
+
+}
+//  onClick={()=>showTransferModel(targetComponent,"城市","city","requestCandidateDistrict","transferToAnotherDistrict")} 
+
+const showTransferModel = (targetComponent,targetLocalName,
+  candidateObjectType,candidateServiceName, transferServiceName, transferTargetParameterName,currentValue) => {
+
+  const filterKey = ""
+
+  const newRequest = {targetLocalName,candidateObjectType,candidateServiceName,transferServiceName,transferTargetParameterName,currentValue}
+  console.log("showTransferModel  new state", newRequest)
+  //targetComponent.setState(newState);
+  handleTransferSearch(targetComponent,filterKey,newRequest)
+}
+
+const hideCloseTrans = (targetComponent) =>{
+  targetComponent.setState({transferModalVisiable:false})
+
+}
+
+const executeTrans = (userApp,targetComponent) =>{
+  const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = targetComponent.props.form
+  const {
+   
+    candidateServiceName,
+    candidateObjectType,
+    targetLocalName,
+    transferServiceName
+  } = targetComponent.state
+
+  const {dispatch} = targetComponent.props
+
+  validateFieldsAndScroll((error, values) => {
+    console.log("error", values)
+
+    const parameters  = {...values}
+    const id=userApp.id;
+    const serviceNameToCall = transferServiceName;
+
+    const payload = {parameters,id,serviceNameToCall}
+    
+    //targetComponent.setState({transferModalVisiable:false})
+    dispatch({type:"_userApp/doJob",payload: payload})
+
+    targetComponent.setState({transferModalVisiable:false})
+
+  })
+ 
 
 }
 
 
-class UserAppDashboard extends Component {
+const buildTransferModal = (userApp,targetComponent) => {
 
 
-  componentDidMount() {
-  /*
-    // const { form, dispatch, submitting, selectedRows, currentUpdateIndex } = this.props;
-    // const { getFieldDecorator, setFieldsValue } = this.props.form;
-    const { dispatch, location, userApp } = this.props;
-    
-    if(!userApp){
-    	return;
-    }
-    const {displayName} = userApp;
-    if(!displayName){
-    	return;
-    }
-	const link = location.pathname;
-	
-    dispatch({ type: 'breadcrumb/gotoLink', payload: { displayName, link }})
-  	*/
+  const {transferModalVisiable,targetLocalName,transferModalTitle,
+    candidateReferenceList,transferTargetParameterName,currentValue} = targetComponent.state
+  const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = targetComponent.props.form
+
+
+  if(!candidateReferenceList||!candidateReferenceList.candidates){
+    return null;
   }
-  
 
-  render() {
-    // eslint-disable-next-line max-len
-    const { id,displayName, objectAccessCount } = this.props.userApp
-    const cardsData = {cardsName:"用户申请",cardsFor: "userApp",cardsSource: this.props.userApp,
-  		subItems: [
-{name: 'objectAccessList', displayName:'对象访问',type:'objectAccess',count:objectAccessCount},
-    
-      	],
-  	};
-    
-    return (
 
-      <PageHeaderLayout
-        title={`${cardsData.cardsName}: ${displayName}`}
-        content={summaryOf(cardsData.cardsSource)}
-        wrapperClassName={styles.advancedForm}
-      >
-        <div>
-        {settingListOf(cardsData.cardsSource)}
-        {imageListOf(cardsData.cardsSource)}
-        
-          <Row gutter={24}>
+  const formItemLayout = {
+    labelCol: { span: 8 },
+    wrapperCol: { span: 16 },
+  }
+
+  return(
+
+<Modal title={transferModalTitle}
+          visible={transferModalVisiable}
+          onOk={()=>executeTrans(userApp,targetComponent)}
+          onCancel={()=>hideCloseTrans(targetComponent)}
+          
+        >
+
+  <Form >
+            <Row gutter={16}>
+
+              <Col lg={24} md={24} sm={24}>
+                <Form.Item label={`请选择新的${targetLocalName}`} {...formItemLayout}>
+                  {getFieldDecorator(transferTargetParameterName, {
+                    rules: [{ required: true, message: '请搜索' }],
+                    initialValue: currentValue
+                  })(
+                    <AutoComplete
+                    dataSource={candidateReferenceList.candidates}
+                    onSearch={(value)=>handleTransferSearch(targetComponent,value)}
+                    >
+                   {candidateReferenceList.candidates.map(item=>{
+                return (<Option key={item.id}>{`${item.displayName}(${item.id})`}</Option>);
+            })}
+                    
+                    </AutoComplete>
+                  )}
+                </Form.Item>
+              </Col></Row>
+              </Form>
+
+          
+        </Modal>)
+
+
+}
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+const internalRenderExtraHeader = (userApp) =>{
+	return null
+}
+const internalRenderExtraFooter = (userApp) =>{
+	return null
+}
+const internalSubListsOf = (cardsData) =>{
+	const {id} = cardsData.cardsSource;
+	return (<Row gutter={24}>
 
            {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
@@ -153,10 +249,84 @@ class UserAppDashboard extends Component {
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.type}CreateForm`}><FontAwesome name="plus"  />&nbsp;新增</Link></p>              
           </Card> </Badge>
             </Col>))}
+          </Row>)
+}
 
-          </Row>
-          
-          {largeTextOf(cardsData.cardsSource)}
+const internalSummaryOf = (userApp,targetComponent) =>{
+
+	return (
+	<DescriptionList className={styles.headerList} size="small" col="4">
+<Description term="ID">{userApp.id}</Description> 
+<Description term="标题">{userApp.title}</Description> 
+<Description term="SEC的用户">{userApp.secUser==null?"未分配":userApp.secUser.displayName}
+ <Icon type="swap" onClick={()=>
+  showTransferModel(targetComponent,"SEC的用户","secUser","requestCandidateSecUser",
+	      "transferToAnotherSecUser","anotherSecUserId",userApp.secUser?userApp.secUser.id:"")} 
+  style={{fontSize: 20,color:"red"}} />
+</Description>
+<Description term="应用程序图标">{userApp.appIcon}</Description> 
+<Description term="权限">{userApp.permission}</Description> 
+<Description term="访问对象类型">{userApp.objectType}</Description> 
+<Description term="对象ID">{userApp.objectId}</Description> 
+<Description term="位置">{userApp.location}</Description> 
+	
+        {buildTransferModal(userApp,targetComponent)}
+      </DescriptionList>
+	)
+
+}
+
+
+class UserAppDashboard extends Component {
+
+  state = {
+    transferModalVisiable: false,
+    candidateReferenceList: {},
+    candidateServiceName:"",
+    candidateObjectType:"city",
+    targetLocalName:"城市",
+    transferServiceName:"",
+    currentValue:"",
+    transferTargetParameterName:""
+
+
+  }
+  componentDidMount() {
+
+  }
+  
+
+  render() {
+    // eslint-disable-next-line max-len
+    const { id,displayName, objectAccessCount } = this.props.userApp
+    const cardsData = {cardsName:"用户应用程序",cardsFor: "userApp",cardsSource: this.props.userApp,
+  		subItems: [
+{name: 'objectAccessList', displayName:'对象访问',type:'objectAccess',count:objectAccessCount},
+    
+      	],
+  	};
+    //下面各个渲染方法都可以定制，只要在每个模型的里面的_features="custom"就可以得到定制的例子
+    
+    const renderExtraHeader = this.props.renderExtraHeader || internalRenderExtraHeader
+    const settingListOf = this.props.settingListOf || internalSettingListOf
+    const imageListOf = this.props.imageListOf || internalImageListOf
+    const subListsOf = this.props.subListsOf || internalSubListsOf
+    const largeTextOf = this.props.largeTextOf ||internalLargeTextOf
+    const summaryOf = this.props.summaryOf || internalSummaryOf
+    const renderExtraFooter = this.props.renderExtraFooter || internalRenderExtraFooter
+    return (
+
+      <PageHeaderLayout
+        title={`${cardsData.cardsName}: ${displayName}`}
+        content={summaryOf(cardsData.cardsSource,this)}
+        wrapperClassName={styles.advancedForm}
+      >
+      {renderExtraHeader(cardsData.cardsSource)}
+        <div>
+        {settingListOf(cardsData.cardsSource)}
+        {imageListOf(cardsData.cardsSource)}
+        {subListsOf(cardsData)} 
+        {largeTextOf(cardsData.cardsSource)}
           
         </div>
       </PageHeaderLayout>
@@ -166,5 +336,5 @@ class UserAppDashboard extends Component {
 
 export default connect(state => ({
   userApp: state._userApp,
-}))(UserAppDashboard)
+}))(Form.create()(UserAppDashboard))
 

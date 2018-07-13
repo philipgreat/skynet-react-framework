@@ -1,4 +1,4 @@
-import { get, post,PREFIX,joinParameters,joinPostParameters } from '../../axios/tools'
+import { get,postForm,PREFIX,joinParameters,joinPostParameters } from '../../axios/tools'
 
 
 const view = (targetObjectId) => {
@@ -23,14 +23,33 @@ const requestCandidateSecUser = (ownerClass, id, filterKey, pageNo) => {
   return get({
     url: `${PREFIX}loginHistoryManager/requestCandidateSecUser/${ownerClass}/${id}/${filterKey}/${pageNo}/`,
   })
-}	 
- 
+}	
+
+const transferToAnotherSecUser = (id, parameters) => {
+  //const parametersExpr = joinParameters(parameters)
+  const url = `${PREFIX}loginHistoryManager/transferToAnotherSecUser/id/anotherSecUserId/`
+  const requestParameters = {id, ...parameters}
+  return postForm({url,requestParameters})
+}
+
+
 
 
 
 
 const LoginHistoryService = { view,
   load,
-  requestCandidateSecUser }
+  requestCandidateSecUser,
+  transferToAnotherSecUser }
 export default LoginHistoryService
+
+
+
+
+
+
+
+
+
+
 

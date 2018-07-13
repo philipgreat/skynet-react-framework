@@ -1,4 +1,4 @@
-import { get, post,PREFIX,joinParameters,joinPostParameters } from '../../axios/tools'
+import { get,postForm,PREFIX,joinParameters,joinPostParameters } from '../../axios/tools'
 
 
 const view = (targetObjectId) => {
@@ -23,14 +23,23 @@ const requestCandidateApp = (ownerClass, id, filterKey, pageNo) => {
   return get({
     url: `${PREFIX}objectAccessManager/requestCandidateApp/${ownerClass}/${id}/${filterKey}/${pageNo}/`,
   })
-}	 
- 
+}	
+
+const transferToAnotherApp = (id, parameters) => {
+  //const parametersExpr = joinParameters(parameters)
+  const url = `${PREFIX}objectAccessManager/transferToAnotherApp/id/anotherAppId/`
+  const requestParameters = {id, ...parameters}
+  return postForm({url,requestParameters})
+}
+
+
 
 
 
 
 const ObjectAccessService = { view,
   load,
-  requestCandidateApp }
+  requestCandidateApp,
+  transferToAnotherApp }
 export default ObjectAccessService
 

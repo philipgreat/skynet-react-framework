@@ -81,11 +81,11 @@ export const getURLPrefix = () => {
         return `http://${url.hostname}:8080/naf/`
     }
     if (url.hostname === "localhost") {
-        //return `https://xm.jl51.com.cn/cis/`
+        return `https://xm.jl51.com.cn/cis/`
         //return `http://www.yourongzhixing.com/dssc/`
         //return `https://www.kxbbt.com/bbt/`
         //return "http://t420.doublechaintech.cn:18080/pulupulu/"
-        return `http://${url.hostname}:8080/naf/`
+        //return `http://${url.hostname}:8080/naf/`
     }
     //return `http://xm.jl51.com.cn/cis/`
 
@@ -134,6 +134,16 @@ export const joinPostParameters = (parameters) => {
 }
 
 export const PREFIX = getURLPrefix()
+
+export const postForm = ({ url, requestParameters, msg = '接口异常'})=>{
+    const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
+    return post({
+      url,
+      data: joinPostParameters(requestParameters),
+      headers,
+    })
+}
+
 /**
  * 公用post请求
  * @param url       接口地址

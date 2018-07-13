@@ -1,7 +1,7 @@
 
 import ImagePreview from '../../components/ImagePreview'
 import { Link } from 'dva/router'
-
+import moment from 'moment'
 const menuData = {menuName:"对象访问", menuFor: "objectAccess",
   		subItems: [
   
@@ -23,7 +23,7 @@ const displayColumns = [
   { title: '列表7', debugtype: 'string', dataIndex: 'list7', width: '24' },
   { title: '列表8', debugtype: 'string', dataIndex: 'list8', width: '24' },
   { title: '列表9', debugtype: 'string', dataIndex: 'list9', width: '24' },
-  { title: '申请', dataIndex: 'app', render: (text, record) => (record.app ? record.app.displayName : '暂无') },
+  { title: '应用程序', dataIndex: 'app', render: (text, record) => (record.app ? record.app.displayName : '暂无') },
 
 ]
 
@@ -40,12 +40,12 @@ const fieldLabels = {
   list7: '列表7',
   list8: '列表8',
   list9: '列表9',
-  app: '申请',
+  app: '应用程序',
 
 }
 
 
-const ObjectAccessBase={menuData,displayColumns,fieldLabels}
+const ObjectAccessBase={menuData,displayColumns,fieldLabels,displayColumns}
 export default ObjectAccessBase
 
 

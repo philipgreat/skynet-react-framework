@@ -5,29 +5,9 @@ import { Table, Alert, Badge} from 'antd'
 import { Link } from 'dva/router'
 import styles from './FormField.table.less'
 import ImagePreview from '../../components/ImagePreview'
+import GlobalComponents from '../../custcomponents';
+import FormFieldBase from './FormField.base'
 
-
-const columns = [
-  { title: 'ID', debugtype: 'string', dataIndex: 'id',},
-  { title: '标签', debugtype: 'string', dataIndex: 'label',},
-  { title: '语言环境的关键', debugtype: 'string', dataIndex: 'localeKey',},
-  { title: '参数名称', debugtype: 'string', dataIndex: 'parameterName',},
-  { title: '类型', debugtype: 'string', dataIndex: 'type',},
-  { title: '形式', dataIndex: 'form', render: (text, record) => (record.form ? record.form.displayName : '暂无') },
-  { title: '占位符', debugtype: 'string', dataIndex: 'placeholder',},
-  { title: '默认值', debugtype: 'string', dataIndex: 'defaultValue',},
-  { title: '描述', debugtype: 'string', dataIndex: 'description',},
-  { title: '字段组', debugtype: 'string', dataIndex: 'fieldGroup',},
-  { title: '最小值', debugtype: 'string', dataIndex: 'minValue',},
-  { title: '最大的价值', debugtype: 'string', dataIndex: 'maxValue',},
-  { title: '要求', dataIndex: 'required', render: (text, record) => (record.required ? '是' : '否') },
-  { title: '禁用', dataIndex: 'disabled', render: (text, record) => (record.disabled ? '是' : '否') },
-  { title: '自定义渲染', dataIndex: 'customRendering', render: (text, record) => (record.customRendering ? '是' : '否') },
-  { title: '候选人的价值观', debugtype: 'string', dataIndex: 'candidateValues',},
-  { title: '建议值', debugtype: 'string', dataIndex: 'suggestValues',},
-
-
-]
 
 class FormFieldTable extends PureComponent {
   state = {
@@ -61,11 +41,13 @@ class FormFieldTable extends PureComponent {
 
     const {owner} =  this.props
     const {referenceName} = owner
+   
     
+    const {displayColumns} = FormFieldBase
     if(!referenceName){
-      return columns
+      return displayColumns
     }
-    const remainColumns = columns.filter((item,index)=> item.dataIndex!=referenceName&&index<7&&item.dataIndex!=='content')
+    const remainColumns = displayColumns.filter((item,index)=> item.dataIndex!=referenceName&&index<7&&item.dataIndex!=='content')
     //fixed: 'right',
     const operationColumn={
       title: '操作',

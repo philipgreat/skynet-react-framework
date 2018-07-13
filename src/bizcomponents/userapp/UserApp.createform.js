@@ -1,30 +1,18 @@
 import React, { Component } from 'react'
 import { AutoComplete, Card, Button, Form, Icon, Col, Row, DatePicker, TimePicker, Input, Select, Popover,Switch } from 'antd'
-
 import { connect } from 'dva'
 import PageHeaderLayout from '../../layouts/PageHeaderLayout'
-//import PictureEdit from '../../components/PictureEdit'
-//import OSSPictureEdit from '../../components/PictureEdit'
 import {ImageComponent} from '../../axios/tools'
 import FooterToolbar from '../../components/FooterToolbar'
-//import ImageUpload from '../../components/ImageUpload'
 import styles from './UserApp.createform.less'
 import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import GlobalComponents from '../../custcomponents';
+import UserAppBase from './UserApp.base'
+
 const { Option } = Select
 const { RangePicker } = DatePicker
 const { TextArea } = Input
-const fieldLabels = {
-  id: 'ID',
-  title: '标题',
-  secUser: 'SEC的用户',
-  appIcon: '申请图标',
-  fullAccess: '完全访问',
-  permission: '许可',
-  objectType: '访问对象类型',
-  objectId: '对象ID',
-  location: '位置',
-}
+
 const testValues = {};
 /*
 const testValues = {
@@ -117,6 +105,7 @@ class UserAppCreateForm extends Component {
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
+    const {fieldLabels} = UserAppBase
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -156,7 +145,7 @@ class UserAppCreateForm extends Component {
       const { owner } = this.props
       dispatch({
         type: `${owner.type}/goback`,
-        payload: { id: owner.id, type: 'userApp',listName:'用户申请列表' },
+        payload: { id: owner.id, type: 'userApp',listName:'用户应用程序列表' },
       })
     }
     const errors = getFieldsError()
@@ -240,8 +229,8 @@ class UserAppCreateForm extends Component {
     }
     return (
       <PageHeaderLayout
-        title="新建一个用户申请"
-        content="新建一个用户申请"
+        title="新建一个用户应用程序"
+        content="新建一个用户应用程序"
         wrapperClassName={styles.advancedForm}
       >
         <Card title="基础信息" className={styles.card} bordered={false}>
@@ -261,9 +250,9 @@ class UserAppCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.appIcon} {...formItemLayout}>
                   {getFieldDecorator('appIcon', {
-                    rules: [{ required: true, message: '请输入申请图标' }],
+                    rules: [{ required: true, message: '请输入应用程序图标' }],
                   })(
-                    <Input placeholder="请输入申请图标" />
+                    <Input placeholder="请输入应用程序图标" />
                   )}
                 </Form.Item>
               </Col>
@@ -271,9 +260,9 @@ class UserAppCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.permission} {...formItemLayout}>
                   {getFieldDecorator('permission', {
-                    rules: [{ required: true, message: '请输入许可' }],
+                    rules: [{ required: true, message: '请输入权限' }],
                   })(
-                    <Input placeholder="请输入许可" />
+                    <Input placeholder="请输入权限" />
                   )}
                 </Form.Item>
               </Col>
@@ -356,7 +345,7 @@ class UserAppCreateForm extends Component {
                   	initialValue: tryinit('secUser'),
                     rules: [{ required: true, message: '请输入SEC的用户' }],
                   })(
-                                
+                  
                   <AutoComplete
                     dataSource={candidateSecUserList.candidates}
                     

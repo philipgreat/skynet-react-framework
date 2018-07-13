@@ -5,23 +5,9 @@ import { Table, Alert, Badge} from 'antd'
 import { Link } from 'dva/router'
 import styles from './SecUser.table.less'
 import ImagePreview from '../../components/ImagePreview'
+import GlobalComponents from '../../custcomponents';
+import SecUserBase from './SecUser.base'
 
-
-const columns = [
-  { title: 'ID', debugtype: 'string', dataIndex: 'id',  render: (text, record)=>(<Link to={`/secUser/${text}/dashboard`}>{text}</Link>) },
-  { title: '登录', debugtype: 'string', dataIndex: 'login',},
-  { title: '手机号码', debugtype: 'string_china_mobile_phone', dataIndex: 'mobile',},
-  { title: '电子邮件', debugtype: 'string_email', dataIndex: 'email',},
-  { title: '密码', debugtype: 'string_password', dataIndex: 'pwd',},
-  { title: '验证码', debugtype: 'int', dataIndex: 'verificationCode',},
-  { title: '验证码过期', dataIndex: 'verificationCodeExpire', render: (text, record) => moment(record.verificationCodeExpire).format('YYYY-MM-DD HH:mm') },
-  { title: '最后登录时间', dataIndex: 'lastLoginTime', render: (text, record) => moment(record.lastLoginTime).format('YYYY-MM-DD HH:mm') },
-  { title: '域', dataIndex: 'domain', render: (text, record) => (record.domain ? record.domain.displayName : '暂无') },
-  { title: '屏蔽', dataIndex: 'blocking', render: (text, record) => (record.blocking ? record.blocking.displayName : '暂无') },
-  { title: '当前状态', debugtype: 'string', dataIndex: 'currentStatus',},
-
-
-]
 
 class SecUserTable extends PureComponent {
   state = {
@@ -55,11 +41,13 @@ class SecUserTable extends PureComponent {
 
     const {owner} =  this.props
     const {referenceName} = owner
+   
     
+    const {displayColumns} = SecUserBase
     if(!referenceName){
-      return columns
+      return displayColumns
     }
-    const remainColumns = columns.filter((item,index)=> item.dataIndex!=referenceName&&index<7&&item.dataIndex!=='content')
+    const remainColumns = displayColumns.filter((item,index)=> item.dataIndex!=referenceName&&index<7&&item.dataIndex!=='content')
     //fixed: 'right',
     const operationColumn={
       title: '操作',

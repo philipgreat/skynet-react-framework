@@ -48,6 +48,9 @@ class ObjectAccessSearch extends PureComponent {
     listParameters[listName]=1;
     listParameters[`${listName}CurrentPage`]=pagination.current;
     listParameters[`${listName}RowsPerPage`]=pagination.pageSize;
+    listParameters[`${listName}.orderBy.0`]="id";
+    listParameters[`${listName}.descOrAsc.0`]="desc";
+   
     
     const params = {
       ...listParameters,
@@ -188,7 +191,7 @@ class ObjectAccessSearch extends PureComponent {
     const {displayName} = owner.ref
     const { showDeleteResult, selectedRows, modalVisible } = this.state;
     const {ObjectAccessTable} = GlobalComponents;
-    const {ObjectAccessConfirmationTable} = GlobalComponents;
+    const {ObjectAccessModalTable} = GlobalComponents;
     const {ObjectAccessSearchForm} = GlobalComponents;
     
  
@@ -196,7 +199,7 @@ class ObjectAccessSearch extends PureComponent {
       <Menu onClick={this.handleMenuClick} selectedKeys={[]}>
 
 
-<Menu.Item key="app">关联申请</Menu.Item>
+<Menu.Item key="app">关联应用程序</Menu.Item>
       
 
       </Menu>
@@ -227,7 +230,7 @@ class ObjectAccessSearch extends PureComponent {
           width={920}
           style={{ top: 40 }}
         >
-          <ObjectAccessConfirmationTable data={selectedRows} owner={owner} />
+          <ObjectAccessModalTable data={selectedRows} owner={owner} />
         </Modal>)
     }
     

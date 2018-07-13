@@ -5,25 +5,15 @@ import { connect } from 'dva'
 import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import PageHeaderLayout from '../../layouts/PageHeaderLayout'
 import {ImageComponent} from '../../axios/tools'
-//import OSSPictureEdit from '../../components/OSSPictureEdit'
 
 import FooterToolbar from '../../components/FooterToolbar'
 
 import styles from './FormAction.updateform.less'
+import FormActionBase from './FormAction.base'
 
 const { Option } = Select
 const { RangePicker } = DatePicker
 const { TextArea } = Input
-const fieldLabels = {
-  id: 'ID',
-  label: '标签',
-  localeKey: '语言环境的关键',
-  actionKey: '行动的关键',
-  level: '水平',
-  url: 'url',
-  form: '形式',
-
-}
 
 const imageURLPrefix = '//localhost:2090'
 
@@ -98,7 +88,7 @@ class FormActionUpdateForm extends Component {
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const { convertedImagesValues } = this.state
     const { setFieldsValue } = this.props.form
-    
+    const {fieldLabels} = FormActionBase
     
     const submitUpdateForm = () => {
       validateFieldsAndScroll((error, values) => {
@@ -286,9 +276,9 @@ class FormActionUpdateForm extends Component {
                 <Form.Item label={fieldLabels.localeKey} {...formItemLayout}>
                   {getFieldDecorator('localeKey', {
                     initialValue: selectedRow.localeKey,
-                    rules: [{ required: true, message: '请输入语言环境的关键' }],
+                    rules: [{ required: true, message: '请输入消息键值' }],
                   })(
-                    <Input placeholder="请输入语言环境的关键" />
+                    <Input placeholder="请输入消息键值" />
                     
                   )}
                 </Form.Item>

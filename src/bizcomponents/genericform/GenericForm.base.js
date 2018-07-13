@@ -1,7 +1,7 @@
 
 import ImagePreview from '../../components/ImagePreview'
 import { Link } from 'dva/router'
-
+import moment from 'moment'
 const menuData = {menuName:"通用的形式", menuFor: "genericForm",
   		subItems: [
   {name: 'formMessageList', displayName:'表单信息', icon:'glass'},
@@ -29,7 +29,7 @@ const fieldLabels = {
 }
 
 
-const GenericFormBase={menuData,displayColumns,fieldLabels}
+const GenericFormBase={menuData,displayColumns,fieldLabels,displayColumns}
 export default GenericFormBase
 
 

@@ -1,28 +1,18 @@
 import React, { Component } from 'react'
 import { AutoComplete, Card, Button, Form, Icon, Col, Row, DatePicker, TimePicker, Input, Select, Popover,Switch } from 'antd'
-
 import { connect } from 'dva'
 import PageHeaderLayout from '../../layouts/PageHeaderLayout'
-//import PictureEdit from '../../components/PictureEdit'
-//import OSSPictureEdit from '../../components/PictureEdit'
 import {ImageComponent} from '../../axios/tools'
 import FooterToolbar from '../../components/FooterToolbar'
-//import ImageUpload from '../../components/ImageUpload'
 import styles from './FormAction.createform.less'
 import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import GlobalComponents from '../../custcomponents';
+import FormActionBase from './FormAction.base'
+
 const { Option } = Select
 const { RangePicker } = DatePicker
 const { TextArea } = Input
-const fieldLabels = {
-  id: 'ID',
-  label: '标签',
-  localeKey: '语言环境的关键',
-  actionKey: '行动的关键',
-  level: '水平',
-  url: 'url',
-  form: '形式',
-}
+
 const testValues = {};
 /*
 const testValues = {
@@ -114,6 +104,7 @@ class FormActionCreateForm extends Component {
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
+    const {fieldLabels} = FormActionBase
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -258,9 +249,9 @@ class FormActionCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.localeKey} {...formItemLayout}>
                   {getFieldDecorator('localeKey', {
-                    rules: [{ required: true, message: '请输入语言环境的关键' }],
+                    rules: [{ required: true, message: '请输入消息键值' }],
                   })(
-                    <Input placeholder="请输入语言环境的关键" />
+                    <Input placeholder="请输入消息键值" />
                   )}
                 </Form.Item>
               </Col>
@@ -322,7 +313,7 @@ class FormActionCreateForm extends Component {
                   	initialValue: tryinit('form'),
                     rules: [{ required: true, message: '请输入形式' }],
                   })(
-                                
+                  
                   <AutoComplete
                     dataSource={candidateFormList.candidates}
                     

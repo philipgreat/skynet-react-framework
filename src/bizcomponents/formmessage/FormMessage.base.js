@@ -1,7 +1,7 @@
 
 import ImagePreview from '../../components/ImagePreview'
 import { Link } from 'dva/router'
-
+import moment from 'moment'
 const menuData = {menuName:"表单信息", menuFor: "formMessage",
   		subItems: [
   
@@ -27,7 +27,7 @@ const fieldLabels = {
 }
 
 
-const FormMessageBase={menuData,displayColumns,fieldLabels}
+const FormMessageBase={menuData,displayColumns,fieldLabels,displayColumns}
 export default FormMessageBase
 
 

@@ -5,21 +5,15 @@ import { connect } from 'dva'
 import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import PageHeaderLayout from '../../layouts/PageHeaderLayout'
 import {ImageComponent} from '../../axios/tools'
-//import OSSPictureEdit from '../../components/OSSPictureEdit'
 
 import FooterToolbar from '../../components/FooterToolbar'
 
 import styles from './GenericForm.updateform.less'
+import GenericFormBase from './GenericForm.base'
 
 const { Option } = Select
 const { RangePicker } = DatePicker
 const { TextArea } = Input
-const fieldLabels = {
-  id: 'ID',
-  title: '标题',
-  description: '描述',
-
-}
 
 const imageURLPrefix = '//localhost:2090'
 
@@ -94,7 +88,7 @@ class GenericFormUpdateForm extends Component {
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const { convertedImagesValues } = this.state
     const { setFieldsValue } = this.props.form
-    
+    const {fieldLabels} = GenericFormBase
     
     const submitUpdateForm = () => {
       validateFieldsAndScroll((error, values) => {

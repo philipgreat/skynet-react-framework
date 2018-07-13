@@ -55,14 +55,7 @@ const query = {
 }
 
 
-  
-const menuData = {menuName:"用户域", menuFor: "userDomain",
-  		subItems: [
-  {name: 'secUserList', displayName:'SEC的用户'},
-  		
-  		
-  		],
-};
+
 
 class UserDomainBizApp extends React.PureComponent {
   constructor(props) {
@@ -180,10 +173,38 @@ class UserDomainBizApp extends React.PureComponent {
     }))(SecUserUpdateForm)
   }
 
+
+  
+  buildRouters = () =>{
+  	const {UserDomainDashboard} = GlobalComponents
+  	
+  	const routers=[
+  	{path:"/userDomain/:id/dashboard", component: UserDomainDashboard},
+  	
+  	
+  	{path:"/userDomain/:id/list/secUserList", component: this.getSecUserSearch()},
+  	{path:"/userDomain/:id/list/secUserCreateForm", component: this.getSecUserCreateForm()},
+  	{path:"/userDomain/:id/list/secUserUpdateForm", component: this.getSecUserUpdateForm()},
+     	
+  	
+  	]
+  	
+  	const {extraRoutesFunc} = this.props;
+	const extraRoutes = extraRoutesFunc?extraRoutesFunc():[]
+    const finalRoutes = routers.concat(extraRoutes)
+    
+  	return (<Switch>
+             {finalRoutes.map((item)=>(<Route key={item.path} path={item.path} component={item.component} />))}    
+  	  	</Switch>)
+  	
+  
+  }
+ 
+
   getPageTitle = () => {
     // const { location } = this.props
     // const { pathname } = location
-    const title = '恺思医药数据管理平台'
+    const title = '代审车服务平台'
     return title
   }
  
@@ -205,7 +226,7 @@ class UserDomainBizApp extends React.PureComponent {
      // const { collapsed, fetchingNotices,loading } = this.props
      const { collapsed } = this.props
      const { breadcrumb }  = this.props
-     const {UserDomainDashboard} = GlobalComponents
+
      //const {UserDomainEditDetail} = GlobalComponents
      //const {UserDomainViewDetail} = GlobalComponents
      
@@ -267,17 +288,11 @@ class UserDomainBizApp extends React.PureComponent {
          </Sider>
          <Layout>
            <Content style={{ margin: '24px 24px 0', height: '100%' }}>
-             <Switch>
+           
+           {this.buildRouters()}
+ 
              
-               <Route path="/userDomain/:id/dashboard" component={UserDomainDashboard} />
-               
-               
-
-               <Route path="/userDomain/:id/list/secUserList" component={this.getSecUserSearch()} />
-               <Route path="/userDomain/:id/list/secUserCreateForm" component={this.getSecUserCreateForm()} />
-               <Route path="/userDomain/:id/list/secUserUpdateForm" component={this.getSecUserUpdateForm()} />
-              
-             </Switch>
+             
            </Content>
           </Layout>
         </Layout>

@@ -5,17 +5,9 @@ import { Table, Alert, Badge} from 'antd'
 import { Link } from 'dva/router'
 import styles from './LoginHistory.table.less'
 import ImagePreview from '../../components/ImagePreview'
+import GlobalComponents from '../../custcomponents';
+import LoginHistoryBase from './LoginHistory.base'
 
-
-const columns = [
-  { title: 'ID', debugtype: 'string', dataIndex: 'id',},
-  { title: '登录时间', dataIndex: 'loginTime', render: (text, record) => moment(record.loginTime).format('YYYY-MM-DD HH:mm') },
-  { title: '来自IP', debugtype: 'string', dataIndex: 'fromIp',},
-  { title: '描述', debugtype: 'string', dataIndex: 'description',},
-  { title: 'SEC的用户', dataIndex: 'secUser', render: (text, record) => (record.secUser ? record.secUser.displayName : '暂无') },
-
-
-]
 
 class LoginHistoryTable extends PureComponent {
   state = {
@@ -49,11 +41,13 @@ class LoginHistoryTable extends PureComponent {
 
     const {owner} =  this.props
     const {referenceName} = owner
+   
     
+    const {displayColumns} = LoginHistoryBase
     if(!referenceName){
-      return columns
+      return displayColumns
     }
-    const remainColumns = columns.filter((item,index)=> item.dataIndex!=referenceName&&index<7&&item.dataIndex!=='content')
+    const remainColumns = displayColumns.filter((item,index)=> item.dataIndex!=referenceName&&index<7&&item.dataIndex!=='content')
     //fixed: 'right',
     const operationColumn={
       title: '操作',

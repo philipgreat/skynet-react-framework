@@ -55,13 +55,7 @@ const query = {
 }
 
 
-  
-const menuData = {menuName:"表单动作", menuFor: "formAction",
-  		subItems: [
-  		
-  		
-  		],
-};
+
 
 class FormActionBizApp extends React.PureComponent {
   constructor(props) {
@@ -144,10 +138,34 @@ class FormActionBizApp extends React.PureComponent {
 
 
 
+
+  
+  buildRouters = () =>{
+  	const {FormActionDashboard} = GlobalComponents
+  	
+  	const routers=[
+  	{path:"/formAction/:id/dashboard", component: FormActionDashboard},
+  	
+    	
+  	
+  	]
+  	
+  	const {extraRoutesFunc} = this.props;
+	const extraRoutes = extraRoutesFunc?extraRoutesFunc():[]
+    const finalRoutes = routers.concat(extraRoutes)
+    
+  	return (<Switch>
+             {finalRoutes.map((item)=>(<Route key={item.path} path={item.path} component={item.component} />))}    
+  	  	</Switch>)
+  	
+  
+  }
+ 
+
   getPageTitle = () => {
     // const { location } = this.props
     // const { pathname } = location
-    const title = '恺思医药数据管理平台'
+    const title = '代审车服务平台'
     return title
   }
  
@@ -169,7 +187,7 @@ class FormActionBizApp extends React.PureComponent {
      // const { collapsed, fetchingNotices,loading } = this.props
      const { collapsed } = this.props
      const { breadcrumb }  = this.props
-     const {FormActionDashboard} = GlobalComponents
+
      //const {FormActionEditDetail} = GlobalComponents
      //const {FormActionViewDetail} = GlobalComponents
      
@@ -231,13 +249,11 @@ class FormActionBizApp extends React.PureComponent {
          </Sider>
          <Layout>
            <Content style={{ margin: '24px 24px 0', height: '100%' }}>
-             <Switch>
+           
+           {this.buildRouters()}
+ 
              
-               <Route path="/formAction/:id/dashboard" component={FormActionDashboard} />
-               
-               
-              
-             </Switch>
+             
            </Content>
           </Layout>
         </Layout>

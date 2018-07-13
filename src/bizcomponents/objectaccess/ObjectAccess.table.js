@@ -5,25 +5,9 @@ import { Table, Alert, Badge} from 'antd'
 import { Link } from 'dva/router'
 import styles from './ObjectAccess.table.less'
 import ImagePreview from '../../components/ImagePreview'
+import GlobalComponents from '../../custcomponents';
+import ObjectAccessBase from './ObjectAccess.base'
 
-
-const columns = [
-  { title: 'ID', debugtype: 'string', dataIndex: 'id',},
-  { title: '名称', debugtype: 'string', dataIndex: 'name',},
-  { title: '访问对象类型', debugtype: 'string', dataIndex: 'objectType',},
-  { title: '列表1', debugtype: 'string', dataIndex: 'list1',},
-  { title: '列表2', debugtype: 'string', dataIndex: 'list2',},
-  { title: '列表3', debugtype: 'string', dataIndex: 'list3',},
-  { title: '列表4', debugtype: 'string', dataIndex: 'list4',},
-  { title: '列表5', debugtype: 'string', dataIndex: 'list5',},
-  { title: '列表6', debugtype: 'string', dataIndex: 'list6',},
-  { title: '列表7', debugtype: 'string', dataIndex: 'list7',},
-  { title: '列表8', debugtype: 'string', dataIndex: 'list8',},
-  { title: '列表9', debugtype: 'string', dataIndex: 'list9',},
-  { title: '申请', dataIndex: 'app', render: (text, record) => (record.app ? record.app.displayName : '暂无') },
-
-
-]
 
 class ObjectAccessTable extends PureComponent {
   state = {
@@ -57,11 +41,13 @@ class ObjectAccessTable extends PureComponent {
 
     const {owner} =  this.props
     const {referenceName} = owner
+   
     
+    const {displayColumns} = ObjectAccessBase
     if(!referenceName){
-      return columns
+      return displayColumns
     }
-    const remainColumns = columns.filter((item,index)=> item.dataIndex!=referenceName&&index<7&&item.dataIndex!=='content')
+    const remainColumns = displayColumns.filter((item,index)=> item.dataIndex!=referenceName&&index<7&&item.dataIndex!=='content')
     //fixed: 'right',
     const operationColumn={
       title: '操作',

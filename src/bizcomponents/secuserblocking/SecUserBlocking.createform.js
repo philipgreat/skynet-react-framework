@@ -1,25 +1,18 @@
 import React, { Component } from 'react'
 import { AutoComplete, Card, Button, Form, Icon, Col, Row, DatePicker, TimePicker, Input, Select, Popover,Switch } from 'antd'
-
 import { connect } from 'dva'
 import PageHeaderLayout from '../../layouts/PageHeaderLayout'
-//import PictureEdit from '../../components/PictureEdit'
-//import OSSPictureEdit from '../../components/PictureEdit'
 import {ImageComponent} from '../../axios/tools'
 import FooterToolbar from '../../components/FooterToolbar'
-//import ImageUpload from '../../components/ImageUpload'
 import styles from './SecUserBlocking.createform.less'
 import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import GlobalComponents from '../../custcomponents';
+import SecUserBlockingBase from './SecUserBlocking.base'
+
 const { Option } = Select
 const { RangePicker } = DatePicker
 const { TextArea } = Input
-const fieldLabels = {
-  id: 'ID',
-  who: '谁',
-  blockTime: '块时间',
-  comments: '评论',
-}
+
 const testValues = {};
 /*
 const testValues = {
@@ -82,6 +75,7 @@ class SecUserBlockingCreateForm extends Component {
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
+    const {fieldLabels} = SecUserBlockingBase
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -121,7 +115,7 @@ class SecUserBlockingCreateForm extends Component {
       const { owner } = this.props
       dispatch({
         type: `${owner.type}/goback`,
-        payload: { id: owner.id, type: 'secUserBlocking',listName:'用户屏蔽列表' },
+        payload: { id: owner.id, type: 'secUserBlocking',listName:'SEC用户阻塞列表' },
       })
     }
     const errors = getFieldsError()
@@ -196,8 +190,8 @@ class SecUserBlockingCreateForm extends Component {
     }
     return (
       <PageHeaderLayout
-        title="新建一个用户屏蔽"
-        content="新建一个用户屏蔽"
+        title="新建一个SEC用户阻塞"
+        content="新建一个SEC用户阻塞"
         wrapperClassName={styles.advancedForm}
       >
         <Card title="基础信息" className={styles.card} bordered={false}>
@@ -207,9 +201,9 @@ class SecUserBlockingCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.who} {...formItemLayout}>
                   {getFieldDecorator('who', {
-                    rules: [{ required: true, message: '请输入谁' }],
+                    rules: [{ required: true, message: '请输入审批人' }],
                   })(
-                    <Input placeholder="请输入谁" />
+                    <Input placeholder="请输入审批人" />
                   )}
                 </Form.Item>
               </Col>

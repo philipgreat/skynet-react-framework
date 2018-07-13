@@ -55,14 +55,7 @@ const query = {
 }
 
 
-  
-const menuData = {menuName:"用户申请", menuFor: "userApp",
-  		subItems: [
-  {name: 'objectAccessList', displayName:'对象访问'},
-  		
-  		
-  		],
-};
+
 
 class UserAppBizApp extends React.PureComponent {
   constructor(props) {
@@ -180,10 +173,38 @@ class UserAppBizApp extends React.PureComponent {
     }))(ObjectAccessUpdateForm)
   }
 
+
+  
+  buildRouters = () =>{
+  	const {UserAppDashboard} = GlobalComponents
+  	
+  	const routers=[
+  	{path:"/userApp/:id/dashboard", component: UserAppDashboard},
+  	
+  	
+  	{path:"/userApp/:id/list/objectAccessList", component: this.getObjectAccessSearch()},
+  	{path:"/userApp/:id/list/objectAccessCreateForm", component: this.getObjectAccessCreateForm()},
+  	{path:"/userApp/:id/list/objectAccessUpdateForm", component: this.getObjectAccessUpdateForm()},
+     	
+  	
+  	]
+  	
+  	const {extraRoutesFunc} = this.props;
+	const extraRoutes = extraRoutesFunc?extraRoutesFunc():[]
+    const finalRoutes = routers.concat(extraRoutes)
+    
+  	return (<Switch>
+             {finalRoutes.map((item)=>(<Route key={item.path} path={item.path} component={item.component} />))}    
+  	  	</Switch>)
+  	
+  
+  }
+ 
+
   getPageTitle = () => {
     // const { location } = this.props
     // const { pathname } = location
-    const title = '恺思医药数据管理平台'
+    const title = '代审车服务平台'
     return title
   }
  
@@ -205,7 +226,7 @@ class UserAppBizApp extends React.PureComponent {
      // const { collapsed, fetchingNotices,loading } = this.props
      const { collapsed } = this.props
      const { breadcrumb }  = this.props
-     const {UserAppDashboard} = GlobalComponents
+
      //const {UserAppEditDetail} = GlobalComponents
      //const {UserAppViewDetail} = GlobalComponents
      
@@ -267,17 +288,11 @@ class UserAppBizApp extends React.PureComponent {
          </Sider>
          <Layout>
            <Content style={{ margin: '24px 24px 0', height: '100%' }}>
-             <Switch>
+           
+           {this.buildRouters()}
+ 
              
-               <Route path="/userApp/:id/dashboard" component={UserAppDashboard} />
-               
-               
-
-               <Route path="/userApp/:id/list/objectAccessList" component={this.getObjectAccessSearch()} />
-               <Route path="/userApp/:id/list/objectAccessCreateForm" component={this.getObjectAccessCreateForm()} />
-               <Route path="/userApp/:id/list/objectAccessUpdateForm" component={this.getObjectAccessUpdateForm()} />
-              
-             </Switch>
+             
            </Content>
           </Layout>
         </Layout>

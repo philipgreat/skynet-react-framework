@@ -5,15 +5,9 @@ import { Table, Alert, Badge} from 'antd'
 import { Link } from 'dva/router'
 import styles from './GenericForm.table.less'
 import ImagePreview from '../../components/ImagePreview'
+import GlobalComponents from '../../custcomponents';
+import GenericFormBase from './GenericForm.base'
 
-
-const columns = [
-  { title: 'ID', debugtype: 'string', dataIndex: 'id',  render: (text, record)=>(<Link to={`/genericForm/${text}/dashboard`}>{text}</Link>) },
-  { title: '标题', debugtype: 'string', dataIndex: 'title',},
-  { title: '描述', debugtype: 'string', dataIndex: 'description',},
-
-
-]
 
 class GenericFormTable extends PureComponent {
   state = {
@@ -47,11 +41,13 @@ class GenericFormTable extends PureComponent {
 
     const {owner} =  this.props
     const {referenceName} = owner
+   
     
+    const {displayColumns} = GenericFormBase
     if(!referenceName){
-      return columns
+      return displayColumns
     }
-    const remainColumns = columns.filter((item,index)=> item.dataIndex!=referenceName&&index<7&&item.dataIndex!=='content')
+    const remainColumns = displayColumns.filter((item,index)=> item.dataIndex!=referenceName&&index<7&&item.dataIndex!=='content')
     //fixed: 'right',
     const operationColumn={
       title: '操作',

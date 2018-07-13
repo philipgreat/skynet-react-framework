@@ -48,6 +48,9 @@ class UserAppSearch extends PureComponent {
     listParameters[listName]=1;
     listParameters[`${listName}CurrentPage`]=pagination.current;
     listParameters[`${listName}RowsPerPage`]=pagination.pageSize;
+    listParameters[`${listName}.orderBy.0`]="id";
+    listParameters[`${listName}.descOrAsc.0`]="desc";
+   
     
     const params = {
       ...listParameters,
@@ -166,7 +169,7 @@ class UserAppSearch extends PureComponent {
       const { dispatch, owner,location } = this.props;
       console.log("trying to call handleCloseAlert",owner)
       const pathname = location.pathname
-      dispatch({ type: `${owner.type}/view`, payload: { id: owner.id,pathname,displayName:'用户申请列表' } })
+      dispatch({ type: `${owner.type}/view`, payload: { id: owner.id,pathname,displayName:'用户应用程序列表' } })
 
   };  
     
@@ -188,7 +191,7 @@ class UserAppSearch extends PureComponent {
     const {displayName} = owner.ref
     const { showDeleteResult, selectedRows, modalVisible } = this.state;
     const {UserAppTable} = GlobalComponents;
-    const {UserAppConfirmationTable} = GlobalComponents;
+    const {UserAppModalTable} = GlobalComponents;
     const {UserAppSearchForm} = GlobalComponents;
     
  
@@ -227,12 +230,12 @@ class UserAppSearch extends PureComponent {
           width={920}
           style={{ top: 40 }}
         >
-          <UserAppConfirmationTable data={selectedRows} owner={owner} />
+          <UserAppModalTable data={selectedRows} owner={owner} />
         </Modal>)
     }
     
     return (
-      <PageHeaderLayout title={`${displayName}: 用户申请列表`}>
+      <PageHeaderLayout title={`${displayName}: 用户应用程序列表`}>
         <Card bordered={false}>
           <div className={styles.tableList}>
             <div className={styles.tableListForm}>
