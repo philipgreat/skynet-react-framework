@@ -106,14 +106,12 @@ export default {
       yield put(routerRedux.push(location))
       // yield put({type:"showApp",payload:{data}})
     },
+
     *signOut({ payload }, { call, put }) {
-      // console.log("gotoApp has been called", payload)
       const data = yield call(LauncherService.logout)
-     
       yield put({ type: 'logout', payload: { data} })
-      
-     
-      // yield put({type:"showApp",payload:{data}})
+      const location = { pathname: `/home`, state: data }
+      yield put(routerRedux.push(location))
     },
   },
   reducers: {

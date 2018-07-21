@@ -43,7 +43,7 @@ class TopMenu extends React.Component {
       >
         
         <Menu.Item key="app1" >
-        <Icon type="appstore"/>退出
+        <Icon type="logout"/>退出
         </Menu.Item>
        
  
