@@ -5,16 +5,9 @@ import { Table, Alert, Badge} from 'antd'
 import { Link } from 'dva/router'
 import styles from './SecUserBlocking.table.less'
 import ImagePreview from '../../components/ImagePreview'
+import GlobalComponents from '../../custcomponents';
+import SecUserBlockingBase from './SecUserBlocking.base'
 
-
-const columns = [
-  { title: 'ID', debugtype: 'string', dataIndex: 'id',  render: (text, record)=>(<Link to={`/secUserBlocking/${text}/dashboard`}>{text}</Link>) },
-  { title: '谁', debugtype: 'string', dataIndex: 'who',},
-  { title: '块时间', dataIndex: 'blockTime', render: (text, record) => moment(record.blockTime).format('YYYY-MM-DD HH:mm') },
-  { title: '评论', debugtype: 'string', dataIndex: 'comments',},
-
-
-]
 
 class SecUserBlockingTable extends PureComponent {
   state = {
@@ -48,11 +41,13 @@ class SecUserBlockingTable extends PureComponent {
 
     const {owner} =  this.props
     const {referenceName} = owner
+   
     
+    const {displayColumns} = SecUserBlockingBase
     if(!referenceName){
-      return columns
+      return displayColumns
     }
-    const remainColumns = columns.filter((item,index)=> item.dataIndex!=referenceName&&index<7&&item.dataIndex!=='content')
+    const remainColumns = displayColumns.filter((item,index)=> item.dataIndex!=referenceName&&index<7&&item.dataIndex!=='content')
     //fixed: 'right',
     const operationColumn={
       title: '操作',

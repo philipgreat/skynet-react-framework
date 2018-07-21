@@ -1,7 +1,7 @@
 
 import ImagePreview from '../../components/ImagePreview'
 import { Link } from 'dva/router'
-
+import moment from 'moment'
 const menuData = {menuName:"用户域", menuFor: "userDomain",
   		subItems: [
   {name: 'secUserList', displayName:'SEC的用户', icon:'user'},
@@ -24,7 +24,7 @@ const fieldLabels = {
 }
 
 
-const UserDomainBase={menuData,displayColumns,fieldLabels}
+const UserDomainBase={menuData,displayColumns,fieldLabels,displayColumns}
 export default UserDomainBase
 
 

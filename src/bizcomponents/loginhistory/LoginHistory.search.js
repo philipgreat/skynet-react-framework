@@ -48,6 +48,9 @@ class LoginHistorySearch extends PureComponent {
     listParameters[listName]=1;
     listParameters[`${listName}CurrentPage`]=pagination.current;
     listParameters[`${listName}RowsPerPage`]=pagination.pageSize;
+    listParameters[`${listName}.orderBy.0`]="id";
+    listParameters[`${listName}.descOrAsc.0`]="desc";
+   
     
     const params = {
       ...listParameters,
@@ -188,7 +191,7 @@ class LoginHistorySearch extends PureComponent {
     const {displayName} = owner.ref
     const { showDeleteResult, selectedRows, modalVisible } = this.state;
     const {LoginHistoryTable} = GlobalComponents;
-    const {LoginHistoryConfirmationTable} = GlobalComponents;
+    const {LoginHistoryModalTable} = GlobalComponents;
     const {LoginHistorySearchForm} = GlobalComponents;
     
  
@@ -227,7 +230,7 @@ class LoginHistorySearch extends PureComponent {
           width={920}
           style={{ top: 40 }}
         >
-          <LoginHistoryConfirmationTable data={selectedRows} owner={owner} />
+          <LoginHistoryModalTable data={selectedRows} owner={owner} />
         </Modal>)
     }
     

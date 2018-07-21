@@ -5,29 +5,15 @@ import { connect } from 'dva'
 import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import PageHeaderLayout from '../../layouts/PageHeaderLayout'
 import {ImageComponent} from '../../axios/tools'
-//import OSSPictureEdit from '../../components/OSSPictureEdit'
 
 import FooterToolbar from '../../components/FooterToolbar'
 
 import styles from './SecUser.updateform.less'
+import SecUserBase from './SecUser.base'
 
 const { Option } = Select
 const { RangePicker } = DatePicker
 const { TextArea } = Input
-const fieldLabels = {
-  id: 'ID',
-  login: '登录',
-  mobile: '手机号码',
-  email: '电子邮件',
-  pwd: '密码',
-  verificationCode: '验证码',
-  verificationCodeExpire: '验证码过期',
-  lastLoginTime: '最后登录时间',
-  domain: '域',
-  blocking: '屏蔽',
-  currentStatus: '当前状态',
-
-}
 
 const imageURLPrefix = '//localhost:2090'
 
@@ -104,7 +90,7 @@ class SecUserUpdateForm extends Component {
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const { convertedImagesValues } = this.state
     const { setFieldsValue } = this.props.form
-    
+    const {fieldLabels} = SecUserBase
     
     const submitUpdateForm = () => {
       validateFieldsAndScroll((error, values) => {
@@ -340,9 +326,9 @@ class SecUserUpdateForm extends Component {
                 <Form.Item label={fieldLabels.verificationCodeExpire} {...formItemLayout}>
                   {getFieldDecorator('verificationCodeExpire', {
                     initialValue: selectedRow.verificationCodeExpire,
-                    rules: [{ required: true, message: '请输入验证码过期' }],
+                    rules: [{ required: true, message: '请输入验证码过期时间' }],
                   })(
-                    <DatePicker showTime format="YYYY-MM-DD HH:mm" minuteStep={5} placeholder="请输入验证码过期" />
+                    <DatePicker showTime format="YYYY-MM-DD HH:mm" minuteStep={5} placeholder="请输入验证码过期时间" />
                     
                   )}
                 </Form.Item>

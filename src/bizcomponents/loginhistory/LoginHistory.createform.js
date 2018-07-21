@@ -1,26 +1,18 @@
 import React, { Component } from 'react'
 import { AutoComplete, Card, Button, Form, Icon, Col, Row, DatePicker, TimePicker, Input, Select, Popover,Switch } from 'antd'
-
 import { connect } from 'dva'
 import PageHeaderLayout from '../../layouts/PageHeaderLayout'
-//import PictureEdit from '../../components/PictureEdit'
-//import OSSPictureEdit from '../../components/PictureEdit'
 import {ImageComponent} from '../../axios/tools'
 import FooterToolbar from '../../components/FooterToolbar'
-//import ImageUpload from '../../components/ImageUpload'
 import styles from './LoginHistory.createform.less'
 import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import GlobalComponents from '../../custcomponents';
+import LoginHistoryBase from './LoginHistory.base'
+
 const { Option } = Select
 const { RangePicker } = DatePicker
 const { TextArea } = Input
-const fieldLabels = {
-  id: 'ID',
-  loginTime: '登录时间',
-  fromIp: '来自IP',
-  description: '描述',
-  secUser: 'SEC的用户',
-}
+
 const testValues = {};
 /*
 const testValues = {
@@ -109,6 +101,7 @@ class LoginHistoryCreateForm extends Component {
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
+    const {fieldLabels} = LoginHistoryBase
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -287,7 +280,7 @@ class LoginHistoryCreateForm extends Component {
                   	initialValue: tryinit('secUser'),
                     rules: [{ required: true, message: '请输入SEC的用户' }],
                   })(
-                                
+                  
                   <AutoComplete
                     dataSource={candidateSecUserList.candidates}
                     

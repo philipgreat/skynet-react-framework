@@ -1,23 +1,18 @@
 import React, { Component } from 'react'
 import { AutoComplete, Card, Button, Form, Icon, Col, Row, DatePicker, TimePicker, Input, Select, Popover,Switch } from 'antd'
-
 import { connect } from 'dva'
 import PageHeaderLayout from '../../layouts/PageHeaderLayout'
-//import PictureEdit from '../../components/PictureEdit'
-//import OSSPictureEdit from '../../components/PictureEdit'
 import {ImageComponent} from '../../axios/tools'
 import FooterToolbar from '../../components/FooterToolbar'
-//import ImageUpload from '../../components/ImageUpload'
 import styles from './UserDomain.createform.less'
 import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import GlobalComponents from '../../custcomponents';
+import UserDomainBase from './UserDomain.base'
+
 const { Option } = Select
 const { RangePicker } = DatePicker
 const { TextArea } = Input
-const fieldLabels = {
-  id: 'ID',
-  name: '名称',
-}
+
 const testValues = {};
 /*
 const testValues = {
@@ -79,6 +74,7 @@ class UserDomainCreateForm extends Component {
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
+    const {fieldLabels} = UserDomainBase
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {

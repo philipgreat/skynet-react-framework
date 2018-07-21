@@ -55,17 +55,7 @@ const query = {
 }
 
 
-  
-const menuData = {menuName:"通用的形式", menuFor: "genericForm",
-  		subItems: [
-  {name: 'formMessageList', displayName:'表单信息'},
-  {name: 'formFieldMessageList', displayName:'表单字段的信息'},
-  {name: 'formFieldList', displayName:'表单字段'},
-  {name: 'formActionList', displayName:'表单动作'},
-  		
-  		
-  		],
-};
+
 
 class GenericFormBizApp extends React.PureComponent {
   constructor(props) {
@@ -288,10 +278,50 @@ class GenericFormBizApp extends React.PureComponent {
     }))(FormActionUpdateForm)
   }
 
+
+  
+  buildRouters = () =>{
+  	const {GenericFormDashboard} = GlobalComponents
+  	
+  	const routers=[
+  	{path:"/genericForm/:id/dashboard", component: GenericFormDashboard},
+  	
+  	
+  	{path:"/genericForm/:id/list/formMessageList", component: this.getFormMessageSearch()},
+  	{path:"/genericForm/:id/list/formMessageCreateForm", component: this.getFormMessageCreateForm()},
+  	{path:"/genericForm/:id/list/formMessageUpdateForm", component: this.getFormMessageUpdateForm()},
+   	
+  	{path:"/genericForm/:id/list/formFieldMessageList", component: this.getFormFieldMessageSearch()},
+  	{path:"/genericForm/:id/list/formFieldMessageCreateForm", component: this.getFormFieldMessageCreateForm()},
+  	{path:"/genericForm/:id/list/formFieldMessageUpdateForm", component: this.getFormFieldMessageUpdateForm()},
+   	
+  	{path:"/genericForm/:id/list/formFieldList", component: this.getFormFieldSearch()},
+  	{path:"/genericForm/:id/list/formFieldCreateForm", component: this.getFormFieldCreateForm()},
+  	{path:"/genericForm/:id/list/formFieldUpdateForm", component: this.getFormFieldUpdateForm()},
+   	
+  	{path:"/genericForm/:id/list/formActionList", component: this.getFormActionSearch()},
+  	{path:"/genericForm/:id/list/formActionCreateForm", component: this.getFormActionCreateForm()},
+  	{path:"/genericForm/:id/list/formActionUpdateForm", component: this.getFormActionUpdateForm()},
+     	
+  	
+  	]
+  	
+  	const {extraRoutesFunc} = this.props;
+	const extraRoutes = extraRoutesFunc?extraRoutesFunc():[]
+    const finalRoutes = routers.concat(extraRoutes)
+    
+  	return (<Switch>
+             {finalRoutes.map((item)=>(<Route key={item.path} path={item.path} component={item.component} />))}    
+  	  	</Switch>)
+  	
+  
+  }
+ 
+
   getPageTitle = () => {
     // const { location } = this.props
     // const { pathname } = location
-    const title = '恺思医药数据管理平台'
+    const title = '代审车服务平台'
     return title
   }
  
@@ -313,7 +343,7 @@ class GenericFormBizApp extends React.PureComponent {
      // const { collapsed, fetchingNotices,loading } = this.props
      const { collapsed } = this.props
      const { breadcrumb }  = this.props
-     const {GenericFormDashboard} = GlobalComponents
+
      //const {GenericFormEditDetail} = GlobalComponents
      //const {GenericFormViewDetail} = GlobalComponents
      
@@ -375,29 +405,11 @@ class GenericFormBizApp extends React.PureComponent {
          </Sider>
          <Layout>
            <Content style={{ margin: '24px 24px 0', height: '100%' }}>
-             <Switch>
+           
+           {this.buildRouters()}
+ 
              
-               <Route path="/genericForm/:id/dashboard" component={GenericFormDashboard} />
-               
-               
-
-               <Route path="/genericForm/:id/list/formMessageList" component={this.getFormMessageSearch()} />
-               <Route path="/genericForm/:id/list/formMessageCreateForm" component={this.getFormMessageCreateForm()} />
-               <Route path="/genericForm/:id/list/formMessageUpdateForm" component={this.getFormMessageUpdateForm()} />
-
-               <Route path="/genericForm/:id/list/formFieldMessageList" component={this.getFormFieldMessageSearch()} />
-               <Route path="/genericForm/:id/list/formFieldMessageCreateForm" component={this.getFormFieldMessageCreateForm()} />
-               <Route path="/genericForm/:id/list/formFieldMessageUpdateForm" component={this.getFormFieldMessageUpdateForm()} />
-
-               <Route path="/genericForm/:id/list/formFieldList" component={this.getFormFieldSearch()} />
-               <Route path="/genericForm/:id/list/formFieldCreateForm" component={this.getFormFieldCreateForm()} />
-               <Route path="/genericForm/:id/list/formFieldUpdateForm" component={this.getFormFieldUpdateForm()} />
-
-               <Route path="/genericForm/:id/list/formActionList" component={this.getFormActionSearch()} />
-               <Route path="/genericForm/:id/list/formActionCreateForm" component={this.getFormActionCreateForm()} />
-               <Route path="/genericForm/:id/list/formActionUpdateForm" component={this.getFormActionUpdateForm()} />
-              
-             </Switch>
+             
            </Content>
           </Layout>
         </Layout>

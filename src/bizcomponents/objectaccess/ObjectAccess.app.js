@@ -55,13 +55,7 @@ const query = {
 }
 
 
-  
-const menuData = {menuName:"对象访问", menuFor: "objectAccess",
-  		subItems: [
-  		
-  		
-  		],
-};
+
 
 class ObjectAccessBizApp extends React.PureComponent {
   constructor(props) {
@@ -144,10 +138,34 @@ class ObjectAccessBizApp extends React.PureComponent {
 
 
 
+
+  
+  buildRouters = () =>{
+  	const {ObjectAccessDashboard} = GlobalComponents
+  	
+  	const routers=[
+  	{path:"/objectAccess/:id/dashboard", component: ObjectAccessDashboard},
+  	
+    	
+  	
+  	]
+  	
+  	const {extraRoutesFunc} = this.props;
+	const extraRoutes = extraRoutesFunc?extraRoutesFunc():[]
+    const finalRoutes = routers.concat(extraRoutes)
+    
+  	return (<Switch>
+             {finalRoutes.map((item)=>(<Route key={item.path} path={item.path} component={item.component} />))}    
+  	  	</Switch>)
+  	
+  
+  }
+ 
+
   getPageTitle = () => {
     // const { location } = this.props
     // const { pathname } = location
-    const title = '恺思医药数据管理平台'
+    const title = '代审车服务平台'
     return title
   }
  
@@ -169,7 +187,7 @@ class ObjectAccessBizApp extends React.PureComponent {
      // const { collapsed, fetchingNotices,loading } = this.props
      const { collapsed } = this.props
      const { breadcrumb }  = this.props
-     const {ObjectAccessDashboard} = GlobalComponents
+
      //const {ObjectAccessEditDetail} = GlobalComponents
      //const {ObjectAccessViewDetail} = GlobalComponents
      
@@ -231,13 +249,11 @@ class ObjectAccessBizApp extends React.PureComponent {
          </Sider>
          <Layout>
            <Content style={{ margin: '24px 24px 0', height: '100%' }}>
-             <Switch>
+           
+           {this.buildRouters()}
+ 
              
-               <Route path="/objectAccess/:id/dashboard" component={ObjectAccessDashboard} />
-               
-               
-              
-             </Switch>
+             
            </Content>
           </Layout>
         </Layout>

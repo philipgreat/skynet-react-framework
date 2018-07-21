@@ -5,22 +5,15 @@ import { connect } from 'dva'
 import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import PageHeaderLayout from '../../layouts/PageHeaderLayout'
 import {ImageComponent} from '../../axios/tools'
-//import OSSPictureEdit from '../../components/OSSPictureEdit'
 
 import FooterToolbar from '../../components/FooterToolbar'
 
 import styles from './SecUserBlocking.updateform.less'
+import SecUserBlockingBase from './SecUserBlocking.base'
 
 const { Option } = Select
 const { RangePicker } = DatePicker
 const { TextArea } = Input
-const fieldLabels = {
-  id: 'ID',
-  who: '谁',
-  blockTime: '块时间',
-  comments: '评论',
-
-}
 
 const imageURLPrefix = '//localhost:2090'
 
@@ -96,7 +89,7 @@ class SecUserBlockingUpdateForm extends Component {
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const { convertedImagesValues } = this.state
     const { setFieldsValue } = this.props.form
-    
+    const {fieldLabels} = SecUserBlockingBase
     
     const submitUpdateForm = () => {
       validateFieldsAndScroll((error, values) => {
@@ -187,7 +180,7 @@ class SecUserBlockingUpdateForm extends Component {
         payload: {
           id: owner.id,
           type: 'secUserBlocking',
-          listName:'用户屏蔽列表' 
+          listName:'SEC用户阻塞列表' 
         },
       })
     }
@@ -247,8 +240,8 @@ class SecUserBlockingUpdateForm extends Component {
 
     return (
       <PageHeaderLayout
-        title={"更新用户屏蔽"+(currentUpdateIndex+1)+"/"+selectedRows.length}
-        content="更新用户屏蔽"
+        title={"更新SEC用户阻塞"+(currentUpdateIndex+1)+"/"+selectedRows.length}
+        content="更新SEC用户阻塞"
         wrapperClassName={styles.advancedForm}
       >
         <Card title="基础信息" className={styles.card} bordered={false}>
@@ -272,9 +265,9 @@ class SecUserBlockingUpdateForm extends Component {
                 <Form.Item label={fieldLabels.who} {...formItemLayout}>
                   {getFieldDecorator('who', {
                     initialValue: selectedRow.who,
-                    rules: [{ required: true, message: '请输入谁' }],
+                    rules: [{ required: true, message: '请输入审批人' }],
                   })(
-                    <Input placeholder="请输入谁" />
+                    <Input placeholder="请输入审批人" />
                     
                   )}
                 </Form.Item>

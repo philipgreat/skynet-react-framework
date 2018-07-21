@@ -1,10 +1,11 @@
 
 import ImagePreview from '../../components/ImagePreview'
 import { Link } from 'dva/router'
-
+import moment from 'moment'
 const menuData = {menuName:"SEC的用户", menuFor: "secUser",
   		subItems: [
-  {name: 'userAppList', displayName:'用户申请', icon:'user'},
+  {name: 'customerList', displayName:'客户', icon:'glass'},
+  {name: 'userAppList', displayName:'用户应用程序', icon:'user'},
   {name: 'loginHistoryList', displayName:'登录历史', icon:'history'},
   
   		],
@@ -19,10 +20,10 @@ const displayColumns = [
   { title: '电子邮件', debugtype: 'string_email', dataIndex: 'email', width: '23' },
   { title: '密码', debugtype: 'string_password', dataIndex: 'pwd', width: '11' },
   { title: '验证码', debugtype: 'int', dataIndex: 'verificationCode', width: '11' },
-  { title: '验证码过期', dataIndex: 'verificationCodeExpire', render: (text, record) => moment(record.verificationCodeExpire).format('YYYY-MM-DD HH:mm:ss') },
+  { title: '验证码过期时间', dataIndex: 'verificationCodeExpire', render: (text, record) => moment(record.verificationCodeExpire).format('YYYY-MM-DD HH:mm:ss') },
   { title: '最后登录时间', dataIndex: 'lastLoginTime', render: (text, record) => moment(record.lastLoginTime).format('YYYY-MM-DD HH:mm:ss') },
   { title: '域', dataIndex: 'domain', render: (text, record) => (record.domain ? record.domain.displayName : '暂无') },
-  { title: '屏蔽', dataIndex: 'blocking', render: (text, record) => (record.blocking ? record.blocking.displayName : '暂无') },
+  { title: '舞台调度', dataIndex: 'blocking', render: (text, record) => (record.blocking ? record.blocking.displayName : '暂无') },
   { title: '当前状态', debugtype: 'string', dataIndex: 'currentStatus', width: '11' },
 
 ]
@@ -34,16 +35,16 @@ const fieldLabels = {
   email: '电子邮件',
   pwd: '密码',
   verificationCode: '验证码',
-  verificationCodeExpire: '验证码过期',
+  verificationCodeExpire: '验证码过期时间',
   lastLoginTime: '最后登录时间',
   domain: '域',
-  blocking: '屏蔽',
+  blocking: '舞台调度',
   currentStatus: '当前状态',
 
 }
 
 
-const SecUserBase={menuData,displayColumns,fieldLabels}
+const SecUserBase={menuData,displayColumns,fieldLabels,displayColumns}
 export default SecUserBase
 
 

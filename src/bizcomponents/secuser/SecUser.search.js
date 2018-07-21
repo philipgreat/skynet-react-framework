@@ -48,6 +48,9 @@ class SecUserSearch extends PureComponent {
     listParameters[listName]=1;
     listParameters[`${listName}CurrentPage`]=pagination.current;
     listParameters[`${listName}RowsPerPage`]=pagination.pageSize;
+    listParameters[`${listName}.orderBy.0`]="id";
+    listParameters[`${listName}.descOrAsc.0`]="desc";
+   
     
     const params = {
       ...listParameters,
@@ -188,7 +191,7 @@ class SecUserSearch extends PureComponent {
     const {displayName} = owner.ref
     const { showDeleteResult, selectedRows, modalVisible } = this.state;
     const {SecUserTable} = GlobalComponents;
-    const {SecUserConfirmationTable} = GlobalComponents;
+    const {SecUserModalTable} = GlobalComponents;
     const {SecUserSearchForm} = GlobalComponents;
     
  
@@ -227,7 +230,7 @@ class SecUserSearch extends PureComponent {
           width={920}
           style={{ top: 40 }}
         >
-          <SecUserConfirmationTable data={selectedRows} owner={owner} />
+          <SecUserModalTable data={selectedRows} owner={owner} />
         </Modal>)
     }
     

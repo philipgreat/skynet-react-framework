@@ -1,4 +1,4 @@
-import { get, post,PREFIX,joinParameters,joinPostParameters } from '../../axios/tools'
+import { get,postForm,PREFIX,joinParameters,joinPostParameters } from '../../axios/tools'
 
 
 const view = (targetObjectId) => {
@@ -23,14 +23,23 @@ const requestCandidateForm = (ownerClass, id, filterKey, pageNo) => {
   return get({
     url: `${PREFIX}formFieldManager/requestCandidateForm/${ownerClass}/${id}/${filterKey}/${pageNo}/`,
   })
-}	 
- 
+}	
+
+const transferToAnotherForm = (id, parameters) => {
+  //const parametersExpr = joinParameters(parameters)
+  const url = `${PREFIX}formFieldManager/transferToAnotherForm/id/anotherFormId/`
+  const requestParameters = {id, ...parameters}
+  return postForm({url,requestParameters})
+}
+
+
 
 
 
 
 const FormFieldService = { view,
   load,
-  requestCandidateForm }
+  requestCandidateForm,
+  transferToAnotherForm }
 export default FormFieldService
 

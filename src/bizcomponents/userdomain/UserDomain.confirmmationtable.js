@@ -4,18 +4,14 @@ import moment from 'moment'
 import { Table, Alert, Badge } from 'antd'
 import styles from './UserDomain.table.less'
 import ImagePreview from '../../components/ImagePreview'
+import UserDomainBase from './UserDomain.base'
 
-
-const columns = [
-  { title: 'ID', debugtype: 'string', dataIndex: 'id', width: '20' },
-  { title: '名称', debugtype: 'string', dataIndex: 'name', width: '8' },
-]
 
 class UserDomainConfirmationTable extends PureComponent {
   render() {
     // const { data,count,current, owner } = this.props
     const { data } = this.props
-
+	const {displayColumns} = UserDomainBase
 
     return (
       <div className={styles.standardTable}>
@@ -33,7 +29,7 @@ class UserDomainConfirmationTable extends PureComponent {
         <Table
           rowKey={record => record.id}
           dataSource={data}
-          columns={columns}
+          columns={displayColumns}
           size="small"
           scroll={{ x: 800 }}
         />

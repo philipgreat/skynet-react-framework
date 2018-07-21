@@ -5,31 +5,15 @@ import { connect } from 'dva'
 import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import PageHeaderLayout from '../../layouts/PageHeaderLayout'
 import {ImageComponent} from '../../axios/tools'
-//import OSSPictureEdit from '../../components/OSSPictureEdit'
 
 import FooterToolbar from '../../components/FooterToolbar'
 
 import styles from './ObjectAccess.updateform.less'
+import ObjectAccessBase from './ObjectAccess.base'
 
 const { Option } = Select
 const { RangePicker } = DatePicker
 const { TextArea } = Input
-const fieldLabels = {
-  id: 'ID',
-  name: '名称',
-  objectType: '访问对象类型',
-  list1: '列表1',
-  list2: '列表2',
-  list3: '列表3',
-  list4: '列表4',
-  list5: '列表5',
-  list6: '列表6',
-  list7: '列表7',
-  list8: '列表8',
-  list9: '列表9',
-  app: '申请',
-
-}
 
 const imageURLPrefix = '//localhost:2090'
 
@@ -104,7 +88,7 @@ class ObjectAccessUpdateForm extends Component {
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const { convertedImagesValues } = this.state
     const { setFieldsValue } = this.props.form
-    
+    const {fieldLabels} = ObjectAccessBase
     
     const submitUpdateForm = () => {
       validateFieldsAndScroll((error, values) => {

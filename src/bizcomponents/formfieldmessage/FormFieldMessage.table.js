@@ -5,17 +5,9 @@ import { Table, Alert, Badge} from 'antd'
 import { Link } from 'dva/router'
 import styles from './FormFieldMessage.table.less'
 import ImagePreview from '../../components/ImagePreview'
+import GlobalComponents from '../../custcomponents';
+import FormFieldMessageBase from './FormFieldMessage.base'
 
-
-const columns = [
-  { title: 'ID', debugtype: 'string', dataIndex: 'id',},
-  { title: '标题', debugtype: 'string', dataIndex: 'title',},
-  { title: '参数名称', debugtype: 'string', dataIndex: 'parameterName',},
-  { title: '形式', dataIndex: 'form', render: (text, record) => (record.form ? record.form.displayName : '暂无') },
-  { title: '水平', debugtype: 'string', dataIndex: 'level',},
-
-
-]
 
 class FormFieldMessageTable extends PureComponent {
   state = {
@@ -49,11 +41,13 @@ class FormFieldMessageTable extends PureComponent {
 
     const {owner} =  this.props
     const {referenceName} = owner
+   
     
+    const {displayColumns} = FormFieldMessageBase
     if(!referenceName){
-      return columns
+      return displayColumns
     }
-    const remainColumns = columns.filter((item,index)=> item.dataIndex!=referenceName&&index<7&&item.dataIndex!=='content')
+    const remainColumns = displayColumns.filter((item,index)=> item.dataIndex!=referenceName&&index<7&&item.dataIndex!=='content')
     //fixed: 'right',
     const operationColumn={
       title: '操作',

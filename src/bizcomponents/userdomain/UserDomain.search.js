@@ -48,6 +48,9 @@ class UserDomainSearch extends PureComponent {
     listParameters[listName]=1;
     listParameters[`${listName}CurrentPage`]=pagination.current;
     listParameters[`${listName}RowsPerPage`]=pagination.pageSize;
+    listParameters[`${listName}.orderBy.0`]="id";
+    listParameters[`${listName}.descOrAsc.0`]="desc";
+   
     
     const params = {
       ...listParameters,
@@ -188,7 +191,7 @@ class UserDomainSearch extends PureComponent {
     const {displayName} = owner.ref
     const { showDeleteResult, selectedRows, modalVisible } = this.state;
     const {UserDomainTable} = GlobalComponents;
-    const {UserDomainConfirmationTable} = GlobalComponents;
+    const {UserDomainModalTable} = GlobalComponents;
     const {UserDomainSearchForm} = GlobalComponents;
     
  
@@ -226,7 +229,7 @@ class UserDomainSearch extends PureComponent {
           width={920}
           style={{ top: 40 }}
         >
-          <UserDomainConfirmationTable data={selectedRows} owner={owner} />
+          <UserDomainModalTable data={selectedRows} owner={owner} />
         </Modal>)
     }
     

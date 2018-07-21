@@ -5,21 +5,9 @@ import { Table, Alert, Badge} from 'antd'
 import { Link } from 'dva/router'
 import styles from './UserApp.table.less'
 import ImagePreview from '../../components/ImagePreview'
+import GlobalComponents from '../../custcomponents';
+import UserAppBase from './UserApp.base'
 
-
-const columns = [
-  { title: 'ID', debugtype: 'string', dataIndex: 'id',  render: (text, record)=>(<Link to={`/userApp/${text}/dashboard`}>{text}</Link>) },
-  { title: '标题', debugtype: 'string', dataIndex: 'title',},
-  { title: 'SEC的用户', dataIndex: 'secUser', render: (text, record) => (record.secUser ? record.secUser.displayName : '暂无') },
-  { title: '申请图标', debugtype: 'string', dataIndex: 'appIcon',},
-  { title: '完全访问', dataIndex: 'fullAccess', render: (text, record) => (record.fullAccess ? '是' : '否') },
-  { title: '许可', debugtype: 'string', dataIndex: 'permission',},
-  { title: '访问对象类型', debugtype: 'string', dataIndex: 'objectType',},
-  { title: '对象ID', debugtype: 'string', dataIndex: 'objectId',},
-  { title: '位置', debugtype: 'string', dataIndex: 'location',},
-
-
-]
 
 class UserAppTable extends PureComponent {
   state = {
@@ -53,11 +41,13 @@ class UserAppTable extends PureComponent {
 
     const {owner} =  this.props
     const {referenceName} = owner
+   
     
+    const {displayColumns} = UserAppBase
     if(!referenceName){
-      return columns
+      return displayColumns
     }
-    const remainColumns = columns.filter((item,index)=> item.dataIndex!=referenceName&&index<7&&item.dataIndex!=='content')
+    const remainColumns = displayColumns.filter((item,index)=> item.dataIndex!=referenceName&&index<7&&item.dataIndex!=='content')
     //fixed: 'right',
     const operationColumn={
       title: '操作',

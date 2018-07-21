@@ -4,19 +4,14 @@ import moment from 'moment'
 import { Table, Alert, Badge } from 'antd'
 import styles from './GenericForm.table.less'
 import ImagePreview from '../../components/ImagePreview'
+import GenericFormBase from './GenericForm.base'
 
-
-const columns = [
-  { title: 'ID', debugtype: 'string', dataIndex: 'id', width: '20' },
-  { title: '标题', debugtype: 'string', dataIndex: 'title', width: '9' },
-  { title: '描述', debugtype: 'string', dataIndex: 'description', width: '16' },
-]
 
 class GenericFormConfirmationTable extends PureComponent {
   render() {
     // const { data,count,current, owner } = this.props
     const { data } = this.props
-
+	const {displayColumns} = GenericFormBase
 
     return (
       <div className={styles.standardTable}>
@@ -34,7 +29,7 @@ class GenericFormConfirmationTable extends PureComponent {
         <Table
           rowKey={record => record.id}
           dataSource={data}
-          columns={columns}
+          columns={displayColumns}
           size="small"
           scroll={{ x: 800 }}
         />

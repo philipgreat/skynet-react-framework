@@ -5,19 +5,9 @@ import { Table, Alert, Badge} from 'antd'
 import { Link } from 'dva/router'
 import styles from './FormAction.table.less'
 import ImagePreview from '../../components/ImagePreview'
+import GlobalComponents from '../../custcomponents';
+import FormActionBase from './FormAction.base'
 
-
-const columns = [
-  { title: 'ID', debugtype: 'string', dataIndex: 'id',},
-  { title: '标签', debugtype: 'string', dataIndex: 'label',},
-  { title: '语言环境的关键', debugtype: 'string', dataIndex: 'localeKey',},
-  { title: '行动的关键', debugtype: 'string', dataIndex: 'actionKey',},
-  { title: '水平', debugtype: 'string', dataIndex: 'level',},
-  { title: 'url', debugtype: 'string', dataIndex: 'url',},
-  { title: '形式', dataIndex: 'form', render: (text, record) => (record.form ? record.form.displayName : '暂无') },
-
-
-]
 
 class FormActionTable extends PureComponent {
   state = {
@@ -51,11 +41,13 @@ class FormActionTable extends PureComponent {
 
     const {owner} =  this.props
     const {referenceName} = owner
+   
     
+    const {displayColumns} = FormActionBase
     if(!referenceName){
-      return columns
+      return displayColumns
     }
-    const remainColumns = columns.filter((item,index)=> item.dataIndex!=referenceName&&index<7&&item.dataIndex!=='content')
+    const remainColumns = displayColumns.filter((item,index)=> item.dataIndex!=referenceName&&index<7&&item.dataIndex!=='content')
     //fixed: 'right',
     const operationColumn={
       title: '操作',

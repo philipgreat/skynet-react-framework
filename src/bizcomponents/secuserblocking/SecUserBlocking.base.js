@@ -1,8 +1,8 @@
 
 import ImagePreview from '../../components/ImagePreview'
 import { Link } from 'dva/router'
-
-const menuData = {menuName:"用户屏蔽", menuFor: "secUserBlocking",
+import moment from 'moment'
+const menuData = {menuName:"SEC用户阻塞", menuFor: "secUserBlocking",
   		subItems: [
   {name: 'secUserList', displayName:'SEC的用户', icon:'user'},
   
@@ -13,7 +13,7 @@ const menuData = {menuName:"用户屏蔽", menuFor: "secUserBlocking",
 
 const displayColumns = [
   { title: 'ID', debugtype: 'string', dataIndex: 'id', width: '20', render: (text, record)=>(<Link to={`/secUserBlocking/${text}/dashboard`}>{text}</Link>) },
-  { title: '谁', debugtype: 'string', dataIndex: 'who', width: '17' },
+  { title: '审批人', debugtype: 'string', dataIndex: 'who', width: '17' },
   { title: '块时间', dataIndex: 'blockTime', render: (text, record) => moment(record.blockTime).format('YYYY-MM-DD HH:mm:ss') },
   { title: '评论', debugtype: 'string', dataIndex: 'comments', width: '28' },
 
@@ -21,14 +21,14 @@ const displayColumns = [
 
 const fieldLabels = {
   id: 'ID',
-  who: '谁',
+  who: '审批人',
   blockTime: '块时间',
   comments: '评论',
 
 }
 
 
-const SecUserBlockingBase={menuData,displayColumns,fieldLabels}
+const SecUserBlockingBase={menuData,displayColumns,fieldLabels,displayColumns}
 export default SecUserBlockingBase
 
 

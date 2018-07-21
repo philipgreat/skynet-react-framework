@@ -10,9 +10,23 @@
 //import StoreBizApp from './store/Store.appex'
 
 //CarInspectionPlatformDashboard,VehicleServiceCompanyEmployeeCreateForm,ProvinceCreateForm
+<<<<<<< HEAD
+//const result = {CarInspectionPlatformDashboard};
+
+import VehicleInspectionOrderDashboard from './vehicleinspectionorder/VehicleInspectionOrder.dashboardex'
+//const result={VehicleInspectionOrderDashboard}
+const result={VehicleInspectionOrderDashboard}
+export default result;
+=======
 //const result = {StoreDashboard,StoreBizApp,BookPlazaDashboard,BookPlazaBizApp,BookSharingPlatformBizApp,BookSharingPlatformDashboard};
 //const result = {StoreDashboard,StoreBizApp};
 
 
+<<<<<<< HEAD
 const result={}
 export default result;
+=======
+//const result={}
+export default result;
+>>>>>>> 348f929f40a850bd475e4c69daca9a25322a77b7
+>>>>>>> c4a520e56aeb9ef0e416148576fb4ba04e492ee2

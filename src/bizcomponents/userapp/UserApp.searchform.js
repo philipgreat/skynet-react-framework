@@ -136,17 +136,17 @@ class UserAppSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="申请图标">
+            <FormItem label="应用程序图标">
               {getFieldDecorator('appIcon')(
-                <Input placeholder="请输入申请图标" />
+                <Input placeholder="请输入应用程序图标" />
               )}
             </FormItem>
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="许可">
+            <FormItem label="权限">
               {getFieldDecorator('permission')(
-                <Input placeholder="请输入许可" />
+                <Input placeholder="请输入权限" />
               )}
             </FormItem>
           </Col>

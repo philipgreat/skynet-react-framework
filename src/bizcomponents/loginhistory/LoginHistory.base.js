@@ -1,7 +1,7 @@
 
 import ImagePreview from '../../components/ImagePreview'
 import { Link } from 'dva/router'
-
+import moment from 'moment'
 const menuData = {menuName:"登录历史", menuFor: "loginHistory",
   		subItems: [
   
@@ -29,7 +29,7 @@ const fieldLabels = {
 }
 
 
-const LoginHistoryBase={menuData,displayColumns,fieldLabels}
+const LoginHistoryBase={menuData,displayColumns,fieldLabels,displayColumns}
 export default LoginHistoryBase
 
 

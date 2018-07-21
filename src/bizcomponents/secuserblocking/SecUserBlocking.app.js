@@ -55,14 +55,7 @@ const query = {
 }
 
 
-  
-const menuData = {menuName:"用户屏蔽", menuFor: "secUserBlocking",
-  		subItems: [
-  {name: 'secUserList', displayName:'SEC的用户'},
-  		
-  		
-  		],
-};
+
 
 class SecUserBlockingBizApp extends React.PureComponent {
   constructor(props) {
@@ -180,10 +173,38 @@ class SecUserBlockingBizApp extends React.PureComponent {
     }))(SecUserUpdateForm)
   }
 
+
+  
+  buildRouters = () =>{
+  	const {SecUserBlockingDashboard} = GlobalComponents
+  	
+  	const routers=[
+  	{path:"/secUserBlocking/:id/dashboard", component: SecUserBlockingDashboard},
+  	
+  	
+  	{path:"/secUserBlocking/:id/list/secUserList", component: this.getSecUserSearch()},
+  	{path:"/secUserBlocking/:id/list/secUserCreateForm", component: this.getSecUserCreateForm()},
+  	{path:"/secUserBlocking/:id/list/secUserUpdateForm", component: this.getSecUserUpdateForm()},
+     	
+  	
+  	]
+  	
+  	const {extraRoutesFunc} = this.props;
+	const extraRoutes = extraRoutesFunc?extraRoutesFunc():[]
+    const finalRoutes = routers.concat(extraRoutes)
+    
+  	return (<Switch>
+             {finalRoutes.map((item)=>(<Route key={item.path} path={item.path} component={item.component} />))}    
+  	  	</Switch>)
+  	
+  
+  }
+ 
+
   getPageTitle = () => {
     // const { location } = this.props
     // const { pathname } = location
-    const title = '恺思医药数据管理平台'
+    const title = '代审车服务平台'
     return title
   }
  
@@ -205,7 +226,7 @@ class SecUserBlockingBizApp extends React.PureComponent {
      // const { collapsed, fetchingNotices,loading } = this.props
      const { collapsed } = this.props
      const { breadcrumb }  = this.props
-     const {SecUserBlockingDashboard} = GlobalComponents
+
      //const {SecUserBlockingEditDetail} = GlobalComponents
      //const {SecUserBlockingViewDetail} = GlobalComponents
      
@@ -267,17 +288,11 @@ class SecUserBlockingBizApp extends React.PureComponent {
          </Sider>
          <Layout>
            <Content style={{ margin: '24px 24px 0', height: '100%' }}>
-             <Switch>
+           
+           {this.buildRouters()}
+ 
              
-               <Route path="/secUserBlocking/:id/dashboard" component={SecUserBlockingDashboard} />
-               
-               
-
-               <Route path="/secUserBlocking/:id/list/secUserList" component={this.getSecUserSearch()} />
-               <Route path="/secUserBlocking/:id/list/secUserCreateForm" component={this.getSecUserCreateForm()} />
-               <Route path="/secUserBlocking/:id/list/secUserUpdateForm" component={this.getSecUserUpdateForm()} />
-              
-             </Switch>
+             
            </Content>
           </Layout>
         </Layout>

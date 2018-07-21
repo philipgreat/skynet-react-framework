@@ -1,32 +1,18 @@
 import React, { Component } from 'react'
 import { AutoComplete, Card, Button, Form, Icon, Col, Row, DatePicker, TimePicker, Input, Select, Popover,Switch } from 'antd'
-
 import { connect } from 'dva'
 import PageHeaderLayout from '../../layouts/PageHeaderLayout'
-//import PictureEdit from '../../components/PictureEdit'
-//import OSSPictureEdit from '../../components/PictureEdit'
 import {ImageComponent} from '../../axios/tools'
 import FooterToolbar from '../../components/FooterToolbar'
-//import ImageUpload from '../../components/ImageUpload'
 import styles from './SecUser.createform.less'
 import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import GlobalComponents from '../../custcomponents';
+import SecUserBase from './SecUser.base'
+
 const { Option } = Select
 const { RangePicker } = DatePicker
 const { TextArea } = Input
-const fieldLabels = {
-  id: 'ID',
-  login: '登录',
-  mobile: '手机号码',
-  email: '电子邮件',
-  pwd: '密码',
-  verificationCode: '验证码',
-  verificationCodeExpire: '验证码过期',
-  lastLoginTime: '最后登录时间',
-  domain: '域',
-  blocking: '屏蔽',
-  currentStatus: '当前状态',
-}
+
 const testValues = {};
 /*
 const testValues = {
@@ -35,8 +21,8 @@ const testValues = {
   email: 'suddy_chang@163.com',
   pwd: 'C183EC89F92A462CF45B95504792EC4625E847C90536EEFE512D1C9DB8602E95',
   verificationCode: '9981727',
-  verificationCodeExpire: '2016-03-26 10:49:07',
-  lastLoginTime: '2016-11-30 02:40:09',
+  verificationCodeExpire: '2015-08-13 10:02:56',
+  lastLoginTime: '2016-06-21 08:20:39',
   domainId: 'UD000001',
 }
 */
@@ -120,6 +106,7 @@ class SecUserCreateForm extends Component {
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
+    const {fieldLabels} = SecUserBase
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -304,9 +291,9 @@ class SecUserCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.verificationCodeExpire} {...formItemLayout}>
                   {getFieldDecorator('verificationCodeExpire', {
-                    rules: [{ required: true, message: '请输入验证码过期' }],
+                    rules: [{ required: true, message: '请输入验证码过期时间' }],
                   })(
-                    <DatePicker showTime format="YYYY-MM-DD HH:mm" minuteStep={5} placeholder="请输入验证码过期" />
+                    <DatePicker showTime format="YYYY-MM-DD HH:mm" minuteStep={5} placeholder="请输入验证码过期时间" />
                   )}
                 </Form.Item>
               </Col>
@@ -348,7 +335,7 @@ class SecUserCreateForm extends Component {
                   	initialValue: tryinit('domain'),
                     rules: [{ required: true, message: '请输入域' }],
                   })(
-                                
+                  
                   <AutoComplete
                     dataSource={candidateDomainList.candidates}
                     

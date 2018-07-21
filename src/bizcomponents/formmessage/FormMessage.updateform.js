@@ -5,22 +5,15 @@ import { connect } from 'dva'
 import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import PageHeaderLayout from '../../layouts/PageHeaderLayout'
 import {ImageComponent} from '../../axios/tools'
-//import OSSPictureEdit from '../../components/OSSPictureEdit'
 
 import FooterToolbar from '../../components/FooterToolbar'
 
 import styles from './FormMessage.updateform.less'
+import FormMessageBase from './FormMessage.base'
 
 const { Option } = Select
 const { RangePicker } = DatePicker
 const { TextArea } = Input
-const fieldLabels = {
-  id: 'ID',
-  title: '标题',
-  form: '形式',
-  level: '水平',
-
-}
 
 const imageURLPrefix = '//localhost:2090'
 
@@ -95,7 +88,7 @@ class FormMessageUpdateForm extends Component {
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const { convertedImagesValues } = this.state
     const { setFieldsValue } = this.props.form
-    
+    const {fieldLabels} = FormMessageBase
     
     const submitUpdateForm = () => {
       validateFieldsAndScroll((error, values) => {

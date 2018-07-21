@@ -5,35 +5,9 @@ import { routerRedux } from 'dva/router'
 import { notification } from 'antd'
 import GlobalComponents from '../../custcomponents';
 
-const hasError = (data) => {
-  if (!data.class) {
-    return false
-  }
-  if (data.class.indexOf('Exception') > 0) {
-    return true
-  }
-  if (data.class.indexOf('LoginForm') > 0) {
-    return true
-  }
-  return false
-}
+import modeltool from '../../utils/modeltool'
+const {setupModel,hasError,handleClientError,handleServerError}=modeltool
 
-const handleServerError = (data) => {
-  if (data.message) {
-    notification.error({
-      message: data.message,
-      description: data.message,
-    })
-    return
-  }
-  if (data.messageList[0]) {
-    // console.error('error ', data.messageList[0].sourcePosition)
-    notification.error({
-      message: data.messageList[0].sourcePosition,
-      description: data.messageList[0].body,
-    })
-  }
-}
 
 export default {
 
@@ -45,42 +19,11 @@ export default {
     
     setup({ dispatch, history }) { 
       history.listen((location) => {
-        const { pathname } = location
-        if (!pathname.startsWith('/secUser')) {
-          return
-        }
-        const newstate = location.state
-        if (newstate) {
-          dispatch({ type: 'updateState', payload: newstate })
-          return
-        }
-        const dashboardmatch = pathToRegexp('/secUser/:id/dashboard').exec(pathname)
-        if (dashboardmatch) {
-          const id = dashboardmatch[1]
-          dispatch({ type: 'view', payload: { id,pathname } })
-          return
-        }
-        const editDetailMatch = pathToRegexp('/secUser/:id/editDetail').exec(pathname)
-        if (editDetailMatch) {
-          const id = editDetailMatch[1]
-          dispatch({ type: 'view', payload: { id,pathname } })
-          return
-        }
-        const viewDetailMatch = pathToRegexp('/secUser/:id/viewDetail').exec(pathname)
-        if (viewDetailMatch) {
-          const id = viewDetailMatch[1]
-          dispatch({ type: 'view', payload: { id,pathname } })
-          return
-        }
-        
-        const match = pathToRegexp('/secUser/:id/list/:listName/:listDisplayName').exec(pathname)
-        if (!match) {
-          return
-          //  dispatch action with userId
-        }
-        const id = match[1]
-        const displayName = match[3]
-        dispatch({ type: 'view', payload: { id,pathname,displayName } })
+      	const modelName = 'secUser'
+      	const parameter = {dispatch,history,location,modelName}
+        //console.log("setupModel",setupModel,typeof(setupModel))
+      	setupModel(parameter)
+
       })
     },
   },
@@ -108,6 +51,29 @@ export default {
       console.log('this is the data id: ', data.id)
       yield put({ type: 'updateState', payload: newPlayload })
     },
+    
+    *doJob({ payload }, { call, put }) { 
+      const {SecUserService} = GlobalComponents;
+      //yield put({ type: 'showLoading', payload })      
+      const {serviceNameToCall, id, parameters} = payload;
+      if(!serviceNameToCall){
+      	handleClientError("没有提供后台服务的名字")
+      	return;
+      }
+      if(!SecUserService[serviceNameToCall]){
+      	handleClientError("找不到后台服务: "+serviceNameToCall)
+      	return;
+      }
+      
+      const data = yield call(SecUserService[serviceNameToCall], id, parameters)
+      if(handleServerError(data)){
+      	return
+      }
+      const newPlayload = { ...payload, ...data }
+      
+      console.log('this is the data id: ', data.id)
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
        
     
     
@@ -124,6 +90,82 @@ export default {
     *goback({ payload }, { put }) {
       const { id, type,listName } = payload
       yield put(routerRedux.push(`/secUser/${id}/list/${type}List/${listName}`))
+    },
+
+    *addCustomer({ payload }, { call, put }) {
+      const {SecUserService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(SecUserService.addCustomer, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/secUser/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/secUser/${id}/list/${type}List/客户列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateCustomer({ payload }, { call, put }) {
+      const {SecUserService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(SecUserService.updateCustomer, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/secUser/${id}/list/${type}List/客户列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextCustomerUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeCustomerList({ payload }, { call, put }) {
+      const {SecUserService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(SecUserService.removeCustomerList, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/secUser/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      // const location = { pathname: `secUser/${id}/list/${type}List`, state: data}
+      // yield put(routerRedux.push(location))
     },
 
     *addUserApp({ payload }, { call, put }) {
@@ -148,7 +190,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/secUser/${id}/list/${type}List/用户申请列表`, state: newState }
+      const location = { pathname: `/secUser/${id}/list/${type}List/用户应用程序列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateUserApp({ payload }, { call, put }) {
@@ -172,7 +214,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/secUser/${id}/list/${type}List/用户申请列表`, state: newPlayload }
+      const location = { pathname: `/secUser/${id}/list/${type}List/用户应用程序列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextUserAppUpdateRow({ payload }, { call, put }) {

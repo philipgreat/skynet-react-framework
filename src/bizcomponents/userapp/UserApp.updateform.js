@@ -5,27 +5,15 @@ import { connect } from 'dva'
 import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import PageHeaderLayout from '../../layouts/PageHeaderLayout'
 import {ImageComponent} from '../../axios/tools'
-//import OSSPictureEdit from '../../components/OSSPictureEdit'
 
 import FooterToolbar from '../../components/FooterToolbar'
 
 import styles from './UserApp.updateform.less'
+import UserAppBase from './UserApp.base'
 
 const { Option } = Select
 const { RangePicker } = DatePicker
 const { TextArea } = Input
-const fieldLabels = {
-  id: 'ID',
-  title: '标题',
-  secUser: 'SEC的用户',
-  appIcon: '申请图标',
-  fullAccess: '完全访问',
-  permission: '许可',
-  objectType: '访问对象类型',
-  objectId: '对象ID',
-  location: '位置',
-
-}
 
 const imageURLPrefix = '//localhost:2090'
 
@@ -100,7 +88,7 @@ class UserAppUpdateForm extends Component {
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const { convertedImagesValues } = this.state
     const { setFieldsValue } = this.props.form
-    
+    const {fieldLabels} = UserAppBase
     
     const submitUpdateForm = () => {
       validateFieldsAndScroll((error, values) => {
@@ -191,7 +179,7 @@ class UserAppUpdateForm extends Component {
         payload: {
           id: owner.id,
           type: 'userApp',
-          listName:'用户申请列表' 
+          listName:'用户应用程序列表' 
         },
       })
     }
@@ -251,8 +239,8 @@ class UserAppUpdateForm extends Component {
 
     return (
       <PageHeaderLayout
-        title={"更新用户申请"+(currentUpdateIndex+1)+"/"+selectedRows.length}
-        content="更新用户申请"
+        title={"更新用户应用程序"+(currentUpdateIndex+1)+"/"+selectedRows.length}
+        content="更新用户应用程序"
         wrapperClassName={styles.advancedForm}
       >
         <Card title="基础信息" className={styles.card} bordered={false}>
@@ -288,9 +276,9 @@ class UserAppUpdateForm extends Component {
                 <Form.Item label={fieldLabels.appIcon} {...formItemLayout}>
                   {getFieldDecorator('appIcon', {
                     initialValue: selectedRow.appIcon,
-                    rules: [{ required: true, message: '请输入申请图标' }],
+                    rules: [{ required: true, message: '请输入应用程序图标' }],
                   })(
-                    <Input placeholder="请输入申请图标" />
+                    <Input placeholder="请输入应用程序图标" />
                     
                   )}
                 </Form.Item>
@@ -300,9 +288,9 @@ class UserAppUpdateForm extends Component {
                 <Form.Item label={fieldLabels.permission} {...formItemLayout}>
                   {getFieldDecorator('permission', {
                     initialValue: selectedRow.permission,
-                    rules: [{ required: true, message: '请输入许可' }],
+                    rules: [{ required: true, message: '请输入权限' }],
                   })(
-                    <Input placeholder="请输入许可" />
+                    <Input placeholder="请输入权限" />
                     
                   )}
                 </Form.Item>
