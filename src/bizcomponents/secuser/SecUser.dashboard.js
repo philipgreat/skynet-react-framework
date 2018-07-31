@@ -261,7 +261,7 @@ const internalSummaryOf = (secUser,targetComponent) =>{
 <Description term="电子邮件">{secUser.email}</Description> 
 <Description term="密码">{secUser.pwd}</Description> 
 <Description term="验证码">{secUser.verificationCode}</Description> 
-<Description term="验证码过期时间">{ moment(secUser.verificationCodeExpire).format('YYYY-MM-DD')}</Description> 
+<Description term="验证码过期">{ moment(secUser.verificationCodeExpire).format('YYYY-MM-DD')}</Description> 
 <Description term="最后登录时间">{ moment(secUser.lastLoginTime).format('YYYY-MM-DD')}</Description> 
 <Description term="当前状态">{secUser.currentStatus}</Description> 
 	
@@ -293,10 +293,9 @@ class SecUserDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, customerCount, userAppCount, loginHistoryCount } = this.props.secUser
+    const { id,displayName, userAppCount, loginHistoryCount } = this.props.secUser
     const cardsData = {cardsName:"SEC的用户",cardsFor: "secUser",cardsSource: this.props.secUser,
   		subItems: [
-{name: 'customerList', displayName:'客户',type:'customer',count:customerCount},
 {name: 'userAppList', displayName:'用户应用程序',type:'userApp',count:userAppCount},
 {name: 'loginHistoryList', displayName:'登录历史',type:'loginHistory',count:loginHistoryCount},
     

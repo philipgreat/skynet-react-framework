@@ -169,7 +169,7 @@ class CustomerSearch extends PureComponent {
       const { dispatch, owner,location } = this.props;
       console.log("trying to call handleCloseAlert",owner)
       const pathname = location.pathname
-      dispatch({ type: `${owner.type}/view`, payload: { id: owner.id,pathname,displayName:'客户列表' } })
+      dispatch({ type: `${owner.type}/view`, payload: { id: owner.id,pathname,displayName:'用户列表' } })
 
   };  
     
@@ -199,7 +199,7 @@ class CustomerSearch extends PureComponent {
       <Menu onClick={this.handleMenuClick} selectedKeys={[]}>
 
 
-<Menu.Item key="secUser">关联SecUser</Menu.Item>
+<Menu.Item key="memberService">关联会员服务</Menu.Item>
 <Menu.Item key="platform">关联平台</Menu.Item>
       
 
@@ -236,7 +236,7 @@ class CustomerSearch extends PureComponent {
     }
     
     return (
-      <PageHeaderLayout title={`${displayName}: 客户列表`}>
+      <PageHeaderLayout title={`${displayName}: 用户列表`}>
         <Card bordered={false}>
           <div className={styles.tableList}>
             <div className={styles.tableListForm}>

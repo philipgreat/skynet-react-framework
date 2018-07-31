@@ -16,8 +16,8 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
-  name: '成都',
-  provinceId: 'P000001',
+  name: '成都市',
+  bookSharingPlatformId: 'BSP000001',
 }
 */
 const imageURLPrefix = '//localhost:2090'
@@ -39,7 +39,7 @@ class CityCreateForm extends Component {
     const { setFieldsValue } = this.props.form
     //setFieldsValue(testValues)
       
-    this.executeCandidateProvinceSearch("")
+    this.executeCandidateBookSharingPlatformSearch("")
     
  
     
@@ -58,26 +58,26 @@ class CityCreateForm extends Component {
   }
 
   
-  executeCandidateProvinceSearch = (filterKey) =>{
+  executeCandidateBookSharingPlatformSearch = (filterKey) =>{
 
     const {CityService} = GlobalComponents;
     
     const id = "";//not used for now
     const pageNo = 1;
-    const future = CityService.requestCandidateProvince("province", id, filterKey, pageNo);
+    const future = CityService.requestCandidateBookSharingPlatform("bookSharingPlatform", id, filterKey, pageNo);
     console.log(future);
     
 
-    future.then(candidateProvinceList=>{
+    future.then(candidateBookSharingPlatformList=>{
       this.setState({
-        candidateProvinceList
+        candidateBookSharingPlatformList
       })
 
     })
 
   }	 
-  handleCandidateProvinceSearch = (value) => {
-    this.executeCandidateProvinceSearch(value)
+  handleCandidateBookSharingPlatformSearch = (value) => {
+    this.executeCandidateBookSharingPlatformSearch(value)
   }
  
 
@@ -186,11 +186,11 @@ class CityCreateForm extends Component {
     
 
     
-    const {candidateProvinceList} = this.state
-    if(!candidateProvinceList){
+    const {candidateBookSharingPlatformList} = this.state
+    if(!candidateBookSharingPlatformList){
       return (<div>等等</div>)
     }
-    if(!candidateProvinceList.candidates){
+    if(!candidateBookSharingPlatformList.candidates){
       return (<div>等等</div>)
     }   
     
@@ -264,22 +264,22 @@ class CityCreateForm extends Component {
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.province} {...formItemLayout}>
-                  {getFieldDecorator('provinceId', {
-                  	initialValue: tryinit('province'),
-                    rules: [{ required: true, message: '请输入省' }],
+                <Form.Item label={fieldLabels.bookSharingPlatform} {...formItemLayout}>
+                  {getFieldDecorator('bookSharingPlatformId', {
+                  	initialValue: tryinit('bookSharingPlatform'),
+                    rules: [{ required: true, message: '请输入图书共享平台' }],
                   })(
                   
                   <AutoComplete
-                    dataSource={candidateProvinceList.candidates}
+                    dataSource={candidateBookSharingPlatformList.candidates}
                     
                     
-                    onSearch={this.handleCandidateProvinceSearch}
-                    placeholder="请输入省"
+                    onSearch={this.handleCandidateBookSharingPlatformSearch}
+                    placeholder="请输入图书共享平台"
                     
-                    disabled={!availableForEdit('province')}
+                    disabled={!availableForEdit('bookSharingPlatform')}
                   >
-                  {candidateProvinceList.candidates.map(item=>{
+                  {candidateBookSharingPlatformList.candidates.map(item=>{
                 return (<Option key={item.id}>{`${item.name}(${item.id})`}</Option>);
             })}
                   

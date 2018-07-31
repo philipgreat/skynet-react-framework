@@ -91,9 +91,9 @@ class SecUserBlockingSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="审批人">
+            <FormItem label="谁">
               {getFieldDecorator('who')(
-                <Input placeholder="请输入审批人" />
+                <Input placeholder="请输入谁" />
                )}
             </FormItem>
           </Col>
@@ -124,9 +124,9 @@ class SecUserBlockingSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="审批人">
+            <FormItem label="谁">
               {getFieldDecorator('who')(
-                <Input placeholder="请输入审批人" />
+                <Input placeholder="请输入谁" />
               )}
             </FormItem>
           </Col>

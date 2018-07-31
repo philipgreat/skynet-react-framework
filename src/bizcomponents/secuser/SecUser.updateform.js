@@ -326,9 +326,9 @@ class SecUserUpdateForm extends Component {
                 <Form.Item label={fieldLabels.verificationCodeExpire} {...formItemLayout}>
                   {getFieldDecorator('verificationCodeExpire', {
                     initialValue: selectedRow.verificationCodeExpire,
-                    rules: [{ required: true, message: '请输入验证码过期时间' }],
+                    rules: [{ required: true, message: '请输入验证码过期' }],
                   })(
-                    <DatePicker showTime format="YYYY-MM-DD HH:mm" minuteStep={5} placeholder="请输入验证码过期时间" />
+                    <DatePicker showTime format="YYYY-MM-DD HH:mm" minuteStep={5} placeholder="请输入验证码过期" />
                     
                   )}
                 </Form.Item>

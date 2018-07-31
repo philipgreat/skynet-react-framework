@@ -20,9 +20,9 @@ const testValues = {
   mobile: '13977900987',
   email: 'suddy_chang@163.com',
   pwd: 'C183EC89F92A462CF45B95504792EC4625E847C90536EEFE512D1C9DB8602E95',
-  verificationCode: '9981727',
-  verificationCodeExpire: '2015-08-13 10:02:56',
-  lastLoginTime: '2016-06-21 08:20:39',
+  verificationCode: '0',
+  verificationCodeExpire: '2016-09-12 05:39:30',
+  lastLoginTime: '2016-08-03 06:49:13',
   domainId: 'UD000001',
 }
 */
@@ -291,9 +291,9 @@ class SecUserCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.verificationCodeExpire} {...formItemLayout}>
                   {getFieldDecorator('verificationCodeExpire', {
-                    rules: [{ required: true, message: '请输入验证码过期时间' }],
+                    rules: [{ required: true, message: '请输入验证码过期' }],
                   })(
-                    <DatePicker showTime format="YYYY-MM-DD HH:mm" minuteStep={5} placeholder="请输入验证码过期时间" />
+                    <DatePicker showTime format="YYYY-MM-DD HH:mm" minuteStep={5} placeholder="请输入验证码过期" />
                   )}
                 </Form.Item>
               </Col>

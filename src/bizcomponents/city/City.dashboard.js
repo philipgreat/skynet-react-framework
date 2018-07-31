@@ -257,12 +257,8 @@ const internalSummaryOf = (city,targetComponent) =>{
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="ID">{city.id}</Description> 
 <Description term="名称">{city.name}</Description> 
-<Description term="省">{city.province==null?"未分配":city.province.displayName}
- <Icon type="swap" onClick={()=>
-  showTransferModel(targetComponent,"省","province","requestCandidateProvince",
-	      "transferToAnotherProvince","anotherProvinceId",city.province?city.province.id:"")} 
-  style={{fontSize: 20,color:"red"}} />
-</Description>
+<Description term="创建时间">{ moment(city.createTime).format('YYYY-MM-DD')}</Description> 
+<Description term="更新时间">{ moment(city.updateTime).format('YYYY-MM-DD')}</Description> 
 	
         {buildTransferModal(city,targetComponent)}
       </DescriptionList>
@@ -292,13 +288,10 @@ class CityDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, productPriceCount, vehicleServiceCompanyCount, inspectionStationCount, vehicleInspectionOrderCount } = this.props.city
+    const { id,displayName, storeCount } = this.props.city
     const cardsData = {cardsName:"城市",cardsFor: "city",cardsSource: this.props.city,
   		subItems: [
-{name: 'productPriceList', displayName:'产品价格',type:'productPrice',count:productPriceCount},
-{name: 'vehicleServiceCompanyList', displayName:'商户',type:'vehicleServiceCompany',count:vehicleServiceCompanyCount},
-{name: 'inspectionStationList', displayName:'检测站',type:'inspectionStation',count:inspectionStationCount},
-{name: 'vehicleInspectionOrderList', displayName:'年检订单',type:'vehicleInspectionOrder',count:vehicleInspectionOrderCount},
+{name: 'storeList', displayName:'服务网点',type:'store',count:storeCount},
     
       	],
   	};

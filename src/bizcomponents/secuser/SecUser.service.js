@@ -37,26 +37,6 @@ const transferToAnotherDomain = (id, parameters) => {
 
 
 
-const addCustomer = (targetObjectId, parameters) => {
-  const url = `${PREFIX}secUserManager/addCustomer/secUserId/nickName/logoImage/weixinOpenid/weixinAppid/longitude/latitude/platformId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
-  return postForm({ url,requestParameters})
-}
-
-const updateCustomer = (targetObjectId, parameters) => {
-  const url = `${PREFIX}secUserManager/updateCustomerProperties/secUserId/id/nickName/logoImage/weixinOpenid/weixinAppid/longitude/latitude/tokensExpr/`
-  const secUserId = targetObjectId
-  const requestParameters = { ...parameters, secUserId, tokensExpr: 'none' }
-  return postForm({ url,requestParameters})
-}
-
-const removeCustomerList = (targetObjectId, parameters) => {
-  const url = `${PREFIX}secUserManager/removeCustomerList/secUserId/customerIds/tokensExpr/`
-  const requestParameters = { ...parameters, secUserId: targetObjectId, tokensExpr: 'none' }
-  return postForm({ url,requestParameters})
-}
-
-
 const addUserApp = (targetObjectId, parameters) => {
   const url = `${PREFIX}secUserManager/addUserApp/secUserId/title/appIcon/fullAccess/permission/objectType/objectId/location/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
@@ -99,13 +79,10 @@ const removeLoginHistoryList = (targetObjectId, parameters) => {
 
 const SecUserService = { view,
   load,
-  addCustomer,
   addUserApp,
   addLoginHistory,
-  updateCustomer,
   updateUserApp,
   updateLoginHistory,
-  removeCustomerList,
   removeUserAppList,
   removeLoginHistoryList,
   requestCandidateDomain,

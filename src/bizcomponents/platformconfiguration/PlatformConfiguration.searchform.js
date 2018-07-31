@@ -64,8 +64,9 @@ class PlatformConfigurationSearchForm extends PureComponent {
       if (err) return
       const params = {
         ...this.buildStringSearchParameters(fieldsValue, 'id'),
-        ...this.buildStringSearchParameters(fieldsValue, 'userAgreement'),
-        ...this.buildStringSearchParameters(fieldsValue, 'invoiceInstruction'),
+        ...this.buildStringSearchParameters(fieldsValue, 'memberServiceAgreement'),
+        ...this.buildStringSearchParameters(fieldsValue, 'bookSharingAgreement'),
+        ...this.buildStringSearchParameters(fieldsValue, 'accountRechargeAgreement'),
 
       }
       const { owner } = this.props
@@ -91,9 +92,9 @@ class PlatformConfigurationSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="用户协议">
-              {getFieldDecorator('userAgreement')(
-                <Input placeholder="请输入用户协议" />
+            <FormItem label="会员服务协议">
+              {getFieldDecorator('memberServiceAgreement')(
+                <Input placeholder="请输入会员服务协议" />
                )}
             </FormItem>
           </Col>
@@ -124,17 +125,25 @@ class PlatformConfigurationSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="用户协议">
-              {getFieldDecorator('userAgreement')(
-                <Input placeholder="请输入用户协议" />
+            <FormItem label="会员服务协议">
+              {getFieldDecorator('memberServiceAgreement')(
+                <Input placeholder="请输入会员服务协议" />
               )}
             </FormItem>
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="发票说明">
-              {getFieldDecorator('invoiceInstruction')(
-                <Input placeholder="请输入发票说明" />
+            <FormItem label="图书共享协议">
+              {getFieldDecorator('bookSharingAgreement')(
+                <Input placeholder="请输入图书共享协议" />
+              )}
+            </FormItem>
+          </Col>
+
+          <Col md={8} sm={24}>
+            <FormItem label="账户充值协议">
+              {getFieldDecorator('accountRechargeAgreement')(
+                <Input placeholder="请输入账户充值协议" />
               )}
             </FormItem>
           </Col>

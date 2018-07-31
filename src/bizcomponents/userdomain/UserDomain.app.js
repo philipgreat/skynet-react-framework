@@ -11,7 +11,7 @@ import {
   Spin,
   Breadcrumb,
   AutoComplete,
-  Input,
+  Input,Button
 } from 'antd'
 import DocumentTitle from 'react-document-title'
 import { connect } from 'dva'
@@ -173,6 +173,41 @@ class UserDomainBizApp extends React.PureComponent {
     }))(SecUserUpdateForm)
   }
 
+  getActionTokenSearch = () => {
+    const {ActionTokenSearch} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._userDomain.actionTokenList,
+      count: state._userDomain.actionTokenCount,
+      currentPage: state._userDomain.actionTokenCurrentPageNumber,
+      searchFormParameters: state._userDomain.actionTokenSearchFormParameters,
+      loading: state._userDomain.loading,
+      partialList: state._userDomain.partialList,
+      owner: { type: '_userDomain', id: state._userDomain.id, referenceName: 'userDomain', listName: 'actionTokenList', ref:state._userDomain, listDisplayName: '行动令牌列表' }, // this is for model namespace and
+    }))(ActionTokenSearch)
+  }
+  getActionTokenCreateForm = () => {
+   	const {ActionTokenCreateForm} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._userDomain.actionTokenList,
+      count: state._userDomain.actionTokenCount,
+      currentPage: state._userDomain.actionTokenCurrentPageNumber,
+      searchFormParameters: state._userDomain.actionTokenSearchFormParameters,
+      loading: state._userDomain.loading,
+      owner: { type: '_userDomain', id: state._userDomain.id, referenceName: 'userDomain', listName: 'actionTokenList', ref:state._userDomain, listDisplayName: '行动令牌列表'}, // this is for model namespace and
+    }))(ActionTokenCreateForm)
+  }
+  
+  getActionTokenUpdateForm = () => {
+  	const {ActionTokenUpdateForm} = GlobalComponents;
+    return connect(state => ({
+      selectedRows: state._userDomain.selectedRows,
+      currentUpdateIndex: state._userDomain.currentUpdateIndex,
+      owner: { type: '_userDomain', id: state._userDomain.id, listName: 'actionTokenList', ref:state._userDomain, listDisplayName: '行动令牌列表' }, // this is for model namespace and
+    }))(ActionTokenUpdateForm)
+  }
+
 
   
   buildRouters = () =>{
@@ -185,6 +220,10 @@ class UserDomainBizApp extends React.PureComponent {
   	{path:"/userDomain/:id/list/secUserList", component: this.getSecUserSearch()},
   	{path:"/userDomain/:id/list/secUserCreateForm", component: this.getSecUserCreateForm()},
   	{path:"/userDomain/:id/list/secUserUpdateForm", component: this.getSecUserUpdateForm()},
+   	
+  	{path:"/userDomain/:id/list/actionTokenList", component: this.getActionTokenSearch()},
+  	{path:"/userDomain/:id/list/actionTokenCreateForm", component: this.getActionTokenCreateForm()},
+  	{path:"/userDomain/:id/list/actionTokenUpdateForm", component: this.getActionTokenUpdateForm()},
      	
   	
   	]
@@ -204,7 +243,7 @@ class UserDomainBizApp extends React.PureComponent {
   getPageTitle = () => {
     // const { location } = this.props
     // const { pathname } = location
-    const title = '代审车服务平台'
+    const title = '书香社区'
     return title
   }
  
@@ -221,7 +260,11 @@ class UserDomainBizApp extends React.PureComponent {
        payload: !collapsed,
      })
    }
-
+    logout = () => {
+   
+    console.log("log out called")
+    this.props.dispatch({ type: 'launcher/signOut' })
+  }
    render() {
      // const { collapsed, fetchingNotices,loading } = this.props
      const { collapsed } = this.props
@@ -255,18 +298,11 @@ class UserDomainBizApp extends React.PureComponent {
 
           })}
          </div>
-          <div className={styles.right}>
+          <div className={styles.right}  >
+          <Button type="primary"  icon="logout" onClick={()=>this.logout()}>
+          退出</Button>
+          </div>
           
-          <AutoComplete
-            className="certain-category-search"
-            placeholder="请输入名称"
-            optionLabelProp="value"
-            
-          >
-            <Input
-              suffix={<Icon type="search" className="certain-category-icon" />}
-            />
-          </AutoComplete> </div>
         </Header>
        <Layout>
          <Sider

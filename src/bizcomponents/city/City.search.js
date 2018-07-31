@@ -199,7 +199,7 @@ class CitySearch extends PureComponent {
       <Menu onClick={this.handleMenuClick} selectedKeys={[]}>
 
 
-<Menu.Item key="province">关联省</Menu.Item>
+<Menu.Item key="bookSharingPlatform">关联图书共享平台</Menu.Item>
       
 
       </Menu>

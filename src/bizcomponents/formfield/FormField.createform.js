@@ -24,8 +24,8 @@ const testValues = {
   defaultValue: '李亚青',
   description: '姓名就是你身份证上的名字',
   fieldGroup: '基础信息',
-  minValue: 'maybe any value',
-  maxValue: 'a value expression',
+  minimumValue: 'maybe any value',
+  maximumValue: 'a value expression',
   candidateValues: '',
   suggestValues: '',
   formId: 'GF000001',
@@ -256,9 +256,9 @@ class FormFieldCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.localeKey} {...formItemLayout}>
                   {getFieldDecorator('localeKey', {
-                    rules: [{ required: true, message: '请输入消息键值' }],
+                    rules: [{ required: true, message: '请输入语言环境的关键' }],
                   })(
-                    <Input placeholder="请输入消息键值" />
+                    <Input placeholder="请输入语言环境的关键" />
                   )}
                 </Form.Item>
               </Col>
@@ -324,8 +324,8 @@ class FormFieldCreateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.minValue} {...formItemLayout}>
-                  {getFieldDecorator('minValue', {
+                <Form.Item label={fieldLabels.minimumValue} {...formItemLayout}>
+                  {getFieldDecorator('minimumValue', {
                     rules: [{ required: true, message: '请输入最小值' }],
                   })(
                     <Input placeholder="请输入最小值" />
@@ -334,11 +334,11 @@ class FormFieldCreateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.maxValue} {...formItemLayout}>
-                  {getFieldDecorator('maxValue', {
-                    rules: [{ required: true, message: '请输入最大的价值' }],
+                <Form.Item label={fieldLabels.maximumValue} {...formItemLayout}>
+                  {getFieldDecorator('maximumValue', {
+                    rules: [{ required: true, message: '请输入最大值' }],
                   })(
-                    <Input placeholder="请输入最大的价值" />
+                    <Input placeholder="请输入最大值" />
                   )}
                 </Form.Item>
               </Col>

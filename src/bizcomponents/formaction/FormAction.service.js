@@ -43,13 +43,3 @@ const FormActionService = { view,
   transferToAnotherForm }
 export default FormActionService
 
-
-
-
-
-
-
-
-
-
-

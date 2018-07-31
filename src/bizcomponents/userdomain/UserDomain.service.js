@@ -41,10 +41,33 @@ const removeSecUserList = (targetObjectId, parameters) => {
 }
 
 
+const addActionToken = (targetObjectId, parameters) => {
+  const url = `${PREFIX}userDomainManager/addActionToken/userDomainId/holderType/holderId/tokenCode/tokenQuantity/startDate/endDate/tokensExpr/`
+  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+const updateActionToken = (targetObjectId, parameters) => {
+  const url = `${PREFIX}userDomainManager/updateActionTokenProperties/userDomainId/id/holderType/holderId/tokenCode/tokenQuantity/startDate/endDate/tokensExpr/`
+  const userDomainId = targetObjectId
+  const requestParameters = { ...parameters, userDomainId, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+const removeActionTokenList = (targetObjectId, parameters) => {
+  const url = `${PREFIX}userDomainManager/removeActionTokenList/userDomainId/actionTokenIds/tokensExpr/`
+  const requestParameters = { ...parameters, userDomainId: targetObjectId, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+
 const UserDomainService = { view,
   load,
   addSecUser,
+  addActionToken,
   updateSecUser,
-  removeSecUserList }
+  updateActionToken,
+  removeSecUserList,
+  removeActionTokenList }
 export default UserDomainService
 

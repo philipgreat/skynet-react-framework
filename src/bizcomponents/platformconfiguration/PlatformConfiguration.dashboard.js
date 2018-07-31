@@ -77,8 +77,9 @@ const internalSettingListOf = (platformConfiguration) =>{
 const internalLargeTextOf = (platformConfiguration) =>{
 
 	return(<div> 
-   <Card title={`用户协议`} ><pre>{platformConfiguration.userAgreement}</pre></Card>
-   <Card title={`发票说明`} ><pre>{platformConfiguration.invoiceInstruction}</pre></Card>
+   <Card title={`会员服务协议`} ><pre>{platformConfiguration.memberServiceAgreement}</pre></Card>
+   <Card title={`图书共享协议`} ><pre>{platformConfiguration.bookSharingAgreement}</pre></Card>
+   <Card title={`账户充值协议`} ><pre>{platformConfiguration.accountRechargeAgreement}</pre></Card>
 </div>)
 
 	

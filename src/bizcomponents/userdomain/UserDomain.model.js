@@ -28,17 +28,28 @@ export default {
     },
   },
   effects: {
-    *view({ payload }, { call, put }) { 
+    *view({ payload }, { call, put, select }) { 
+    
+      const cachedData = yield select(state => state._userDomain)
+      //if the data in the cache, just show it, there is no delay
+      const link = payload.pathname
+      //if the data in the cache, just show it, there is no delay
+      if(cachedData.class){
+        yield put({ type: 'breadcrumb/gotoLink', payload: { displayName:cachedData.displayName,link }} )
+        yield put({ type: 'updateState', payload: cachedData })
+      }else{
+        yield put({ type: 'showLoading', payload })
+      }
+      
       const {UserDomainService} = GlobalComponents;
-      yield put({ type: 'showLoading', payload })
       const data = yield call(UserDomainService.view, payload.id)
       
       const displayName = payload.displayName||data.displayName
-      const link = payload.pathname
-      yield put({ type: 'breadcrumb/gotoLink', payload: { displayName,link }} )
       
-      
-      console.log('this is the data id:', data.id)
+      if(!cachedData.class){
+        yield put({ type: 'breadcrumb/gotoLink', payload: { displayName,link }} )
+      }
+
       yield put({ type: 'updateState', payload: data })
     },
     *load({ payload }, { call, put }) { 
@@ -151,6 +162,82 @@ export default {
       const { id, type, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(UserDomainService.removeSecUserList, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/userDomain/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      // const location = { pathname: `userDomain/${id}/list/${type}List`, state: data}
+      // yield put(routerRedux.push(location))
+    },
+
+    *addActionToken({ payload }, { call, put }) {
+      const {UserDomainService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(UserDomainService.addActionToken, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/userDomain/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/userDomain/${id}/list/${type}List/行动令牌列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateActionToken({ payload }, { call, put }) {
+      const {UserDomainService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(UserDomainService.updateActionToken, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/userDomain/${id}/list/${type}List/行动令牌列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextActionTokenUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeActionTokenList({ payload }, { call, put }) {
+      const {UserDomainService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(UserDomainService.removeActionTokenList, id, parameters)
       if (hasError(data)) {
         handleServerError(data)
         return

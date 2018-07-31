@@ -268,16 +268,16 @@ class PlatformConfigurationUpdateForm extends Component {
         
         
 
-        <Card title="用户协议" className={styles.card} bordered={false}>
+        <Card title="会员服务协议" className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
               <Col lg={24} md={24} sm={24}>
                 <Form.Item>
-                  {getFieldDecorator('userAgreement', {
-                  	initialValue: selectedRow.userAgreement,
-                    rules: [{  required: true, message: '请输入用户协议' }],
+                  {getFieldDecorator('memberServiceAgreement', {
+                  	initialValue: selectedRow.memberServiceAgreement,
+                    rules: [{  required: true, message: '请输入会员服务协议' }],
                   })(
-                    <TextArea rows={4} placeholder="请输入请输入用户协议" />
+                    <TextArea rows={4} placeholder="请输入请输入会员服务协议" />
                   )}
                 </Form.Item>
               </Col>
@@ -285,16 +285,33 @@ class PlatformConfigurationUpdateForm extends Component {
           </Form>
         </Card>
 
-        <Card title="发票说明" className={styles.card} bordered={false}>
+        <Card title="图书共享协议" className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
               <Col lg={24} md={24} sm={24}>
                 <Form.Item>
-                  {getFieldDecorator('invoiceInstruction', {
-                  	initialValue: selectedRow.invoiceInstruction,
-                    rules: [{  required: true, message: '请输入发票说明' }],
+                  {getFieldDecorator('bookSharingAgreement', {
+                  	initialValue: selectedRow.bookSharingAgreement,
+                    rules: [{  required: true, message: '请输入图书共享协议' }],
                   })(
-                    <TextArea rows={4} placeholder="请输入请输入发票说明" />
+                    <TextArea rows={4} placeholder="请输入请输入图书共享协议" />
+                  )}
+                </Form.Item>
+              </Col>
+            </Row>
+          </Form>
+        </Card>
+
+        <Card title="账户充值协议" className={styles.card} bordered={false}>
+          <Form >
+            <Row gutter={16}>
+              <Col lg={24} md={24} sm={24}>
+                <Form.Item>
+                  {getFieldDecorator('accountRechargeAgreement', {
+                  	initialValue: selectedRow.accountRechargeAgreement,
+                    rules: [{  required: true, message: '请输入账户充值协议' }],
+                  })(
+                    <TextArea rows={4} placeholder="请输入请输入账户充值协议" />
                   )}
                 </Form.Item>
               </Col>

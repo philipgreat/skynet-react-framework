@@ -17,13 +17,23 @@ const testValues = {};
 /*
 const testValues = {
   nickName: '张俊宝',
-  weixinOpenid: 'wx123456789abcdefghijklmn',
-  weixinAppid: 'wxapp12098410239840',
-  longitude: '104.10128890079164',
-  latitude: '30.802476846919156',
-  secUserId: 'SU000001',
-  platformId: 'CIP000001',
-  logoImage: 'wx.qlogo.cnmmopenDYAIOgq83eqV99Oaly8icqjNWJWeCZTFR5HCwZcCJeibibCRMvWicIYBusmKFF6e8DAe7o07ql8mT8WhWdNUOJ3BiaQ.jpg',
+  miniProgramOpenid: 'wx012345',
+  serviceAccountOpenid: 'wx012345',
+  wechatUnionId: 'wx012345',
+  longitude: '103.8622423121931',
+  latitude: '32.37900105223107',
+  mobileNumber: '13312345678',
+  birthday: '2015-12-06',
+  sexuality: '男',
+  realName: '张世博',
+  identityCardNumber: '510922876512348875',
+  familyAddress: '四川省成都市高新区文家场兴业街19-21号',
+  memberServiceStartDate: '2016-05-16',
+  memberServiceExpireDate: '2018-07-16',
+  memberServiceDailyPay: '11.73',
+  accountBalance: '82.74',
+  memberServiceId: 'MSP000001',
+  platformId: 'BSP000001',
 }
 */
 const imageURLPrefix = '//localhost:2090'
@@ -46,7 +56,7 @@ class CustomerCreateForm extends Component {
     const { setFieldsValue } = this.props.form
     //setFieldsValue(testValues)
       
-    this.executeCandidateSecUserSearch("")
+    this.executeCandidateMemberServiceSearch("")
     
     
     this.executeCandidatePlatformSearch("")
@@ -68,26 +78,26 @@ class CustomerCreateForm extends Component {
   }
 
   
-  executeCandidateSecUserSearch = (filterKey) =>{
+  executeCandidateMemberServiceSearch = (filterKey) =>{
 
     const {CustomerService} = GlobalComponents;
     
     const id = "";//not used for now
     const pageNo = 1;
-    const future = CustomerService.requestCandidateSecUser("secUser", id, filterKey, pageNo);
+    const future = CustomerService.requestCandidateMemberService("memberServiceProduct", id, filterKey, pageNo);
     console.log(future);
     
 
-    future.then(candidateSecUserList=>{
+    future.then(candidateMemberServiceList=>{
       this.setState({
-        candidateSecUserList
+        candidateMemberServiceList
       })
 
     })
 
   }	 
-  handleCandidateSecUserSearch = (value) => {
-    this.executeCandidateSecUserSearch(value)
+  handleCandidateMemberServiceSearch = (value) => {
+    this.executeCandidateMemberServiceSearch(value)
   }
 
   executeCandidatePlatformSearch = (filterKey) =>{
@@ -96,7 +106,7 @@ class CustomerCreateForm extends Component {
     
     const id = "";//not used for now
     const pageNo = 1;
-    const future = CustomerService.requestCandidatePlatform("carInspectionPlatform", id, filterKey, pageNo);
+    const future = CustomerService.requestCandidatePlatform("bookSharingPlatform", id, filterKey, pageNo);
     console.log(future);
     
 
@@ -172,7 +182,7 @@ class CustomerCreateForm extends Component {
       const { owner } = this.props
       dispatch({
         type: `${owner.type}/goback`,
-        payload: { id: owner.id, type: 'customer',listName:'客户列表' },
+        payload: { id: owner.id, type: 'customer',listName:'用户列表' },
       })
     }
     const errors = getFieldsError()
@@ -218,11 +228,11 @@ class CustomerCreateForm extends Component {
     
 
     
-    const {candidateSecUserList} = this.state
-    if(!candidateSecUserList){
+    const {candidateMemberServiceList} = this.state
+    if(!candidateMemberServiceList){
       return (<div>等等</div>)
     }
-    if(!candidateSecUserList.candidates){
+    if(!candidateMemberServiceList.candidates){
       return (<div>等等</div>)
     }   
     
@@ -265,8 +275,8 @@ class CustomerCreateForm extends Component {
     }
     return (
       <PageHeaderLayout
-        title="新建一个客户"
-        content="新建一个客户"
+        title="新建一个用户"
+        content="新建一个用户"
         wrapperClassName={styles.advancedForm}
       >
         <Card title="基础信息" className={styles.card} bordered={false}>
@@ -276,29 +286,39 @@ class CustomerCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.nickName} {...formItemLayout}>
                   {getFieldDecorator('nickName', {
-                    rules: [{ required: true, message: '请输入客户昵称' }],
+                    rules: [{ required: true, message: '请输入昵称' }],
                   })(
-                    <Input placeholder="请输入客户昵称" />
+                    <Input placeholder="请输入昵称" />
                   )}
                 </Form.Item>
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.weixinOpenid} {...formItemLayout}>
-                  {getFieldDecorator('weixinOpenid', {
-                    rules: [{ required: true, message: '请输入微信ID' }],
+                <Form.Item label={fieldLabels.miniProgramOpenid} {...formItemLayout}>
+                  {getFieldDecorator('miniProgramOpenid', {
+                    rules: [{ required: true, message: '请输入小程序OpenID' }],
                   })(
-                    <Input placeholder="请输入微信ID" />
+                    <Input placeholder="请输入小程序OpenID" />
                   )}
                 </Form.Item>
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.weixinAppid} {...formItemLayout}>
-                  {getFieldDecorator('weixinAppid', {
-                    rules: [{ required: true, message: '请输入微信APP' }],
+                <Form.Item label={fieldLabels.serviceAccountOpenid} {...formItemLayout}>
+                  {getFieldDecorator('serviceAccountOpenid', {
+                    rules: [{ required: true, message: '请输入服务号OpenID' }],
                   })(
-                    <Input placeholder="请输入微信APP" />
+                    <Input placeholder="请输入服务号OpenID" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.wechatUnionId} {...formItemLayout}>
+                  {getFieldDecorator('wechatUnionId', {
+                    rules: [{ required: true, message: '请输入微信UnionID' }],
+                  })(
+                    <Input placeholder="请输入微信UnionID" />
                   )}
                 </Form.Item>
               </Col>
@@ -323,6 +343,106 @@ class CustomerCreateForm extends Component {
                 </Form.Item>
               </Col>
 
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.mobileNumber} {...formItemLayout}>
+                  {getFieldDecorator('mobileNumber', {
+                    rules: [{ required: true, message: '请输入手机号码' }],
+                  })(
+                    <Input placeholder="请输入手机号码" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.birthday} {...formItemLayout}>
+                  {getFieldDecorator('birthday', {
+                    rules: [{ required: true, message: '请输入生日' }],
+                  })(
+                    <DatePicker format="YYYY-MM-DD" placeholder="请输入生日" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.sexuality} {...formItemLayout}>
+                  {getFieldDecorator('sexuality', {
+                    rules: [{ required: true, message: '请输入性别' }],
+                  })(
+                    <Input placeholder="请输入性别" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.realName} {...formItemLayout}>
+                  {getFieldDecorator('realName', {
+                    rules: [{ required: true, message: '请输入的真实姓名' }],
+                  })(
+                    <Input placeholder="请输入的真实姓名" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.identityCardNumber} {...formItemLayout}>
+                  {getFieldDecorator('identityCardNumber', {
+                    rules: [{ required: true, message: '请输入身份证号码' }],
+                  })(
+                    <Input placeholder="请输入身份证号码" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.familyAddress} {...formItemLayout}>
+                  {getFieldDecorator('familyAddress', {
+                    rules: [{ required: true, message: '请输入家庭地址' }],
+                  })(
+                    <Input placeholder="请输入家庭地址" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.memberServiceStartDate} {...formItemLayout}>
+                  {getFieldDecorator('memberServiceStartDate', {
+                    rules: [{ required: true, message: '请输入会员服务开始日期' }],
+                  })(
+                    <DatePicker format="YYYY-MM-DD" placeholder="请输入会员服务开始日期" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.memberServiceExpireDate} {...formItemLayout}>
+                  {getFieldDecorator('memberServiceExpireDate', {
+                    rules: [{ required: true, message: '请输入会员服务到期日期' }],
+                  })(
+                    <DatePicker format="YYYY-MM-DD" placeholder="请输入会员服务到期日期" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.memberServiceDailyPay} {...formItemLayout}>
+                  {getFieldDecorator('memberServiceDailyPay', {
+                    rules: [{ required: true, message: '请输入日均会员费' }],
+                  })(
+                    <Input placeholder="请输入日均会员费" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.accountBalance} {...formItemLayout}>
+                  {getFieldDecorator('accountBalance', {
+                    rules: [{ required: true, message: '请输入帐户余额' }],
+                  })(
+                    <Input placeholder="请输入帐户余额" />
+                  )}
+                </Form.Item>
+              </Col>
+
             </Row>
           </Form>
         </Card>
@@ -335,22 +455,6 @@ class CustomerCreateForm extends Component {
 
 
 
-
-        <Card title="头像" className={styles.card} bordered={false}>
-          <Form >
-            <Row gutter={16}>
-              <Col lg={24} md={24} sm={24}>
-                <Form.Item>
-                  {getFieldDecorator('logoImage', {
-                    rules: [{ required: true, message: '请输入头像' }],
-                  })(
-                    <TextArea rows={4} placeholder="请输入请输入头像" />
-                  )}
-                </Form.Item>
-              </Col>
-      </Row>
-          </Form>  
-        </Card>
 
 
 
@@ -378,23 +482,23 @@ class CustomerCreateForm extends Component {
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.secUser} {...formItemLayout}>
-                  {getFieldDecorator('secUserId', {
-                  	initialValue: tryinit('secUser'),
-                    rules: [{ required: true, message: '请输入SecUser' }],
+                <Form.Item label={fieldLabels.memberService} {...formItemLayout}>
+                  {getFieldDecorator('memberServiceId', {
+                  	initialValue: tryinit('memberService'),
+                    rules: [{ required: true, message: '请输入会员服务' }],
                   })(
                   
                   <AutoComplete
-                    dataSource={candidateSecUserList.candidates}
+                    dataSource={candidateMemberServiceList.candidates}
                     
                     
-                    onSearch={this.handleCandidateSecUserSearch}
-                    placeholder="请输入SecUser"
+                    onSearch={this.handleCandidateMemberServiceSearch}
+                    placeholder="请输入会员服务"
                     
-                    disabled={!availableForEdit('secUser')}
+                    disabled={!availableForEdit('memberService')}
                   >
-                  {candidateSecUserList.candidates.map(item=>{
-                return (<Option key={item.id}>{`${item.login}(${item.id})`}</Option>);
+                  {candidateMemberServiceList.candidates.map(item=>{
+                return (<Option key={item.id}>{`${item.productName}(${item.id})`}</Option>);
             })}
                   
                   </AutoComplete>

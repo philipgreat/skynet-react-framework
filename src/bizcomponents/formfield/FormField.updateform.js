@@ -276,9 +276,9 @@ class FormFieldUpdateForm extends Component {
                 <Form.Item label={fieldLabels.localeKey} {...formItemLayout}>
                   {getFieldDecorator('localeKey', {
                     initialValue: selectedRow.localeKey,
-                    rules: [{ required: true, message: '请输入消息键值' }],
+                    rules: [{ required: true, message: '请输入语言环境的关键' }],
                   })(
-                    <Input placeholder="请输入消息键值" />
+                    <Input placeholder="请输入语言环境的关键" />
                     
                   )}
                 </Form.Item>
@@ -357,9 +357,9 @@ class FormFieldUpdateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.minValue} {...formItemLayout}>
-                  {getFieldDecorator('minValue', {
-                    initialValue: selectedRow.minValue,
+                <Form.Item label={fieldLabels.minimumValue} {...formItemLayout}>
+                  {getFieldDecorator('minimumValue', {
+                    initialValue: selectedRow.minimumValue,
                     rules: [{ required: true, message: '请输入最小值' }],
                   })(
                     <Input placeholder="请输入最小值" />
@@ -369,12 +369,12 @@ class FormFieldUpdateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.maxValue} {...formItemLayout}>
-                  {getFieldDecorator('maxValue', {
-                    initialValue: selectedRow.maxValue,
-                    rules: [{ required: true, message: '请输入最大的价值' }],
+                <Form.Item label={fieldLabels.maximumValue} {...formItemLayout}>
+                  {getFieldDecorator('maximumValue', {
+                    initialValue: selectedRow.maximumValue,
+                    rules: [{ required: true, message: '请输入最大值' }],
                   })(
-                    <Input placeholder="请输入最大的价值" />
+                    <Input placeholder="请输入最大值" />
                     
                   )}
                 </Form.Item>

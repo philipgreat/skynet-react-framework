@@ -288,9 +288,9 @@ class UserAppUpdateForm extends Component {
                 <Form.Item label={fieldLabels.permission} {...formItemLayout}>
                   {getFieldDecorator('permission', {
                     initialValue: selectedRow.permission,
-                    rules: [{ required: true, message: '请输入权限' }],
+                    rules: [{ required: true, message: '请输入许可' }],
                   })(
-                    <Input placeholder="请输入权限" />
+                    <Input placeholder="请输入许可" />
                     
                   )}
                 </Form.Item>

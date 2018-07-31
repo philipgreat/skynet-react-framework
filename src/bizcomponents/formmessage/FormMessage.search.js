@@ -48,6 +48,9 @@ class FormMessageSearch extends PureComponent {
     listParameters[listName]=1;
     listParameters[`${listName}CurrentPage`]=pagination.current;
     listParameters[`${listName}RowsPerPage`]=pagination.pageSize;
+    listParameters[`${listName}.orderBy.0`]="id";
+    listParameters[`${listName}.descOrAsc.0`]="desc";
+   
     
     const params = {
       ...listParameters,
@@ -188,7 +191,7 @@ class FormMessageSearch extends PureComponent {
     const {displayName} = owner.ref
     const { showDeleteResult, selectedRows, modalVisible } = this.state;
     const {FormMessageTable} = GlobalComponents;
-    const {FormMessageConfirmationTable} = GlobalComponents;
+    const {FormMessageModalTable} = GlobalComponents;
     const {FormMessageSearchForm} = GlobalComponents;
     
  
@@ -227,7 +230,7 @@ class FormMessageSearch extends PureComponent {
           width={920}
           style={{ top: 40 }}
         >
-          <FormMessageConfirmationTable data={selectedRows} owner={owner} />
+          <FormMessageModalTable data={selectedRows} owner={owner} />
         </Modal>)
     }
     

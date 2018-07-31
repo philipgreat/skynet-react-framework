@@ -59,6 +59,9 @@ class CustomerUpdateForm extends Component {
     const convertiedValues = selectedRows.map((item) => {
       return {
         ...item,
+        birthday: moment(item.birthday),
+        memberServiceStartDate: moment(item.memberServiceStartDate),
+        memberServiceExpireDate: moment(item.memberServiceExpireDate),
 
       }
     })
@@ -180,7 +183,7 @@ class CustomerUpdateForm extends Component {
         payload: {
           id: owner.id,
           type: 'customer',
-          listName:'客户列表' 
+          listName:'用户列表' 
         },
       })
     }
@@ -240,8 +243,8 @@ class CustomerUpdateForm extends Component {
 
     return (
       <PageHeaderLayout
-        title={"更新客户"+(currentUpdateIndex+1)+"/"+selectedRows.length}
-        content="更新客户"
+        title={"更新用户"+(currentUpdateIndex+1)+"/"+selectedRows.length}
+        content="更新用户"
         wrapperClassName={styles.advancedForm}
       >
         <Card title="基础信息" className={styles.card} bordered={false}>
@@ -265,33 +268,45 @@ class CustomerUpdateForm extends Component {
                 <Form.Item label={fieldLabels.nickName} {...formItemLayout}>
                   {getFieldDecorator('nickName', {
                     initialValue: selectedRow.nickName,
-                    rules: [{ required: true, message: '请输入客户昵称' }],
+                    rules: [{ required: true, message: '请输入昵称' }],
                   })(
-                    <Input placeholder="请输入客户昵称" />
+                    <Input placeholder="请输入昵称" />
                     
                   )}
                 </Form.Item>
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.weixinOpenid} {...formItemLayout}>
-                  {getFieldDecorator('weixinOpenid', {
-                    initialValue: selectedRow.weixinOpenid,
-                    rules: [{ required: true, message: '请输入微信ID' }],
+                <Form.Item label={fieldLabels.miniProgramOpenid} {...formItemLayout}>
+                  {getFieldDecorator('miniProgramOpenid', {
+                    initialValue: selectedRow.miniProgramOpenid,
+                    rules: [{ required: true, message: '请输入小程序OpenID' }],
                   })(
-                    <Input placeholder="请输入微信ID" />
+                    <Input placeholder="请输入小程序OpenID" />
                     
                   )}
                 </Form.Item>
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.weixinAppid} {...formItemLayout}>
-                  {getFieldDecorator('weixinAppid', {
-                    initialValue: selectedRow.weixinAppid,
-                    rules: [{ required: true, message: '请输入微信APP' }],
+                <Form.Item label={fieldLabels.serviceAccountOpenid} {...formItemLayout}>
+                  {getFieldDecorator('serviceAccountOpenid', {
+                    initialValue: selectedRow.serviceAccountOpenid,
+                    rules: [{ required: true, message: '请输入服务号OpenID' }],
                   })(
-                    <Input placeholder="请输入微信APP" />
+                    <Input placeholder="请输入服务号OpenID" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.wechatUnionId} {...formItemLayout}>
+                  {getFieldDecorator('wechatUnionId', {
+                    initialValue: selectedRow.wechatUnionId,
+                    rules: [{ required: true, message: '请输入微信UnionID' }],
+                  })(
+                    <Input placeholder="请输入微信UnionID" />
                     
                   )}
                 </Form.Item>
@@ -321,6 +336,126 @@ class CustomerUpdateForm extends Component {
                 </Form.Item>
               </Col>
 
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.mobileNumber} {...formItemLayout}>
+                  {getFieldDecorator('mobileNumber', {
+                    initialValue: selectedRow.mobileNumber,
+                    rules: [{ required: true, message: '请输入手机号码' }],
+                  })(
+                    <Input placeholder="请输入手机号码" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.birthday} {...formItemLayout}>
+                  {getFieldDecorator('birthday', {
+                    initialValue: selectedRow.birthday,
+                    rules: [{ required: true, message: '请输入生日' }],
+                  })(
+                    <DatePicker format="YYYY-MM-DD" placeholder="请输入生日" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.sexuality} {...formItemLayout}>
+                  {getFieldDecorator('sexuality', {
+                    initialValue: selectedRow.sexuality,
+                    rules: [{ required: true, message: '请输入性别' }],
+                  })(
+                    <Input placeholder="请输入性别" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.realName} {...formItemLayout}>
+                  {getFieldDecorator('realName', {
+                    initialValue: selectedRow.realName,
+                    rules: [{ required: true, message: '请输入的真实姓名' }],
+                  })(
+                    <Input placeholder="请输入的真实姓名" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.identityCardNumber} {...formItemLayout}>
+                  {getFieldDecorator('identityCardNumber', {
+                    initialValue: selectedRow.identityCardNumber,
+                    rules: [{ required: true, message: '请输入身份证号码' }],
+                  })(
+                    <Input placeholder="请输入身份证号码" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.familyAddress} {...formItemLayout}>
+                  {getFieldDecorator('familyAddress', {
+                    initialValue: selectedRow.familyAddress,
+                    rules: [{ required: true, message: '请输入家庭地址' }],
+                  })(
+                    <Input placeholder="请输入家庭地址" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.memberServiceStartDate} {...formItemLayout}>
+                  {getFieldDecorator('memberServiceStartDate', {
+                    initialValue: selectedRow.memberServiceStartDate,
+                    rules: [{ required: true, message: '请输入会员服务开始日期' }],
+                  })(
+                    <DatePicker format="YYYY-MM-DD" placeholder="请输入会员服务开始日期" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.memberServiceExpireDate} {...formItemLayout}>
+                  {getFieldDecorator('memberServiceExpireDate', {
+                    initialValue: selectedRow.memberServiceExpireDate,
+                    rules: [{ required: true, message: '请输入会员服务到期日期' }],
+                  })(
+                    <DatePicker format="YYYY-MM-DD" placeholder="请输入会员服务到期日期" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.memberServiceDailyPay} {...formItemLayout}>
+                  {getFieldDecorator('memberServiceDailyPay', {
+                    initialValue: selectedRow.memberServiceDailyPay,
+                    rules: [{ required: true, message: '请输入日均会员费' }],
+                  })(
+                    <Input placeholder="请输入日均会员费" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.accountBalance} {...formItemLayout}>
+                  {getFieldDecorator('accountBalance', {
+                    initialValue: selectedRow.accountBalance,
+                    rules: [{ required: true, message: '请输入帐户余额' }],
+                  })(
+                    <Input placeholder="请输入帐户余额" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
             </Row>
           </Form>  
         </Card>
@@ -328,23 +463,6 @@ class CustomerUpdateForm extends Component {
         
         
         
-
-        <Card title="头像" className={styles.card} bordered={false}>
-          <Form >
-            <Row gutter={16}>
-              <Col lg={24} md={24} sm={24}>
-                <Form.Item>
-                  {getFieldDecorator('logoImage', {
-                  	initialValue: selectedRow.logoImage,
-                    rules: [{  required: true, message: '请输入头像' }],
-                  })(
-                    <TextArea rows={4} placeholder="请输入请输入头像" />
-                  )}
-                </Form.Item>
-              </Col>
-            </Row>
-          </Form>
-        </Card>
 
 
         <Card title={<div>附件 <Popover title="扫描二维码可以从手机上传图片或者附件" content={<div><img src='./qrtest.png'/></div>}><Icon type="qrcode" ></Icon></Popover></div>} className={styles.card} bordered={false}>

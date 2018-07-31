@@ -135,9 +135,9 @@ class FormActionSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="消息键值">
+            <FormItem label="语言环境的关键">
               {getFieldDecorator('localeKey')(
-                <Input placeholder="请输入消息键值" />
+                <Input placeholder="请输入语言环境的关键" />
               )}
             </FormItem>
           </Col>
@@ -184,14 +184,5 @@ class FormActionSearchForm extends PureComponent {
 }
 
 export default Form.create()(FormActionSearchForm)
-
-
-
-
-
-
-
-
-
 
 

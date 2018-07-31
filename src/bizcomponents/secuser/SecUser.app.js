@@ -11,7 +11,7 @@ import {
   Spin,
   Breadcrumb,
   AutoComplete,
-  Input,
+  Input,Button
 } from 'antd'
 import DocumentTitle from 'react-document-title'
 import { connect } from 'dva'
@@ -138,41 +138,6 @@ class SecUserBizApp extends React.PureComponent {
 
 
 
-  getCustomerSearch = () => {
-    const {CustomerSearch} = GlobalComponents;
-    return connect(state => ({
-      rule: state.rule,
-      data: state._secUser.customerList,
-      count: state._secUser.customerCount,
-      currentPage: state._secUser.customerCurrentPageNumber,
-      searchFormParameters: state._secUser.customerSearchFormParameters,
-      loading: state._secUser.loading,
-      partialList: state._secUser.partialList,
-      owner: { type: '_secUser', id: state._secUser.id, referenceName: 'secUser', listName: 'customerList', ref:state._secUser, listDisplayName: '客户列表' }, // this is for model namespace and
-    }))(CustomerSearch)
-  }
-  getCustomerCreateForm = () => {
-   	const {CustomerCreateForm} = GlobalComponents;
-    return connect(state => ({
-      rule: state.rule,
-      data: state._secUser.customerList,
-      count: state._secUser.customerCount,
-      currentPage: state._secUser.customerCurrentPageNumber,
-      searchFormParameters: state._secUser.customerSearchFormParameters,
-      loading: state._secUser.loading,
-      owner: { type: '_secUser', id: state._secUser.id, referenceName: 'secUser', listName: 'customerList', ref:state._secUser, listDisplayName: '客户列表'}, // this is for model namespace and
-    }))(CustomerCreateForm)
-  }
-  
-  getCustomerUpdateForm = () => {
-  	const {CustomerUpdateForm} = GlobalComponents;
-    return connect(state => ({
-      selectedRows: state._secUser.selectedRows,
-      currentUpdateIndex: state._secUser.currentUpdateIndex,
-      owner: { type: '_secUser', id: state._secUser.id, listName: 'customerList', ref:state._secUser, listDisplayName: '客户列表' }, // this is for model namespace and
-    }))(CustomerUpdateForm)
-  }
-
   getUserAppSearch = () => {
     const {UserAppSearch} = GlobalComponents;
     return connect(state => ({
@@ -252,10 +217,6 @@ class SecUserBizApp extends React.PureComponent {
   	{path:"/secUser/:id/dashboard", component: SecUserDashboard},
   	
   	
-  	{path:"/secUser/:id/list/customerList", component: this.getCustomerSearch()},
-  	{path:"/secUser/:id/list/customerCreateForm", component: this.getCustomerCreateForm()},
-  	{path:"/secUser/:id/list/customerUpdateForm", component: this.getCustomerUpdateForm()},
-   	
   	{path:"/secUser/:id/list/userAppList", component: this.getUserAppSearch()},
   	{path:"/secUser/:id/list/userAppCreateForm", component: this.getUserAppCreateForm()},
   	{path:"/secUser/:id/list/userAppUpdateForm", component: this.getUserAppUpdateForm()},
@@ -282,7 +243,7 @@ class SecUserBizApp extends React.PureComponent {
   getPageTitle = () => {
     // const { location } = this.props
     // const { pathname } = location
-    const title = '代审车服务平台'
+    const title = '书香社区'
     return title
   }
  
@@ -299,7 +260,11 @@ class SecUserBizApp extends React.PureComponent {
        payload: !collapsed,
      })
    }
-
+    logout = () => {
+   
+    console.log("log out called")
+    this.props.dispatch({ type: 'launcher/signOut' })
+  }
    render() {
      // const { collapsed, fetchingNotices,loading } = this.props
      const { collapsed } = this.props
@@ -333,18 +298,11 @@ class SecUserBizApp extends React.PureComponent {
 
           })}
          </div>
-          <div className={styles.right}>
+          <div className={styles.right}  >
+          <Button type="primary"  icon="logout" onClick={()=>this.logout()}>
+          退出</Button>
+          </div>
           
-          <AutoComplete
-            className="certain-category-search"
-            placeholder="请输入名称"
-            optionLabelProp="value"
-            
-          >
-            <Input
-              suffix={<Icon type="search" className="certain-category-icon" />}
-            />
-          </AutoComplete> </div>
         </Header>
        <Layout>
          <Sider

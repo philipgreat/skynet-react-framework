@@ -16,8 +16,8 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
-  platformId: 'CIP000001',
-  userAgreement: '<div>\
+  platformId: 'BSP000001',
+  memberServiceAgreement: '<div>\
 	<h1>一级会员服务</h1>\
 	<ul>\
 		<li>可以借阅图书</li>\
@@ -25,7 +25,15 @@ const testValues = {
 		<li>可以报名参加活动</li>\
 	</ul>\
 </div>',
-  invoiceInstruction: '<div>\
+  bookSharingAgreement: '<div>\
+	<h1>一级会员服务</h1>\
+	<ul>\
+		<li>可以借阅图书</li>\
+		<li>可以购买</li>\
+		<li>可以报名参加活动</li>\
+	</ul>\
+</div>',
+  accountRechargeAgreement: '<div>\
 	<h1>一级会员服务</h1>\
 	<ul>\
 		<li>可以借阅图书</li>\
@@ -79,7 +87,7 @@ class PlatformConfigurationCreateForm extends Component {
     
     const id = "";//not used for now
     const pageNo = 1;
-    const future = PlatformConfigurationService.requestCandidatePlatform("carInspectionPlatform", id, filterKey, pageNo);
+    const future = PlatformConfigurationService.requestCandidatePlatform("bookSharingPlatform", id, filterKey, pageNo);
     console.log(future);
     
 
@@ -260,15 +268,15 @@ class PlatformConfigurationCreateForm extends Component {
 
 
 
-        <Card title="用户协议" className={styles.card} bordered={false}>
+        <Card title="会员服务协议" className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
               <Col lg={24} md={24} sm={24}>
                 <Form.Item>
-                  {getFieldDecorator('userAgreement', {
-                    rules: [{ required: true, message: '请输入用户协议' }],
+                  {getFieldDecorator('memberServiceAgreement', {
+                    rules: [{ required: true, message: '请输入会员服务协议' }],
                   })(
-                    <TextArea rows={4} placeholder="请输入请输入用户协议" />
+                    <TextArea rows={4} placeholder="请输入请输入会员服务协议" />
                   )}
                 </Form.Item>
               </Col>
@@ -276,15 +284,31 @@ class PlatformConfigurationCreateForm extends Component {
           </Form>  
         </Card>
 
-        <Card title="发票说明" className={styles.card} bordered={false}>
+        <Card title="图书共享协议" className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
               <Col lg={24} md={24} sm={24}>
                 <Form.Item>
-                  {getFieldDecorator('invoiceInstruction', {
-                    rules: [{ required: true, message: '请输入发票说明' }],
+                  {getFieldDecorator('bookSharingAgreement', {
+                    rules: [{ required: true, message: '请输入图书共享协议' }],
                   })(
-                    <TextArea rows={4} placeholder="请输入请输入发票说明" />
+                    <TextArea rows={4} placeholder="请输入请输入图书共享协议" />
+                  )}
+                </Form.Item>
+              </Col>
+      </Row>
+          </Form>  
+        </Card>
+
+        <Card title="账户充值协议" className={styles.card} bordered={false}>
+          <Form >
+            <Row gutter={16}>
+              <Col lg={24} md={24} sm={24}>
+                <Form.Item>
+                  {getFieldDecorator('accountRechargeAgreement', {
+                    rules: [{ required: true, message: '请输入账户充值协议' }],
+                  })(
+                    <TextArea rows={4} placeholder="请输入请输入账户充值协议" />
                   )}
                 </Form.Item>
               </Col>

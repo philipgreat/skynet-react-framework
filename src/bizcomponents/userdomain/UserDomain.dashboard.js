@@ -286,10 +286,11 @@ class UserDomainDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, secUserCount } = this.props.userDomain
+    const { id,displayName, secUserCount, actionTokenCount } = this.props.userDomain
     const cardsData = {cardsName:"用户域",cardsFor: "userDomain",cardsSource: this.props.userDomain,
   		subItems: [
 {name: 'secUserList', displayName:'SEC的用户',type:'secUser',count:secUserCount},
+{name: 'actionTokenList', displayName:'行动令牌',type:'actionToken',count:actionTokenCount},
     
       	],
   	};
