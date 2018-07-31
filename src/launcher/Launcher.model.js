@@ -1,7 +1,7 @@
 
 import { routerRedux } from 'dva/router'
 import key from 'keymaster'
-
+import { notification } from 'antd'
 import LauncherService from './Launcher.service'
 import GlobalComponents from '../custcomponents'
 import SystemConfig  from '../axios/config'
@@ -56,6 +56,9 @@ export default {
         return
       }
       if (data.class.indexOf('LoginForm') > 0) {
+
+        
+
         yield put({ type: 'showlogin', payload: { data } })
         return
       }
@@ -79,6 +82,10 @@ export default {
         return
       }
       if (data.class.indexOf('LoginForm') > 0) {
+        notification.error({
+          message: data.errorMessage,
+          description: data.errorMessage,
+        })
         yield put({ type: 'showlogin', payload: { data } })
         return
       }
@@ -118,8 +125,10 @@ export default {
     updateState(state, action) {
       return { ...state, ...action.payload }
     },
-    showlogin(state) {
-      return { ...state, loggedIn: false }
+    showlogin(state, action) {
+      const { data } = action.payload
+      console.log("data from server ",data)
+      return { ...state, loggedIn: false,data }
     },
     showhome(state, action) {
       const { data } = action.payload

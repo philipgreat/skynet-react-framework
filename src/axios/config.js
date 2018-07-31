@@ -1,5 +1,5 @@
 //savefileifnotexist
-export const SYSTEM_SHORT_NAME = "cis" //Use for requssting different apps
+export const SYSTEM_SHORT_NAME = "shuxiang" //Use for requssting different apps
 export const SYSTEM_LOCAL_NAME = "代审车服务平台" 
 export const BUILD_TIIME="Mon Jun 25 10:38:22 CST 2018"
 export const MEDIA_UPLOAD_URL="https://xm.jl51.com.cn/mss/upload.html"
