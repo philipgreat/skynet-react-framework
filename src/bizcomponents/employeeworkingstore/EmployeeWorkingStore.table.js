@@ -47,19 +47,26 @@ class EmployeeWorkingStoreTable extends PureComponent {
     if(!referenceName){
       return displayColumns
     }
+
+    //const x=`sdfsdf`
+
+
     const remainColumns = displayColumns.filter((item,index)=> item.dataIndex!=referenceName&&index<7&&item.dataIndex!=='content')
     //fixed: 'right',
     const operationColumn={
-      title: '操作',
+      title:`操作`,
       render: (text, record) => (
+        
         <span>
           <a key="__" onClick={()=>this.gotoEdit(text, record)}>编辑</a>
+          <span className={styles.splitLine} />
+          <Link to={`/store/${record.store.id}/dashboard`}>管理</Link>
           {
             record.actionList&&record.actionList.map((item)=>(<a key={item.actionId} onClick={()=>this.executeAction(item,text, record)}><span className={styles.splitLine} />{item.actionName}</a>))
 
           }
-        </span>
-      ),
+        </span>)
+    
     }
     remainColumns.push(
       operationColumn
