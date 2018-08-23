@@ -27,6 +27,7 @@ export default {
         dispatch(routerRedux.push(newlocation))
       })
     },
+    
     setup({ dispatch, history }) {
       history.listen((location) => {
         currentLocation = location.pathname

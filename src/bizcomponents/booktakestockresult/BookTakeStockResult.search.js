@@ -200,7 +200,9 @@ class BookTakeStockResultSearch extends PureComponent {
 
 
 <Menu.Item key="bookCopy">关联书籍副本</Menu.Item>
+<Menu.Item key="bookTakeStockStatus">关联图书盘点状态</Menu.Item>
 <Menu.Item key="employee">关联员工</Menu.Item>
+<Menu.Item key="takeStoreResults">关联盘点结果</Menu.Item>
 <Menu.Item key="bookTakeStockPlan">关联图书盘点计划</Menu.Item>
       
 

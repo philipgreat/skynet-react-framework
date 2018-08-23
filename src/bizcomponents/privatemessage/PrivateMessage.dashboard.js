@@ -267,7 +267,8 @@ const internalSummaryOf = (privateMessage,targetComponent) =>{
   style={{fontSize: 20,color:"red"}} />
 </Description>
 <Description term="发送时间">{ moment(privateMessage.deliveryTime).format('YYYY-MM-DD')}</Description> 
-<Description term="链接">{privateMessage.link}</Description> 
+<Description term="项目类型">{privateMessage.itemType}</Description> 
+<Description term="项Id">{privateMessage.itemId}</Description> 
 	
         {buildTransferModal(privateMessage,targetComponent)}
       </DescriptionList>

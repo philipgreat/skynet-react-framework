@@ -98,17 +98,33 @@ const transferToAnotherReturnStore = (id, parameters) => {
 
 
 
+const requestCandidateBorrowingStatus = (ownerClass, id, filterKey, pageNo) => {
+  //const parametersExpr = joinParameters(parameters)
+  return get({
+    url: `${PREFIX}borrowingHistoryManager/requestCandidateBorrowingStatus/${ownerClass}/${id}/${filterKey}/${pageNo}/`,
+  })
+}	
+
+const transferToAnotherBorrowingStatus = (id, parameters) => {
+  //const parametersExpr = joinParameters(parameters)
+  const url = `${PREFIX}borrowingHistoryManager/transferToAnotherBorrowingStatus/id/anotherBorrowingStatusId/`
+  const requestParameters = {id, ...parameters}
+  return postForm({url,requestParameters})
+}
+
+
+
 
 
 
 const addBorrowingExpiredSku = (targetObjectId, parameters) => {
-  const url = `${PREFIX}borrowingHistoryManager/addBorrowingExpiredSku/borrowingHistoryId/borrowerId/bookCopyId/bookId/bookName/lendingStoreId/lendingDatetime/returnStoreId/returnDatetime/expiredDays/expiredFee/costPaymentStatus/tokensExpr/`
+  const url = `${PREFIX}borrowingHistoryManager/addBorrowingExpiredSku/borrowingHistoryId/borrowerId/bookCopyId/bookId/bookName/lendingStoreId/lendingDatetime/returnStoreId/returnDatetime/expiredDays/expiredFee/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateBorrowingExpiredSku = (targetObjectId, parameters) => {
-  const url = `${PREFIX}borrowingHistoryManager/updateBorrowingExpiredSkuProperties/borrowingHistoryId/id/bookName/lendingDatetime/returnDatetime/expiredDays/expiredFee/costPaymentStatus/tokensExpr/`
+  const url = `${PREFIX}borrowingHistoryManager/updateBorrowingExpiredSkuProperties/borrowingHistoryId/id/bookName/lendingDatetime/returnDatetime/expiredDays/expiredFee/tokensExpr/`
   const borrowingHistoryId = targetObjectId
   const requestParameters = { ...parameters, borrowingHistoryId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
@@ -131,10 +147,12 @@ const BorrowingHistoryService = { view,
   requestCandidateBookCopy,
   requestCandidateLendingStore,
   requestCandidateReturnStore,
+  requestCandidateBorrowingStatus,
   transferToAnotherBorrower,
   transferToAnotherBook,
   transferToAnotherBookCopy,
   transferToAnotherLendingStore,
-  transferToAnotherReturnStore }
+  transferToAnotherReturnStore,
+  transferToAnotherBorrowingStatus }
 export default BorrowingHistoryService
 

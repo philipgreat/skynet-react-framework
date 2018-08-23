@@ -204,6 +204,7 @@ class BorrowingHistorySearch extends PureComponent {
 <Menu.Item key="bookCopy">关联书籍副本</Menu.Item>
 <Menu.Item key="lendingStore">关联借出网点</Menu.Item>
 <Menu.Item key="returnStore">关联还书网点</Menu.Item>
+<Menu.Item key="borrowingStatus">关联借书状态</Menu.Item>
       
 
       </Menu>

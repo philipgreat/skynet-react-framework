@@ -7,7 +7,6 @@ const menuData = {menuName:"帐户数据", menuFor: "accountData",
   {name: 'platformAccountList', displayName:'平台账户', icon:'at'},
   {name: 'fundationAccountList', displayName:'平台基金账户', icon:'at'},
   {name: 'storeAccountList', displayName:'网点账户', icon:'cc'},
-  {name: 'transactionTypeList', displayName:'交易类型', icon:'glass'},
   
   		],
 }

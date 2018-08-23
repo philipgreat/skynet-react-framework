@@ -5,7 +5,6 @@ import moment from 'moment'
 const menuData = {menuName:"图书共享平台", menuFor: "bookSharingPlatform",
   		subItems: [
   {name: 'platformConfigurationList', displayName:'平台配置', icon:'at'},
-  {name: 'availableTokenList', displayName:'可用的权益', icon:'glass'},
   {name: 'accountDataList', displayName:'帐户数据', icon:'database'},
   {name: 'cityList', displayName:'城市', icon:'glass'},
   {name: 'bookPlazaList', displayName:'图书天地', icon:'book'},
@@ -17,6 +16,8 @@ const menuData = {menuName:"图书共享平台", menuFor: "bookSharingPlatform",
   {name: 'storeList', displayName:'服务网点', icon:'glass'},
   {name: 'campaignPlazaList', displayName:'活动广场', icon:'glass'},
   {name: 'customerList', displayName:'用户', icon:'glass'},
+  {name: 'employeeList', displayName:'员工', icon:'glass'},
+  {name: 'undistributedProfitList', displayName:'未分配利润', icon:'glass'},
   
   		],
 }

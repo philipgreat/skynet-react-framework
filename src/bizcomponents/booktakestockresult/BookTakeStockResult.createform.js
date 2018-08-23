@@ -16,10 +16,11 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
-  bookTakeStockStatus: '未盘点',
-  results: '在库',
+  bookName: '飘',
   bookCopyId: 'BC000001',
+  bookTakeStockStatusId: 'BTSS000001',
   employeeId: 'E000001',
+  takeStoreResultsId: 'TSR000001',
   bookTakeStockPlanId: 'BTSP000001',
 }
 */
@@ -45,7 +46,13 @@ class BookTakeStockResultCreateForm extends Component {
     this.executeCandidateBookCopySearch("")
     
     
+    this.executeCandidateBookTakeStockStatusSearch("")
+    
+    
     this.executeCandidateEmployeeSearch("")
+    
+    
+    this.executeCandidateTakeStoreResultsSearch("")
     
     
     this.executeCandidateBookTakeStockPlanSearch("")
@@ -89,6 +96,28 @@ class BookTakeStockResultCreateForm extends Component {
     this.executeCandidateBookCopySearch(value)
   }
 
+  executeCandidateBookTakeStockStatusSearch = (filterKey) =>{
+
+    const {BookTakeStockResultService} = GlobalComponents;
+    
+    const id = "";//not used for now
+    const pageNo = 1;
+    const future = BookTakeStockResultService.requestCandidateBookTakeStockStatus("bookTakeStockStatus", id, filterKey, pageNo);
+    console.log(future);
+    
+
+    future.then(candidateBookTakeStockStatusList=>{
+      this.setState({
+        candidateBookTakeStockStatusList
+      })
+
+    })
+
+  }	 
+  handleCandidateBookTakeStockStatusSearch = (value) => {
+    this.executeCandidateBookTakeStockStatusSearch(value)
+  }
+
   executeCandidateEmployeeSearch = (filterKey) =>{
 
     const {BookTakeStockResultService} = GlobalComponents;
@@ -109,6 +138,28 @@ class BookTakeStockResultCreateForm extends Component {
   }	 
   handleCandidateEmployeeSearch = (value) => {
     this.executeCandidateEmployeeSearch(value)
+  }
+
+  executeCandidateTakeStoreResultsSearch = (filterKey) =>{
+
+    const {BookTakeStockResultService} = GlobalComponents;
+    
+    const id = "";//not used for now
+    const pageNo = 1;
+    const future = BookTakeStockResultService.requestCandidateTakeStoreResults("takeStoreResults", id, filterKey, pageNo);
+    console.log(future);
+    
+
+    future.then(candidateTakeStoreResultsList=>{
+      this.setState({
+        candidateTakeStoreResultsList
+      })
+
+    })
+
+  }	 
+  handleCandidateTakeStoreResultsSearch = (value) => {
+    this.executeCandidateTakeStoreResultsSearch(value)
   }
 
   executeCandidateBookTakeStockPlanSearch = (filterKey) =>{
@@ -248,11 +299,29 @@ class BookTakeStockResultCreateForm extends Component {
     }   
     
     
+    const {candidateBookTakeStockStatusList} = this.state
+    if(!candidateBookTakeStockStatusList){
+      return (<div>等等</div>)
+    }
+    if(!candidateBookTakeStockStatusList.candidates){
+      return (<div>等等</div>)
+    }   
+    
+    
     const {candidateEmployeeList} = this.state
     if(!candidateEmployeeList){
       return (<div>等等</div>)
     }
     if(!candidateEmployeeList.candidates){
+      return (<div>等等</div>)
+    }   
+    
+    
+    const {candidateTakeStoreResultsList} = this.state
+    if(!candidateTakeStoreResultsList){
+      return (<div>等等</div>)
+    }
+    if(!candidateTakeStoreResultsList.candidates){
       return (<div>等等</div>)
     }   
     
@@ -304,21 +373,11 @@ class BookTakeStockResultCreateForm extends Component {
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.bookTakeStockStatus} {...formItemLayout}>
-                  {getFieldDecorator('bookTakeStockStatus', {
-                    rules: [{ required: true, message: '请输入图书盘点状态' }],
+                <Form.Item label={fieldLabels.bookName} {...formItemLayout}>
+                  {getFieldDecorator('bookName', {
+                    rules: [{ required: true, message: '请输入书名' }],
                   })(
-                    <Input placeholder="请输入图书盘点状态" />
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.results} {...formItemLayout}>
-                  {getFieldDecorator('results', {
-                    rules: [{ required: true, message: '请输入结果' }],
-                  })(
-                    <Input placeholder="请输入结果" />
+                    <Input placeholder="请输入书名" />
                   )}
                 </Form.Item>
               </Col>
@@ -370,6 +429,31 @@ class BookTakeStockResultCreateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.bookTakeStockStatus} {...formItemLayout}>
+                  {getFieldDecorator('bookTakeStockStatusId', {
+                  	initialValue: tryinit('bookTakeStockStatus'),
+                    rules: [{ required: true, message: '请输入图书盘点状态' }],
+                  })(
+                  
+                  <AutoComplete
+                    dataSource={candidateBookTakeStockStatusList.candidates}
+                    
+                    
+                    onSearch={this.handleCandidateBookTakeStockStatusSearch}
+                    placeholder="请输入图书盘点状态"
+                    
+                    disabled={!availableForEdit('bookTakeStockStatus')}
+                  >
+                  {candidateBookTakeStockStatusList.candidates.map(item=>{
+                return (<Option key={item.id}>{`${item.name}(${item.id})`}</Option>);
+            })}
+                  
+                  </AutoComplete>
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.employee} {...formItemLayout}>
                   {getFieldDecorator('employeeId', {
                   	initialValue: tryinit('employee'),
@@ -386,6 +470,31 @@ class BookTakeStockResultCreateForm extends Component {
                     disabled={!availableForEdit('employee')}
                   >
                   {candidateEmployeeList.candidates.map(item=>{
+                return (<Option key={item.id}>{`${item.name}(${item.id})`}</Option>);
+            })}
+                  
+                  </AutoComplete>
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.takeStoreResults} {...formItemLayout}>
+                  {getFieldDecorator('takeStoreResultsId', {
+                  	initialValue: tryinit('takeStoreResults'),
+                    rules: [{ required: true, message: '请输入盘点结果' }],
+                  })(
+                  
+                  <AutoComplete
+                    dataSource={candidateTakeStoreResultsList.candidates}
+                    
+                    
+                    onSearch={this.handleCandidateTakeStoreResultsSearch}
+                    placeholder="请输入盘点结果"
+                    
+                    disabled={!availableForEdit('takeStoreResults')}
+                  >
+                  {candidateTakeStoreResultsList.candidates.map(item=>{
                 return (<Option key={item.id}>{`${item.name}(${item.id})`}</Option>);
             })}
                   

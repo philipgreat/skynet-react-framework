@@ -119,6 +119,7 @@ class EmployeeBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/employee/${this.props.employee.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class EmployeeBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/employee/${this.props.employee.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -457,9 +461,13 @@ class EmployeeBizApp extends React.PureComponent {
   
   buildRouters = () =>{
   	const {EmployeeDashboard} = GlobalComponents
+  	const {EmployeePreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/employee/:id/dashboard", component: EmployeeDashboard},
+  	{path:"/employee/:id/preference", component: EmployeePreference},
+  	
   	
   	
   	{path:"/employee/:id/list/messageTemplateList", component: this.getMessageTemplateSearch()},
@@ -561,7 +569,7 @@ class EmployeeBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

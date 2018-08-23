@@ -256,7 +256,7 @@ const internalSummaryOf = (bookPlaza,targetComponent) =>{
 	return (
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="ID">{bookPlaza.id}</Description> 
-<Description term="本广场的名字">{bookPlaza.bookPlazaName}</Description> 
+<Description term="名称">{bookPlaza.bookPlazaName}</Description> 
 	
         {buildTransferModal(bookPlaza,targetComponent)}
       </DescriptionList>
@@ -294,7 +294,6 @@ class BookPlazaDashboard extends Component {
 {name: 'bookDonationIncomeMetricList', displayName:'捐赠图书收益分成配置',type:'bookDonationIncomeMetric',count:bookDonationIncomeMetricCount},
 {name: 'memberServiceIncomeMetricList', displayName:'会员服务费收入分成配置',type:'memberServiceIncomeMetric',count:memberServiceIncomeMetricCount},
 {name: 'bookList', displayName:'书',type:'book',count:bookCount},
-{name: 'bookCopyStatusList', displayName:'书籍副本状态',type:'bookCopyStatus',count:bookCopyStatusCount},
 {name: 'bookReviewList', displayName:'书评',type:'bookReview',count:bookReviewCount},
     
       	],

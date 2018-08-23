@@ -35,7 +35,7 @@ export default {
       const link = payload.pathname
       //if the data in the cache, just show it, there is no delay
       if(cachedData.class){
-        yield put({ type: 'breadcrumb/gotoLink', payload: { displayName:cachedData.displayName,link }} )
+        //yield put({ type: 'breadcrumb/gotoLink', payload: { displayName:cachedData.displayName,link }} )
         yield put({ type: 'updateState', payload: cachedData })
       }else{
         yield put({ type: 'showLoading', payload })
@@ -46,9 +46,9 @@ export default {
       
       const displayName = payload.displayName||data.displayName
       
-      if(!cachedData.class){
-        yield put({ type: 'breadcrumb/gotoLink', payload: { displayName,link }} )
-      }
+      
+      yield put({ type: 'breadcrumb/gotoLink', payload: { displayName,link }} )
+      
 
       yield put({ type: 'updateState', payload: data })
     },
@@ -1074,6 +1074,82 @@ export default {
       const { id, type, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.removeCampaignList, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      // const location = { pathname: `store/${id}/list/${type}List`, state: data}
+      // yield put(routerRedux.push(location))
+    },
+
+    *addCustomer({ payload }, { call, put }) {
+      const {StoreService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(StoreService.addCustomer, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/store/${id}/list/${type}List/用户列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateCustomer({ payload }, { call, put }) {
+      const {StoreService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(StoreService.updateCustomer, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/store/${id}/list/${type}List/用户列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextCustomerUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeCustomerList({ payload }, { call, put }) {
+      const {StoreService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(StoreService.removeCustomerList, id, parameters)
       if (hasError(data)) {
         handleServerError(data)
         return

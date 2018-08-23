@@ -17,7 +17,6 @@ const displayColumns = [
   { title: '交易类型', dataIndex: 'transactionType', render: (text, record) => (record.transactionType ? record.transactionType.displayName : '暂无') },
   { title: '平台账户', dataIndex: 'platformAccount', render: (text, record) => (record.platformAccount ? record.platformAccount.displayName : '暂无') },
   { title: '相关订单', dataIndex: 'relatedMainOrder', render: (text, record) => (record.relatedMainOrder ? record.relatedMainOrder.displayName : '暂无') },
-  { title: '会员服务收益', dataIndex: 'memberServiceRevenue', render: (text, record) => (record.memberServiceRevenue ? record.memberServiceRevenue.displayName : '暂无') },
   { title: '日期时间', dataIndex: 'datetime', render: (text, record) => moment(record.datetime).format('YYYY-MM-DD HH:mm:ss') },
 
 ]
@@ -29,7 +28,6 @@ const fieldLabels = {
   transactionType: '交易类型',
   platformAccount: '平台账户',
   relatedMainOrder: '相关订单',
-  memberServiceRevenue: '会员服务收益',
   datetime: '日期时间',
 
 }

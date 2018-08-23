@@ -201,6 +201,7 @@ class MemberServiceRevenueSearch extends PureComponent {
 
 <Menu.Item key="member">关联会员</Menu.Item>
 <Menu.Item key="store">关联服务网点</Menu.Item>
+<Menu.Item key="mainOrder">关联主订单</Menu.Item>
       
 
       </Menu>

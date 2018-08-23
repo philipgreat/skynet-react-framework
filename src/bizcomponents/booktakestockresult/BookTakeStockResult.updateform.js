@@ -263,24 +263,12 @@ class BookTakeStockResultUpdateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.bookTakeStockStatus} {...formItemLayout}>
-                  {getFieldDecorator('bookTakeStockStatus', {
-                    initialValue: selectedRow.bookTakeStockStatus,
-                    rules: [{ required: true, message: '请输入图书盘点状态' }],
+                <Form.Item label={fieldLabels.bookName} {...formItemLayout}>
+                  {getFieldDecorator('bookName', {
+                    initialValue: selectedRow.bookName,
+                    rules: [{ required: true, message: '请输入书名' }],
                   })(
-                    <Input placeholder="请输入图书盘点状态" />
-                    
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.results} {...formItemLayout}>
-                  {getFieldDecorator('results', {
-                    initialValue: selectedRow.results,
-                    rules: [{ required: true, message: '请输入结果' }],
-                  })(
-                    <Input placeholder="请输入结果" />
+                    <Input placeholder="请输入书名" />
                     
                   )}
                 </Form.Item>

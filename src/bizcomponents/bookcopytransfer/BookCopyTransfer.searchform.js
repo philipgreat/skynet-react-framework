@@ -65,7 +65,6 @@ class BookCopyTransferSearchForm extends PureComponent {
       const params = {
         ...this.buildStringSearchParameters(fieldsValue, 'id'),
         ...this.buildStringSearchParameters(fieldsValue, 'bookName'),
-        ...this.buildStringSearchParameters(fieldsValue, 'transferType'),
 
       }
       const { owner } = this.props
@@ -127,14 +126,6 @@ class BookCopyTransferSearchForm extends PureComponent {
             <FormItem label="书名">
               {getFieldDecorator('bookName')(
                 <Input placeholder="请输入书名" />
-              )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
-            <FormItem label="转移类型">
-              {getFieldDecorator('transferType')(
-                <Input placeholder="请输入转移类型" />
               )}
             </FormItem>
           </Col>

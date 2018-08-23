@@ -17,11 +17,10 @@ const testValues = {};
 /*
 const testValues = {
   summary: '共享图书《书名》付费阅读收益',
-  amount: '0.98',
+  amount: '1.00',
   transactionTypeId: 'TT000001',
   platformAccountId: 'PA000001',
   relatedMainOrderId: 'MO000001',
-  memberServiceRevenueId: 'MSR000001',
 }
 */
 const imageURLPrefix = '//localhost:2090'
@@ -50,9 +49,6 @@ class PlatformAccountDetailsCreateForm extends Component {
     
     
     this.executeCandidateRelatedMainOrderSearch("")
-    
-    
-    this.executeCandidateMemberServiceRevenueSearch("")
     
  
     
@@ -135,28 +131,6 @@ class PlatformAccountDetailsCreateForm extends Component {
   }	 
   handleCandidateRelatedMainOrderSearch = (value) => {
     this.executeCandidateRelatedMainOrderSearch(value)
-  }
-
-  executeCandidateMemberServiceRevenueSearch = (filterKey) =>{
-
-    const {PlatformAccountDetailsService} = GlobalComponents;
-    
-    const id = "";//not used for now
-    const pageNo = 1;
-    const future = PlatformAccountDetailsService.requestCandidateMemberServiceRevenue("memberServiceRevenue", id, filterKey, pageNo);
-    console.log(future);
-    
-
-    future.then(candidateMemberServiceRevenueList=>{
-      this.setState({
-        candidateMemberServiceRevenueList
-      })
-
-    })
-
-  }	 
-  handleCandidateMemberServiceRevenueSearch = (value) => {
-    this.executeCandidateMemberServiceRevenueSearch(value)
   }
  
 
@@ -288,15 +262,6 @@ class PlatformAccountDetailsCreateForm extends Component {
       return (<div>等等</div>)
     }
     if(!candidateRelatedMainOrderList.candidates){
-      return (<div>等等</div>)
-    }   
-    
-    
-    const {candidateMemberServiceRevenueList} = this.state
-    if(!candidateMemberServiceRevenueList){
-      return (<div>等等</div>)
-    }
-    if(!candidateMemberServiceRevenueList.candidates){
       return (<div>等等</div>)
     }   
     
@@ -447,31 +412,6 @@ class PlatformAccountDetailsCreateForm extends Component {
                   >
                   {candidateRelatedMainOrderList.candidates.map(item=>{
                 return (<Option key={item.id}>{`${item.title}(${item.id})`}</Option>);
-            })}
-                  
-                  </AutoComplete>
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.memberServiceRevenue} {...formItemLayout}>
-                  {getFieldDecorator('memberServiceRevenueId', {
-                  	initialValue: tryinit('memberServiceRevenue'),
-                    rules: [{ required: true, message: '请输入会员服务收益' }],
-                  })(
-                  
-                  <AutoComplete
-                    dataSource={candidateMemberServiceRevenueList.candidates}
-                    
-                    
-                    onSearch={this.handleCandidateMemberServiceRevenueSearch}
-                    placeholder="请输入会员服务收益"
-                    
-                    disabled={!availableForEdit('memberServiceRevenue')}
-                  >
-                  {candidateMemberServiceRevenueList.candidates.map(item=>{
-                return (<Option key={item.id}>{`${item.memberName}(${item.id})`}</Option>);
             })}
                   
                   </AutoComplete>

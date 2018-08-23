@@ -119,6 +119,7 @@ class MainOrderBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/mainOrder/${this.props.mainOrder.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class MainOrderBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/mainOrder/${this.props.mainOrder.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -241,6 +245,41 @@ class MainOrderBizApp extends React.PureComponent {
       currentUpdateIndex: state._mainOrder.currentUpdateIndex,
       owner: { type: '_mainOrder', id: state._mainOrder.id, listName: 'orderLogList', ref:state._mainOrder, listDisplayName: 'Log列表' }, // this is for model namespace and
     }))(OrderLogUpdateForm)
+  }
+
+  getMemberServiceRevenueSearch = () => {
+    const {MemberServiceRevenueSearch} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._mainOrder.memberServiceRevenueList,
+      count: state._mainOrder.memberServiceRevenueCount,
+      currentPage: state._mainOrder.memberServiceRevenueCurrentPageNumber,
+      searchFormParameters: state._mainOrder.memberServiceRevenueSearchFormParameters,
+      loading: state._mainOrder.loading,
+      partialList: state._mainOrder.partialList,
+      owner: { type: '_mainOrder', id: state._mainOrder.id, referenceName: 'mainOrder', listName: 'memberServiceRevenueList', ref:state._mainOrder, listDisplayName: '会员服务收益列表' }, // this is for model namespace and
+    }))(MemberServiceRevenueSearch)
+  }
+  getMemberServiceRevenueCreateForm = () => {
+   	const {MemberServiceRevenueCreateForm} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._mainOrder.memberServiceRevenueList,
+      count: state._mainOrder.memberServiceRevenueCount,
+      currentPage: state._mainOrder.memberServiceRevenueCurrentPageNumber,
+      searchFormParameters: state._mainOrder.memberServiceRevenueSearchFormParameters,
+      loading: state._mainOrder.loading,
+      owner: { type: '_mainOrder', id: state._mainOrder.id, referenceName: 'mainOrder', listName: 'memberServiceRevenueList', ref:state._mainOrder, listDisplayName: '会员服务收益列表'}, // this is for model namespace and
+    }))(MemberServiceRevenueCreateForm)
+  }
+  
+  getMemberServiceRevenueUpdateForm = () => {
+  	const {MemberServiceRevenueUpdateForm} = GlobalComponents;
+    return connect(state => ({
+      selectedRows: state._mainOrder.selectedRows,
+      currentUpdateIndex: state._mainOrder.currentUpdateIndex,
+      owner: { type: '_mainOrder', id: state._mainOrder.id, listName: 'memberServiceRevenueList', ref:state._mainOrder, listDisplayName: '会员服务收益列表' }, // this is for model namespace and
+    }))(MemberServiceRevenueUpdateForm)
   }
 
   getPlatformAccountDetailsSearch = () => {
@@ -383,13 +422,52 @@ class MainOrderBizApp extends React.PureComponent {
     }))(CustomerAccountTransactionUpdateForm)
   }
 
+  getUndistributedProfitSearch = () => {
+    const {UndistributedProfitSearch} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._mainOrder.undistributedProfitList,
+      count: state._mainOrder.undistributedProfitCount,
+      currentPage: state._mainOrder.undistributedProfitCurrentPageNumber,
+      searchFormParameters: state._mainOrder.undistributedProfitSearchFormParameters,
+      loading: state._mainOrder.loading,
+      partialList: state._mainOrder.partialList,
+      owner: { type: '_mainOrder', id: state._mainOrder.id, referenceName: 'mainOrder', listName: 'undistributedProfitList', ref:state._mainOrder, listDisplayName: '未分配利润列表' }, // this is for model namespace and
+    }))(UndistributedProfitSearch)
+  }
+  getUndistributedProfitCreateForm = () => {
+   	const {UndistributedProfitCreateForm} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._mainOrder.undistributedProfitList,
+      count: state._mainOrder.undistributedProfitCount,
+      currentPage: state._mainOrder.undistributedProfitCurrentPageNumber,
+      searchFormParameters: state._mainOrder.undistributedProfitSearchFormParameters,
+      loading: state._mainOrder.loading,
+      owner: { type: '_mainOrder', id: state._mainOrder.id, referenceName: 'mainOrder', listName: 'undistributedProfitList', ref:state._mainOrder, listDisplayName: '未分配利润列表'}, // this is for model namespace and
+    }))(UndistributedProfitCreateForm)
+  }
+  
+  getUndistributedProfitUpdateForm = () => {
+  	const {UndistributedProfitUpdateForm} = GlobalComponents;
+    return connect(state => ({
+      selectedRows: state._mainOrder.selectedRows,
+      currentUpdateIndex: state._mainOrder.currentUpdateIndex,
+      owner: { type: '_mainOrder', id: state._mainOrder.id, listName: 'undistributedProfitList', ref:state._mainOrder, listDisplayName: '未分配利润列表' }, // this is for model namespace and
+    }))(UndistributedProfitUpdateForm)
+  }
+
 
   
   buildRouters = () =>{
   	const {MainOrderDashboard} = GlobalComponents
+  	const {MainOrderPreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/mainOrder/:id/dashboard", component: MainOrderDashboard},
+  	{path:"/mainOrder/:id/preference", component: MainOrderPreference},
+  	
   	
   	
   	{path:"/mainOrder/:id/list/lineItemList", component: this.getLineItemSearch()},
@@ -403,6 +481,10 @@ class MainOrderBizApp extends React.PureComponent {
   	{path:"/mainOrder/:id/list/orderLogList", component: this.getOrderLogSearch()},
   	{path:"/mainOrder/:id/list/orderLogCreateForm", component: this.getOrderLogCreateForm()},
   	{path:"/mainOrder/:id/list/orderLogUpdateForm", component: this.getOrderLogUpdateForm()},
+   	
+  	{path:"/mainOrder/:id/list/memberServiceRevenueList", component: this.getMemberServiceRevenueSearch()},
+  	{path:"/mainOrder/:id/list/memberServiceRevenueCreateForm", component: this.getMemberServiceRevenueCreateForm()},
+  	{path:"/mainOrder/:id/list/memberServiceRevenueUpdateForm", component: this.getMemberServiceRevenueUpdateForm()},
    	
   	{path:"/mainOrder/:id/list/platformAccountDetailsList", component: this.getPlatformAccountDetailsSearch()},
   	{path:"/mainOrder/:id/list/platformAccountDetailsCreateForm", component: this.getPlatformAccountDetailsCreateForm()},
@@ -419,6 +501,10 @@ class MainOrderBizApp extends React.PureComponent {
   	{path:"/mainOrder/:id/list/customerAccountTransactionList", component: this.getCustomerAccountTransactionSearch()},
   	{path:"/mainOrder/:id/list/customerAccountTransactionCreateForm", component: this.getCustomerAccountTransactionCreateForm()},
   	{path:"/mainOrder/:id/list/customerAccountTransactionUpdateForm", component: this.getCustomerAccountTransactionUpdateForm()},
+   	
+  	{path:"/mainOrder/:id/list/undistributedProfitList", component: this.getUndistributedProfitSearch()},
+  	{path:"/mainOrder/:id/list/undistributedProfitCreateForm", component: this.getUndistributedProfitCreateForm()},
+  	{path:"/mainOrder/:id/list/undistributedProfitUpdateForm", component: this.getUndistributedProfitUpdateForm()},
      	
   	
   	]
@@ -483,7 +569,7 @@ class MainOrderBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

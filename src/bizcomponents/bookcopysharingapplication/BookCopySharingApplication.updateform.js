@@ -275,18 +275,6 @@ class BookCopySharingApplicationUpdateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.deliverMethod} {...formItemLayout}>
-                  {getFieldDecorator('deliverMethod', {
-                    initialValue: selectedRow.deliverMethod,
-                    rules: [{ required: true, message: '请输入共享方式' }],
-                  })(
-                    <Input placeholder="请输入共享方式" />
-                    
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.contactAddress} {...formItemLayout}>
                   {getFieldDecorator('contactAddress', {
                     initialValue: selectedRow.contactAddress,
@@ -317,18 +305,6 @@ class BookCopySharingApplicationUpdateForm extends Component {
                     rules: [{ required: true, message: '请输入联系人手机' }],
                   })(
                     <Input placeholder="请输入联系人手机" />
-                    
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.status} {...formItemLayout}>
-                  {getFieldDecorator('status', {
-                    initialValue: selectedRow.status,
-                    rules: [{ required: true, message: '请输入状态' }],
-                  })(
-                    <Input placeholder="请输入状态" />
                     
                   )}
                 </Form.Item>

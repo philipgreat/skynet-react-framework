@@ -292,7 +292,6 @@ class AccountDataDashboard extends Component {
 {name: 'platformAccountList', displayName:'平台账户',type:'platformAccount',count:platformAccountCount},
 {name: 'fundationAccountList', displayName:'平台基金账户',type:'fundationAccount',count:fundationAccountCount},
 {name: 'storeAccountList', displayName:'网点账户',type:'storeAccount',count:storeAccountCount},
-{name: 'transactionTypeList', displayName:'交易类型',type:'transactionType',count:transactionTypeCount},
     
       	],
   	};

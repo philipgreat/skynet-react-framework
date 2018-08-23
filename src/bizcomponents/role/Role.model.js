@@ -35,7 +35,7 @@ export default {
       const link = payload.pathname
       //if the data in the cache, just show it, there is no delay
       if(cachedData.class){
-        yield put({ type: 'breadcrumb/gotoLink', payload: { displayName:cachedData.displayName,link }} )
+        //yield put({ type: 'breadcrumb/gotoLink', payload: { displayName:cachedData.displayName,link }} )
         yield put({ type: 'updateState', payload: cachedData })
       }else{
         yield put({ type: 'showLoading', payload })
@@ -46,9 +46,9 @@ export default {
       
       const displayName = payload.displayName||data.displayName
       
-      if(!cachedData.class){
-        yield put({ type: 'breadcrumb/gotoLink', payload: { displayName,link }} )
-      }
+      
+      yield put({ type: 'breadcrumb/gotoLink', payload: { displayName,link }} )
+      
 
       yield put({ type: 'updateState', payload: data })
     },
@@ -103,12 +103,12 @@ export default {
       yield put(routerRedux.push(`/role/${id}/list/${type}List/${listName}`))
     },
 
-    *addEmployee({ payload }, { call, put }) {
+    *addEmployeeWorkingStore({ payload }, { call, put }) {
       const {RoleService} = GlobalComponents;
 
       const { id, type, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
-      const data = yield call(RoleService.addEmployee, id, parameters)
+      const data = yield call(RoleService.addEmployeeWorkingStore, id, parameters)
       if (hasError(data)) {
         handleServerError(data)
         return
@@ -125,14 +125,14 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/role/${id}/list/${type}List/员工列表`, state: newState }
+      const location = { pathname: `/role/${id}/list/${type}List/员工工作的网点列表`, state: newState }
       yield put(routerRedux.push(location))
     },
-    *updateEmployee({ payload }, { call, put }) {
+    *updateEmployeeWorkingStore({ payload }, { call, put }) {
       const {RoleService} = GlobalComponents;      
       const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
       console.log('get form parameters', parameters)
-      const data = yield call(RoleService.updateEmployee, id, parameters)
+      const data = yield call(RoleService.updateEmployeeWorkingStore, id, parameters)
       if (hasError(data)) {
         handleServerError(data)
         return
@@ -149,19 +149,19 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/role/${id}/list/${type}List/员工列表`, state: newPlayload }
+      const location = { pathname: `/role/${id}/list/${type}List/员工工作的网点列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
-    *gotoNextEmployeeUpdateRow({ payload }, { call, put }) {
+    *gotoNextEmployeeWorkingStoreUpdateRow({ payload }, { call, put }) {
       const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
       const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
       yield put({ type: 'updateState', payload: newPlayload })
     },
-    *removeEmployeeList({ payload }, { call, put }) {
+    *removeEmployeeWorkingStoreList({ payload }, { call, put }) {
       const {RoleService} = GlobalComponents; 
       const { id, type, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
-      const data = yield call(RoleService.removeEmployeeList, id, parameters)
+      const data = yield call(RoleService.removeEmployeeWorkingStoreList, id, parameters)
       if (hasError(data)) {
         handleServerError(data)
         return

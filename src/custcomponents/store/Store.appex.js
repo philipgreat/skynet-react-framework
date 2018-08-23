@@ -4,6 +4,7 @@ import BookLentForm from './Store.lentbookform';
 import BookReturnForm from './Store.returnbookform';
 import BookLaunchForm from './Store.launchbookform';
 import BookDeactiveForm from './Store.deactivebookform';
+import StockTakingForm from './Store.stocktakingform';
 
 import React from 'react';
 import { connect } from 'dva';
@@ -24,6 +25,7 @@ class StoreBizAppEx extends React.PureComponent {
       { path: '/store/:id/bookReturnForm', component: BookReturnForm },
       { path: '/store/:id/bookLaunchForm', component: BookLaunchForm },
       { path: '/store/:id/bookDeactiveForm', component: BookDeactiveForm },
+      { path: '/store/:id/stockTakingForm', component: StockTakingForm },
       
       
   ];

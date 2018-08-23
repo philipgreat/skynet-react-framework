@@ -370,30 +370,6 @@ class MemberServiceRevenueUpdateForm extends Component {
                 </Form.Item>
               </Col>
 
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.platformServiceRevenueRate} {...formItemLayout}>
-                  {getFieldDecorator('platformServiceRevenueRate', {
-                    initialValue: selectedRow.platformServiceRevenueRate,
-                    rules: [{ required: true, message: '请输入平台服务收益百分比' }],
-                  })(
-                    <Input placeholder="请输入平台服务收益百分比" />
-                    
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.platformServiceRevenue} {...formItemLayout}>
-                  {getFieldDecorator('platformServiceRevenue', {
-                    initialValue: selectedRow.platformServiceRevenue,
-                    rules: [{ required: true, message: '请输入平台服务收益' }],
-                  })(
-                    <Input placeholder="请输入平台服务收益" />
-                    
-                  )}
-                </Form.Item>
-              </Col>
-
             </Row>
           </Form>  
         </Card>

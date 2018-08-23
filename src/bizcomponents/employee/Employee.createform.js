@@ -18,7 +18,7 @@ const testValues = {};
 const testValues = {
   name: '埃里克',
   mobileNumber: '13812345678',
-  roleId: 'R000001',
+  bookSharingPlatformId: 'BSP000001',
 }
 */
 const imageURLPrefix = '//localhost:2090'
@@ -41,7 +41,7 @@ class EmployeeCreateForm extends Component {
     const { setFieldsValue } = this.props.form
     //setFieldsValue(testValues)
       
-    this.executeCandidateRoleSearch("")
+    this.executeCandidateBookSharingPlatformSearch("")
     
  
     
@@ -60,26 +60,26 @@ class EmployeeCreateForm extends Component {
   }
 
   
-  executeCandidateRoleSearch = (filterKey) =>{
+  executeCandidateBookSharingPlatformSearch = (filterKey) =>{
 
     const {EmployeeService} = GlobalComponents;
     
     const id = "";//not used for now
     const pageNo = 1;
-    const future = EmployeeService.requestCandidateRole("role", id, filterKey, pageNo);
+    const future = EmployeeService.requestCandidateBookSharingPlatform("bookSharingPlatform", id, filterKey, pageNo);
     console.log(future);
     
 
-    future.then(candidateRoleList=>{
+    future.then(candidateBookSharingPlatformList=>{
       this.setState({
-        candidateRoleList
+        candidateBookSharingPlatformList
       })
 
     })
 
   }	 
-  handleCandidateRoleSearch = (value) => {
-    this.executeCandidateRoleSearch(value)
+  handleCandidateBookSharingPlatformSearch = (value) => {
+    this.executeCandidateBookSharingPlatformSearch(value)
   }
  
 
@@ -188,11 +188,11 @@ class EmployeeCreateForm extends Component {
     
 
     
-    const {candidateRoleList} = this.state
-    if(!candidateRoleList){
+    const {candidateBookSharingPlatformList} = this.state
+    if(!candidateBookSharingPlatformList){
       return (<div>等等</div>)
     }
-    if(!candidateRoleList.candidates){
+    if(!candidateBookSharingPlatformList.candidates){
       return (<div>等等</div>)
     }   
     
@@ -293,23 +293,23 @@ class EmployeeCreateForm extends Component {
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.role} {...formItemLayout}>
-                  {getFieldDecorator('roleId', {
-                  	initialValue: tryinit('role'),
-                    rules: [{ required: true, message: '请输入角色' }],
+                <Form.Item label={fieldLabels.bookSharingPlatform} {...formItemLayout}>
+                  {getFieldDecorator('bookSharingPlatformId', {
+                  	initialValue: tryinit('bookSharingPlatform'),
+                    rules: [{ required: true, message: '请输入图书共享平台' }],
                   })(
                   
                   <AutoComplete
-                    dataSource={candidateRoleList.candidates}
+                    dataSource={candidateBookSharingPlatformList.candidates}
                     
                     
-                    onSearch={this.handleCandidateRoleSearch}
-                    placeholder="请输入角色"
+                    onSearch={this.handleCandidateBookSharingPlatformSearch}
+                    placeholder="请输入图书共享平台"
                     
-                    disabled={!availableForEdit('role')}
+                    disabled={!availableForEdit('bookSharingPlatform')}
                   >
-                  {candidateRoleList.candidates.map(item=>{
-                return (<Option key={item.id}>{`${item.roleName}(${item.id})`}</Option>);
+                  {candidateBookSharingPlatformList.candidates.map(item=>{
+                return (<Option key={item.id}>{`${item.name}(${item.id})`}</Option>);
             })}
                   
                   </AutoComplete>

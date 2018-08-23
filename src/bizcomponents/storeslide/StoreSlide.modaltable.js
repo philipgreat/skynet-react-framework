@@ -31,7 +31,7 @@ class StoreSlideModalTable extends PureComponent {
           dataSource={data}
           columns={displayColumns}
           size="small"
-          scroll={{ x: 2820 }}
+          scroll={{ x: 2730 }}
         />
       </div>
     )

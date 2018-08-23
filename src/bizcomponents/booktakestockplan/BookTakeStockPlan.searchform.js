@@ -65,7 +65,6 @@ class BookTakeStockPlanSearchForm extends PureComponent {
       const params = {
         ...this.buildStringSearchParameters(fieldsValue, 'id'),
         ...this.buildStringSearchParameters(fieldsValue, 'planName'),
-        ...this.buildStringSearchParameters(fieldsValue, 'status'),
 
       }
       const { owner } = this.props
@@ -127,14 +126,6 @@ class BookTakeStockPlanSearchForm extends PureComponent {
             <FormItem label="计划名称">
               {getFieldDecorator('planName')(
                 <Input placeholder="请输入计划名称" />
-              )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
-            <FormItem label="状态">
-              {getFieldDecorator('status')(
-                <Input placeholder="请输入状态" />
               )}
             </FormItem>
           </Col>

@@ -269,7 +269,6 @@ const internalSummaryOf = (campaignReviewLike,targetComponent) =>{
   style={{fontSize: 20,color:"red"}} />
 </Description>
 <Description term="创建时间">{ moment(campaignReviewLike.createTime).format('YYYY-MM-DD')}</Description> 
-<Description term="点赞类型">{campaignReviewLike.likeType}</Description> 
 	
         {buildTransferModal(campaignReviewLike,targetComponent)}
       </DescriptionList>

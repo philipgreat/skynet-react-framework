@@ -17,8 +17,8 @@ const testValues = {};
 /*
 const testValues = {
   bookCopySharingType: '共享',
-  evaluationPrice: '45.89',
-  wxaId: 'a/~~wu3hXzBSt64~plUyoOB9Iyf8mEHP9BrkLA~~',
+  evaluationPrice: '45.13',
+  wxaId: 'https://shuxiang.ycinfotech.cn/shuxiang/wxaService/bookCopyScanned/BC000001/',
   bookInfoId: 'B000001',
   bookCopyVendorId: 'C000001',
   locationStoreId: 'S000001',
@@ -482,7 +482,7 @@ class BookCopyCreateForm extends Component {
                     disabled={!availableForEdit('bookCopyStatus')}
                   >
                   {candidateBookCopyStatusList.candidates.map(item=>{
-                return (<Option key={item.id}>{`${item.statusName}(${item.id})`}</Option>);
+                return (<Option key={item.id}>{`${item.name}(${item.id})`}</Option>);
             })}
                   
                   </AutoComplete>

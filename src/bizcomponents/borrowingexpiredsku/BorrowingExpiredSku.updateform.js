@@ -322,18 +322,6 @@ class BorrowingExpiredSkuUpdateForm extends Component {
                 </Form.Item>
               </Col>
 
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.costPaymentStatus} {...formItemLayout}>
-                  {getFieldDecorator('costPaymentStatus', {
-                    initialValue: selectedRow.costPaymentStatus,
-                    rules: [{ required: true, message: '请输入支付状态' }],
-                  })(
-                    <Input placeholder="请输入支付状态" />
-                    
-                  )}
-                </Form.Item>
-              </Col>
-
             </Row>
           </Form>  
         </Card>

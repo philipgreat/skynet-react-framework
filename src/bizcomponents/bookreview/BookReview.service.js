@@ -86,13 +86,13 @@ const transferToAnotherBookPlaza = (id, parameters) => {
 
 
 const addBookReviewLike = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookReviewManager/addBookReviewLike/bookReviewId/replierId/likeType/tokensExpr/`
+  const url = `${PREFIX}bookReviewManager/addBookReviewLike/bookReviewId/replierId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateBookReviewLike = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookReviewManager/updateBookReviewLikeProperties/bookReviewId/id/likeType/tokensExpr/`
+  const url = `${PREFIX}bookReviewManager/updateBookReviewLikeProperties/bookReviewId/id/tokensExpr/`
   const bookReviewId = targetObjectId
   const requestParameters = { ...parameters, bookReviewId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})

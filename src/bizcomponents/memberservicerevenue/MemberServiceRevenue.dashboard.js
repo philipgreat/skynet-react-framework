@@ -277,8 +277,12 @@ const internalSummaryOf = (memberServiceRevenue,targetComponent) =>{
 <Description term="本月会员服务总次数">{memberServiceRevenue.totalServiceCount}</Description> 
 <Description term="网点会员服务收益百分比">{memberServiceRevenue.storeServiceRevenueRate}</Description> 
 <Description term="网点会员收益">{memberServiceRevenue.storeServiceRevenue}</Description> 
-<Description term="平台服务收益百分比">{memberServiceRevenue.platformServiceRevenueRate}</Description> 
-<Description term="平台服务收益">{memberServiceRevenue.platformServiceRevenue}</Description> 
+<Description term="主订单">{memberServiceRevenue.mainOrder==null?"未分配":memberServiceRevenue.mainOrder.displayName}
+ <Icon type="swap" onClick={()=>
+  showTransferModel(targetComponent,"主订单","mainOrder","requestCandidateMainOrder",
+	      "transferToAnotherMainOrder","anotherMainOrderId",memberServiceRevenue.mainOrder?memberServiceRevenue.mainOrder.id:"")} 
+  style={{fontSize: 20,color:"red"}} />
+</Description>
 	
         {buildTransferModal(memberServiceRevenue,targetComponent)}
       </DescriptionList>
@@ -308,10 +312,9 @@ class MemberServiceRevenueDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, platformAccountDetailsCount } = this.props.memberServiceRevenue
+    const { id,displayName,  } = this.props.memberServiceRevenue
     const cardsData = {cardsName:"会员服务收益",cardsFor: "memberServiceRevenue",cardsSource: this.props.memberServiceRevenue,
   		subItems: [
-{name: 'platformAccountDetailsList', displayName:'平台账户明细',type:'platformAccountDetails',count:platformAccountDetailsCount},
     
       	],
   	};

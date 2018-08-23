@@ -397,18 +397,6 @@ class BorrowingHistoryUpdateForm extends Component {
                 </Form.Item>
               </Col>
 
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.borrowingStatus} {...formItemLayout}>
-                  {getFieldDecorator('borrowingStatus', {
-                    initialValue: selectedRow.borrowingStatus,
-                    rules: [{ required: true, message: '请输入借书状态' }],
-                  })(
-                    <Input placeholder="请输入借书状态" />
-                    
-                  )}
-                </Form.Item>
-              </Col>
-
             </Row>
           </Form>  
         </Card>

@@ -64,7 +64,7 @@ class BookCopyOperationRecordSearchForm extends PureComponent {
       if (err) return
       const params = {
         ...this.buildStringSearchParameters(fieldsValue, 'id'),
-        ...this.buildStringSearchParameters(fieldsValue, 'bookCopyOperateType'),
+        ...this.buildStringSearchParameters(fieldsValue, 'bookName'),
 
       }
       const { owner } = this.props
@@ -90,9 +90,9 @@ class BookCopyOperationRecordSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="书籍副本操作类型">
-              {getFieldDecorator('bookCopyOperateType')(
-                <Input placeholder="请输入书籍副本操作类型" />
+            <FormItem label="书名">
+              {getFieldDecorator('bookName')(
+                <Input placeholder="请输入书名" />
                )}
             </FormItem>
           </Col>
@@ -123,9 +123,9 @@ class BookCopyOperationRecordSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="书籍副本操作类型">
-              {getFieldDecorator('bookCopyOperateType')(
-                <Input placeholder="请输入书籍副本操作类型" />
+            <FormItem label="书名">
+              {getFieldDecorator('bookName')(
+                <Input placeholder="请输入书名" />
               )}
             </FormItem>
           </Col>

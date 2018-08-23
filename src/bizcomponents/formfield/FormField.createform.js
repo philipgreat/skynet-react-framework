@@ -21,7 +21,7 @@ const testValues = {
   parameterName: 'name',
   type: 'text',
   placeholder: '姓名就是你身份证上的名字',
-  defaultValue: '李亚青',
+  defaultValue: '李中文',
   description: '姓名就是你身份证上的名字',
   fieldGroup: '基础信息',
   minimumValue: 'maybe any value',

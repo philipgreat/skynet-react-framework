@@ -119,6 +119,7 @@ class BookCopyTransferBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/bookCopyTransfer/${this.props.bookCopyTransfer.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class BookCopyTransferBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/bookCopyTransfer/${this.props.bookCopyTransfer.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -142,9 +146,13 @@ class BookCopyTransferBizApp extends React.PureComponent {
   
   buildRouters = () =>{
   	const {BookCopyTransferDashboard} = GlobalComponents
+  	const {BookCopyTransferPreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/bookCopyTransfer/:id/dashboard", component: BookCopyTransferDashboard},
+  	{path:"/bookCopyTransfer/:id/preference", component: BookCopyTransferPreference},
+  	
   	
     	
   	
@@ -210,7 +218,7 @@ class BookCopyTransferBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

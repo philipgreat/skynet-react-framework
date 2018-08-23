@@ -119,6 +119,7 @@ class CustomerFootprintBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/customerFootprint/${this.props.customerFootprint.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class CustomerFootprintBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/customerFootprint/${this.props.customerFootprint.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -142,9 +146,13 @@ class CustomerFootprintBizApp extends React.PureComponent {
   
   buildRouters = () =>{
   	const {CustomerFootprintDashboard} = GlobalComponents
+  	const {CustomerFootprintPreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/customerFootprint/:id/dashboard", component: CustomerFootprintDashboard},
+  	{path:"/customerFootprint/:id/preference", component: CustomerFootprintPreference},
+  	
   	
     	
   	
@@ -210,7 +218,7 @@ class CustomerFootprintBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

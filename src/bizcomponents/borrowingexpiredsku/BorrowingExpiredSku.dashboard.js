@@ -291,7 +291,6 @@ const internalSummaryOf = (borrowingExpiredSku,targetComponent) =>{
 <Description term="还书日期">{ moment(borrowingExpiredSku.returnDatetime).format('YYYY-MM-DD')}</Description> 
 <Description term="过期天数">{borrowingExpiredSku.expiredDays}</Description> 
 <Description term="过期费用">{borrowingExpiredSku.expiredFee}</Description> 
-<Description term="支付状态">{borrowingExpiredSku.costPaymentStatus}</Description> 
 <Description term="图书借还历史">{borrowingExpiredSku.borrowingHistory==null?"未分配":borrowingExpiredSku.borrowingHistory.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"图书借还历史","borrowingHistory","requestCandidateBorrowingHistory",

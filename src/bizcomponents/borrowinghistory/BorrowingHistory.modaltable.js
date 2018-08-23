@@ -31,7 +31,7 @@ class BorrowingHistoryModalTable extends PureComponent {
           dataSource={data}
           columns={displayColumns}
           size="small"
-          scroll={{ x: 2490 }}
+          scroll={{ x: 2580 }}
         />
       </div>
     )

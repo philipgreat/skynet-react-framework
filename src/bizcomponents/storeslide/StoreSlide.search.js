@@ -199,6 +199,7 @@ class StoreSlideSearch extends PureComponent {
       <Menu onClick={this.handleMenuClick} selectedKeys={[]}>
 
 
+<Menu.Item key="slideType">关联海报类型</Menu.Item>
 <Menu.Item key="book">关联书</Menu.Item>
 <Menu.Item key="campaign">关联活动</Menu.Item>
 <Menu.Item key="memberServiceProduct">关联会员服务产品</Menu.Item>

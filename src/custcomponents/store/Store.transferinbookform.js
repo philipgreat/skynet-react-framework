@@ -131,7 +131,7 @@ deactiveBookByEmployee = (parameters) => {
     })
     const {dynamicFormInited}=this.state
     const {setFieldsValue} = this.props.form
-
+    setFieldsValue({bookCopyIdOrQrcode:""})
     
 
   });
@@ -180,7 +180,12 @@ deactiveBookByEmployee = (parameters) => {
 
     const {executeResult} = this.state
     
- 
+    const tryinit = fieldName => {
+      
+      const  owner  = this.props.store;
+      
+      return owner.id;
+    }
 
     
 
@@ -198,7 +203,7 @@ deactiveBookByEmployee = (parameters) => {
             <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.storeId} {...formItemLayout}>
                   {getFieldDecorator('storeId', {
-                    initialValue: "S000001",
+                    initialValue:tryinit(),
                     rules: [{ required: true, message: '请输入店的序号' }],
 
                   })(<Input placeholder="请输入店的序号" disabled={true}/>)}

@@ -283,6 +283,8 @@ const internalSummaryOf = (bookCopy,targetComponent) =>{
   style={{fontSize: 20,color:"red"}} />
 </Description>
 <Description term="小程序ID">{bookCopy.wxaId}</Description> 
+<Description term="创建时间">{ moment(bookCopy.createTime).format('YYYY-MM-DD')}</Description> 
+<Description term="最后更新时间">{ moment(bookCopy.lastUpdateTime).format('YYYY-MM-DD')}</Description> 
 	
         {buildTransferModal(bookCopy,targetComponent)}
       </DescriptionList>

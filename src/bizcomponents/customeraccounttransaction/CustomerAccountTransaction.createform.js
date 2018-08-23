@@ -17,7 +17,8 @@ const testValues = {};
 /*
 const testValues = {
   summary: '共享收益',
-  amount: '0.93',
+  amount: '0.90',
+  balance: '0.79',
   transactionTypeId: 'TT000001',
   customerId: 'C000001',
   relatedMainOrderId: 'MO000001',
@@ -319,6 +320,16 @@ class CustomerAccountTransactionCreateForm extends Component {
                     rules: [{ required: true, message: '请输入账户余额' }],
                   })(
                     <Input placeholder="请输入账户余额" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.balance} {...formItemLayout}>
+                  {getFieldDecorator('balance', {
+                    rules: [{ required: true, message: '请输入余额' }],
+                  })(
+                    <Input placeholder="请输入余额" />
                   )}
                 </Form.Item>
               </Col>

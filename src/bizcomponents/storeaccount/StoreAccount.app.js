@@ -119,6 +119,7 @@ class StoreAccountBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/storeAccount/${this.props.storeAccount.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class StoreAccountBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/storeAccount/${this.props.storeAccount.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -177,9 +181,13 @@ class StoreAccountBizApp extends React.PureComponent {
   
   buildRouters = () =>{
   	const {StoreAccountDashboard} = GlobalComponents
+  	const {StoreAccountPreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/storeAccount/:id/dashboard", component: StoreAccountDashboard},
+  	{path:"/storeAccount/:id/preference", component: StoreAccountPreference},
+  	
   	
   	
   	{path:"/storeAccount/:id/list/storeAccountDetailsList", component: this.getStoreAccountDetailsSearch()},
@@ -249,7 +257,7 @@ class StoreAccountBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

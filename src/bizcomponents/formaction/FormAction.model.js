@@ -35,7 +35,7 @@ export default {
       const link = payload.pathname
       //if the data in the cache, just show it, there is no delay
       if(cachedData.class){
-        yield put({ type: 'breadcrumb/gotoLink', payload: { displayName:cachedData.displayName,link }} )
+        //yield put({ type: 'breadcrumb/gotoLink', payload: { displayName:cachedData.displayName,link }} )
         yield put({ type: 'updateState', payload: cachedData })
       }else{
         yield put({ type: 'showLoading', payload })
@@ -46,9 +46,9 @@ export default {
       
       const displayName = payload.displayName||data.displayName
       
-      if(!cachedData.class){
-        yield put({ type: 'breadcrumb/gotoLink', payload: { displayName,link }} )
-      }
+      
+      yield put({ type: 'breadcrumb/gotoLink', payload: { displayName,link }} )
+      
 
       yield put({ type: 'updateState', payload: data })
     },
@@ -117,4 +117,11 @@ export default {
     },
   },
 }
+
+
+
+
+
+
+
 

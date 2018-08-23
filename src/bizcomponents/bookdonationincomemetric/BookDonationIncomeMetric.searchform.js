@@ -64,10 +64,6 @@ class BookDonationIncomeMetricSearchForm extends PureComponent {
       if (err) return
       const params = {
         ...this.buildStringSearchParameters(fieldsValue, 'id'),
-        ...this.buildStringSearchParameters(fieldsValue, 'vendorRate'),
-        ...this.buildStringSearchParameters(fieldsValue, 'lendingStoreRate'),
-        ...this.buildStringSearchParameters(fieldsValue, 'platformRate'),
-        ...this.buildStringSearchParameters(fieldsValue, 'publicServiceFundRate'),
 
       }
       const { owner } = this.props
@@ -93,14 +89,6 @@ class BookDonationIncomeMetricSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="共享者分成比">
-              {getFieldDecorator('vendorRate')(
-                <Input placeholder="请输入共享者分成比" />
-               )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
             <span className={styles.submitButtons}>
               <Button type="primary" htmlType="submit">查询</Button>
               <Button style={{ marginLeft: 8 }} onClick={this.handleFormReset}>重置</Button>
@@ -121,38 +109,6 @@ class BookDonationIncomeMetricSearchForm extends PureComponent {
             <FormItem label="ID">
               {getFieldDecorator('id')(
                 <Input placeholder="请输入ID" />
-              )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
-            <FormItem label="共享者分成比">
-              {getFieldDecorator('vendorRate')(
-                <Input placeholder="请输入共享者分成比" />
-              )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
-            <FormItem label="借出网点分成比">
-              {getFieldDecorator('lendingStoreRate')(
-                <Input placeholder="请输入借出网点分成比" />
-              )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
-            <FormItem label="平台分成比">
-              {getFieldDecorator('platformRate')(
-                <Input placeholder="请输入平台分成比" />
-              )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
-            <FormItem label="公益基金分成比">
-              {getFieldDecorator('publicServiceFundRate')(
-                <Input placeholder="请输入公益基金分成比" />
               )}
             </FormItem>
           </Col>

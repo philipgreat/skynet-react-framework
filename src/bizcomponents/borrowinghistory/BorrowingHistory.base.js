@@ -31,7 +31,7 @@ const displayColumns = [
   { title: '实际借书天数', debugtype: 'int', dataIndex: 'lendingDays', width: '6' },
   { title: '是否超期', dataIndex: 'freeLendingExpired', render: (text, record) => (record.freeLendingExpired ? '是' : '否') },
   { title: '最后更新时间', dataIndex: 'lastUpdateTime', render: (text, record) => moment(record.lastUpdateTime).format('YYYY-MM-DD HH:mm:ss') },
-  { title: '借书状态', debugtype: 'string', dataIndex: 'borrowingStatus', width: '7' },
+  { title: '借书状态', dataIndex: 'borrowingStatus', render: (text, record) => (record.borrowingStatus ? record.borrowingStatus.displayName : '暂无') },
 
 ]
 

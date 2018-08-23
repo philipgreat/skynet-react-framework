@@ -15,7 +15,6 @@ const displayColumns = [
   { title: '活动', dataIndex: 'campaign', render: (text, record) => (record.campaign ? record.campaign.displayName : '暂无') },
   { title: '回复人', dataIndex: 'replier', render: (text, record) => (record.replier ? record.replier.displayName : '暂无') },
   { title: '点赞发布日期', dataIndex: 'likePublishDatetime', render: (text, record) => moment(record.likePublishDatetime).format('YYYY-MM-DD HH:mm:ss') },
-  { title: '点赞类型', debugtype: 'string', dataIndex: 'likeType', width: '6' },
 
 ]
 
@@ -24,7 +23,6 @@ const fieldLabels = {
   campaign: '活动',
   replier: '回复人',
   likePublishDatetime: '点赞发布日期',
-  likeType: '点赞类型',
 
 }
 

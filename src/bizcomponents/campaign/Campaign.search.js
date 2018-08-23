@@ -199,6 +199,7 @@ class CampaignSearch extends PureComponent {
       <Menu onClick={this.handleMenuClick} selectedKeys={[]}>
 
 
+<Menu.Item key="campaignStatus">关联活动状态</Menu.Item>
 <Menu.Item key="publishStore">关联发布网点</Menu.Item>
 <Menu.Item key="publishEmployee">关联发布员工</Menu.Item>
 <Menu.Item key="campaignPlaza">关联活动广场</Menu.Item>

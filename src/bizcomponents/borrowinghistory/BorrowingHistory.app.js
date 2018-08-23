@@ -119,6 +119,7 @@ class BorrowingHistoryBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/borrowingHistory/${this.props.borrowingHistory.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class BorrowingHistoryBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/borrowingHistory/${this.props.borrowingHistory.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -177,9 +181,13 @@ class BorrowingHistoryBizApp extends React.PureComponent {
   
   buildRouters = () =>{
   	const {BorrowingHistoryDashboard} = GlobalComponents
+  	const {BorrowingHistoryPreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/borrowingHistory/:id/dashboard", component: BorrowingHistoryDashboard},
+  	{path:"/borrowingHistory/:id/preference", component: BorrowingHistoryPreference},
+  	
   	
   	
   	{path:"/borrowingHistory/:id/list/borrowingExpiredSkuList", component: this.getBorrowingExpiredSkuSearch()},
@@ -249,7 +257,7 @@ class BorrowingHistoryBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

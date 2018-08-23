@@ -287,11 +287,10 @@ class BookSharingPlatformDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, platformConfigurationCount, availableTokenCount, accountDataCount, cityCount, bookPlazaCount, memberServiceProductCount, mainOrderCount, bookCount, platformAccountCount, fundationAccountCount, storeCount, campaignPlazaCount, customerCount } = this.props.bookSharingPlatform
+    const { id,displayName, platformConfigurationCount, accountDataCount, cityCount, bookPlazaCount, memberServiceProductCount, mainOrderCount, bookCount, transferTypeCount, takeStockStatusCount, bookTakeStockStatusCount, takeStoreResultsCount, bookCopyOperateTypeCount, borrowingStatusCount, deliverMethodCount, applicationStatusCount, platformAccountCount, fundationAccountCount, storeTypeCount, storeCount, slideTypeCount, campaignPlazaCount, campaignStatusCount, customerCount, employeeCount, profitTypeCount, profitDistributeStateCount, undistributedProfitCount } = this.props.bookSharingPlatform
     const cardsData = {cardsName:"图书共享平台",cardsFor: "bookSharingPlatform",cardsSource: this.props.bookSharingPlatform,
   		subItems: [
 {name: 'platformConfigurationList', displayName:'平台配置',type:'platformConfiguration',count:platformConfigurationCount},
-{name: 'availableTokenList', displayName:'可用的权益',type:'availableToken',count:availableTokenCount},
 {name: 'accountDataList', displayName:'帐户数据',type:'accountData',count:accountDataCount},
 {name: 'cityList', displayName:'城市',type:'city',count:cityCount},
 {name: 'bookPlazaList', displayName:'图书天地',type:'bookPlaza',count:bookPlazaCount},
@@ -303,6 +302,8 @@ class BookSharingPlatformDashboard extends Component {
 {name: 'storeList', displayName:'服务网点',type:'store',count:storeCount},
 {name: 'campaignPlazaList', displayName:'活动广场',type:'campaignPlaza',count:campaignPlazaCount},
 {name: 'customerList', displayName:'用户',type:'customer',count:customerCount},
+{name: 'employeeList', displayName:'员工',type:'employee',count:employeeCount},
+{name: 'undistributedProfitList', displayName:'未分配利润',type:'undistributedProfit',count:undistributedProfitCount},
     
       	],
   	};

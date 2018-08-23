@@ -260,7 +260,12 @@ const internalSummaryOf = (storeSlide,targetComponent) =>{
 <Description term="提示">{storeSlide.tips}</Description> 
 <Description term="小程序链接">{storeSlide.wxaLinkUrl}</Description> 
 <Description term="管理界面链接">{storeSlide.antdLinkUrl}</Description> 
-<Description term="链接内容类型">{storeSlide.linkType}</Description> 
+<Description term="海报类型">{storeSlide.slideType==null?"未分配":storeSlide.slideType.displayName}
+ <Icon type="swap" onClick={()=>
+  showTransferModel(targetComponent,"海报类型","slideType","requestCandidateSlideType",
+	      "transferToAnotherSlideType","anotherSlideTypeId",storeSlide.slideType?storeSlide.slideType.id:"")} 
+  style={{fontSize: 20,color:"red"}} />
+</Description>
 <Description term="书">{storeSlide.book==null?"未分配":storeSlide.book.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"书","book","requestCandidateBook",

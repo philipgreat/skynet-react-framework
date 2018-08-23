@@ -16,19 +16,18 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
-  memberName: '张三三三三三三',
-  serviceStartDate: '2018-05-18',
-  serviceEndDate: '2016-08-09',
-  monthlyServiceFee: '14.17',
+  memberName: '张三',
+  serviceStartDate: '2017-08-12',
+  serviceEndDate: '2017-09-05',
+  monthlyServiceFee: '15.58',
   storeName: '书香社区慕和南道店',
   storeServiceCount: '0',
   totalServiceCount: '0',
   storeServiceRevenueRate: '80%',
-  storeServiceRevenue: '7.72',
-  platformServiceRevenueRate: '20%',
-  platformServiceRevenue: '1.51',
+  storeServiceRevenue: '7.61',
   memberId: 'C000001',
   storeId: 'S000001',
+  mainOrderId: 'MO000001',
 }
 */
 const imageURLPrefix = '//localhost:2090'
@@ -54,6 +53,9 @@ class MemberServiceRevenueCreateForm extends Component {
     
     
     this.executeCandidateStoreSearch("")
+    
+    
+    this.executeCandidateMainOrderSearch("")
     
  
     
@@ -114,6 +116,28 @@ class MemberServiceRevenueCreateForm extends Component {
   }	 
   handleCandidateStoreSearch = (value) => {
     this.executeCandidateStoreSearch(value)
+  }
+
+  executeCandidateMainOrderSearch = (filterKey) =>{
+
+    const {MemberServiceRevenueService} = GlobalComponents;
+    
+    const id = "";//not used for now
+    const pageNo = 1;
+    const future = MemberServiceRevenueService.requestCandidateMainOrder("mainOrder", id, filterKey, pageNo);
+    console.log(future);
+    
+
+    future.then(candidateMainOrderList=>{
+      this.setState({
+        candidateMainOrderList
+      })
+
+    })
+
+  }	 
+  handleCandidateMainOrderSearch = (value) => {
+    this.executeCandidateMainOrderSearch(value)
   }
  
 
@@ -236,6 +260,15 @@ class MemberServiceRevenueCreateForm extends Component {
       return (<div>等等</div>)
     }
     if(!candidateStoreList.candidates){
+      return (<div>等等</div>)
+    }   
+    
+    
+    const {candidateMainOrderList} = this.state
+    if(!candidateMainOrderList){
+      return (<div>等等</div>)
+    }
+    if(!candidateMainOrderList.candidates){
       return (<div>等等</div>)
     }   
     
@@ -367,26 +400,6 @@ class MemberServiceRevenueCreateForm extends Component {
                 </Form.Item>
               </Col>
 
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.platformServiceRevenueRate} {...formItemLayout}>
-                  {getFieldDecorator('platformServiceRevenueRate', {
-                    rules: [{ required: true, message: '请输入平台服务收益百分比' }],
-                  })(
-                    <Input placeholder="请输入平台服务收益百分比" />
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.platformServiceRevenue} {...formItemLayout}>
-                  {getFieldDecorator('platformServiceRevenue', {
-                    rules: [{ required: true, message: '请输入平台服务收益' }],
-                  })(
-                    <Input placeholder="请输入平台服务收益" />
-                  )}
-                </Form.Item>
-              </Col>
-
             </Row>
           </Form>
         </Card>
@@ -451,6 +464,31 @@ class MemberServiceRevenueCreateForm extends Component {
                   >
                   {candidateStoreList.candidates.map(item=>{
                 return (<Option key={item.id}>{`${item.storeName}(${item.id})`}</Option>);
+            })}
+                  
+                  </AutoComplete>
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.mainOrder} {...formItemLayout}>
+                  {getFieldDecorator('mainOrderId', {
+                  	initialValue: tryinit('mainOrder'),
+                    rules: [{ required: true, message: '请输入主订单' }],
+                  })(
+                  
+                  <AutoComplete
+                    dataSource={candidateMainOrderList.candidates}
+                    
+                    
+                    onSearch={this.handleCandidateMainOrderSearch}
+                    placeholder="请输入主订单"
+                    
+                    disabled={!availableForEdit('mainOrder')}
+                  >
+                  {candidateMainOrderList.candidates.map(item=>{
+                return (<Option key={item.id}>{`${item.title}(${item.id})`}</Option>);
             })}
                   
                   </AutoComplete>

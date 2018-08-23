@@ -9,7 +9,6 @@ const menuData = {menuName:"图书天地", menuFor: "bookPlaza",
   {name: 'bookDonationIncomeMetricList', displayName:'捐赠图书收益分成配置', icon:'book'},
   {name: 'memberServiceIncomeMetricList', displayName:'会员服务费收入分成配置', icon:'glass'},
   {name: 'bookList', displayName:'书', icon:'book'},
-  {name: 'bookCopyStatusList', displayName:'书籍副本状态', icon:'book'},
   {name: 'bookReviewList', displayName:'书评', icon:'book'},
   
   		],
@@ -19,14 +18,14 @@ const menuData = {menuName:"图书天地", menuFor: "bookPlaza",
 
 const displayColumns = [
   { title: 'ID', debugtype: 'string', dataIndex: 'id', width: '20', render: (text, record)=>(<Link to={`/bookPlaza/${text}/dashboard`}>{text}</Link>) },
-  { title: '本广场的名字', debugtype: 'string', dataIndex: 'bookPlazaName', width: '10' },
+  { title: '名称', debugtype: 'string', dataIndex: 'bookPlazaName', width: '10' },
   { title: '图书共享平台', dataIndex: 'bookSharingPlatform', render: (text, record) => (record.bookSharingPlatform ? record.bookSharingPlatform.displayName : '暂无') },
 
 ]
 
 const fieldLabels = {
   id: 'ID',
-  bookPlazaName: '本广场的名字',
+  bookPlazaName: '名称',
   bookSharingPlatform: '图书共享平台',
 
 }

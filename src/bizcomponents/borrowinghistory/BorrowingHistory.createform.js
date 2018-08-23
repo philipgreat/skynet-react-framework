@@ -16,23 +16,23 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
-  lendingDatetime: '2016-11-11 06:21:52',
+  lendingDatetime: '2017-06-19 06:21:24',
   bookName: '飘',
   borrowerMemberLevel: '普通会员',
-  borrowerMemberServiceExpiredDatetime: '2016-03-11 00:38:01',
+  borrowerMemberServiceExpiredDatetime: '2015-10-27 23:40:06',
   bookCopySharingType: '共享',
   lendingStoreType: '社区',
-  freeLendingDays: '6',
-  freeLendingExpiredDatetime: '2017-02-05 06:41:51',
-  overduePay: '0.81',
-  returnDatetime: '2018-03-04 22:31:34',
-  lendingDays: '14',
-  borrowingStatus: '已归还',
+  freeLendingDays: '7',
+  freeLendingExpiredDatetime: '2017-06-15 01:08:14',
+  overduePay: '0.78',
+  returnDatetime: '2016-08-14 09:21:35',
+  lendingDays: '13',
   borrowerId: 'C000001',
   bookId: 'B000001',
   bookCopyId: 'BC000001',
   lendingStoreId: 'S000001',
   returnStoreId: 'S000001',
+  borrowingStatusId: 'BS000001',
 }
 */
 const imageURLPrefix = '//localhost:2090'
@@ -67,6 +67,9 @@ class BorrowingHistoryCreateForm extends Component {
     
     
     this.executeCandidateReturnStoreSearch("")
+    
+    
+    this.executeCandidateBorrowingStatusSearch("")
     
  
     
@@ -193,6 +196,28 @@ class BorrowingHistoryCreateForm extends Component {
   }	 
   handleCandidateReturnStoreSearch = (value) => {
     this.executeCandidateReturnStoreSearch(value)
+  }
+
+  executeCandidateBorrowingStatusSearch = (filterKey) =>{
+
+    const {BorrowingHistoryService} = GlobalComponents;
+    
+    const id = "";//not used for now
+    const pageNo = 1;
+    const future = BorrowingHistoryService.requestCandidateBorrowingStatus("borrowingStatus", id, filterKey, pageNo);
+    console.log(future);
+    
+
+    future.then(candidateBorrowingStatusList=>{
+      this.setState({
+        candidateBorrowingStatusList
+      })
+
+    })
+
+  }	 
+  handleCandidateBorrowingStatusSearch = (value) => {
+    this.executeCandidateBorrowingStatusSearch(value)
   }
  
 
@@ -346,6 +371,15 @@ class BorrowingHistoryCreateForm extends Component {
     }   
     
     
+    const {candidateBorrowingStatusList} = this.state
+    if(!candidateBorrowingStatusList){
+      return (<div>等等</div>)
+    }
+    if(!candidateBorrowingStatusList.candidates){
+      return (<div>等等</div>)
+    }   
+    
+    
     
     const tryinit  = (fieldName) => {
       const { owner } = this.props
@@ -489,16 +523,6 @@ class BorrowingHistoryCreateForm extends Component {
                     rules: [{ required: true, message: '请输入实际借书天数' }],
                   })(
                     <Input placeholder="请输入实际借书天数" />
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.borrowingStatus} {...formItemLayout}>
-                  {getFieldDecorator('borrowingStatus', {
-                    rules: [{ required: true, message: '请输入借书状态' }],
-                  })(
-                    <Input placeholder="请输入借书状态" />
                   )}
                 </Form.Item>
               </Col>
@@ -663,6 +687,31 @@ class BorrowingHistoryCreateForm extends Component {
                   >
                   {candidateReturnStoreList.candidates.map(item=>{
                 return (<Option key={item.id}>{`${item.storeName}(${item.id})`}</Option>);
+            })}
+                  
+                  </AutoComplete>
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.borrowingStatus} {...formItemLayout}>
+                  {getFieldDecorator('borrowingStatusId', {
+                  	initialValue: tryinit('borrowingStatus'),
+                    rules: [{ required: true, message: '请输入借书状态' }],
+                  })(
+                  
+                  <AutoComplete
+                    dataSource={candidateBorrowingStatusList.candidates}
+                    
+                    
+                    onSearch={this.handleCandidateBorrowingStatusSearch}
+                    placeholder="请输入借书状态"
+                    
+                    disabled={!availableForEdit('borrowingStatus')}
+                  >
+                  {candidateBorrowingStatusList.candidates.map(item=>{
+                return (<Option key={item.id}>{`${item.name}(${item.id})`}</Option>);
             })}
                   
                   </AutoComplete>

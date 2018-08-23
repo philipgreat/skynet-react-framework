@@ -115,7 +115,8 @@ class CampaignReviewLikeTable extends PureComponent {
     const { selectedRowKeys } = this.state
     // const { data, count, current, owner } = this.props
     const { data, count, current } = this.props
-
+	const calcDisplayColumns = this.props.calcDisplayColumns||this.calcDisplayColumns
+	
     const paginationProps = {
       showSizeChanger: true,
       showQuickJumper: true,
@@ -157,7 +158,7 @@ class CampaignReviewLikeTable extends PureComponent {
           rowKey={record => record.id}
           rowSelection={rowSelection}
           dataSource={data}
-          columns={this.calcDisplayColumns()}
+          columns={calcDisplayColumns()}
           pagination={paginationProps}
           onChange={this.handleTableChange}
           

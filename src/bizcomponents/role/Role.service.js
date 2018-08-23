@@ -21,21 +21,21 @@ const load = (targetObjectId, parameters) => {
 
 
 
-const addEmployee = (targetObjectId, parameters) => {
-  const url = `${PREFIX}roleManager/addEmployee/roleId/name/employeeImage/mobileNumber/tokensExpr/`
+const addEmployeeWorkingStore = (targetObjectId, parameters) => {
+  const url = `${PREFIX}roleManager/addEmployeeWorkingStore/roleId/description/employeeId/storeId/startDate/terminatedDate/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
-const updateEmployee = (targetObjectId, parameters) => {
-  const url = `${PREFIX}roleManager/updateEmployeeProperties/roleId/id/name/employeeImage/mobileNumber/tokensExpr/`
+const updateEmployeeWorkingStore = (targetObjectId, parameters) => {
+  const url = `${PREFIX}roleManager/updateEmployeeWorkingStoreProperties/roleId/id/description/startDate/terminatedDate/tokensExpr/`
   const roleId = targetObjectId
   const requestParameters = { ...parameters, roleId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
-const removeEmployeeList = (targetObjectId, parameters) => {
-  const url = `${PREFIX}roleManager/removeEmployeeList/roleId/employeeIds/tokensExpr/`
+const removeEmployeeWorkingStoreList = (targetObjectId, parameters) => {
+  const url = `${PREFIX}roleManager/removeEmployeeWorkingStoreList/roleId/employeeWorkingStoreIds/tokensExpr/`
   const requestParameters = { ...parameters, roleId: targetObjectId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -43,8 +43,8 @@ const removeEmployeeList = (targetObjectId, parameters) => {
 
 const RoleService = { view,
   load,
-  addEmployee,
-  updateEmployee,
-  removeEmployeeList }
+  addEmployeeWorkingStore,
+  updateEmployeeWorkingStore,
+  removeEmployeeWorkingStoreList }
 export default RoleService
 

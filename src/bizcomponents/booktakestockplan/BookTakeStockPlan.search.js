@@ -201,6 +201,7 @@ class BookTakeStockPlanSearch extends PureComponent {
 
 <Menu.Item key="store">关联服务网点</Menu.Item>
 <Menu.Item key="planCreator">关联计划创建人</Menu.Item>
+<Menu.Item key="takeStockStatus">关联盘点状态</Menu.Item>
       
 
       </Menu>

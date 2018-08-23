@@ -68,7 +68,6 @@ class BorrowingHistorySearchForm extends PureComponent {
         ...this.buildStringSearchParameters(fieldsValue, 'borrowerMemberLevel'),
         ...this.buildStringSearchParameters(fieldsValue, 'bookCopySharingType'),
         ...this.buildStringSearchParameters(fieldsValue, 'lendingStoreType'),
-        ...this.buildStringSearchParameters(fieldsValue, 'borrowingStatus'),
 
       }
       const { owner } = this.props
@@ -154,14 +153,6 @@ class BorrowingHistorySearchForm extends PureComponent {
             <FormItem label="借出网点类型">
               {getFieldDecorator('lendingStoreType')(
                 <Input placeholder="请输入借出网点类型" />
-              )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
-            <FormItem label="借书状态">
-              {getFieldDecorator('borrowingStatus')(
-                <Input placeholder="请输入借书状态" />
               )}
             </FormItem>
           </Col>

@@ -289,10 +289,10 @@ class RoleDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, employeeCount } = this.props.role
+    const { id,displayName, employeeWorkingStoreCount } = this.props.role
     const cardsData = {cardsName:"角色",cardsFor: "role",cardsSource: this.props.role,
   		subItems: [
-{name: 'employeeList', displayName:'员工',type:'employee',count:employeeCount},
+{name: 'employeeWorkingStoreList', displayName:'员工工作的网点',type:'employeeWorkingStore',count:employeeWorkingStoreCount},
     
       	],
   	};

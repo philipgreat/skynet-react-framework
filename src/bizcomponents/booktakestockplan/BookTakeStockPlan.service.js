@@ -50,17 +50,33 @@ const transferToAnotherPlanCreator = (id, parameters) => {
 
 
 
+const requestCandidateTakeStockStatus = (ownerClass, id, filterKey, pageNo) => {
+  //const parametersExpr = joinParameters(parameters)
+  return get({
+    url: `${PREFIX}bookTakeStockPlanManager/requestCandidateTakeStockStatus/${ownerClass}/${id}/${filterKey}/${pageNo}/`,
+  })
+}	
+
+const transferToAnotherTakeStockStatus = (id, parameters) => {
+  //const parametersExpr = joinParameters(parameters)
+  const url = `${PREFIX}bookTakeStockPlanManager/transferToAnotherTakeStockStatus/id/anotherTakeStockStatusId/`
+  const requestParameters = {id, ...parameters}
+  return postForm({url,requestParameters})
+}
+
+
+
 
 
 
 const addBookTakeStockResult = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookTakeStockPlanManager/addBookTakeStockResult/bookTakeStockPlanId/bookCopyId/bookTakeStockStatus/employeeId/results/tokensExpr/`
+  const url = `${PREFIX}bookTakeStockPlanManager/addBookTakeStockResult/bookTakeStockPlanId/bookName/bookCopyId/bookTakeStockStatusId/employeeId/takeStoreResultsId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateBookTakeStockResult = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookTakeStockPlanManager/updateBookTakeStockResultProperties/bookTakeStockPlanId/id/bookTakeStockStatus/results/tokensExpr/`
+  const url = `${PREFIX}bookTakeStockPlanManager/updateBookTakeStockResultProperties/bookTakeStockPlanId/id/bookName/tokensExpr/`
   const bookTakeStockPlanId = targetObjectId
   const requestParameters = { ...parameters, bookTakeStockPlanId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
@@ -80,7 +96,9 @@ const BookTakeStockPlanService = { view,
   removeBookTakeStockResultList,
   requestCandidateStore,
   requestCandidatePlanCreator,
+  requestCandidateTakeStockStatus,
   transferToAnotherStore,
-  transferToAnotherPlanCreator }
+  transferToAnotherPlanCreator,
+  transferToAnotherTakeStockStatus }
 export default BookTakeStockPlanService
 

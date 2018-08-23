@@ -269,7 +269,6 @@ const internalSummaryOf = (bookReviewLike,targetComponent) =>{
   style={{fontSize: 20,color:"red"}} />
 </Description>
 <Description term="点赞发布日期">{ moment(bookReviewLike.likePublishDatetime).format('YYYY-MM-DD')}</Description> 
-<Description term="点赞类型">{bookReviewLike.likeType}</Description> 
 	
         {buildTransferModal(bookReviewLike,targetComponent)}
       </DescriptionList>

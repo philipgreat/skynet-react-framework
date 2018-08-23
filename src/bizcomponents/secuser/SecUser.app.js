@@ -119,6 +119,7 @@ class SecUserBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/secUser/${this.props.secUser.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class SecUserBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/secUser/${this.props.secUser.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -212,9 +216,13 @@ class SecUserBizApp extends React.PureComponent {
   
   buildRouters = () =>{
   	const {SecUserDashboard} = GlobalComponents
+  	const {SecUserPreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/secUser/:id/dashboard", component: SecUserDashboard},
+  	{path:"/secUser/:id/preference", component: SecUserPreference},
+  	
   	
   	
   	{path:"/secUser/:id/list/userAppList", component: this.getUserAppSearch()},
@@ -288,7 +296,7 @@ class SecUserBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

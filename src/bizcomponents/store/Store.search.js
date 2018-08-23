@@ -199,6 +199,7 @@ class StoreSearch extends PureComponent {
       <Menu onClick={this.handleMenuClick} selectedKeys={[]}>
 
 
+<Menu.Item key="storeType">关联网点类型</Menu.Item>
 <Menu.Item key="city">关联城市</Menu.Item>
 <Menu.Item key="platform">关联平台</Menu.Item>
       

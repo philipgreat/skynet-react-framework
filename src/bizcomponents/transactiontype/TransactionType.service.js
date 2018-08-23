@@ -38,7 +38,7 @@ const transferToAnotherAccountData = (id, parameters) => {
 
 
 const addPlatformAccountDetails = (targetObjectId, parameters) => {
-  const url = `${PREFIX}transactionTypeManager/addPlatformAccountDetails/transactionTypeId/summary/amount/platformAccountId/relatedMainOrderId/memberServiceRevenueId/tokensExpr/`
+  const url = `${PREFIX}transactionTypeManager/addPlatformAccountDetails/transactionTypeId/summary/amount/platformAccountId/relatedMainOrderId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -98,13 +98,13 @@ const removeStoreAccountDetailsList = (targetObjectId, parameters) => {
 
 
 const addCustomerAccountTransaction = (targetObjectId, parameters) => {
-  const url = `${PREFIX}transactionTypeManager/addCustomerAccountTransaction/transactionTypeId/summary/amount/customerId/relatedMainOrderId/tokensExpr/`
+  const url = `${PREFIX}transactionTypeManager/addCustomerAccountTransaction/transactionTypeId/summary/amount/balance/customerId/relatedMainOrderId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateCustomerAccountTransaction = (targetObjectId, parameters) => {
-  const url = `${PREFIX}transactionTypeManager/updateCustomerAccountTransactionProperties/transactionTypeId/id/summary/amount/tokensExpr/`
+  const url = `${PREFIX}transactionTypeManager/updateCustomerAccountTransactionProperties/transactionTypeId/id/summary/amount/balance/tokensExpr/`
   const transactionTypeId = targetObjectId
   const requestParameters = { ...parameters, transactionTypeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})

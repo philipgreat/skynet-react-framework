@@ -17,10 +17,10 @@ const testValues = {};
 /*
 const testValues = {
   planName: '盘点计划名称',
-  planDatetime: '2017-10-02 19:10:48',
-  status: '计划中',
+  planDatetime: '2016-09-21 05:41:23',
   storeId: 'S000001',
   planCreatorId: 'E000001',
+  takeStockStatusId: 'TSS000001',
 }
 */
 const imageURLPrefix = '//localhost:2090'
@@ -46,6 +46,9 @@ class BookTakeStockPlanCreateForm extends Component {
     
     
     this.executeCandidatePlanCreatorSearch("")
+    
+    
+    this.executeCandidateTakeStockStatusSearch("")
     
  
     
@@ -106,6 +109,28 @@ class BookTakeStockPlanCreateForm extends Component {
   }	 
   handleCandidatePlanCreatorSearch = (value) => {
     this.executeCandidatePlanCreatorSearch(value)
+  }
+
+  executeCandidateTakeStockStatusSearch = (filterKey) =>{
+
+    const {BookTakeStockPlanService} = GlobalComponents;
+    
+    const id = "";//not used for now
+    const pageNo = 1;
+    const future = BookTakeStockPlanService.requestCandidateTakeStockStatus("takeStockStatus", id, filterKey, pageNo);
+    console.log(future);
+    
+
+    future.then(candidateTakeStockStatusList=>{
+      this.setState({
+        candidateTakeStockStatusList
+      })
+
+    })
+
+  }	 
+  handleCandidateTakeStockStatusSearch = (value) => {
+    this.executeCandidateTakeStockStatusSearch(value)
   }
  
 
@@ -232,6 +257,15 @@ class BookTakeStockPlanCreateForm extends Component {
     }   
     
     
+    const {candidateTakeStockStatusList} = this.state
+    if(!candidateTakeStockStatusList){
+      return (<div>等等</div>)
+    }
+    if(!candidateTakeStockStatusList.candidates){
+      return (<div>等等</div>)
+    }   
+    
+    
     
     const tryinit  = (fieldName) => {
       const { owner } = this.props
@@ -285,16 +319,6 @@ class BookTakeStockPlanCreateForm extends Component {
                     rules: [{ required: true, message: '请输入计划日期时间' }],
                   })(
                     <DatePicker showTime format="YYYY-MM-DD HH:mm" minuteStep={5} placeholder="请输入计划日期时间" />
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.status} {...formItemLayout}>
-                  {getFieldDecorator('status', {
-                    rules: [{ required: true, message: '请输入状态' }],
-                  })(
-                    <Input placeholder="请输入状态" />
                   )}
                 </Form.Item>
               </Col>
@@ -362,6 +386,31 @@ class BookTakeStockPlanCreateForm extends Component {
                     disabled={!availableForEdit('planCreator')}
                   >
                   {candidatePlanCreatorList.candidates.map(item=>{
+                return (<Option key={item.id}>{`${item.name}(${item.id})`}</Option>);
+            })}
+                  
+                  </AutoComplete>
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.takeStockStatus} {...formItemLayout}>
+                  {getFieldDecorator('takeStockStatusId', {
+                  	initialValue: tryinit('takeStockStatus'),
+                    rules: [{ required: true, message: '请输入盘点状态' }],
+                  })(
+                  
+                  <AutoComplete
+                    dataSource={candidateTakeStockStatusList.candidates}
+                    
+                    
+                    onSearch={this.handleCandidateTakeStockStatusSearch}
+                    placeholder="请输入盘点状态"
+                    
+                    disabled={!availableForEdit('takeStockStatus')}
+                  >
+                  {candidateTakeStockStatusList.candidates.map(item=>{
                 return (<Option key={item.id}>{`${item.name}(${item.id})`}</Option>);
             })}
                   

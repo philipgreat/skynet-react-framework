@@ -90,13 +90,13 @@ const removeBookCopyList = (targetObjectId, parameters) => {
 
 
 const addBorrowingHistory = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookManager/addBorrowingHistory/bookId/lendingDatetime/bookName/borrowerId/borrowerMemberLevel/borrowerMemberServiceExpiredDatetime/bookCopyId/bookCopySharingType/lendingStoreId/lendingStoreType/freeLendingDays/freeLendingExpiredDatetime/overduePay/returnDatetime/returnStoreId/lendingDays/freeLendingExpired/borrowingStatus/tokensExpr/`
+  const url = `${PREFIX}bookManager/addBorrowingHistory/bookId/lendingDatetime/bookName/borrowerId/borrowerMemberLevel/borrowerMemberServiceExpiredDatetime/bookCopyId/bookCopySharingType/lendingStoreId/lendingStoreType/freeLendingDays/freeLendingExpiredDatetime/overduePay/returnDatetime/returnStoreId/lendingDays/freeLendingExpired/borrowingStatusId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateBorrowingHistory = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookManager/updateBorrowingHistoryProperties/bookId/id/lendingDatetime/bookName/borrowerMemberLevel/borrowerMemberServiceExpiredDatetime/bookCopySharingType/lendingStoreType/freeLendingDays/freeLendingExpiredDatetime/overduePay/returnDatetime/lendingDays/freeLendingExpired/borrowingStatus/tokensExpr/`
+  const url = `${PREFIX}bookManager/updateBorrowingHistoryProperties/bookId/id/lendingDatetime/bookName/borrowerMemberLevel/borrowerMemberServiceExpiredDatetime/bookCopySharingType/lendingStoreType/freeLendingDays/freeLendingExpiredDatetime/overduePay/returnDatetime/lendingDays/freeLendingExpired/tokensExpr/`
   const bookId = targetObjectId
   const requestParameters = { ...parameters, bookId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
@@ -110,13 +110,13 @@ const removeBorrowingHistoryList = (targetObjectId, parameters) => {
 
 
 const addBorrowingExpiredSku = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookManager/addBorrowingExpiredSku/bookId/borrowerId/bookCopyId/bookName/lendingStoreId/lendingDatetime/returnStoreId/returnDatetime/expiredDays/expiredFee/costPaymentStatus/borrowingHistoryId/tokensExpr/`
+  const url = `${PREFIX}bookManager/addBorrowingExpiredSku/bookId/borrowerId/bookCopyId/bookName/lendingStoreId/lendingDatetime/returnStoreId/returnDatetime/expiredDays/expiredFee/borrowingHistoryId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateBorrowingExpiredSku = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookManager/updateBorrowingExpiredSkuProperties/bookId/id/bookName/lendingDatetime/returnDatetime/expiredDays/expiredFee/costPaymentStatus/tokensExpr/`
+  const url = `${PREFIX}bookManager/updateBorrowingExpiredSkuProperties/bookId/id/bookName/lendingDatetime/returnDatetime/expiredDays/expiredFee/tokensExpr/`
   const bookId = targetObjectId
   const requestParameters = { ...parameters, bookId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
@@ -150,13 +150,13 @@ const removeBookReviewList = (targetObjectId, parameters) => {
 
 
 const addStoreSlide = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookManager/addStoreSlide/bookId/tips/bannerImage/wxaLinkUrl/antdLinkUrl/linkType/campaignId/memberServiceProductId/storeId/tokensExpr/`
+  const url = `${PREFIX}bookManager/addStoreSlide/bookId/tips/bannerImage/wxaLinkUrl/antdLinkUrl/slideTypeId/campaignId/memberServiceProductId/storeId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateStoreSlide = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookManager/updateStoreSlideProperties/bookId/id/tips/bannerImage/wxaLinkUrl/antdLinkUrl/linkType/tokensExpr/`
+  const url = `${PREFIX}bookManager/updateStoreSlideProperties/bookId/id/tips/bannerImage/wxaLinkUrl/antdLinkUrl/tokensExpr/`
   const bookId = targetObjectId
   const requestParameters = { ...parameters, bookId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})

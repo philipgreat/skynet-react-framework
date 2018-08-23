@@ -106,13 +106,13 @@ const removeLossAssessmentRecordList = (targetObjectId, parameters) => {
 
 
 const addBookCopyTransfer = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookCopyManager/addBookCopyTransfer/bookCopyId/bookName/originalStoreId/newStoreId/transferType/responsibleEmployeeId/tokensExpr/`
+  const url = `${PREFIX}bookCopyManager/addBookCopyTransfer/bookCopyId/bookName/originalStoreId/newStoreId/transferTypeId/responsibleEmployeeId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateBookCopyTransfer = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookCopyManager/updateBookCopyTransferProperties/bookCopyId/id/bookName/transferType/tokensExpr/`
+  const url = `${PREFIX}bookCopyManager/updateBookCopyTransferProperties/bookCopyId/id/bookName/tokensExpr/`
   const bookCopyId = targetObjectId
   const requestParameters = { ...parameters, bookCopyId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
@@ -126,13 +126,13 @@ const removeBookCopyTransferList = (targetObjectId, parameters) => {
 
 
 const addBookTakeStockResult = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookCopyManager/addBookTakeStockResult/bookCopyId/bookTakeStockStatus/employeeId/results/bookTakeStockPlanId/tokensExpr/`
+  const url = `${PREFIX}bookCopyManager/addBookTakeStockResult/bookCopyId/bookName/bookTakeStockStatusId/employeeId/takeStoreResultsId/bookTakeStockPlanId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateBookTakeStockResult = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookCopyManager/updateBookTakeStockResultProperties/bookCopyId/id/bookTakeStockStatus/results/tokensExpr/`
+  const url = `${PREFIX}bookCopyManager/updateBookTakeStockResultProperties/bookCopyId/id/bookName/tokensExpr/`
   const bookCopyId = targetObjectId
   const requestParameters = { ...parameters, bookCopyId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
@@ -146,13 +146,13 @@ const removeBookTakeStockResultList = (targetObjectId, parameters) => {
 
 
 const addBookCopyOperationRecord = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookCopyManager/addBookCopyOperationRecord/bookCopyId/bookCopyOperateType/operateStoreId/operationEmployeeId/tokensExpr/`
+  const url = `${PREFIX}bookCopyManager/addBookCopyOperationRecord/bookCopyId/bookName/bookCopyOperateTypeId/operateStoreId/operationEmployeeId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateBookCopyOperationRecord = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookCopyManager/updateBookCopyOperationRecordProperties/bookCopyId/id/bookCopyOperateType/tokensExpr/`
+  const url = `${PREFIX}bookCopyManager/updateBookCopyOperationRecordProperties/bookCopyId/id/bookName/tokensExpr/`
   const bookCopyId = targetObjectId
   const requestParameters = { ...parameters, bookCopyId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
@@ -166,13 +166,13 @@ const removeBookCopyOperationRecordList = (targetObjectId, parameters) => {
 
 
 const addBorrowingHistory = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookCopyManager/addBorrowingHistory/bookCopyId/lendingDatetime/bookName/borrowerId/borrowerMemberLevel/borrowerMemberServiceExpiredDatetime/bookId/bookCopySharingType/lendingStoreId/lendingStoreType/freeLendingDays/freeLendingExpiredDatetime/overduePay/returnDatetime/returnStoreId/lendingDays/freeLendingExpired/borrowingStatus/tokensExpr/`
+  const url = `${PREFIX}bookCopyManager/addBorrowingHistory/bookCopyId/lendingDatetime/bookName/borrowerId/borrowerMemberLevel/borrowerMemberServiceExpiredDatetime/bookId/bookCopySharingType/lendingStoreId/lendingStoreType/freeLendingDays/freeLendingExpiredDatetime/overduePay/returnDatetime/returnStoreId/lendingDays/freeLendingExpired/borrowingStatusId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateBorrowingHistory = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookCopyManager/updateBorrowingHistoryProperties/bookCopyId/id/lendingDatetime/bookName/borrowerMemberLevel/borrowerMemberServiceExpiredDatetime/bookCopySharingType/lendingStoreType/freeLendingDays/freeLendingExpiredDatetime/overduePay/returnDatetime/lendingDays/freeLendingExpired/borrowingStatus/tokensExpr/`
+  const url = `${PREFIX}bookCopyManager/updateBorrowingHistoryProperties/bookCopyId/id/lendingDatetime/bookName/borrowerMemberLevel/borrowerMemberServiceExpiredDatetime/bookCopySharingType/lendingStoreType/freeLendingDays/freeLendingExpiredDatetime/overduePay/returnDatetime/lendingDays/freeLendingExpired/tokensExpr/`
   const bookCopyId = targetObjectId
   const requestParameters = { ...parameters, bookCopyId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
@@ -186,13 +186,13 @@ const removeBorrowingHistoryList = (targetObjectId, parameters) => {
 
 
 const addBorrowingExpiredSku = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookCopyManager/addBorrowingExpiredSku/bookCopyId/borrowerId/bookId/bookName/lendingStoreId/lendingDatetime/returnStoreId/returnDatetime/expiredDays/expiredFee/costPaymentStatus/borrowingHistoryId/tokensExpr/`
+  const url = `${PREFIX}bookCopyManager/addBorrowingExpiredSku/bookCopyId/borrowerId/bookId/bookName/lendingStoreId/lendingDatetime/returnStoreId/returnDatetime/expiredDays/expiredFee/borrowingHistoryId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateBorrowingExpiredSku = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookCopyManager/updateBorrowingExpiredSkuProperties/bookCopyId/id/bookName/lendingDatetime/returnDatetime/expiredDays/expiredFee/costPaymentStatus/tokensExpr/`
+  const url = `${PREFIX}bookCopyManager/updateBorrowingExpiredSkuProperties/bookCopyId/id/bookName/lendingDatetime/returnDatetime/expiredDays/expiredFee/tokensExpr/`
   const bookCopyId = targetObjectId
   const requestParameters = { ...parameters, bookCopyId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})

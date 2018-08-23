@@ -35,7 +35,7 @@ export default {
       const link = payload.pathname
       //if the data in the cache, just show it, there is no delay
       if(cachedData.class){
-        yield put({ type: 'breadcrumb/gotoLink', payload: { displayName:cachedData.displayName,link }} )
+        //yield put({ type: 'breadcrumb/gotoLink', payload: { displayName:cachedData.displayName,link }} )
         yield put({ type: 'updateState', payload: cachedData })
       }else{
         yield put({ type: 'showLoading', payload })
@@ -46,9 +46,9 @@ export default {
       
       const displayName = payload.displayName||data.displayName
       
-      if(!cachedData.class){
-        yield put({ type: 'breadcrumb/gotoLink', payload: { displayName,link }} )
-      }
+      
+      yield put({ type: 'breadcrumb/gotoLink', payload: { displayName,link }} )
+      
 
       yield put({ type: 'updateState', payload: data })
     },
@@ -101,82 +101,6 @@ export default {
     *goback({ payload }, { put }) {
       const { id, type,listName } = payload
       yield put(routerRedux.push(`/memberServiceProduct/${id}/list/${type}List/${listName}`))
-    },
-
-    *addTokenInMemberServiceProduct({ payload }, { call, put }) {
-      const {MemberServiceProductService} = GlobalComponents;
-
-      const { id, type, parameters, continueNext } = payload
-      console.log('get form parameters', parameters)
-      const data = yield call(MemberServiceProductService.addTokenInMemberServiceProduct, id, parameters)
-      if (hasError(data)) {
-        handleServerError(data)
-        return
-      }
-      const newPlayload = { ...payload, ...data }
-      yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/memberServiceProduct/${id}/list/${type}CreateForm'))
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
-      if (continueNext) {
-        return
-      }
-      const partialList = true
-      const newState = {...data, partialList}
-      const location = { pathname: `/memberServiceProduct/${id}/list/${type}List/成员服务产品中的令牌列表`, state: newState }
-      yield put(routerRedux.push(location))
-    },
-    *updateTokenInMemberServiceProduct({ payload }, { call, put }) {
-      const {MemberServiceProductService} = GlobalComponents;      
-      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
-      console.log('get form parameters', parameters)
-      const data = yield call(MemberServiceProductService.updateTokenInMemberServiceProduct, id, parameters)
-      if (hasError(data)) {
-        handleServerError(data)
-        return
-      }
-      const partialList = true
-      
-      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
-      yield put({ type: 'updateState', payload: newPlayload })
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
-      
-      if (continueNext) {
-        return
-      }
-      const location = { pathname: `/memberServiceProduct/${id}/list/${type}List/成员服务产品中的令牌列表`, state: newPlayload }
-      yield put(routerRedux.push(location))
-    },
-    *gotoNextTokenInMemberServiceProductUpdateRow({ payload }, { call, put }) {
-      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
-      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
-      yield put({ type: 'updateState', payload: newPlayload })
-    },
-    *removeTokenInMemberServiceProductList({ payload }, { call, put }) {
-      const {MemberServiceProductService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
-      console.log('get form parameters', parameters)
-      const data = yield call(MemberServiceProductService.removeTokenInMemberServiceProductList, id, parameters)
-      if (hasError(data)) {
-        handleServerError(data)
-        return
-      }
-      const newPlayload = { ...payload, ...data }
-
-      yield put({ type: 'updateState', payload: newPlayload })
-        
-      // yield put(routerRedux.push(`/memberServiceProduct/${id}/list/${type}CreateForm`))
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
-      // const location = { pathname: `memberServiceProduct/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
     },
 
     *addMemberServiceBundleSku({ payload }, { call, put }) {

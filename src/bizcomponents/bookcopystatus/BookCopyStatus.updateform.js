@@ -261,24 +261,24 @@ class BookCopyStatusUpdateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.statusName} {...formItemLayout}>
-                  {getFieldDecorator('statusName', {
-                    initialValue: selectedRow.statusName,
-                    rules: [{ required: true, message: '请输入地位的名字' }],
+                <Form.Item label={fieldLabels.name} {...formItemLayout}>
+                  {getFieldDecorator('name', {
+                    initialValue: selectedRow.name,
+                    rules: [{ required: true, message: '请输入名称' }],
                   })(
-                    <Input placeholder="请输入地位的名字" />
+                    <Input placeholder="请输入名称" />
                     
                   )}
                 </Form.Item>
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.statusCode} {...formItemLayout}>
-                  {getFieldDecorator('statusCode', {
-                    initialValue: selectedRow.statusCode,
-                    rules: [{ required: true, message: '请输入状态码' }],
+                <Form.Item label={fieldLabels.code} {...formItemLayout}>
+                  {getFieldDecorator('code', {
+                    initialValue: selectedRow.code,
+                    rules: [{ required: true, message: '请输入代码' }],
                   })(
-                    <Input placeholder="请输入状态码" />
+                    <Input placeholder="请输入代码" />
                     
                   )}
                 </Form.Item>

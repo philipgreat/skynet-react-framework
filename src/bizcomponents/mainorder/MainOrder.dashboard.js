@@ -297,16 +297,18 @@ class MainOrderDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, lineItemCount, mainOrderPaymentCount, orderLogCount, platformAccountDetailsCount, fundationAccountDetailsCount, storeAccountDetailsCount, customerAccountTransactionCount } = this.props.mainOrder
+    const { id,displayName, lineItemCount, mainOrderPaymentCount, orderLogCount, memberServiceRevenueCount, platformAccountDetailsCount, fundationAccountDetailsCount, storeAccountDetailsCount, customerAccountTransactionCount, undistributedProfitCount } = this.props.mainOrder
     const cardsData = {cardsName:"主订单",cardsFor: "mainOrder",cardsSource: this.props.mainOrder,
   		subItems: [
 {name: 'lineItemList', displayName:'订单项',type:'lineItem',count:lineItemCount},
 {name: 'mainOrderPaymentList', displayName:'主订单支付',type:'mainOrderPayment',count:mainOrderPaymentCount},
 {name: 'orderLogList', displayName:'Log',type:'orderLog',count:orderLogCount},
+{name: 'memberServiceRevenueList', displayName:'会员服务收益',type:'memberServiceRevenue',count:memberServiceRevenueCount},
 {name: 'platformAccountDetailsList', displayName:'平台账户明细',type:'platformAccountDetails',count:platformAccountDetailsCount},
 {name: 'fundationAccountDetailsList', displayName:'平台基金账户明细',type:'fundationAccountDetails',count:fundationAccountDetailsCount},
 {name: 'storeAccountDetailsList', displayName:'网点账户明细',type:'storeAccountDetails',count:storeAccountDetailsCount},
 {name: 'customerAccountTransactionList', displayName:'客户账户明细',type:'customerAccountTransaction',count:customerAccountTransactionCount},
+{name: 'undistributedProfitList', displayName:'未分配利润',type:'undistributedProfit',count:undistributedProfitCount},
     
       	],
   	};

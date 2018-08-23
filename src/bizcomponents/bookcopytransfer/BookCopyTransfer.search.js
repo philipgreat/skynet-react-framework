@@ -202,6 +202,7 @@ class BookCopyTransferSearch extends PureComponent {
 <Menu.Item key="bookCopy">关联书籍副本</Menu.Item>
 <Menu.Item key="originalStore">关联原网点</Menu.Item>
 <Menu.Item key="newStore">关联新网点</Menu.Item>
+<Menu.Item key="transferType">关联转移类型</Menu.Item>
 <Menu.Item key="responsibleEmployee">关联操作员工</Menu.Item>
       
 

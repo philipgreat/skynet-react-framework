@@ -65,11 +65,9 @@ class BookCopySharingApplicationSearchForm extends PureComponent {
       const params = {
         ...this.buildStringSearchParameters(fieldsValue, 'id'),
         ...this.buildStringSearchParameters(fieldsValue, 'bookCopyQuantity'),
-        ...this.buildStringSearchParameters(fieldsValue, 'deliverMethod'),
         ...this.buildStringSearchParameters(fieldsValue, 'contactAddress'),
         ...this.buildStringSearchParameters(fieldsValue, 'contactName'),
         ...this.buildStringSearchParameters(fieldsValue, 'contactMobile'),
-        ...this.buildStringSearchParameters(fieldsValue, 'status'),
 
       }
       const { owner } = this.props
@@ -136,14 +134,6 @@ class BookCopySharingApplicationSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="共享方式">
-              {getFieldDecorator('deliverMethod')(
-                <Input placeholder="请输入共享方式" />
-              )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
             <FormItem label="联系地址">
               {getFieldDecorator('contactAddress')(
                 <Input placeholder="请输入联系地址" />
@@ -163,14 +153,6 @@ class BookCopySharingApplicationSearchForm extends PureComponent {
             <FormItem label="联系人手机">
               {getFieldDecorator('contactMobile')(
                 <Input placeholder="请输入联系人手机" />
-              )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
-            <FormItem label="状态">
-              {getFieldDecorator('status')(
-                <Input placeholder="请输入状态" />
               )}
             </FormItem>
           </Col>

@@ -264,9 +264,9 @@ class BookPlazaUpdateForm extends Component {
                 <Form.Item label={fieldLabels.bookPlazaName} {...formItemLayout}>
                   {getFieldDecorator('bookPlazaName', {
                     initialValue: selectedRow.bookPlazaName,
-                    rules: [{ required: true, message: '请输入本广场的名字' }],
+                    rules: [{ required: true, message: '请输入名称' }],
                   })(
-                    <Input placeholder="请输入本广场的名字" />
+                    <Input placeholder="请输入名称" />
                     
                   )}
                 </Form.Item>

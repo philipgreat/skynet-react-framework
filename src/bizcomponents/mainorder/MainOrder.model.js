@@ -35,7 +35,7 @@ export default {
       const link = payload.pathname
       //if the data in the cache, just show it, there is no delay
       if(cachedData.class){
-        yield put({ type: 'breadcrumb/gotoLink', payload: { displayName:cachedData.displayName,link }} )
+        //yield put({ type: 'breadcrumb/gotoLink', payload: { displayName:cachedData.displayName,link }} )
         yield put({ type: 'updateState', payload: cachedData })
       }else{
         yield put({ type: 'showLoading', payload })
@@ -46,9 +46,9 @@ export default {
       
       const displayName = payload.displayName||data.displayName
       
-      if(!cachedData.class){
-        yield put({ type: 'breadcrumb/gotoLink', payload: { displayName,link }} )
-      }
+      
+      yield put({ type: 'breadcrumb/gotoLink', payload: { displayName,link }} )
+      
 
       yield put({ type: 'updateState', payload: data })
     },
@@ -314,6 +314,82 @@ export default {
       const { id, type, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(MainOrderService.removeOrderLogList, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/mainOrder/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      // const location = { pathname: `mainOrder/${id}/list/${type}List`, state: data}
+      // yield put(routerRedux.push(location))
+    },
+
+    *addMemberServiceRevenue({ payload }, { call, put }) {
+      const {MainOrderService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(MainOrderService.addMemberServiceRevenue, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/mainOrder/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/mainOrder/${id}/list/${type}List/会员服务收益列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateMemberServiceRevenue({ payload }, { call, put }) {
+      const {MainOrderService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(MainOrderService.updateMemberServiceRevenue, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/mainOrder/${id}/list/${type}List/会员服务收益列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextMemberServiceRevenueUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeMemberServiceRevenueList({ payload }, { call, put }) {
+      const {MainOrderService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(MainOrderService.removeMemberServiceRevenueList, id, parameters)
       if (hasError(data)) {
         handleServerError(data)
         return
@@ -618,6 +694,82 @@ export default {
       const { id, type, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(MainOrderService.removeCustomerAccountTransactionList, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/mainOrder/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      // const location = { pathname: `mainOrder/${id}/list/${type}List`, state: data}
+      // yield put(routerRedux.push(location))
+    },
+
+    *addUndistributedProfit({ payload }, { call, put }) {
+      const {MainOrderService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(MainOrderService.addUndistributedProfit, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/mainOrder/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/mainOrder/${id}/list/${type}List/未分配利润列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateUndistributedProfit({ payload }, { call, put }) {
+      const {MainOrderService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(MainOrderService.updateUndistributedProfit, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/mainOrder/${id}/list/${type}List/未分配利润列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextUndistributedProfitUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeUndistributedProfitList({ payload }, { call, put }) {
+      const {MainOrderService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(MainOrderService.removeUndistributedProfitList, id, parameters)
       if (hasError(data)) {
         handleServerError(data)
         return

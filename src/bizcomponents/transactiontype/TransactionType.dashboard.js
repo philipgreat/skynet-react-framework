@@ -257,7 +257,7 @@ const internalSummaryOf = (transactionType,targetComponent) =>{
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="ID">{transactionType.id}</Description> 
 <Description term="名称">{transactionType.name}</Description> 
-<Description term="交易代码">{transactionType.transactionCode}</Description> 
+<Description term="代码">{transactionType.code}</Description> 
 <Description term="帐户数据">{transactionType.accountData==null?"未分配":transactionType.accountData.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"帐户数据","accountData","requestCandidateAccountData",

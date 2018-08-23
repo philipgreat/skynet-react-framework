@@ -258,6 +258,7 @@ const internalSummaryOf = (customerAccountTransaction,targetComponent) =>{
 <Description term="ID">{customerAccountTransaction.id}</Description> 
 <Description term="摘要">{customerAccountTransaction.summary}</Description> 
 <Description term="账户余额">{customerAccountTransaction.amount}</Description> 
+<Description term="余额">{customerAccountTransaction.balance}</Description> 
 <Description term="交易类型">{customerAccountTransaction.transactionType==null?"未分配":customerAccountTransaction.transactionType.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"交易类型","transactionType","requestCandidateTransactionType",

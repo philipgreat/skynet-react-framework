@@ -285,18 +285,6 @@ class BookTakeStockPlanUpdateForm extends Component {
                 </Form.Item>
               </Col>
 
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.status} {...formItemLayout}>
-                  {getFieldDecorator('status', {
-                    initialValue: selectedRow.status,
-                    rules: [{ required: true, message: '请输入状态' }],
-                  })(
-                    <Input placeholder="请输入状态" />
-                    
-                  )}
-                </Form.Item>
-              </Col>
-
             </Row>
           </Form>  
         </Card>

@@ -16,6 +16,12 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
+  myRightsTitle: '会员权益',
+  myBorrowingTitle: '借阅记录',
+  myCampaignTitle: '活动记录',
+  myBalanceTitle: '账户余额',
+  myBookReviewTitle: '札记记录',
+  myOrderTitle: '订单记录',
   platformId: 'BSP000001',
   memberServiceAgreement: '<div>\
 	<h1>一级会员服务</h1>\
@@ -34,6 +40,22 @@ const testValues = {
 	</ul>\
 </div>',
   accountRechargeAgreement: '<div>\
+	<h1>一级会员服务</h1>\
+	<ul>\
+		<li>可以借阅图书</li>\
+		<li>可以购买</li>\
+		<li>可以报名参加活动</li>\
+	</ul>\
+</div>',
+  messageInStoreListPage: '<div>\
+	<h1>一级会员服务</h1>\
+	<ul>\
+		<li>可以借阅图书</li>\
+		<li>可以购买</li>\
+		<li>可以报名参加活动</li>\
+	</ul>\
+</div>',
+  feedbackContactInfo: '<div>\
 	<h1>一级会员服务</h1>\
 	<ul>\
 		<li>可以借阅图书</li>\
@@ -255,6 +277,66 @@ class PlatformConfigurationCreateForm extends Component {
           <Form >
             <Row gutter={16}>
 
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.myRightsTitle} {...formItemLayout}>
+                  {getFieldDecorator('myRightsTitle', {
+                    rules: [{ required: true, message: '请输入我的权益的功能的显示名称' }],
+                  })(
+                    <Input placeholder="请输入我的权益的功能的显示名称" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.myBorrowingTitle} {...formItemLayout}>
+                  {getFieldDecorator('myBorrowingTitle', {
+                    rules: [{ required: true, message: '请输入我的借阅记录的功能的显示名称' }],
+                  })(
+                    <Input placeholder="请输入我的借阅记录的功能的显示名称" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.myCampaignTitle} {...formItemLayout}>
+                  {getFieldDecorator('myCampaignTitle', {
+                    rules: [{ required: true, message: '请输入我的活动的功能的显示名称' }],
+                  })(
+                    <Input placeholder="请输入我的活动的功能的显示名称" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.myBalanceTitle} {...formItemLayout}>
+                  {getFieldDecorator('myBalanceTitle', {
+                    rules: [{ required: true, message: '请输入我的余额的功能的显示名称' }],
+                  })(
+                    <Input placeholder="请输入我的余额的功能的显示名称" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.myBookReviewTitle} {...formItemLayout}>
+                  {getFieldDecorator('myBookReviewTitle', {
+                    rules: [{ required: true, message: '请输入我的书评的功能的显示名称' }],
+                  })(
+                    <Input placeholder="请输入我的书评的功能的显示名称" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.myOrderTitle} {...formItemLayout}>
+                  {getFieldDecorator('myOrderTitle', {
+                    rules: [{ required: true, message: '请输入我的订单的功能的显示名称' }],
+                  })(
+                    <Input placeholder="请输入我的订单的功能的显示名称" />
+                  )}
+                </Form.Item>
+              </Col>
+
             </Row>
           </Form>
         </Card>
@@ -309,6 +391,38 @@ class PlatformConfigurationCreateForm extends Component {
                     rules: [{ required: true, message: '请输入账户充值协议' }],
                   })(
                     <TextArea rows={4} placeholder="请输入请输入账户充值协议" />
+                  )}
+                </Form.Item>
+              </Col>
+      </Row>
+          </Form>  
+        </Card>
+
+        <Card title="存储列表页中的消息" className={styles.card} bordered={false}>
+          <Form >
+            <Row gutter={16}>
+              <Col lg={24} md={24} sm={24}>
+                <Form.Item>
+                  {getFieldDecorator('messageInStoreListPage', {
+                    rules: [{ required: true, message: '请输入存储列表页中的消息' }],
+                  })(
+                    <TextArea rows={4} placeholder="请输入请输入存储列表页中的消息" />
+                  )}
+                </Form.Item>
+              </Col>
+      </Row>
+          </Form>  
+        </Card>
+
+        <Card title="反馈联系信息" className={styles.card} bordered={false}>
+          <Form >
+            <Row gutter={16}>
+              <Col lg={24} md={24} sm={24}>
+                <Form.Item>
+                  {getFieldDecorator('feedbackContactInfo', {
+                    rules: [{ required: true, message: '请输入反馈联系信息' }],
+                  })(
+                    <TextArea rows={4} placeholder="请输入请输入反馈联系信息" />
                   )}
                 </Form.Item>
               </Col>

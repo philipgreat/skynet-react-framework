@@ -16,8 +16,8 @@ const menuData = {menuName:"交易类型", menuFor: "transactionType",
 
 const displayColumns = [
   { title: 'ID', debugtype: 'string', dataIndex: 'id', width: '20', render: (text, record)=>(<Link to={`/transactionType/${text}/dashboard`}>{text}</Link>) },
-  { title: '名称', debugtype: 'string', dataIndex: 'name', width: '6' },
-  { title: '交易代码', debugtype: 'string', dataIndex: 'transactionCode', width: '24' },
+  { title: '名称', debugtype: 'string', dataIndex: 'name', width: '10' },
+  { title: '代码', debugtype: 'string', dataIndex: 'code', width: '24' },
   { title: '帐户数据', dataIndex: 'accountData', render: (text, record) => (record.accountData ? record.accountData.displayName : '暂无') },
 
 ]
@@ -25,7 +25,7 @@ const displayColumns = [
 const fieldLabels = {
   id: 'ID',
   name: '名称',
-  transactionCode: '交易代码',
+  code: '代码',
   accountData: '帐户数据',
 
 }

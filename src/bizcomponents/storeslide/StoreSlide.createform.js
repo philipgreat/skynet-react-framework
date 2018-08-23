@@ -19,7 +19,7 @@ const testValues = {
   tips: '新书推荐：《神们自己》',
   wxaLinkUrl: '/wxaService/viewObject/book/B000001/',
   antdLinkUrl: './bookManager/B00001/',
-  linkType: 'book',
+  slideTypeId: 'ST000001',
   bookId: 'B000001',
   campaignId: 'C000001',
   memberServiceProductId: 'MSP000001',
@@ -46,6 +46,9 @@ class StoreSlideCreateForm extends Component {
     const { setFieldsValue } = this.props.form
     //setFieldsValue(testValues)
       
+    this.executeCandidateSlideTypeSearch("")
+    
+    
     this.executeCandidateBookSearch("")
     
     
@@ -74,6 +77,28 @@ class StoreSlideCreateForm extends Component {
   }
 
   
+  executeCandidateSlideTypeSearch = (filterKey) =>{
+
+    const {StoreSlideService} = GlobalComponents;
+    
+    const id = "";//not used for now
+    const pageNo = 1;
+    const future = StoreSlideService.requestCandidateSlideType("slideType", id, filterKey, pageNo);
+    console.log(future);
+    
+
+    future.then(candidateSlideTypeList=>{
+      this.setState({
+        candidateSlideTypeList
+      })
+
+    })
+
+  }	 
+  handleCandidateSlideTypeSearch = (value) => {
+    this.executeCandidateSlideTypeSearch(value)
+  }
+
   executeCandidateBookSearch = (filterKey) =>{
 
     const {StoreSlideService} = GlobalComponents;
@@ -268,6 +293,15 @@ class StoreSlideCreateForm extends Component {
     
 
     
+    const {candidateSlideTypeList} = this.state
+    if(!candidateSlideTypeList){
+      return (<div>等等</div>)
+    }
+    if(!candidateSlideTypeList.candidates){
+      return (<div>等等</div>)
+    }   
+    
+    
     const {candidateBookList} = this.state
     if(!candidateBookList){
       return (<div>等等</div>)
@@ -371,16 +405,6 @@ class StoreSlideCreateForm extends Component {
                 </Form.Item>
               </Col>
 
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.linkType} {...formItemLayout}>
-                  {getFieldDecorator('linkType', {
-                    rules: [{ required: true, message: '请输入链接内容类型' }],
-                  })(
-                    <Input placeholder="请输入链接内容类型" />
-                  )}
-                </Form.Item>
-              </Col>
-
             </Row>
           </Form>
         </Card>
@@ -420,10 +444,35 @@ class StoreSlideCreateForm extends Component {
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.slideType} {...formItemLayout}>
+                  {getFieldDecorator('slideTypeId', {
+                  	initialValue: tryinit('slideType'),
+                    rules: [{ required: true, message: '请输入海报类型' }],
+                  })(
+                  
+                  <AutoComplete
+                    dataSource={candidateSlideTypeList.candidates}
+                    
+                    
+                    onSearch={this.handleCandidateSlideTypeSearch}
+                    placeholder="请输入海报类型"
+                    
+                    disabled={!availableForEdit('slideType')}
+                  >
+                  {candidateSlideTypeList.candidates.map(item=>{
+                return (<Option key={item.id}>{`${item.name}(${item.id})`}</Option>);
+            })}
+                  
+                  </AutoComplete>
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.book} {...formItemLayout}>
                   {getFieldDecorator('bookId', {
                   	initialValue: tryinit('book'),
-                    rules: [{ required: true, message: '请输入书' }],
+                    rules: [{ required: false, message: '请输入书' }],
                   })(
                   
                   <AutoComplete
@@ -448,7 +497,7 @@ class StoreSlideCreateForm extends Component {
                 <Form.Item label={fieldLabels.campaign} {...formItemLayout}>
                   {getFieldDecorator('campaignId', {
                   	initialValue: tryinit('campaign'),
-                    rules: [{ required: true, message: '请输入活动' }],
+                    rules: [{ required: false, message: '请输入活动' }],
                   })(
                   
                   <AutoComplete
@@ -473,7 +522,7 @@ class StoreSlideCreateForm extends Component {
                 <Form.Item label={fieldLabels.memberServiceProduct} {...formItemLayout}>
                   {getFieldDecorator('memberServiceProductId', {
                   	initialValue: tryinit('memberServiceProduct'),
-                    rules: [{ required: true, message: '请输入会员服务产品' }],
+                    rules: [{ required: false, message: '请输入会员服务产品' }],
                   })(
                   
                   <AutoComplete

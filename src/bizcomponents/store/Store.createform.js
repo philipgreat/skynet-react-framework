@@ -17,12 +17,14 @@ const testValues = {};
 /*
 const testValues = {
   storeName: '书香慕和南道店',
+  storeSubname: '亲子阅读馆',
   storeAddress: '慕和南道',
   storeOpenTime: '9:00~22:00,周末不休',
+  storeOpenTimeSecond: '9:00~22:00,周末不休',
   storeRoomNumber: '16-02',
-  longitude: '104.22930392496812',
-  latitude: '31.43590979136104',
-  storeType: '公益',
+  longitude: '103.65692975995412',
+  latitude: '30.53309398190027',
+  storeTypeId: 'ST000001',
   cityId: 'C000001',
   platformId: 'BSP000001',
   storeImage: 'https://www.wildgratitude.com/wp-content/uploads/2014/04/stacey-couch-boulder-bookstore.jpg',
@@ -48,6 +50,9 @@ class StoreCreateForm extends Component {
     const { setFieldsValue } = this.props.form
     //setFieldsValue(testValues)
       
+    this.executeCandidateStoreTypeSearch("")
+    
+    
     this.executeCandidateCitySearch("")
     
     
@@ -70,6 +75,28 @@ class StoreCreateForm extends Component {
   }
 
   
+  executeCandidateStoreTypeSearch = (filterKey) =>{
+
+    const {StoreService} = GlobalComponents;
+    
+    const id = "";//not used for now
+    const pageNo = 1;
+    const future = StoreService.requestCandidateStoreType("storeType", id, filterKey, pageNo);
+    console.log(future);
+    
+
+    future.then(candidateStoreTypeList=>{
+      this.setState({
+        candidateStoreTypeList
+      })
+
+    })
+
+  }	 
+  handleCandidateStoreTypeSearch = (value) => {
+    this.executeCandidateStoreTypeSearch(value)
+  }
+
   executeCandidateCitySearch = (filterKey) =>{
 
     const {StoreService} = GlobalComponents;
@@ -220,6 +247,15 @@ class StoreCreateForm extends Component {
     
 
     
+    const {candidateStoreTypeList} = this.state
+    if(!candidateStoreTypeList){
+      return (<div>等等</div>)
+    }
+    if(!candidateStoreTypeList.candidates){
+      return (<div>等等</div>)
+    }   
+    
+    
     const {candidateCityList} = this.state
     if(!candidateCityList){
       return (<div>等等</div>)
@@ -286,6 +322,16 @@ class StoreCreateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.storeSubname} {...formItemLayout}>
+                  {getFieldDecorator('storeSubname', {
+                    rules: [{ required: true, message: '请输入网点副标题' }],
+                  })(
+                    <Input placeholder="请输入网点副标题" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.storeAddress} {...formItemLayout}>
                   {getFieldDecorator('storeAddress', {
                     rules: [{ required: true, message: '请输入网点地址' }],
@@ -301,6 +347,16 @@ class StoreCreateForm extends Component {
                     rules: [{ required: true, message: '请输入网点营业时间' }],
                   })(
                     <Input placeholder="请输入网点营业时间" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.storeOpenTimeSecond} {...formItemLayout}>
+                  {getFieldDecorator('storeOpenTimeSecond', {
+                    rules: [{ required: true, message: '请输入网点营业时间补充说明' }],
+                  })(
+                    <Input placeholder="请输入网点营业时间补充说明" />
                   )}
                 </Form.Item>
               </Col>
@@ -331,16 +387,6 @@ class StoreCreateForm extends Component {
                     rules: [{ required: true, message: '请输入纬度' }],
                   })(
                     <Input placeholder="请输入纬度" />
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.storeType} {...formItemLayout}>
-                  {getFieldDecorator('storeType', {
-                    rules: [{ required: true, message: '请输入网点类型' }],
-                  })(
-                    <Input placeholder="请输入网点类型" />
                   )}
                 </Form.Item>
               </Col>
@@ -398,6 +444,31 @@ class StoreCreateForm extends Component {
         <Card title="关联" className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.storeType} {...formItemLayout}>
+                  {getFieldDecorator('storeTypeId', {
+                  	initialValue: tryinit('storeType'),
+                    rules: [{ required: true, message: '请输入网点类型' }],
+                  })(
+                  
+                  <AutoComplete
+                    dataSource={candidateStoreTypeList.candidates}
+                    
+                    
+                    onSearch={this.handleCandidateStoreTypeSearch}
+                    placeholder="请输入网点类型"
+                    
+                    disabled={!availableForEdit('storeType')}
+                  >
+                  {candidateStoreTypeList.candidates.map(item=>{
+                return (<Option key={item.id}>{`${item.name}(${item.id})`}</Option>);
+            })}
+                  
+                  </AutoComplete>
+                  )}
+                </Form.Item>
+              </Col>
 
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.city} {...formItemLayout}>

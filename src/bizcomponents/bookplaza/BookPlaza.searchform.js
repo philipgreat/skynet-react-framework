@@ -90,9 +90,9 @@ class BookPlazaSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="本广场的名字">
+            <FormItem label="名称">
               {getFieldDecorator('bookPlazaName')(
-                <Input placeholder="请输入本广场的名字" />
+                <Input placeholder="请输入名称" />
                )}
             </FormItem>
           </Col>
@@ -123,9 +123,9 @@ class BookPlazaSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="本广场的名字">
+            <FormItem label="名称">
               {getFieldDecorator('bookPlazaName')(
-                <Input placeholder="请输入本广场的名字" />
+                <Input placeholder="请输入名称" />
               )}
             </FormItem>
           </Col>

@@ -4,7 +4,6 @@ import { Link } from 'dva/router'
 import moment from 'moment'
 const menuData = {menuName:"会员服务产品", menuFor: "memberServiceProduct",
   		subItems: [
-  {name: 'tokenInMemberServiceProductList', displayName:'成员服务产品中的令牌', icon:'search-minus'},
   {name: 'memberServiceBundleSkuList', displayName:'会员服务包', icon:'glass'},
   {name: 'storeSlideList', displayName:'网点海报', icon:'sliders'},
   {name: 'customerList', displayName:'用户', icon:'glass'},

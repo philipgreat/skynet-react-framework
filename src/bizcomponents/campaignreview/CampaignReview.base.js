@@ -14,7 +14,7 @@ const menuData = {menuName:"活动评论", menuFor: "campaignReview",
 
 const displayColumns = [
   { title: 'ID', debugtype: 'string', dataIndex: 'id', width: '20', render: (text, record)=>(<Link to={`/campaignReview/${text}/dashboard`}>{text}</Link>) },
-  { title: '评论内容', debugtype: 'string_longtext', dataIndex: 'reviewContent', width: '10' },
+  { title: '评论内容', debugtype: 'string', dataIndex: 'reviewContent', width: '9' },
   { title: '活动', dataIndex: 'campaign', render: (text, record) => (record.campaign ? record.campaign.displayName : '暂无') },
   { title: '评论人', dataIndex: 'reviewer', render: (text, record) => (record.reviewer ? record.reviewer.displayName : '暂无') },
   { title: '最后更新时间', dataIndex: 'lastUpdateTime', render: (text, record) => moment(record.lastUpdateTime).format('YYYY-MM-DD HH:mm:ss') },

@@ -119,6 +119,7 @@ class UserDomainBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/userDomain/${this.props.userDomain.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class UserDomainBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/userDomain/${this.props.userDomain.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -173,57 +177,22 @@ class UserDomainBizApp extends React.PureComponent {
     }))(SecUserUpdateForm)
   }
 
-  getActionTokenSearch = () => {
-    const {ActionTokenSearch} = GlobalComponents;
-    return connect(state => ({
-      rule: state.rule,
-      data: state._userDomain.actionTokenList,
-      count: state._userDomain.actionTokenCount,
-      currentPage: state._userDomain.actionTokenCurrentPageNumber,
-      searchFormParameters: state._userDomain.actionTokenSearchFormParameters,
-      loading: state._userDomain.loading,
-      partialList: state._userDomain.partialList,
-      owner: { type: '_userDomain', id: state._userDomain.id, referenceName: 'userDomain', listName: 'actionTokenList', ref:state._userDomain, listDisplayName: '行动令牌列表' }, // this is for model namespace and
-    }))(ActionTokenSearch)
-  }
-  getActionTokenCreateForm = () => {
-   	const {ActionTokenCreateForm} = GlobalComponents;
-    return connect(state => ({
-      rule: state.rule,
-      data: state._userDomain.actionTokenList,
-      count: state._userDomain.actionTokenCount,
-      currentPage: state._userDomain.actionTokenCurrentPageNumber,
-      searchFormParameters: state._userDomain.actionTokenSearchFormParameters,
-      loading: state._userDomain.loading,
-      owner: { type: '_userDomain', id: state._userDomain.id, referenceName: 'userDomain', listName: 'actionTokenList', ref:state._userDomain, listDisplayName: '行动令牌列表'}, // this is for model namespace and
-    }))(ActionTokenCreateForm)
-  }
-  
-  getActionTokenUpdateForm = () => {
-  	const {ActionTokenUpdateForm} = GlobalComponents;
-    return connect(state => ({
-      selectedRows: state._userDomain.selectedRows,
-      currentUpdateIndex: state._userDomain.currentUpdateIndex,
-      owner: { type: '_userDomain', id: state._userDomain.id, listName: 'actionTokenList', ref:state._userDomain, listDisplayName: '行动令牌列表' }, // this is for model namespace and
-    }))(ActionTokenUpdateForm)
-  }
-
 
   
   buildRouters = () =>{
   	const {UserDomainDashboard} = GlobalComponents
+  	const {UserDomainPreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/userDomain/:id/dashboard", component: UserDomainDashboard},
+  	{path:"/userDomain/:id/preference", component: UserDomainPreference},
+  	
   	
   	
   	{path:"/userDomain/:id/list/secUserList", component: this.getSecUserSearch()},
   	{path:"/userDomain/:id/list/secUserCreateForm", component: this.getSecUserCreateForm()},
   	{path:"/userDomain/:id/list/secUserUpdateForm", component: this.getSecUserUpdateForm()},
-   	
-  	{path:"/userDomain/:id/list/actionTokenList", component: this.getActionTokenSearch()},
-  	{path:"/userDomain/:id/list/actionTokenCreateForm", component: this.getActionTokenCreateForm()},
-  	{path:"/userDomain/:id/list/actionTokenUpdateForm", component: this.getActionTokenUpdateForm()},
      	
   	
   	]
@@ -288,7 +257,7 @@ class UserDomainBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

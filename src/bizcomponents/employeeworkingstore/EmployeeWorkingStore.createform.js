@@ -17,8 +17,9 @@ const testValues = {};
 /*
 const testValues = {
   description: '五星级员工，负责3个店，作为示范',
-  startDate: '2018-01-16',
-  terminatedDate: '2017-02-16',
+  startDate: '2017-01-10',
+  terminatedDate: '2016-03-15',
+  roleId: 'R000001',
   employeeId: 'E000001',
   storeId: 'S000001',
 }
@@ -42,6 +43,9 @@ class EmployeeWorkingStoreCreateForm extends Component {
     const { setFieldsValue } = this.props.form
     //setFieldsValue(testValues)
       
+    this.executeCandidateRoleSearch("")
+    
+    
     this.executeCandidateEmployeeSearch("")
     
     
@@ -64,6 +68,28 @@ class EmployeeWorkingStoreCreateForm extends Component {
   }
 
   
+  executeCandidateRoleSearch = (filterKey) =>{
+
+    const {EmployeeWorkingStoreService} = GlobalComponents;
+    
+    const id = "";//not used for now
+    const pageNo = 1;
+    const future = EmployeeWorkingStoreService.requestCandidateRole("role", id, filterKey, pageNo);
+    console.log(future);
+    
+
+    future.then(candidateRoleList=>{
+      this.setState({
+        candidateRoleList
+      })
+
+    })
+
+  }	 
+  handleCandidateRoleSearch = (value) => {
+    this.executeCandidateRoleSearch(value)
+  }
+
   executeCandidateEmployeeSearch = (filterKey) =>{
 
     const {EmployeeWorkingStoreService} = GlobalComponents;
@@ -214,6 +240,15 @@ class EmployeeWorkingStoreCreateForm extends Component {
     
 
     
+    const {candidateRoleList} = this.state
+    if(!candidateRoleList){
+      return (<div>等等</div>)
+    }
+    if(!candidateRoleList.candidates){
+      return (<div>等等</div>)
+    }   
+    
+    
     const {candidateEmployeeList} = this.state
     if(!candidateEmployeeList){
       return (<div>等等</div>)
@@ -319,6 +354,31 @@ class EmployeeWorkingStoreCreateForm extends Component {
         <Card title="关联" className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.role} {...formItemLayout}>
+                  {getFieldDecorator('roleId', {
+                  	initialValue: tryinit('role'),
+                    rules: [{ required: true, message: '请输入角色' }],
+                  })(
+                  
+                  <AutoComplete
+                    dataSource={candidateRoleList.candidates}
+                    
+                    
+                    onSearch={this.handleCandidateRoleSearch}
+                    placeholder="请输入角色"
+                    
+                    disabled={!availableForEdit('role')}
+                  >
+                  {candidateRoleList.candidates.map(item=>{
+                return (<Option key={item.id}>{`${item.roleName}(${item.id})`}</Option>);
+            })}
+                  
+                  </AutoComplete>
+                  )}
+                </Form.Item>
+              </Col>
 
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.employee} {...formItemLayout}>

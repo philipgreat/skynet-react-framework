@@ -66,7 +66,6 @@ class CampaignSearchForm extends PureComponent {
         ...this.buildStringSearchParameters(fieldsValue, 'id'),
         ...this.buildStringSearchParameters(fieldsValue, 'campaignName'),
         ...this.buildStringSearchParameters(fieldsValue, 'campaignContent'),
-        ...this.buildStringSearchParameters(fieldsValue, 'campaignStatus'),
         ...this.buildStringSearchParameters(fieldsValue, 'campaignHoldAddress'),
 
       }
@@ -137,14 +136,6 @@ class CampaignSearchForm extends PureComponent {
             <FormItem label="活动内容">
               {getFieldDecorator('campaignContent')(
                 <Input placeholder="请输入活动内容" />
-              )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
-            <FormItem label="活动状态">
-              {getFieldDecorator('campaignStatus')(
-                <Input placeholder="请输入活动状态" />
               )}
             </FormItem>
           </Col>

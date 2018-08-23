@@ -119,6 +119,7 @@ class RoleBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/role/${this.props.role.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class RoleBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/role/${this.props.role.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -138,53 +142,57 @@ class RoleBizApp extends React.PureComponent {
 
 
 
-  getEmployeeSearch = () => {
-    const {EmployeeSearch} = GlobalComponents;
+  getEmployeeWorkingStoreSearch = () => {
+    const {EmployeeWorkingStoreSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
-      data: state._role.employeeList,
-      count: state._role.employeeCount,
-      currentPage: state._role.employeeCurrentPageNumber,
-      searchFormParameters: state._role.employeeSearchFormParameters,
+      data: state._role.employeeWorkingStoreList,
+      count: state._role.employeeWorkingStoreCount,
+      currentPage: state._role.employeeWorkingStoreCurrentPageNumber,
+      searchFormParameters: state._role.employeeWorkingStoreSearchFormParameters,
       loading: state._role.loading,
       partialList: state._role.partialList,
-      owner: { type: '_role', id: state._role.id, referenceName: 'role', listName: 'employeeList', ref:state._role, listDisplayName: '员工列表' }, // this is for model namespace and
-    }))(EmployeeSearch)
+      owner: { type: '_role', id: state._role.id, referenceName: 'role', listName: 'employeeWorkingStoreList', ref:state._role, listDisplayName: '员工工作的网点列表' }, // this is for model namespace and
+    }))(EmployeeWorkingStoreSearch)
   }
-  getEmployeeCreateForm = () => {
-   	const {EmployeeCreateForm} = GlobalComponents;
+  getEmployeeWorkingStoreCreateForm = () => {
+   	const {EmployeeWorkingStoreCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
-      data: state._role.employeeList,
-      count: state._role.employeeCount,
-      currentPage: state._role.employeeCurrentPageNumber,
-      searchFormParameters: state._role.employeeSearchFormParameters,
+      data: state._role.employeeWorkingStoreList,
+      count: state._role.employeeWorkingStoreCount,
+      currentPage: state._role.employeeWorkingStoreCurrentPageNumber,
+      searchFormParameters: state._role.employeeWorkingStoreSearchFormParameters,
       loading: state._role.loading,
-      owner: { type: '_role', id: state._role.id, referenceName: 'role', listName: 'employeeList', ref:state._role, listDisplayName: '员工列表'}, // this is for model namespace and
-    }))(EmployeeCreateForm)
+      owner: { type: '_role', id: state._role.id, referenceName: 'role', listName: 'employeeWorkingStoreList', ref:state._role, listDisplayName: '员工工作的网点列表'}, // this is for model namespace and
+    }))(EmployeeWorkingStoreCreateForm)
   }
   
-  getEmployeeUpdateForm = () => {
-  	const {EmployeeUpdateForm} = GlobalComponents;
+  getEmployeeWorkingStoreUpdateForm = () => {
+  	const {EmployeeWorkingStoreUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._role.selectedRows,
       currentUpdateIndex: state._role.currentUpdateIndex,
-      owner: { type: '_role', id: state._role.id, listName: 'employeeList', ref:state._role, listDisplayName: '员工列表' }, // this is for model namespace and
-    }))(EmployeeUpdateForm)
+      owner: { type: '_role', id: state._role.id, listName: 'employeeWorkingStoreList', ref:state._role, listDisplayName: '员工工作的网点列表' }, // this is for model namespace and
+    }))(EmployeeWorkingStoreUpdateForm)
   }
 
 
   
   buildRouters = () =>{
   	const {RoleDashboard} = GlobalComponents
+  	const {RolePreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/role/:id/dashboard", component: RoleDashboard},
+  	{path:"/role/:id/preference", component: RolePreference},
   	
   	
-  	{path:"/role/:id/list/employeeList", component: this.getEmployeeSearch()},
-  	{path:"/role/:id/list/employeeCreateForm", component: this.getEmployeeCreateForm()},
-  	{path:"/role/:id/list/employeeUpdateForm", component: this.getEmployeeUpdateForm()},
+  	
+  	{path:"/role/:id/list/employeeWorkingStoreList", component: this.getEmployeeWorkingStoreSearch()},
+  	{path:"/role/:id/list/employeeWorkingStoreCreateForm", component: this.getEmployeeWorkingStoreCreateForm()},
+  	{path:"/role/:id/list/employeeWorkingStoreUpdateForm", component: this.getEmployeeWorkingStoreUpdateForm()},
      	
   	
   	]
@@ -249,7 +257,7 @@ class RoleBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

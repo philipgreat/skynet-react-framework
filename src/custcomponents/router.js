@@ -16,7 +16,6 @@ function RouterConfig({ history }) {
 	const {LossAssessmentRecordBizApp} = GlobalComponents
 	const {BookSharingPlatformBizApp} = GlobalComponents
 	const {PlatformConfigurationBizApp} = GlobalComponents
-	const {AvailableTokenBizApp} = GlobalComponents
 	const {AccountDataBizApp} = GlobalComponents
 	const {CityBizApp} = GlobalComponents
 	const {BookPlazaBizApp} = GlobalComponents
@@ -27,7 +26,6 @@ function RouterConfig({ history }) {
 	const {MemberServiceProductBizApp} = GlobalComponents
 	const {MemberRightsDisplayBizApp} = GlobalComponents
 	const {MemberRightsDisplayItemBizApp} = GlobalComponents
-	const {TokenInMemberServiceProductBizApp} = GlobalComponents
 	const {MemberServiceBundleSkuBizApp} = GlobalComponents
 	const {LineItemBizApp} = GlobalComponents
 	const {MainOrderPaymentBizApp} = GlobalComponents
@@ -38,14 +36,22 @@ function RouterConfig({ history }) {
 	const {PrinterTaskBizApp} = GlobalComponents
 	const {BookCopyStatusBizApp} = GlobalComponents
 	const {BookCopyBizApp} = GlobalComponents
+	const {TransferTypeBizApp} = GlobalComponents
 	const {BookCopyTransferBizApp} = GlobalComponents
+	const {TakeStockStatusBizApp} = GlobalComponents
 	const {BookTakeStockPlanBizApp} = GlobalComponents
+	const {BookTakeStockStatusBizApp} = GlobalComponents
+	const {TakeStoreResultsBizApp} = GlobalComponents
 	const {BookTakeStockResultBizApp} = GlobalComponents
+	const {BookCopyOperateTypeBizApp} = GlobalComponents
 	const {BookCopyOperationRecordBizApp} = GlobalComponents
+	const {BorrowingStatusBizApp} = GlobalComponents
 	const {BorrowingHistoryBizApp} = GlobalComponents
 	const {BorrowingExpiredSkuBizApp} = GlobalComponents
 	const {BookReviewBizApp} = GlobalComponents
 	const {BookReviewLikeBizApp} = GlobalComponents
+	const {DeliverMethodBizApp} = GlobalComponents
+	const {ApplicationStatusBizApp} = GlobalComponents
 	const {BookCopySharingApplicationBizApp} = GlobalComponents
 	const {PlatformAccountBizApp} = GlobalComponents
 	const {MemberServiceRevenueBizApp} = GlobalComponents
@@ -56,9 +62,12 @@ function RouterConfig({ history }) {
 	const {StoreAccountDetailsBizApp} = GlobalComponents
 	const {TransactionTypeBizApp} = GlobalComponents
 	const {CustomerAccountTransactionBizApp} = GlobalComponents
+	const {StoreTypeBizApp} = GlobalComponents
 	const {StoreBizApp} = GlobalComponents
+	const {SlideTypeBizApp} = GlobalComponents
 	const {StoreSlideBizApp} = GlobalComponents
 	const {CampaignPlazaBizApp} = GlobalComponents
+	const {CampaignStatusBizApp} = GlobalComponents
 	const {CampaignBizApp} = GlobalComponents
 	const {CampaignRegisterHistoryBizApp} = GlobalComponents
 	const {CampaignReviewBizApp} = GlobalComponents
@@ -71,6 +80,9 @@ function RouterConfig({ history }) {
 	const {EmployeeBizApp} = GlobalComponents
 	const {EmployeeWorkingStoreBizApp} = GlobalComponents
 	const {RoleBizApp} = GlobalComponents
+	const {ProfitTypeBizApp} = GlobalComponents
+	const {ProfitDistributeStateBizApp} = GlobalComponents
+	const {UndistributedProfitBizApp} = GlobalComponents
 	const {UserDomainBizApp} = GlobalComponents
 	const {SecUserBizApp} = GlobalComponents
 	const {SecUserBlockingBizApp} = GlobalComponents
@@ -82,7 +94,6 @@ function RouterConfig({ history }) {
 	const {FormFieldMessageBizApp} = GlobalComponents
 	const {FormFieldBizApp} = GlobalComponents
 	const {FormActionBizApp} = GlobalComponents
-	const {ActionTokenBizApp} = GlobalComponents
 
 
 
@@ -96,7 +107,6 @@ function RouterConfig({ history }) {
           <Route path="/lossAssessmentRecord/" component={LossAssessmentRecordBizApp} />
           <Route path="/bookSharingPlatform/" component={BookSharingPlatformBizApp} />
           <Route path="/platformConfiguration/" component={PlatformConfigurationBizApp} />
-          <Route path="/availableToken/" component={AvailableTokenBizApp} />
           <Route path="/accountData/" component={AccountDataBizApp} />
           <Route path="/city/" component={CityBizApp} />
           <Route path="/bookPlaza/" component={BookPlazaBizApp} />
@@ -107,7 +117,6 @@ function RouterConfig({ history }) {
           <Route path="/memberServiceProduct/" component={MemberServiceProductBizApp} />
           <Route path="/memberRightsDisplay/" component={MemberRightsDisplayBizApp} />
           <Route path="/memberRightsDisplayItem/" component={MemberRightsDisplayItemBizApp} />
-          <Route path="/tokenInMemberServiceProduct/" component={TokenInMemberServiceProductBizApp} />
           <Route path="/memberServiceBundleSku/" component={MemberServiceBundleSkuBizApp} />
           <Route path="/lineItem/" component={LineItemBizApp} />
           <Route path="/mainOrderPayment/" component={MainOrderPaymentBizApp} />
@@ -118,14 +127,22 @@ function RouterConfig({ history }) {
           <Route path="/printerTask/" component={PrinterTaskBizApp} />
           <Route path="/bookCopyStatus/" component={BookCopyStatusBizApp} />
           <Route path="/bookCopy/" component={BookCopyBizApp} />
+          <Route path="/transferType/" component={TransferTypeBizApp} />
           <Route path="/bookCopyTransfer/" component={BookCopyTransferBizApp} />
+          <Route path="/takeStockStatus/" component={TakeStockStatusBizApp} />
           <Route path="/bookTakeStockPlan/" component={BookTakeStockPlanBizApp} />
+          <Route path="/bookTakeStockStatus/" component={BookTakeStockStatusBizApp} />
+          <Route path="/takeStoreResults/" component={TakeStoreResultsBizApp} />
           <Route path="/bookTakeStockResult/" component={BookTakeStockResultBizApp} />
+          <Route path="/bookCopyOperateType/" component={BookCopyOperateTypeBizApp} />
           <Route path="/bookCopyOperationRecord/" component={BookCopyOperationRecordBizApp} />
+          <Route path="/borrowingStatus/" component={BorrowingStatusBizApp} />
           <Route path="/borrowingHistory/" component={BorrowingHistoryBizApp} />
           <Route path="/borrowingExpiredSku/" component={BorrowingExpiredSkuBizApp} />
           <Route path="/bookReview/" component={BookReviewBizApp} />
           <Route path="/bookReviewLike/" component={BookReviewLikeBizApp} />
+          <Route path="/deliverMethod/" component={DeliverMethodBizApp} />
+          <Route path="/applicationStatus/" component={ApplicationStatusBizApp} />
           <Route path="/bookCopySharingApplication/" component={BookCopySharingApplicationBizApp} />
           <Route path="/platformAccount/" component={PlatformAccountBizApp} />
           <Route path="/memberServiceRevenue/" component={MemberServiceRevenueBizApp} />
@@ -136,9 +153,12 @@ function RouterConfig({ history }) {
           <Route path="/storeAccountDetails/" component={StoreAccountDetailsBizApp} />
           <Route path="/transactionType/" component={TransactionTypeBizApp} />
           <Route path="/customerAccountTransaction/" component={CustomerAccountTransactionBizApp} />
+          <Route path="/storeType/" component={StoreTypeBizApp} />
           <Route path="/store/" component={StoreBizApp} />
+          <Route path="/slideType/" component={SlideTypeBizApp} />
           <Route path="/storeSlide/" component={StoreSlideBizApp} />
           <Route path="/campaignPlaza/" component={CampaignPlazaBizApp} />
+          <Route path="/campaignStatus/" component={CampaignStatusBizApp} />
           <Route path="/campaign/" component={CampaignBizApp} />
           <Route path="/campaignRegisterHistory/" component={CampaignRegisterHistoryBizApp} />
           <Route path="/campaignReview/" component={CampaignReviewBizApp} />
@@ -151,6 +171,9 @@ function RouterConfig({ history }) {
           <Route path="/employee/" component={EmployeeBizApp} />
           <Route path="/employeeWorkingStore/" component={EmployeeWorkingStoreBizApp} />
           <Route path="/role/" component={RoleBizApp} />
+          <Route path="/profitType/" component={ProfitTypeBizApp} />
+          <Route path="/profitDistributeState/" component={ProfitDistributeStateBizApp} />
+          <Route path="/undistributedProfit/" component={UndistributedProfitBizApp} />
           <Route path="/userDomain/" component={UserDomainBizApp} />
           <Route path="/secUser/" component={SecUserBizApp} />
           <Route path="/secUserBlocking/" component={SecUserBlockingBizApp} />
@@ -162,7 +185,6 @@ function RouterConfig({ history }) {
           <Route path="/formFieldMessage/" component={FormFieldMessageBizApp} />
           <Route path="/formField/" component={FormFieldBizApp} />
           <Route path="/formAction/" component={FormActionBizApp} />
-          <Route path="/actionToken/" component={ActionTokenBizApp} />
          <Route path="/" component={Launcher} />
         </Switch>
       </Router>

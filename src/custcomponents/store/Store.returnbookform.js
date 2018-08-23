@@ -134,7 +134,8 @@ returnBookByEmployee = (parameters) => {
     })
     const {dynamicFormInited}=this.state
     const {setFieldsValue} = this.props.form
-
+    setFieldsValue({bookCopyIdOrQrcode:""})
+   
     
 
   });
@@ -183,7 +184,7 @@ returnBookByEmployee = (parameters) => {
 
     const {lentResult} = this.state
     
- 
+  
 
     
 

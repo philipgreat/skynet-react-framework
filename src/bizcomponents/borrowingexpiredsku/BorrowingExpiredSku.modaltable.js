@@ -31,7 +31,7 @@ class BorrowingExpiredSkuModalTable extends PureComponent {
           dataSource={data}
           columns={displayColumns}
           size="small"
-          scroll={{ x: 1695 }}
+          scroll={{ x: 1650 }}
         />
       </div>
     )

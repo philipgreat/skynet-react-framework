@@ -75,6 +75,7 @@ class BookCreateForm extends Component {
     previewImage: '',
     convertedImagesValues: {},
     addingResult:{},
+    candidateBookRecommends:{},
     dynamicFormInited: false
   };
 
@@ -82,7 +83,7 @@ class BookCreateForm extends Component {
     // const { getFieldDecorator,setFieldsValue } = this.props.form
     const { setFieldsValue } = this.props.form;
     //setFieldsValue(testValues)
-
+    this.executeCandidateBookRecommendSearch("")
     
   }
   shouldComponentUpdate() {
@@ -119,46 +120,6 @@ class BookCreateForm extends Component {
     this.executeCandidateBookRecommendSearch(value);
   };
 
-  executeCandidateBookPlazaSearch = filterKey => {
-    const { BookService } = GlobalComponents;
-
-    const id = ''; //not used for now
-    const pageNo = 1;
-    const future = BookService.requestCandidateBookPlaza('bookPlaza', id, filterKey, pageNo);
-    console.log(future);
-
-    future.then(candidateBookPlazaList => {
-      this.setState({
-        candidateBookPlazaList,
-      });
-    });
-  };
-  handleCandidateBookPlazaSearch = value => {
-    this.executeCandidateBookPlazaSearch(value);
-  };
-
-  executeCandidatePlatformSearch = filterKey => {
-    const { BookService } = GlobalComponents;
-
-    const id = ''; //not used for now
-    const pageNo = 1;
-    const future = BookService.requestCandidatePlatform(
-      'bookSharingPlatform',
-      id,
-      filterKey,
-      pageNo
-    );
-    console.log(future);
-
-    future.then(candidatePlatformList => {
-      this.setState({
-        candidatePlatformList,
-      });
-    });
-  };
-  handleCandidatePlatformSearch = value => {
-    this.executeCandidatePlatformSearch(value);
-  };
 
   handleImageChange = (event, source) => {
     console.log('get file list from change in update change:', source);
@@ -263,7 +224,8 @@ class BookCreateForm extends Component {
     const { convertedImagesValues } = this.state;
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form;
-    const submitCreateForm = () => {
+    
+    const addManully = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
           console.log('code go here', error);
@@ -274,27 +236,7 @@ class BookCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues);
 
         const parameters = { ...values, ...imagesValues };
-        dispatch({
-          type: `${owner.type}/addBook`,
-          payload: { id: owner.id, type: 'book', parameters },
-        });
-      });
-    };
-    const submitCreateFormAndContinue = () => {
-      validateFieldsAndScroll((error, values) => {
-        if (error) {
-          console.log('code go here', error);
-          return;
-        }
-
-        const { owner } = this.props;
-        const imagesValues = mapBackToImageValues(convertedImagesValues);
-
-        const parameters = { ...values, ...imagesValues };
-        dispatch({
-          type: `${owner.type}/addBook`,
-          payload: { id: owner.id, type: 'book', parameters, continueNext: true },
-        });
+        console.log("parameters", parameters)
       });
     };
 
@@ -346,13 +288,15 @@ class BookCreateForm extends Component {
       );
     };
 
- 
+    
+    const {candidateBookRecommendList} = this.state
+    if(!candidateBookRecommendList){
+      return (<div>等等</div>)
+    }
+
     const tryinit = fieldName => {
-      const { owner } = this.props;
-      const { referenceName } = owner;
-      if (referenceName != fieldName) {
-        return null;
-      }
+      
+      const  owner  = this.props.store;
       return owner.id;
     };
 
@@ -423,7 +367,7 @@ class BookCreateForm extends Component {
               <Col lg={6} md={6} sm={12}>
                 <Form.Item key="__" label={fieldLabels.storeId} {...formItemLayout}>
                   {getFieldDecorator('storeId', {
-                    initialValue: "S000001",
+                    initialValue: tryinit('store'),
                     rules: [{ required: true, message: '请输入店的序号' }],
 
                   })(<Input placeholder="请输入店的序号" disabled={true}/>)}
@@ -434,17 +378,32 @@ class BookCreateForm extends Component {
                 <Form.Item label={fieldLabels.bookCopyVendorId} {...formItemLayout}>
                   {getFieldDecorator('bookCopyVendorId', {
                     rules: [{ required: true, message: '请输入' }],
-                    initialValue:"C000001"
+                    initialValue:""
                   })(<Input placeholder="请输入" />)}
                 </Form.Item>
               </Col>    
               
-              <Col lg={6} md={6} sm={12}>
+              <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.bookRecommendId} {...formItemLayout}>
-                  {getFieldDecorator('bookRecommendId', {
-                    rules: [{ required: true, message: '请输入' }],
-                    initialValue: "BR000001",
-                  })(<Input placeholder="请输入" />)}
+                {getFieldDecorator('bookRecommendId', {
+                  	initialValue: '',
+                    rules: [{ required: true, message: '请输入图书推荐' }],
+                  })(
+                  
+                  <AutoComplete
+                    dataSource={candidateBookRecommendList.candidates}
+                    
+                    
+                    onSearch={this.handleCandidateBookRecommendSearch}
+                    placeholder="请输入图书推荐"
+                  
+                  >
+                  {candidateBookRecommendList.candidates.map(item=>{
+                return (<Option key={item.id}>{`${item.name}(${item.id})`}</Option>);
+            })}
+                  
+                  </AutoComplete>
+                  )}
                 </Form.Item>
               </Col> 
               <Col lg={6} md={6} sm={12}>
@@ -503,14 +462,12 @@ class BookCreateForm extends Component {
 
         <FooterToolbar>
           {getErrorInfo()}
-          <Button type="primary" onClick={submitCreateForm} loading={submitting} htmlType="submit">
-            模拟扫描入库
-          </Button>
-          <Button type="primary" onClick={submitCreateFormAndContinue} loading={submitting}>
+     
+          <Button type="primary" onClick={addManully} loading={submitting}>
             手工提交
           </Button>
           <Button type="danger" onClick={goback} loading={submitting}>
-            放弃
+            删除最后一本
           </Button>
         </FooterToolbar>
       </PageHeaderLayout>

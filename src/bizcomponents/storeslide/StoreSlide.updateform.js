@@ -297,18 +297,6 @@ class StoreSlideUpdateForm extends Component {
                 </Form.Item>
               </Col>
 
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.linkType} {...formItemLayout}>
-                  {getFieldDecorator('linkType', {
-                    initialValue: selectedRow.linkType,
-                    rules: [{ required: true, message: '请输入链接内容类型' }],
-                  })(
-                    <Input placeholder="请输入链接内容类型" />
-                    
-                  )}
-                </Form.Item>
-              </Col>
-
             </Row>
           </Form>  
         </Card>

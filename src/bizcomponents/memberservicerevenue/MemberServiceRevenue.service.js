@@ -50,37 +50,32 @@ const transferToAnotherStore = (id, parameters) => {
 
 
 
+const requestCandidateMainOrder = (ownerClass, id, filterKey, pageNo) => {
+  //const parametersExpr = joinParameters(parameters)
+  return get({
+    url: `${PREFIX}memberServiceRevenueManager/requestCandidateMainOrder/${ownerClass}/${id}/${filterKey}/${pageNo}/`,
+  })
+}	
 
-
-
-const addPlatformAccountDetails = (targetObjectId, parameters) => {
-  const url = `${PREFIX}memberServiceRevenueManager/addPlatformAccountDetails/memberServiceRevenueId/summary/amount/transactionTypeId/platformAccountId/relatedMainOrderId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
-  return postForm({ url,requestParameters})
+const transferToAnotherMainOrder = (id, parameters) => {
+  //const parametersExpr = joinParameters(parameters)
+  const url = `${PREFIX}memberServiceRevenueManager/transferToAnotherMainOrder/id/anotherMainOrderId/`
+  const requestParameters = {id, ...parameters}
+  return postForm({url,requestParameters})
 }
 
-const updatePlatformAccountDetails = (targetObjectId, parameters) => {
-  const url = `${PREFIX}memberServiceRevenueManager/updatePlatformAccountDetailsProperties/memberServiceRevenueId/id/summary/amount/tokensExpr/`
-  const memberServiceRevenueId = targetObjectId
-  const requestParameters = { ...parameters, memberServiceRevenueId, tokensExpr: 'none' }
-  return postForm({ url,requestParameters})
-}
 
-const removePlatformAccountDetailsList = (targetObjectId, parameters) => {
-  const url = `${PREFIX}memberServiceRevenueManager/removePlatformAccountDetailsList/memberServiceRevenueId/platformAccountDetailsIds/tokensExpr/`
-  const requestParameters = { ...parameters, memberServiceRevenueId: targetObjectId, tokensExpr: 'none' }
-  return postForm({ url,requestParameters})
-}
+
+
 
 
 const MemberServiceRevenueService = { view,
   load,
-  addPlatformAccountDetails,
-  updatePlatformAccountDetails,
-  removePlatformAccountDetailsList,
   requestCandidateMember,
   requestCandidateStore,
+  requestCandidateMainOrder,
   transferToAnotherMember,
-  transferToAnotherStore }
+  transferToAnotherStore,
+  transferToAnotherMainOrder }
 export default MemberServiceRevenueService
 

@@ -276,12 +276,6 @@ const internalSummaryOf = (platformAccountDetails,targetComponent) =>{
 	      "transferToAnotherRelatedMainOrder","anotherRelatedMainOrderId",platformAccountDetails.relatedMainOrder?platformAccountDetails.relatedMainOrder.id:"")} 
   style={{fontSize: 20,color:"red"}} />
 </Description>
-<Description term="会员服务收益">{platformAccountDetails.memberServiceRevenue==null?"未分配":platformAccountDetails.memberServiceRevenue.displayName}
- <Icon type="swap" onClick={()=>
-  showTransferModel(targetComponent,"会员服务收益","memberServiceRevenue","requestCandidateMemberServiceRevenue",
-	      "transferToAnotherMemberServiceRevenue","anotherMemberServiceRevenueId",platformAccountDetails.memberServiceRevenue?platformAccountDetails.memberServiceRevenue.id:"")} 
-  style={{fontSize: 20,color:"red"}} />
-</Description>
 <Description term="日期时间">{ moment(platformAccountDetails.datetime).format('YYYY-MM-DD')}</Description> 
 	
         {buildTransferModal(platformAccountDetails,targetComponent)}

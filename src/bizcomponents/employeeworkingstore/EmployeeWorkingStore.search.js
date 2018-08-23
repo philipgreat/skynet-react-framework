@@ -199,6 +199,7 @@ class EmployeeWorkingStoreSearch extends PureComponent {
       <Menu onClick={this.handleMenuClick} selectedKeys={[]}>
 
 
+<Menu.Item key="role">关联角色</Menu.Item>
 <Menu.Item key="employee">关联员工</Menu.Item>
 <Menu.Item key="store">关联服务网点</Menu.Item>
       

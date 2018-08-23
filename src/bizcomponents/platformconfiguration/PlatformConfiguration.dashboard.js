@@ -80,6 +80,8 @@ const internalLargeTextOf = (platformConfiguration) =>{
    <Card title={`会员服务协议`} ><pre>{platformConfiguration.memberServiceAgreement}</pre></Card>
    <Card title={`图书共享协议`} ><pre>{platformConfiguration.bookSharingAgreement}</pre></Card>
    <Card title={`账户充值协议`} ><pre>{platformConfiguration.accountRechargeAgreement}</pre></Card>
+   <Card title={`存储列表页中的消息`} ><pre>{platformConfiguration.messageInStoreListPage}</pre></Card>
+   <Card title={`反馈联系信息`} ><pre>{platformConfiguration.feedbackContactInfo}</pre></Card>
 </div>)
 
 	
@@ -261,6 +263,12 @@ const internalSummaryOf = (platformConfiguration,targetComponent) =>{
 	return (
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="ID">{platformConfiguration.id}</Description> 
+<Description term="我的权益的功能的显示名称">{platformConfiguration.myRightsTitle}</Description> 
+<Description term="我的借阅记录的功能的显示名称">{platformConfiguration.myBorrowingTitle}</Description> 
+<Description term="我的活动的功能的显示名称">{platformConfiguration.myCampaignTitle}</Description> 
+<Description term="我的余额的功能的显示名称">{platformConfiguration.myBalanceTitle}</Description> 
+<Description term="我的书评的功能的显示名称">{platformConfiguration.myBookReviewTitle}</Description> 
+<Description term="我的订单的功能的显示名称">{platformConfiguration.myOrderTitle}</Description> 
 	
         {buildTransferModal(platformConfiguration,targetComponent)}
       </DescriptionList>

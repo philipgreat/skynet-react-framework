@@ -17,11 +17,10 @@ const testValues = {};
 /*
 const testValues = {
   bookName: '飘',
-  lendingDatetime: '2015-10-03 13:24:19',
-  returnDatetime: '2018-05-14 09:40:38',
-  expiredDays: '7',
-  expiredFee: '7.57',
-  costPaymentStatus: '已支付',
+  lendingDatetime: '2017-12-10 15:01:24',
+  returnDatetime: '2017-05-27 08:49:39',
+  expiredDays: '6',
+  expiredFee: '5.96',
   borrowerId: 'C000001',
   bookCopyId: 'BC000001',
   bookId: 'B000001',
@@ -458,16 +457,6 @@ class BorrowingExpiredSkuCreateForm extends Component {
                     rules: [{ required: true, message: '请输入过期费用' }],
                   })(
                     <Input placeholder="请输入过期费用" />
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.costPaymentStatus} {...formItemLayout}>
-                  {getFieldDecorator('costPaymentStatus', {
-                    rules: [{ required: true, message: '请输入支付状态' }],
-                  })(
-                    <Input placeholder="请输入支付状态" />
                   )}
                 </Form.Item>
               </Col>

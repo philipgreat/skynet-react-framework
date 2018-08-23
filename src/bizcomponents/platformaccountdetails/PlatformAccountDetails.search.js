@@ -202,7 +202,6 @@ class PlatformAccountDetailsSearch extends PureComponent {
 <Menu.Item key="transactionType">关联交易类型</Menu.Item>
 <Menu.Item key="platformAccount">关联平台账户</Menu.Item>
 <Menu.Item key="relatedMainOrder">关联相关订单</Menu.Item>
-<Menu.Item key="memberServiceRevenue">关联会员服务收益</Menu.Item>
       
 
       </Menu>

@@ -25,7 +25,9 @@ const displayColumns = [
   { title: '所在网点', dataIndex: 'locationStore', render: (text, record) => (record.locationStore ? record.locationStore.displayName : '暂无') },
   { title: '评估价格', dataIndex: 'evaluationPrice', className:'money', render: (text, record) => (`￥${text.toFixed(2)}`) },
   { title: '书籍副本状态', dataIndex: 'bookCopyStatus', render: (text, record) => (record.bookCopyStatus ? record.bookCopyStatus.displayName : '暂无') },
-  { title: '小程序ID', debugtype: 'string', dataIndex: 'wxaId', width: '44' },
+  { title: '小程序ID', debugtype: 'string_url', dataIndex: 'wxaId', width: '80' },
+  { title: '创建时间', dataIndex: 'createTime', render: (text, record) => moment(record.createTime).format('YYYY-MM-DD HH:mm:ss') },
+  { title: '最后更新时间', dataIndex: 'lastUpdateTime', render: (text, record) => moment(record.lastUpdateTime).format('YYYY-MM-DD HH:mm:ss') },
 
 ]
 
@@ -38,6 +40,8 @@ const fieldLabels = {
   evaluationPrice: '评估价格',
   bookCopyStatus: '书籍副本状态',
   wxaId: '小程序ID',
+  createTime: '创建时间',
+  lastUpdateTime: '最后更新时间',
 
 }
 

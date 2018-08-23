@@ -67,6 +67,8 @@ class CustomerFootprintSearchForm extends PureComponent {
         ...this.buildStringSearchParameters(fieldsValue, 'title'),
         ...this.buildStringSearchParameters(fieldsValue, 'description'),
         ...this.buildStringSearchParameters(fieldsValue, 'itemTitle'),
+        ...this.buildStringSearchParameters(fieldsValue, 'itemType'),
+        ...this.buildStringSearchParameters(fieldsValue, 'itemId'),
         ...this.buildStringSearchParameters(fieldsValue, 'itemDescription'),
 
       }
@@ -145,6 +147,22 @@ class CustomerFootprintSearchForm extends PureComponent {
             <FormItem label="相关项标题">
               {getFieldDecorator('itemTitle')(
                 <Input placeholder="请输入相关项标题" />
+              )}
+            </FormItem>
+          </Col>
+
+          <Col md={8} sm={24}>
+            <FormItem label="项目类型">
+              {getFieldDecorator('itemType')(
+                <Input placeholder="请输入项目类型" />
+              )}
+            </FormItem>
+          </Col>
+
+          <Col md={8} sm={24}>
+            <FormItem label="项Id">
+              {getFieldDecorator('itemId')(
+                <Input placeholder="请输入项Id" />
               )}
             </FormItem>
           </Col>

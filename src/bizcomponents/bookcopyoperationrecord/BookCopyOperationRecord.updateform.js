@@ -262,12 +262,12 @@ class BookCopyOperationRecordUpdateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.bookCopyOperateType} {...formItemLayout}>
-                  {getFieldDecorator('bookCopyOperateType', {
-                    initialValue: selectedRow.bookCopyOperateType,
-                    rules: [{ required: true, message: '请输入书籍副本操作类型' }],
+                <Form.Item label={fieldLabels.bookName} {...formItemLayout}>
+                  {getFieldDecorator('bookName', {
+                    initialValue: selectedRow.bookName,
+                    rules: [{ required: true, message: '请输入书名' }],
                   })(
-                    <Input placeholder="请输入书籍副本操作类型" />
+                    <Input placeholder="请输入书名" />
                     
                   )}
                 </Form.Item>

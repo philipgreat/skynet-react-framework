@@ -76,10 +76,7 @@ const internalSettingListOf = (campaignReview) =>{
 
 const internalLargeTextOf = (campaignReview) =>{
 
-	return(<div> 
-   <Card title={`评论内容`} ><pre>{campaignReview.reviewContent}</pre></Card>
-</div>)
-
+	return null
 	
 
 }
@@ -259,6 +256,7 @@ const internalSummaryOf = (campaignReview,targetComponent) =>{
 	return (
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="ID">{campaignReview.id}</Description> 
+<Description term="评论内容">{campaignReview.reviewContent}</Description> 
 <Description term="活动">{campaignReview.campaign==null?"未分配":campaignReview.campaign.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"活动","campaign","requestCandidateCampaign",

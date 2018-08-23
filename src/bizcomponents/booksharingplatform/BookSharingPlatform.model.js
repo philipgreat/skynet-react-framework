@@ -35,7 +35,7 @@ export default {
       const link = payload.pathname
       //if the data in the cache, just show it, there is no delay
       if(cachedData.class){
-        yield put({ type: 'breadcrumb/gotoLink', payload: { displayName:cachedData.displayName,link }} )
+        //yield put({ type: 'breadcrumb/gotoLink', payload: { displayName:cachedData.displayName,link }} )
         yield put({ type: 'updateState', payload: cachedData })
       }else{
         yield put({ type: 'showLoading', payload })
@@ -46,9 +46,9 @@ export default {
       
       const displayName = payload.displayName||data.displayName
       
-      if(!cachedData.class){
-        yield put({ type: 'breadcrumb/gotoLink', payload: { displayName,link }} )
-      }
+      
+      yield put({ type: 'breadcrumb/gotoLink', payload: { displayName,link }} )
+      
 
       yield put({ type: 'updateState', payload: data })
     },
@@ -162,82 +162,6 @@ export default {
       const { id, type, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(BookSharingPlatformService.removePlatformConfigurationList, id, parameters)
-      if (hasError(data)) {
-        handleServerError(data)
-        return
-      }
-      const newPlayload = { ...payload, ...data }
-
-      yield put({ type: 'updateState', payload: newPlayload })
-        
-      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm`))
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
-    },
-
-    *addAvailableToken({ payload }, { call, put }) {
-      const {BookSharingPlatformService} = GlobalComponents;
-
-      const { id, type, parameters, continueNext } = payload
-      console.log('get form parameters', parameters)
-      const data = yield call(BookSharingPlatformService.addAvailableToken, id, parameters)
-      if (hasError(data)) {
-        handleServerError(data)
-        return
-      }
-      const newPlayload = { ...payload, ...data }
-      yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm'))
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
-      if (continueNext) {
-        return
-      }
-      const partialList = true
-      const newState = {...data, partialList}
-      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/可用的权益列表`, state: newState }
-      yield put(routerRedux.push(location))
-    },
-    *updateAvailableToken({ payload }, { call, put }) {
-      const {BookSharingPlatformService} = GlobalComponents;      
-      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
-      console.log('get form parameters', parameters)
-      const data = yield call(BookSharingPlatformService.updateAvailableToken, id, parameters)
-      if (hasError(data)) {
-        handleServerError(data)
-        return
-      }
-      const partialList = true
-      
-      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
-      yield put({ type: 'updateState', payload: newPlayload })
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
-      
-      if (continueNext) {
-        return
-      }
-      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/可用的权益列表`, state: newPlayload }
-      yield put(routerRedux.push(location))
-    },
-    *gotoNextAvailableTokenUpdateRow({ payload }, { call, put }) {
-      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
-      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
-      yield put({ type: 'updateState', payload: newPlayload })
-    },
-    *removeAvailableTokenList({ payload }, { call, put }) {
-      const {BookSharingPlatformService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
-      console.log('get form parameters', parameters)
-      const data = yield call(BookSharingPlatformService.removeAvailableTokenList, id, parameters)
       if (hasError(data)) {
         handleServerError(data)
         return
@@ -711,6 +635,614 @@ export default {
       // yield put(routerRedux.push(location))
     },
 
+    *addTransferType({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.addTransferType, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/转移类型列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateTransferType({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.updateTransferType, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/转移类型列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextTransferTypeUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeTransferTypeList({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.removeTransferTypeList, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
+      // yield put(routerRedux.push(location))
+    },
+
+    *addTakeStockStatus({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.addTakeStockStatus, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/盘点状态列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateTakeStockStatus({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.updateTakeStockStatus, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/盘点状态列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextTakeStockStatusUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeTakeStockStatusList({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.removeTakeStockStatusList, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
+      // yield put(routerRedux.push(location))
+    },
+
+    *addBookTakeStockStatus({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.addBookTakeStockStatus, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/图书盘点状态列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateBookTakeStockStatus({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.updateBookTakeStockStatus, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/图书盘点状态列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextBookTakeStockStatusUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeBookTakeStockStatusList({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.removeBookTakeStockStatusList, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
+      // yield put(routerRedux.push(location))
+    },
+
+    *addTakeStoreResults({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.addTakeStoreResults, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/盘点结果列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateTakeStoreResults({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.updateTakeStoreResults, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/盘点结果列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextTakeStoreResultsUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeTakeStoreResultsList({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.removeTakeStoreResultsList, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
+      // yield put(routerRedux.push(location))
+    },
+
+    *addBookCopyOperateType({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.addBookCopyOperateType, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/书籍副本操作类型列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateBookCopyOperateType({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.updateBookCopyOperateType, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/书籍副本操作类型列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextBookCopyOperateTypeUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeBookCopyOperateTypeList({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.removeBookCopyOperateTypeList, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
+      // yield put(routerRedux.push(location))
+    },
+
+    *addBorrowingStatus({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.addBorrowingStatus, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/借书状态列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateBorrowingStatus({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.updateBorrowingStatus, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/借书状态列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextBorrowingStatusUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeBorrowingStatusList({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.removeBorrowingStatusList, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
+      // yield put(routerRedux.push(location))
+    },
+
+    *addDeliverMethod({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.addDeliverMethod, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/共享方式列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateDeliverMethod({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.updateDeliverMethod, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/共享方式列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextDeliverMethodUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeDeliverMethodList({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.removeDeliverMethodList, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
+      // yield put(routerRedux.push(location))
+    },
+
+    *addApplicationStatus({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.addApplicationStatus, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/应用程序状态列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateApplicationStatus({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.updateApplicationStatus, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/应用程序状态列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextApplicationStatusUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeApplicationStatusList({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.removeApplicationStatusList, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
+      // yield put(routerRedux.push(location))
+    },
+
     *addPlatformAccount({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
 
@@ -863,6 +1395,82 @@ export default {
       // yield put(routerRedux.push(location))
     },
 
+    *addStoreType({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.addStoreType, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/网点类型列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateStoreType({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.updateStoreType, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/网点类型列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextStoreTypeUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeStoreTypeList({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.removeStoreTypeList, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
+      // yield put(routerRedux.push(location))
+    },
+
     *addStore({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
 
@@ -922,6 +1530,82 @@ export default {
       const { id, type, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(BookSharingPlatformService.removeStoreList, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
+      // yield put(routerRedux.push(location))
+    },
+
+    *addSlideType({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.addSlideType, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/海报类型列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateSlideType({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.updateSlideType, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/海报类型列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextSlideTypeUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeSlideTypeList({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.removeSlideTypeList, id, parameters)
       if (hasError(data)) {
         handleServerError(data)
         return
@@ -1015,6 +1699,82 @@ export default {
       // yield put(routerRedux.push(location))
     },
 
+    *addCampaignStatus({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.addCampaignStatus, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/活动状态列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateCampaignStatus({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.updateCampaignStatus, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/活动状态列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextCampaignStatusUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeCampaignStatusList({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.removeCampaignStatusList, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
+      // yield put(routerRedux.push(location))
+    },
+
     *addCustomer({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
 
@@ -1074,6 +1834,310 @@ export default {
       const { id, type, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(BookSharingPlatformService.removeCustomerList, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
+      // yield put(routerRedux.push(location))
+    },
+
+    *addEmployee({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.addEmployee, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/员工列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateEmployee({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.updateEmployee, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/员工列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextEmployeeUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeEmployeeList({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.removeEmployeeList, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
+      // yield put(routerRedux.push(location))
+    },
+
+    *addProfitType({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.addProfitType, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/利润类型列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateProfitType({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.updateProfitType, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/利润类型列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextProfitTypeUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeProfitTypeList({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.removeProfitTypeList, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
+      // yield put(routerRedux.push(location))
+    },
+
+    *addProfitDistributeState({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.addProfitDistributeState, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/利润分配状态列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateProfitDistributeState({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.updateProfitDistributeState, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/利润分配状态列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextProfitDistributeStateUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeProfitDistributeStateList({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.removeProfitDistributeStateList, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
+      // yield put(routerRedux.push(location))
+    },
+
+    *addUndistributedProfit({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.addUndistributedProfit, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/未分配利润列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateUndistributedProfit({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.updateUndistributedProfit, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/未分配利润列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextUndistributedProfitUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeUndistributedProfitList({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.removeUndistributedProfitList, id, parameters)
       if (hasError(data)) {
         handleServerError(data)
         return

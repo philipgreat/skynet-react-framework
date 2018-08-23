@@ -66,7 +66,8 @@ class PrivateMessageSearchForm extends PureComponent {
         ...this.buildStringSearchParameters(fieldsValue, 'id'),
         ...this.buildStringSearchParameters(fieldsValue, 'name'),
         ...this.buildStringSearchParameters(fieldsValue, 'content'),
-        ...this.buildStringSearchParameters(fieldsValue, 'link'),
+        ...this.buildStringSearchParameters(fieldsValue, 'itemType'),
+        ...this.buildStringSearchParameters(fieldsValue, 'itemId'),
 
       }
       const { owner } = this.props
@@ -141,9 +142,17 @@ class PrivateMessageSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="链接">
-              {getFieldDecorator('link')(
-                <Input placeholder="请输入链接" />
+            <FormItem label="项目类型">
+              {getFieldDecorator('itemType')(
+                <Input placeholder="请输入项目类型" />
+              )}
+            </FormItem>
+          </Col>
+
+          <Col md={8} sm={24}>
+            <FormItem label="项Id">
+              {getFieldDecorator('itemId')(
+                <Input placeholder="请输入项Id" />
               )}
             </FormItem>
           </Col>

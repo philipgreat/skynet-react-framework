@@ -16,16 +16,9 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
+  reviewContent: '活动很不错',
   campaignId: 'C000001',
   reviewerId: 'C000001',
-  reviewContent: '<div>\
-	<h1>一级会员服务</h1>\
-	<ul>\
-		<li>可以借阅图书</li>\
-		<li>可以购买</li>\
-		<li>可以报名参加活动</li>\
-	</ul>\
-</div>',
 }
 */
 const imageURLPrefix = '//localhost:2090'
@@ -274,6 +267,16 @@ class CampaignReviewCreateForm extends Component {
           <Form >
             <Row gutter={16}>
 
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.reviewContent} {...formItemLayout}>
+                  {getFieldDecorator('reviewContent', {
+                    rules: [{ required: true, message: '请输入评论内容' }],
+                  })(
+                    <Input placeholder="请输入评论内容" />
+                  )}
+                </Form.Item>
+              </Col>
+
             </Row>
           </Form>
         </Card>
@@ -286,22 +289,6 @@ class CampaignReviewCreateForm extends Component {
 
 
 
-
-        <Card title="评论内容" className={styles.card} bordered={false}>
-          <Form >
-            <Row gutter={16}>
-              <Col lg={24} md={24} sm={24}>
-                <Form.Item>
-                  {getFieldDecorator('reviewContent', {
-                    rules: [{ required: true, message: '请输入评论内容' }],
-                  })(
-                    <TextArea rows={4} placeholder="请输入请输入评论内容" />
-                  )}
-                </Form.Item>
-              </Col>
-      </Row>
-          </Form>  
-        </Card>
 
 
 

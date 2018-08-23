@@ -274,12 +274,24 @@ class PrivateMessageUpdateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.link} {...formItemLayout}>
-                  {getFieldDecorator('link', {
-                    initialValue: selectedRow.link,
-                    rules: [{ required: true, message: '请输入链接' }],
+                <Form.Item label={fieldLabels.itemType} {...formItemLayout}>
+                  {getFieldDecorator('itemType', {
+                    initialValue: selectedRow.itemType,
+                    rules: [{ required: true, message: '请输入项目类型' }],
                   })(
-                    <Input placeholder="请输入链接" />
+                    <Input placeholder="请输入项目类型" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.itemId} {...formItemLayout}>
+                  {getFieldDecorator('itemId', {
+                    initialValue: selectedRow.itemId,
+                    rules: [{ required: true, message: '请输入项Id' }],
+                  })(
+                    <Input placeholder="请输入项Id" />
                     
                   )}
                 </Form.Item>

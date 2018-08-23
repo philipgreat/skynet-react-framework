@@ -87,7 +87,8 @@ export const getURLPrefix = () => {
     //return `http://www.yourongzhixing.com/dssc/`
     //return `https://www.kxbbt.com/bbt/`
     //return "http://t420.doublechaintech.cn:18080/pulupulu/"
-    return `http://${url.hostname}:8080/${SYSTEM_SHORT_NAME}/`;
+    return "https://shuxiang.ycinfotech.cn/shuxiang/"
+    //return `http://${url.hostname}:8080/${SYSTEM_SHORT_NAME}/`;
   }
   //return `http://xm.jl51.com.cn/cis/`
 

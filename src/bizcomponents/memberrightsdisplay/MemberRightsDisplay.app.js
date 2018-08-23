@@ -119,6 +119,7 @@ class MemberRightsDisplayBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/memberRightsDisplay/${this.props.memberRightsDisplay.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class MemberRightsDisplayBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/memberRightsDisplay/${this.props.memberRightsDisplay.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -177,9 +181,13 @@ class MemberRightsDisplayBizApp extends React.PureComponent {
   
   buildRouters = () =>{
   	const {MemberRightsDisplayDashboard} = GlobalComponents
+  	const {MemberRightsDisplayPreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/memberRightsDisplay/:id/dashboard", component: MemberRightsDisplayDashboard},
+  	{path:"/memberRightsDisplay/:id/preference", component: MemberRightsDisplayPreference},
+  	
   	
   	
   	{path:"/memberRightsDisplay/:id/list/memberRightsDisplayItemList", component: this.getMemberRightsDisplayItemSearch()},
@@ -249,7 +257,7 @@ class MemberRightsDisplayBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

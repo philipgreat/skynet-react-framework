@@ -285,6 +285,18 @@ class CustomerAccountTransactionUpdateForm extends Component {
                 </Form.Item>
               </Col>
 
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.balance} {...formItemLayout}>
+                  {getFieldDecorator('balance', {
+                    initialValue: selectedRow.balance,
+                    rules: [{ required: true, message: '请输入余额' }],
+                  })(
+                    <Input placeholder="请输入余额" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
             </Row>
           </Form>  
         </Card>

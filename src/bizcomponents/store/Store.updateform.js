@@ -274,6 +274,18 @@ class StoreUpdateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.storeSubname} {...formItemLayout}>
+                  {getFieldDecorator('storeSubname', {
+                    initialValue: selectedRow.storeSubname,
+                    rules: [{ required: true, message: '请输入网点副标题' }],
+                  })(
+                    <Input placeholder="请输入网点副标题" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.storeAddress} {...formItemLayout}>
                   {getFieldDecorator('storeAddress', {
                     initialValue: selectedRow.storeAddress,
@@ -292,6 +304,18 @@ class StoreUpdateForm extends Component {
                     rules: [{ required: true, message: '请输入网点营业时间' }],
                   })(
                     <Input placeholder="请输入网点营业时间" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.storeOpenTimeSecond} {...formItemLayout}>
+                  {getFieldDecorator('storeOpenTimeSecond', {
+                    initialValue: selectedRow.storeOpenTimeSecond,
+                    rules: [{ required: true, message: '请输入网点营业时间补充说明' }],
+                  })(
+                    <Input placeholder="请输入网点营业时间补充说明" />
                     
                   )}
                 </Form.Item>
@@ -328,18 +352,6 @@ class StoreUpdateForm extends Component {
                     rules: [{ required: true, message: '请输入纬度' }],
                   })(
                     <Input placeholder="请输入纬度" />
-                    
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.storeType} {...formItemLayout}>
-                  {getFieldDecorator('storeType', {
-                    initialValue: selectedRow.storeType,
-                    rules: [{ required: true, message: '请输入网点类型' }],
-                  })(
-                    <Input placeholder="请输入网点类型" />
                     
                   )}
                 </Form.Item>

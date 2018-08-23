@@ -18,9 +18,9 @@ const testValues = {};
 const testValues = {
   title: '图书《无限接近透明的蓝》借阅超期费用',
   mainOrderStatus: '未支付',
-  createTime: '2016-08-22 04:33:14',
-  originalAmount: '926.85',
-  actualAmount: '988.29',
+  createTime: '2016-03-14 14:25:24',
+  originalAmount: '981.65',
+  actualAmount: '866.17',
   customerId: 'C000001',
   bookSharingPlatformId: 'BSP000001',
 }

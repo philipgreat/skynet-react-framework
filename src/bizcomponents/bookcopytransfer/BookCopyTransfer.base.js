@@ -16,7 +16,7 @@ const displayColumns = [
   { title: '书籍副本', dataIndex: 'bookCopy', render: (text, record) => (record.bookCopy ? record.bookCopy.displayName : '暂无') },
   { title: '原网点', dataIndex: 'originalStore', render: (text, record) => (record.originalStore ? record.originalStore.displayName : '暂无') },
   { title: '新网点', dataIndex: 'newStore', render: (text, record) => (record.newStore ? record.newStore.displayName : '暂无') },
-  { title: '转移类型', debugtype: 'string', dataIndex: 'transferType', width: '8' },
+  { title: '转移类型', dataIndex: 'transferType', render: (text, record) => (record.transferType ? record.transferType.displayName : '暂无') },
   { title: '操作员工', dataIndex: 'responsibleEmployee', render: (text, record) => (record.responsibleEmployee ? record.responsibleEmployee.displayName : '暂无') },
   { title: '最后更新时间', dataIndex: 'lastUpdateTime', render: (text, record) => moment(record.lastUpdateTime).format('YYYY-MM-DD HH:mm:ss') },
 

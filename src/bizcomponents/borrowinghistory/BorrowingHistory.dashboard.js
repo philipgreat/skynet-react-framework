@@ -299,7 +299,12 @@ const internalSummaryOf = (borrowingHistory,targetComponent) =>{
 </Description>
 <Description term="实际借书天数">{borrowingHistory.lendingDays}</Description> 
 <Description term="最后更新时间">{ moment(borrowingHistory.lastUpdateTime).format('YYYY-MM-DD')}</Description> 
-<Description term="借书状态">{borrowingHistory.borrowingStatus}</Description> 
+<Description term="借书状态">{borrowingHistory.borrowingStatus==null?"未分配":borrowingHistory.borrowingStatus.displayName}
+ <Icon type="swap" onClick={()=>
+  showTransferModel(targetComponent,"借书状态","borrowingStatus","requestCandidateBorrowingStatus",
+	      "transferToAnotherBorrowingStatus","anotherBorrowingStatusId",borrowingHistory.borrowingStatus?borrowingHistory.borrowingStatus.id:"")} 
+  style={{fontSize: 20,color:"red"}} />
+</Description>
 	
         {buildTransferModal(borrowingHistory,targetComponent)}
       </DescriptionList>

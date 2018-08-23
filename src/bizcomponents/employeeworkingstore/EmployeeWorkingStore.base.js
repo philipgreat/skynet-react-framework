@@ -13,6 +13,7 @@ const menuData = {menuName:"员工工作的网点", menuFor: "employeeWorkingSto
 const displayColumns = [
   { title: 'ID', debugtype: 'string', dataIndex: 'id', width: '20' },
   { title: '描述', debugtype: 'string', dataIndex: 'description', width: '20' },
+  { title: '角色', dataIndex: 'role', render: (text, record) => (record.role ? record.role.displayName : '暂无') },
   { title: '员工', dataIndex: 'employee', render: (text, record) => (record.employee ? record.employee.displayName : '暂无') },
   { title: '服务网点', dataIndex: 'store', render: (text, record) => (record.store ? record.store.displayName : '暂无') },
   { title: '开始日期', dataIndex: 'startDate', render: (text, record) => moment(record.startDate).format('YYYY-MM-DD') },
@@ -24,6 +25,7 @@ const displayColumns = [
 const fieldLabels = {
   id: 'ID',
   description: '描述',
+  role: '角色',
   employee: '员工',
   store: '服务网点',
   startDate: '开始日期',

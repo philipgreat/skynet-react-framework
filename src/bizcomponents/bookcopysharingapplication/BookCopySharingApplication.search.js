@@ -199,7 +199,9 @@ class BookCopySharingApplicationSearch extends PureComponent {
       <Menu onClick={this.handleMenuClick} selectedKeys={[]}>
 
 
+<Menu.Item key="deliverMethod">关联共享方式</Menu.Item>
 <Menu.Item key="destinationStore">关联目标网点</Menu.Item>
+<Menu.Item key="applicationStatus">关联应用程序状态</Menu.Item>
 <Menu.Item key="customer">关联用户</Menu.Item>
 <Menu.Item key="employee">关联员工</Menu.Item>
       

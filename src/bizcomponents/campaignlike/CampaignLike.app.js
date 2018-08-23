@@ -119,6 +119,7 @@ class CampaignLikeBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/campaignLike/${this.props.campaignLike.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class CampaignLikeBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/campaignLike/${this.props.campaignLike.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -142,9 +146,13 @@ class CampaignLikeBizApp extends React.PureComponent {
   
   buildRouters = () =>{
   	const {CampaignLikeDashboard} = GlobalComponents
+  	const {CampaignLikePreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/campaignLike/:id/dashboard", component: CampaignLikeDashboard},
+  	{path:"/campaignLike/:id/preference", component: CampaignLikePreference},
+  	
   	
     	
   	
@@ -210,7 +218,7 @@ class CampaignLikeBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

@@ -17,7 +17,8 @@ const testValues = {};
 /*
 const testValues = {
   name: '付费阅读未支付提醒',
-  link: 'http://www.baidu.com',
+  itemType: 'Book',
+  itemId: 'B0000001',
   deliveryToId: 'C000001',
   content: '<div>\
 	<h1>一级会员服务</h1>\
@@ -252,11 +253,21 @@ class PrivateMessageCreateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.link} {...formItemLayout}>
-                  {getFieldDecorator('link', {
-                    rules: [{ required: true, message: '请输入链接' }],
+                <Form.Item label={fieldLabels.itemType} {...formItemLayout}>
+                  {getFieldDecorator('itemType', {
+                    rules: [{ required: true, message: '请输入项目类型' }],
                   })(
-                    <Input placeholder="请输入链接" />
+                    <Input placeholder="请输入项目类型" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.itemId} {...formItemLayout}>
+                  {getFieldDecorator('itemId', {
+                    rules: [{ required: true, message: '请输入项Id' }],
+                  })(
+                    <Input placeholder="请输入项Id" />
                   )}
                 </Form.Item>
               </Col>

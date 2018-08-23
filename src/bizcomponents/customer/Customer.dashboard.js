@@ -258,17 +258,9 @@ const internalSummaryOf = (customer,targetComponent) =>{
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="ID">{customer.id}</Description> 
 <Description term="昵称">{customer.nickName}</Description> 
-<Description term="小程序OpenID">{customer.miniProgramOpenid}</Description> 
-<Description term="服务号OpenID">{customer.serviceAccountOpenid}</Description> 
-<Description term="微信UnionID">{customer.wechatUnionId}</Description> 
-<Description term="经度">{customer.longitude}</Description> 
-<Description term="纬度">{customer.latitude}</Description> 
 <Description term="手机号码">{customer.mobileNumber}</Description> 
-<Description term="生日">{ moment(customer.birthday).format('YYYY-MM-DD')}</Description> 
-<Description term="性别">{customer.sexuality}</Description> 
 <Description term="的真实姓名">{customer.realName}</Description> 
-<Description term="身份证号码">{customer.identityCardNumber}</Description> 
-<Description term="家庭地址">{customer.familyAddress}</Description> 
+<Description term="性别">{customer.sexuality}</Description> 
 <Description term="会员服务">{customer.memberService==null?"未分配":customer.memberService.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"会员服务","memberServiceProduct","requestCandidateMemberService",
@@ -277,8 +269,22 @@ const internalSummaryOf = (customer,targetComponent) =>{
 </Description>
 <Description term="会员服务开始日期">{ moment(customer.memberServiceStartDate).format('YYYY-MM-DD')}</Description> 
 <Description term="会员服务到期日期">{ moment(customer.memberServiceExpireDate).format('YYYY-MM-DD')}</Description> 
-<Description term="日均会员费">{customer.memberServiceDailyPay}</Description> 
 <Description term="帐户余额">{customer.accountBalance}</Description> 
+<Description term="小程序OpenID">{customer.miniProgramOpenid}</Description> 
+<Description term="服务号OpenID">{customer.serviceAccountOpenid}</Description> 
+<Description term="微信UnionID">{customer.wechatUnionId}</Description> 
+<Description term="经度">{customer.longitude}</Description> 
+<Description term="纬度">{customer.latitude}</Description> 
+<Description term="生日">{ moment(customer.birthday).format('YYYY-MM-DD')}</Description> 
+<Description term="身份证号码">{customer.identityCardNumber}</Description> 
+<Description term="家庭地址">{customer.familyAddress}</Description> 
+<Description term="日均会员费">{customer.memberServiceDailyPay}</Description> 
+<Description term="最喜欢的网点">{customer.favouriteStore==null?"未分配":customer.favouriteStore.displayName}
+ <Icon type="swap" onClick={()=>
+  showTransferModel(targetComponent,"最喜欢的网点","store","requestCandidateFavouriteStore",
+	      "transferToAnotherFavouriteStore","anotherFavouriteStoreId",customer.favouriteStore?customer.favouriteStore.id:"")} 
+  style={{fontSize: 20,color:"red"}} />
+</Description>
 	
         {buildTransferModal(customer,targetComponent)}
       </DescriptionList>
@@ -308,7 +314,7 @@ class CustomerDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, privateMessageCount, lossAssessmentRecordCount, mainOrderCount, bookCopyCount, borrowingHistoryCount, borrowingExpiredSkuCount, bookReviewCount, bookReviewLikeCount, bookCopySharingApplicationCount, memberServiceRevenueCount, customerAccountTransactionCount, campaignRegisterHistoryCount, campaignReviewCount, campaignLikeCount, campaignReviewLikeCount, customerFootprintCount, shieldCustomerAsCustomerCount, shieldCustomerAsShieldCount, informCount } = this.props.customer
+    const { id,displayName, privateMessageCount, lossAssessmentRecordCount, mainOrderCount, bookCopyCount, borrowingHistoryCount, borrowingExpiredSkuCount, bookReviewCount, bookReviewLikeCount, bookCopySharingApplicationCount, memberServiceRevenueCount, customerAccountTransactionCount, campaignRegisterHistoryCount, campaignReviewCount, campaignLikeCount, campaignReviewLikeCount, customerFootprintCount, shieldCustomerAsCustomerCount, shieldCustomerAsShieldCount, informCount, undistributedProfitCount } = this.props.customer
     const cardsData = {cardsName:"用户",cardsFor: "customer",cardsSource: this.props.customer,
   		subItems: [
 {name: 'privateMessageList', displayName:'私信消息',type:'privateMessage',count:privateMessageCount},
@@ -330,6 +336,7 @@ class CustomerDashboard extends Component {
 {name: 'shieldCustomerListAsCustomer', displayName:'屏蔽用户',type:'shieldCustomer',count:shieldCustomerAsCustomerCount},
 {name: 'shieldCustomerListAsShield', displayName:'屏蔽用户',type:'shieldCustomer',count:shieldCustomerAsShieldCount},
 {name: 'informList', displayName:'举报',type:'inform',count:informCount},
+{name: 'undistributedProfitList', displayName:'未分配利润',type:'undistributedProfit',count:undistributedProfitCount},
     
       	],
   	};

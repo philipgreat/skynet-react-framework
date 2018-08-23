@@ -64,8 +64,6 @@ class MemberServiceIncomeMetricSearchForm extends PureComponent {
       if (err) return
       const params = {
         ...this.buildStringSearchParameters(fieldsValue, 'id'),
-        ...this.buildStringSearchParameters(fieldsValue, 'storeRate'),
-        ...this.buildStringSearchParameters(fieldsValue, 'platformRate'),
 
       }
       const { owner } = this.props
@@ -91,14 +89,6 @@ class MemberServiceIncomeMetricSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="服务网点分成比">
-              {getFieldDecorator('storeRate')(
-                <Input placeholder="请输入服务网点分成比" />
-               )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
             <span className={styles.submitButtons}>
               <Button type="primary" htmlType="submit">查询</Button>
               <Button style={{ marginLeft: 8 }} onClick={this.handleFormReset}>重置</Button>
@@ -119,22 +109,6 @@ class MemberServiceIncomeMetricSearchForm extends PureComponent {
             <FormItem label="ID">
               {getFieldDecorator('id')(
                 <Input placeholder="请输入ID" />
-              )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
-            <FormItem label="服务网点分成比">
-              {getFieldDecorator('storeRate')(
-                <Input placeholder="请输入服务网点分成比" />
-              )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
-            <FormItem label="平台分成比">
-              {getFieldDecorator('platformRate')(
-                <Input placeholder="请输入平台分成比" />
               )}
             </FormItem>
           </Col>

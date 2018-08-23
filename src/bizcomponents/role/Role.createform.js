@@ -17,7 +17,7 @@ const testValues = {};
 /*
 const testValues = {
   roleName: '管理员',
-  roleProperty3: '119',
+  roleProperty3: '88',
 }
 */
 const imageURLPrefix = '//localhost:2090'

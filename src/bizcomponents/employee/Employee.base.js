@@ -24,7 +24,7 @@ const displayColumns = [
   { title: '名称', debugtype: 'string', dataIndex: 'name', width: '11' },
   { title: '员工照片', dataIndex: 'employeeImage', render: (text, record) => <ImagePreview imageTitle="员工照片" imageLocation={record.employeeImage} /> },
   { title: '手机号码', debugtype: 'string_china_mobile_phone', dataIndex: 'mobileNumber', width: '15' },
-  { title: '角色', dataIndex: 'role', render: (text, record) => (record.role ? record.role.displayName : '暂无') },
+  { title: '图书共享平台', dataIndex: 'bookSharingPlatform', render: (text, record) => (record.bookSharingPlatform ? record.bookSharingPlatform.displayName : '暂无') },
 
 ]
 
@@ -33,7 +33,7 @@ const fieldLabels = {
   name: '名称',
   employeeImage: '员工照片',
   mobileNumber: '手机号码',
-  role: '角色',
+  bookSharingPlatform: '图书共享平台',
 
 }
 

@@ -17,7 +17,7 @@ const testValues = {};
 /*
 const testValues = {
   name: '充值',
-  transactionCode: 'BALANCE_RECHARGE',
+  code: 'BALANCE_RECHARGE',
   accountDataId: 'AD000001',
 }
 */
@@ -244,11 +244,11 @@ class TransactionTypeCreateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.transactionCode} {...formItemLayout}>
-                  {getFieldDecorator('transactionCode', {
-                    rules: [{ required: true, message: '请输入交易代码' }],
+                <Form.Item label={fieldLabels.code} {...formItemLayout}>
+                  {getFieldDecorator('code', {
+                    rules: [{ required: true, message: '请输入代码' }],
                   })(
-                    <Input placeholder="请输入交易代码" />
+                    <Input placeholder="请输入代码" />
                   )}
                 </Form.Item>
               </Col>

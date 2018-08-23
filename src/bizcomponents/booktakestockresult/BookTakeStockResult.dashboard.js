@@ -256,13 +256,19 @@ const internalSummaryOf = (bookTakeStockResult,targetComponent) =>{
 	return (
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="ID">{bookTakeStockResult.id}</Description> 
+<Description term="书名">{bookTakeStockResult.bookName}</Description> 
 <Description term="书籍副本">{bookTakeStockResult.bookCopy==null?"未分配":bookTakeStockResult.bookCopy.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"书籍副本","bookCopy","requestCandidateBookCopy",
 	      "transferToAnotherBookCopy","anotherBookCopyId",bookTakeStockResult.bookCopy?bookTakeStockResult.bookCopy.id:"")} 
   style={{fontSize: 20,color:"red"}} />
 </Description>
-<Description term="图书盘点状态">{bookTakeStockResult.bookTakeStockStatus}</Description> 
+<Description term="图书盘点状态">{bookTakeStockResult.bookTakeStockStatus==null?"未分配":bookTakeStockResult.bookTakeStockStatus.displayName}
+ <Icon type="swap" onClick={()=>
+  showTransferModel(targetComponent,"图书盘点状态","bookTakeStockStatus","requestCandidateBookTakeStockStatus",
+	      "transferToAnotherBookTakeStockStatus","anotherBookTakeStockStatusId",bookTakeStockResult.bookTakeStockStatus?bookTakeStockResult.bookTakeStockStatus.id:"")} 
+  style={{fontSize: 20,color:"red"}} />
+</Description>
 <Description term="图书盘点执行时间">{ moment(bookTakeStockResult.bookCopyCheckDatetime).format('YYYY-MM-DD')}</Description> 
 <Description term="员工">{bookTakeStockResult.employee==null?"未分配":bookTakeStockResult.employee.displayName}
  <Icon type="swap" onClick={()=>
@@ -270,7 +276,12 @@ const internalSummaryOf = (bookTakeStockResult,targetComponent) =>{
 	      "transferToAnotherEmployee","anotherEmployeeId",bookTakeStockResult.employee?bookTakeStockResult.employee.id:"")} 
   style={{fontSize: 20,color:"red"}} />
 </Description>
-<Description term="结果">{bookTakeStockResult.results}</Description> 
+<Description term="盘点结果">{bookTakeStockResult.takeStoreResults==null?"未分配":bookTakeStockResult.takeStoreResults.displayName}
+ <Icon type="swap" onClick={()=>
+  showTransferModel(targetComponent,"盘点结果","takeStoreResults","requestCandidateTakeStoreResults",
+	      "transferToAnotherTakeStoreResults","anotherTakeStoreResultsId",bookTakeStockResult.takeStoreResults?bookTakeStockResult.takeStoreResults.id:"")} 
+  style={{fontSize: 20,color:"red"}} />
+</Description>
 <Description term="盘点日期时间">{ moment(bookTakeStockResult.takeStockDatetime).format('YYYY-MM-DD')}</Description> 
 <Description term="图书盘点计划">{bookTakeStockResult.bookTakeStockPlan==null?"未分配":bookTakeStockResult.bookTakeStockPlan.displayName}
  <Icon type="swap" onClick={()=>

@@ -119,6 +119,7 @@ class CampaignPlazaBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/campaignPlaza/${this.props.campaignPlaza.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class CampaignPlazaBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/campaignPlaza/${this.props.campaignPlaza.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -177,9 +181,13 @@ class CampaignPlazaBizApp extends React.PureComponent {
   
   buildRouters = () =>{
   	const {CampaignPlazaDashboard} = GlobalComponents
+  	const {CampaignPlazaPreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/campaignPlaza/:id/dashboard", component: CampaignPlazaDashboard},
+  	{path:"/campaignPlaza/:id/preference", component: CampaignPlazaPreference},
+  	
   	
   	
   	{path:"/campaignPlaza/:id/list/campaignList", component: this.getCampaignSearch()},
@@ -249,7 +257,7 @@ class CampaignPlazaBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

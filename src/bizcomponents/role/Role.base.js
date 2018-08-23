@@ -4,7 +4,7 @@ import { Link } from 'dva/router'
 import moment from 'moment'
 const menuData = {menuName:"角色", menuFor: "role",
   		subItems: [
-  {name: 'employeeList', displayName:'员工', icon:'glass'},
+  {name: 'employeeWorkingStoreList', displayName:'员工工作的网点', icon:'glass'},
   
   		],
 }

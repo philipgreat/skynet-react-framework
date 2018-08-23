@@ -37,26 +37,6 @@ const transferToAnotherPlatform = (id, parameters) => {
 
 
 
-const addTokenInMemberServiceProduct = (targetObjectId, parameters) => {
-  const url = `${PREFIX}memberServiceProductManager/addTokenInMemberServiceProduct/memberServiceProductId/description/tokenEnabled/availableTokenId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
-  return postForm({ url,requestParameters})
-}
-
-const updateTokenInMemberServiceProduct = (targetObjectId, parameters) => {
-  const url = `${PREFIX}memberServiceProductManager/updateTokenInMemberServiceProductProperties/memberServiceProductId/id/description/tokenEnabled/tokensExpr/`
-  const memberServiceProductId = targetObjectId
-  const requestParameters = { ...parameters, memberServiceProductId, tokensExpr: 'none' }
-  return postForm({ url,requestParameters})
-}
-
-const removeTokenInMemberServiceProductList = (targetObjectId, parameters) => {
-  const url = `${PREFIX}memberServiceProductManager/removeTokenInMemberServiceProductList/memberServiceProductId/tokenInMemberServiceProductIds/tokensExpr/`
-  const requestParameters = { ...parameters, memberServiceProductId: targetObjectId, tokensExpr: 'none' }
-  return postForm({ url,requestParameters})
-}
-
-
 const addMemberServiceBundleSku = (targetObjectId, parameters) => {
   const url = `${PREFIX}memberServiceProductManager/addMemberServiceBundleSku/memberProductId/memberServiceName/description/listPrice/salePrice/servicePeriodMonths/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
@@ -78,13 +58,13 @@ const removeMemberServiceBundleSkuList = (targetObjectId, parameters) => {
 
 
 const addStoreSlide = (targetObjectId, parameters) => {
-  const url = `${PREFIX}memberServiceProductManager/addStoreSlide/memberServiceProductId/tips/bannerImage/wxaLinkUrl/antdLinkUrl/linkType/bookId/campaignId/storeId/tokensExpr/`
+  const url = `${PREFIX}memberServiceProductManager/addStoreSlide/memberServiceProductId/tips/bannerImage/wxaLinkUrl/antdLinkUrl/slideTypeId/bookId/campaignId/storeId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateStoreSlide = (targetObjectId, parameters) => {
-  const url = `${PREFIX}memberServiceProductManager/updateStoreSlideProperties/memberServiceProductId/id/tips/bannerImage/wxaLinkUrl/antdLinkUrl/linkType/tokensExpr/`
+  const url = `${PREFIX}memberServiceProductManager/updateStoreSlideProperties/memberServiceProductId/id/tips/bannerImage/wxaLinkUrl/antdLinkUrl/tokensExpr/`
   const memberServiceProductId = targetObjectId
   const requestParameters = { ...parameters, memberServiceProductId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
@@ -98,13 +78,13 @@ const removeStoreSlideList = (targetObjectId, parameters) => {
 
 
 const addCustomer = (targetObjectId, parameters) => {
-  const url = `${PREFIX}memberServiceProductManager/addCustomer/memberServiceId/nickName/logoImage/miniProgramOpenid/serviceAccountOpenid/wechatUnionId/longitude/latitude/mobileNumber/birthday/sexuality/realName/identityCardNumber/familyAddress/memberServiceStartDate/memberServiceExpireDate/memberServiceDailyPay/accountBalance/platformId/tokensExpr/`
+  const url = `${PREFIX}memberServiceProductManager/addCustomer/memberServiceId/nickName/logoImage/mobileNumber/realName/sexuality/memberServiceStartDate/memberServiceExpireDate/accountBalance/miniProgramOpenid/serviceAccountOpenid/wechatUnionId/longitude/latitude/birthday/identityCardNumber/familyAddress/memberServiceDailyPay/favouriteStoreId/platformId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateCustomer = (targetObjectId, parameters) => {
-  const url = `${PREFIX}memberServiceProductManager/updateCustomerProperties/memberServiceProductId/id/nickName/logoImage/miniProgramOpenid/serviceAccountOpenid/wechatUnionId/longitude/latitude/mobileNumber/birthday/sexuality/realName/identityCardNumber/familyAddress/memberServiceStartDate/memberServiceExpireDate/memberServiceDailyPay/accountBalance/tokensExpr/`
+  const url = `${PREFIX}memberServiceProductManager/updateCustomerProperties/memberServiceProductId/id/nickName/logoImage/mobileNumber/realName/sexuality/memberServiceStartDate/memberServiceExpireDate/accountBalance/miniProgramOpenid/serviceAccountOpenid/wechatUnionId/longitude/latitude/birthday/identityCardNumber/familyAddress/memberServiceDailyPay/tokensExpr/`
   const memberServiceProductId = targetObjectId
   const requestParameters = { ...parameters, memberServiceProductId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
@@ -119,15 +99,12 @@ const removeCustomerList = (targetObjectId, parameters) => {
 
 const MemberServiceProductService = { view,
   load,
-  addTokenInMemberServiceProduct,
   addMemberServiceBundleSku,
   addStoreSlide,
   addCustomer,
-  updateTokenInMemberServiceProduct,
   updateMemberServiceBundleSku,
   updateStoreSlide,
   updateCustomer,
-  removeTokenInMemberServiceProductList,
   removeMemberServiceBundleSkuList,
   removeStoreSlideList,
   removeCustomerList,

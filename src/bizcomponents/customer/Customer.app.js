@@ -119,6 +119,7 @@ class CustomerBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/customer/${this.props.customer.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class CustomerBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/customer/${this.props.customer.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -803,13 +807,52 @@ class CustomerBizApp extends React.PureComponent {
     }))(InformUpdateForm)
   }
 
+  getUndistributedProfitSearch = () => {
+    const {UndistributedProfitSearch} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.undistributedProfitList,
+      count: state._customer.undistributedProfitCount,
+      currentPage: state._customer.undistributedProfitCurrentPageNumber,
+      searchFormParameters: state._customer.undistributedProfitSearchFormParameters,
+      loading: state._customer.loading,
+      partialList: state._customer.partialList,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'undistributedProfitList', ref:state._customer, listDisplayName: '未分配利润列表' }, // this is for model namespace and
+    }))(UndistributedProfitSearch)
+  }
+  getUndistributedProfitCreateForm = () => {
+   	const {UndistributedProfitCreateForm} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.undistributedProfitList,
+      count: state._customer.undistributedProfitCount,
+      currentPage: state._customer.undistributedProfitCurrentPageNumber,
+      searchFormParameters: state._customer.undistributedProfitSearchFormParameters,
+      loading: state._customer.loading,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'undistributedProfitList', ref:state._customer, listDisplayName: '未分配利润列表'}, // this is for model namespace and
+    }))(UndistributedProfitCreateForm)
+  }
+  
+  getUndistributedProfitUpdateForm = () => {
+  	const {UndistributedProfitUpdateForm} = GlobalComponents;
+    return connect(state => ({
+      selectedRows: state._customer.selectedRows,
+      currentUpdateIndex: state._customer.currentUpdateIndex,
+      owner: { type: '_customer', id: state._customer.id, listName: 'undistributedProfitList', ref:state._customer, listDisplayName: '未分配利润列表' }, // this is for model namespace and
+    }))(UndistributedProfitUpdateForm)
+  }
+
 
   
   buildRouters = () =>{
   	const {CustomerDashboard} = GlobalComponents
+  	const {CustomerPreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/customer/:id/dashboard", component: CustomerDashboard},
+  	{path:"/customer/:id/preference", component: CustomerPreference},
+  	
   	
   	
   	{path:"/customer/:id/list/privateMessageList", component: this.getPrivateMessageSearch()},
@@ -887,6 +930,10 @@ class CustomerBizApp extends React.PureComponent {
   	{path:"/customer/:id/list/informList", component: this.getInformSearch()},
   	{path:"/customer/:id/list/informCreateForm", component: this.getInformCreateForm()},
   	{path:"/customer/:id/list/informUpdateForm", component: this.getInformUpdateForm()},
+   	
+  	{path:"/customer/:id/list/undistributedProfitList", component: this.getUndistributedProfitSearch()},
+  	{path:"/customer/:id/list/undistributedProfitCreateForm", component: this.getUndistributedProfitCreateForm()},
+  	{path:"/customer/:id/list/undistributedProfitUpdateForm", component: this.getUndistributedProfitUpdateForm()},
      	
   	
   	]
@@ -951,7 +998,7 @@ class CustomerBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

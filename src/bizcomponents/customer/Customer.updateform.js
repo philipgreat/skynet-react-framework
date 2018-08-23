@@ -59,9 +59,9 @@ class CustomerUpdateForm extends Component {
     const convertiedValues = selectedRows.map((item) => {
       return {
         ...item,
-        birthday: moment(item.birthday),
         memberServiceStartDate: moment(item.memberServiceStartDate),
         memberServiceExpireDate: moment(item.memberServiceExpireDate),
+        birthday: moment(item.birthday),
 
       }
     })
@@ -277,6 +277,78 @@ class CustomerUpdateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.mobileNumber} {...formItemLayout}>
+                  {getFieldDecorator('mobileNumber', {
+                    initialValue: selectedRow.mobileNumber,
+                    rules: [{ required: true, message: '请输入手机号码' }],
+                  })(
+                    <Input placeholder="请输入手机号码" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.realName} {...formItemLayout}>
+                  {getFieldDecorator('realName', {
+                    initialValue: selectedRow.realName,
+                    rules: [{ required: true, message: '请输入的真实姓名' }],
+                  })(
+                    <Input placeholder="请输入的真实姓名" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.sexuality} {...formItemLayout}>
+                  {getFieldDecorator('sexuality', {
+                    initialValue: selectedRow.sexuality,
+                    rules: [{ required: true, message: '请输入性别' }],
+                  })(
+                    <Input placeholder="请输入性别" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.memberServiceStartDate} {...formItemLayout}>
+                  {getFieldDecorator('memberServiceStartDate', {
+                    initialValue: selectedRow.memberServiceStartDate,
+                    rules: [{ required: true, message: '请输入会员服务开始日期' }],
+                  })(
+                    <DatePicker format="YYYY-MM-DD" placeholder="请输入会员服务开始日期" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.memberServiceExpireDate} {...formItemLayout}>
+                  {getFieldDecorator('memberServiceExpireDate', {
+                    initialValue: selectedRow.memberServiceExpireDate,
+                    rules: [{ required: true, message: '请输入会员服务到期日期' }],
+                  })(
+                    <DatePicker format="YYYY-MM-DD" placeholder="请输入会员服务到期日期" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.accountBalance} {...formItemLayout}>
+                  {getFieldDecorator('accountBalance', {
+                    initialValue: selectedRow.accountBalance,
+                    rules: [{ required: true, message: '请输入帐户余额' }],
+                  })(
+                    <Input placeholder="请输入帐户余额" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.miniProgramOpenid} {...formItemLayout}>
                   {getFieldDecorator('miniProgramOpenid', {
                     initialValue: selectedRow.miniProgramOpenid,
@@ -337,48 +409,12 @@ class CustomerUpdateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.mobileNumber} {...formItemLayout}>
-                  {getFieldDecorator('mobileNumber', {
-                    initialValue: selectedRow.mobileNumber,
-                    rules: [{ required: true, message: '请输入手机号码' }],
-                  })(
-                    <Input placeholder="请输入手机号码" />
-                    
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.birthday} {...formItemLayout}>
                   {getFieldDecorator('birthday', {
                     initialValue: selectedRow.birthday,
                     rules: [{ required: true, message: '请输入生日' }],
                   })(
                     <DatePicker format="YYYY-MM-DD" placeholder="请输入生日" />
-                    
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.sexuality} {...formItemLayout}>
-                  {getFieldDecorator('sexuality', {
-                    initialValue: selectedRow.sexuality,
-                    rules: [{ required: true, message: '请输入性别' }],
-                  })(
-                    <Input placeholder="请输入性别" />
-                    
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.realName} {...formItemLayout}>
-                  {getFieldDecorator('realName', {
-                    initialValue: selectedRow.realName,
-                    rules: [{ required: true, message: '请输入的真实姓名' }],
-                  })(
-                    <Input placeholder="请输入的真实姓名" />
                     
                   )}
                 </Form.Item>
@@ -409,48 +445,12 @@ class CustomerUpdateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.memberServiceStartDate} {...formItemLayout}>
-                  {getFieldDecorator('memberServiceStartDate', {
-                    initialValue: selectedRow.memberServiceStartDate,
-                    rules: [{ required: true, message: '请输入会员服务开始日期' }],
-                  })(
-                    <DatePicker format="YYYY-MM-DD" placeholder="请输入会员服务开始日期" />
-                    
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.memberServiceExpireDate} {...formItemLayout}>
-                  {getFieldDecorator('memberServiceExpireDate', {
-                    initialValue: selectedRow.memberServiceExpireDate,
-                    rules: [{ required: true, message: '请输入会员服务到期日期' }],
-                  })(
-                    <DatePicker format="YYYY-MM-DD" placeholder="请输入会员服务到期日期" />
-                    
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.memberServiceDailyPay} {...formItemLayout}>
                   {getFieldDecorator('memberServiceDailyPay', {
                     initialValue: selectedRow.memberServiceDailyPay,
                     rules: [{ required: true, message: '请输入日均会员费' }],
                   })(
                     <Input placeholder="请输入日均会员费" />
-                    
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.accountBalance} {...formItemLayout}>
-                  {getFieldDecorator('accountBalance', {
-                    initialValue: selectedRow.accountBalance,
-                    rules: [{ required: true, message: '请输入帐户余额' }],
-                  })(
-                    <Input placeholder="请输入帐户余额" />
                     
                   )}
                 </Form.Item>

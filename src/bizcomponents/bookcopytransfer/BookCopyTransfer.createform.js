@@ -17,10 +17,10 @@ const testValues = {};
 /*
 const testValues = {
   bookName: '飘',
-  transferType: '异店还书',
   bookCopyId: 'BC000001',
   originalStoreId: 'S000001',
   newStoreId: 'S000001',
+  transferTypeId: 'TT000001',
   responsibleEmployeeId: 'E000001',
 }
 */
@@ -50,6 +50,9 @@ class BookCopyTransferCreateForm extends Component {
     
     
     this.executeCandidateNewStoreSearch("")
+    
+    
+    this.executeCandidateTransferTypeSearch("")
     
     
     this.executeCandidateResponsibleEmployeeSearch("")
@@ -135,6 +138,28 @@ class BookCopyTransferCreateForm extends Component {
   }	 
   handleCandidateNewStoreSearch = (value) => {
     this.executeCandidateNewStoreSearch(value)
+  }
+
+  executeCandidateTransferTypeSearch = (filterKey) =>{
+
+    const {BookCopyTransferService} = GlobalComponents;
+    
+    const id = "";//not used for now
+    const pageNo = 1;
+    const future = BookCopyTransferService.requestCandidateTransferType("transferType", id, filterKey, pageNo);
+    console.log(future);
+    
+
+    future.then(candidateTransferTypeList=>{
+      this.setState({
+        candidateTransferTypeList
+      })
+
+    })
+
+  }	 
+  handleCandidateTransferTypeSearch = (value) => {
+    this.executeCandidateTransferTypeSearch(value)
   }
 
   executeCandidateResponsibleEmployeeSearch = (filterKey) =>{
@@ -292,6 +317,15 @@ class BookCopyTransferCreateForm extends Component {
     }   
     
     
+    const {candidateTransferTypeList} = this.state
+    if(!candidateTransferTypeList){
+      return (<div>等等</div>)
+    }
+    if(!candidateTransferTypeList.candidates){
+      return (<div>等等</div>)
+    }   
+    
+    
     const {candidateResponsibleEmployeeList} = this.state
     if(!candidateResponsibleEmployeeList){
       return (<div>等等</div>)
@@ -344,16 +378,6 @@ class BookCopyTransferCreateForm extends Component {
                     rules: [{ required: true, message: '请输入书名' }],
                   })(
                     <Input placeholder="请输入书名" />
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.transferType} {...formItemLayout}>
-                  {getFieldDecorator('transferType', {
-                    rules: [{ required: true, message: '请输入转移类型' }],
-                  })(
-                    <Input placeholder="请输入转移类型" />
                   )}
                 </Form.Item>
               </Col>
@@ -447,6 +471,31 @@ class BookCopyTransferCreateForm extends Component {
                   >
                   {candidateNewStoreList.candidates.map(item=>{
                 return (<Option key={item.id}>{`${item.storeName}(${item.id})`}</Option>);
+            })}
+                  
+                  </AutoComplete>
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.transferType} {...formItemLayout}>
+                  {getFieldDecorator('transferTypeId', {
+                  	initialValue: tryinit('transferType'),
+                    rules: [{ required: true, message: '请输入转移类型' }],
+                  })(
+                  
+                  <AutoComplete
+                    dataSource={candidateTransferTypeList.candidates}
+                    
+                    
+                    onSearch={this.handleCandidateTransferTypeSearch}
+                    placeholder="请输入转移类型"
+                    
+                    disabled={!availableForEdit('transferType')}
+                  >
+                  {candidateTransferTypeList.candidates.map(item=>{
+                return (<Option key={item.id}>{`${item.name}(${item.id})`}</Option>);
             })}
                   
                   </AutoComplete>

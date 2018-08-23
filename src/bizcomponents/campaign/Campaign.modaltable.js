@@ -31,7 +31,7 @@ class CampaignModalTable extends PureComponent {
           dataSource={data}
           columns={displayColumns}
           size="small"
-          scroll={{ x: 3075 }}
+          scroll={{ x: 1995 }}
         />
       </div>
     )

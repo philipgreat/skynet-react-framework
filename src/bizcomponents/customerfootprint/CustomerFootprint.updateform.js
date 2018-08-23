@@ -286,6 +286,42 @@ class CustomerFootprintUpdateForm extends Component {
                 </Form.Item>
               </Col>
 
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.itemType} {...formItemLayout}>
+                  {getFieldDecorator('itemType', {
+                    initialValue: selectedRow.itemType,
+                    rules: [{ required: true, message: '请输入项目类型' }],
+                  })(
+                    <Input placeholder="请输入项目类型" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.itemId} {...formItemLayout}>
+                  {getFieldDecorator('itemId', {
+                    initialValue: selectedRow.itemId,
+                    rules: [{ required: true, message: '请输入项Id' }],
+                  })(
+                    <Input placeholder="请输入项Id" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.itemDescription} {...formItemLayout}>
+                  {getFieldDecorator('itemDescription', {
+                    initialValue: selectedRow.itemDescription,
+                    rules: [{ required: true, message: '请输入相关项描述' }],
+                  })(
+                    <Input placeholder="请输入相关项描述" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
             </Row>
           </Form>  
         </Card>
@@ -325,23 +361,6 @@ class CustomerFootprintUpdateForm extends Component {
                     rules: [{  required: true, message: '请输入描述' }],
                   })(
                     <TextArea rows={4} placeholder="请输入请输入描述" />
-                  )}
-                </Form.Item>
-              </Col>
-            </Row>
-          </Form>
-        </Card>
-
-        <Card title="相关项描述" className={styles.card} bordered={false}>
-          <Form >
-            <Row gutter={16}>
-              <Col lg={24} md={24} sm={24}>
-                <Form.Item>
-                  {getFieldDecorator('itemDescription', {
-                  	initialValue: selectedRow.itemDescription,
-                    rules: [{  required: true, message: '请输入相关项描述' }],
-                  })(
-                    <TextArea rows={4} placeholder="请输入请输入相关项描述" />
                   )}
                 </Form.Item>
               </Col>

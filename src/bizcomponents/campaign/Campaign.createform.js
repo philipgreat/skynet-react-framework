@@ -17,12 +17,13 @@ const testValues = {};
 /*
 const testValues = {
   campaignName: '世界读书日读书活动',
-  campaignStatus: '报名中',
-  campaignStartTime: '2015-12-06 23:56:52',
-  campaignFinishTime: '2016-03-15 01:44:09',
+  campaignStartTime: '2017-10-25 11:14:02',
+  campaignFinishTime: '2016-09-29 02:23:42',
   campaignHoldAddress: '成都市天府广场东侧新博物馆2楼李四光厅',
-  availableRegisterDeadline: '2017-01-19 11:13:22',
-  availableRegisterQuantity: '44416',
+  registerDeadlineLeadHours: '1',
+  minimumRegisterQuantity: '1',
+  availableRegisterQuantity: '489',
+  campaignStatusId: 'CS000001',
   publishStoreId: 'S000001',
   publishEmployeeId: 'E000001',
   campaignPlazaId: 'CP000001',
@@ -56,6 +57,9 @@ class CampaignCreateForm extends Component {
     const { setFieldsValue } = this.props.form
     //setFieldsValue(testValues)
       
+    this.executeCandidateCampaignStatusSearch("")
+    
+    
     this.executeCandidatePublishStoreSearch("")
     
     
@@ -81,6 +85,28 @@ class CampaignCreateForm extends Component {
   }
 
   
+  executeCandidateCampaignStatusSearch = (filterKey) =>{
+
+    const {CampaignService} = GlobalComponents;
+    
+    const id = "";//not used for now
+    const pageNo = 1;
+    const future = CampaignService.requestCandidateCampaignStatus("campaignStatus", id, filterKey, pageNo);
+    console.log(future);
+    
+
+    future.then(candidateCampaignStatusList=>{
+      this.setState({
+        candidateCampaignStatusList
+      })
+
+    })
+
+  }	 
+  handleCandidateCampaignStatusSearch = (value) => {
+    this.executeCandidateCampaignStatusSearch(value)
+  }
+
   executeCandidatePublishStoreSearch = (filterKey) =>{
 
     const {CampaignService} = GlobalComponents;
@@ -253,6 +279,15 @@ class CampaignCreateForm extends Component {
     
 
     
+    const {candidateCampaignStatusList} = this.state
+    if(!candidateCampaignStatusList){
+      return (<div>等等</div>)
+    }
+    if(!candidateCampaignStatusList.candidates){
+      return (<div>等等</div>)
+    }   
+    
+    
     const {candidatePublishStoreList} = this.state
     if(!candidatePublishStoreList){
       return (<div>等等</div>)
@@ -328,16 +363,6 @@ class CampaignCreateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.campaignStatus} {...formItemLayout}>
-                  {getFieldDecorator('campaignStatus', {
-                    rules: [{ required: true, message: '请输入活动状态' }],
-                  })(
-                    <Input placeholder="请输入活动状态" />
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.campaignStartTime} {...formItemLayout}>
                   {getFieldDecorator('campaignStartTime', {
                     rules: [{ required: true, message: '请输入开始时间' }],
@@ -368,11 +393,21 @@ class CampaignCreateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.availableRegisterDeadline} {...formItemLayout}>
-                  {getFieldDecorator('availableRegisterDeadline', {
-                    rules: [{ required: true, message: '请输入报名截止日期' }],
+                <Form.Item label={fieldLabels.registerDeadlineLeadHours} {...formItemLayout}>
+                  {getFieldDecorator('registerDeadlineLeadHours', {
+                    rules: [{ required: true, message: '请输入开始前几小时停止注册' }],
                   })(
-                    <DatePicker showTime format="YYYY-MM-DD HH:mm" minuteStep={5} placeholder="请输入报名截止日期" />
+                    <Input placeholder="请输入开始前几小时停止注册" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.minimumRegisterQuantity} {...formItemLayout}>
+                  {getFieldDecorator('minimumRegisterQuantity', {
+                    rules: [{ required: true, message: '请输入最低注册数量' }],
+                  })(
+                    <Input placeholder="请输入最低注册数量" />
                   )}
                 </Form.Item>
               </Col>
@@ -440,6 +475,31 @@ class CampaignCreateForm extends Component {
         <Card title="关联" className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.campaignStatus} {...formItemLayout}>
+                  {getFieldDecorator('campaignStatusId', {
+                  	initialValue: tryinit('campaignStatus'),
+                    rules: [{ required: true, message: '请输入活动状态' }],
+                  })(
+                  
+                  <AutoComplete
+                    dataSource={candidateCampaignStatusList.candidates}
+                    
+                    
+                    onSearch={this.handleCandidateCampaignStatusSearch}
+                    placeholder="请输入活动状态"
+                    
+                    disabled={!availableForEdit('campaignStatus')}
+                  >
+                  {candidateCampaignStatusList.candidates.map(item=>{
+                return (<Option key={item.id}>{`${item.name}(${item.id})`}</Option>);
+            })}
+                  
+                  </AutoComplete>
+                  )}
+                </Form.Item>
+              </Col>
 
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.publishStore} {...formItemLayout}>

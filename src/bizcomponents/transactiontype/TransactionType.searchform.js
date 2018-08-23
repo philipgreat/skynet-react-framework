@@ -65,7 +65,7 @@ class TransactionTypeSearchForm extends PureComponent {
       const params = {
         ...this.buildStringSearchParameters(fieldsValue, 'id'),
         ...this.buildStringSearchParameters(fieldsValue, 'name'),
-        ...this.buildStringSearchParameters(fieldsValue, 'transactionCode'),
+        ...this.buildStringSearchParameters(fieldsValue, 'code'),
 
       }
       const { owner } = this.props
@@ -132,9 +132,9 @@ class TransactionTypeSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="交易代码">
-              {getFieldDecorator('transactionCode')(
-                <Input placeholder="请输入交易代码" />
+            <FormItem label="代码">
+              {getFieldDecorator('code')(
+                <Input placeholder="请输入代码" />
               )}
             </FormItem>
           </Col>

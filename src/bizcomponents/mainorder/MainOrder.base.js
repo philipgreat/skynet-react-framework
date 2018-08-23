@@ -7,10 +7,12 @@ const menuData = {menuName:"主订单", menuFor: "mainOrder",
   {name: 'lineItemList', displayName:'订单项', icon:'underline'},
   {name: 'mainOrderPaymentList', displayName:'主订单支付', icon:'glass'},
   {name: 'orderLogList', displayName:'Log', icon:'glass'},
+  {name: 'memberServiceRevenueList', displayName:'会员服务收益', icon:'glass'},
   {name: 'platformAccountDetailsList', displayName:'平台账户明细', icon:'at'},
   {name: 'fundationAccountDetailsList', displayName:'平台基金账户明细', icon:'at'},
   {name: 'storeAccountDetailsList', displayName:'网点账户明细', icon:'cc'},
   {name: 'customerAccountTransactionList', displayName:'客户账户明细', icon:'cc'},
+  {name: 'undistributedProfitList', displayName:'未分配利润', icon:'glass'},
   
   		],
 }

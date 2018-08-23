@@ -119,6 +119,7 @@ class SecUserBlockingBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/secUserBlocking/${this.props.secUserBlocking.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class SecUserBlockingBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/secUserBlocking/${this.props.secUserBlocking.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -177,9 +181,13 @@ class SecUserBlockingBizApp extends React.PureComponent {
   
   buildRouters = () =>{
   	const {SecUserBlockingDashboard} = GlobalComponents
+  	const {SecUserBlockingPreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/secUserBlocking/:id/dashboard", component: SecUserBlockingDashboard},
+  	{path:"/secUserBlocking/:id/preference", component: SecUserBlockingPreference},
+  	
   	
   	
   	{path:"/secUserBlocking/:id/list/secUserList", component: this.getSecUserSearch()},
@@ -249,7 +257,7 @@ class SecUserBlockingBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

@@ -38,13 +38,13 @@ const transferToAnotherBookSharingPlatform = (id, parameters) => {
 
 
 const addStore = (targetObjectId, parameters) => {
-  const url = `${PREFIX}cityManager/addStore/cityId/storeName/storeAddress/storeOpenTime/storeRoomNumber/longitude/latitude/storeImage/storeType/platformId/tokensExpr/`
+  const url = `${PREFIX}cityManager/addStore/cityId/storeName/storeSubname/storeAddress/storeOpenTime/storeOpenTimeSecond/storeRoomNumber/longitude/latitude/storeImage/storeTypeId/platformId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateStore = (targetObjectId, parameters) => {
-  const url = `${PREFIX}cityManager/updateStoreProperties/cityId/id/storeName/storeAddress/storeOpenTime/storeRoomNumber/longitude/latitude/storeImage/storeType/tokensExpr/`
+  const url = `${PREFIX}cityManager/updateStoreProperties/cityId/id/storeName/storeSubname/storeAddress/storeOpenTime/storeOpenTimeSecond/storeRoomNumber/longitude/latitude/storeImage/tokensExpr/`
   const cityId = targetObjectId
   const requestParameters = { ...parameters, cityId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})

@@ -65,12 +65,12 @@ class CustomerSearchForm extends PureComponent {
       const params = {
         ...this.buildStringSearchParameters(fieldsValue, 'id'),
         ...this.buildStringSearchParameters(fieldsValue, 'nickName'),
+        ...this.buildStringSearchParameters(fieldsValue, 'mobileNumber'),
+        ...this.buildStringSearchParameters(fieldsValue, 'realName'),
+        ...this.buildStringSearchParameters(fieldsValue, 'sexuality'),
         ...this.buildStringSearchParameters(fieldsValue, 'miniProgramOpenid'),
         ...this.buildStringSearchParameters(fieldsValue, 'serviceAccountOpenid'),
         ...this.buildStringSearchParameters(fieldsValue, 'wechatUnionId'),
-        ...this.buildStringSearchParameters(fieldsValue, 'mobileNumber'),
-        ...this.buildStringSearchParameters(fieldsValue, 'sexuality'),
-        ...this.buildStringSearchParameters(fieldsValue, 'realName'),
         ...this.buildStringSearchParameters(fieldsValue, 'identityCardNumber'),
         ...this.buildStringSearchParameters(fieldsValue, 'familyAddress'),
 
@@ -139,6 +139,30 @@ class CustomerSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
+            <FormItem label="手机号码">
+              {getFieldDecorator('mobileNumber')(
+                <Input placeholder="请输入手机号码" />
+              )}
+            </FormItem>
+          </Col>
+
+          <Col md={8} sm={24}>
+            <FormItem label="的真实姓名">
+              {getFieldDecorator('realName')(
+                <Input placeholder="请输入的真实姓名" />
+              )}
+            </FormItem>
+          </Col>
+
+          <Col md={8} sm={24}>
+            <FormItem label="性别">
+              {getFieldDecorator('sexuality')(
+                <Input placeholder="请输入性别" />
+              )}
+            </FormItem>
+          </Col>
+
+          <Col md={8} sm={24}>
             <FormItem label="小程序OpenID">
               {getFieldDecorator('miniProgramOpenid')(
                 <Input placeholder="请输入小程序OpenID" />
@@ -158,30 +182,6 @@ class CustomerSearchForm extends PureComponent {
             <FormItem label="微信UnionID">
               {getFieldDecorator('wechatUnionId')(
                 <Input placeholder="请输入微信UnionID" />
-              )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
-            <FormItem label="手机号码">
-              {getFieldDecorator('mobileNumber')(
-                <Input placeholder="请输入手机号码" />
-              )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
-            <FormItem label="性别">
-              {getFieldDecorator('sexuality')(
-                <Input placeholder="请输入性别" />
-              )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
-            <FormItem label="的真实姓名">
-              {getFieldDecorator('realName')(
-                <Input placeholder="请输入的真实姓名" />
               )}
             </FormItem>
           </Col>

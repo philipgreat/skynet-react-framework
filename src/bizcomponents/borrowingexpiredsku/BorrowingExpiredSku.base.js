@@ -22,7 +22,6 @@ const displayColumns = [
   { title: '还书日期', dataIndex: 'returnDatetime', render: (text, record) => moment(record.returnDatetime).format('YYYY-MM-DD HH:mm:ss') },
   { title: '过期天数', debugtype: 'int', dataIndex: 'expiredDays', width: '5' },
   { title: '过期费用', dataIndex: 'expiredFee', className:'money', render: (text, record) => (`￥${text.toFixed(2)}`) },
-  { title: '支付状态', debugtype: 'string', dataIndex: 'costPaymentStatus', width: '7' },
   { title: '图书借还历史', dataIndex: 'borrowingHistory', render: (text, record) => (record.borrowingHistory ? record.borrowingHistory.displayName : '暂无') },
 
 ]
@@ -39,7 +38,6 @@ const fieldLabels = {
   returnDatetime: '还书日期',
   expiredDays: '过期天数',
   expiredFee: '过期费用',
-  costPaymentStatus: '支付状态',
   borrowingHistory: '图书借还历史',
 
 }

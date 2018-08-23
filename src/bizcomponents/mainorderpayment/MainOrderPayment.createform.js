@@ -17,11 +17,11 @@ const testValues = {};
 /*
 const testValues = {
   paymentMethod: '微信',
-  paidAmount: '825.66',
+  paidAmount: '938.75',
   paymentStatus: '未支付',
   wechatTransactionId: '',
   wechatPrepayId: '',
-  createTime: '2017-12-09 02:06:47',
+  createTime: '2017-04-23 03:46:46',
   mainOrderId: 'MO000001',
 }
 */

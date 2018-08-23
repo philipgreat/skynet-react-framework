@@ -296,10 +296,9 @@ class MemberServiceProductDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, tokenInMemberServiceProductCount, memberServiceBundleSkuCount, storeSlideCount, customerCount } = this.props.memberServiceProduct
+    const { id,displayName, memberServiceBundleSkuCount, storeSlideCount, customerCount } = this.props.memberServiceProduct
     const cardsData = {cardsName:"会员服务产品",cardsFor: "memberServiceProduct",cardsSource: this.props.memberServiceProduct,
   		subItems: [
-{name: 'tokenInMemberServiceProductList', displayName:'成员服务产品中的令牌',type:'tokenInMemberServiceProduct',count:tokenInMemberServiceProductCount},
 {name: 'memberServiceBundleSkuList', displayName:'会员服务包',type:'memberServiceBundleSku',count:memberServiceBundleSkuCount},
 {name: 'storeSlideList', displayName:'网点海报',type:'storeSlide',count:storeSlideCount},
 {name: 'customerList', displayName:'用户',type:'customer',count:customerCount},

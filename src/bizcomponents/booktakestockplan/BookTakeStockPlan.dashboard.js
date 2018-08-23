@@ -270,7 +270,12 @@ const internalSummaryOf = (bookTakeStockPlan,targetComponent) =>{
 	      "transferToAnotherPlanCreator","anotherPlanCreatorId",bookTakeStockPlan.planCreator?bookTakeStockPlan.planCreator.id:"")} 
   style={{fontSize: 20,color:"red"}} />
 </Description>
-<Description term="状态">{bookTakeStockPlan.status}</Description> 
+<Description term="盘点状态">{bookTakeStockPlan.takeStockStatus==null?"未分配":bookTakeStockPlan.takeStockStatus.displayName}
+ <Icon type="swap" onClick={()=>
+  showTransferModel(targetComponent,"盘点状态","takeStockStatus","requestCandidateTakeStockStatus",
+	      "transferToAnotherTakeStockStatus","anotherTakeStockStatusId",bookTakeStockPlan.takeStockStatus?bookTakeStockPlan.takeStockStatus.id:"")} 
+  style={{fontSize: 20,color:"red"}} />
+</Description>
 	
         {buildTransferModal(bookTakeStockPlan,targetComponent)}
       </DescriptionList>

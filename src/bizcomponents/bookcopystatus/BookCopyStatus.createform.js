@@ -16,8 +16,8 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
-  statusName: '在库',
-  statusCode: 'IN_STOCK',
+  name: '在库',
+  code: 'IN_STOCK',
   statusDescription: '书籍副本的状态描述信息',
   bookPlazaId: 'BP000001',
 }
@@ -235,21 +235,21 @@ class BookCopyStatusCreateForm extends Component {
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.statusName} {...formItemLayout}>
-                  {getFieldDecorator('statusName', {
-                    rules: [{ required: true, message: '请输入地位的名字' }],
+                <Form.Item label={fieldLabels.name} {...formItemLayout}>
+                  {getFieldDecorator('name', {
+                    rules: [{ required: true, message: '请输入名称' }],
                   })(
-                    <Input placeholder="请输入地位的名字" />
+                    <Input placeholder="请输入名称" />
                   )}
                 </Form.Item>
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.statusCode} {...formItemLayout}>
-                  {getFieldDecorator('statusCode', {
-                    rules: [{ required: true, message: '请输入状态码' }],
+                <Form.Item label={fieldLabels.code} {...formItemLayout}>
+                  {getFieldDecorator('code', {
+                    rules: [{ required: true, message: '请输入代码' }],
                   })(
-                    <Input placeholder="请输入状态码" />
+                    <Input placeholder="请输入代码" />
                   )}
                 </Form.Item>
               </Col>

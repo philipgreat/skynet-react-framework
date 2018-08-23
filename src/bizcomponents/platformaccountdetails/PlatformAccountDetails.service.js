@@ -66,22 +66,6 @@ const transferToAnotherRelatedMainOrder = (id, parameters) => {
 
 
 
-const requestCandidateMemberServiceRevenue = (ownerClass, id, filterKey, pageNo) => {
-  //const parametersExpr = joinParameters(parameters)
-  return get({
-    url: `${PREFIX}platformAccountDetailsManager/requestCandidateMemberServiceRevenue/${ownerClass}/${id}/${filterKey}/${pageNo}/`,
-  })
-}	
-
-const transferToAnotherMemberServiceRevenue = (id, parameters) => {
-  //const parametersExpr = joinParameters(parameters)
-  const url = `${PREFIX}platformAccountDetailsManager/transferToAnotherMemberServiceRevenue/id/anotherMemberServiceRevenueId/`
-  const requestParameters = {id, ...parameters}
-  return postForm({url,requestParameters})
-}
-
-
-
 
 
 
@@ -90,10 +74,8 @@ const PlatformAccountDetailsService = { view,
   requestCandidateTransactionType,
   requestCandidatePlatformAccount,
   requestCandidateRelatedMainOrder,
-  requestCandidateMemberServiceRevenue,
   transferToAnotherTransactionType,
   transferToAnotherPlatformAccount,
-  transferToAnotherRelatedMainOrder,
-  transferToAnotherMemberServiceRevenue }
+  transferToAnotherRelatedMainOrder }
 export default PlatformAccountDetailsService
 

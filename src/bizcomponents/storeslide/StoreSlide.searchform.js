@@ -67,7 +67,6 @@ class StoreSlideSearchForm extends PureComponent {
         ...this.buildStringSearchParameters(fieldsValue, 'tips'),
         ...this.buildStringSearchParameters(fieldsValue, 'wxaLinkUrl'),
         ...this.buildStringSearchParameters(fieldsValue, 'antdLinkUrl'),
-        ...this.buildStringSearchParameters(fieldsValue, 'linkType'),
 
       }
       const { owner } = this.props
@@ -145,14 +144,6 @@ class StoreSlideSearchForm extends PureComponent {
             <FormItem label="管理界面链接">
               {getFieldDecorator('antdLinkUrl')(
                 <Input placeholder="请输入管理界面链接" />
-              )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
-            <FormItem label="链接内容类型">
-              {getFieldDecorator('linkType')(
-                <Input placeholder="请输入链接内容类型" />
               )}
             </FormItem>
           </Col>

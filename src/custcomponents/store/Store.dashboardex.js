@@ -30,7 +30,7 @@ const renderExtraHeader = store => {
     {name:'新书入库',link:`/store/${store.id}/bookCreateForm`,icon:"login"},
     // {name:'转入',link:`/store/${store.id}/bookLentForm`,icon:"menu-unfold"},
     //{name:'出库',link:`/store/${store.id}/bookLentForm`,icon:"logout"},
-    {name:'盘点',link:`/store/${store.id}/bookCreateForm`,icon:"calculator"},
+    {name:'盘点',link:`/store/${store.id}/stockTakingForm`,icon:"calculator"},
     
 
 

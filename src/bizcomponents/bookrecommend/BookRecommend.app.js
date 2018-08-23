@@ -119,6 +119,7 @@ class BookRecommendBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/bookRecommend/${this.props.bookRecommend.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class BookRecommendBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/bookRecommend/${this.props.bookRecommend.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -177,9 +181,13 @@ class BookRecommendBizApp extends React.PureComponent {
   
   buildRouters = () =>{
   	const {BookRecommendDashboard} = GlobalComponents
+  	const {BookRecommendPreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/bookRecommend/:id/dashboard", component: BookRecommendDashboard},
+  	{path:"/bookRecommend/:id/preference", component: BookRecommendPreference},
+  	
   	
   	
   	{path:"/bookRecommend/:id/list/bookList", component: this.getBookSearch()},
@@ -249,7 +257,7 @@ class BookRecommendBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

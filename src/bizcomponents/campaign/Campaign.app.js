@@ -119,6 +119,7 @@ class CampaignBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/campaign/${this.props.campaign.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class CampaignBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/campaign/${this.props.campaign.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -282,9 +286,13 @@ class CampaignBizApp extends React.PureComponent {
   
   buildRouters = () =>{
   	const {CampaignDashboard} = GlobalComponents
+  	const {CampaignPreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/campaign/:id/dashboard", component: CampaignDashboard},
+  	{path:"/campaign/:id/preference", component: CampaignPreference},
+  	
   	
   	
   	{path:"/campaign/:id/list/storeSlideList", component: this.getStoreSlideSearch()},
@@ -366,7 +374,7 @@ class CampaignBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

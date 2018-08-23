@@ -261,18 +261,6 @@ class CampaignReviewLikeUpdateForm extends Component {
                 </Form.Item>
               </Col>
 
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.likeType} {...formItemLayout}>
-                  {getFieldDecorator('likeType', {
-                    initialValue: selectedRow.likeType,
-                    rules: [{ required: true, message: '请输入点赞类型' }],
-                  })(
-                    <Input placeholder="请输入点赞类型" />
-                    
-                  )}
-                </Form.Item>
-              </Col>
-
             </Row>
           </Form>  
         </Card>

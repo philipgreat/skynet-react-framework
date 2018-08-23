@@ -256,13 +256,19 @@ const internalSummaryOf = (bookCopyOperationRecord,targetComponent) =>{
 	return (
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="ID">{bookCopyOperationRecord.id}</Description> 
+<Description term="书名">{bookCopyOperationRecord.bookName}</Description> 
 <Description term="书籍副本">{bookCopyOperationRecord.bookCopy==null?"未分配":bookCopyOperationRecord.bookCopy.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"书籍副本","bookCopy","requestCandidateBookCopy",
 	      "transferToAnotherBookCopy","anotherBookCopyId",bookCopyOperationRecord.bookCopy?bookCopyOperationRecord.bookCopy.id:"")} 
   style={{fontSize: 20,color:"red"}} />
 </Description>
-<Description term="书籍副本操作类型">{bookCopyOperationRecord.bookCopyOperateType}</Description> 
+<Description term="书籍副本操作类型">{bookCopyOperationRecord.bookCopyOperateType==null?"未分配":bookCopyOperationRecord.bookCopyOperateType.displayName}
+ <Icon type="swap" onClick={()=>
+  showTransferModel(targetComponent,"书籍副本操作类型","bookCopyOperateType","requestCandidateBookCopyOperateType",
+	      "transferToAnotherBookCopyOperateType","anotherBookCopyOperateTypeId",bookCopyOperationRecord.bookCopyOperateType?bookCopyOperationRecord.bookCopyOperateType.id:"")} 
+  style={{fontSize: 20,color:"red"}} />
+</Description>
 <Description term="执行网点">{bookCopyOperationRecord.operateStore==null?"未分配":bookCopyOperationRecord.operateStore.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"执行网点","store","requestCandidateOperateStore",

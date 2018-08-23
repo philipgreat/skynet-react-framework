@@ -208,7 +208,8 @@ lentBookByEmployee = (parameters) => {
     })
     const {dynamicFormInited}=this.state
     const {setFieldsValue} = this.props.form
-
+    setFieldsValue({bookCopyIdOrQrcode:""})
+   
     
 
   });
@@ -252,14 +253,12 @@ lentBookByEmployee = (parameters) => {
     
 
  
-    const tryinit = fieldName => {
-      const { owner } = this.props;
-      const { referenceName } = owner;
-      if (referenceName != fieldName) {
-        return null;
-      }
+    const tryinit = () => {
+      
+      const  owner  = this.props.store;
+      
       return owner.id;
-    };
+    }
 
     const availableForEdit = fieldName => {
       const { owner } = this.props;
@@ -331,7 +330,7 @@ lentBookByEmployee = (parameters) => {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.storeId} {...formItemLayout}>
                   {getFieldDecorator('storeId', {
-                    initialValue: "S000001",
+                    initialValue: tryinit(),
                     rules: [{ required: true, message: '请输入店的序号' }],
 
                   })(<Input placeholder="请输入店的序号" disabled={true}/>)}

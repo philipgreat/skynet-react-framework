@@ -61,7 +61,6 @@ class CampaignUpdateForm extends Component {
         ...item,
         campaignStartTime: moment(item.campaignStartTime),
         campaignFinishTime: moment(item.campaignFinishTime),
-        availableRegisterDeadline: moment(item.availableRegisterDeadline),
         publishDatetime: moment(item.publishDatetime),
 
       }
@@ -278,18 +277,6 @@ class CampaignUpdateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.campaignStatus} {...formItemLayout}>
-                  {getFieldDecorator('campaignStatus', {
-                    initialValue: selectedRow.campaignStatus,
-                    rules: [{ required: true, message: '请输入活动状态' }],
-                  })(
-                    <Input placeholder="请输入活动状态" />
-                    
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.campaignStartTime} {...formItemLayout}>
                   {getFieldDecorator('campaignStartTime', {
                     initialValue: selectedRow.campaignStartTime,
@@ -326,12 +313,24 @@ class CampaignUpdateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.availableRegisterDeadline} {...formItemLayout}>
-                  {getFieldDecorator('availableRegisterDeadline', {
-                    initialValue: selectedRow.availableRegisterDeadline,
-                    rules: [{ required: true, message: '请输入报名截止日期' }],
+                <Form.Item label={fieldLabels.registerDeadlineLeadHours} {...formItemLayout}>
+                  {getFieldDecorator('registerDeadlineLeadHours', {
+                    initialValue: selectedRow.registerDeadlineLeadHours,
+                    rules: [{ required: true, message: '请输入开始前几小时停止注册' }],
                   })(
-                    <DatePicker showTime format="YYYY-MM-DD HH:mm" minuteStep={5} placeholder="请输入报名截止日期" />
+                    <Input placeholder="请输入开始前几小时停止注册" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.minimumRegisterQuantity} {...formItemLayout}>
+                  {getFieldDecorator('minimumRegisterQuantity', {
+                    initialValue: selectedRow.minimumRegisterQuantity,
+                    rules: [{ required: true, message: '请输入最低注册数量' }],
+                  })(
+                    <Input placeholder="请输入最低注册数量" />
                     
                   )}
                 </Form.Item>

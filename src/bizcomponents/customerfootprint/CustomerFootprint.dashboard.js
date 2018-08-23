@@ -80,7 +80,6 @@ const internalLargeTextOf = (customerFootprint) =>{
 
 	return(<div> 
    <Card title={`描述`} ><pre>{customerFootprint.description}</pre></Card>
-   <Card title={`相关项描述`} ><pre>{customerFootprint.itemDescription}</pre></Card>
 </div>)
 
 	
@@ -264,6 +263,9 @@ const internalSummaryOf = (customerFootprint,targetComponent) =>{
 <Description term="ID">{customerFootprint.id}</Description> 
 <Description term="标题">{customerFootprint.title}</Description> 
 <Description term="相关项标题">{customerFootprint.itemTitle}</Description> 
+<Description term="项目类型">{customerFootprint.itemType}</Description> 
+<Description term="项Id">{customerFootprint.itemId}</Description> 
+<Description term="相关项描述">{customerFootprint.itemDescription}</Description> 
 <Description term="用户">{customerFootprint.customer==null?"未分配":customerFootprint.customer.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"用户","customer","requestCandidateCustomer",

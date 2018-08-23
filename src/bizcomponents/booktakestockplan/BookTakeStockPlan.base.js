@@ -17,7 +17,7 @@ const displayColumns = [
   { title: '服务网点', dataIndex: 'store', render: (text, record) => (record.store ? record.store.displayName : '暂无') },
   { title: '计划日期时间', dataIndex: 'planDatetime', render: (text, record) => moment(record.planDatetime).format('YYYY-MM-DD HH:mm:ss') },
   { title: '计划创建人', dataIndex: 'planCreator', render: (text, record) => (record.planCreator ? record.planCreator.displayName : '暂无') },
-  { title: '状态', debugtype: 'string', dataIndex: 'status', width: '7' },
+  { title: '盘点状态', dataIndex: 'takeStockStatus', render: (text, record) => (record.takeStockStatus ? record.takeStockStatus.displayName : '暂无') },
 
 ]
 
@@ -27,7 +27,7 @@ const fieldLabels = {
   store: '服务网点',
   planDatetime: '计划日期时间',
   planCreator: '计划创建人',
-  status: '状态',
+  takeStockStatus: '盘点状态',
 
 }
 

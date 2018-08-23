@@ -200,6 +200,7 @@ class CustomerSearch extends PureComponent {
 
 
 <Menu.Item key="memberService">关联会员服务</Menu.Item>
+<Menu.Item key="favouriteStore">关联最喜欢的网点</Menu.Item>
 <Menu.Item key="platform">关联平台</Menu.Item>
       
 

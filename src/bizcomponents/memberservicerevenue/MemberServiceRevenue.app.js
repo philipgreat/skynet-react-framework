@@ -119,6 +119,7 @@ class MemberServiceRevenueBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/memberServiceRevenue/${this.props.memberServiceRevenue.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class MemberServiceRevenueBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/memberServiceRevenue/${this.props.memberServiceRevenue.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -138,54 +142,19 @@ class MemberServiceRevenueBizApp extends React.PureComponent {
 
 
 
-  getPlatformAccountDetailsSearch = () => {
-    const {PlatformAccountDetailsSearch} = GlobalComponents;
-    return connect(state => ({
-      rule: state.rule,
-      data: state._memberServiceRevenue.platformAccountDetailsList,
-      count: state._memberServiceRevenue.platformAccountDetailsCount,
-      currentPage: state._memberServiceRevenue.platformAccountDetailsCurrentPageNumber,
-      searchFormParameters: state._memberServiceRevenue.platformAccountDetailsSearchFormParameters,
-      loading: state._memberServiceRevenue.loading,
-      partialList: state._memberServiceRevenue.partialList,
-      owner: { type: '_memberServiceRevenue', id: state._memberServiceRevenue.id, referenceName: 'memberServiceRevenue', listName: 'platformAccountDetailsList', ref:state._memberServiceRevenue, listDisplayName: '平台账户明细列表' }, // this is for model namespace and
-    }))(PlatformAccountDetailsSearch)
-  }
-  getPlatformAccountDetailsCreateForm = () => {
-   	const {PlatformAccountDetailsCreateForm} = GlobalComponents;
-    return connect(state => ({
-      rule: state.rule,
-      data: state._memberServiceRevenue.platformAccountDetailsList,
-      count: state._memberServiceRevenue.platformAccountDetailsCount,
-      currentPage: state._memberServiceRevenue.platformAccountDetailsCurrentPageNumber,
-      searchFormParameters: state._memberServiceRevenue.platformAccountDetailsSearchFormParameters,
-      loading: state._memberServiceRevenue.loading,
-      owner: { type: '_memberServiceRevenue', id: state._memberServiceRevenue.id, referenceName: 'memberServiceRevenue', listName: 'platformAccountDetailsList', ref:state._memberServiceRevenue, listDisplayName: '平台账户明细列表'}, // this is for model namespace and
-    }))(PlatformAccountDetailsCreateForm)
-  }
-  
-  getPlatformAccountDetailsUpdateForm = () => {
-  	const {PlatformAccountDetailsUpdateForm} = GlobalComponents;
-    return connect(state => ({
-      selectedRows: state._memberServiceRevenue.selectedRows,
-      currentUpdateIndex: state._memberServiceRevenue.currentUpdateIndex,
-      owner: { type: '_memberServiceRevenue', id: state._memberServiceRevenue.id, listName: 'platformAccountDetailsList', ref:state._memberServiceRevenue, listDisplayName: '平台账户明细列表' }, // this is for model namespace and
-    }))(PlatformAccountDetailsUpdateForm)
-  }
-
 
   
   buildRouters = () =>{
   	const {MemberServiceRevenueDashboard} = GlobalComponents
+  	const {MemberServiceRevenuePreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/memberServiceRevenue/:id/dashboard", component: MemberServiceRevenueDashboard},
+  	{path:"/memberServiceRevenue/:id/preference", component: MemberServiceRevenuePreference},
   	
   	
-  	{path:"/memberServiceRevenue/:id/list/platformAccountDetailsList", component: this.getPlatformAccountDetailsSearch()},
-  	{path:"/memberServiceRevenue/:id/list/platformAccountDetailsCreateForm", component: this.getPlatformAccountDetailsCreateForm()},
-  	{path:"/memberServiceRevenue/:id/list/platformAccountDetailsUpdateForm", component: this.getPlatformAccountDetailsUpdateForm()},
-     	
+    	
   	
   	]
   	
@@ -249,7 +218,7 @@ class MemberServiceRevenueBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

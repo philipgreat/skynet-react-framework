@@ -275,7 +275,12 @@ const internalSummaryOf = (bookCopyTransfer,targetComponent) =>{
 	      "transferToAnotherNewStore","anotherNewStoreId",bookCopyTransfer.newStore?bookCopyTransfer.newStore.id:"")} 
   style={{fontSize: 20,color:"red"}} />
 </Description>
-<Description term="转移类型">{bookCopyTransfer.transferType}</Description> 
+<Description term="转移类型">{bookCopyTransfer.transferType==null?"未分配":bookCopyTransfer.transferType.displayName}
+ <Icon type="swap" onClick={()=>
+  showTransferModel(targetComponent,"转移类型","transferType","requestCandidateTransferType",
+	      "transferToAnotherTransferType","anotherTransferTypeId",bookCopyTransfer.transferType?bookCopyTransfer.transferType.id:"")} 
+  style={{fontSize: 20,color:"red"}} />
+</Description>
 <Description term="操作员工">{bookCopyTransfer.responsibleEmployee==null?"未分配":bookCopyTransfer.responsibleEmployee.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"操作员工","employee","requestCandidateResponsibleEmployee",

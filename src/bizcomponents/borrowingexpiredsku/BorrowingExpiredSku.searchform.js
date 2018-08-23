@@ -65,7 +65,6 @@ class BorrowingExpiredSkuSearchForm extends PureComponent {
       const params = {
         ...this.buildStringSearchParameters(fieldsValue, 'id'),
         ...this.buildStringSearchParameters(fieldsValue, 'bookName'),
-        ...this.buildStringSearchParameters(fieldsValue, 'costPaymentStatus'),
 
       }
       const { owner } = this.props
@@ -127,14 +126,6 @@ class BorrowingExpiredSkuSearchForm extends PureComponent {
             <FormItem label="书名">
               {getFieldDecorator('bookName')(
                 <Input placeholder="请输入书名" />
-              )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
-            <FormItem label="支付状态">
-              {getFieldDecorator('costPaymentStatus')(
-                <Input placeholder="请输入支付状态" />
               )}
             </FormItem>
           </Col>

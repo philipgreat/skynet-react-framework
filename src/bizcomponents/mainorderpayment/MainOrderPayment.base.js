@@ -12,7 +12,7 @@ const menuData = {menuName:"主订单支付", menuFor: "mainOrderPayment",
 
 const displayColumns = [
   { title: 'ID', debugtype: 'string', dataIndex: 'id', width: '20' },
-  { title: '支付方式', debugtype: 'string', dataIndex: 'paymentMethod', width: '7' },
+  { title: '支付方式', debugtype: 'string', dataIndex: 'paymentMethod', width: '6' },
   { title: '支付金额', dataIndex: 'paidAmount', className:'money', render: (text, record) => (`￥${text.toFixed(2)}`) },
   { title: '付款状态', debugtype: 'string', dataIndex: 'paymentStatus', width: '7' },
   { title: '微信支付交易ID', debugtype: 'string', dataIndex: 'wechatTransactionId', width: '36' },

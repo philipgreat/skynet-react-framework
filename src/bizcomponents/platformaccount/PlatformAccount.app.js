@@ -119,6 +119,7 @@ class PlatformAccountBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/platformAccount/${this.props.platformAccount.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class PlatformAccountBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/platformAccount/${this.props.platformAccount.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -177,9 +181,13 @@ class PlatformAccountBizApp extends React.PureComponent {
   
   buildRouters = () =>{
   	const {PlatformAccountDashboard} = GlobalComponents
+  	const {PlatformAccountPreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/platformAccount/:id/dashboard", component: PlatformAccountDashboard},
+  	{path:"/platformAccount/:id/preference", component: PlatformAccountPreference},
+  	
   	
   	
   	{path:"/platformAccount/:id/list/platformAccountDetailsList", component: this.getPlatformAccountDetailsSearch()},
@@ -249,7 +257,7 @@ class PlatformAccountBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

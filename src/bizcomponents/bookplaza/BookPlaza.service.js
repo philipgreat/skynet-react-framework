@@ -138,13 +138,13 @@ const removeBookList = (targetObjectId, parameters) => {
 
 
 const addBookCopyStatus = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookPlazaManager/addBookCopyStatus/bookPlazaId/statusName/statusCode/statusDescription/canBorrow/canSell/needCheckStock/alarmWhenCheck/tokensExpr/`
+  const url = `${PREFIX}bookPlazaManager/addBookCopyStatus/bookPlazaId/name/code/statusDescription/canBorrow/canSell/needCheckStock/alarmWhenCheck/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateBookCopyStatus = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookPlazaManager/updateBookCopyStatusProperties/bookPlazaId/id/statusName/statusCode/statusDescription/canBorrow/canSell/needCheckStock/alarmWhenCheck/tokensExpr/`
+  const url = `${PREFIX}bookPlazaManager/updateBookCopyStatusProperties/bookPlazaId/id/name/code/statusDescription/canBorrow/canSell/needCheckStock/alarmWhenCheck/tokensExpr/`
   const bookPlazaId = targetObjectId
   const requestParameters = { ...parameters, bookPlazaId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})

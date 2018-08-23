@@ -261,6 +261,18 @@ class CampaignReviewUpdateForm extends Component {
                 </Form.Item>
               </Col>
 
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.reviewContent} {...formItemLayout}>
+                  {getFieldDecorator('reviewContent', {
+                    initialValue: selectedRow.reviewContent,
+                    rules: [{ required: true, message: '请输入评论内容' }],
+                  })(
+                    <Input placeholder="请输入评论内容" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
             </Row>
           </Form>  
         </Card>
@@ -268,23 +280,6 @@ class CampaignReviewUpdateForm extends Component {
         
         
         
-
-        <Card title="评论内容" className={styles.card} bordered={false}>
-          <Form >
-            <Row gutter={16}>
-              <Col lg={24} md={24} sm={24}>
-                <Form.Item>
-                  {getFieldDecorator('reviewContent', {
-                  	initialValue: selectedRow.reviewContent,
-                    rules: [{  required: true, message: '请输入评论内容' }],
-                  })(
-                    <TextArea rows={4} placeholder="请输入请输入评论内容" />
-                  )}
-                </Form.Item>
-              </Col>
-            </Row>
-          </Form>
-        </Card>
 
 
         <FooterToolbar>

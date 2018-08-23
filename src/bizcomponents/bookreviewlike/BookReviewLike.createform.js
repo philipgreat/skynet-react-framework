@@ -16,7 +16,6 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
-  likeType: '点赞',
   bookReviewId: 'BR000001',
   replierId: 'C000001',
 }
@@ -266,16 +265,6 @@ class BookReviewLikeCreateForm extends Component {
         <Card title="基础信息" className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.likeType} {...formItemLayout}>
-                  {getFieldDecorator('likeType', {
-                    rules: [{ required: true, message: '请输入点赞类型' }],
-                  })(
-                    <Input placeholder="请输入点赞类型" />
-                  )}
-                </Form.Item>
-              </Col>
 
             </Row>
           </Form>

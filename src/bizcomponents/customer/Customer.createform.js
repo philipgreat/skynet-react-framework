@@ -17,22 +17,23 @@ const testValues = {};
 /*
 const testValues = {
   nickName: '张俊宝',
+  mobileNumber: '13312345678',
+  realName: '张世博',
+  sexuality: '男',
+  memberServiceStartDate: '2018-04-05',
+  memberServiceExpireDate: '2015-09-28',
+  accountBalance: '78.92',
   miniProgramOpenid: 'wx012345',
   serviceAccountOpenid: 'wx012345',
   wechatUnionId: 'wx012345',
-  longitude: '103.8622423121931',
-  latitude: '32.37900105223107',
-  mobileNumber: '13312345678',
-  birthday: '2015-12-06',
-  sexuality: '男',
-  realName: '张世博',
+  longitude: '105.29274359713031',
+  latitude: '30.720497368199453',
+  birthday: '2017-09-12',
   identityCardNumber: '510922876512348875',
   familyAddress: '四川省成都市高新区文家场兴业街19-21号',
-  memberServiceStartDate: '2016-05-16',
-  memberServiceExpireDate: '2018-07-16',
-  memberServiceDailyPay: '11.73',
-  accountBalance: '82.74',
+  memberServiceDailyPay: '10.33',
   memberServiceId: 'MSP000001',
+  favouriteStoreId: 'S000001',
   platformId: 'BSP000001',
 }
 */
@@ -57,6 +58,9 @@ class CustomerCreateForm extends Component {
     //setFieldsValue(testValues)
       
     this.executeCandidateMemberServiceSearch("")
+    
+    
+    this.executeCandidateFavouriteStoreSearch("")
     
     
     this.executeCandidatePlatformSearch("")
@@ -98,6 +102,28 @@ class CustomerCreateForm extends Component {
   }	 
   handleCandidateMemberServiceSearch = (value) => {
     this.executeCandidateMemberServiceSearch(value)
+  }
+
+  executeCandidateFavouriteStoreSearch = (filterKey) =>{
+
+    const {CustomerService} = GlobalComponents;
+    
+    const id = "";//not used for now
+    const pageNo = 1;
+    const future = CustomerService.requestCandidateFavouriteStore("store", id, filterKey, pageNo);
+    console.log(future);
+    
+
+    future.then(candidateFavouriteStoreList=>{
+      this.setState({
+        candidateFavouriteStoreList
+      })
+
+    })
+
+  }	 
+  handleCandidateFavouriteStoreSearch = (value) => {
+    this.executeCandidateFavouriteStoreSearch(value)
   }
 
   executeCandidatePlatformSearch = (filterKey) =>{
@@ -237,6 +263,15 @@ class CustomerCreateForm extends Component {
     }   
     
     
+    const {candidateFavouriteStoreList} = this.state
+    if(!candidateFavouriteStoreList){
+      return (<div>等等</div>)
+    }
+    if(!candidateFavouriteStoreList.candidates){
+      return (<div>等等</div>)
+    }   
+    
+    
     const {candidatePlatformList} = this.state
     if(!candidatePlatformList){
       return (<div>等等</div>)
@@ -294,6 +329,66 @@ class CustomerCreateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.mobileNumber} {...formItemLayout}>
+                  {getFieldDecorator('mobileNumber', {
+                    rules: [{ required: true, message: '请输入手机号码' }],
+                  })(
+                    <Input placeholder="请输入手机号码" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.realName} {...formItemLayout}>
+                  {getFieldDecorator('realName', {
+                    rules: [{ required: true, message: '请输入的真实姓名' }],
+                  })(
+                    <Input placeholder="请输入的真实姓名" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.sexuality} {...formItemLayout}>
+                  {getFieldDecorator('sexuality', {
+                    rules: [{ required: true, message: '请输入性别' }],
+                  })(
+                    <Input placeholder="请输入性别" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.memberServiceStartDate} {...formItemLayout}>
+                  {getFieldDecorator('memberServiceStartDate', {
+                    rules: [{ required: true, message: '请输入会员服务开始日期' }],
+                  })(
+                    <DatePicker format="YYYY-MM-DD" placeholder="请输入会员服务开始日期" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.memberServiceExpireDate} {...formItemLayout}>
+                  {getFieldDecorator('memberServiceExpireDate', {
+                    rules: [{ required: true, message: '请输入会员服务到期日期' }],
+                  })(
+                    <DatePicker format="YYYY-MM-DD" placeholder="请输入会员服务到期日期" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.accountBalance} {...formItemLayout}>
+                  {getFieldDecorator('accountBalance', {
+                    rules: [{ required: true, message: '请输入帐户余额' }],
+                  })(
+                    <Input placeholder="请输入帐户余额" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.miniProgramOpenid} {...formItemLayout}>
                   {getFieldDecorator('miniProgramOpenid', {
                     rules: [{ required: true, message: '请输入小程序OpenID' }],
@@ -344,41 +439,11 @@ class CustomerCreateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.mobileNumber} {...formItemLayout}>
-                  {getFieldDecorator('mobileNumber', {
-                    rules: [{ required: true, message: '请输入手机号码' }],
-                  })(
-                    <Input placeholder="请输入手机号码" />
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.birthday} {...formItemLayout}>
                   {getFieldDecorator('birthday', {
                     rules: [{ required: true, message: '请输入生日' }],
                   })(
                     <DatePicker format="YYYY-MM-DD" placeholder="请输入生日" />
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.sexuality} {...formItemLayout}>
-                  {getFieldDecorator('sexuality', {
-                    rules: [{ required: true, message: '请输入性别' }],
-                  })(
-                    <Input placeholder="请输入性别" />
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.realName} {...formItemLayout}>
-                  {getFieldDecorator('realName', {
-                    rules: [{ required: true, message: '请输入的真实姓名' }],
-                  })(
-                    <Input placeholder="请输入的真实姓名" />
                   )}
                 </Form.Item>
               </Col>
@@ -404,41 +469,11 @@ class CustomerCreateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.memberServiceStartDate} {...formItemLayout}>
-                  {getFieldDecorator('memberServiceStartDate', {
-                    rules: [{ required: true, message: '请输入会员服务开始日期' }],
-                  })(
-                    <DatePicker format="YYYY-MM-DD" placeholder="请输入会员服务开始日期" />
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.memberServiceExpireDate} {...formItemLayout}>
-                  {getFieldDecorator('memberServiceExpireDate', {
-                    rules: [{ required: true, message: '请输入会员服务到期日期' }],
-                  })(
-                    <DatePicker format="YYYY-MM-DD" placeholder="请输入会员服务到期日期" />
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.memberServiceDailyPay} {...formItemLayout}>
                   {getFieldDecorator('memberServiceDailyPay', {
                     rules: [{ required: true, message: '请输入日均会员费' }],
                   })(
                     <Input placeholder="请输入日均会员费" />
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.accountBalance} {...formItemLayout}>
-                  {getFieldDecorator('accountBalance', {
-                    rules: [{ required: true, message: '请输入帐户余额' }],
-                  })(
-                    <Input placeholder="请输入帐户余额" />
                   )}
                 </Form.Item>
               </Col>
@@ -499,6 +534,31 @@ class CustomerCreateForm extends Component {
                   >
                   {candidateMemberServiceList.candidates.map(item=>{
                 return (<Option key={item.id}>{`${item.productName}(${item.id})`}</Option>);
+            })}
+                  
+                  </AutoComplete>
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.favouriteStore} {...formItemLayout}>
+                  {getFieldDecorator('favouriteStoreId', {
+                  	initialValue: tryinit('favouriteStore'),
+                    rules: [{ required: true, message: '请输入最喜欢的网点' }],
+                  })(
+                  
+                  <AutoComplete
+                    dataSource={candidateFavouriteStoreList.candidates}
+                    
+                    
+                    onSearch={this.handleCandidateFavouriteStoreSearch}
+                    placeholder="请输入最喜欢的网点"
+                    
+                    disabled={!availableForEdit('favouriteStore')}
+                  >
+                  {candidateFavouriteStoreList.candidates.map(item=>{
+                return (<Option key={item.id}>{`${item.storeName}(${item.id})`}</Option>);
             })}
                   
                   </AutoComplete>

@@ -113,8 +113,28 @@ const removeOrderLogList = (targetObjectId, parameters) => {
 }
 
 
+const addMemberServiceRevenue = (targetObjectId, parameters) => {
+  const url = `${PREFIX}mainOrderManager/addMemberServiceRevenue/mainOrderId/memberId/memberName/serviceStartDate/serviceEndDate/monthlyServiceFee/storeId/storeName/storeServiceCount/totalServiceCount/storeServiceRevenueRate/storeServiceRevenue/tokensExpr/`
+  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+const updateMemberServiceRevenue = (targetObjectId, parameters) => {
+  const url = `${PREFIX}mainOrderManager/updateMemberServiceRevenueProperties/mainOrderId/id/memberName/serviceStartDate/serviceEndDate/monthlyServiceFee/storeName/storeServiceCount/totalServiceCount/storeServiceRevenueRate/storeServiceRevenue/tokensExpr/`
+  const mainOrderId = targetObjectId
+  const requestParameters = { ...parameters, mainOrderId, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+const removeMemberServiceRevenueList = (targetObjectId, parameters) => {
+  const url = `${PREFIX}mainOrderManager/removeMemberServiceRevenueList/mainOrderId/memberServiceRevenueIds/tokensExpr/`
+  const requestParameters = { ...parameters, mainOrderId: targetObjectId, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+
 const addPlatformAccountDetails = (targetObjectId, parameters) => {
-  const url = `${PREFIX}mainOrderManager/addPlatformAccountDetails/relatedMainOrderId/summary/amount/transactionTypeId/platformAccountId/memberServiceRevenueId/tokensExpr/`
+  const url = `${PREFIX}mainOrderManager/addPlatformAccountDetails/relatedMainOrderId/summary/amount/transactionTypeId/platformAccountId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -174,13 +194,13 @@ const removeStoreAccountDetailsList = (targetObjectId, parameters) => {
 
 
 const addCustomerAccountTransaction = (targetObjectId, parameters) => {
-  const url = `${PREFIX}mainOrderManager/addCustomerAccountTransaction/relatedMainOrderId/summary/amount/transactionTypeId/customerId/tokensExpr/`
+  const url = `${PREFIX}mainOrderManager/addCustomerAccountTransaction/relatedMainOrderId/summary/amount/balance/transactionTypeId/customerId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateCustomerAccountTransaction = (targetObjectId, parameters) => {
-  const url = `${PREFIX}mainOrderManager/updateCustomerAccountTransactionProperties/mainOrderId/id/summary/amount/tokensExpr/`
+  const url = `${PREFIX}mainOrderManager/updateCustomerAccountTransactionProperties/mainOrderId/id/summary/amount/balance/tokensExpr/`
   const mainOrderId = targetObjectId
   const requestParameters = { ...parameters, mainOrderId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
@@ -193,29 +213,55 @@ const removeCustomerAccountTransactionList = (targetObjectId, parameters) => {
 }
 
 
+const addUndistributedProfit = (targetObjectId, parameters) => {
+  const url = `${PREFIX}mainOrderManager/addUndistributedProfit/mainOrderId/summary/chargeStartDate/chargeEndDate/profitTypeId/profitDistributeStateId/amount/balance/customerId/platformId/tokensExpr/`
+  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+const updateUndistributedProfit = (targetObjectId, parameters) => {
+  const url = `${PREFIX}mainOrderManager/updateUndistributedProfitProperties/mainOrderId/id/summary/chargeStartDate/chargeEndDate/amount/balance/tokensExpr/`
+  const mainOrderId = targetObjectId
+  const requestParameters = { ...parameters, mainOrderId, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+const removeUndistributedProfitList = (targetObjectId, parameters) => {
+  const url = `${PREFIX}mainOrderManager/removeUndistributedProfitList/mainOrderId/undistributedProfitIds/tokensExpr/`
+  const requestParameters = { ...parameters, mainOrderId: targetObjectId, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+
 const MainOrderService = { view,
   load,
   addLineItem,
   addMainOrderPayment,
   addOrderLog,
+  addMemberServiceRevenue,
   addPlatformAccountDetails,
   addFundationAccountDetails,
   addStoreAccountDetails,
   addCustomerAccountTransaction,
+  addUndistributedProfit,
   updateLineItem,
   updateMainOrderPayment,
   updateOrderLog,
+  updateMemberServiceRevenue,
   updatePlatformAccountDetails,
   updateFundationAccountDetails,
   updateStoreAccountDetails,
   updateCustomerAccountTransaction,
+  updateUndistributedProfit,
   removeLineItemList,
   removeMainOrderPaymentList,
   removeOrderLogList,
+  removeMemberServiceRevenueList,
   removePlatformAccountDetailsList,
   removeFundationAccountDetailsList,
   removeStoreAccountDetailsList,
   removeCustomerAccountTransactionList,
+  removeUndistributedProfitList,
   requestCandidateCustomer,
   requestCandidateBookSharingPlatform,
   transferToAnotherCustomer,

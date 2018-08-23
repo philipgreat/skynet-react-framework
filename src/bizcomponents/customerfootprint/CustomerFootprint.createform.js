@@ -18,16 +18,11 @@ const testValues = {};
 const testValues = {
   title: '购买了图书《活着》',
   itemTitle: '《飘》',
+  itemType: 'Book',
+  itemId: 'B000001',
+  itemDescription: '推荐3~6岁儿童阅读',
   customerId: 'C000001',
   description: '<div>\
-	<h1>一级会员服务</h1>\
-	<ul>\
-		<li>可以借阅图书</li>\
-		<li>可以购买</li>\
-		<li>可以报名参加活动</li>\
-	</ul>\
-</div>',
-  itemDescription: '<div>\
 	<h1>一级会员服务</h1>\
 	<ul>\
 		<li>可以借阅图书</li>\
@@ -270,6 +265,36 @@ class CustomerFootprintCreateForm extends Component {
                 </Form.Item>
               </Col>
 
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.itemType} {...formItemLayout}>
+                  {getFieldDecorator('itemType', {
+                    rules: [{ required: true, message: '请输入项目类型' }],
+                  })(
+                    <Input placeholder="请输入项目类型" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.itemId} {...formItemLayout}>
+                  {getFieldDecorator('itemId', {
+                    rules: [{ required: true, message: '请输入项Id' }],
+                  })(
+                    <Input placeholder="请输入项Id" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.itemDescription} {...formItemLayout}>
+                  {getFieldDecorator('itemDescription', {
+                    rules: [{ required: true, message: '请输入相关项描述' }],
+                  })(
+                    <Input placeholder="请输入相关项描述" />
+                  )}
+                </Form.Item>
+              </Col>
+
             </Row>
           </Form>
         </Card>
@@ -313,22 +338,6 @@ class CustomerFootprintCreateForm extends Component {
                     rules: [{ required: true, message: '请输入描述' }],
                   })(
                     <TextArea rows={4} placeholder="请输入请输入描述" />
-                  )}
-                </Form.Item>
-              </Col>
-      </Row>
-          </Form>  
-        </Card>
-
-        <Card title="相关项描述" className={styles.card} bordered={false}>
-          <Form >
-            <Row gutter={16}>
-              <Col lg={24} md={24} sm={24}>
-                <Form.Item>
-                  {getFieldDecorator('itemDescription', {
-                    rules: [{ required: true, message: '请输入相关项描述' }],
-                  })(
-                    <TextArea rows={4} placeholder="请输入请输入相关项描述" />
                   )}
                 </Form.Item>
               </Col>

@@ -119,6 +119,7 @@ class StoreBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/store/${this.props.store.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class StoreBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/store/${this.props.store.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -698,6 +702,41 @@ class StoreBizApp extends React.PureComponent {
     }))(CampaignUpdateForm)
   }
 
+  getCustomerSearch = () => {
+    const {CustomerSearch} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._store.customerList,
+      count: state._store.customerCount,
+      currentPage: state._store.customerCurrentPageNumber,
+      searchFormParameters: state._store.customerSearchFormParameters,
+      loading: state._store.loading,
+      partialList: state._store.partialList,
+      owner: { type: '_store', id: state._store.id, referenceName: 'favouriteStore', listName: 'customerList', ref:state._store, listDisplayName: '用户列表' }, // this is for model namespace and
+    }))(CustomerSearch)
+  }
+  getCustomerCreateForm = () => {
+   	const {CustomerCreateForm} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._store.customerList,
+      count: state._store.customerCount,
+      currentPage: state._store.customerCurrentPageNumber,
+      searchFormParameters: state._store.customerSearchFormParameters,
+      loading: state._store.loading,
+      owner: { type: '_store', id: state._store.id, referenceName: 'favouriteStore', listName: 'customerList', ref:state._store, listDisplayName: '用户列表'}, // this is for model namespace and
+    }))(CustomerCreateForm)
+  }
+  
+  getCustomerUpdateForm = () => {
+  	const {CustomerUpdateForm} = GlobalComponents;
+    return connect(state => ({
+      selectedRows: state._store.selectedRows,
+      currentUpdateIndex: state._store.currentUpdateIndex,
+      owner: { type: '_store', id: state._store.id, listName: 'customerList', ref:state._store, listDisplayName: '用户列表' }, // this is for model namespace and
+    }))(CustomerUpdateForm)
+  }
+
   getEmployeeWorkingStoreSearch = () => {
     const {EmployeeWorkingStoreSearch} = GlobalComponents;
     return connect(state => ({
@@ -737,9 +776,13 @@ class StoreBizApp extends React.PureComponent {
   
   buildRouters = () =>{
   	const {StoreDashboard} = GlobalComponents
+  	const {StorePreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/store/:id/dashboard", component: StoreDashboard},
+  	{path:"/store/:id/preference", component: StorePreference},
+  	
   	
   	
   	{path:"/store/:id/list/lossAssessmentRecordList", component: this.getLossAssessmentRecordSearch()},
@@ -805,6 +848,10 @@ class StoreBizApp extends React.PureComponent {
   	{path:"/store/:id/list/campaignList", component: this.getCampaignSearch()},
   	{path:"/store/:id/list/campaignCreateForm", component: this.getCampaignCreateForm()},
   	{path:"/store/:id/list/campaignUpdateForm", component: this.getCampaignUpdateForm()},
+   	
+  	{path:"/store/:id/list/customerList", component: this.getCustomerSearch()},
+  	{path:"/store/:id/list/customerCreateForm", component: this.getCustomerCreateForm()},
+  	{path:"/store/:id/list/customerUpdateForm", component: this.getCustomerUpdateForm()},
    	
   	{path:"/store/:id/list/employeeWorkingStoreList", component: this.getEmployeeWorkingStoreSearch()},
   	{path:"/store/:id/list/employeeWorkingStoreCreateForm", component: this.getEmployeeWorkingStoreCreateForm()},
@@ -873,7 +920,7 @@ class StoreBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

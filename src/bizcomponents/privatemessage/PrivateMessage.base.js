@@ -16,7 +16,8 @@ const displayColumns = [
   { title: '接收人', dataIndex: 'deliveryTo', render: (text, record) => (record.deliveryTo ? record.deliveryTo.displayName : '暂无') },
   { title: '内容', debugtype: 'string_longtext', dataIndex: 'content', width: '10' },
   { title: '发送时间', dataIndex: 'deliveryTime', render: (text, record) => moment(record.deliveryTime).format('YYYY-MM-DD HH:mm:ss') },
-  { title: '链接', debugtype: 'string_url', dataIndex: 'link', width: '24' },
+  { title: '项目类型', debugtype: 'string', dataIndex: 'itemType', width: '30' },
+  { title: '项Id', debugtype: 'string', dataIndex: 'itemId', width: '14' },
 
 ]
 
@@ -26,7 +27,8 @@ const fieldLabels = {
   deliveryTo: '接收人',
   content: '内容',
   deliveryTime: '发送时间',
-  link: '链接',
+  itemType: '项目类型',
+  itemId: '项Id',
 
 }
 

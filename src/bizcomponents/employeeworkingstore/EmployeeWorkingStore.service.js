@@ -18,6 +18,22 @@ const load = (targetObjectId, parameters) => {
 
 
 
+const requestCandidateRole = (ownerClass, id, filterKey, pageNo) => {
+  //const parametersExpr = joinParameters(parameters)
+  return get({
+    url: `${PREFIX}employeeWorkingStoreManager/requestCandidateRole/${ownerClass}/${id}/${filterKey}/${pageNo}/`,
+  })
+}	
+
+const transferToAnotherRole = (id, parameters) => {
+  //const parametersExpr = joinParameters(parameters)
+  const url = `${PREFIX}employeeWorkingStoreManager/transferToAnotherRole/id/anotherRoleId/`
+  const requestParameters = {id, ...parameters}
+  return postForm({url,requestParameters})
+}
+
+
+
 const requestCandidateEmployee = (ownerClass, id, filterKey, pageNo) => {
   //const parametersExpr = joinParameters(parameters)
   return get({
@@ -55,8 +71,10 @@ const transferToAnotherStore = (id, parameters) => {
 
 const EmployeeWorkingStoreService = { view,
   load,
+  requestCandidateRole,
   requestCandidateEmployee,
   requestCandidateStore,
+  transferToAnotherRole,
   transferToAnotherEmployee,
   transferToAnotherStore }
 export default EmployeeWorkingStoreService

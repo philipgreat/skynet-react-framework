@@ -24,11 +24,9 @@ const actionBookWarehousingWithIsbn = (targetObjectId, parameters) => {
   }
 
 
-
-  
-const addUserApp = (targetObjectId, parameters) => {
-    const url = `${PREFIX}secUserManager/addUserApp/secUserId/title/appIcon/fullAccess/permission/objectType/objectId/location/tokensExpr/`
-    const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const returnBookByEmployee = (targetObjectId, parameters) => {
+    const url = `${PREFIX}bookCopyManager/returnBookByEmployee/bookCopyIdOrQrcode/`
+    const requestParameters = { ...parameters}
   
     const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
     return post({
@@ -39,6 +37,53 @@ const addUserApp = (targetObjectId, parameters) => {
   }
 
 
+  const lentBookByEmployee = (targetObjectId, parameters) => {
+    const url = `${PREFIX}bookCopyManager/lentBookByEmployee/storeId/customerId/bookCopyIdOrQrcode/`
+    const requestParameters = { ...parameters}
+  
+    const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
+    return post({
+      url,
+      data: joinPostParameters(requestParameters),
+      headers,
+    })
+  }
 
-  const BookStoreExService = { actionBookWarehousingWithIsbn }
+//putBookOnShelf
+  
+
+const putBookOnShelf = (targetObjectId, parameters) => {
+  const url = `${PREFIX}bookCopyManager/putBookOnShelf/bookCopyIdOrQrcode/storeId/`
+  const requestParameters = { ...parameters}
+
+  const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
+  return post({
+    url,
+    data: joinPostParameters(requestParameters),
+    headers,
+  })
+}
+
+const putBookOffShelf = (targetObjectId, parameters) => {
+  const url = `${PREFIX}bookCopyManager/pullBookOffShelf/bookCopyIdOrQrcode/storeId/`
+  const requestParameters = { ...parameters}
+
+  const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
+  return post({
+    url,
+    data: joinPostParameters(requestParameters),
+    headers,
+  })
+}
+
+
+
+
+
+  const BookStoreExService = { 
+    actionBookWarehousingWithIsbn,
+    returnBookByEmployee,
+    lentBookByEmployee,
+    putBookOffShelf,putBookOnShelf }
   export default BookStoreExService
+

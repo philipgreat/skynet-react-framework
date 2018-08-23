@@ -34,6 +34,22 @@ const transferToAnotherBookCopy = (id, parameters) => {
 
 
 
+const requestCandidateBookCopyOperateType = (ownerClass, id, filterKey, pageNo) => {
+  //const parametersExpr = joinParameters(parameters)
+  return get({
+    url: `${PREFIX}bookCopyOperationRecordManager/requestCandidateBookCopyOperateType/${ownerClass}/${id}/${filterKey}/${pageNo}/`,
+  })
+}	
+
+const transferToAnotherBookCopyOperateType = (id, parameters) => {
+  //const parametersExpr = joinParameters(parameters)
+  const url = `${PREFIX}bookCopyOperationRecordManager/transferToAnotherBookCopyOperateType/id/anotherBookCopyOperateTypeId/`
+  const requestParameters = {id, ...parameters}
+  return postForm({url,requestParameters})
+}
+
+
+
 const requestCandidateOperateStore = (ownerClass, id, filterKey, pageNo) => {
   //const parametersExpr = joinParameters(parameters)
   return get({
@@ -72,9 +88,11 @@ const transferToAnotherOperationEmployee = (id, parameters) => {
 const BookCopyOperationRecordService = { view,
   load,
   requestCandidateBookCopy,
+  requestCandidateBookCopyOperateType,
   requestCandidateOperateStore,
   requestCandidateOperationEmployee,
   transferToAnotherBookCopy,
+  transferToAnotherBookCopyOperateType,
   transferToAnotherOperateStore,
   transferToAnotherOperationEmployee }
 export default BookCopyOperationRecordService

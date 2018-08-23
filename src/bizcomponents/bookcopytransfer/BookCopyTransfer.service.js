@@ -66,6 +66,22 @@ const transferToAnotherNewStore = (id, parameters) => {
 
 
 
+const requestCandidateTransferType = (ownerClass, id, filterKey, pageNo) => {
+  //const parametersExpr = joinParameters(parameters)
+  return get({
+    url: `${PREFIX}bookCopyTransferManager/requestCandidateTransferType/${ownerClass}/${id}/${filterKey}/${pageNo}/`,
+  })
+}	
+
+const transferToAnotherTransferType = (id, parameters) => {
+  //const parametersExpr = joinParameters(parameters)
+  const url = `${PREFIX}bookCopyTransferManager/transferToAnotherTransferType/id/anotherTransferTypeId/`
+  const requestParameters = {id, ...parameters}
+  return postForm({url,requestParameters})
+}
+
+
+
 const requestCandidateResponsibleEmployee = (ownerClass, id, filterKey, pageNo) => {
   //const parametersExpr = joinParameters(parameters)
   return get({
@@ -90,10 +106,12 @@ const BookCopyTransferService = { view,
   requestCandidateBookCopy,
   requestCandidateOriginalStore,
   requestCandidateNewStore,
+  requestCandidateTransferType,
   requestCandidateResponsibleEmployee,
   transferToAnotherBookCopy,
   transferToAnotherOriginalStore,
   transferToAnotherNewStore,
+  transferToAnotherTransferType,
   transferToAnotherResponsibleEmployee }
 export default BookCopyTransferService
 

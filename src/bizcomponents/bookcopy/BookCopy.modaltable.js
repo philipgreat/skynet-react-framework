@@ -31,7 +31,7 @@ class BookCopyModalTable extends PureComponent {
           dataSource={data}
           columns={displayColumns}
           size="small"
-          scroll={{ x: 1275 }}
+          scroll={{ x: 2175 }}
         />
       </div>
     )

@@ -34,6 +34,22 @@ const transferToAnotherBookCopy = (id, parameters) => {
 
 
 
+const requestCandidateBookTakeStockStatus = (ownerClass, id, filterKey, pageNo) => {
+  //const parametersExpr = joinParameters(parameters)
+  return get({
+    url: `${PREFIX}bookTakeStockResultManager/requestCandidateBookTakeStockStatus/${ownerClass}/${id}/${filterKey}/${pageNo}/`,
+  })
+}	
+
+const transferToAnotherBookTakeStockStatus = (id, parameters) => {
+  //const parametersExpr = joinParameters(parameters)
+  const url = `${PREFIX}bookTakeStockResultManager/transferToAnotherBookTakeStockStatus/id/anotherBookTakeStockStatusId/`
+  const requestParameters = {id, ...parameters}
+  return postForm({url,requestParameters})
+}
+
+
+
 const requestCandidateEmployee = (ownerClass, id, filterKey, pageNo) => {
   //const parametersExpr = joinParameters(parameters)
   return get({
@@ -44,6 +60,22 @@ const requestCandidateEmployee = (ownerClass, id, filterKey, pageNo) => {
 const transferToAnotherEmployee = (id, parameters) => {
   //const parametersExpr = joinParameters(parameters)
   const url = `${PREFIX}bookTakeStockResultManager/transferToAnotherEmployee/id/anotherEmployeeId/`
+  const requestParameters = {id, ...parameters}
+  return postForm({url,requestParameters})
+}
+
+
+
+const requestCandidateTakeStoreResults = (ownerClass, id, filterKey, pageNo) => {
+  //const parametersExpr = joinParameters(parameters)
+  return get({
+    url: `${PREFIX}bookTakeStockResultManager/requestCandidateTakeStoreResults/${ownerClass}/${id}/${filterKey}/${pageNo}/`,
+  })
+}	
+
+const transferToAnotherTakeStoreResults = (id, parameters) => {
+  //const parametersExpr = joinParameters(parameters)
+  const url = `${PREFIX}bookTakeStockResultManager/transferToAnotherTakeStoreResults/id/anotherTakeStoreResultsId/`
   const requestParameters = {id, ...parameters}
   return postForm({url,requestParameters})
 }
@@ -72,10 +104,14 @@ const transferToAnotherBookTakeStockPlan = (id, parameters) => {
 const BookTakeStockResultService = { view,
   load,
   requestCandidateBookCopy,
+  requestCandidateBookTakeStockStatus,
   requestCandidateEmployee,
+  requestCandidateTakeStoreResults,
   requestCandidateBookTakeStockPlan,
   transferToAnotherBookCopy,
+  transferToAnotherBookTakeStockStatus,
   transferToAnotherEmployee,
+  transferToAnotherTakeStoreResults,
   transferToAnotherBookTakeStockPlan }
 export default BookTakeStockResultService
 

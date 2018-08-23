@@ -260,8 +260,8 @@ const internalSummaryOf = (bookCopyStatus,targetComponent) =>{
 	return (
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="ID">{bookCopyStatus.id}</Description> 
-<Description term="地位的名字">{bookCopyStatus.statusName}</Description> 
-<Description term="状态码">{bookCopyStatus.statusCode}</Description> 
+<Description term="名称">{bookCopyStatus.name}</Description> 
+<Description term="代码">{bookCopyStatus.code}</Description> 
 <Description term="状态描述">{bookCopyStatus.statusDescription}</Description> 
 <Description term="图书天地">{bookCopyStatus.bookPlaza==null?"未分配":bookCopyStatus.bookPlaza.displayName}
  <Icon type="swap" onClick={()=>

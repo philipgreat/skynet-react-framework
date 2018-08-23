@@ -261,11 +261,17 @@ const internalSummaryOf = (campaign,targetComponent) =>{
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="ID">{campaign.id}</Description> 
 <Description term="活动名称">{campaign.campaignName}</Description> 
-<Description term="活动状态">{campaign.campaignStatus}</Description> 
+<Description term="活动状态">{campaign.campaignStatus==null?"未分配":campaign.campaignStatus.displayName}
+ <Icon type="swap" onClick={()=>
+  showTransferModel(targetComponent,"活动状态","campaignStatus","requestCandidateCampaignStatus",
+	      "transferToAnotherCampaignStatus","anotherCampaignStatusId",campaign.campaignStatus?campaign.campaignStatus.id:"")} 
+  style={{fontSize: 20,color:"red"}} />
+</Description>
 <Description term="开始时间">{ moment(campaign.campaignStartTime).format('YYYY-MM-DD')}</Description> 
 <Description term="结束时间">{ moment(campaign.campaignFinishTime).format('YYYY-MM-DD')}</Description> 
 <Description term="活动地址">{campaign.campaignHoldAddress}</Description> 
-<Description term="报名截止日期">{ moment(campaign.availableRegisterDeadline).format('YYYY-MM-DD')}</Description> 
+<Description term="开始前几小时停止注册">{campaign.registerDeadlineLeadHours}</Description> 
+<Description term="最低注册数量">{campaign.minimumRegisterQuantity}</Description> 
 <Description term="报名人数限制">{campaign.availableRegisterQuantity}</Description> 
 <Description term="发布日期时间">{ moment(campaign.publishDatetime).format('YYYY-MM-DD')}</Description> 
 <Description term="发布网点">{campaign.publishStore==null?"未分配":campaign.publishStore.displayName}

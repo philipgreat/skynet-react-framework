@@ -119,6 +119,7 @@ class MemberServiceProductBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/memberServiceProduct/${this.props.memberServiceProduct.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class MemberServiceProductBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/memberServiceProduct/${this.props.memberServiceProduct.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -137,41 +141,6 @@ class MemberServiceProductBizApp extends React.PureComponent {
   
 
 
-
-  getTokenInMemberServiceProductSearch = () => {
-    const {TokenInMemberServiceProductSearch} = GlobalComponents;
-    return connect(state => ({
-      rule: state.rule,
-      data: state._memberServiceProduct.tokenInMemberServiceProductList,
-      count: state._memberServiceProduct.tokenInMemberServiceProductCount,
-      currentPage: state._memberServiceProduct.tokenInMemberServiceProductCurrentPageNumber,
-      searchFormParameters: state._memberServiceProduct.tokenInMemberServiceProductSearchFormParameters,
-      loading: state._memberServiceProduct.loading,
-      partialList: state._memberServiceProduct.partialList,
-      owner: { type: '_memberServiceProduct', id: state._memberServiceProduct.id, referenceName: 'memberServiceProduct', listName: 'tokenInMemberServiceProductList', ref:state._memberServiceProduct, listDisplayName: '成员服务产品中的令牌列表' }, // this is for model namespace and
-    }))(TokenInMemberServiceProductSearch)
-  }
-  getTokenInMemberServiceProductCreateForm = () => {
-   	const {TokenInMemberServiceProductCreateForm} = GlobalComponents;
-    return connect(state => ({
-      rule: state.rule,
-      data: state._memberServiceProduct.tokenInMemberServiceProductList,
-      count: state._memberServiceProduct.tokenInMemberServiceProductCount,
-      currentPage: state._memberServiceProduct.tokenInMemberServiceProductCurrentPageNumber,
-      searchFormParameters: state._memberServiceProduct.tokenInMemberServiceProductSearchFormParameters,
-      loading: state._memberServiceProduct.loading,
-      owner: { type: '_memberServiceProduct', id: state._memberServiceProduct.id, referenceName: 'memberServiceProduct', listName: 'tokenInMemberServiceProductList', ref:state._memberServiceProduct, listDisplayName: '成员服务产品中的令牌列表'}, // this is for model namespace and
-    }))(TokenInMemberServiceProductCreateForm)
-  }
-  
-  getTokenInMemberServiceProductUpdateForm = () => {
-  	const {TokenInMemberServiceProductUpdateForm} = GlobalComponents;
-    return connect(state => ({
-      selectedRows: state._memberServiceProduct.selectedRows,
-      currentUpdateIndex: state._memberServiceProduct.currentUpdateIndex,
-      owner: { type: '_memberServiceProduct', id: state._memberServiceProduct.id, listName: 'tokenInMemberServiceProductList', ref:state._memberServiceProduct, listDisplayName: '成员服务产品中的令牌列表' }, // this is for model namespace and
-    }))(TokenInMemberServiceProductUpdateForm)
-  }
 
   getMemberServiceBundleSkuSearch = () => {
     const {MemberServiceBundleSkuSearch} = GlobalComponents;
@@ -282,15 +251,15 @@ class MemberServiceProductBizApp extends React.PureComponent {
   
   buildRouters = () =>{
   	const {MemberServiceProductDashboard} = GlobalComponents
+  	const {MemberServiceProductPreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/memberServiceProduct/:id/dashboard", component: MemberServiceProductDashboard},
+  	{path:"/memberServiceProduct/:id/preference", component: MemberServiceProductPreference},
   	
   	
-  	{path:"/memberServiceProduct/:id/list/tokenInMemberServiceProductList", component: this.getTokenInMemberServiceProductSearch()},
-  	{path:"/memberServiceProduct/:id/list/tokenInMemberServiceProductCreateForm", component: this.getTokenInMemberServiceProductCreateForm()},
-  	{path:"/memberServiceProduct/:id/list/tokenInMemberServiceProductUpdateForm", component: this.getTokenInMemberServiceProductUpdateForm()},
-   	
+  	
   	{path:"/memberServiceProduct/:id/list/memberServiceBundleSkuList", component: this.getMemberServiceBundleSkuSearch()},
   	{path:"/memberServiceProduct/:id/list/memberServiceBundleSkuCreateForm", component: this.getMemberServiceBundleSkuCreateForm()},
   	{path:"/memberServiceProduct/:id/list/memberServiceBundleSkuUpdateForm", component: this.getMemberServiceBundleSkuUpdateForm()},
@@ -366,7 +335,7 @@ class MemberServiceProductBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

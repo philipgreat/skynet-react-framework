@@ -18,6 +18,22 @@ const load = (targetObjectId, parameters) => {
 
 
 
+const requestCandidateCampaignStatus = (ownerClass, id, filterKey, pageNo) => {
+  //const parametersExpr = joinParameters(parameters)
+  return get({
+    url: `${PREFIX}campaignManager/requestCandidateCampaignStatus/${ownerClass}/${id}/${filterKey}/${pageNo}/`,
+  })
+}	
+
+const transferToAnotherCampaignStatus = (id, parameters) => {
+  //const parametersExpr = joinParameters(parameters)
+  const url = `${PREFIX}campaignManager/transferToAnotherCampaignStatus/id/anotherCampaignStatusId/`
+  const requestParameters = {id, ...parameters}
+  return postForm({url,requestParameters})
+}
+
+
+
 const requestCandidatePublishStore = (ownerClass, id, filterKey, pageNo) => {
   //const parametersExpr = joinParameters(parameters)
   return get({
@@ -70,13 +86,13 @@ const transferToAnotherCampaignPlaza = (id, parameters) => {
 
 
 const addStoreSlide = (targetObjectId, parameters) => {
-  const url = `${PREFIX}campaignManager/addStoreSlide/campaignId/tips/bannerImage/wxaLinkUrl/antdLinkUrl/linkType/bookId/memberServiceProductId/storeId/tokensExpr/`
+  const url = `${PREFIX}campaignManager/addStoreSlide/campaignId/tips/bannerImage/wxaLinkUrl/antdLinkUrl/slideTypeId/bookId/memberServiceProductId/storeId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateStoreSlide = (targetObjectId, parameters) => {
-  const url = `${PREFIX}campaignManager/updateStoreSlideProperties/campaignId/id/tips/bannerImage/wxaLinkUrl/antdLinkUrl/linkType/tokensExpr/`
+  const url = `${PREFIX}campaignManager/updateStoreSlideProperties/campaignId/id/tips/bannerImage/wxaLinkUrl/antdLinkUrl/tokensExpr/`
   const campaignId = targetObjectId
   const requestParameters = { ...parameters, campaignId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
@@ -130,13 +146,13 @@ const removeCampaignReviewList = (targetObjectId, parameters) => {
 
 
 const addCampaignLike = (targetObjectId, parameters) => {
-  const url = `${PREFIX}campaignManager/addCampaignLike/campaignId/replierId/likeType/tokensExpr/`
+  const url = `${PREFIX}campaignManager/addCampaignLike/campaignId/replierId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateCampaignLike = (targetObjectId, parameters) => {
-  const url = `${PREFIX}campaignManager/updateCampaignLikeProperties/campaignId/id/likeType/tokensExpr/`
+  const url = `${PREFIX}campaignManager/updateCampaignLikeProperties/campaignId/id/tokensExpr/`
   const campaignId = targetObjectId
   const requestParameters = { ...parameters, campaignId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
@@ -163,9 +179,11 @@ const CampaignService = { view,
   removeCampaignRegisterHistoryList,
   removeCampaignReviewList,
   removeCampaignLikeList,
+  requestCandidateCampaignStatus,
   requestCandidatePublishStore,
   requestCandidatePublishEmployee,
   requestCandidateCampaignPlaza,
+  transferToAnotherCampaignStatus,
   transferToAnotherPublishStore,
   transferToAnotherPublishEmployee,
   transferToAnotherCampaignPlaza }

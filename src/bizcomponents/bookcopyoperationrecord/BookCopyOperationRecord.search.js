@@ -200,6 +200,7 @@ class BookCopyOperationRecordSearch extends PureComponent {
 
 
 <Menu.Item key="bookCopy">关联书籍副本</Menu.Item>
+<Menu.Item key="bookCopyOperateType">关联书籍副本操作类型</Menu.Item>
 <Menu.Item key="operateStore">关联执行网点</Menu.Item>
 <Menu.Item key="operationEmployee">关联执行员工</Menu.Item>
       

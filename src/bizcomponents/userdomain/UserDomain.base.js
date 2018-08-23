@@ -5,7 +5,6 @@ import moment from 'moment'
 const menuData = {menuName:"用户域", menuFor: "userDomain",
   		subItems: [
   {name: 'secUserList', displayName:'SEC的用户', icon:'user'},
-  {name: 'actionTokenList', displayName:'行动令牌', icon:'glass'},
   
   		],
 }

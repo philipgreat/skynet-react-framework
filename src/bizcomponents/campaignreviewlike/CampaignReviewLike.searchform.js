@@ -64,7 +64,6 @@ class CampaignReviewLikeSearchForm extends PureComponent {
       if (err) return
       const params = {
         ...this.buildStringSearchParameters(fieldsValue, 'id'),
-        ...this.buildStringSearchParameters(fieldsValue, 'likeType'),
 
       }
       const { owner } = this.props
@@ -90,14 +89,6 @@ class CampaignReviewLikeSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="点赞类型">
-              {getFieldDecorator('likeType')(
-                <Input placeholder="请输入点赞类型" />
-               )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
             <span className={styles.submitButtons}>
               <Button type="primary" htmlType="submit">查询</Button>
               <Button style={{ marginLeft: 8 }} onClick={this.handleFormReset}>重置</Button>
@@ -118,14 +109,6 @@ class CampaignReviewLikeSearchForm extends PureComponent {
             <FormItem label="ID">
               {getFieldDecorator('id')(
                 <Input placeholder="请输入ID" />
-              )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
-            <FormItem label="点赞类型">
-              {getFieldDecorator('likeType')(
-                <Input placeholder="请输入点赞类型" />
               )}
             </FormItem>
           </Col>

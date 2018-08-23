@@ -18,6 +18,22 @@ const load = (targetObjectId, parameters) => {
 
 
 
+const requestCandidateSlideType = (ownerClass, id, filterKey, pageNo) => {
+  //const parametersExpr = joinParameters(parameters)
+  return get({
+    url: `${PREFIX}storeSlideManager/requestCandidateSlideType/${ownerClass}/${id}/${filterKey}/${pageNo}/`,
+  })
+}	
+
+const transferToAnotherSlideType = (id, parameters) => {
+  //const parametersExpr = joinParameters(parameters)
+  const url = `${PREFIX}storeSlideManager/transferToAnotherSlideType/id/anotherSlideTypeId/`
+  const requestParameters = {id, ...parameters}
+  return postForm({url,requestParameters})
+}
+
+
+
 const requestCandidateBook = (ownerClass, id, filterKey, pageNo) => {
   //const parametersExpr = joinParameters(parameters)
   return get({
@@ -87,10 +103,12 @@ const transferToAnotherStore = (id, parameters) => {
 
 const StoreSlideService = { view,
   load,
+  requestCandidateSlideType,
   requestCandidateBook,
   requestCandidateCampaign,
   requestCandidateMemberServiceProduct,
   requestCandidateStore,
+  transferToAnotherSlideType,
   transferToAnotherBook,
   transferToAnotherCampaign,
   transferToAnotherMemberServiceProduct,

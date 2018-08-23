@@ -269,7 +269,6 @@ const internalSummaryOf = (campaignLike,targetComponent) =>{
   style={{fontSize: 20,color:"red"}} />
 </Description>
 <Description term="点赞发布日期">{ moment(campaignLike.likePublishDatetime).format('YYYY-MM-DD')}</Description> 
-<Description term="点赞类型">{campaignLike.likeType}</Description> 
 	
         {buildTransferModal(campaignLike,targetComponent)}
       </DescriptionList>

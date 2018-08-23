@@ -16,8 +16,9 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
-  bookCopyOperateType: '入库',
+  bookName: '飘',
   bookCopyId: 'BC000001',
+  bookCopyOperateTypeId: 'BCOT000001',
   operateStoreId: 'S000001',
   operationEmployeeId: 'E000001',
 }
@@ -42,6 +43,9 @@ class BookCopyOperationRecordCreateForm extends Component {
     //setFieldsValue(testValues)
       
     this.executeCandidateBookCopySearch("")
+    
+    
+    this.executeCandidateBookCopyOperateTypeSearch("")
     
     
     this.executeCandidateOperateStoreSearch("")
@@ -86,6 +90,28 @@ class BookCopyOperationRecordCreateForm extends Component {
   }	 
   handleCandidateBookCopySearch = (value) => {
     this.executeCandidateBookCopySearch(value)
+  }
+
+  executeCandidateBookCopyOperateTypeSearch = (filterKey) =>{
+
+    const {BookCopyOperationRecordService} = GlobalComponents;
+    
+    const id = "";//not used for now
+    const pageNo = 1;
+    const future = BookCopyOperationRecordService.requestCandidateBookCopyOperateType("bookCopyOperateType", id, filterKey, pageNo);
+    console.log(future);
+    
+
+    future.then(candidateBookCopyOperateTypeList=>{
+      this.setState({
+        candidateBookCopyOperateTypeList
+      })
+
+    })
+
+  }	 
+  handleCandidateBookCopyOperateTypeSearch = (value) => {
+    this.executeCandidateBookCopyOperateTypeSearch(value)
   }
 
   executeCandidateOperateStoreSearch = (filterKey) =>{
@@ -247,6 +273,15 @@ class BookCopyOperationRecordCreateForm extends Component {
     }   
     
     
+    const {candidateBookCopyOperateTypeList} = this.state
+    if(!candidateBookCopyOperateTypeList){
+      return (<div>等等</div>)
+    }
+    if(!candidateBookCopyOperateTypeList.candidates){
+      return (<div>等等</div>)
+    }   
+    
+    
     const {candidateOperateStoreList} = this.state
     if(!candidateOperateStoreList){
       return (<div>等等</div>)
@@ -303,11 +338,11 @@ class BookCopyOperationRecordCreateForm extends Component {
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.bookCopyOperateType} {...formItemLayout}>
-                  {getFieldDecorator('bookCopyOperateType', {
-                    rules: [{ required: true, message: '请输入书籍副本操作类型' }],
+                <Form.Item label={fieldLabels.bookName} {...formItemLayout}>
+                  {getFieldDecorator('bookName', {
+                    rules: [{ required: true, message: '请输入书名' }],
                   })(
-                    <Input placeholder="请输入书籍副本操作类型" />
+                    <Input placeholder="请输入书名" />
                   )}
                 </Form.Item>
               </Col>
@@ -351,6 +386,31 @@ class BookCopyOperationRecordCreateForm extends Component {
                   >
                   {candidateBookCopyList.candidates.map(item=>{
                 return (<Option key={item.id}>{`${item.bookCopySharingType}(${item.id})`}</Option>);
+            })}
+                  
+                  </AutoComplete>
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.bookCopyOperateType} {...formItemLayout}>
+                  {getFieldDecorator('bookCopyOperateTypeId', {
+                  	initialValue: tryinit('bookCopyOperateType'),
+                    rules: [{ required: true, message: '请输入书籍副本操作类型' }],
+                  })(
+                  
+                  <AutoComplete
+                    dataSource={candidateBookCopyOperateTypeList.candidates}
+                    
+                    
+                    onSearch={this.handleCandidateBookCopyOperateTypeSearch}
+                    placeholder="请输入书籍副本操作类型"
+                    
+                    disabled={!availableForEdit('bookCopyOperateType')}
+                  >
+                  {candidateBookCopyOperateTypeList.candidates.map(item=>{
+                return (<Option key={item.id}>{`${item.name}(${item.id})`}</Option>);
             })}
                   
                   </AutoComplete>

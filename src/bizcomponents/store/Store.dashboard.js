@@ -261,12 +261,19 @@ const internalSummaryOf = (store,targetComponent) =>{
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="ID">{store.id}</Description> 
 <Description term="网点名字">{store.storeName}</Description> 
+<Description term="网点副标题">{store.storeSubname}</Description> 
 <Description term="网点地址">{store.storeAddress}</Description> 
 <Description term="网点营业时间">{store.storeOpenTime}</Description> 
+<Description term="网点营业时间补充说明">{store.storeOpenTimeSecond}</Description> 
 <Description term="网点房间号码">{store.storeRoomNumber}</Description> 
 <Description term="经度">{store.longitude}</Description> 
 <Description term="纬度">{store.latitude}</Description> 
-<Description term="网点类型">{store.storeType}</Description> 
+<Description term="网点类型">{store.storeType==null?"未分配":store.storeType.displayName}
+ <Icon type="swap" onClick={()=>
+  showTransferModel(targetComponent,"网点类型","storeType","requestCandidateStoreType",
+	      "transferToAnotherStoreType","anotherStoreTypeId",store.storeType?store.storeType.id:"")} 
+  style={{fontSize: 20,color:"red"}} />
+</Description>
 <Description term="城市">{store.city==null?"未分配":store.city.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"城市","city","requestCandidateCity",
@@ -302,7 +309,7 @@ class StoreDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, lossAssessmentRecordCount, printerCount, bookCopyCount, bookCopyTransferAsOriginalStoreCount, bookCopyTransferAsNewStoreCount, bookTakeStockPlanCount, bookCopyOperationRecordCount, borrowingHistoryAsLendingStoreCount, borrowingHistoryAsReturnStoreCount, borrowingExpiredSkuAsLendingStoreCount, borrowingExpiredSkuAsReturnStoreCount, bookCopySharingApplicationCount, memberServiceRevenueCount, storeAccountCount, storeSlideCount, campaignCount, employeeWorkingStoreCount } = this.props.store
+    const { id,displayName, lossAssessmentRecordCount, printerCount, bookCopyCount, bookCopyTransferAsOriginalStoreCount, bookCopyTransferAsNewStoreCount, bookTakeStockPlanCount, bookCopyOperationRecordCount, borrowingHistoryAsLendingStoreCount, borrowingHistoryAsReturnStoreCount, borrowingExpiredSkuAsLendingStoreCount, borrowingExpiredSkuAsReturnStoreCount, bookCopySharingApplicationCount, memberServiceRevenueCount, storeAccountCount, storeSlideCount, campaignCount, customerCount, employeeWorkingStoreCount } = this.props.store
     const cardsData = {cardsName:"服务网点",cardsFor: "store",cardsSource: this.props.store,
   		subItems: [
 {name: 'lossAssessmentRecordList', displayName:'定损记录',type:'lossAssessmentRecord',count:lossAssessmentRecordCount},
@@ -321,6 +328,7 @@ class StoreDashboard extends Component {
 {name: 'storeAccountList', displayName:'网点账户',type:'storeAccount',count:storeAccountCount},
 {name: 'storeSlideList', displayName:'网点海报',type:'storeSlide',count:storeSlideCount},
 {name: 'campaignList', displayName:'活动',type:'campaign',count:campaignCount},
+{name: 'customerList', displayName:'用户',type:'customer',count:customerCount},
 {name: 'employeeWorkingStoreList', displayName:'员工工作的网点',type:'employeeWorkingStore',count:employeeWorkingStoreCount},
     
       	],

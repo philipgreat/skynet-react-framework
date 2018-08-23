@@ -16,10 +16,10 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
-  vendorRate: '0%',
-  lendingStoreRate: '10%',
-  platformRate: '10%',
-  publicServiceFundRate: '80%',
+  vendorRate: '0.00',
+  lendingStoreRate: '0.08',
+  platformRate: '0.10',
+  publicServiceFundRate: '0.56',
   bookPlazaId: 'BP000001',
 }
 */

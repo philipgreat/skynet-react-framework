@@ -98,13 +98,13 @@ const removeStoreAccountList = (targetObjectId, parameters) => {
 
 
 const addTransactionType = (targetObjectId, parameters) => {
-  const url = `${PREFIX}accountDataManager/addTransactionType/accountDataId/name/transactionCode/tokensExpr/`
+  const url = `${PREFIX}accountDataManager/addTransactionType/accountDataId/name/code/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateTransactionType = (targetObjectId, parameters) => {
-  const url = `${PREFIX}accountDataManager/updateTransactionTypeProperties/accountDataId/id/name/transactionCode/tokensExpr/`
+  const url = `${PREFIX}accountDataManager/updateTransactionTypeProperties/accountDataId/id/name/code/tokensExpr/`
   const accountDataId = targetObjectId
   const requestParameters = { ...parameters, accountDataId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})

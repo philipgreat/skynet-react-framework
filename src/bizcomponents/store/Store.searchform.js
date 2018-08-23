@@ -65,10 +65,11 @@ class StoreSearchForm extends PureComponent {
       const params = {
         ...this.buildStringSearchParameters(fieldsValue, 'id'),
         ...this.buildStringSearchParameters(fieldsValue, 'storeName'),
+        ...this.buildStringSearchParameters(fieldsValue, 'storeSubname'),
         ...this.buildStringSearchParameters(fieldsValue, 'storeAddress'),
         ...this.buildStringSearchParameters(fieldsValue, 'storeOpenTime'),
+        ...this.buildStringSearchParameters(fieldsValue, 'storeOpenTimeSecond'),
         ...this.buildStringSearchParameters(fieldsValue, 'storeRoomNumber'),
-        ...this.buildStringSearchParameters(fieldsValue, 'storeType'),
 
       }
       const { owner } = this.props
@@ -135,6 +136,14 @@ class StoreSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
+            <FormItem label="网点副标题">
+              {getFieldDecorator('storeSubname')(
+                <Input placeholder="请输入网点副标题" />
+              )}
+            </FormItem>
+          </Col>
+
+          <Col md={8} sm={24}>
             <FormItem label="网点地址">
               {getFieldDecorator('storeAddress')(
                 <Input placeholder="请输入网点地址" />
@@ -151,17 +160,17 @@ class StoreSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="网点房间号码">
-              {getFieldDecorator('storeRoomNumber')(
-                <Input placeholder="请输入网点房间号码" />
+            <FormItem label="网点营业时间补充说明">
+              {getFieldDecorator('storeOpenTimeSecond')(
+                <Input placeholder="请输入网点营业时间补充说明" />
               )}
             </FormItem>
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="网点类型">
-              {getFieldDecorator('storeType')(
-                <Input placeholder="请输入网点类型" />
+            <FormItem label="网点房间号码">
+              {getFieldDecorator('storeRoomNumber')(
+                <Input placeholder="请输入网点房间号码" />
               )}
             </FormItem>
           </Col>

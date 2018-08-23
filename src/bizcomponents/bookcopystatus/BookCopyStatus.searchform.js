@@ -64,8 +64,8 @@ class BookCopyStatusSearchForm extends PureComponent {
       if (err) return
       const params = {
         ...this.buildStringSearchParameters(fieldsValue, 'id'),
-        ...this.buildStringSearchParameters(fieldsValue, 'statusName'),
-        ...this.buildStringSearchParameters(fieldsValue, 'statusCode'),
+        ...this.buildStringSearchParameters(fieldsValue, 'name'),
+        ...this.buildStringSearchParameters(fieldsValue, 'code'),
         ...this.buildStringSearchParameters(fieldsValue, 'statusDescription'),
 
       }
@@ -92,9 +92,9 @@ class BookCopyStatusSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="地位的名字">
-              {getFieldDecorator('statusName')(
-                <Input placeholder="请输入地位的名字" />
+            <FormItem label="名称">
+              {getFieldDecorator('name')(
+                <Input placeholder="请输入名称" />
                )}
             </FormItem>
           </Col>
@@ -125,17 +125,17 @@ class BookCopyStatusSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="地位的名字">
-              {getFieldDecorator('statusName')(
-                <Input placeholder="请输入地位的名字" />
+            <FormItem label="名称">
+              {getFieldDecorator('name')(
+                <Input placeholder="请输入名称" />
               )}
             </FormItem>
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="状态码">
-              {getFieldDecorator('statusCode')(
-                <Input placeholder="请输入状态码" />
+            <FormItem label="代码">
+              {getFieldDecorator('code')(
+                <Input placeholder="请输入代码" />
               )}
             </FormItem>
           </Col>

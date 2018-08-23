@@ -273,12 +273,12 @@ class TransactionTypeUpdateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.transactionCode} {...formItemLayout}>
-                  {getFieldDecorator('transactionCode', {
-                    initialValue: selectedRow.transactionCode,
-                    rules: [{ required: true, message: '请输入交易代码' }],
+                <Form.Item label={fieldLabels.code} {...formItemLayout}>
+                  {getFieldDecorator('code', {
+                    initialValue: selectedRow.code,
+                    rules: [{ required: true, message: '请输入代码' }],
                   })(
-                    <Input placeholder="请输入交易代码" />
+                    <Input placeholder="请输入代码" />
                     
                   )}
                 </Form.Item>

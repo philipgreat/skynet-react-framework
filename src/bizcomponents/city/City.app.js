@@ -119,6 +119,7 @@ class CityBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/city/${this.props.city.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class CityBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/city/${this.props.city.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -177,9 +181,13 @@ class CityBizApp extends React.PureComponent {
   
   buildRouters = () =>{
   	const {CityDashboard} = GlobalComponents
+  	const {CityPreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/city/:id/dashboard", component: CityDashboard},
+  	{path:"/city/:id/preference", component: CityPreference},
+  	
   	
   	
   	{path:"/city/:id/list/storeList", component: this.getStoreSearch()},
@@ -249,7 +257,7 @@ class CityBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

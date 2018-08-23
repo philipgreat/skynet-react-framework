@@ -119,6 +119,7 @@ class TransactionTypeBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/transactionType/${this.props.transactionType.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class TransactionTypeBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/transactionType/${this.props.transactionType.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -282,9 +286,13 @@ class TransactionTypeBizApp extends React.PureComponent {
   
   buildRouters = () =>{
   	const {TransactionTypeDashboard} = GlobalComponents
+  	const {TransactionTypePreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/transactionType/:id/dashboard", component: TransactionTypeDashboard},
+  	{path:"/transactionType/:id/preference", component: TransactionTypePreference},
+  	
   	
   	
   	{path:"/transactionType/:id/list/platformAccountDetailsList", component: this.getPlatformAccountDetailsSearch()},
@@ -366,7 +374,7 @@ class TransactionTypeBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}

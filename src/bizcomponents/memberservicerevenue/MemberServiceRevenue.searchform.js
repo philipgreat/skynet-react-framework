@@ -67,7 +67,6 @@ class MemberServiceRevenueSearchForm extends PureComponent {
         ...this.buildStringSearchParameters(fieldsValue, 'memberName'),
         ...this.buildStringSearchParameters(fieldsValue, 'storeName'),
         ...this.buildStringSearchParameters(fieldsValue, 'storeServiceRevenueRate'),
-        ...this.buildStringSearchParameters(fieldsValue, 'platformServiceRevenueRate'),
 
       }
       const { owner } = this.props
@@ -145,14 +144,6 @@ class MemberServiceRevenueSearchForm extends PureComponent {
             <FormItem label="网点会员服务收益百分比">
               {getFieldDecorator('storeServiceRevenueRate')(
                 <Input placeholder="请输入网点会员服务收益百分比" />
-              )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
-            <FormItem label="平台服务收益百分比">
-              {getFieldDecorator('platformServiceRevenueRate')(
-                <Input placeholder="请输入平台服务收益百分比" />
               )}
             </FormItem>
           </Col>
