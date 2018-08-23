@@ -4,7 +4,7 @@ import { Form, Icon, Input, Button, Checkbox,Alert,message } from 'antd';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-
+import { Link, Route, Redirect, Switch } from 'dva/router'
 
 import { Layout } from 'antd';
 import styles  from './LoginForm.less'
@@ -57,15 +57,12 @@ class NormalLoginForm extends Component {
                     })(
                         <Input prefix={<Icon type="lock" style={{ fontSize: 20 }} />} type="password" placeholder="密码" />
                     )}
+                    
                 </FormItem>
                 <FormItem>
-                    {getFieldDecorator('remember', {
-                        valuePropName: 'checked',
-                        initialValue: true,
-                    })(
-                        <Checkbox style={{float: 'left'}}>记住我</Checkbox>
-                    )}
-                    <a className="login-form-forgot" href="" style={{float: 'right'}}>忘记密码</a>
+                    
+                   
+                    <Link to="/forgetpass" style={{float: 'right'}}>忘记密码</Link>
                     <Button type="primary" htmlType="submit" className="login-form-button" style={{width: '100%'}}>
                         登录
                     </Button>

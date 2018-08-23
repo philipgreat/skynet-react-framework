@@ -6,6 +6,7 @@ import CarInspectionPlatformBase from './carinspectionplatform/CarInspectionPlat
 import CarInspectionPlatformBizApp from './carinspectionplatform/CarInspectionPlatform.app';
 import CarInspectionPlatformModel from './carinspectionplatform/CarInspectionPlatform.model';
 import CarInspectionPlatformDashboard from './carinspectionplatform/CarInspectionPlatform.dashboard';
+import CarInspectionPlatformPreference from './carinspectionplatform/CarInspectionPlatform.preference';
 import CarInspectionPlatformModalTable from './carinspectionplatform/CarInspectionPlatform.modaltable';
 import CarInspectionPlatformSearch from './carinspectionplatform/CarInspectionPlatform.search';
 import CarInspectionPlatformSearchForm from './carinspectionplatform/CarInspectionPlatform.searchform';
@@ -17,6 +18,7 @@ import PlatformConfigurationBase from './platformconfiguration/PlatformConfigura
 import PlatformConfigurationBizApp from './platformconfiguration/PlatformConfiguration.app';
 import PlatformConfigurationModel from './platformconfiguration/PlatformConfiguration.model';
 import PlatformConfigurationDashboard from './platformconfiguration/PlatformConfiguration.dashboard';
+import PlatformConfigurationPreference from './platformconfiguration/PlatformConfiguration.preference';
 import PlatformConfigurationModalTable from './platformconfiguration/PlatformConfiguration.modaltable';
 import PlatformConfigurationSearch from './platformconfiguration/PlatformConfiguration.search';
 import PlatformConfigurationSearchForm from './platformconfiguration/PlatformConfiguration.searchform';
@@ -28,6 +30,7 @@ import ProvinceBase from './province/Province.base';
 import ProvinceBizApp from './province/Province.app';
 import ProvinceModel from './province/Province.model';
 import ProvinceDashboard from './province/Province.dashboard';
+import ProvincePreference from './province/Province.preference';
 import ProvinceModalTable from './province/Province.modaltable';
 import ProvinceSearch from './province/Province.search';
 import ProvinceSearchForm from './province/Province.searchform';
@@ -39,6 +42,7 @@ import CityBase from './city/City.base';
 import CityBizApp from './city/City.app';
 import CityModel from './city/City.model';
 import CityDashboard from './city/City.dashboard';
+import CityPreference from './city/City.preference';
 import CityModalTable from './city/City.modaltable';
 import CitySearch from './city/City.search';
 import CitySearchForm from './city/City.searchform';
@@ -50,6 +54,7 @@ import AvailableProductBase from './availableproduct/AvailableProduct.base';
 import AvailableProductBizApp from './availableproduct/AvailableProduct.app';
 import AvailableProductModel from './availableproduct/AvailableProduct.model';
 import AvailableProductDashboard from './availableproduct/AvailableProduct.dashboard';
+import AvailableProductPreference from './availableproduct/AvailableProduct.preference';
 import AvailableProductModalTable from './availableproduct/AvailableProduct.modaltable';
 import AvailableProductSearch from './availableproduct/AvailableProduct.search';
 import AvailableProductSearchForm from './availableproduct/AvailableProduct.searchform';
@@ -61,6 +66,7 @@ import AvailableVehicleTypeBase from './availablevehicletype/AvailableVehicleTyp
 import AvailableVehicleTypeBizApp from './availablevehicletype/AvailableVehicleType.app';
 import AvailableVehicleTypeModel from './availablevehicletype/AvailableVehicleType.model';
 import AvailableVehicleTypeDashboard from './availablevehicletype/AvailableVehicleType.dashboard';
+import AvailableVehicleTypePreference from './availablevehicletype/AvailableVehicleType.preference';
 import AvailableVehicleTypeModalTable from './availablevehicletype/AvailableVehicleType.modaltable';
 import AvailableVehicleTypeSearch from './availablevehicletype/AvailableVehicleType.search';
 import AvailableVehicleTypeSearchForm from './availablevehicletype/AvailableVehicleType.searchform';
@@ -72,6 +78,7 @@ import AvailableVehicleUseCharacterBase from './availablevehicleusecharacter/Ava
 import AvailableVehicleUseCharacterBizApp from './availablevehicleusecharacter/AvailableVehicleUseCharacter.app';
 import AvailableVehicleUseCharacterModel from './availablevehicleusecharacter/AvailableVehicleUseCharacter.model';
 import AvailableVehicleUseCharacterDashboard from './availablevehicleusecharacter/AvailableVehicleUseCharacter.dashboard';
+import AvailableVehicleUseCharacterPreference from './availablevehicleusecharacter/AvailableVehicleUseCharacter.preference';
 import AvailableVehicleUseCharacterModalTable from './availablevehicleusecharacter/AvailableVehicleUseCharacter.modaltable';
 import AvailableVehicleUseCharacterSearch from './availablevehicleusecharacter/AvailableVehicleUseCharacter.search';
 import AvailableVehicleUseCharacterSearchForm from './availablevehicleusecharacter/AvailableVehicleUseCharacter.searchform';
@@ -83,6 +90,7 @@ import ContractBase from './contract/Contract.base';
 import ContractBizApp from './contract/Contract.app';
 import ContractModel from './contract/Contract.model';
 import ContractDashboard from './contract/Contract.dashboard';
+import ContractPreference from './contract/Contract.preference';
 import ContractModalTable from './contract/Contract.modaltable';
 import ContractSearch from './contract/Contract.search';
 import ContractSearchForm from './contract/Contract.searchform';
@@ -94,6 +102,7 @@ import ServicePriceBase from './serviceprice/ServicePrice.base';
 import ServicePriceBizApp from './serviceprice/ServicePrice.app';
 import ServicePriceModel from './serviceprice/ServicePrice.model';
 import ServicePriceDashboard from './serviceprice/ServicePrice.dashboard';
+import ServicePricePreference from './serviceprice/ServicePrice.preference';
 import ServicePriceModalTable from './serviceprice/ServicePrice.modaltable';
 import ServicePriceSearch from './serviceprice/ServicePrice.search';
 import ServicePriceSearchForm from './serviceprice/ServicePrice.searchform';
@@ -105,6 +114,7 @@ import AvailableServiceBase from './availableservice/AvailableService.base';
 import AvailableServiceBizApp from './availableservice/AvailableService.app';
 import AvailableServiceModel from './availableservice/AvailableService.model';
 import AvailableServiceDashboard from './availableservice/AvailableService.dashboard';
+import AvailableServicePreference from './availableservice/AvailableService.preference';
 import AvailableServiceModalTable from './availableservice/AvailableService.modaltable';
 import AvailableServiceSearch from './availableservice/AvailableService.search';
 import AvailableServiceSearchForm from './availableservice/AvailableService.searchform';
@@ -116,6 +126,7 @@ import ProductPriceBase from './productprice/ProductPrice.base';
 import ProductPriceBizApp from './productprice/ProductPrice.app';
 import ProductPriceModel from './productprice/ProductPrice.model';
 import ProductPriceDashboard from './productprice/ProductPrice.dashboard';
+import ProductPricePreference from './productprice/ProductPrice.preference';
 import ProductPriceModalTable from './productprice/ProductPrice.modaltable';
 import ProductPriceSearch from './productprice/ProductPrice.search';
 import ProductPriceSearchForm from './productprice/ProductPrice.searchform';
@@ -127,6 +138,7 @@ import AvailableInsuranceBase from './availableinsurance/AvailableInsurance.base
 import AvailableInsuranceBizApp from './availableinsurance/AvailableInsurance.app';
 import AvailableInsuranceModel from './availableinsurance/AvailableInsurance.model';
 import AvailableInsuranceDashboard from './availableinsurance/AvailableInsurance.dashboard';
+import AvailableInsurancePreference from './availableinsurance/AvailableInsurance.preference';
 import AvailableInsuranceModalTable from './availableinsurance/AvailableInsurance.modaltable';
 import AvailableInsuranceSearch from './availableinsurance/AvailableInsurance.search';
 import AvailableInsuranceSearchForm from './availableinsurance/AvailableInsurance.searchform';
@@ -138,6 +150,7 @@ import VehicleRepairingAllowanceBase from './vehiclerepairingallowance/VehicleRe
 import VehicleRepairingAllowanceBizApp from './vehiclerepairingallowance/VehicleRepairingAllowance.app';
 import VehicleRepairingAllowanceModel from './vehiclerepairingallowance/VehicleRepairingAllowance.model';
 import VehicleRepairingAllowanceDashboard from './vehiclerepairingallowance/VehicleRepairingAllowance.dashboard';
+import VehicleRepairingAllowancePreference from './vehiclerepairingallowance/VehicleRepairingAllowance.preference';
 import VehicleRepairingAllowanceModalTable from './vehiclerepairingallowance/VehicleRepairingAllowance.modaltable';
 import VehicleRepairingAllowanceSearch from './vehiclerepairingallowance/VehicleRepairingAllowance.search';
 import VehicleRepairingAllowanceSearchForm from './vehiclerepairingallowance/VehicleRepairingAllowance.searchform';
@@ -149,6 +162,7 @@ import AvailableHandOverItemBase from './availablehandoveritem/AvailableHandOver
 import AvailableHandOverItemBizApp from './availablehandoveritem/AvailableHandOverItem.app';
 import AvailableHandOverItemModel from './availablehandoveritem/AvailableHandOverItem.model';
 import AvailableHandOverItemDashboard from './availablehandoveritem/AvailableHandOverItem.dashboard';
+import AvailableHandOverItemPreference from './availablehandoveritem/AvailableHandOverItem.preference';
 import AvailableHandOverItemModalTable from './availablehandoveritem/AvailableHandOverItem.modaltable';
 import AvailableHandOverItemSearch from './availablehandoveritem/AvailableHandOverItem.search';
 import AvailableHandOverItemSearchForm from './availablehandoveritem/AvailableHandOverItem.searchform';
@@ -160,6 +174,7 @@ import CustomerBase from './customer/Customer.base';
 import CustomerBizApp from './customer/Customer.app';
 import CustomerModel from './customer/Customer.model';
 import CustomerDashboard from './customer/Customer.dashboard';
+import CustomerPreference from './customer/Customer.preference';
 import CustomerModalTable from './customer/Customer.modaltable';
 import CustomerSearch from './customer/Customer.search';
 import CustomerSearchForm from './customer/Customer.searchform';
@@ -171,6 +186,7 @@ import VehicleServiceCompanyBase from './vehicleservicecompany/VehicleServiceCom
 import VehicleServiceCompanyBizApp from './vehicleservicecompany/VehicleServiceCompany.app';
 import VehicleServiceCompanyModel from './vehicleservicecompany/VehicleServiceCompany.model';
 import VehicleServiceCompanyDashboard from './vehicleservicecompany/VehicleServiceCompany.dashboard';
+import VehicleServiceCompanyPreference from './vehicleservicecompany/VehicleServiceCompany.preference';
 import VehicleServiceCompanyModalTable from './vehicleservicecompany/VehicleServiceCompany.modaltable';
 import VehicleServiceCompanySearch from './vehicleservicecompany/VehicleServiceCompany.search';
 import VehicleServiceCompanySearchForm from './vehicleservicecompany/VehicleServiceCompany.searchform';
@@ -182,6 +198,7 @@ import ServiceCompanyAuthenticationInfoBase from './servicecompanyauthentication
 import ServiceCompanyAuthenticationInfoBizApp from './servicecompanyauthenticationinfo/ServiceCompanyAuthenticationInfo.app';
 import ServiceCompanyAuthenticationInfoModel from './servicecompanyauthenticationinfo/ServiceCompanyAuthenticationInfo.model';
 import ServiceCompanyAuthenticationInfoDashboard from './servicecompanyauthenticationinfo/ServiceCompanyAuthenticationInfo.dashboard';
+import ServiceCompanyAuthenticationInfoPreference from './servicecompanyauthenticationinfo/ServiceCompanyAuthenticationInfo.preference';
 import ServiceCompanyAuthenticationInfoModalTable from './servicecompanyauthenticationinfo/ServiceCompanyAuthenticationInfo.modaltable';
 import ServiceCompanyAuthenticationInfoSearch from './servicecompanyauthenticationinfo/ServiceCompanyAuthenticationInfo.search';
 import ServiceCompanyAuthenticationInfoSearchForm from './servicecompanyauthenticationinfo/ServiceCompanyAuthenticationInfo.searchform';
@@ -193,6 +210,7 @@ import VehicleInspectionPlateNumberPatternBase from './vehicleinspectionplatenum
 import VehicleInspectionPlateNumberPatternBizApp from './vehicleinspectionplatenumberpattern/VehicleInspectionPlateNumberPattern.app';
 import VehicleInspectionPlateNumberPatternModel from './vehicleinspectionplatenumberpattern/VehicleInspectionPlateNumberPattern.model';
 import VehicleInspectionPlateNumberPatternDashboard from './vehicleinspectionplatenumberpattern/VehicleInspectionPlateNumberPattern.dashboard';
+import VehicleInspectionPlateNumberPatternPreference from './vehicleinspectionplatenumberpattern/VehicleInspectionPlateNumberPattern.preference';
 import VehicleInspectionPlateNumberPatternModalTable from './vehicleinspectionplatenumberpattern/VehicleInspectionPlateNumberPattern.modaltable';
 import VehicleInspectionPlateNumberPatternSearch from './vehicleinspectionplatenumberpattern/VehicleInspectionPlateNumberPattern.search';
 import VehicleInspectionPlateNumberPatternSearchForm from './vehicleinspectionplatenumberpattern/VehicleInspectionPlateNumberPattern.searchform';
@@ -204,6 +222,7 @@ import FileInspectionPlateNumberPatternBase from './fileinspectionplatenumberpat
 import FileInspectionPlateNumberPatternBizApp from './fileinspectionplatenumberpattern/FileInspectionPlateNumberPattern.app';
 import FileInspectionPlateNumberPatternModel from './fileinspectionplatenumberpattern/FileInspectionPlateNumberPattern.model';
 import FileInspectionPlateNumberPatternDashboard from './fileinspectionplatenumberpattern/FileInspectionPlateNumberPattern.dashboard';
+import FileInspectionPlateNumberPatternPreference from './fileinspectionplatenumberpattern/FileInspectionPlateNumberPattern.preference';
 import FileInspectionPlateNumberPatternModalTable from './fileinspectionplatenumberpattern/FileInspectionPlateNumberPattern.modaltable';
 import FileInspectionPlateNumberPatternSearch from './fileinspectionplatenumberpattern/FileInspectionPlateNumberPattern.search';
 import FileInspectionPlateNumberPatternSearchForm from './fileinspectionplatenumberpattern/FileInspectionPlateNumberPattern.searchform';
@@ -215,6 +234,7 @@ import VehicleServiceCompanyBusinessScopeBase from './vehicleservicecompanybusin
 import VehicleServiceCompanyBusinessScopeBizApp from './vehicleservicecompanybusinessscope/VehicleServiceCompanyBusinessScope.app';
 import VehicleServiceCompanyBusinessScopeModel from './vehicleservicecompanybusinessscope/VehicleServiceCompanyBusinessScope.model';
 import VehicleServiceCompanyBusinessScopeDashboard from './vehicleservicecompanybusinessscope/VehicleServiceCompanyBusinessScope.dashboard';
+import VehicleServiceCompanyBusinessScopePreference from './vehicleservicecompanybusinessscope/VehicleServiceCompanyBusinessScope.preference';
 import VehicleServiceCompanyBusinessScopeModalTable from './vehicleservicecompanybusinessscope/VehicleServiceCompanyBusinessScope.modaltable';
 import VehicleServiceCompanyBusinessScopeSearch from './vehicleservicecompanybusinessscope/VehicleServiceCompanyBusinessScope.search';
 import VehicleServiceCompanyBusinessScopeSearchForm from './vehicleservicecompanybusinessscope/VehicleServiceCompanyBusinessScope.searchform';
@@ -226,6 +246,7 @@ import CompanyQrcodePromotionRecordBase from './companyqrcodepromotionrecord/Com
 import CompanyQrcodePromotionRecordBizApp from './companyqrcodepromotionrecord/CompanyQrcodePromotionRecord.app';
 import CompanyQrcodePromotionRecordModel from './companyqrcodepromotionrecord/CompanyQrcodePromotionRecord.model';
 import CompanyQrcodePromotionRecordDashboard from './companyqrcodepromotionrecord/CompanyQrcodePromotionRecord.dashboard';
+import CompanyQrcodePromotionRecordPreference from './companyqrcodepromotionrecord/CompanyQrcodePromotionRecord.preference';
 import CompanyQrcodePromotionRecordModalTable from './companyqrcodepromotionrecord/CompanyQrcodePromotionRecord.modaltable';
 import CompanyQrcodePromotionRecordSearch from './companyqrcodepromotionrecord/CompanyQrcodePromotionRecord.search';
 import CompanyQrcodePromotionRecordSearchForm from './companyqrcodepromotionrecord/CompanyQrcodePromotionRecord.searchform';
@@ -237,6 +258,7 @@ import VehicleServiceCompanyDispatcherBase from './vehicleservicecompanydispatch
 import VehicleServiceCompanyDispatcherBizApp from './vehicleservicecompanydispatcher/VehicleServiceCompanyDispatcher.app';
 import VehicleServiceCompanyDispatcherModel from './vehicleservicecompanydispatcher/VehicleServiceCompanyDispatcher.model';
 import VehicleServiceCompanyDispatcherDashboard from './vehicleservicecompanydispatcher/VehicleServiceCompanyDispatcher.dashboard';
+import VehicleServiceCompanyDispatcherPreference from './vehicleservicecompanydispatcher/VehicleServiceCompanyDispatcher.preference';
 import VehicleServiceCompanyDispatcherModalTable from './vehicleservicecompanydispatcher/VehicleServiceCompanyDispatcher.modaltable';
 import VehicleServiceCompanyDispatcherSearch from './vehicleservicecompanydispatcher/VehicleServiceCompanyDispatcher.search';
 import VehicleServiceCompanyDispatcherSearchForm from './vehicleservicecompanydispatcher/VehicleServiceCompanyDispatcher.searchform';
@@ -248,6 +270,7 @@ import CompanyDiscountBase from './companydiscount/CompanyDiscount.base';
 import CompanyDiscountBizApp from './companydiscount/CompanyDiscount.app';
 import CompanyDiscountModel from './companydiscount/CompanyDiscount.model';
 import CompanyDiscountDashboard from './companydiscount/CompanyDiscount.dashboard';
+import CompanyDiscountPreference from './companydiscount/CompanyDiscount.preference';
 import CompanyDiscountModalTable from './companydiscount/CompanyDiscount.modaltable';
 import CompanyDiscountSearch from './companydiscount/CompanyDiscount.search';
 import CompanyDiscountSearchForm from './companydiscount/CompanyDiscount.searchform';
@@ -259,6 +282,7 @@ import VehicleServiceCompanyEmployeeBase from './vehicleservicecompanyemployee/V
 import VehicleServiceCompanyEmployeeBizApp from './vehicleservicecompanyemployee/VehicleServiceCompanyEmployee.app';
 import VehicleServiceCompanyEmployeeModel from './vehicleservicecompanyemployee/VehicleServiceCompanyEmployee.model';
 import VehicleServiceCompanyEmployeeDashboard from './vehicleservicecompanyemployee/VehicleServiceCompanyEmployee.dashboard';
+import VehicleServiceCompanyEmployeePreference from './vehicleservicecompanyemployee/VehicleServiceCompanyEmployee.preference';
 import VehicleServiceCompanyEmployeeModalTable from './vehicleservicecompanyemployee/VehicleServiceCompanyEmployee.modaltable';
 import VehicleServiceCompanyEmployeeSearch from './vehicleservicecompanyemployee/VehicleServiceCompanyEmployee.search';
 import VehicleServiceCompanyEmployeeSearchForm from './vehicleservicecompanyemployee/VehicleServiceCompanyEmployee.searchform';
@@ -270,6 +294,7 @@ import ServiceOrderFilterBase from './serviceorderfilter/ServiceOrderFilter.base
 import ServiceOrderFilterBizApp from './serviceorderfilter/ServiceOrderFilter.app';
 import ServiceOrderFilterModel from './serviceorderfilter/ServiceOrderFilter.model';
 import ServiceOrderFilterDashboard from './serviceorderfilter/ServiceOrderFilter.dashboard';
+import ServiceOrderFilterPreference from './serviceorderfilter/ServiceOrderFilter.preference';
 import ServiceOrderFilterModalTable from './serviceorderfilter/ServiceOrderFilter.modaltable';
 import ServiceOrderFilterSearch from './serviceorderfilter/ServiceOrderFilter.search';
 import ServiceOrderFilterSearchForm from './serviceorderfilter/ServiceOrderFilter.searchform';
@@ -281,6 +306,7 @@ import CompanyEmployeeQualificationBase from './companyemployeequalification/Com
 import CompanyEmployeeQualificationBizApp from './companyemployeequalification/CompanyEmployeeQualification.app';
 import CompanyEmployeeQualificationModel from './companyemployeequalification/CompanyEmployeeQualification.model';
 import CompanyEmployeeQualificationDashboard from './companyemployeequalification/CompanyEmployeeQualification.dashboard';
+import CompanyEmployeeQualificationPreference from './companyemployeequalification/CompanyEmployeeQualification.preference';
 import CompanyEmployeeQualificationModalTable from './companyemployeequalification/CompanyEmployeeQualification.modaltable';
 import CompanyEmployeeQualificationSearch from './companyemployeequalification/CompanyEmployeeQualification.search';
 import CompanyEmployeeQualificationSearchForm from './companyemployeequalification/CompanyEmployeeQualification.searchform';
@@ -292,6 +318,7 @@ import CompanyEmployeeServingBase from './companyemployeeserving/CompanyEmployee
 import CompanyEmployeeServingBizApp from './companyemployeeserving/CompanyEmployeeServing.app';
 import CompanyEmployeeServingModel from './companyemployeeserving/CompanyEmployeeServing.model';
 import CompanyEmployeeServingDashboard from './companyemployeeserving/CompanyEmployeeServing.dashboard';
+import CompanyEmployeeServingPreference from './companyemployeeserving/CompanyEmployeeServing.preference';
 import CompanyEmployeeServingModalTable from './companyemployeeserving/CompanyEmployeeServing.modaltable';
 import CompanyEmployeeServingSearch from './companyemployeeserving/CompanyEmployeeServing.search';
 import CompanyEmployeeServingSearchForm from './companyemployeeserving/CompanyEmployeeServing.searchform';
@@ -303,6 +330,7 @@ import CompanyEmployeeTerminationBase from './companyemployeetermination/Company
 import CompanyEmployeeTerminationBizApp from './companyemployeetermination/CompanyEmployeeTermination.app';
 import CompanyEmployeeTerminationModel from './companyemployeetermination/CompanyEmployeeTermination.model';
 import CompanyEmployeeTerminationDashboard from './companyemployeetermination/CompanyEmployeeTermination.dashboard';
+import CompanyEmployeeTerminationPreference from './companyemployeetermination/CompanyEmployeeTermination.preference';
 import CompanyEmployeeTerminationModalTable from './companyemployeetermination/CompanyEmployeeTermination.modaltable';
 import CompanyEmployeeTerminationSearch from './companyemployeetermination/CompanyEmployeeTermination.search';
 import CompanyEmployeeTerminationSearchForm from './companyemployeetermination/CompanyEmployeeTermination.searchform';
@@ -314,6 +342,7 @@ import EmployeeDrivingLicenseBase from './employeedrivinglicense/EmployeeDriving
 import EmployeeDrivingLicenseBizApp from './employeedrivinglicense/EmployeeDrivingLicense.app';
 import EmployeeDrivingLicenseModel from './employeedrivinglicense/EmployeeDrivingLicense.model';
 import EmployeeDrivingLicenseDashboard from './employeedrivinglicense/EmployeeDrivingLicense.dashboard';
+import EmployeeDrivingLicensePreference from './employeedrivinglicense/EmployeeDrivingLicense.preference';
 import EmployeeDrivingLicenseModalTable from './employeedrivinglicense/EmployeeDrivingLicense.modaltable';
 import EmployeeDrivingLicenseSearch from './employeedrivinglicense/EmployeeDrivingLicense.search';
 import EmployeeDrivingLicenseSearchForm from './employeedrivinglicense/EmployeeDrivingLicense.searchform';
@@ -325,6 +354,7 @@ import InspectionStationBase from './inspectionstation/InspectionStation.base';
 import InspectionStationBizApp from './inspectionstation/InspectionStation.app';
 import InspectionStationModel from './inspectionstation/InspectionStation.model';
 import InspectionStationDashboard from './inspectionstation/InspectionStation.dashboard';
+import InspectionStationPreference from './inspectionstation/InspectionStation.preference';
 import InspectionStationModalTable from './inspectionstation/InspectionStation.modaltable';
 import InspectionStationSearch from './inspectionstation/InspectionStation.search';
 import InspectionStationSearchForm from './inspectionstation/InspectionStation.searchform';
@@ -336,6 +366,7 @@ import VehicleInfoBase from './vehicleinfo/VehicleInfo.base';
 import VehicleInfoBizApp from './vehicleinfo/VehicleInfo.app';
 import VehicleInfoModel from './vehicleinfo/VehicleInfo.model';
 import VehicleInfoDashboard from './vehicleinfo/VehicleInfo.dashboard';
+import VehicleInfoPreference from './vehicleinfo/VehicleInfo.preference';
 import VehicleInfoModalTable from './vehicleinfo/VehicleInfo.modaltable';
 import VehicleInfoSearch from './vehicleinfo/VehicleInfo.search';
 import VehicleInfoSearchForm from './vehicleinfo/VehicleInfo.searchform';
@@ -347,6 +378,7 @@ import VehicleInspectionOrderBase from './vehicleinspectionorder/VehicleInspecti
 import VehicleInspectionOrderBizApp from './vehicleinspectionorder/VehicleInspectionOrder.app';
 import VehicleInspectionOrderModel from './vehicleinspectionorder/VehicleInspectionOrder.model';
 import VehicleInspectionOrderDashboard from './vehicleinspectionorder/VehicleInspectionOrder.dashboard';
+import VehicleInspectionOrderPreference from './vehicleinspectionorder/VehicleInspectionOrder.preference';
 import VehicleInspectionOrderModalTable from './vehicleinspectionorder/VehicleInspectionOrder.modaltable';
 import VehicleInspectionOrderSearch from './vehicleinspectionorder/VehicleInspectionOrder.search';
 import VehicleInspectionOrderSearchForm from './vehicleinspectionorder/VehicleInspectionOrder.searchform';
@@ -358,6 +390,7 @@ import VehicleInspectionInsuranceOrderBase from './vehicleinspectioninsuranceord
 import VehicleInspectionInsuranceOrderBizApp from './vehicleinspectioninsuranceorder/VehicleInspectionInsuranceOrder.app';
 import VehicleInspectionInsuranceOrderModel from './vehicleinspectioninsuranceorder/VehicleInspectionInsuranceOrder.model';
 import VehicleInspectionInsuranceOrderDashboard from './vehicleinspectioninsuranceorder/VehicleInspectionInsuranceOrder.dashboard';
+import VehicleInspectionInsuranceOrderPreference from './vehicleinspectioninsuranceorder/VehicleInspectionInsuranceOrder.preference';
 import VehicleInspectionInsuranceOrderModalTable from './vehicleinspectioninsuranceorder/VehicleInspectionInsuranceOrder.modaltable';
 import VehicleInspectionInsuranceOrderSearch from './vehicleinspectioninsuranceorder/VehicleInspectionInsuranceOrder.search';
 import VehicleInspectionInsuranceOrderSearchForm from './vehicleinspectioninsuranceorder/VehicleInspectionInsuranceOrder.searchform';
@@ -369,6 +402,7 @@ import VehicleInspectionOrderChargeBase from './vehicleinspectionordercharge/Veh
 import VehicleInspectionOrderChargeBizApp from './vehicleinspectionordercharge/VehicleInspectionOrderCharge.app';
 import VehicleInspectionOrderChargeModel from './vehicleinspectionordercharge/VehicleInspectionOrderCharge.model';
 import VehicleInspectionOrderChargeDashboard from './vehicleinspectionordercharge/VehicleInspectionOrderCharge.dashboard';
+import VehicleInspectionOrderChargePreference from './vehicleinspectionordercharge/VehicleInspectionOrderCharge.preference';
 import VehicleInspectionOrderChargeModalTable from './vehicleinspectionordercharge/VehicleInspectionOrderCharge.modaltable';
 import VehicleInspectionOrderChargeSearch from './vehicleinspectionordercharge/VehicleInspectionOrderCharge.search';
 import VehicleInspectionOrderChargeSearchForm from './vehicleinspectionordercharge/VehicleInspectionOrderCharge.searchform';
@@ -380,6 +414,7 @@ import VehicleInspectionOrderServiceLogBase from './vehicleinspectionorderservic
 import VehicleInspectionOrderServiceLogBizApp from './vehicleinspectionorderservicelog/VehicleInspectionOrderServiceLog.app';
 import VehicleInspectionOrderServiceLogModel from './vehicleinspectionorderservicelog/VehicleInspectionOrderServiceLog.model';
 import VehicleInspectionOrderServiceLogDashboard from './vehicleinspectionorderservicelog/VehicleInspectionOrderServiceLog.dashboard';
+import VehicleInspectionOrderServiceLogPreference from './vehicleinspectionorderservicelog/VehicleInspectionOrderServiceLog.preference';
 import VehicleInspectionOrderServiceLogModalTable from './vehicleinspectionorderservicelog/VehicleInspectionOrderServiceLog.modaltable';
 import VehicleInspectionOrderServiceLogSearch from './vehicleinspectionorderservicelog/VehicleInspectionOrderServiceLog.search';
 import VehicleInspectionOrderServiceLogSearchForm from './vehicleinspectionorderservicelog/VehicleInspectionOrderServiceLog.searchform';
@@ -391,6 +426,7 @@ import VehicleInspectionOrderPaymentBase from './vehicleinspectionorderpayment/V
 import VehicleInspectionOrderPaymentBizApp from './vehicleinspectionorderpayment/VehicleInspectionOrderPayment.app';
 import VehicleInspectionOrderPaymentModel from './vehicleinspectionorderpayment/VehicleInspectionOrderPayment.model';
 import VehicleInspectionOrderPaymentDashboard from './vehicleinspectionorderpayment/VehicleInspectionOrderPayment.dashboard';
+import VehicleInspectionOrderPaymentPreference from './vehicleinspectionorderpayment/VehicleInspectionOrderPayment.preference';
 import VehicleInspectionOrderPaymentModalTable from './vehicleinspectionorderpayment/VehicleInspectionOrderPayment.modaltable';
 import VehicleInspectionOrderPaymentSearch from './vehicleinspectionorderpayment/VehicleInspectionOrderPayment.search';
 import VehicleInspectionOrderPaymentSearchForm from './vehicleinspectionorderpayment/VehicleInspectionOrderPayment.searchform';
@@ -402,6 +438,7 @@ import HandOverChecklistItemBase from './handoverchecklistitem/HandOverChecklist
 import HandOverChecklistItemBizApp from './handoverchecklistitem/HandOverChecklistItem.app';
 import HandOverChecklistItemModel from './handoverchecklistitem/HandOverChecklistItem.model';
 import HandOverChecklistItemDashboard from './handoverchecklistitem/HandOverChecklistItem.dashboard';
+import HandOverChecklistItemPreference from './handoverchecklistitem/HandOverChecklistItem.preference';
 import HandOverChecklistItemModalTable from './handoverchecklistitem/HandOverChecklistItem.modaltable';
 import HandOverChecklistItemSearch from './handoverchecklistitem/HandOverChecklistItem.search';
 import HandOverChecklistItemSearchForm from './handoverchecklistitem/HandOverChecklistItem.searchform';
@@ -413,6 +450,7 @@ import ServiceVehicleMovementC2mBase from './servicevehiclemovementc2m/ServiceVe
 import ServiceVehicleMovementC2mBizApp from './servicevehiclemovementc2m/ServiceVehicleMovementC2m.app';
 import ServiceVehicleMovementC2mModel from './servicevehiclemovementc2m/ServiceVehicleMovementC2m.model';
 import ServiceVehicleMovementC2mDashboard from './servicevehiclemovementc2m/ServiceVehicleMovementC2m.dashboard';
+import ServiceVehicleMovementC2mPreference from './servicevehiclemovementc2m/ServiceVehicleMovementC2m.preference';
 import ServiceVehicleMovementC2mModalTable from './servicevehiclemovementc2m/ServiceVehicleMovementC2m.modaltable';
 import ServiceVehicleMovementC2mSearch from './servicevehiclemovementc2m/ServiceVehicleMovementC2m.search';
 import ServiceVehicleMovementC2mSearchForm from './servicevehiclemovementc2m/ServiceVehicleMovementC2m.searchform';
@@ -424,6 +462,7 @@ import ServiceVehicleMovementM2mBase from './servicevehiclemovementm2m/ServiceVe
 import ServiceVehicleMovementM2mBizApp from './servicevehiclemovementm2m/ServiceVehicleMovementM2m.app';
 import ServiceVehicleMovementM2mModel from './servicevehiclemovementm2m/ServiceVehicleMovementM2m.model';
 import ServiceVehicleMovementM2mDashboard from './servicevehiclemovementm2m/ServiceVehicleMovementM2m.dashboard';
+import ServiceVehicleMovementM2mPreference from './servicevehiclemovementm2m/ServiceVehicleMovementM2m.preference';
 import ServiceVehicleMovementM2mModalTable from './servicevehiclemovementm2m/ServiceVehicleMovementM2m.modaltable';
 import ServiceVehicleMovementM2mSearch from './servicevehiclemovementm2m/ServiceVehicleMovementM2m.search';
 import ServiceVehicleMovementM2mSearchForm from './servicevehiclemovementm2m/ServiceVehicleMovementM2m.searchform';
@@ -435,6 +474,7 @@ import ServiceVehicleMovementM2cBase from './servicevehiclemovementm2c/ServiceVe
 import ServiceVehicleMovementM2cBizApp from './servicevehiclemovementm2c/ServiceVehicleMovementM2c.app';
 import ServiceVehicleMovementM2cModel from './servicevehiclemovementm2c/ServiceVehicleMovementM2c.model';
 import ServiceVehicleMovementM2cDashboard from './servicevehiclemovementm2c/ServiceVehicleMovementM2c.dashboard';
+import ServiceVehicleMovementM2cPreference from './servicevehiclemovementm2c/ServiceVehicleMovementM2c.preference';
 import ServiceVehicleMovementM2cModalTable from './servicevehiclemovementm2c/ServiceVehicleMovementM2c.modaltable';
 import ServiceVehicleMovementM2cSearch from './servicevehiclemovementm2c/ServiceVehicleMovementM2c.search';
 import ServiceVehicleMovementM2cSearchForm from './servicevehiclemovementm2c/ServiceVehicleMovementM2c.searchform';
@@ -446,6 +486,7 @@ import ServiceFileMovementC2mBase from './servicefilemovementc2m/ServiceFileMove
 import ServiceFileMovementC2mBizApp from './servicefilemovementc2m/ServiceFileMovementC2m.app';
 import ServiceFileMovementC2mModel from './servicefilemovementc2m/ServiceFileMovementC2m.model';
 import ServiceFileMovementC2mDashboard from './servicefilemovementc2m/ServiceFileMovementC2m.dashboard';
+import ServiceFileMovementC2mPreference from './servicefilemovementc2m/ServiceFileMovementC2m.preference';
 import ServiceFileMovementC2mModalTable from './servicefilemovementc2m/ServiceFileMovementC2m.modaltable';
 import ServiceFileMovementC2mSearch from './servicefilemovementc2m/ServiceFileMovementC2m.search';
 import ServiceFileMovementC2mSearchForm from './servicefilemovementc2m/ServiceFileMovementC2m.searchform';
@@ -457,6 +498,7 @@ import ServiceFileMovementM2mBase from './servicefilemovementm2m/ServiceFileMove
 import ServiceFileMovementM2mBizApp from './servicefilemovementm2m/ServiceFileMovementM2m.app';
 import ServiceFileMovementM2mModel from './servicefilemovementm2m/ServiceFileMovementM2m.model';
 import ServiceFileMovementM2mDashboard from './servicefilemovementm2m/ServiceFileMovementM2m.dashboard';
+import ServiceFileMovementM2mPreference from './servicefilemovementm2m/ServiceFileMovementM2m.preference';
 import ServiceFileMovementM2mModalTable from './servicefilemovementm2m/ServiceFileMovementM2m.modaltable';
 import ServiceFileMovementM2mSearch from './servicefilemovementm2m/ServiceFileMovementM2m.search';
 import ServiceFileMovementM2mSearchForm from './servicefilemovementm2m/ServiceFileMovementM2m.searchform';
@@ -468,6 +510,7 @@ import ServiceFileMovementM2cBase from './servicefilemovementm2c/ServiceFileMove
 import ServiceFileMovementM2cBizApp from './servicefilemovementm2c/ServiceFileMovementM2c.app';
 import ServiceFileMovementM2cModel from './servicefilemovementm2c/ServiceFileMovementM2c.model';
 import ServiceFileMovementM2cDashboard from './servicefilemovementm2c/ServiceFileMovementM2c.dashboard';
+import ServiceFileMovementM2cPreference from './servicefilemovementm2c/ServiceFileMovementM2c.preference';
 import ServiceFileMovementM2cModalTable from './servicefilemovementm2c/ServiceFileMovementM2c.modaltable';
 import ServiceFileMovementM2cSearch from './servicefilemovementm2c/ServiceFileMovementM2c.search';
 import ServiceFileMovementM2cSearchForm from './servicefilemovementm2c/ServiceFileMovementM2c.searchform';
@@ -479,6 +522,7 @@ import HandOverChecklistResultBase from './handoverchecklistresult/HandOverCheck
 import HandOverChecklistResultBizApp from './handoverchecklistresult/HandOverChecklistResult.app';
 import HandOverChecklistResultModel from './handoverchecklistresult/HandOverChecklistResult.model';
 import HandOverChecklistResultDashboard from './handoverchecklistresult/HandOverChecklistResult.dashboard';
+import HandOverChecklistResultPreference from './handoverchecklistresult/HandOverChecklistResult.preference';
 import HandOverChecklistResultModalTable from './handoverchecklistresult/HandOverChecklistResult.modaltable';
 import HandOverChecklistResultSearch from './handoverchecklistresult/HandOverChecklistResult.search';
 import HandOverChecklistResultSearchForm from './handoverchecklistresult/HandOverChecklistResult.searchform';
@@ -490,6 +534,7 @@ import ServiceInsuranceForInspectionBase from './serviceinsuranceforinspection/S
 import ServiceInsuranceForInspectionBizApp from './serviceinsuranceforinspection/ServiceInsuranceForInspection.app';
 import ServiceInsuranceForInspectionModel from './serviceinsuranceforinspection/ServiceInsuranceForInspection.model';
 import ServiceInsuranceForInspectionDashboard from './serviceinsuranceforinspection/ServiceInsuranceForInspection.dashboard';
+import ServiceInsuranceForInspectionPreference from './serviceinsuranceforinspection/ServiceInsuranceForInspection.preference';
 import ServiceInsuranceForInspectionModalTable from './serviceinsuranceforinspection/ServiceInsuranceForInspection.modaltable';
 import ServiceInsuranceForInspectionSearch from './serviceinsuranceforinspection/ServiceInsuranceForInspection.search';
 import ServiceInsuranceForInspectionSearchForm from './serviceinsuranceforinspection/ServiceInsuranceForInspection.searchform';
@@ -501,6 +546,7 @@ import ServiceVehicleInspectionBase from './servicevehicleinspection/ServiceVehi
 import ServiceVehicleInspectionBizApp from './servicevehicleinspection/ServiceVehicleInspection.app';
 import ServiceVehicleInspectionModel from './servicevehicleinspection/ServiceVehicleInspection.model';
 import ServiceVehicleInspectionDashboard from './servicevehicleinspection/ServiceVehicleInspection.dashboard';
+import ServiceVehicleInspectionPreference from './servicevehicleinspection/ServiceVehicleInspection.preference';
 import ServiceVehicleInspectionModalTable from './servicevehicleinspection/ServiceVehicleInspection.modaltable';
 import ServiceVehicleInspectionSearch from './servicevehicleinspection/ServiceVehicleInspection.search';
 import ServiceVehicleInspectionSearchForm from './servicevehicleinspection/ServiceVehicleInspection.searchform';
@@ -512,6 +558,7 @@ import ServiceFileInspectionBase from './servicefileinspection/ServiceFileInspec
 import ServiceFileInspectionBizApp from './servicefileinspection/ServiceFileInspection.app';
 import ServiceFileInspectionModel from './servicefileinspection/ServiceFileInspection.model';
 import ServiceFileInspectionDashboard from './servicefileinspection/ServiceFileInspection.dashboard';
+import ServiceFileInspectionPreference from './servicefileinspection/ServiceFileInspection.preference';
 import ServiceFileInspectionModalTable from './servicefileinspection/ServiceFileInspection.modaltable';
 import ServiceFileInspectionSearch from './servicefileinspection/ServiceFileInspection.search';
 import ServiceFileInspectionSearchForm from './servicefileinspection/ServiceFileInspection.searchform';
@@ -523,6 +570,7 @@ import ServiceVehicleRepairingBase from './servicevehiclerepairing/ServiceVehicl
 import ServiceVehicleRepairingBizApp from './servicevehiclerepairing/ServiceVehicleRepairing.app';
 import ServiceVehicleRepairingModel from './servicevehiclerepairing/ServiceVehicleRepairing.model';
 import ServiceVehicleRepairingDashboard from './servicevehiclerepairing/ServiceVehicleRepairing.dashboard';
+import ServiceVehicleRepairingPreference from './servicevehiclerepairing/ServiceVehicleRepairing.preference';
 import ServiceVehicleRepairingModalTable from './servicevehiclerepairing/ServiceVehicleRepairing.modaltable';
 import ServiceVehicleRepairingSearch from './servicevehiclerepairing/ServiceVehicleRepairing.search';
 import ServiceVehicleRepairingSearchForm from './servicevehiclerepairing/ServiceVehicleRepairing.searchform';
@@ -534,6 +582,7 @@ import RepairingAllowanceItemBase from './repairingallowanceitem/RepairingAllowa
 import RepairingAllowanceItemBizApp from './repairingallowanceitem/RepairingAllowanceItem.app';
 import RepairingAllowanceItemModel from './repairingallowanceitem/RepairingAllowanceItem.model';
 import RepairingAllowanceItemDashboard from './repairingallowanceitem/RepairingAllowanceItem.dashboard';
+import RepairingAllowanceItemPreference from './repairingallowanceitem/RepairingAllowanceItem.preference';
 import RepairingAllowanceItemModalTable from './repairingallowanceitem/RepairingAllowanceItem.modaltable';
 import RepairingAllowanceItemSearch from './repairingallowanceitem/RepairingAllowanceItem.search';
 import RepairingAllowanceItemSearchForm from './repairingallowanceitem/RepairingAllowanceItem.searchform';
@@ -545,6 +594,7 @@ import VehicleRepairingPaymentBase from './vehiclerepairingpayment/VehicleRepair
 import VehicleRepairingPaymentBizApp from './vehiclerepairingpayment/VehicleRepairingPayment.app';
 import VehicleRepairingPaymentModel from './vehiclerepairingpayment/VehicleRepairingPayment.model';
 import VehicleRepairingPaymentDashboard from './vehiclerepairingpayment/VehicleRepairingPayment.dashboard';
+import VehicleRepairingPaymentPreference from './vehiclerepairingpayment/VehicleRepairingPayment.preference';
 import VehicleRepairingPaymentModalTable from './vehiclerepairingpayment/VehicleRepairingPayment.modaltable';
 import VehicleRepairingPaymentSearch from './vehiclerepairingpayment/VehicleRepairingPayment.search';
 import VehicleRepairingPaymentSearchForm from './vehiclerepairingpayment/VehicleRepairingPayment.searchform';
@@ -556,6 +606,7 @@ import AvailableReviewItemBase from './availablereviewitem/AvailableReviewItem.b
 import AvailableReviewItemBizApp from './availablereviewitem/AvailableReviewItem.app';
 import AvailableReviewItemModel from './availablereviewitem/AvailableReviewItem.model';
 import AvailableReviewItemDashboard from './availablereviewitem/AvailableReviewItem.dashboard';
+import AvailableReviewItemPreference from './availablereviewitem/AvailableReviewItem.preference';
 import AvailableReviewItemModalTable from './availablereviewitem/AvailableReviewItem.modaltable';
 import AvailableReviewItemSearch from './availablereviewitem/AvailableReviewItem.search';
 import AvailableReviewItemSearchForm from './availablereviewitem/AvailableReviewItem.searchform';
@@ -567,6 +618,7 @@ import OrderReviewResultBase from './orderreviewresult/OrderReviewResult.base';
 import OrderReviewResultBizApp from './orderreviewresult/OrderReviewResult.app';
 import OrderReviewResultModel from './orderreviewresult/OrderReviewResult.model';
 import OrderReviewResultDashboard from './orderreviewresult/OrderReviewResult.dashboard';
+import OrderReviewResultPreference from './orderreviewresult/OrderReviewResult.preference';
 import OrderReviewResultModalTable from './orderreviewresult/OrderReviewResult.modaltable';
 import OrderReviewResultSearch from './orderreviewresult/OrderReviewResult.search';
 import OrderReviewResultSearchForm from './orderreviewresult/OrderReviewResult.searchform';
@@ -578,6 +630,7 @@ import AvailableRatingItemBase from './availableratingitem/AvailableRatingItem.b
 import AvailableRatingItemBizApp from './availableratingitem/AvailableRatingItem.app';
 import AvailableRatingItemModel from './availableratingitem/AvailableRatingItem.model';
 import AvailableRatingItemDashboard from './availableratingitem/AvailableRatingItem.dashboard';
+import AvailableRatingItemPreference from './availableratingitem/AvailableRatingItem.preference';
 import AvailableRatingItemModalTable from './availableratingitem/AvailableRatingItem.modaltable';
 import AvailableRatingItemSearch from './availableratingitem/AvailableRatingItem.search';
 import AvailableRatingItemSearchForm from './availableratingitem/AvailableRatingItem.searchform';
@@ -589,6 +642,7 @@ import OrderRatingResultBase from './orderratingresult/OrderRatingResult.base';
 import OrderRatingResultBizApp from './orderratingresult/OrderRatingResult.app';
 import OrderRatingResultModel from './orderratingresult/OrderRatingResult.model';
 import OrderRatingResultDashboard from './orderratingresult/OrderRatingResult.dashboard';
+import OrderRatingResultPreference from './orderratingresult/OrderRatingResult.preference';
 import OrderRatingResultModalTable from './orderratingresult/OrderRatingResult.modaltable';
 import OrderRatingResultSearch from './orderratingresult/OrderRatingResult.search';
 import OrderRatingResultSearchForm from './orderratingresult/OrderRatingResult.searchform';
@@ -600,6 +654,7 @@ import PreorderPromotionBase from './preorderpromotion/PreorderPromotion.base';
 import PreorderPromotionBizApp from './preorderpromotion/PreorderPromotion.app';
 import PreorderPromotionModel from './preorderpromotion/PreorderPromotion.model';
 import PreorderPromotionDashboard from './preorderpromotion/PreorderPromotion.dashboard';
+import PreorderPromotionPreference from './preorderpromotion/PreorderPromotion.preference';
 import PreorderPromotionModalTable from './preorderpromotion/PreorderPromotion.modaltable';
 import PreorderPromotionSearch from './preorderpromotion/PreorderPromotion.search';
 import PreorderPromotionSearchForm from './preorderpromotion/PreorderPromotion.searchform';
@@ -611,6 +666,7 @@ import OrderDiscountCouponBase from './orderdiscountcoupon/OrderDiscountCoupon.b
 import OrderDiscountCouponBizApp from './orderdiscountcoupon/OrderDiscountCoupon.app';
 import OrderDiscountCouponModel from './orderdiscountcoupon/OrderDiscountCoupon.model';
 import OrderDiscountCouponDashboard from './orderdiscountcoupon/OrderDiscountCoupon.dashboard';
+import OrderDiscountCouponPreference from './orderdiscountcoupon/OrderDiscountCoupon.preference';
 import OrderDiscountCouponModalTable from './orderdiscountcoupon/OrderDiscountCoupon.modaltable';
 import OrderDiscountCouponSearch from './orderdiscountcoupon/OrderDiscountCoupon.search';
 import OrderDiscountCouponSearchForm from './orderdiscountcoupon/OrderDiscountCoupon.searchform';
@@ -622,6 +678,7 @@ import VehicleInspectionOrderCouponBase from './vehicleinspectionordercoupon/Veh
 import VehicleInspectionOrderCouponBizApp from './vehicleinspectionordercoupon/VehicleInspectionOrderCoupon.app';
 import VehicleInspectionOrderCouponModel from './vehicleinspectionordercoupon/VehicleInspectionOrderCoupon.model';
 import VehicleInspectionOrderCouponDashboard from './vehicleinspectionordercoupon/VehicleInspectionOrderCoupon.dashboard';
+import VehicleInspectionOrderCouponPreference from './vehicleinspectionordercoupon/VehicleInspectionOrderCoupon.preference';
 import VehicleInspectionOrderCouponModalTable from './vehicleinspectionordercoupon/VehicleInspectionOrderCoupon.modaltable';
 import VehicleInspectionOrderCouponSearch from './vehicleinspectionordercoupon/VehicleInspectionOrderCoupon.search';
 import VehicleInspectionOrderCouponSearchForm from './vehicleinspectionordercoupon/VehicleInspectionOrderCoupon.searchform';
@@ -633,6 +690,7 @@ import AccountBase from './account/Account.base';
 import AccountBizApp from './account/Account.app';
 import AccountModel from './account/Account.model';
 import AccountDashboard from './account/Account.dashboard';
+import AccountPreference from './account/Account.preference';
 import AccountModalTable from './account/Account.modaltable';
 import AccountSearch from './account/Account.search';
 import AccountSearchForm from './account/Account.searchform';
@@ -644,6 +702,7 @@ import ServiceCompanyAccountBase from './servicecompanyaccount/ServiceCompanyAcc
 import ServiceCompanyAccountBizApp from './servicecompanyaccount/ServiceCompanyAccount.app';
 import ServiceCompanyAccountModel from './servicecompanyaccount/ServiceCompanyAccount.model';
 import ServiceCompanyAccountDashboard from './servicecompanyaccount/ServiceCompanyAccount.dashboard';
+import ServiceCompanyAccountPreference from './servicecompanyaccount/ServiceCompanyAccount.preference';
 import ServiceCompanyAccountModalTable from './servicecompanyaccount/ServiceCompanyAccount.modaltable';
 import ServiceCompanyAccountSearch from './servicecompanyaccount/ServiceCompanyAccount.search';
 import ServiceCompanyAccountSearchForm from './servicecompanyaccount/ServiceCompanyAccount.searchform';
@@ -655,6 +714,7 @@ import RepairingCompanyAccountBase from './repairingcompanyaccount/RepairingComp
 import RepairingCompanyAccountBizApp from './repairingcompanyaccount/RepairingCompanyAccount.app';
 import RepairingCompanyAccountModel from './repairingcompanyaccount/RepairingCompanyAccount.model';
 import RepairingCompanyAccountDashboard from './repairingcompanyaccount/RepairingCompanyAccount.dashboard';
+import RepairingCompanyAccountPreference from './repairingcompanyaccount/RepairingCompanyAccount.preference';
 import RepairingCompanyAccountModalTable from './repairingcompanyaccount/RepairingCompanyAccount.modaltable';
 import RepairingCompanyAccountSearch from './repairingcompanyaccount/RepairingCompanyAccount.search';
 import RepairingCompanyAccountSearchForm from './repairingcompanyaccount/RepairingCompanyAccount.searchform';
@@ -666,6 +726,7 @@ import InsuranceServiceAccountBase from './insuranceserviceaccount/InsuranceServ
 import InsuranceServiceAccountBizApp from './insuranceserviceaccount/InsuranceServiceAccount.app';
 import InsuranceServiceAccountModel from './insuranceserviceaccount/InsuranceServiceAccount.model';
 import InsuranceServiceAccountDashboard from './insuranceserviceaccount/InsuranceServiceAccount.dashboard';
+import InsuranceServiceAccountPreference from './insuranceserviceaccount/InsuranceServiceAccount.preference';
 import InsuranceServiceAccountModalTable from './insuranceserviceaccount/InsuranceServiceAccount.modaltable';
 import InsuranceServiceAccountSearch from './insuranceserviceaccount/InsuranceServiceAccount.search';
 import InsuranceServiceAccountSearchForm from './insuranceserviceaccount/InsuranceServiceAccount.searchform';
@@ -677,6 +738,7 @@ import MainOrderAccountBase from './mainorderaccount/MainOrderAccount.base';
 import MainOrderAccountBizApp from './mainorderaccount/MainOrderAccount.app';
 import MainOrderAccountModel from './mainorderaccount/MainOrderAccount.model';
 import MainOrderAccountDashboard from './mainorderaccount/MainOrderAccount.dashboard';
+import MainOrderAccountPreference from './mainorderaccount/MainOrderAccount.preference';
 import MainOrderAccountModalTable from './mainorderaccount/MainOrderAccount.modaltable';
 import MainOrderAccountSearch from './mainorderaccount/MainOrderAccount.search';
 import MainOrderAccountSearchForm from './mainorderaccount/MainOrderAccount.searchform';
@@ -688,6 +750,7 @@ import InspectionStationAccountBase from './inspectionstationaccount/InspectionS
 import InspectionStationAccountBizApp from './inspectionstationaccount/InspectionStationAccount.app';
 import InspectionStationAccountModel from './inspectionstationaccount/InspectionStationAccount.model';
 import InspectionStationAccountDashboard from './inspectionstationaccount/InspectionStationAccount.dashboard';
+import InspectionStationAccountPreference from './inspectionstationaccount/InspectionStationAccount.preference';
 import InspectionStationAccountModalTable from './inspectionstationaccount/InspectionStationAccount.modaltable';
 import InspectionStationAccountSearch from './inspectionstationaccount/InspectionStationAccount.search';
 import InspectionStationAccountSearchForm from './inspectionstationaccount/InspectionStationAccount.searchform';
@@ -699,6 +762,7 @@ import UserDomainBase from './userdomain/UserDomain.base';
 import UserDomainBizApp from './userdomain/UserDomain.app';
 import UserDomainModel from './userdomain/UserDomain.model';
 import UserDomainDashboard from './userdomain/UserDomain.dashboard';
+import UserDomainPreference from './userdomain/UserDomain.preference';
 import UserDomainModalTable from './userdomain/UserDomain.modaltable';
 import UserDomainSearch from './userdomain/UserDomain.search';
 import UserDomainSearchForm from './userdomain/UserDomain.searchform';
@@ -710,6 +774,7 @@ import SecUserBase from './secuser/SecUser.base';
 import SecUserBizApp from './secuser/SecUser.app';
 import SecUserModel from './secuser/SecUser.model';
 import SecUserDashboard from './secuser/SecUser.dashboard';
+import SecUserPreference from './secuser/SecUser.preference';
 import SecUserModalTable from './secuser/SecUser.modaltable';
 import SecUserSearch from './secuser/SecUser.search';
 import SecUserSearchForm from './secuser/SecUser.searchform';
@@ -721,6 +786,7 @@ import SecUserBlockingBase from './secuserblocking/SecUserBlocking.base';
 import SecUserBlockingBizApp from './secuserblocking/SecUserBlocking.app';
 import SecUserBlockingModel from './secuserblocking/SecUserBlocking.model';
 import SecUserBlockingDashboard from './secuserblocking/SecUserBlocking.dashboard';
+import SecUserBlockingPreference from './secuserblocking/SecUserBlocking.preference';
 import SecUserBlockingModalTable from './secuserblocking/SecUserBlocking.modaltable';
 import SecUserBlockingSearch from './secuserblocking/SecUserBlocking.search';
 import SecUserBlockingSearchForm from './secuserblocking/SecUserBlocking.searchform';
@@ -732,6 +798,7 @@ import UserAppBase from './userapp/UserApp.base';
 import UserAppBizApp from './userapp/UserApp.app';
 import UserAppModel from './userapp/UserApp.model';
 import UserAppDashboard from './userapp/UserApp.dashboard';
+import UserAppPreference from './userapp/UserApp.preference';
 import UserAppModalTable from './userapp/UserApp.modaltable';
 import UserAppSearch from './userapp/UserApp.search';
 import UserAppSearchForm from './userapp/UserApp.searchform';
@@ -743,6 +810,7 @@ import ObjectAccessBase from './objectaccess/ObjectAccess.base';
 import ObjectAccessBizApp from './objectaccess/ObjectAccess.app';
 import ObjectAccessModel from './objectaccess/ObjectAccess.model';
 import ObjectAccessDashboard from './objectaccess/ObjectAccess.dashboard';
+import ObjectAccessPreference from './objectaccess/ObjectAccess.preference';
 import ObjectAccessModalTable from './objectaccess/ObjectAccess.modaltable';
 import ObjectAccessSearch from './objectaccess/ObjectAccess.search';
 import ObjectAccessSearchForm from './objectaccess/ObjectAccess.searchform';
@@ -754,6 +822,7 @@ import LoginHistoryBase from './loginhistory/LoginHistory.base';
 import LoginHistoryBizApp from './loginhistory/LoginHistory.app';
 import LoginHistoryModel from './loginhistory/LoginHistory.model';
 import LoginHistoryDashboard from './loginhistory/LoginHistory.dashboard';
+import LoginHistoryPreference from './loginhistory/LoginHistory.preference';
 import LoginHistoryModalTable from './loginhistory/LoginHistory.modaltable';
 import LoginHistorySearch from './loginhistory/LoginHistory.search';
 import LoginHistorySearchForm from './loginhistory/LoginHistory.searchform';
@@ -761,6 +830,66 @@ import LoginHistoryCreateForm from './loginhistory/LoginHistory.createform';
 import LoginHistoryTable from './loginhistory/LoginHistory.table';
 import LoginHistoryService from './loginhistory/LoginHistory.service';
 import LoginHistoryUpdateForm from './loginhistory/LoginHistory.updateform';
+import GenericFormBase from './genericform/GenericForm.base';
+import GenericFormBizApp from './genericform/GenericForm.app';
+import GenericFormModel from './genericform/GenericForm.model';
+import GenericFormDashboard from './genericform/GenericForm.dashboard';
+import GenericFormPreference from './genericform/GenericForm.preference';
+import GenericFormModalTable from './genericform/GenericForm.modaltable';
+import GenericFormSearch from './genericform/GenericForm.search';
+import GenericFormSearchForm from './genericform/GenericForm.searchform';
+import GenericFormCreateForm from './genericform/GenericForm.createform';
+import GenericFormTable from './genericform/GenericForm.table';
+import GenericFormService from './genericform/GenericForm.service';
+import GenericFormUpdateForm from './genericform/GenericForm.updateform';
+import FormMessageBase from './formmessage/FormMessage.base';
+import FormMessageBizApp from './formmessage/FormMessage.app';
+import FormMessageModel from './formmessage/FormMessage.model';
+import FormMessageDashboard from './formmessage/FormMessage.dashboard';
+import FormMessagePreference from './formmessage/FormMessage.preference';
+import FormMessageModalTable from './formmessage/FormMessage.modaltable';
+import FormMessageSearch from './formmessage/FormMessage.search';
+import FormMessageSearchForm from './formmessage/FormMessage.searchform';
+import FormMessageCreateForm from './formmessage/FormMessage.createform';
+import FormMessageTable from './formmessage/FormMessage.table';
+import FormMessageService from './formmessage/FormMessage.service';
+import FormMessageUpdateForm from './formmessage/FormMessage.updateform';
+import FormFieldMessageBase from './formfieldmessage/FormFieldMessage.base';
+import FormFieldMessageBizApp from './formfieldmessage/FormFieldMessage.app';
+import FormFieldMessageModel from './formfieldmessage/FormFieldMessage.model';
+import FormFieldMessageDashboard from './formfieldmessage/FormFieldMessage.dashboard';
+import FormFieldMessagePreference from './formfieldmessage/FormFieldMessage.preference';
+import FormFieldMessageModalTable from './formfieldmessage/FormFieldMessage.modaltable';
+import FormFieldMessageSearch from './formfieldmessage/FormFieldMessage.search';
+import FormFieldMessageSearchForm from './formfieldmessage/FormFieldMessage.searchform';
+import FormFieldMessageCreateForm from './formfieldmessage/FormFieldMessage.createform';
+import FormFieldMessageTable from './formfieldmessage/FormFieldMessage.table';
+import FormFieldMessageService from './formfieldmessage/FormFieldMessage.service';
+import FormFieldMessageUpdateForm from './formfieldmessage/FormFieldMessage.updateform';
+import FormFieldBase from './formfield/FormField.base';
+import FormFieldBizApp from './formfield/FormField.app';
+import FormFieldModel from './formfield/FormField.model';
+import FormFieldDashboard from './formfield/FormField.dashboard';
+import FormFieldPreference from './formfield/FormField.preference';
+import FormFieldModalTable from './formfield/FormField.modaltable';
+import FormFieldSearch from './formfield/FormField.search';
+import FormFieldSearchForm from './formfield/FormField.searchform';
+import FormFieldCreateForm from './formfield/FormField.createform';
+import FormFieldTable from './formfield/FormField.table';
+import FormFieldService from './formfield/FormField.service';
+import FormFieldUpdateForm from './formfield/FormField.updateform';
+import FormActionBase from './formaction/FormAction.base';
+import FormActionBizApp from './formaction/FormAction.app';
+import FormActionModel from './formaction/FormAction.model';
+import FormActionDashboard from './formaction/FormAction.dashboard';
+import FormActionPreference from './formaction/FormAction.preference';
+import FormActionModalTable from './formaction/FormAction.modaltable';
+import FormActionSearch from './formaction/FormAction.search';
+import FormActionSearchForm from './formaction/FormAction.searchform';
+import FormActionCreateForm from './formaction/FormAction.createform';
+import FormActionTable from './formaction/FormAction.table';
+import FormActionService from './formaction/FormAction.service';
+import FormActionUpdateForm from './formaction/FormAction.updateform';
 
 
 const BizModels = [
@@ -833,6 +962,11 @@ const BizModels = [
 	UserAppModel,
 	ObjectAccessModel,
 	LoginHistoryModel,
+	GenericFormModel,
+	FormMessageModel,
+	FormFieldMessageModel,
+	FormFieldModel,
+	FormActionModel,
 
 ]
 
@@ -919,6 +1053,11 @@ menuLibrary['secUserBlocking'] = SecUserBlockingBase.menuData
 menuLibrary['userApp'] = UserAppBase.menuData
 menuLibrary['objectAccess'] = ObjectAccessBase.menuData
 menuLibrary['loginHistory'] = LoginHistoryBase.menuData
+menuLibrary['genericForm'] = GenericFormBase.menuData
+menuLibrary['formMessage'] = FormMessageBase.menuData
+menuLibrary['formFieldMessage'] = FormFieldMessageBase.menuData
+menuLibrary['formField'] = FormFieldBase.menuData
+menuLibrary['formAction'] = FormActionBase.menuData
 
 
 const menuDataOf=(type)=>{
@@ -1008,6 +1147,11 @@ const ViewMapping = {
   'com.terapico.cis.userapp.UserApp': {name:'userApp'},
   'com.terapico.cis.objectaccess.ObjectAccess': {name:'objectAccess'},
   'com.terapico.cis.loginhistory.LoginHistory': {name:'loginHistory'},
+  'com.terapico.cis.genericform.GenericForm': {name:'genericForm'},
+  'com.terapico.cis.formmessage.FormMessage': {name:'formMessage'},
+  'com.terapico.cis.formfieldmessage.FormFieldMessage': {name:'formFieldMessage'},
+  'com.terapico.cis.formfield.FormField': {name:'formField'},
+  'com.terapico.cis.formaction.FormAction': {name:'formAction'},
 
 }
 
@@ -1057,6 +1201,7 @@ const OOTBComponents={
     CarInspectionPlatformBizApp,
     CarInspectionPlatformModel,
     CarInspectionPlatformDashboard,
+    CarInspectionPlatformPreference,
     CarInspectionPlatformModalTable,
     CarInspectionPlatformSearch,
     CarInspectionPlatformSearchForm,
@@ -1068,6 +1213,7 @@ const OOTBComponents={
     PlatformConfigurationBizApp,
     PlatformConfigurationModel,
     PlatformConfigurationDashboard,
+    PlatformConfigurationPreference,
     PlatformConfigurationModalTable,
     PlatformConfigurationSearch,
     PlatformConfigurationSearchForm,
@@ -1079,6 +1225,7 @@ const OOTBComponents={
     ProvinceBizApp,
     ProvinceModel,
     ProvinceDashboard,
+    ProvincePreference,
     ProvinceModalTable,
     ProvinceSearch,
     ProvinceSearchForm,
@@ -1090,6 +1237,7 @@ const OOTBComponents={
     CityBizApp,
     CityModel,
     CityDashboard,
+    CityPreference,
     CityModalTable,
     CitySearch,
     CitySearchForm,
@@ -1101,6 +1249,7 @@ const OOTBComponents={
     AvailableProductBizApp,
     AvailableProductModel,
     AvailableProductDashboard,
+    AvailableProductPreference,
     AvailableProductModalTable,
     AvailableProductSearch,
     AvailableProductSearchForm,
@@ -1112,6 +1261,7 @@ const OOTBComponents={
     AvailableVehicleTypeBizApp,
     AvailableVehicleTypeModel,
     AvailableVehicleTypeDashboard,
+    AvailableVehicleTypePreference,
     AvailableVehicleTypeModalTable,
     AvailableVehicleTypeSearch,
     AvailableVehicleTypeSearchForm,
@@ -1123,6 +1273,7 @@ const OOTBComponents={
     AvailableVehicleUseCharacterBizApp,
     AvailableVehicleUseCharacterModel,
     AvailableVehicleUseCharacterDashboard,
+    AvailableVehicleUseCharacterPreference,
     AvailableVehicleUseCharacterModalTable,
     AvailableVehicleUseCharacterSearch,
     AvailableVehicleUseCharacterSearchForm,
@@ -1134,6 +1285,7 @@ const OOTBComponents={
     ContractBizApp,
     ContractModel,
     ContractDashboard,
+    ContractPreference,
     ContractModalTable,
     ContractSearch,
     ContractSearchForm,
@@ -1145,6 +1297,7 @@ const OOTBComponents={
     ServicePriceBizApp,
     ServicePriceModel,
     ServicePriceDashboard,
+    ServicePricePreference,
     ServicePriceModalTable,
     ServicePriceSearch,
     ServicePriceSearchForm,
@@ -1156,6 +1309,7 @@ const OOTBComponents={
     AvailableServiceBizApp,
     AvailableServiceModel,
     AvailableServiceDashboard,
+    AvailableServicePreference,
     AvailableServiceModalTable,
     AvailableServiceSearch,
     AvailableServiceSearchForm,
@@ -1167,6 +1321,7 @@ const OOTBComponents={
     ProductPriceBizApp,
     ProductPriceModel,
     ProductPriceDashboard,
+    ProductPricePreference,
     ProductPriceModalTable,
     ProductPriceSearch,
     ProductPriceSearchForm,
@@ -1178,6 +1333,7 @@ const OOTBComponents={
     AvailableInsuranceBizApp,
     AvailableInsuranceModel,
     AvailableInsuranceDashboard,
+    AvailableInsurancePreference,
     AvailableInsuranceModalTable,
     AvailableInsuranceSearch,
     AvailableInsuranceSearchForm,
@@ -1189,6 +1345,7 @@ const OOTBComponents={
     VehicleRepairingAllowanceBizApp,
     VehicleRepairingAllowanceModel,
     VehicleRepairingAllowanceDashboard,
+    VehicleRepairingAllowancePreference,
     VehicleRepairingAllowanceModalTable,
     VehicleRepairingAllowanceSearch,
     VehicleRepairingAllowanceSearchForm,
@@ -1200,6 +1357,7 @@ const OOTBComponents={
     AvailableHandOverItemBizApp,
     AvailableHandOverItemModel,
     AvailableHandOverItemDashboard,
+    AvailableHandOverItemPreference,
     AvailableHandOverItemModalTable,
     AvailableHandOverItemSearch,
     AvailableHandOverItemSearchForm,
@@ -1211,6 +1369,7 @@ const OOTBComponents={
     CustomerBizApp,
     CustomerModel,
     CustomerDashboard,
+    CustomerPreference,
     CustomerModalTable,
     CustomerSearch,
     CustomerSearchForm,
@@ -1222,6 +1381,7 @@ const OOTBComponents={
     VehicleServiceCompanyBizApp,
     VehicleServiceCompanyModel,
     VehicleServiceCompanyDashboard,
+    VehicleServiceCompanyPreference,
     VehicleServiceCompanyModalTable,
     VehicleServiceCompanySearch,
     VehicleServiceCompanySearchForm,
@@ -1233,6 +1393,7 @@ const OOTBComponents={
     ServiceCompanyAuthenticationInfoBizApp,
     ServiceCompanyAuthenticationInfoModel,
     ServiceCompanyAuthenticationInfoDashboard,
+    ServiceCompanyAuthenticationInfoPreference,
     ServiceCompanyAuthenticationInfoModalTable,
     ServiceCompanyAuthenticationInfoSearch,
     ServiceCompanyAuthenticationInfoSearchForm,
@@ -1244,6 +1405,7 @@ const OOTBComponents={
     VehicleInspectionPlateNumberPatternBizApp,
     VehicleInspectionPlateNumberPatternModel,
     VehicleInspectionPlateNumberPatternDashboard,
+    VehicleInspectionPlateNumberPatternPreference,
     VehicleInspectionPlateNumberPatternModalTable,
     VehicleInspectionPlateNumberPatternSearch,
     VehicleInspectionPlateNumberPatternSearchForm,
@@ -1255,6 +1417,7 @@ const OOTBComponents={
     FileInspectionPlateNumberPatternBizApp,
     FileInspectionPlateNumberPatternModel,
     FileInspectionPlateNumberPatternDashboard,
+    FileInspectionPlateNumberPatternPreference,
     FileInspectionPlateNumberPatternModalTable,
     FileInspectionPlateNumberPatternSearch,
     FileInspectionPlateNumberPatternSearchForm,
@@ -1266,6 +1429,7 @@ const OOTBComponents={
     VehicleServiceCompanyBusinessScopeBizApp,
     VehicleServiceCompanyBusinessScopeModel,
     VehicleServiceCompanyBusinessScopeDashboard,
+    VehicleServiceCompanyBusinessScopePreference,
     VehicleServiceCompanyBusinessScopeModalTable,
     VehicleServiceCompanyBusinessScopeSearch,
     VehicleServiceCompanyBusinessScopeSearchForm,
@@ -1277,6 +1441,7 @@ const OOTBComponents={
     CompanyQrcodePromotionRecordBizApp,
     CompanyQrcodePromotionRecordModel,
     CompanyQrcodePromotionRecordDashboard,
+    CompanyQrcodePromotionRecordPreference,
     CompanyQrcodePromotionRecordModalTable,
     CompanyQrcodePromotionRecordSearch,
     CompanyQrcodePromotionRecordSearchForm,
@@ -1288,6 +1453,7 @@ const OOTBComponents={
     VehicleServiceCompanyDispatcherBizApp,
     VehicleServiceCompanyDispatcherModel,
     VehicleServiceCompanyDispatcherDashboard,
+    VehicleServiceCompanyDispatcherPreference,
     VehicleServiceCompanyDispatcherModalTable,
     VehicleServiceCompanyDispatcherSearch,
     VehicleServiceCompanyDispatcherSearchForm,
@@ -1299,6 +1465,7 @@ const OOTBComponents={
     CompanyDiscountBizApp,
     CompanyDiscountModel,
     CompanyDiscountDashboard,
+    CompanyDiscountPreference,
     CompanyDiscountModalTable,
     CompanyDiscountSearch,
     CompanyDiscountSearchForm,
@@ -1310,6 +1477,7 @@ const OOTBComponents={
     VehicleServiceCompanyEmployeeBizApp,
     VehicleServiceCompanyEmployeeModel,
     VehicleServiceCompanyEmployeeDashboard,
+    VehicleServiceCompanyEmployeePreference,
     VehicleServiceCompanyEmployeeModalTable,
     VehicleServiceCompanyEmployeeSearch,
     VehicleServiceCompanyEmployeeSearchForm,
@@ -1321,6 +1489,7 @@ const OOTBComponents={
     ServiceOrderFilterBizApp,
     ServiceOrderFilterModel,
     ServiceOrderFilterDashboard,
+    ServiceOrderFilterPreference,
     ServiceOrderFilterModalTable,
     ServiceOrderFilterSearch,
     ServiceOrderFilterSearchForm,
@@ -1332,6 +1501,7 @@ const OOTBComponents={
     CompanyEmployeeQualificationBizApp,
     CompanyEmployeeQualificationModel,
     CompanyEmployeeQualificationDashboard,
+    CompanyEmployeeQualificationPreference,
     CompanyEmployeeQualificationModalTable,
     CompanyEmployeeQualificationSearch,
     CompanyEmployeeQualificationSearchForm,
@@ -1343,6 +1513,7 @@ const OOTBComponents={
     CompanyEmployeeServingBizApp,
     CompanyEmployeeServingModel,
     CompanyEmployeeServingDashboard,
+    CompanyEmployeeServingPreference,
     CompanyEmployeeServingModalTable,
     CompanyEmployeeServingSearch,
     CompanyEmployeeServingSearchForm,
@@ -1354,6 +1525,7 @@ const OOTBComponents={
     CompanyEmployeeTerminationBizApp,
     CompanyEmployeeTerminationModel,
     CompanyEmployeeTerminationDashboard,
+    CompanyEmployeeTerminationPreference,
     CompanyEmployeeTerminationModalTable,
     CompanyEmployeeTerminationSearch,
     CompanyEmployeeTerminationSearchForm,
@@ -1365,6 +1537,7 @@ const OOTBComponents={
     EmployeeDrivingLicenseBizApp,
     EmployeeDrivingLicenseModel,
     EmployeeDrivingLicenseDashboard,
+    EmployeeDrivingLicensePreference,
     EmployeeDrivingLicenseModalTable,
     EmployeeDrivingLicenseSearch,
     EmployeeDrivingLicenseSearchForm,
@@ -1376,6 +1549,7 @@ const OOTBComponents={
     InspectionStationBizApp,
     InspectionStationModel,
     InspectionStationDashboard,
+    InspectionStationPreference,
     InspectionStationModalTable,
     InspectionStationSearch,
     InspectionStationSearchForm,
@@ -1387,6 +1561,7 @@ const OOTBComponents={
     VehicleInfoBizApp,
     VehicleInfoModel,
     VehicleInfoDashboard,
+    VehicleInfoPreference,
     VehicleInfoModalTable,
     VehicleInfoSearch,
     VehicleInfoSearchForm,
@@ -1398,6 +1573,7 @@ const OOTBComponents={
     VehicleInspectionOrderBizApp,
     VehicleInspectionOrderModel,
     VehicleInspectionOrderDashboard,
+    VehicleInspectionOrderPreference,
     VehicleInspectionOrderModalTable,
     VehicleInspectionOrderSearch,
     VehicleInspectionOrderSearchForm,
@@ -1409,6 +1585,7 @@ const OOTBComponents={
     VehicleInspectionInsuranceOrderBizApp,
     VehicleInspectionInsuranceOrderModel,
     VehicleInspectionInsuranceOrderDashboard,
+    VehicleInspectionInsuranceOrderPreference,
     VehicleInspectionInsuranceOrderModalTable,
     VehicleInspectionInsuranceOrderSearch,
     VehicleInspectionInsuranceOrderSearchForm,
@@ -1420,6 +1597,7 @@ const OOTBComponents={
     VehicleInspectionOrderChargeBizApp,
     VehicleInspectionOrderChargeModel,
     VehicleInspectionOrderChargeDashboard,
+    VehicleInspectionOrderChargePreference,
     VehicleInspectionOrderChargeModalTable,
     VehicleInspectionOrderChargeSearch,
     VehicleInspectionOrderChargeSearchForm,
@@ -1431,6 +1609,7 @@ const OOTBComponents={
     VehicleInspectionOrderServiceLogBizApp,
     VehicleInspectionOrderServiceLogModel,
     VehicleInspectionOrderServiceLogDashboard,
+    VehicleInspectionOrderServiceLogPreference,
     VehicleInspectionOrderServiceLogModalTable,
     VehicleInspectionOrderServiceLogSearch,
     VehicleInspectionOrderServiceLogSearchForm,
@@ -1442,6 +1621,7 @@ const OOTBComponents={
     VehicleInspectionOrderPaymentBizApp,
     VehicleInspectionOrderPaymentModel,
     VehicleInspectionOrderPaymentDashboard,
+    VehicleInspectionOrderPaymentPreference,
     VehicleInspectionOrderPaymentModalTable,
     VehicleInspectionOrderPaymentSearch,
     VehicleInspectionOrderPaymentSearchForm,
@@ -1453,6 +1633,7 @@ const OOTBComponents={
     HandOverChecklistItemBizApp,
     HandOverChecklistItemModel,
     HandOverChecklistItemDashboard,
+    HandOverChecklistItemPreference,
     HandOverChecklistItemModalTable,
     HandOverChecklistItemSearch,
     HandOverChecklistItemSearchForm,
@@ -1464,6 +1645,7 @@ const OOTBComponents={
     ServiceVehicleMovementC2mBizApp,
     ServiceVehicleMovementC2mModel,
     ServiceVehicleMovementC2mDashboard,
+    ServiceVehicleMovementC2mPreference,
     ServiceVehicleMovementC2mModalTable,
     ServiceVehicleMovementC2mSearch,
     ServiceVehicleMovementC2mSearchForm,
@@ -1475,6 +1657,7 @@ const OOTBComponents={
     ServiceVehicleMovementM2mBizApp,
     ServiceVehicleMovementM2mModel,
     ServiceVehicleMovementM2mDashboard,
+    ServiceVehicleMovementM2mPreference,
     ServiceVehicleMovementM2mModalTable,
     ServiceVehicleMovementM2mSearch,
     ServiceVehicleMovementM2mSearchForm,
@@ -1486,6 +1669,7 @@ const OOTBComponents={
     ServiceVehicleMovementM2cBizApp,
     ServiceVehicleMovementM2cModel,
     ServiceVehicleMovementM2cDashboard,
+    ServiceVehicleMovementM2cPreference,
     ServiceVehicleMovementM2cModalTable,
     ServiceVehicleMovementM2cSearch,
     ServiceVehicleMovementM2cSearchForm,
@@ -1497,6 +1681,7 @@ const OOTBComponents={
     ServiceFileMovementC2mBizApp,
     ServiceFileMovementC2mModel,
     ServiceFileMovementC2mDashboard,
+    ServiceFileMovementC2mPreference,
     ServiceFileMovementC2mModalTable,
     ServiceFileMovementC2mSearch,
     ServiceFileMovementC2mSearchForm,
@@ -1508,6 +1693,7 @@ const OOTBComponents={
     ServiceFileMovementM2mBizApp,
     ServiceFileMovementM2mModel,
     ServiceFileMovementM2mDashboard,
+    ServiceFileMovementM2mPreference,
     ServiceFileMovementM2mModalTable,
     ServiceFileMovementM2mSearch,
     ServiceFileMovementM2mSearchForm,
@@ -1519,6 +1705,7 @@ const OOTBComponents={
     ServiceFileMovementM2cBizApp,
     ServiceFileMovementM2cModel,
     ServiceFileMovementM2cDashboard,
+    ServiceFileMovementM2cPreference,
     ServiceFileMovementM2cModalTable,
     ServiceFileMovementM2cSearch,
     ServiceFileMovementM2cSearchForm,
@@ -1530,6 +1717,7 @@ const OOTBComponents={
     HandOverChecklistResultBizApp,
     HandOverChecklistResultModel,
     HandOverChecklistResultDashboard,
+    HandOverChecklistResultPreference,
     HandOverChecklistResultModalTable,
     HandOverChecklistResultSearch,
     HandOverChecklistResultSearchForm,
@@ -1541,6 +1729,7 @@ const OOTBComponents={
     ServiceInsuranceForInspectionBizApp,
     ServiceInsuranceForInspectionModel,
     ServiceInsuranceForInspectionDashboard,
+    ServiceInsuranceForInspectionPreference,
     ServiceInsuranceForInspectionModalTable,
     ServiceInsuranceForInspectionSearch,
     ServiceInsuranceForInspectionSearchForm,
@@ -1552,6 +1741,7 @@ const OOTBComponents={
     ServiceVehicleInspectionBizApp,
     ServiceVehicleInspectionModel,
     ServiceVehicleInspectionDashboard,
+    ServiceVehicleInspectionPreference,
     ServiceVehicleInspectionModalTable,
     ServiceVehicleInspectionSearch,
     ServiceVehicleInspectionSearchForm,
@@ -1563,6 +1753,7 @@ const OOTBComponents={
     ServiceFileInspectionBizApp,
     ServiceFileInspectionModel,
     ServiceFileInspectionDashboard,
+    ServiceFileInspectionPreference,
     ServiceFileInspectionModalTable,
     ServiceFileInspectionSearch,
     ServiceFileInspectionSearchForm,
@@ -1574,6 +1765,7 @@ const OOTBComponents={
     ServiceVehicleRepairingBizApp,
     ServiceVehicleRepairingModel,
     ServiceVehicleRepairingDashboard,
+    ServiceVehicleRepairingPreference,
     ServiceVehicleRepairingModalTable,
     ServiceVehicleRepairingSearch,
     ServiceVehicleRepairingSearchForm,
@@ -1585,6 +1777,7 @@ const OOTBComponents={
     RepairingAllowanceItemBizApp,
     RepairingAllowanceItemModel,
     RepairingAllowanceItemDashboard,
+    RepairingAllowanceItemPreference,
     RepairingAllowanceItemModalTable,
     RepairingAllowanceItemSearch,
     RepairingAllowanceItemSearchForm,
@@ -1596,6 +1789,7 @@ const OOTBComponents={
     VehicleRepairingPaymentBizApp,
     VehicleRepairingPaymentModel,
     VehicleRepairingPaymentDashboard,
+    VehicleRepairingPaymentPreference,
     VehicleRepairingPaymentModalTable,
     VehicleRepairingPaymentSearch,
     VehicleRepairingPaymentSearchForm,
@@ -1607,6 +1801,7 @@ const OOTBComponents={
     AvailableReviewItemBizApp,
     AvailableReviewItemModel,
     AvailableReviewItemDashboard,
+    AvailableReviewItemPreference,
     AvailableReviewItemModalTable,
     AvailableReviewItemSearch,
     AvailableReviewItemSearchForm,
@@ -1618,6 +1813,7 @@ const OOTBComponents={
     OrderReviewResultBizApp,
     OrderReviewResultModel,
     OrderReviewResultDashboard,
+    OrderReviewResultPreference,
     OrderReviewResultModalTable,
     OrderReviewResultSearch,
     OrderReviewResultSearchForm,
@@ -1629,6 +1825,7 @@ const OOTBComponents={
     AvailableRatingItemBizApp,
     AvailableRatingItemModel,
     AvailableRatingItemDashboard,
+    AvailableRatingItemPreference,
     AvailableRatingItemModalTable,
     AvailableRatingItemSearch,
     AvailableRatingItemSearchForm,
@@ -1640,6 +1837,7 @@ const OOTBComponents={
     OrderRatingResultBizApp,
     OrderRatingResultModel,
     OrderRatingResultDashboard,
+    OrderRatingResultPreference,
     OrderRatingResultModalTable,
     OrderRatingResultSearch,
     OrderRatingResultSearchForm,
@@ -1651,6 +1849,7 @@ const OOTBComponents={
     PreorderPromotionBizApp,
     PreorderPromotionModel,
     PreorderPromotionDashboard,
+    PreorderPromotionPreference,
     PreorderPromotionModalTable,
     PreorderPromotionSearch,
     PreorderPromotionSearchForm,
@@ -1662,6 +1861,7 @@ const OOTBComponents={
     OrderDiscountCouponBizApp,
     OrderDiscountCouponModel,
     OrderDiscountCouponDashboard,
+    OrderDiscountCouponPreference,
     OrderDiscountCouponModalTable,
     OrderDiscountCouponSearch,
     OrderDiscountCouponSearchForm,
@@ -1673,6 +1873,7 @@ const OOTBComponents={
     VehicleInspectionOrderCouponBizApp,
     VehicleInspectionOrderCouponModel,
     VehicleInspectionOrderCouponDashboard,
+    VehicleInspectionOrderCouponPreference,
     VehicleInspectionOrderCouponModalTable,
     VehicleInspectionOrderCouponSearch,
     VehicleInspectionOrderCouponSearchForm,
@@ -1684,6 +1885,7 @@ const OOTBComponents={
     AccountBizApp,
     AccountModel,
     AccountDashboard,
+    AccountPreference,
     AccountModalTable,
     AccountSearch,
     AccountSearchForm,
@@ -1695,6 +1897,7 @@ const OOTBComponents={
     ServiceCompanyAccountBizApp,
     ServiceCompanyAccountModel,
     ServiceCompanyAccountDashboard,
+    ServiceCompanyAccountPreference,
     ServiceCompanyAccountModalTable,
     ServiceCompanyAccountSearch,
     ServiceCompanyAccountSearchForm,
@@ -1706,6 +1909,7 @@ const OOTBComponents={
     RepairingCompanyAccountBizApp,
     RepairingCompanyAccountModel,
     RepairingCompanyAccountDashboard,
+    RepairingCompanyAccountPreference,
     RepairingCompanyAccountModalTable,
     RepairingCompanyAccountSearch,
     RepairingCompanyAccountSearchForm,
@@ -1717,6 +1921,7 @@ const OOTBComponents={
     InsuranceServiceAccountBizApp,
     InsuranceServiceAccountModel,
     InsuranceServiceAccountDashboard,
+    InsuranceServiceAccountPreference,
     InsuranceServiceAccountModalTable,
     InsuranceServiceAccountSearch,
     InsuranceServiceAccountSearchForm,
@@ -1728,6 +1933,7 @@ const OOTBComponents={
     MainOrderAccountBizApp,
     MainOrderAccountModel,
     MainOrderAccountDashboard,
+    MainOrderAccountPreference,
     MainOrderAccountModalTable,
     MainOrderAccountSearch,
     MainOrderAccountSearchForm,
@@ -1739,6 +1945,7 @@ const OOTBComponents={
     InspectionStationAccountBizApp,
     InspectionStationAccountModel,
     InspectionStationAccountDashboard,
+    InspectionStationAccountPreference,
     InspectionStationAccountModalTable,
     InspectionStationAccountSearch,
     InspectionStationAccountSearchForm,
@@ -1750,6 +1957,7 @@ const OOTBComponents={
     UserDomainBizApp,
     UserDomainModel,
     UserDomainDashboard,
+    UserDomainPreference,
     UserDomainModalTable,
     UserDomainSearch,
     UserDomainSearchForm,
@@ -1761,6 +1969,7 @@ const OOTBComponents={
     SecUserBizApp,
     SecUserModel,
     SecUserDashboard,
+    SecUserPreference,
     SecUserModalTable,
     SecUserSearch,
     SecUserSearchForm,
@@ -1772,6 +1981,7 @@ const OOTBComponents={
     SecUserBlockingBizApp,
     SecUserBlockingModel,
     SecUserBlockingDashboard,
+    SecUserBlockingPreference,
     SecUserBlockingModalTable,
     SecUserBlockingSearch,
     SecUserBlockingSearchForm,
@@ -1783,6 +1993,7 @@ const OOTBComponents={
     UserAppBizApp,
     UserAppModel,
     UserAppDashboard,
+    UserAppPreference,
     UserAppModalTable,
     UserAppSearch,
     UserAppSearchForm,
@@ -1794,6 +2005,7 @@ const OOTBComponents={
     ObjectAccessBizApp,
     ObjectAccessModel,
     ObjectAccessDashboard,
+    ObjectAccessPreference,
     ObjectAccessModalTable,
     ObjectAccessSearch,
     ObjectAccessSearchForm,
@@ -1805,6 +2017,7 @@ const OOTBComponents={
     LoginHistoryBizApp,
     LoginHistoryModel,
     LoginHistoryDashboard,
+    LoginHistoryPreference,
     LoginHistoryModalTable,
     LoginHistorySearch,
     LoginHistorySearchForm,
@@ -1812,6 +2025,66 @@ const OOTBComponents={
     LoginHistoryTable,
     LoginHistoryService,
     LoginHistoryUpdateForm,
+    GenericFormBase,
+    GenericFormBizApp,
+    GenericFormModel,
+    GenericFormDashboard,
+    GenericFormPreference,
+    GenericFormModalTable,
+    GenericFormSearch,
+    GenericFormSearchForm,
+    GenericFormCreateForm,
+    GenericFormTable,
+    GenericFormService,
+    GenericFormUpdateForm,
+    FormMessageBase,
+    FormMessageBizApp,
+    FormMessageModel,
+    FormMessageDashboard,
+    FormMessagePreference,
+    FormMessageModalTable,
+    FormMessageSearch,
+    FormMessageSearchForm,
+    FormMessageCreateForm,
+    FormMessageTable,
+    FormMessageService,
+    FormMessageUpdateForm,
+    FormFieldMessageBase,
+    FormFieldMessageBizApp,
+    FormFieldMessageModel,
+    FormFieldMessageDashboard,
+    FormFieldMessagePreference,
+    FormFieldMessageModalTable,
+    FormFieldMessageSearch,
+    FormFieldMessageSearchForm,
+    FormFieldMessageCreateForm,
+    FormFieldMessageTable,
+    FormFieldMessageService,
+    FormFieldMessageUpdateForm,
+    FormFieldBase,
+    FormFieldBizApp,
+    FormFieldModel,
+    FormFieldDashboard,
+    FormFieldPreference,
+    FormFieldModalTable,
+    FormFieldSearch,
+    FormFieldSearchForm,
+    FormFieldCreateForm,
+    FormFieldTable,
+    FormFieldService,
+    FormFieldUpdateForm,
+    FormActionBase,
+    FormActionBizApp,
+    FormActionModel,
+    FormActionDashboard,
+    FormActionPreference,
+    FormActionModalTable,
+    FormActionSearch,
+    FormActionSearchForm,
+    FormActionCreateForm,
+    FormActionTable,
+    FormActionService,
+    FormActionUpdateForm,
     menuDataOf,bindBizModels,unbindBizModels,calcLocationPath,calcMenuData
 };
        

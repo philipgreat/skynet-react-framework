@@ -48,6 +48,9 @@ class FormActionSearch extends PureComponent {
     listParameters[listName]=1;
     listParameters[`${listName}CurrentPage`]=pagination.current;
     listParameters[`${listName}RowsPerPage`]=pagination.pageSize;
+    listParameters[`${listName}.orderBy.0`]="id";
+    listParameters[`${listName}.descOrAsc.0`]="desc";
+   
     
     const params = {
       ...listParameters,
@@ -188,7 +191,7 @@ class FormActionSearch extends PureComponent {
     const {displayName} = owner.ref
     const { showDeleteResult, selectedRows, modalVisible } = this.state;
     const {FormActionTable} = GlobalComponents;
-    const {FormActionConfirmationTable} = GlobalComponents;
+    const {FormActionModalTable} = GlobalComponents;
     const {FormActionSearchForm} = GlobalComponents;
     
  
@@ -227,7 +230,7 @@ class FormActionSearch extends PureComponent {
           width={920}
           style={{ top: 40 }}
         >
-          <FormActionConfirmationTable data={selectedRows} owner={owner} />
+          <FormActionModalTable data={selectedRows} owner={owner} />
         </Modal>)
     }
     

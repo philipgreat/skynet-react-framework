@@ -159,12 +159,3 @@ class LoginHistorySearchForm extends PureComponent {
 export default Form.create()(LoginHistorySearchForm)
 
 
-
-
-
-
-
-
-
-
-

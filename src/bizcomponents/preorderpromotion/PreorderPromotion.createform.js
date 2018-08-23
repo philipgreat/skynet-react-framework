@@ -19,8 +19,8 @@ const testValues = {
   promotionMessage: '提前30天，立减10元',
   preorderDays: '5',
   discountAmount: '10.00',
-  startDate: '2016-04-01 21:08:30',
-  endDate: '2017-07-16 21:03:00',
+  startDate: '2016-10-24 01:41:50',
+  endDate: '2016-02-12 10:47:40',
   productId: 'AP000001',
   platformId: 'CIP000001',
 }

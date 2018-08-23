@@ -28,17 +28,28 @@ export default {
     },
   },
   effects: {
-    *view({ payload }, { call, put }) { 
+    *view({ payload }, { call, put, select }) { 
+    
+      const cachedData = yield select(state => state._availableService)
+      //if the data in the cache, just show it, there is no delay
+      const link = payload.pathname
+      //if the data in the cache, just show it, there is no delay
+      if(cachedData.class){
+        //yield put({ type: 'breadcrumb/gotoLink', payload: { displayName:cachedData.displayName,link }} )
+        yield put({ type: 'updateState', payload: cachedData })
+      }else{
+        yield put({ type: 'showLoading', payload })
+      }
+      
       const {AvailableServiceService} = GlobalComponents;
-      yield put({ type: 'showLoading', payload })
       const data = yield call(AvailableServiceService.view, payload.id)
       
       const displayName = payload.displayName||data.displayName
-      const link = payload.pathname
+      
+      
       yield put({ type: 'breadcrumb/gotoLink', payload: { displayName,link }} )
       
-      
-      console.log('this is the data id:', data.id)
+
       yield put({ type: 'updateState', payload: data })
     },
     *load({ payload }, { call, put }) { 

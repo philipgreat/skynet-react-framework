@@ -11,7 +11,7 @@ import {
   Spin,
   Breadcrumb,
   AutoComplete,
-  Input,
+  Input,Button
 } from 'antd'
 import DocumentTitle from 'react-document-title'
 import { connect } from 'dva'
@@ -119,6 +119,7 @@ class CompanyEmployeeServingBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/companyEmployeeServing/${this.props.companyEmployeeServing.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class CompanyEmployeeServingBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/companyEmployeeServing/${this.props.companyEmployeeServing.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -177,9 +181,13 @@ class CompanyEmployeeServingBizApp extends React.PureComponent {
   
   buildRouters = () =>{
   	const {CompanyEmployeeServingDashboard} = GlobalComponents
+  	const {CompanyEmployeeServingPreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/companyEmployeeServing/:id/dashboard", component: CompanyEmployeeServingDashboard},
+  	{path:"/companyEmployeeServing/:id/preference", component: CompanyEmployeeServingPreference},
+  	
   	
   	
   	{path:"/companyEmployeeServing/:id/list/vehicleServiceCompanyEmployeeList", component: this.getVehicleServiceCompanyEmployeeSearch()},
@@ -221,7 +229,11 @@ class CompanyEmployeeServingBizApp extends React.PureComponent {
        payload: !collapsed,
      })
    }
-
+    logout = () => {
+   
+    console.log("log out called")
+    this.props.dispatch({ type: 'launcher/signOut' })
+  }
    render() {
      // const { collapsed, fetchingNotices,loading } = this.props
      const { collapsed } = this.props
@@ -245,7 +257,7 @@ class CompanyEmployeeServingBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}
@@ -255,18 +267,11 @@ class CompanyEmployeeServingBizApp extends React.PureComponent {
 
           })}
          </div>
-          <div className={styles.right}>
+          <div className={styles.right}  >
+          <Button type="primary"  icon="logout" onClick={()=>this.logout()}>
+          退出</Button>
+          </div>
           
-          <AutoComplete
-            className="certain-category-search"
-            placeholder="请输入名称"
-            optionLabelProp="value"
-            
-          >
-            <Input
-              suffix={<Icon type="search" className="certain-category-icon" />}
-            />
-          </AutoComplete> </div>
         </Header>
        <Layout>
          <Sider

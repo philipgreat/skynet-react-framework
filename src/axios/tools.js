@@ -81,13 +81,19 @@ export const get = ({ url, msg = '接口异常', headers }) =>
 
 export const getURLPrefix = () => {
   const url = new URL(window.location);
-
+  if (url.hostname === 'clariones.doublechaintech.com') {
+    //return `http://${url.hostname}:8080/naf/`
+    return `http://clariones.doublechaintech.com/naf/`;
+  }
+  if (url.hostname === '30.30.126.37') {
+    return `http://${url.hostname}:8080/naf/`;
+  }
   if (url.hostname === 'localhost') {
-    //return `https://xm.jl51.com.cn/cis/`
+    return `https://xm.jl51.com.cn/cis/`
     //return `http://www.yourongzhixing.com/dssc/`
     //return `https://www.kxbbt.com/bbt/`
     //return "http://t420.doublechaintech.cn:18080/pulupulu/"
-    return `http://${url.hostname}:8080/${SYSTEM_SHORT_NAME}/`;
+    //return `http://${url.hostname}:8080/shuxiang/`;
   }
   //return `http://xm.jl51.com.cn/cis/`
 
@@ -101,57 +107,35 @@ export const joinParameters = parameters => {
     if (obj.hasOwnProperty(key)) {
       arr.push(`${key}=${encodeURIComponent(obj[key])}`);
     }
-    if (url.hostname === "30.30.126.37") {
-        return `http://${url.hostname}:8080/naf/`
-    }
-    if (url.hostname === "localhost") {
-        return `https://xm.jl51.com.cn/cis/`
-        //return `http://www.yourongzhixing.com/dssc/`
-        //return `https://www.kxbbt.com/bbt/`
-        //return "http://t420.doublechaintech.cn:18080/pulupulu/"
-        //return `http://${url.hostname}:8080/naf/`
-    }
-    //return `http://xm.jl51.com.cn/cis/`
-
-    return `${url.origin}/${SYSTEM_SHORT_NAME}/`
-    //return `${url.origin}/${SYSTEM_SHORT_NAME}/`
-    
-}
-export const joinParameters = (parameters) => {
-    const obj = parameters // {value1: 'prop1', value2: 'prop2', value3: 'prop3'}
-    const arr = []
-    for (const key in obj) {
-        if (obj.hasOwnProperty(key)) {
-            arr.push(`${key}=${encodeURIComponent(obj[key])}`)
-        }
-    }
-    const result = arr.join(';')
-    return result
-}
-const formatPostData = (value) => {
-    console.log("value", value)
-    if(value._isAMomentObject){
-        return moment(value).format('YYYY-MM-DDTHH:mm:ss');
-    }
+  }
+  const result = arr.join(';');
+  return result;
+};
+const formatPostData = value => {
+  
+  if(!value){
     return value
-
-}
-export const joinPostParameters = (parameters) => {
-    const obj = parameters // {value1: 'prop1', value2: 'prop2', value3: 'prop3'}
-    const arr = []
-    for (const key in obj) {
-        if (obj.hasOwnProperty(key)) {
-            const value = obj[key]
-            const postValue = formatPostData(value)
-            if (!Array.isArray(value)) {
-                arr.push(key + '=' + encodeURIComponent(postValue))
-                continue
-            }
-            for (const subKey in value) {
-                const subvalue = value[subKey]
-                arr.push(key + '=' + encodeURIComponent(subvalue))
-            }
-        }
+  }
+  if (value._isAMomentObject) {
+    return moment(value).format('YYYY-MM-DDTHH:mm:ss');
+  }
+  return value
+};
+export const joinPostParameters = parameters => {
+  const obj = parameters; // {value1: 'prop1', value2: 'prop2', value3: 'prop3'}
+  const arr = [];
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      const value = obj[key];
+      const postValue = formatPostData(value);
+      if (!Array.isArray(value)) {
+        arr.push(key + '=' + encodeURIComponent(postValue));
+        continue;
+      }
+      for (const subKey in value) {
+        const subvalue = value[subKey];
+        arr.push(key + '=' + encodeURIComponent(subvalue));
+      }
     }
   }
   const result = arr.join('&');
@@ -159,27 +143,6 @@ export const joinPostParameters = (parameters) => {
 };
 
 export const PREFIX = getURLPrefix();
-
-export const postForm = ({ url, requestParameters, msg = '接口异常' }) => {
-  const headers = { 'Content-Type': 'application/x-www-form-urlencoded' };
-  return post({
-    url,
-    data: joinPostParameters(requestParameters),
-    headers,
-  });
-};
-
-export const PREFIX = getURLPrefix()
-
-export const postForm = ({ url, requestParameters, msg = '接口异常'})=>{
-    const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
-    return post({
-      url,
-      data: joinPostParameters(requestParameters),
-      headers,
-    })
-}
-
 /**
  * 公用post请求
  * @param url       接口地址
@@ -187,6 +150,34 @@ export const postForm = ({ url, requestParameters, msg = '接口异常'})=>{
  * @param msg       接口异常提示
  * @param headers   接口所需header配置
  */
+
+/*const url = `${PREFIX}storeManager/removeEmployeeWorkingStoreList/storeId/employeeWorkingStoreIds/tokensExpr/`
+  const requestParameters = { ...parameters, storeId: targetObjectId, tokensExpr: 'none' }
+  const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
+  return post({
+    url,
+    data: joinPostParameters(requestParameters),
+    headers,
+  })*/
+
+export function playSound(sound){
+    var audio = new Audio(sound+'.mp3');
+    audio.play();
+  }
+  
+export const postForm = ({ url, requestParameters, msg = '接口异常'})=>{
+
+  
+  const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
+  return post({
+    url,
+    data: joinPostParameters(requestParameters),
+    headers,
+  })
+}
+
+
+
 export const post = ({ url, data, msg = '接口异常', headers }) =>
   axios
     .post(url, data, headers)

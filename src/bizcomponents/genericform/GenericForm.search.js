@@ -48,6 +48,9 @@ class GenericFormSearch extends PureComponent {
     listParameters[listName]=1;
     listParameters[`${listName}CurrentPage`]=pagination.current;
     listParameters[`${listName}RowsPerPage`]=pagination.pageSize;
+    listParameters[`${listName}.orderBy.0`]="id";
+    listParameters[`${listName}.descOrAsc.0`]="desc";
+   
     
     const params = {
       ...listParameters,
@@ -188,7 +191,7 @@ class GenericFormSearch extends PureComponent {
     const {displayName} = owner.ref
     const { showDeleteResult, selectedRows, modalVisible } = this.state;
     const {GenericFormTable} = GlobalComponents;
-    const {GenericFormConfirmationTable} = GlobalComponents;
+    const {GenericFormModalTable} = GlobalComponents;
     const {GenericFormSearchForm} = GlobalComponents;
     
  
@@ -226,7 +229,7 @@ class GenericFormSearch extends PureComponent {
           width={920}
           style={{ top: 40 }}
         >
-          <GenericFormConfirmationTable data={selectedRows} owner={owner} />
+          <GenericFormModalTable data={selectedRows} owner={owner} />
         </Modal>)
     }
     

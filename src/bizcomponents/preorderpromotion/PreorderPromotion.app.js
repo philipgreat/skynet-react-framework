@@ -11,7 +11,7 @@ import {
   Spin,
   Breadcrumb,
   AutoComplete,
-  Input,
+  Input,Button
 } from 'antd'
 import DocumentTitle from 'react-document-title'
 import { connect } from 'dva'
@@ -119,6 +119,7 @@ class PreorderPromotionBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/preorderPromotion/${this.props.preorderPromotion.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class PreorderPromotionBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/preorderPromotion/${this.props.preorderPromotion.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -142,9 +146,13 @@ class PreorderPromotionBizApp extends React.PureComponent {
   
   buildRouters = () =>{
   	const {PreorderPromotionDashboard} = GlobalComponents
+  	const {PreorderPromotionPreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/preorderPromotion/:id/dashboard", component: PreorderPromotionDashboard},
+  	{path:"/preorderPromotion/:id/preference", component: PreorderPromotionPreference},
+  	
   	
     	
   	
@@ -182,7 +190,11 @@ class PreorderPromotionBizApp extends React.PureComponent {
        payload: !collapsed,
      })
    }
-
+    logout = () => {
+   
+    console.log("log out called")
+    this.props.dispatch({ type: 'launcher/signOut' })
+  }
    render() {
      // const { collapsed, fetchingNotices,loading } = this.props
      const { collapsed } = this.props
@@ -206,7 +218,7 @@ class PreorderPromotionBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}
@@ -216,18 +228,11 @@ class PreorderPromotionBizApp extends React.PureComponent {
 
           })}
          </div>
-          <div className={styles.right}>
+          <div className={styles.right}  >
+          <Button type="primary"  icon="logout" onClick={()=>this.logout()}>
+          退出</Button>
+          </div>
           
-          <AutoComplete
-            className="certain-category-search"
-            placeholder="请输入名称"
-            optionLabelProp="value"
-            
-          >
-            <Input
-              suffix={<Icon type="search" className="certain-category-icon" />}
-            />
-          </AutoComplete> </div>
         </Header>
        <Layout>
          <Sider
