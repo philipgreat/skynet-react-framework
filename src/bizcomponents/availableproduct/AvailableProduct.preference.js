@@ -291,6 +291,7 @@ class AvailableProductPreference extends Component {
     const { id,displayName, servicePriceCount, availableServiceCount, productPriceCount, availableInsuranceCount, availableHandOverItemCount, preorderPromotionCount } = this.props.availableProduct
     const cardsData = {cardsName:"产品类型",cardsFor: "availableProduct",cardsSource: this.props.availableProduct,
   		subItems: [
+{name: 'preorderPromotionList', displayName:'提前下单优惠',type:'preorderPromotion',count:preorderPromotionCount},
     
       	],
   	};

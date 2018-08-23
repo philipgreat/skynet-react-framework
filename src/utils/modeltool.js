@@ -89,4 +89,7 @@ const setupModel = ({ dispatch, history, location, modelName }) => {
 
 const modeltool={hasError,setupModel,handleClientError,handleServerError}
 export default modeltool
+<<<<<<< HEAD
 
+=======
+>>>>>>> 69fce8703114b35fde9082e9f806d4b3dd160efb

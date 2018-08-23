@@ -18,7 +18,7 @@ const testValues = {};
 const testValues = {
   couponTitle: '优惠￥10元',
   discountAmount: '10.00',
-  endDate: '2017-12-04 06:14:43',
+  endDate: '2016-08-10 06:01:09',
   couponStatus: '未使用',
   shareCode: 'abcdefg',
   customerId: 'C000001',

@@ -9,7 +9,6 @@ const menuData = {menuName:"驾乐乐车辆代审服务平台", menuFor: "carIns
   {name: 'vehicleServiceCompanyList', displayName:'商户', icon:'glass'},
   {name: 'vehicleInfoList', displayName:'车辆信息', icon:'info'},
   {name: 'vehicleInspectionOrderList', displayName:'年检订单', icon:'glass'},
-  {name: 'preorderPromotionList', displayName:'提前下单优惠', icon:'glass'},
   {name: 'orderDiscountCouponList', displayName:'优惠券', icon:'glass'},
   {name: 'accountList', displayName:'对账单', icon:'cc'},
   

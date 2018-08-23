@@ -299,6 +299,7 @@ class CarInspectionPlatformPreference extends Component {
 {name: 'availableVehicleUseCharacterList', displayName:'车辆使用性质',type:'availableVehicleUseCharacter',count:availableVehicleUseCharacterCount},
 {name: 'availableReviewItemList', displayName:'评论',type:'availableReviewItem',count:availableReviewItemCount},
 {name: 'availableRatingItemList', displayName:'服务评分',type:'availableRatingItem',count:availableRatingItemCount},
+{name: 'preorderPromotionList', displayName:'提前下单优惠',type:'preorderPromotion',count:preorderPromotionCount},
     
       	],
   	};

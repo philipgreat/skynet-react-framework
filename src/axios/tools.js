@@ -112,6 +112,7 @@ export const joinParameters = parameters => {
   return result;
 };
 const formatPostData = value => {
+<<<<<<< HEAD
   
   if(!value){
     return value
@@ -120,13 +121,28 @@ const formatPostData = value => {
     return moment(value).format('YYYY-MM-DDTHH:mm:ss');
   }
   return value
+=======
+  console.log('value', value);
+
+  if (value._isAMomentObject) {
+    return moment(value).format('YYYY-MM-DDTHH:mm:ss');
+  }
+  return value;
+>>>>>>> 69fce8703114b35fde9082e9f806d4b3dd160efb
 };
 export const joinPostParameters = parameters => {
   const obj = parameters; // {value1: 'prop1', value2: 'prop2', value3: 'prop3'}
   const arr = [];
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
+<<<<<<< HEAD
       const value = obj[key];
+=======
+      const value = obj[key]     
+      if(!value){
+        continue
+      }
+>>>>>>> 69fce8703114b35fde9082e9f806d4b3dd160efb
       const postValue = formatPostData(value);
       if (!Array.isArray(value)) {
         arr.push(key + '=' + encodeURIComponent(postValue));
@@ -158,6 +174,7 @@ export const PREFIX = getURLPrefix();
     url,
     data: joinPostParameters(requestParameters),
     headers,
+<<<<<<< HEAD
   })*/
 
 export function playSound(sound){
@@ -178,6 +195,18 @@ export const postForm = ({ url, requestParameters, msg = '接口异常'})=>{
 
 
 
+=======
+  });
+};
+
+/**
+ * 公用post请求
+ * @param url       接口地址
+ * @param data      接口参数
+ * @param msg       接口异常提示
+ * @param headers   接口所需header配置
+ */
+>>>>>>> 69fce8703114b35fde9082e9f806d4b3dd160efb
 export const post = ({ url, data, msg = '接口异常', headers }) =>
   axios
     .post(url, data, headers)
@@ -271,3 +300,8 @@ export const mapFromImageValues = (selectedRow, imageKeys) => {
   console.log('targetImages', targetImages);
   return targetImages;
 };
+
+export function playSound(sound){
+  var audio = new Audio(sound+'.mp3');
+  audio.play();
+}

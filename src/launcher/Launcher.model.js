@@ -86,6 +86,10 @@ export default {
         return
       }
       if (data.class.indexOf('LoginForm') > 0) {
+        notification.error({
+          message: data.errorMessage,
+          description: data.errorMessage,
+        })
         yield put({ type: 'showlogin', payload: { data } })
         return
       }
@@ -111,10 +115,9 @@ export default {
       yield put(routerRedux.push(location))
       // yield put({type:"showApp",payload:{data}})
     },
+
     *signOut({ payload }, { call, put }) {
-      // console.log("gotoApp has been called", payload)
       const data = yield call(LauncherService.logout)
-     
       yield put({ type: 'logout', payload: { data} })
       const location = { pathname: `/home`, state: data }
       yield put(routerRedux.push(location))
@@ -126,8 +129,10 @@ export default {
     updateState(state, action) {
       return { ...state, ...action.payload }
     },
-    showlogin(state) {
-      return { ...state, loggedIn: false }
+    showlogin(state, action) {
+      const { data } = action.payload
+      console.log("data from server ",data)
+      return { ...state, loggedIn: false,data }
     },
     showhome(state, action) {
       const { data } = action.payload

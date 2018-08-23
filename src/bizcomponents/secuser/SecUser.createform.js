@@ -21,8 +21,8 @@ const testValues = {
   email: 'suddy_chang@163.com',
   pwd: 'C183EC89F92A462CF45B95504792EC4625E847C90536EEFE512D1C9DB8602E95',
   verificationCode: '9981727',
-  verificationCodeExpire: '2017-12-11 10:24:57',
-  lastLoginTime: '2016-09-05 13:55:46',
+  verificationCodeExpire: '2018-08-12 00:09:55',
+  lastLoginTime: '2016-08-19 21:15:13',
   domainId: 'UD000001',
 }
 */

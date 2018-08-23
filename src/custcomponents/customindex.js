@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //import CarInspectionPlatformDashboard from './carinspectionplatform/CarInspectionPlatform.dashboard'
 //import VehicleServiceCompanyEmployeeCreateForm from './vehicleservicecompanyemployee/VehicleServiceCompanyEmployee.createform'
 //import ProvinceCreateForm from './province/Province.createform';
@@ -16,3 +17,15 @@ import VehicleInspectionOrderDashboard from './vehicleinspectionorder/VehicleIns
 //const result={VehicleInspectionOrderDashboard}
 const result={VehicleInspectionOrderDashboard}
 export default result;
+=======
+import StoreDashboard from './store/Store.dashboardex';
+import StoreBizApp from './store/Store.appex';
+
+//CarInspectionPlatformDashboard,VehicleServiceCompanyEmployeeCreateForm,ProvinceCreateForm
+//const result = {StoreDashboard,StoreBizApp,BookPlazaDashboard,BookPlazaBizApp,BookSharingPlatformBizApp,BookSharingPlatformDashboard};
+const result = { StoreDashboard, StoreBizApp };
+
+//const result={}
+export default result;
+
+>>>>>>> 69fce8703114b35fde9082e9f806d4b3dd160efb

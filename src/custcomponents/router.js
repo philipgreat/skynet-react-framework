@@ -6,8 +6,6 @@ import { LocaleProvider } from 'antd'
 import zhCN from 'antd/lib/locale-provider/zh_CN'
 // import enUS from 'antd/lib/locale-provider/en_US'
 import Launcher from '../launcher/Launcher'
-import ForgetPasswordForm from '../launcher/ForgetPasswordForm'
-
 import GlobalComponents from './'
 
 
@@ -94,9 +92,7 @@ function RouterConfig({ history }) {
     <LocaleProvider locale={zhCN}>
       <Router history={history}>
         <Switch>
-        <Route path="/home" component={Launcher} />
-        <Route path="/forgetpass" component={ForgetPasswordForm} />
-         
+         <Route path="/home" component={Launcher} />
           <Route path="/carInspectionPlatform/" component={CarInspectionPlatformBizApp} />
           <Route path="/platformConfiguration/" component={PlatformConfigurationBizApp} />
           <Route path="/province/" component={ProvinceBizApp} />

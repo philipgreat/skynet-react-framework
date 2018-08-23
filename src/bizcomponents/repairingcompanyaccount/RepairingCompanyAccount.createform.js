@@ -24,7 +24,7 @@ const testValues = {
   allowanceAmount: '40.00',
   actualAmount: '160.00',
   mainOrderId: 'O1234567890',
-  paymentDatetime: '2017-09-10 06:12:12',
+  paymentDatetime: '2018-05-27 22:06:44',
   wechatOrderId: '5K8264ILTKCH16CQ2502SI8ZNMTM67VS',
   wechatPrepayId: 'u802345jgfjsdfgsdg888',
   merchantId: 'VSC000001',

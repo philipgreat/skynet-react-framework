@@ -16,12 +16,12 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
-  originalAmount: '403.45',
-  actualAmount: '363.68',
+  originalAmount: '400.18',
+  actualAmount: '362.90',
   status: '未支付',
   wechatOrderId: '',
   wechatPrepayId: '',
-  createTime: '2017-10-01 22:43:11',
+  createTime: '2017-07-23 10:44:21',
   serviceVehicleRepairingId: 'SVR000001',
 }
 */
