@@ -17,7 +17,7 @@ const testValues = {};
 /*
 const testValues = {
   planName: '盘点计划名称',
-  planDatetime: '2016-09-21 05:41:23',
+  planDatetime: '2016-05-03 04:36:03',
   storeId: 'S000001',
   planCreatorId: 'E000001',
   takeStockStatusId: 'TSS000001',

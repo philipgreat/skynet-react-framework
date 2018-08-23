@@ -119,6 +119,7 @@ class ActionTokenBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/actionToken/${this.props.actionToken.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class ActionTokenBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/vehicleInfo/${this.props.vehicleInfo.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -141,10 +145,21 @@ class ActionTokenBizApp extends React.PureComponent {
 
   
   buildRouters = () =>{
+<<<<<<< HEAD:src/bizcomponents/vehicleinfo/VehicleInfo.app.js
+  	const {VehicleInfoDashboard} = GlobalComponents
+  	const {VehicleInfoPreference} = GlobalComponents
+  	
+  	
+  	const routers=[
+  	{path:"/vehicleInfo/:id/dashboard", component: VehicleInfoDashboard},
+  	{path:"/vehicleInfo/:id/preference", component: VehicleInfoPreference},
+  	
+=======
   	const {ActionTokenDashboard} = GlobalComponents
   	
   	const routers=[
   	{path:"/actionToken/:id/dashboard", component: ActionTokenDashboard},
+>>>>>>> 69fce8703114b35fde9082e9f806d4b3dd160efb:src/bizcomponents/actiontoken/ActionToken.app.js
   	
     	
   	

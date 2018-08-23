@@ -119,6 +119,7 @@ class AvailableTokenBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/availableToken/${this.props.availableToken.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class AvailableTokenBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/serviceFileMovementM2c/${this.props.serviceFileMovementM2c.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -176,10 +180,21 @@ class AvailableTokenBizApp extends React.PureComponent {
 
   
   buildRouters = () =>{
+<<<<<<< HEAD:src/bizcomponents/servicefilemovementm2c/ServiceFileMovementM2c.app.js
+  	const {ServiceFileMovementM2cDashboard} = GlobalComponents
+  	const {ServiceFileMovementM2cPreference} = GlobalComponents
+  	
+  	
+  	const routers=[
+  	{path:"/serviceFileMovementM2c/:id/dashboard", component: ServiceFileMovementM2cDashboard},
+  	{path:"/serviceFileMovementM2c/:id/preference", component: ServiceFileMovementM2cPreference},
+  	
+=======
   	const {AvailableTokenDashboard} = GlobalComponents
   	
   	const routers=[
   	{path:"/availableToken/:id/dashboard", component: AvailableTokenDashboard},
+>>>>>>> 69fce8703114b35fde9082e9f806d4b3dd160efb:src/bizcomponents/availabletoken/AvailableToken.app.js
   	
   	
   	{path:"/availableToken/:id/list/tokenInMemberServiceProductList", component: this.getTokenInMemberServiceProductSearch()},

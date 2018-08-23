@@ -27,8 +27,20 @@ export default {
         dispatch(routerRedux.push(newlocation))
       })
     },
+<<<<<<< HEAD
     
     setup({ dispatch, history }) {
+=======
+    timer({ dispatch }){
+
+      setInterval(()=>{
+
+        dispatch({type:"showlog"})
+
+      }, 3000);
+    },
+    setup({ history }) {
+>>>>>>> 3dfe05c493b83341ab73e9991cc3a39b61fbe05e
       history.listen((location) => {
         currentLocation = location.pathname
         const { pathname } = location
@@ -37,41 +49,37 @@ export default {
           return
           // dispatch action with userId
         }
-        console.log('launcher location ==============>', location)
+        console.log('launcher ==============>', location)
         // updateState
         // console.log(1, loggedIn)
-        dispatch({type:"home"})
+        // dispatch({type:"showlogin"})
       })
     },
   },
   effects: {
+    *showlog({ payload }, { call, put,select }){
+      const loggedIn = yield select(state => state.launcher.loggedIn)
+      if(!loggedIn){
+        console.log("not logged yet")
+        return
+      }
 
-    *home({ payload }, { call, put }) {
-      const {calcLocationPath,calcMenuData} = GlobalComponents
-      const data = yield call(LauncherService.home)
-      console.log('data.........................', data)
-      if (!data) {
+      console.log("time222 ", new Date())
+      const data = yield call(LauncherService.checkOtherLogin)
+      if(data=="OK"){
+        //donothing
         return
       }
-      if (!data.class) {
+      if(data=="PROCEED"){
+        //donothing
         return
       }
-      if (data.class.indexOf('LoginForm') > 0) {
+      notification.warn({
+        message: '警告',
+        description: data
+      }) 
 
-        
-
-        yield put({ type: 'showlogin', payload: { data } })
-        return
-      }
-      if (data.class.indexOf('SecUser') > 0) {
-        yield put({ type: 'showhome', payload: { data } })
-        return
-      }
-      const locationPath = calcLocationPath(data.class, data.id, 'dashboard')
-      const location = { pathname: `/${locationPath}`, state: data }
-      yield put(routerRedux.push(location))
     },
-
     *login({ payload }, { call, put }) {
       const {calcLocationPath,calcMenuData} = GlobalComponents
       const data = yield call(LauncherService.login, payload.username, payload.password)
@@ -98,8 +106,6 @@ export default {
       const location = { pathname: `/${locationPath}`, state: data }
       yield put(routerRedux.push(location))
     },
-
-
     *gotoApp({ payload }, { call, put }) {
       // console.log("gotoApp has been called", payload)
       const {calcLocationPath,calcMenuData} = GlobalComponents
@@ -120,6 +126,8 @@ export default {
       yield put({ type: 'logout', payload: { data} })
       const location = { pathname: `/home`, state: data }
       yield put(routerRedux.push(location))
+     
+      // yield put({type:"showApp",payload:{data}})
     },
   },
   reducers: {

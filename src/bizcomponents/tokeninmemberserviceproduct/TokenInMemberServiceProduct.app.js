@@ -119,6 +119,7 @@ class TokenInMemberServiceProductBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/tokenInMemberServiceProduct/${this.props.tokenInMemberServiceProduct.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class TokenInMemberServiceProductBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/availableVehicleType/${this.props.availableVehicleType.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -141,10 +145,21 @@ class TokenInMemberServiceProductBizApp extends React.PureComponent {
 
   
   buildRouters = () =>{
+<<<<<<< HEAD:src/bizcomponents/availablevehicletype/AvailableVehicleType.app.js
+  	const {AvailableVehicleTypeDashboard} = GlobalComponents
+  	const {AvailableVehicleTypePreference} = GlobalComponents
+  	
+  	
+  	const routers=[
+  	{path:"/availableVehicleType/:id/dashboard", component: AvailableVehicleTypeDashboard},
+  	{path:"/availableVehicleType/:id/preference", component: AvailableVehicleTypePreference},
+  	
+=======
   	const {TokenInMemberServiceProductDashboard} = GlobalComponents
   	
   	const routers=[
   	{path:"/tokenInMemberServiceProduct/:id/dashboard", component: TokenInMemberServiceProductDashboard},
+>>>>>>> 69fce8703114b35fde9082e9f806d4b3dd160efb:src/bizcomponents/tokeninmemberserviceproduct/TokenInMemberServiceProduct.app.js
   	
     	
   	

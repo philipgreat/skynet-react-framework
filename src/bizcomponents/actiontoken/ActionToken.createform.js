@@ -16,13 +16,13 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
-  holderType: 'Customer',
-  holderId: 'C000001',
-  tokenCode: 'BORROW',
-  tokenQuantity: '98455',
-  startDate: '2018-01-12 19:53:52',
-  endDate: '2016-03-22 10:54:34',
-  userDomainId: 'UD000001',
+  originalAmount: '403.45',
+  actualAmount: '363.68',
+  status: '未支付',
+  wechatOrderId: '',
+  wechatPrepayId: '',
+  createTime: '2017-10-01 22:43:11',
+  serviceVehicleRepairingId: 'SVR000001',
 }
 */
 const imageURLPrefix = '//localhost:2090'

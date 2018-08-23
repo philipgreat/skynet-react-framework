@@ -16,16 +16,16 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
-  lendingDatetime: '2017-06-19 06:21:24',
+  lendingDatetime: '2016-06-26 10:23:28',
   bookName: '飘',
   borrowerMemberLevel: '普通会员',
-  borrowerMemberServiceExpiredDatetime: '2015-10-27 23:40:06',
+  borrowerMemberServiceExpiredDatetime: '2017-10-24 15:25:29',
   bookCopySharingType: '共享',
   lendingStoreType: '社区',
   freeLendingDays: '7',
-  freeLendingExpiredDatetime: '2017-06-15 01:08:14',
-  overduePay: '0.78',
-  returnDatetime: '2016-08-14 09:21:35',
+  freeLendingExpiredDatetime: '2016-09-05 10:55:07',
+  overduePay: '0.91',
+  returnDatetime: '2016-11-09 16:46:48',
   lendingDays: '13',
   borrowerId: 'C000001',
   bookId: 'B000001',

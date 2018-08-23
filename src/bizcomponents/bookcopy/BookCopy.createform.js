@@ -17,7 +17,7 @@ const testValues = {};
 /*
 const testValues = {
   bookCopySharingType: '共享',
-  evaluationPrice: '45.13',
+  evaluationPrice: '43.09',
   wxaId: 'https://shuxiang.ycinfotech.cn/shuxiang/wxaService/bookCopyScanned/BC000001/',
   bookInfoId: 'B000001',
   bookCopyVendorId: 'C000001',

@@ -17,8 +17,8 @@ const testValues = {};
 /*
 const testValues = {
   vendorRate: '0.71',
-  lendingStoreRate: '0.08',
-  platformRate: '0.09',
+  lendingStoreRate: '0.10',
+  platformRate: '0.08',
   bookPlazaId: 'BP000001',
 }
 */
