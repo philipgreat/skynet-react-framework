@@ -10,6 +10,21 @@ const getMethod = (ownerClass, id, filterKey, pageNo) => {
 
 //bookManager/actionBookWarehousingWithIsbn/storeId/scannedIsbn/bookCopyVendorId/bookCopySharingType/
 
+const deleteBookCopyFromStore = (parameters) => {
+  //public  Store removeBookCopy(ShuxiangUserContext userContext, String storeId, 
+	//	String bookCopyId, int bookCopyVersion,String [] tokensExpr)
+  const url = `${PREFIX}storeManager/removeBookCopy/storeId/bookCopyId/bookCopyVersion/tokensExpr/`
+  const requestParameters = { ...parameters}
+
+  const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
+  return post({
+    url,
+    data: joinPostParameters(requestParameters),
+    headers,
+  })
+
+}
+
 
 const actionBookWarehousingWithIsbn = (targetObjectId, parameters) => {
     const url = `${PREFIX}bookManager/actionBookWarehousingWithIsbn/storeId/scannedIsbn/bookCopyVendorId/bookCopySharingType/`
@@ -23,6 +38,19 @@ const actionBookWarehousingWithIsbn = (targetObjectId, parameters) => {
     })
   }
 
+
+  const createLossAssessment = (parameters) => {
+    const url = `${PREFIX}employeeManager/createNewLossAssessment/idOfBorrowingHistory/idOfDiscount/comment/`
+    const requestParameters = { ...parameters}
+  
+    const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
+    return post({
+      url,
+      data: joinPostParameters(requestParameters),
+      headers,
+    })
+  }
+//./employeeManager/addLossAssessmentRecord/employeeId/bookCopyId/recordStoreId/lossComment/lossImage/bookCopyEvaluationPrice/lossDiscountId/damagePersonId/tokensExpr/
 
   const returnBookByEmployee = (targetObjectId, parameters) => {
     const url = `${PREFIX}bookCopyManager/returnBookByEmployee/bookCopyIdOrQrcode/`
@@ -84,6 +112,6 @@ const putBookOffShelf = (targetObjectId, parameters) => {
     actionBookWarehousingWithIsbn,
     returnBookByEmployee,
     lentBookByEmployee,
-    putBookOffShelf,putBookOnShelf }
+    putBookOffShelf,putBookOnShelf,createLossAssessment,deleteBookCopyFromStore }
   export default BookStoreExService
 

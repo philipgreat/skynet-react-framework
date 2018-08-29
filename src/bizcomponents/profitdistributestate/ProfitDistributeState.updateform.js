@@ -261,12 +261,12 @@ class ProfitDistributeStateUpdateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.ame} {...formItemLayout}>
-                  {getFieldDecorator('ame', {
-                    initialValue: selectedRow.ame,
-                    rules: [{ required: true, message: '请输入ame' }],
+                <Form.Item label={fieldLabels.name} {...formItemLayout}>
+                  {getFieldDecorator('name', {
+                    initialValue: selectedRow.name,
+                    rules: [{ required: true, message: '请输入名称' }],
                   })(
-                    <Input placeholder="请输入ame" />
+                    <Input placeholder="请输入名称" />
                     
                   )}
                 </Form.Item>

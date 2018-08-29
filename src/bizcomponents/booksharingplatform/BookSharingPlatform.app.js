@@ -142,6 +142,41 @@ class BookSharingPlatformBizApp extends React.PureComponent {
 
 
 
+  getLossDiscountSearch = () => {
+    const {LossDiscountSearch} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._bookSharingPlatform.lossDiscountList,
+      count: state._bookSharingPlatform.lossDiscountCount,
+      currentPage: state._bookSharingPlatform.lossDiscountCurrentPageNumber,
+      searchFormParameters: state._bookSharingPlatform.lossDiscountSearchFormParameters,
+      loading: state._bookSharingPlatform.loading,
+      partialList: state._bookSharingPlatform.partialList,
+      owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, referenceName: 'bookSharingPlatform', listName: 'lossDiscountList', ref:state._bookSharingPlatform, listDisplayName: '损失的折扣列表' }, // this is for model namespace and
+    }))(LossDiscountSearch)
+  }
+  getLossDiscountCreateForm = () => {
+   	const {LossDiscountCreateForm} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._bookSharingPlatform.lossDiscountList,
+      count: state._bookSharingPlatform.lossDiscountCount,
+      currentPage: state._bookSharingPlatform.lossDiscountCurrentPageNumber,
+      searchFormParameters: state._bookSharingPlatform.lossDiscountSearchFormParameters,
+      loading: state._bookSharingPlatform.loading,
+      owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, referenceName: 'bookSharingPlatform', listName: 'lossDiscountList', ref:state._bookSharingPlatform, listDisplayName: '损失的折扣列表'}, // this is for model namespace and
+    }))(LossDiscountCreateForm)
+  }
+  
+  getLossDiscountUpdateForm = () => {
+  	const {LossDiscountUpdateForm} = GlobalComponents;
+    return connect(state => ({
+      selectedRows: state._bookSharingPlatform.selectedRows,
+      currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
+      owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'lossDiscountList', ref:state._bookSharingPlatform, listDisplayName: '损失的折扣列表' }, // this is for model namespace and
+    }))(LossDiscountUpdateForm)
+  }
+
   getPlatformConfigurationSearch = () => {
     const {PlatformConfigurationSearch} = GlobalComponents;
     return connect(state => ({
@@ -1100,6 +1135,10 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	
   	
   	
+  	{path:"/bookSharingPlatform/:id/list/lossDiscountList", component: this.getLossDiscountSearch()},
+  	{path:"/bookSharingPlatform/:id/list/lossDiscountCreateForm", component: this.getLossDiscountCreateForm()},
+  	{path:"/bookSharingPlatform/:id/list/lossDiscountUpdateForm", component: this.getLossDiscountUpdateForm()},
+   	
   	{path:"/bookSharingPlatform/:id/list/platformConfigurationList", component: this.getPlatformConfigurationSearch()},
   	{path:"/bookSharingPlatform/:id/list/platformConfigurationCreateForm", component: this.getPlatformConfigurationCreateForm()},
   	{path:"/bookSharingPlatform/:id/list/platformConfigurationUpdateForm", component: this.getPlatformConfigurationUpdateForm()},

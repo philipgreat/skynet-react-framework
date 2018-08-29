@@ -58,13 +58,13 @@ const removeMessageTemplateList = (targetObjectId, parameters) => {
 
 
 const addLossAssessmentRecord = (targetObjectId, parameters) => {
-  const url = `${PREFIX}employeeManager/addLossAssessmentRecord/recordPersonId/bookCopyId/recordStoreId/lossComment/damagePersonId/tokensExpr/`
+  const url = `${PREFIX}employeeManager/addLossAssessmentRecord/recordPersonId/bookCopyId/recordStoreId/lossComment/lossImage/bookCopyEvaluationPrice/lossDiscountId/damagePersonId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateLossAssessmentRecord = (targetObjectId, parameters) => {
-  const url = `${PREFIX}employeeManager/updateLossAssessmentRecordProperties/employeeId/id/lossComment/tokensExpr/`
+  const url = `${PREFIX}employeeManager/updateLossAssessmentRecordProperties/employeeId/id/lossComment/lossImage/bookCopyEvaluationPrice/tokensExpr/`
   const employeeId = targetObjectId
   const requestParameters = { ...parameters, employeeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})

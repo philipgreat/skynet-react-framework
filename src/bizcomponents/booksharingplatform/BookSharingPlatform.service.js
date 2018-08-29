@@ -21,6 +21,26 @@ const load = (targetObjectId, parameters) => {
 
 
 
+const addLossDiscount = (targetObjectId, parameters) => {
+  const url = `${PREFIX}bookSharingPlatformManager/addLossDiscount/bookSharingPlatformId/name/code/discountRatio/tokensExpr/`
+  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+const updateLossDiscount = (targetObjectId, parameters) => {
+  const url = `${PREFIX}bookSharingPlatformManager/updateLossDiscountProperties/bookSharingPlatformId/id/name/code/discountRatio/tokensExpr/`
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+const removeLossDiscountList = (targetObjectId, parameters) => {
+  const url = `${PREFIX}bookSharingPlatformManager/removeLossDiscountList/bookSharingPlatformId/lossDiscountIds/tokensExpr/`
+  const requestParameters = { ...parameters, bookSharingPlatformId: targetObjectId, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+
 const addPlatformConfiguration = (targetObjectId, parameters) => {
   const url = `${PREFIX}bookSharingPlatformManager/addPlatformConfiguration/platformId/memberServiceAgreement/bookSharingAgreement/accountRechargeAgreement/messageInStoreListPage/feedbackContactInfo/myRightsTitle/myBorrowingTitle/myCampaignTitle/myBalanceTitle/myBookReviewTitle/myOrderTitle/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
@@ -522,13 +542,13 @@ const removeProfitTypeList = (targetObjectId, parameters) => {
 
 
 const addProfitDistributeState = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookSharingPlatformManager/addProfitDistributeState/platformId/ame/code/tokensExpr/`
+  const url = `${PREFIX}bookSharingPlatformManager/addProfitDistributeState/platformId/name/code/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateProfitDistributeState = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookSharingPlatformManager/updateProfitDistributeStateProperties/bookSharingPlatformId/id/ame/code/tokensExpr/`
+  const url = `${PREFIX}bookSharingPlatformManager/updateProfitDistributeStateProperties/bookSharingPlatformId/id/name/code/tokensExpr/`
   const bookSharingPlatformId = targetObjectId
   const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
@@ -563,6 +583,7 @@ const removeUndistributedProfitList = (targetObjectId, parameters) => {
 
 const BookSharingPlatformService = { view,
   load,
+  addLossDiscount,
   addPlatformConfiguration,
   addAccountData,
   addCity,
@@ -590,6 +611,7 @@ const BookSharingPlatformService = { view,
   addProfitType,
   addProfitDistributeState,
   addUndistributedProfit,
+  updateLossDiscount,
   updatePlatformConfiguration,
   updateAccountData,
   updateCity,
@@ -617,6 +639,7 @@ const BookSharingPlatformService = { view,
   updateProfitType,
   updateProfitDistributeState,
   updateUndistributedProfit,
+  removeLossDiscountList,
   removePlatformConfigurationList,
   removeAccountDataList,
   removeCityList,

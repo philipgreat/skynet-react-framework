@@ -50,6 +50,22 @@ const transferToAnotherRecordStore = (id, parameters) => {
 
 
 
+const requestCandidateLossDiscount = (ownerClass, id, filterKey, pageNo) => {
+  //const parametersExpr = joinParameters(parameters)
+  return get({
+    url: `${PREFIX}lossAssessmentRecordManager/requestCandidateLossDiscount/${ownerClass}/${id}/${filterKey}/${pageNo}/`,
+  })
+}	
+
+const transferToAnotherLossDiscount = (id, parameters) => {
+  //const parametersExpr = joinParameters(parameters)
+  const url = `${PREFIX}lossAssessmentRecordManager/transferToAnotherLossDiscount/id/anotherLossDiscountId/`
+  const requestParameters = {id, ...parameters}
+  return postForm({url,requestParameters})
+}
+
+
+
 const requestCandidateRecordPerson = (ownerClass, id, filterKey, pageNo) => {
   //const parametersExpr = joinParameters(parameters)
   return get({
@@ -89,10 +105,12 @@ const LossAssessmentRecordService = { view,
   load,
   requestCandidateBookCopy,
   requestCandidateRecordStore,
+  requestCandidateLossDiscount,
   requestCandidateRecordPerson,
   requestCandidateDamagePerson,
   transferToAnotherBookCopy,
   transferToAnotherRecordStore,
+  transferToAnotherLossDiscount,
   transferToAnotherRecordPerson,
   transferToAnotherDamagePerson }
 export default LossAssessmentRecordService

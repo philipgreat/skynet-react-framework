@@ -90,13 +90,13 @@ const removePrivateMessageList = (targetObjectId, parameters) => {
 
 
 const addLossAssessmentRecord = (targetObjectId, parameters) => {
-  const url = `${PREFIX}customerManager/addLossAssessmentRecord/damagePersonId/bookCopyId/recordStoreId/lossComment/recordPersonId/tokensExpr/`
+  const url = `${PREFIX}customerManager/addLossAssessmentRecord/damagePersonId/bookCopyId/recordStoreId/lossComment/lossImage/bookCopyEvaluationPrice/lossDiscountId/recordPersonId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateLossAssessmentRecord = (targetObjectId, parameters) => {
-  const url = `${PREFIX}customerManager/updateLossAssessmentRecordProperties/customerId/id/lossComment/tokensExpr/`
+  const url = `${PREFIX}customerManager/updateLossAssessmentRecordProperties/customerId/id/lossComment/lossImage/bookCopyEvaluationPrice/tokensExpr/`
   const customerId = targetObjectId
   const requestParameters = { ...parameters, customerId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})

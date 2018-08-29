@@ -21,8 +21,8 @@ const testValues = {
   skuType: 'BookCopy',
   skuId: 'BC000001',
   skuLink: 'http://douban.com.cn/book/1298uausad',
-  rawPrice: '69.76',
-  itemDiscount: '4.62',
+  rawPrice: '77.48',
+  itemDiscount: '4.49',
   mainOrderId: 'MO000001',
 }
 */

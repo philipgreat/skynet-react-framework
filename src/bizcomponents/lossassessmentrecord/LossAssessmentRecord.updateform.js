@@ -18,6 +18,7 @@ const { TextArea } = Input
 const imageURLPrefix = '//localhost:2090'
 
 const imageKeys = [
+  'lossImage',
 ]
 
 
@@ -273,6 +274,18 @@ class LossAssessmentRecordUpdateForm extends Component {
                 </Form.Item>
               </Col>
 
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.bookCopyEvaluationPrice} {...formItemLayout}>
+                  {getFieldDecorator('bookCopyEvaluationPrice', {
+                    initialValue: selectedRow.bookCopyEvaluationPrice,
+                    rules: [{ required: true, message: '请输入书副本评估价格' }],
+                  })(
+                    <Input placeholder="请输入书副本评估价格" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
             </Row>
           </Form>  
         </Card>
@@ -281,6 +294,23 @@ class LossAssessmentRecordUpdateForm extends Component {
         
         
 
+
+        <Card title={<div>附件 <Popover title="扫描二维码可以从手机上传图片或者附件" content={<div><img src='./qrtest.png'/></div>}><Icon type="qrcode" ></Icon></Popover></div>} className={styles.card} bordered={false}>
+          <Form >
+            <Row gutter={16}>
+
+              <Col lg={6} md={12} sm={24}>
+                <ImageComponent
+                  buttonTitle="损失图像"
+                  handlePreview={this.handlePreview}
+                  handleChange={event => this.handleChange(event, 'lossImage')}
+                  fileList={convertedImagesValues.lossImage}
+                />
+              </Col>
+
+            </Row>
+          </Form>
+        </Card>
 
         <FooterToolbar>
           {getErrorInfo()}

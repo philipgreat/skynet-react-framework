@@ -103,6 +103,82 @@ export default {
       yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}List/${listName}`))
     },
 
+    *addLossDiscount({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.addLossDiscount, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/损失的折扣列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateLossDiscount({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.updateLossDiscount, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/损失的折扣列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextLossDiscountUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeLossDiscountList({ payload }, { call, put }) {
+      const {BookSharingPlatformService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(BookSharingPlatformService.removeLossDiscountList, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
+      // yield put(routerRedux.push(location))
+    },
+
     *addPlatformConfiguration({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
 

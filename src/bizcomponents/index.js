@@ -38,6 +38,18 @@ import LossAssessmentRecordCreateForm from './lossassessmentrecord/LossAssessmen
 import LossAssessmentRecordTable from './lossassessmentrecord/LossAssessmentRecord.table';
 import LossAssessmentRecordService from './lossassessmentrecord/LossAssessmentRecord.service';
 import LossAssessmentRecordUpdateForm from './lossassessmentrecord/LossAssessmentRecord.updateform';
+import LossDiscountBase from './lossdiscount/LossDiscount.base';
+import LossDiscountBizApp from './lossdiscount/LossDiscount.app';
+import LossDiscountModel from './lossdiscount/LossDiscount.model';
+import LossDiscountDashboard from './lossdiscount/LossDiscount.dashboard';
+import LossDiscountPreference from './lossdiscount/LossDiscount.preference';
+import LossDiscountModalTable from './lossdiscount/LossDiscount.modaltable';
+import LossDiscountSearch from './lossdiscount/LossDiscount.search';
+import LossDiscountSearchForm from './lossdiscount/LossDiscount.searchform';
+import LossDiscountCreateForm from './lossdiscount/LossDiscount.createform';
+import LossDiscountTable from './lossdiscount/LossDiscount.table';
+import LossDiscountService from './lossdiscount/LossDiscount.service';
+import LossDiscountUpdateForm from './lossdiscount/LossDiscount.updateform';
 import BookSharingPlatformBase from './booksharingplatform/BookSharingPlatform.base';
 import BookSharingPlatformBizApp from './booksharingplatform/BookSharingPlatform.app';
 import BookSharingPlatformModel from './booksharingplatform/BookSharingPlatform.model';
@@ -1004,6 +1016,7 @@ const BizModels = [
 	PrivateMessageModel,
 	MessageTemplateModel,
 	LossAssessmentRecordModel,
+	LossDiscountModel,
 	BookSharingPlatformModel,
 	PlatformConfigurationModel,
 	AccountDataModel,
@@ -1104,6 +1117,7 @@ const menuLibrary = []
 menuLibrary['privateMessage'] = PrivateMessageBase.menuData
 menuLibrary['messageTemplate'] = MessageTemplateBase.menuData
 menuLibrary['lossAssessmentRecord'] = LossAssessmentRecordBase.menuData
+menuLibrary['lossDiscount'] = LossDiscountBase.menuData
 menuLibrary['bookSharingPlatform'] = BookSharingPlatformBase.menuData
 menuLibrary['platformConfiguration'] = PlatformConfigurationBase.menuData
 menuLibrary['accountData'] = AccountDataBase.menuData
@@ -1207,6 +1221,7 @@ const ViewMapping = {
   'com.terapico.shuxiang.privatemessage.PrivateMessage': {name:'privateMessage'},
   'com.terapico.shuxiang.messagetemplate.MessageTemplate': {name:'messageTemplate'},
   'com.terapico.shuxiang.lossassessmentrecord.LossAssessmentRecord': {name:'lossAssessmentRecord'},
+  'com.terapico.shuxiang.lossdiscount.LossDiscount': {name:'lossDiscount'},
   'com.terapico.shuxiang.booksharingplatform.BookSharingPlatform': {name:'bookSharingPlatform'},
   'com.terapico.shuxiang.platformconfiguration.PlatformConfiguration': {name:'platformConfiguration'},
   'com.terapico.shuxiang.accountdata.AccountData': {name:'accountData'},
@@ -1368,6 +1383,18 @@ const OOTBComponents={
     LossAssessmentRecordTable,
     LossAssessmentRecordService,
     LossAssessmentRecordUpdateForm,
+    LossDiscountBase,
+    LossDiscountBizApp,
+    LossDiscountModel,
+    LossDiscountDashboard,
+    LossDiscountPreference,
+    LossDiscountModalTable,
+    LossDiscountSearch,
+    LossDiscountSearchForm,
+    LossDiscountCreateForm,
+    LossDiscountTable,
+    LossDiscountService,
+    LossDiscountUpdateForm,
     BookSharingPlatformBase,
     BookSharingPlatformBizApp,
     BookSharingPlatformModel,

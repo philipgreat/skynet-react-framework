@@ -1,25 +1,25 @@
-import VehicleInspectionOrderBizApp from '../../bizcomponents/vehicleinspectionorder/VehicleInspectionOrder.app'
+import EmployeeBizApp from '../../bizcomponents/employee/Employee.app'
 
 import React from 'react'
 import { connect } from 'dva'
 
-import styles from './VehicleInspectionOrder.appex.less'
+import styles from './Employee.appex.less'
 
 
 import About from '../about/About'
 
-class VehicleInspectionOrderBizAppEx extends React.PureComponent {
+class EmployeeBizAppEx extends React.PureComponent {
   
   extraRoutesFunc=()=>{
 
-    return [{path:'/vehicleInspectionOrder/:id/about/:seq', component:About}];
+    return [{path:'/employee/:id/about/:seq', component:About}];
 
   }
   render() {
      // const { collapsed, fetchingNotices,loading } = this.props
      //console.log("this.extraRoutesFunc------------",this.extraRoutesFunc());
      return (
-      <VehicleInspectionOrderBizApp extraRoutesFunc={this.extraRoutesFunc} {...this.props}/>
+      <EmployeeBizApp extraRoutesFunc={this.extraRoutesFunc} {...this.props}/>
      )
    }
 }
@@ -27,7 +27,7 @@ class VehicleInspectionOrderBizAppEx extends React.PureComponent {
 
 export default connect(state => ({  
   customized:'yes',
-}))(VehicleInspectionOrderBizAppEx)
+}))(EmployeeBizAppEx)
 
 
 /*
@@ -36,10 +36,10 @@ export default connect(state => ({
   collapsed: state.global.collapsed,
   fetchingNotices: state.global.fetchingNotices,
   notices: state.global.notices,
-  vehicleInspectionOrder: state._vehicleInspectionOrder,
+  employee: state._employee,
   extra:'yes',
   ...state,
-}))(VehicleInspectionOrderBizAppEx)
+}))(EmployeeBizAppEx)
 
 
 import PropTypes from 'prop-types'
@@ -63,7 +63,7 @@ import moment from 'moment'
 import groupBy from 'lodash/groupBy'
 import { ContainerQuery } from 'react-container-query'
 import classNames from 'classnames'
-import styles from './VehicleInspectionOrder.appex.less'
+import styles from './Employee.appex.less'
 import {sessionObject} from '../../utils/utils'
 
 import HeaderSearch from '../../components/HeaderSearch';

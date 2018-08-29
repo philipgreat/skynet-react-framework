@@ -86,13 +86,13 @@ const transferToAnotherBookCopyStatus = (id, parameters) => {
 
 
 const addLossAssessmentRecord = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookCopyManager/addLossAssessmentRecord/bookCopyId/recordStoreId/lossComment/recordPersonId/damagePersonId/tokensExpr/`
+  const url = `${PREFIX}bookCopyManager/addLossAssessmentRecord/bookCopyId/recordStoreId/lossComment/lossImage/bookCopyEvaluationPrice/lossDiscountId/recordPersonId/damagePersonId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateLossAssessmentRecord = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookCopyManager/updateLossAssessmentRecordProperties/bookCopyId/id/lossComment/tokensExpr/`
+  const url = `${PREFIX}bookCopyManager/updateLossAssessmentRecordProperties/bookCopyId/id/lossComment/lossImage/bookCopyEvaluationPrice/tokensExpr/`
   const bookCopyId = targetObjectId
   const requestParameters = { ...parameters, bookCopyId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})

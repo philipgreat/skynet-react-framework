@@ -256,7 +256,7 @@ const internalSummaryOf = (profitDistributeState,targetComponent) =>{
 	return (
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="ID">{profitDistributeState.id}</Description> 
-<Description term="ame">{profitDistributeState.ame}</Description> 
+<Description term="名称">{profitDistributeState.name}</Description> 
 <Description term="代码">{profitDistributeState.code}</Description> 
 	
         {buildTransferModal(profitDistributeState,targetComponent)}

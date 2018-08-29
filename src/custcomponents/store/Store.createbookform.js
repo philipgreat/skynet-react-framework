@@ -26,7 +26,7 @@ import  styles from './Book.createform.less';
 import { mapBackToImageValues, mapFromImageValues } from '../../axios/tools';
 import GlobalComponents from '../../custcomponents';
 import BookStoreExService from './Store.serviceex'
-
+import { notification } from 'antd'
 
 const { Option } = Select;
 const { RangePicker } = DatePicker;
@@ -324,12 +324,12 @@ class BookCreateForm extends Component {
     const formItem=(item)=>{
 
       return (
-        <Form.Item key={item.label} label={item.label} {...formItemLayout}>
+        <Form.Item key={item.localeKey} label={item.label} {...formItemLayout}>
           {getFieldDecorator(item.parameterName, {
             rules: [{ required: false, message: '请输入书的名字' }],
             initialValue: item.defaultValue,
             value:item.defaultValue
-          })(<Input placeholder="请输入书的名字" />)}
+          })(<Input placeholder="请输入书的名字" disabled={true}/>)}
         </Form.Item>
       )
     }
@@ -353,6 +353,85 @@ class BookCreateForm extends Component {
           )
 
     }
+/*
+
+{<Button type="primary" onClick={addManully} loading={submitting}>
+            手工提交
+          </Button>
+          <Button type="danger" onClick={goback} loading={submitting}>
+            删除最后一本
+          </Button>}
+
+*/
+
+
+    const deleteLastBookCopy=()=>{
+
+      validateFieldsAndScroll(["bookCopyId"],(error, values) => {
+
+
+      const  store  = this.props.store;
+
+      const parameters={storeId:store.id,bookCopyId:values.bookCopyId,bookCopyVersion:'1',tokensExpr:'none'}
+      const future = BookStoreExService.deleteBookCopyFromStore(
+        parameters
+      );
+      //console.log(future);
+  
+      future.then(delteResult => {
+        notification.success({
+          message: "操作成功",
+          description: "操作成功",
+        })
+      })
+
+
+      })
+      
+
+    }
+
+    const showCreateLossAssessmentDialog=()=>{
+
+
+
+    }
+    const showActions =()=>{
+      if(!addingResult){
+        return null
+      }
+      if(addingResult.class!='com.terapico.shuxiang.book.BookWarehouseForm'){
+        return null
+      }
+      
+      /*
+       <Button type="danger" onClick={goback} loading={submitting}>
+            删除最后一本
+          </Button>
+          return ( <FooterToolbar>
+          
+     
+          {addingResult.formActionList.map(item=>(
+            <Button key={item.label} type={item.level}>{item.label}</Button>
+          ))}
+        </FooterToolbar>
+        
+          )
+      
+      */
+     return ( <FooterToolbar>
+          
+     
+          <Button type="danger" onClick={deleteLastBookCopy} loading={submitting}>
+            删除最后一本
+          </Button>
+          <Button type="danger" onClick={showCreateLossAssessmentDialog} loading={submitting}>
+            定损
+          </Button>
+    </FooterToolbar>)
+
+    }
+
 
     return (
       <PageHeaderLayout
@@ -377,8 +456,9 @@ class BookCreateForm extends Component {
               <Col lg={6} md={6} sm={12}>
                 <Form.Item label={fieldLabels.bookCopyVendorId} {...formItemLayout}>
                   {getFieldDecorator('bookCopyVendorId', {
+
                     rules: [{ required: true, message: '请输入' }],
-                    initialValue:""
+                    initialValue:"C000001"
                   })(<Input placeholder="请输入" />)}
                 </Form.Item>
               </Col>    
@@ -386,7 +466,7 @@ class BookCreateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.bookRecommendId} {...formItemLayout}>
                 {getFieldDecorator('bookRecommendId', {
-                  	initialValue: '',
+                  	initialValue: 'BR000001',
                     rules: [{ required: true, message: '请输入图书推荐' }],
                   })(
                   
@@ -453,23 +533,8 @@ class BookCreateForm extends Component {
             
             </Form>
         </Card>
-       
+        {showActions()}
 
-
-
-
-        
-
-        <FooterToolbar>
-          {getErrorInfo()}
-     
-          <Button type="primary" onClick={addManully} loading={submitting}>
-            手工提交
-          </Button>
-          <Button type="danger" onClick={goback} loading={submitting}>
-            删除最后一本
-          </Button>
-        </FooterToolbar>
       </PageHeaderLayout>
     );
   }

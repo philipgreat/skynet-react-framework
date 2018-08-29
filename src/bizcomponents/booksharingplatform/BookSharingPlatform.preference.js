@@ -287,9 +287,10 @@ class BookSharingPlatformPreference extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, platformConfigurationCount, accountDataCount, cityCount, bookPlazaCount, memberServiceProductCount, mainOrderCount, bookCount, transferTypeCount, takeStockStatusCount, bookTakeStockStatusCount, takeStoreResultsCount, bookCopyOperateTypeCount, borrowingStatusCount, deliverMethodCount, applicationStatusCount, platformAccountCount, fundationAccountCount, storeTypeCount, storeCount, slideTypeCount, campaignPlazaCount, campaignStatusCount, customerCount, employeeCount, profitTypeCount, profitDistributeStateCount, undistributedProfitCount } = this.props.bookSharingPlatform
+    const { id,displayName, lossDiscountCount, platformConfigurationCount, accountDataCount, cityCount, bookPlazaCount, memberServiceProductCount, mainOrderCount, bookCount, transferTypeCount, takeStockStatusCount, bookTakeStockStatusCount, takeStoreResultsCount, bookCopyOperateTypeCount, borrowingStatusCount, deliverMethodCount, applicationStatusCount, platformAccountCount, fundationAccountCount, storeTypeCount, storeCount, slideTypeCount, campaignPlazaCount, campaignStatusCount, customerCount, employeeCount, profitTypeCount, profitDistributeStateCount, undistributedProfitCount } = this.props.bookSharingPlatform
     const cardsData = {cardsName:"图书共享平台",cardsFor: "bookSharingPlatform",cardsSource: this.props.bookSharingPlatform,
   		subItems: [
+{name: 'lossDiscountList', displayName:'损失的折扣',type:'lossDiscount',count:lossDiscountCount},
 {name: 'transferTypeList', displayName:'转移类型',type:'transferType',count:transferTypeCount},
 {name: 'takeStockStatusList', displayName:'盘点状态',type:'takeStockStatus',count:takeStockStatusCount},
 {name: 'bookTakeStockStatusList', displayName:'图书盘点状态',type:'bookTakeStockStatus',count:bookTakeStockStatusCount},

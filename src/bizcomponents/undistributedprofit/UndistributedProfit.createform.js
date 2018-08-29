@@ -17,10 +17,10 @@ const testValues = {};
 /*
 const testValues = {
   summary: '6个月会员费',
-  chargeStartDate: '2016-12-06',
-  chargeEndDate: '2016-11-03',
-  amount: '90.12',
-  balance: '9.44',
+  chargeStartDate: '2016-07-29',
+  chargeEndDate: '2017-02-12',
+  amount: '80.82',
+  balance: '8.20',
   profitTypeId: 'PT000001',
   profitDistributeStateId: 'PDS000001',
   mainOrderId: 'MO000001',
@@ -489,7 +489,7 @@ class UndistributedProfitCreateForm extends Component {
                     disabled={!availableForEdit('profitDistributeState')}
                   >
                   {candidateProfitDistributeStateList.candidates.map(item=>{
-                return (<Option key={item.id}>{`${item.ame}(${item.id})`}</Option>);
+                return (<Option key={item.id}>{`${item.name}(${item.id})`}</Option>);
             })}
                   
                   </AutoComplete>

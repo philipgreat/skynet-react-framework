@@ -17,7 +17,7 @@ const testValues = {};
 /*
 const testValues = {
   name: '平台基础账户',
-  amount: '83.73',
+  amount: '84.03',
   platformId: 'BSP000001',
   accountDataId: 'AD000001',
 }

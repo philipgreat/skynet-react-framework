@@ -362,7 +362,7 @@ class InformCreateForm extends Component {
                 <Form.Item label={fieldLabels.campaignReview} {...formItemLayout}>
                   {getFieldDecorator('campaignReviewId', {
                   	initialValue: tryinit('campaignReview'),
-                    rules: [{ required: true, message: '请输入活动评论' }],
+                    rules: [{ required: false, message: '请输入活动评论' }],
                   })(
                   
                   <AutoComplete
@@ -387,7 +387,7 @@ class InformCreateForm extends Component {
                 <Form.Item label={fieldLabels.bookReview} {...formItemLayout}>
                   {getFieldDecorator('bookReviewId', {
                   	initialValue: tryinit('bookReview'),
-                    rules: [{ required: true, message: '请输入书评' }],
+                    rules: [{ required: false, message: '请输入书评' }],
                   })(
                   
                   <AutoComplete

@@ -13,7 +13,7 @@ const menuData = {menuName:"利润分配状态", menuFor: "profitDistributeState
 
 const displayColumns = [
   { title: 'ID', debugtype: 'string', dataIndex: 'id', width: '20', render: (text, record)=>(<Link to={`/profitDistributeState/${text}/dashboard`}>{text}</Link>) },
-  { title: 'ame', debugtype: 'string', dataIndex: 'ame', width: '8' },
+  { title: '名称', debugtype: 'string', dataIndex: 'name', width: '8' },
   { title: '代码', debugtype: 'string', dataIndex: 'code', width: '14' },
   { title: '平台', dataIndex: 'platform', render: (text, record) => (record.platform ? record.platform.displayName : '暂无') },
 
@@ -21,7 +21,7 @@ const displayColumns = [
 
 const fieldLabels = {
   id: 'ID',
-  ame: 'ame',
+  name: '名称',
   code: '代码',
   platform: '平台',
 

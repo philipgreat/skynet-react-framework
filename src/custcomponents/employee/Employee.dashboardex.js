@@ -1,19 +1,62 @@
+/*
+把以下代码贴到customindex.js里面去
+import EmployeeDashboard from './employee/Employee.dashboardex';
+import EmployeeBizApp from './employee/Employee.appex';
 
+在customindex增加的esult
 
-import VehicleInspectionOrderDashboard from '../../bizcomponents/vehicleinspectionorder/VehicleInspectionOrder.dashboard'
+const result = {
+EmployeeDashboard,
+EmployeeBizApp
+
+};
+
+*/
+
+import EmployeeDashboard from '../../bizcomponents/employee/Employee.dashboard'
 import { List, Row, Col, Icon, Card, Tabs, Table, Radio, DatePicker, Tooltip, Menu, Dropdown,Badge, Switch  } from 'antd'
 
 import React, { Component } from 'react'
 import { connect } from 'dva'
-import styles from './VehicleInspectionOrder.dashboardex.less'
+import styles from './Employee.dashboardex.less'
 import { Link, Route, Redirect} from 'dva/router'
-const renderExtraHeader = vehicleInspectionOrder => {
-  const targetId = vehicleInspectionOrder.id
-  //vehicleInspectionOrderManager/printChargeList/VIO000001/
+import FontAwesome from 'react-fontawesome';
+
+const imageListOf = (employee) =>{
+
+  return null
+
+}
+
+const renderExtraHeader = employee => {
+  const targetId = employee.id
+  
+  if(!employee.employeeWorkingStoreList){
+
+    return <div>稍等...</div>
+
+  }
+
+  /*
+
   const functions=[
-    {name:'打印',link:`/cis/vehicleInspectionOrderManager/printChargeList/${targetId}/`,icon:"printer"},
+    {name:'借书',link:`/employee/${targetId}/about/1`,icon:"download"},
     
-  ];
+
+  ];*/
+
+  const functions=employee.employeeWorkingStoreList.map(item=>{
+    const name=item.store.displayName
+
+    const id=item.store.id
+    const link=`/store/${id}/dashboard`
+    const icon="store"
+    return {name,link,icon}
+
+  })
+  /*
+  
+  */
 
   return (
 
@@ -22,11 +65,13 @@ const renderExtraHeader = vehicleInspectionOrder => {
     dataSource={functions}
     renderItem={item => (
       <List.Item>
-        <Card title={item.name}><a href={item.link}>
+        <Card title={item.name}><Link to={item.link}>
         
-        <Icon type={item.icon} style={{ fontSize: 50, color: '#08c' }}/>
+        <FontAwesome name={item.icon} style={{ fontSize: 50, color: '#08c' }}/>
         
-       </a></Card>
+        
+       
+       </Link></Card>
       </List.Item>
     )}
   />
@@ -37,18 +82,18 @@ const renderExtraHeader = vehicleInspectionOrder => {
   )
 };
 
-class VehicleInspectionOrderDashboardEx extends Component {
+class EmployeeDashboardEx extends Component {
 
   render() {
-    return (<VehicleInspectionOrderDashboard renderExtraHeader={renderExtraHeader}/>)
+    return (<EmployeeDashboard imageListOf={imageListOf} renderExtraHeader={renderExtraHeader}/>)
   }
 
 
 }
 
 export default connect(state => ({
-  vehicleInspectionOrder: state._vehicleInspectionOrder,
-}))(VehicleInspectionOrderDashboardEx)
+  employee: state._employee,
+}))(EmployeeDashboardEx)
 
 
 
@@ -69,7 +114,7 @@ import Trend from '../../components/Trend'
 import NumberInfo from '../../components/NumberInfo'
 import { getTimeDistance } from '../../utils/utils'
 import PageHeaderLayout from '../../layouts/PageHeaderLayout'
-import styles from './VehicleInspectionOrder.dashboard.less'
+import styles from './Employee.dashboard.less'
 import DescriptionList from '../../components/DescriptionList';
 import ImagePreview from '../../components/ImagePreview';
 const { Description } = DescriptionList;

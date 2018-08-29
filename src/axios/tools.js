@@ -89,16 +89,12 @@ export const getURLPrefix = () => {
     return `http://${url.hostname}:8080/naf/`;
   }
   if (url.hostname === 'localhost') {
-    return `https://xm.jl51.com.cn/cis/`
+    //return `https://xm.jl51.com.cn/cis/`
     //return `http://www.yourongzhixing.com/dssc/`
     //return `https://www.kxbbt.com/bbt/`
     //return "http://t420.doublechaintech.cn:18080/pulupulu/"
-<<<<<<< HEAD
-    return "https://shuxiang.ycinfotech.cn/shuxiang/"
-    //return `http://${url.hostname}:8080/${SYSTEM_SHORT_NAME}/`;
-=======
-    //return `http://${url.hostname}:8080/shuxiang/`;
->>>>>>> 3dfe05c493b83341ab73e9991cc3a39b61fbe05e
+    //return "https://shuxiang.ycinfotech.cn/shuxiang/"
+    return `http://${url.hostname}:8080/${SYSTEM_SHORT_NAME}/`;
   }
   //return `http://xm.jl51.com.cn/cis/`
 
@@ -165,11 +161,7 @@ export const PREFIX = getURLPrefix();
     headers,
   })*/
 
-export function playSound(sound){
-    var audio = new Audio(sound+'.mp3');
-    audio.play();
-  }
-  
+
 export const postForm = ({ url, requestParameters, msg = '接口异常'})=>{
 
   

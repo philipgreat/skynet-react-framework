@@ -17,8 +17,10 @@ const testValues = {};
 /*
 const testValues = {
   lossComment: '第2页到第5页缺失',
+  bookCopyEvaluationPrice: '29.13',
   bookCopyId: 'BC000001',
   recordStoreId: 'S000001',
+  lossDiscountId: 'LD000001',
   recordPersonId: 'E000001',
   damagePersonId: 'C000001',
 }
@@ -27,6 +29,7 @@ const imageURLPrefix = '//localhost:2090'
 
 
 const imageKeys = [
+  'lossImage',
 ]
 
 
@@ -46,6 +49,9 @@ class LossAssessmentRecordCreateForm extends Component {
     
     
     this.executeCandidateRecordStoreSearch("")
+    
+    
+    this.executeCandidateLossDiscountSearch("")
     
     
     this.executeCandidateRecordPersonSearch("")
@@ -112,6 +118,28 @@ class LossAssessmentRecordCreateForm extends Component {
   }	 
   handleCandidateRecordStoreSearch = (value) => {
     this.executeCandidateRecordStoreSearch(value)
+  }
+
+  executeCandidateLossDiscountSearch = (filterKey) =>{
+
+    const {LossAssessmentRecordService} = GlobalComponents;
+    
+    const id = "";//not used for now
+    const pageNo = 1;
+    const future = LossAssessmentRecordService.requestCandidateLossDiscount("lossDiscount", id, filterKey, pageNo);
+    console.log(future);
+    
+
+    future.then(candidateLossDiscountList=>{
+      this.setState({
+        candidateLossDiscountList
+      })
+
+    })
+
+  }	 
+  handleCandidateLossDiscountSearch = (value) => {
+    this.executeCandidateLossDiscountSearch(value)
   }
 
   executeCandidateRecordPersonSearch = (filterKey) =>{
@@ -282,6 +310,15 @@ class LossAssessmentRecordCreateForm extends Component {
     }   
     
     
+    const {candidateLossDiscountList} = this.state
+    if(!candidateLossDiscountList){
+      return (<div>等等</div>)
+    }
+    if(!candidateLossDiscountList.candidates){
+      return (<div>等等</div>)
+    }   
+    
+    
     const {candidateRecordPersonList} = this.state
     if(!candidateRecordPersonList){
       return (<div>等等</div>)
@@ -347,6 +384,16 @@ class LossAssessmentRecordCreateForm extends Component {
                 </Form.Item>
               </Col>
 
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.bookCopyEvaluationPrice} {...formItemLayout}>
+                  {getFieldDecorator('bookCopyEvaluationPrice', {
+                    rules: [{ required: true, message: '请输入书副本评估价格' }],
+                  })(
+                    <Input placeholder="请输入书副本评估价格" />
+                  )}
+                </Form.Item>
+              </Col>
+
             </Row>
           </Form>
         </Card>
@@ -361,6 +408,23 @@ class LossAssessmentRecordCreateForm extends Component {
 
 
 
+
+        <Card title="附件" className={styles.card} bordered={false}>
+          <Form >
+            <Row gutter={16}>
+
+              <Col lg={6} md={12} sm={24}>
+                <ImageComponent
+                  buttonTitle="损失图像"
+                  handlePreview={this.handlePreview}
+                  handleChange={event => this.handleChange(event, 'lossImage')}
+                  fileList={convertedImagesValues.lossImage}
+                />
+              </Col>
+
+            </Row>
+          </Form>
+        </Card>
 
 
 
@@ -419,6 +483,31 @@ class LossAssessmentRecordCreateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.lossDiscount} {...formItemLayout}>
+                  {getFieldDecorator('lossDiscountId', {
+                  	initialValue: tryinit('lossDiscount'),
+                    rules: [{ required: true, message: '请输入损失的折扣' }],
+                  })(
+                  
+                  <AutoComplete
+                    dataSource={candidateLossDiscountList.candidates}
+                    
+                    
+                    onSearch={this.handleCandidateLossDiscountSearch}
+                    placeholder="请输入损失的折扣"
+                    
+                    disabled={!availableForEdit('lossDiscount')}
+                  >
+                  {candidateLossDiscountList.candidates.map(item=>{
+                return (<Option key={item.id}>{`${item.name}(${item.id})`}</Option>);
+            })}
+                  
+                  </AutoComplete>
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.recordPerson} {...formItemLayout}>
                   {getFieldDecorator('recordPersonId', {
                   	initialValue: tryinit('recordPerson'),
@@ -447,7 +536,7 @@ class LossAssessmentRecordCreateForm extends Component {
                 <Form.Item label={fieldLabels.damagePerson} {...formItemLayout}>
                   {getFieldDecorator('damagePersonId', {
                   	initialValue: tryinit('damagePerson'),
-                    rules: [{ required: true, message: '请输入损害人' }],
+                    rules: [{ required: false, message: '请输入损害人' }],
                   })(
                   
                   <AutoComplete

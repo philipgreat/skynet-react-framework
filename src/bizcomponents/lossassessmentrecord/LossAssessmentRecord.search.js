@@ -201,6 +201,7 @@ class LossAssessmentRecordSearch extends PureComponent {
 
 <Menu.Item key="bookCopy">关联书籍副本</Menu.Item>
 <Menu.Item key="recordStore">关联操作网点</Menu.Item>
+<Menu.Item key="lossDiscount">关联损失的折扣</Menu.Item>
 <Menu.Item key="recordPerson">关联定损记录人</Menu.Item>
 <Menu.Item key="damagePerson">关联损害人</Menu.Item>
       

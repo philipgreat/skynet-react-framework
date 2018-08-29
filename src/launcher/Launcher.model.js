@@ -27,20 +27,17 @@ export default {
         dispatch(routerRedux.push(newlocation))
       })
     },
-<<<<<<< HEAD
     
-    setup({ dispatch, history }) {
-=======
+   
     timer({ dispatch }){
 
       setInterval(()=>{
 
-        dispatch({type:"showlog"})
+        //dispatch({type:"showlog"})
 
       }, 3000);
     },
     setup({ history }) {
->>>>>>> 3dfe05c493b83341ab73e9991cc3a39b61fbe05e
       history.listen((location) => {
         currentLocation = location.pathname
         const { pathname } = location

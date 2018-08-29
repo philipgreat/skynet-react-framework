@@ -70,13 +70,13 @@ const transferToAnotherPlatform = (id, parameters) => {
 
 
 const addLossAssessmentRecord = (targetObjectId, parameters) => {
-  const url = `${PREFIX}storeManager/addLossAssessmentRecord/recordStoreId/bookCopyId/lossComment/recordPersonId/damagePersonId/tokensExpr/`
+  const url = `${PREFIX}storeManager/addLossAssessmentRecord/recordStoreId/bookCopyId/lossComment/lossImage/bookCopyEvaluationPrice/lossDiscountId/recordPersonId/damagePersonId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateLossAssessmentRecord = (targetObjectId, parameters) => {
-  const url = `${PREFIX}storeManager/updateLossAssessmentRecordProperties/storeId/id/lossComment/tokensExpr/`
+  const url = `${PREFIX}storeManager/updateLossAssessmentRecordProperties/storeId/id/lossComment/lossImage/bookCopyEvaluationPrice/tokensExpr/`
   const storeId = targetObjectId
   const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})

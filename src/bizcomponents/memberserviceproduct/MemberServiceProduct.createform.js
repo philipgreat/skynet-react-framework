@@ -21,7 +21,7 @@ const testValues = {
   bookBorrowingLimitPrice: '50.00',
   bookBorrowingCount: '1',
   bookPurchasingDiscountRate: '0.9',
-  overduePay: '0.81',
+  overduePay: '0.73',
   freeBorrowingDays: '10',
   platformId: 'BSP000001',
   productDescription: '<div>\

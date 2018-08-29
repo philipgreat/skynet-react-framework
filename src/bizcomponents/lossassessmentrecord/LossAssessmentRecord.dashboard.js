@@ -37,7 +37,8 @@ const topColResponsiveProps = {
 const internalImageListOf = (lossAssessmentRecord) =>{
 
   const imageList = [
-	 ]
+	   {"title":'损失图像',"imageLocation":lossAssessmentRecord.lossImage},
+]
   const filteredList = imageList.filter((item)=>item.imageLocation!=null)
   if(filteredList.length===0){
     return null
@@ -270,6 +271,13 @@ const internalSummaryOf = (lossAssessmentRecord,targetComponent) =>{
   style={{fontSize: 20,color:"red"}} />
 </Description>
 <Description term="定损备注">{lossAssessmentRecord.lossComment}</Description> 
+<Description term="书副本评估价格">{lossAssessmentRecord.bookCopyEvaluationPrice}</Description> 
+<Description term="损失的折扣">{lossAssessmentRecord.lossDiscount==null?"未分配":lossAssessmentRecord.lossDiscount.displayName}
+ <Icon type="swap" onClick={()=>
+  showTransferModel(targetComponent,"损失的折扣","lossDiscount","requestCandidateLossDiscount",
+	      "transferToAnotherLossDiscount","anotherLossDiscountId",lossAssessmentRecord.lossDiscount?lossAssessmentRecord.lossDiscount.id:"")} 
+  style={{fontSize: 20,color:"red"}} />
+</Description>
 <Description term="定损记录人">{lossAssessmentRecord.recordPerson==null?"未分配":lossAssessmentRecord.recordPerson.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"定损记录人","employee","requestCandidateRecordPerson",

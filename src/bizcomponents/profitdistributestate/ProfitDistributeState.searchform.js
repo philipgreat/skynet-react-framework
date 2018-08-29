@@ -64,7 +64,7 @@ class ProfitDistributeStateSearchForm extends PureComponent {
       if (err) return
       const params = {
         ...this.buildStringSearchParameters(fieldsValue, 'id'),
-        ...this.buildStringSearchParameters(fieldsValue, 'ame'),
+        ...this.buildStringSearchParameters(fieldsValue, 'name'),
         ...this.buildStringSearchParameters(fieldsValue, 'code'),
 
       }
@@ -91,9 +91,9 @@ class ProfitDistributeStateSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="ame">
-              {getFieldDecorator('ame')(
-                <Input placeholder="请输入ame" />
+            <FormItem label="名称">
+              {getFieldDecorator('name')(
+                <Input placeholder="请输入名称" />
                )}
             </FormItem>
           </Col>
@@ -124,9 +124,9 @@ class ProfitDistributeStateSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="ame">
-              {getFieldDecorator('ame')(
-                <Input placeholder="请输入ame" />
+            <FormItem label="名称">
+              {getFieldDecorator('name')(
+                <Input placeholder="请输入名称" />
               )}
             </FormItem>
           </Col>

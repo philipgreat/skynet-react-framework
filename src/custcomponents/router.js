@@ -14,6 +14,7 @@ function RouterConfig({ history }) {
 	const {PrivateMessageBizApp} = GlobalComponents
 	const {MessageTemplateBizApp} = GlobalComponents
 	const {LossAssessmentRecordBizApp} = GlobalComponents
+	const {LossDiscountBizApp} = GlobalComponents
 	const {BookSharingPlatformBizApp} = GlobalComponents
 	const {PlatformConfigurationBizApp} = GlobalComponents
 	const {AccountDataBizApp} = GlobalComponents
@@ -105,6 +106,7 @@ function RouterConfig({ history }) {
           <Route path="/privateMessage/" component={PrivateMessageBizApp} />
           <Route path="/messageTemplate/" component={MessageTemplateBizApp} />
           <Route path="/lossAssessmentRecord/" component={LossAssessmentRecordBizApp} />
+          <Route path="/lossDiscount/" component={LossDiscountBizApp} />
           <Route path="/bookSharingPlatform/" component={BookSharingPlatformBizApp} />
           <Route path="/platformConfiguration/" component={PlatformConfigurationBizApp} />
           <Route path="/accountData/" component={AccountDataBizApp} />
