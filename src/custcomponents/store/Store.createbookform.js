@@ -10,7 +10,7 @@ import {
   DatePicker,
   TimePicker,
   Input,
-  Select,
+  Select,Modal,
   Popover,
   Switch,Radio
 } from 'antd';
@@ -76,7 +76,8 @@ class BookCreateForm extends Component {
     convertedImagesValues: {},
     addingResult:{},
     candidateBookRecommends:{},
-    dynamicFormInited: false
+    dynamicFormInited: false,
+    modalVisible: false,
   };
 
   componentDidMount() {
@@ -312,6 +313,12 @@ class BookCreateForm extends Component {
       labelCol: { span: 10 },
       wrapperCol: { span: 14 },
     };
+
+    const modalFormItemLayout = {
+      labelCol: { span: 4 },
+      wrapperCol: { span: 20 },
+    };
+
     const switchFormItemLayout = {
       labelCol: { span: 14 },
       wrapperCol: { span: 4 },
@@ -334,6 +341,94 @@ class BookCreateForm extends Component {
       )
     }
 
+    
+    const closeModal = () =>{
+      this.setState({modalVisible:false})
+
+    }
+    const showModal = () =>{
+      this.setState({modalVisible:true})
+
+    }
+    const showCreateLossAssessmentDialog=()=>{
+      this.setState({modalVisible:true})
+    }
+    const createLossAssessment=()=>{
+
+      validateFieldsAndScroll(["bookCopyId","storeId","bookCopyVendorId","bookId","discount","lostAssessmentDesc"],(error, values) => {
+
+       
+  //const url = `${PREFIX}employeeManager/createLossAssessmentWithBook/storeId/bookId/bookCopyId/customId/idOfDiscount/comment/`
+    
+        const parameters={customId:values.bookCopyVendorId,idOfDiscount:values.discount, comment:values.lostAssessmentDesc, ...values}
+        console.log("createLossAssessment values from form",parameters)
+        const future = BookStoreExService.createLossAssessmentWithBook(
+          parameters
+        )
+      //console.log(future);
+  
+      future.then(result => {
+        this.setState({modalVisible:false})
+        notification.success({
+          message: "操作成功",
+          description: "操作成功",
+        })
+        
+      })
+
+        
+
+
+
+
+      })
+
+
+    }
+    
+    const showCreateLossAssessmentModel = () =>{
+      //onOk={() => this.confirmAfterDelete()}
+      //onCancel={() => this.confirmAfterDelete()}
+      const modalVisible = this.state.modalVisible
+      return (
+        <Modal
+          title="定损"
+          visible={modalVisible}
+          onCancel={closeModal}
+          onOk={createLossAssessment}
+          width={600}
+          style={{ top: 40 }}
+        >
+
+        <Form.Item label={"重新定损折扣"} {...modalFormItemLayout}>
+                  {getFieldDecorator('discount', {
+                    rules: [{ required: false, message: '请输入' }],
+                    
+                  })(<Radio.Group  >
+                    <Radio.Button value="LD000002">9折</Radio.Button>
+                    <Radio.Button value="LD000003">8折</Radio.Button>
+                    <Radio.Button value="LD000004">7折</Radio.Button>
+                    <Radio.Button value="LD000005">6折</Radio.Button>
+                    
+                  </Radio.Group>)}
+
+
+
+                </Form.Item>
+
+                <Form.Item label={'定损备注'} {...modalFormItemLayout}>
+                  {getFieldDecorator('lostAssessmentDesc', {
+                   
+                    rules: [{ required: false, message: '请使用扫描枪输入' }],
+                  })(<TextArea rows={4} />)}
+                </Form.Item>
+
+
+
+
+         </Modal>)
+      
+    }
 
     const showDynamicForm =()=>{
       if(!addingResult){
@@ -391,11 +486,7 @@ class BookCreateForm extends Component {
 
     }
 
-    const showCreateLossAssessmentDialog=()=>{
-
-
-
-    }
+    
     const showActions =()=>{
       if(!addingResult){
         return null
@@ -534,7 +625,7 @@ class BookCreateForm extends Component {
             </Form>
         </Card>
         {showActions()}
-
+        {showCreateLossAssessmentModel()}
       </PageHeaderLayout>
     );
   }

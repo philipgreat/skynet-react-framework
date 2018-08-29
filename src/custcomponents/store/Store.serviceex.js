@@ -25,6 +25,8 @@ const deleteBookCopyFromStore = (parameters) => {
 
 }
 
+//public LossAssessmentRecord createLossAssessmentWithBook(ShuxiangUserContext userContext,String storeId,
+//String bookId, String bookCopyId,String customId,String idOfDiscount, String comment)
 
 const actionBookWarehousingWithIsbn = (targetObjectId, parameters) => {
     const url = `${PREFIX}bookManager/actionBookWarehousingWithIsbn/storeId/scannedIsbn/bookCopyVendorId/bookCopySharingType/`
@@ -38,6 +40,18 @@ const actionBookWarehousingWithIsbn = (targetObjectId, parameters) => {
     })
   }
 
+
+  const createLossAssessmentWithBook = (parameters) => {
+    const url = `${PREFIX}employeeManager/createLossAssessmentWithBook/storeId/bookId/bookCopyId/customId/idOfDiscount/comment/`
+    const requestParameters = { ...parameters}
+  
+    const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
+    return post({
+      url,
+      data: joinPostParameters(requestParameters),
+      headers,
+    })
+  }
 
   const createLossAssessment = (parameters) => {
     const url = `${PREFIX}employeeManager/createNewLossAssessment/idOfBorrowingHistory/idOfDiscount/comment/`
@@ -112,6 +126,8 @@ const putBookOffShelf = (targetObjectId, parameters) => {
     actionBookWarehousingWithIsbn,
     returnBookByEmployee,
     lentBookByEmployee,
-    putBookOffShelf,putBookOnShelf,createLossAssessment,deleteBookCopyFromStore }
+    putBookOffShelf,putBookOnShelf,
+    createLossAssessment,
+    deleteBookCopyFromStore,createLossAssessmentWithBook }
   export default BookStoreExService
 
