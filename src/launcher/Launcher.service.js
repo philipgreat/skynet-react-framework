@@ -8,11 +8,14 @@ const login=(username, password)=>{
     });
 }
 
-const home=()=>{
+
+const checkOtherLogin=()=>{
+
     return get({
-        url: PREFIX+`secUserManager/home/`
+        url: PREFIX+`secUserManager/checkOtherLogin/`
 
     });
+
 }
 
 const logout=(username, password)=>{
@@ -29,5 +32,5 @@ const gotoApp=(appId)=>{
     });
 }
 
-const LauncherService={login,gotoApp,logout,home};
+const LauncherService={login,gotoApp,logout,checkOtherLogin};
 export default LauncherService;

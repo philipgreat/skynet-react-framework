@@ -83,40 +83,17 @@ export const getURLPrefix = () => {
   const url = new URL(window.location);
 
   if (url.hostname === 'localhost') {
-    //return `https://xm.jl51.com.cn/cis/`
-    //return `http://www.yourongzhixing.com/dssc/`
-    //return `https://www.kxbbt.com/bbt/`
-    //return "http://t420.doublechaintech.cn:18080/pulupulu/"
-    return `http://${url.hostname}:8080/${SYSTEM_SHORT_NAME}/`;
+    return `http://${url.hostname}:8080/cis/`
+  }
+  if (url.hostname === '127.0.0.1') {
+    return `https://xm.jl51.com.cn/cis/`
   }
   //return `http://xm.jl51.com.cn/cis/`
 
   return `${url.origin}/${SYSTEM_SHORT_NAME}/`;
   //return `${url.origin}/${SYSTEM_SHORT_NAME}/`
 };
-export const joinParameters = parameters => {
-  const obj = parameters; // {value1: 'prop1', value2: 'prop2', value3: 'prop3'}
-  const arr = [];
-  for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      arr.push(`${key}=${encodeURIComponent(obj[key])}`);
-    }
-    if (url.hostname === "30.30.126.37") {
-        return `http://${url.hostname}:8080/naf/`
-    }
-    if (url.hostname === "localhost") {
-        return `https://xm.jl51.com.cn/cis/`
-        //return `http://www.yourongzhixing.com/dssc/`
-        //return `https://www.kxbbt.com/bbt/`
-        //return "http://t420.doublechaintech.cn:18080/pulupulu/"
-        //return `http://${url.hostname}:8080/naf/`
-    }
-    //return `http://xm.jl51.com.cn/cis/`
 
-    return `${url.origin}/${SYSTEM_SHORT_NAME}/`
-    //return `${url.origin}/${SYSTEM_SHORT_NAME}/`
-    
-}
 export const joinParameters = (parameters) => {
     const obj = parameters // {value1: 'prop1', value2: 'prop2', value3: 'prop3'}
     const arr = []
@@ -142,6 +119,9 @@ export const joinPostParameters = (parameters) => {
     for (const key in obj) {
         if (obj.hasOwnProperty(key)) {
             const value = obj[key]
+            if(!value){
+              continue
+            }
             const postValue = formatPostData(value)
             if (!Array.isArray(value)) {
                 arr.push(key + '=' + encodeURIComponent(postValue))
@@ -280,3 +260,10 @@ export const mapFromImageValues = (selectedRow, imageKeys) => {
   console.log('targetImages', targetImages);
   return targetImages;
 };
+
+
+
+export function playSound(sound){
+  var audio = new Audio(sound+'.mp3');
+  audio.play();
+}
