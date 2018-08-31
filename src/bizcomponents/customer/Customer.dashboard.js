@@ -77,10 +77,7 @@ const internalSettingListOf = (customer) =>{
 
 const internalLargeTextOf = (customer) =>{
 
-	return(<div> 
-   <Card title={`头像`} ><pre>{customer.logoImage}</pre></Card>
-</div>)
-
+	return null
 	
 
 }
@@ -260,15 +257,32 @@ const internalSummaryOf = (customer,targetComponent) =>{
 	return (
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="ID">{customer.id}</Description> 
-<Description term="客户昵称">{customer.nickName}</Description> 
-<Description term="微信ID">{customer.weixinOpenid}</Description> 
-<Description term="微信APP">{customer.weixinAppid}</Description> 
+<Description term="昵称">{customer.nickName}</Description> 
+<Description term="手机号码">{customer.mobileNumber}</Description> 
+<Description term="的真实姓名">{customer.realName}</Description> 
+<Description term="性别">{customer.sexuality}</Description> 
+<Description term="会员服务">{customer.memberService==null?"未分配":customer.memberService.displayName}
+ <Icon type="swap" onClick={()=>
+  showTransferModel(targetComponent,"会员服务","memberServiceProduct","requestCandidateMemberService",
+	      "transferToAnotherMemberService","anotherMemberServiceId",customer.memberService?customer.memberService.id:"")} 
+  style={{fontSize: 20,color:"red"}} />
+</Description>
+<Description term="会员服务开始日期">{ moment(customer.memberServiceStartDate).format('YYYY-MM-DD')}</Description> 
+<Description term="会员服务到期日期">{ moment(customer.memberServiceExpireDate).format('YYYY-MM-DD')}</Description> 
+<Description term="帐户余额">{customer.accountBalance}</Description> 
+<Description term="小程序OpenID">{customer.miniProgramOpenid}</Description> 
+<Description term="服务号OpenID">{customer.serviceAccountOpenid}</Description> 
+<Description term="微信UnionID">{customer.wechatUnionId}</Description> 
 <Description term="经度">{customer.longitude}</Description> 
 <Description term="纬度">{customer.latitude}</Description> 
-<Description term="SecUser">{customer.secUser==null?"未分配":customer.secUser.displayName}
+<Description term="生日">{ moment(customer.birthday).format('YYYY-MM-DD')}</Description> 
+<Description term="身份证号码">{customer.identityCardNumber}</Description> 
+<Description term="家庭地址">{customer.familyAddress}</Description> 
+<Description term="日均会员费">{customer.memberServiceDailyPay}</Description> 
+<Description term="最喜欢的网点">{customer.favouriteStore==null?"未分配":customer.favouriteStore.displayName}
  <Icon type="swap" onClick={()=>
-  showTransferModel(targetComponent,"SecUser","secUser","requestCandidateSecUser",
-	      "transferToAnotherSecUser","anotherSecUserId",customer.secUser?customer.secUser.id:"")} 
+  showTransferModel(targetComponent,"最喜欢的网点","store","requestCandidateFavouriteStore",
+	      "transferToAnotherFavouriteStore","anotherFavouriteStoreId",customer.favouriteStore?customer.favouriteStore.id:"")} 
   style={{fontSize: 20,color:"red"}} />
 </Description>
 	
@@ -300,14 +314,29 @@ class CustomerDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, companyQrcodePromotionRecordCount, vehicleInfoCount, vehicleInspectionOrderCount, orderDiscountCouponCount, vehicleInspectionOrderCouponCount } = this.props.customer
-    const cardsData = {cardsName:"客户",cardsFor: "customer",cardsSource: this.props.customer,
+    const { id,displayName, privateMessageCount, lossAssessmentRecordCount, mainOrderCount, bookCopyCount, borrowingHistoryCount, borrowingExpiredSkuCount, bookReviewCount, bookReviewLikeCount, bookCopySharingApplicationCount, memberServiceRevenueCount, customerAccountTransactionCount, campaignRegisterHistoryCount, campaignReviewCount, campaignLikeCount, campaignReviewLikeCount, customerFootprintCount, shieldCustomerAsCustomerCount, shieldCustomerAsShieldCount, informCount, undistributedProfitCount } = this.props.customer
+    const cardsData = {cardsName:"用户",cardsFor: "customer",cardsSource: this.props.customer,
   		subItems: [
-{name: 'companyQrcodePromotionRecordList', displayName:'公司二维码推广记录',type:'companyQrcodePromotionRecord',count:companyQrcodePromotionRecordCount},
-{name: 'vehicleInfoList', displayName:'车辆信息',type:'vehicleInfo',count:vehicleInfoCount},
-{name: 'vehicleInspectionOrderList', displayName:'年检订单',type:'vehicleInspectionOrder',count:vehicleInspectionOrderCount},
-{name: 'orderDiscountCouponList', displayName:'优惠券',type:'orderDiscountCoupon',count:orderDiscountCouponCount},
-{name: 'vehicleInspectionOrderCouponList', displayName:'优惠券使用记录',type:'vehicleInspectionOrderCoupon',count:vehicleInspectionOrderCouponCount},
+{name: 'privateMessageList', displayName:'私信消息',type:'privateMessage',count:privateMessageCount},
+{name: 'lossAssessmentRecordList', displayName:'定损记录',type:'lossAssessmentRecord',count:lossAssessmentRecordCount},
+{name: 'mainOrderList', displayName:'主订单',type:'mainOrder',count:mainOrderCount},
+{name: 'bookCopyList', displayName:'书籍副本',type:'bookCopy',count:bookCopyCount},
+{name: 'borrowingHistoryList', displayName:'图书借还历史',type:'borrowingHistory',count:borrowingHistoryCount},
+{name: 'borrowingExpiredSkuList', displayName:'借书超期费',type:'borrowingExpiredSku',count:borrowingExpiredSkuCount},
+{name: 'bookReviewList', displayName:'书评',type:'bookReview',count:bookReviewCount},
+{name: 'bookReviewLikeList', displayName:'书评点赞',type:'bookReviewLike',count:bookReviewLikeCount},
+{name: 'bookCopySharingApplicationList', displayName:'图书共享申请',type:'bookCopySharingApplication',count:bookCopySharingApplicationCount},
+{name: 'memberServiceRevenueList', displayName:'会员服务收益',type:'memberServiceRevenue',count:memberServiceRevenueCount},
+{name: 'customerAccountTransactionList', displayName:'客户账户明细',type:'customerAccountTransaction',count:customerAccountTransactionCount},
+{name: 'campaignRegisterHistoryList', displayName:'活动报名记录',type:'campaignRegisterHistory',count:campaignRegisterHistoryCount},
+{name: 'campaignReviewList', displayName:'活动评论',type:'campaignReview',count:campaignReviewCount},
+{name: 'campaignLikeList', displayName:'活动点赞',type:'campaignLike',count:campaignLikeCount},
+{name: 'campaignReviewLikeList', displayName:'活动评论点赞',type:'campaignReviewLike',count:campaignReviewLikeCount},
+{name: 'customerFootprintList', displayName:'用户历程',type:'customerFootprint',count:customerFootprintCount},
+{name: 'shieldCustomerListAsCustomer', displayName:'屏蔽用户',type:'shieldCustomer',count:shieldCustomerAsCustomerCount},
+{name: 'shieldCustomerListAsShield', displayName:'屏蔽用户',type:'shieldCustomer',count:shieldCustomerAsShieldCount},
+{name: 'informList', displayName:'举报',type:'inform',count:informCount},
+{name: 'undistributedProfitList', displayName:'未分配利润',type:'undistributedProfit',count:undistributedProfitCount},
     
       	],
   	};

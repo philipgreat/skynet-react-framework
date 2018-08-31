@@ -1,76 +1,43 @@
-import StoreBizApp from '../../bizcomponents/store/Store.app'
+import StoreBizApp from '../../bizcomponents/store/Store.app';
+import BookCreateForm from './Store.createbookform';
+import BookLentForm from './Store.lentbookform';
+import BookReturnForm from './Store.returnbookform';
+import BookLaunchForm from './Store.launchbookform';
+import BookDeactiveForm from './Store.deactivebookform';
+import StockTakingForm from './Store.stocktakingform';
 
-import React from 'react'
-import { connect } from 'dva'
+import React from 'react';
+import { connect } from 'dva';
 
-import styles from './Store.appex.less'
+import styles from './Store.appex.less';
 
-
-import About from '../about/About'
+import About from '../about/About';
 
 class StoreBizAppEx extends React.PureComponent {
-  
-  extraRoutesFunc=()=>{
+  extraRoutesFunc = () => {
+    console.log('BookCreateForm?', typeof BookCreateForm);
+    console.log('About?', typeof About);
+    console.log('About?', About);
 
-    return [{path:'/store/:id/about', component:About}];
+    return [
+      { path: '/store/:id/bookCreateForm', component: BookCreateForm },
+      { path: '/store/:id/bookLentForm', component: BookLentForm },
+      { path: '/store/:id/bookReturnForm', component: BookReturnForm },
+      { path: '/store/:id/bookLaunchForm', component: BookLaunchForm },
+      { path: '/store/:id/bookDeactiveForm', component: BookDeactiveForm },
+      { path: '/store/:id/stockTakingForm', component: StockTakingForm },
+      
+      
+  ];
 
-  }
+  };
   render() {
-     // const { collapsed, fetchingNotices,loading } = this.props
-     //console.log("this.extraRoutesFunc------------",this.extraRoutesFunc());
-     return (
-      <StoreBizApp extraRoutesFunc={this.extraRoutesFunc} {...this.props}/>
-     )
-   }
+    // const { collapsed, fetchingNotices,loading } = this.props
+    //console.log("this.extraRoutesFunc------------",this.extraRoutesFunc());
+    return <StoreBizApp extraRoutesFunc={this.extraRoutesFunc} {...this.props} />;
+  }
 }
 
-
-export default connect(state => ({  
-  
-  customized:'yes',
-}))(StoreBizAppEx)
-
-
-/*
-
 export default connect(state => ({
-  collapsed: state.global.collapsed,
-  fetchingNotices: state.global.fetchingNotices,
-  notices: state.global.notices,
-  store: state._store,
-  extra:'yes',
-  ...state,
-}))(StoreBizAppEx)
-
-
-import PropTypes from 'prop-types'
-import {
-  Layout,
-  Menu,
-  Icon,
-  Avatar,
-  Dropdown,
-  Tag,
-  message,
-  Spin,
-  Breadcrumb,
-  AutoComplete,
-  Input,
-} from 'antd'
-import DocumentTitle from 'react-document-title'
-
-import { Link, Route, Redirect, Switch } from 'dva/router'
-import moment from 'moment'
-import groupBy from 'lodash/groupBy'
-import { ContainerQuery } from 'react-container-query'
-import classNames from 'classnames'
-import styles from './Store.appex.less'
-import {sessionObject} from '../../utils/utils'
-
-import HeaderSearch from '../../components/HeaderSearch';
-import NoticeIcon from '../../components/NoticeIcon';
-import GlobalFooter from '../../components/GlobalFooter';
-
-
-*/
-
+  customized: 'yes',
+}))(StoreBizAppEx);

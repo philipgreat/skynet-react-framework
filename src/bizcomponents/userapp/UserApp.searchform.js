@@ -144,9 +144,9 @@ class UserAppSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="权限">
+            <FormItem label="许可">
               {getFieldDecorator('permission')(
-                <Input placeholder="请输入权限" />
+                <Input placeholder="请输入许可" />
               )}
             </FormItem>
           </Col>

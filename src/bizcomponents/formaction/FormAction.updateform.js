@@ -276,9 +276,9 @@ class FormActionUpdateForm extends Component {
                 <Form.Item label={fieldLabels.localeKey} {...formItemLayout}>
                   {getFieldDecorator('localeKey', {
                     initialValue: selectedRow.localeKey,
-                    rules: [{ required: true, message: '请输入消息键值' }],
+                    rules: [{ required: true, message: '请输入语言环境的关键' }],
                   })(
-                    <Input placeholder="请输入消息键值" />
+                    <Input placeholder="请输入语言环境的关键" />
                     
                   )}
                 </Form.Item>

@@ -18,8 +18,8 @@ const testValues = {};
 const testValues = {
   couponTitle: '优惠￥10元',
   discountAmount: '10.00',
-  endDate: '2016-01-22 09:21:40',
-  appliedDate: '2018-05-18 12:27:22',
+  endDate: '2016-12-22 22:36:23',
+  appliedDate: '2016-06-24 10:12:29',
   couponStatus: '未使用',
   customerId: 'C000001',
   mainOrderId: 'VIO000001',

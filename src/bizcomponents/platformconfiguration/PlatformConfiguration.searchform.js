@@ -64,8 +64,17 @@ class PlatformConfigurationSearchForm extends PureComponent {
       if (err) return
       const params = {
         ...this.buildStringSearchParameters(fieldsValue, 'id'),
-        ...this.buildStringSearchParameters(fieldsValue, 'userAgreement'),
-        ...this.buildStringSearchParameters(fieldsValue, 'invoiceInstruction'),
+        ...this.buildStringSearchParameters(fieldsValue, 'memberServiceAgreement'),
+        ...this.buildStringSearchParameters(fieldsValue, 'bookSharingAgreement'),
+        ...this.buildStringSearchParameters(fieldsValue, 'accountRechargeAgreement'),
+        ...this.buildStringSearchParameters(fieldsValue, 'messageInStoreListPage'),
+        ...this.buildStringSearchParameters(fieldsValue, 'feedbackContactInfo'),
+        ...this.buildStringSearchParameters(fieldsValue, 'myRightsTitle'),
+        ...this.buildStringSearchParameters(fieldsValue, 'myBorrowingTitle'),
+        ...this.buildStringSearchParameters(fieldsValue, 'myCampaignTitle'),
+        ...this.buildStringSearchParameters(fieldsValue, 'myBalanceTitle'),
+        ...this.buildStringSearchParameters(fieldsValue, 'myBookReviewTitle'),
+        ...this.buildStringSearchParameters(fieldsValue, 'myOrderTitle'),
 
       }
       const { owner } = this.props
@@ -91,9 +100,9 @@ class PlatformConfigurationSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="用户协议">
-              {getFieldDecorator('userAgreement')(
-                <Input placeholder="请输入用户协议" />
+            <FormItem label="会员服务协议">
+              {getFieldDecorator('memberServiceAgreement')(
+                <Input placeholder="请输入会员服务协议" />
                )}
             </FormItem>
           </Col>
@@ -124,17 +133,89 @@ class PlatformConfigurationSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="用户协议">
-              {getFieldDecorator('userAgreement')(
-                <Input placeholder="请输入用户协议" />
+            <FormItem label="会员服务协议">
+              {getFieldDecorator('memberServiceAgreement')(
+                <Input placeholder="请输入会员服务协议" />
               )}
             </FormItem>
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="发票说明">
-              {getFieldDecorator('invoiceInstruction')(
-                <Input placeholder="请输入发票说明" />
+            <FormItem label="图书共享协议">
+              {getFieldDecorator('bookSharingAgreement')(
+                <Input placeholder="请输入图书共享协议" />
+              )}
+            </FormItem>
+          </Col>
+
+          <Col md={8} sm={24}>
+            <FormItem label="账户充值协议">
+              {getFieldDecorator('accountRechargeAgreement')(
+                <Input placeholder="请输入账户充值协议" />
+              )}
+            </FormItem>
+          </Col>
+
+          <Col md={8} sm={24}>
+            <FormItem label="存储列表页中的消息">
+              {getFieldDecorator('messageInStoreListPage')(
+                <Input placeholder="请输入存储列表页中的消息" />
+              )}
+            </FormItem>
+          </Col>
+
+          <Col md={8} sm={24}>
+            <FormItem label="反馈联系信息">
+              {getFieldDecorator('feedbackContactInfo')(
+                <Input placeholder="请输入反馈联系信息" />
+              )}
+            </FormItem>
+          </Col>
+
+          <Col md={8} sm={24}>
+            <FormItem label="我的权益的功能的显示名称">
+              {getFieldDecorator('myRightsTitle')(
+                <Input placeholder="请输入我的权益的功能的显示名称" />
+              )}
+            </FormItem>
+          </Col>
+
+          <Col md={8} sm={24}>
+            <FormItem label="我的借阅记录的功能的显示名称">
+              {getFieldDecorator('myBorrowingTitle')(
+                <Input placeholder="请输入我的借阅记录的功能的显示名称" />
+              )}
+            </FormItem>
+          </Col>
+
+          <Col md={8} sm={24}>
+            <FormItem label="我的活动的功能的显示名称">
+              {getFieldDecorator('myCampaignTitle')(
+                <Input placeholder="请输入我的活动的功能的显示名称" />
+              )}
+            </FormItem>
+          </Col>
+
+          <Col md={8} sm={24}>
+            <FormItem label="我的余额的功能的显示名称">
+              {getFieldDecorator('myBalanceTitle')(
+                <Input placeholder="请输入我的余额的功能的显示名称" />
+              )}
+            </FormItem>
+          </Col>
+
+          <Col md={8} sm={24}>
+            <FormItem label="我的书评的功能的显示名称">
+              {getFieldDecorator('myBookReviewTitle')(
+                <Input placeholder="请输入我的书评的功能的显示名称" />
+              )}
+            </FormItem>
+          </Col>
+
+          <Col md={8} sm={24}>
+            <FormItem label="我的订单的功能的显示名称">
+              {getFieldDecorator('myOrderTitle')(
+                <Input placeholder="请输入我的订单的功能的显示名称" />
               )}
             </FormItem>
           </Col>

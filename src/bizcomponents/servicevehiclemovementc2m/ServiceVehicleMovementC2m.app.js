@@ -11,7 +11,7 @@ import {
   Spin,
   Breadcrumb,
   AutoComplete,
-  Input,
+  Input,Button
 } from 'antd'
 import DocumentTitle from 'react-document-title'
 import { connect } from 'dva'
@@ -119,6 +119,7 @@ class ServiceVehicleMovementC2mBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/serviceVehicleMovementC2m/${this.props.serviceVehicleMovementC2m.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class ServiceVehicleMovementC2mBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/serviceVehicleMovementC2m/${this.props.serviceVehicleMovementC2m.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -177,9 +181,13 @@ class ServiceVehicleMovementC2mBizApp extends React.PureComponent {
   
   buildRouters = () =>{
   	const {ServiceVehicleMovementC2mDashboard} = GlobalComponents
+  	const {ServiceVehicleMovementC2mPreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/serviceVehicleMovementC2m/:id/dashboard", component: ServiceVehicleMovementC2mDashboard},
+  	{path:"/serviceVehicleMovementC2m/:id/preference", component: ServiceVehicleMovementC2mPreference},
+  	
   	
   	
   	{path:"/serviceVehicleMovementC2m/:id/list/handOverChecklistResultList", component: this.getHandOverChecklistResultSearch()},
@@ -221,7 +229,11 @@ class ServiceVehicleMovementC2mBizApp extends React.PureComponent {
        payload: !collapsed,
      })
    }
-
+    logout = () => {
+   
+    console.log("log out called")
+    this.props.dispatch({ type: 'launcher/signOut' })
+  }
    render() {
      // const { collapsed, fetchingNotices,loading } = this.props
      const { collapsed } = this.props
@@ -245,7 +257,7 @@ class ServiceVehicleMovementC2mBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}
@@ -255,18 +267,11 @@ class ServiceVehicleMovementC2mBizApp extends React.PureComponent {
 
           })}
          </div>
-          <div className={styles.right}>
+          <div className={styles.right}  >
+          <Button type="primary"  icon="logout" onClick={()=>this.logout()}>
+          退出</Button>
+          </div>
           
-          <AutoComplete
-            className="certain-category-search"
-            placeholder="请输入名称"
-            optionLabelProp="value"
-            
-          >
-            <Input
-              suffix={<Icon type="search" className="certain-category-icon" />}
-            />
-          </AutoComplete> </div>
         </Header>
        <Layout>
          <Sider

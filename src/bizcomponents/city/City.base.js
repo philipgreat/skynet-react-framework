@@ -4,10 +4,7 @@ import { Link } from 'dva/router'
 import moment from 'moment'
 const menuData = {menuName:"城市", menuFor: "city",
   		subItems: [
-  {name: 'productPriceList', displayName:'产品价格', icon:'glass'},
-  {name: 'vehicleServiceCompanyList', displayName:'商户', icon:'glass'},
-  {name: 'inspectionStationList', displayName:'检测站', icon:'at'},
-  {name: 'vehicleInspectionOrderList', displayName:'年检订单', icon:'glass'},
+  {name: 'storeList', displayName:'服务网点', icon:'glass'},
   
   		],
 }
@@ -16,15 +13,19 @@ const menuData = {menuName:"城市", menuFor: "city",
 
 const displayColumns = [
   { title: 'ID', debugtype: 'string', dataIndex: 'id', width: '20', render: (text, record)=>(<Link to={`/city/${text}/dashboard`}>{text}</Link>) },
-  { title: '名称', debugtype: 'string', dataIndex: 'name', width: '6' },
-  { title: '省', dataIndex: 'province', render: (text, record) => (record.province ? record.province.displayName : '暂无') },
+  { title: '名称', debugtype: 'string', dataIndex: 'name', width: '7' },
+  { title: '图书共享平台', dataIndex: 'bookSharingPlatform', render: (text, record) => (record.bookSharingPlatform ? record.bookSharingPlatform.displayName : '暂无') },
+  { title: '创建时间', dataIndex: 'createTime', render: (text, record) => moment(record.createTime).format('YYYY-MM-DD HH:mm:ss') },
+  { title: '更新时间', dataIndex: 'updateTime', render: (text, record) => moment(record.updateTime).format('YYYY-MM-DD HH:mm:ss') },
 
 ]
 
 const fieldLabels = {
   id: 'ID',
   name: '名称',
-  province: '省',
+  bookSharingPlatform: '图书共享平台',
+  createTime: '创建时间',
+  updateTime: '更新时间',
 
 }
 

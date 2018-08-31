@@ -58,6 +58,8 @@ class CityUpdateForm extends Component {
     const convertiedValues = selectedRows.map((item) => {
       return {
         ...item,
+        createTime: moment(item.createTime),
+        updateTime: moment(item.updateTime),
 
       }
     })

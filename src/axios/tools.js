@@ -81,7 +81,13 @@ export const get = ({ url, msg = '接口异常', headers }) =>
 
 export const getURLPrefix = () => {
   const url = new URL(window.location);
-
+  if (url.hostname === 'clariones.doublechaintech.com') {
+    //return `http://${url.hostname}:8080/naf/`
+    return `http://clariones.doublechaintech.com/naf/`;
+  }
+  if (url.hostname === '30.30.126.37') {
+    return `http://${url.hostname}:8080/naf/`;
+  }
   if (url.hostname === 'localhost') {
     return `http://${url.hostname}:8080/cis/`
   }
@@ -107,6 +113,9 @@ export const joinParameters = (parameters) => {
 }
 const formatPostData = (value) => {
     console.log("value", value)
+    if(!value){
+      return null
+    }
     if(value._isAMomentObject){
         return moment(value).format('YYYY-MM-DDTHH:mm:ss');
     }
@@ -123,6 +132,12 @@ export const joinPostParameters = (parameters) => {
               continue
             }
             const postValue = formatPostData(value)
+            if(!postValue){
+              continue
+            }
+            if(postValue==null){
+              continue
+            }
             if (!Array.isArray(value)) {
                 arr.push(key + '=' + encodeURIComponent(postValue))
                 continue
@@ -139,27 +154,6 @@ export const joinPostParameters = (parameters) => {
 };
 
 export const PREFIX = getURLPrefix();
-
-export const postForm = ({ url, requestParameters, msg = '接口异常' }) => {
-  const headers = { 'Content-Type': 'application/x-www-form-urlencoded' };
-  return post({
-    url,
-    data: joinPostParameters(requestParameters),
-    headers,
-  });
-};
-
-export const PREFIX = getURLPrefix()
-
-export const postForm = ({ url, requestParameters, msg = '接口异常'})=>{
-    const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
-    return post({
-      url,
-      data: joinPostParameters(requestParameters),
-      headers,
-    })
-}
-
 /**
  * 公用post请求
  * @param url       接口地址
@@ -167,6 +161,30 @@ export const postForm = ({ url, requestParameters, msg = '接口异常'})=>{
  * @param msg       接口异常提示
  * @param headers   接口所需header配置
  */
+
+/*const url = `${PREFIX}storeManager/removeEmployeeWorkingStoreList/storeId/employeeWorkingStoreIds/tokensExpr/`
+  const requestParameters = { ...parameters, storeId: targetObjectId, tokensExpr: 'none' }
+  const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
+  return post({
+    url,
+    data: joinPostParameters(requestParameters),
+    headers,
+  })*/
+
+
+export const postForm = ({ url, requestParameters, msg = '接口异常'})=>{
+
+  
+  const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
+  return post({
+    url,
+    data: joinPostParameters(requestParameters),
+    headers,
+  })
+}
+
+
+
 export const post = ({ url, data, msg = '接口异常', headers }) =>
   axios
     .post(url, data, headers)
@@ -261,8 +279,11 @@ export const mapFromImageValues = (selectedRow, imageKeys) => {
   return targetImages;
 };
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 3c66414da2f491b86a6917eca2ec2b40cd77ed52
 export function playSound(sound){
   var audio = new Audio(sound+'.mp3');
   audio.play();

@@ -9,7 +9,6 @@ const menuData = {menuName:"产品类型", menuFor: "availableProduct",
   {name: 'productPriceList', displayName:'产品价格', icon:'glass'},
   {name: 'availableInsuranceList', displayName:'车辆代办保险', icon:'glass'},
   {name: 'availableHandOverItemList', displayName:'交接检查项', icon:'sitemap'},
-  {name: 'preorderPromotionList', displayName:'提前下单优惠', icon:'glass'},
   
   		],
 }

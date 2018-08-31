@@ -260,15 +260,15 @@ const internalSummaryOf = (formField,targetComponent) =>{
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="ID">{formField.id}</Description> 
 <Description term="标签">{formField.label}</Description> 
-<Description term="消息键值">{formField.localeKey}</Description> 
+<Description term="语言环境的关键">{formField.localeKey}</Description> 
 <Description term="参数名称">{formField.parameterName}</Description> 
 <Description term="类型">{formField.type}</Description> 
 <Description term="占位符">{formField.placeholder}</Description> 
 <Description term="默认值">{formField.defaultValue}</Description> 
 <Description term="描述">{formField.description}</Description> 
 <Description term="字段组">{formField.fieldGroup}</Description> 
-<Description term="最小值">{formField.minValue}</Description> 
-<Description term="最大的价值">{formField.maxValue}</Description> 
+<Description term="最小值">{formField.minimumValue}</Description> 
+<Description term="最大值">{formField.maximumValue}</Description> 
 <Description term="候选人的价值观">{formField.candidateValues}</Description> 
 <Description term="建议值">{formField.suggestValues}</Description> 
 	

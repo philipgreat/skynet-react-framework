@@ -292,19 +292,11 @@ class CarInspectionPlatformDashboard extends Component {
     const { id,displayName, platformConfigurationCount, provinceCount, availableProductCount, availableVehicleTypeCount, availableVehicleUseCharacterCount, contractCount, customerCount, vehicleServiceCompanyCount, vehicleInfoCount, vehicleInspectionOrderCount, availableReviewItemCount, availableRatingItemCount, preorderPromotionCount, orderDiscountCouponCount, accountCount } = this.props.carInspectionPlatform
     const cardsData = {cardsName:"驾乐乐车辆代审服务平台",cardsFor: "carInspectionPlatform",cardsSource: this.props.carInspectionPlatform,
   		subItems: [
-{name: 'platformConfigurationList', displayName:'平台配置',type:'platformConfiguration',count:platformConfigurationCount},
-{name: 'provinceList', displayName:'省',type:'province',count:provinceCount},
-{name: 'availableProductList', displayName:'产品类型',type:'availableProduct',count:availableProductCount},
-{name: 'availableVehicleTypeList', displayName:'车辆类型',type:'availableVehicleType',count:availableVehicleTypeCount},
-{name: 'availableVehicleUseCharacterList', displayName:'车辆使用性质',type:'availableVehicleUseCharacter',count:availableVehicleUseCharacterCount},
 {name: 'contractList', displayName:'合同',type:'contract',count:contractCount},
 {name: 'customerList', displayName:'客户',type:'customer',count:customerCount},
 {name: 'vehicleServiceCompanyList', displayName:'商户',type:'vehicleServiceCompany',count:vehicleServiceCompanyCount},
 {name: 'vehicleInfoList', displayName:'车辆信息',type:'vehicleInfo',count:vehicleInfoCount},
 {name: 'vehicleInspectionOrderList', displayName:'年检订单',type:'vehicleInspectionOrder',count:vehicleInspectionOrderCount},
-{name: 'availableReviewItemList', displayName:'评论',type:'availableReviewItem',count:availableReviewItemCount},
-{name: 'availableRatingItemList', displayName:'服务评分',type:'availableRatingItem',count:availableRatingItemCount},
-{name: 'preorderPromotionList', displayName:'提前下单优惠',type:'preorderPromotion',count:preorderPromotionCount},
 {name: 'orderDiscountCouponList', displayName:'优惠券',type:'orderDiscountCoupon',count:orderDiscountCouponCount},
 {name: 'accountList', displayName:'对账单',type:'account',count:accountCount},
     

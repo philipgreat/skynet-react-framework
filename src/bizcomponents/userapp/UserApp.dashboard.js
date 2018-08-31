@@ -265,7 +265,7 @@ const internalSummaryOf = (userApp,targetComponent) =>{
   style={{fontSize: 20,color:"red"}} />
 </Description>
 <Description term="应用程序图标">{userApp.appIcon}</Description> 
-<Description term="权限">{userApp.permission}</Description> 
+<Description term="许可">{userApp.permission}</Description> 
 <Description term="访问对象类型">{userApp.objectType}</Description> 
 <Description term="对象ID">{userApp.objectId}</Description> 
 <Description term="位置">{userApp.location}</Description> 

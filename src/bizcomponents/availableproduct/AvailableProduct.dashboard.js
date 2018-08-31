@@ -296,7 +296,6 @@ class AvailableProductDashboard extends Component {
 {name: 'productPriceList', displayName:'产品价格',type:'productPrice',count:productPriceCount},
 {name: 'availableInsuranceList', displayName:'车辆代办保险',type:'availableInsurance',count:availableInsuranceCount},
 {name: 'availableHandOverItemList', displayName:'交接检查项',type:'availableHandOverItem',count:availableHandOverItemCount},
-{name: 'preorderPromotionList', displayName:'提前下单优惠',type:'preorderPromotion',count:preorderPromotionCount},
     
       	],
   	};

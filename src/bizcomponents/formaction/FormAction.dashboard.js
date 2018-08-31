@@ -257,7 +257,7 @@ const internalSummaryOf = (formAction,targetComponent) =>{
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="ID">{formAction.id}</Description> 
 <Description term="标签">{formAction.label}</Description> 
-<Description term="消息键值">{formAction.localeKey}</Description> 
+<Description term="语言环境的关键">{formAction.localeKey}</Description> 
 <Description term="行动的关键">{formAction.actionKey}</Description> 
 <Description term="水平">{formAction.level}</Description> 
 <Description term="url">{formAction.url}</Description> 

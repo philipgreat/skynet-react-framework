@@ -27,11 +27,20 @@ export default {
         dispatch(routerRedux.push(newlocation))
       })
     },
+<<<<<<< HEAD
+=======
+    
+   
+>>>>>>> 3c66414da2f491b86a6917eca2ec2b40cd77ed52
     timer({ dispatch }){
 
       setInterval(()=>{
 
+<<<<<<< HEAD
         dispatch({type:"showlog"})
+=======
+        //dispatch({type:"showlog"})
+>>>>>>> 3c66414da2f491b86a6917eca2ec2b40cd77ed52
 
       }, 3000);
     },

@@ -169,7 +169,7 @@ class SecUserBlockingSearch extends PureComponent {
       const { dispatch, owner,location } = this.props;
       console.log("trying to call handleCloseAlert",owner)
       const pathname = location.pathname
-      dispatch({ type: `${owner.type}/view`, payload: { id: owner.id,pathname,displayName:'SEC用户阻塞列表' } })
+      dispatch({ type: `${owner.type}/view`, payload: { id: owner.id,pathname,displayName:'用户块列表' } })
 
   };  
     
@@ -234,7 +234,7 @@ class SecUserBlockingSearch extends PureComponent {
     }
     
     return (
-      <PageHeaderLayout title={`${displayName}: SEC用户阻塞列表`}>
+      <PageHeaderLayout title={`${displayName}: 用户块列表`}>
         <Card bordered={false}>
           <div className={styles.tableList}>
             <div className={styles.tableListForm}>

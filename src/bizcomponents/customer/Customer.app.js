@@ -11,7 +11,7 @@ import {
   Spin,
   Breadcrumb,
   AutoComplete,
-  Input,
+  Input,Button
 } from 'antd'
 import DocumentTitle from 'react-document-title'
 import { connect } from 'dva'
@@ -119,6 +119,7 @@ class CustomerBizApp extends React.PureComponent {
              <Menu.Item key="dashboard">
                <Link to={`/customer/${this.props.customer.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
              </Menu.Item>
+             
 		 <Menu.Item key="homepage">
                <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
              </Menu.Item>
@@ -130,6 +131,9 @@ class CustomerBizApp extends React.PureComponent {
           </Link>
         </Menu.Item>))}
        
+       <Menu.Item key="preference">
+               <Link to={`/customer/${this.props.customer.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+             </Menu.Item>
       
            </Menu>
     )
@@ -138,209 +142,798 @@ class CustomerBizApp extends React.PureComponent {
 
 
 
-  getCompanyQrcodePromotionRecordSearch = () => {
-    const {CompanyQrcodePromotionRecordSearch} = GlobalComponents;
+  getPrivateMessageSearch = () => {
+    const {PrivateMessageSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
-      data: state._customer.companyQrcodePromotionRecordList,
-      count: state._customer.companyQrcodePromotionRecordCount,
-      currentPage: state._customer.companyQrcodePromotionRecordCurrentPageNumber,
-      searchFormParameters: state._customer.companyQrcodePromotionRecordSearchFormParameters,
+      data: state._customer.privateMessageList,
+      count: state._customer.privateMessageCount,
+      currentPage: state._customer.privateMessageCurrentPageNumber,
+      searchFormParameters: state._customer.privateMessageSearchFormParameters,
       loading: state._customer.loading,
       partialList: state._customer.partialList,
-      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'companyQrcodePromotionRecordList', ref:state._customer, listDisplayName: '公司二维码推广记录列表' }, // this is for model namespace and
-    }))(CompanyQrcodePromotionRecordSearch)
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'deliveryTo', listName: 'privateMessageList', ref:state._customer, listDisplayName: '私信消息列表' }, // this is for model namespace and
+    }))(PrivateMessageSearch)
   }
-  getCompanyQrcodePromotionRecordCreateForm = () => {
-   	const {CompanyQrcodePromotionRecordCreateForm} = GlobalComponents;
+  getPrivateMessageCreateForm = () => {
+   	const {PrivateMessageCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
-      data: state._customer.companyQrcodePromotionRecordList,
-      count: state._customer.companyQrcodePromotionRecordCount,
-      currentPage: state._customer.companyQrcodePromotionRecordCurrentPageNumber,
-      searchFormParameters: state._customer.companyQrcodePromotionRecordSearchFormParameters,
+      data: state._customer.privateMessageList,
+      count: state._customer.privateMessageCount,
+      currentPage: state._customer.privateMessageCurrentPageNumber,
+      searchFormParameters: state._customer.privateMessageSearchFormParameters,
       loading: state._customer.loading,
-      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'companyQrcodePromotionRecordList', ref:state._customer, listDisplayName: '公司二维码推广记录列表'}, // this is for model namespace and
-    }))(CompanyQrcodePromotionRecordCreateForm)
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'deliveryTo', listName: 'privateMessageList', ref:state._customer, listDisplayName: '私信消息列表'}, // this is for model namespace and
+    }))(PrivateMessageCreateForm)
   }
   
-  getCompanyQrcodePromotionRecordUpdateForm = () => {
-  	const {CompanyQrcodePromotionRecordUpdateForm} = GlobalComponents;
+  getPrivateMessageUpdateForm = () => {
+  	const {PrivateMessageUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
       currentUpdateIndex: state._customer.currentUpdateIndex,
-      owner: { type: '_customer', id: state._customer.id, listName: 'companyQrcodePromotionRecordList', ref:state._customer, listDisplayName: '公司二维码推广记录列表' }, // this is for model namespace and
-    }))(CompanyQrcodePromotionRecordUpdateForm)
+      owner: { type: '_customer', id: state._customer.id, listName: 'privateMessageList', ref:state._customer, listDisplayName: '私信消息列表' }, // this is for model namespace and
+    }))(PrivateMessageUpdateForm)
   }
 
-  getVehicleInfoSearch = () => {
-    const {VehicleInfoSearch} = GlobalComponents;
+  getLossAssessmentRecordSearch = () => {
+    const {LossAssessmentRecordSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
-      data: state._customer.vehicleInfoList,
-      count: state._customer.vehicleInfoCount,
-      currentPage: state._customer.vehicleInfoCurrentPageNumber,
-      searchFormParameters: state._customer.vehicleInfoSearchFormParameters,
+      data: state._customer.lossAssessmentRecordList,
+      count: state._customer.lossAssessmentRecordCount,
+      currentPage: state._customer.lossAssessmentRecordCurrentPageNumber,
+      searchFormParameters: state._customer.lossAssessmentRecordSearchFormParameters,
       loading: state._customer.loading,
       partialList: state._customer.partialList,
-      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'vehicleInfoList', ref:state._customer, listDisplayName: '车辆信息列表' }, // this is for model namespace and
-    }))(VehicleInfoSearch)
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'damagePerson', listName: 'lossAssessmentRecordList', ref:state._customer, listDisplayName: '定损记录列表' }, // this is for model namespace and
+    }))(LossAssessmentRecordSearch)
   }
-  getVehicleInfoCreateForm = () => {
-   	const {VehicleInfoCreateForm} = GlobalComponents;
+  getLossAssessmentRecordCreateForm = () => {
+   	const {LossAssessmentRecordCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
-      data: state._customer.vehicleInfoList,
-      count: state._customer.vehicleInfoCount,
-      currentPage: state._customer.vehicleInfoCurrentPageNumber,
-      searchFormParameters: state._customer.vehicleInfoSearchFormParameters,
+      data: state._customer.lossAssessmentRecordList,
+      count: state._customer.lossAssessmentRecordCount,
+      currentPage: state._customer.lossAssessmentRecordCurrentPageNumber,
+      searchFormParameters: state._customer.lossAssessmentRecordSearchFormParameters,
       loading: state._customer.loading,
-      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'vehicleInfoList', ref:state._customer, listDisplayName: '车辆信息列表'}, // this is for model namespace and
-    }))(VehicleInfoCreateForm)
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'damagePerson', listName: 'lossAssessmentRecordList', ref:state._customer, listDisplayName: '定损记录列表'}, // this is for model namespace and
+    }))(LossAssessmentRecordCreateForm)
   }
   
-  getVehicleInfoUpdateForm = () => {
-  	const {VehicleInfoUpdateForm} = GlobalComponents;
+  getLossAssessmentRecordUpdateForm = () => {
+  	const {LossAssessmentRecordUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
       currentUpdateIndex: state._customer.currentUpdateIndex,
-      owner: { type: '_customer', id: state._customer.id, listName: 'vehicleInfoList', ref:state._customer, listDisplayName: '车辆信息列表' }, // this is for model namespace and
-    }))(VehicleInfoUpdateForm)
+      owner: { type: '_customer', id: state._customer.id, listName: 'lossAssessmentRecordList', ref:state._customer, listDisplayName: '定损记录列表' }, // this is for model namespace and
+    }))(LossAssessmentRecordUpdateForm)
   }
 
-  getVehicleInspectionOrderSearch = () => {
-    const {VehicleInspectionOrderSearch} = GlobalComponents;
+  getMainOrderSearch = () => {
+    const {MainOrderSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
-      data: state._customer.vehicleInspectionOrderList,
-      count: state._customer.vehicleInspectionOrderCount,
-      currentPage: state._customer.vehicleInspectionOrderCurrentPageNumber,
-      searchFormParameters: state._customer.vehicleInspectionOrderSearchFormParameters,
+      data: state._customer.mainOrderList,
+      count: state._customer.mainOrderCount,
+      currentPage: state._customer.mainOrderCurrentPageNumber,
+      searchFormParameters: state._customer.mainOrderSearchFormParameters,
       loading: state._customer.loading,
       partialList: state._customer.partialList,
-      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'vehicleInspectionOrderList', ref:state._customer, listDisplayName: '年检订单列表' }, // this is for model namespace and
-    }))(VehicleInspectionOrderSearch)
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'mainOrderList', ref:state._customer, listDisplayName: '主订单列表' }, // this is for model namespace and
+    }))(MainOrderSearch)
   }
-  getVehicleInspectionOrderCreateForm = () => {
-   	const {VehicleInspectionOrderCreateForm} = GlobalComponents;
+  getMainOrderCreateForm = () => {
+   	const {MainOrderCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
-      data: state._customer.vehicleInspectionOrderList,
-      count: state._customer.vehicleInspectionOrderCount,
-      currentPage: state._customer.vehicleInspectionOrderCurrentPageNumber,
-      searchFormParameters: state._customer.vehicleInspectionOrderSearchFormParameters,
+      data: state._customer.mainOrderList,
+      count: state._customer.mainOrderCount,
+      currentPage: state._customer.mainOrderCurrentPageNumber,
+      searchFormParameters: state._customer.mainOrderSearchFormParameters,
       loading: state._customer.loading,
-      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'vehicleInspectionOrderList', ref:state._customer, listDisplayName: '年检订单列表'}, // this is for model namespace and
-    }))(VehicleInspectionOrderCreateForm)
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'mainOrderList', ref:state._customer, listDisplayName: '主订单列表'}, // this is for model namespace and
+    }))(MainOrderCreateForm)
   }
   
-  getVehicleInspectionOrderUpdateForm = () => {
-  	const {VehicleInspectionOrderUpdateForm} = GlobalComponents;
+  getMainOrderUpdateForm = () => {
+  	const {MainOrderUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
       currentUpdateIndex: state._customer.currentUpdateIndex,
-      owner: { type: '_customer', id: state._customer.id, listName: 'vehicleInspectionOrderList', ref:state._customer, listDisplayName: '年检订单列表' }, // this is for model namespace and
-    }))(VehicleInspectionOrderUpdateForm)
+      owner: { type: '_customer', id: state._customer.id, listName: 'mainOrderList', ref:state._customer, listDisplayName: '主订单列表' }, // this is for model namespace and
+    }))(MainOrderUpdateForm)
   }
 
-  getOrderDiscountCouponSearch = () => {
-    const {OrderDiscountCouponSearch} = GlobalComponents;
+  getBookCopySearch = () => {
+    const {BookCopySearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
-      data: state._customer.orderDiscountCouponList,
-      count: state._customer.orderDiscountCouponCount,
-      currentPage: state._customer.orderDiscountCouponCurrentPageNumber,
-      searchFormParameters: state._customer.orderDiscountCouponSearchFormParameters,
+      data: state._customer.bookCopyList,
+      count: state._customer.bookCopyCount,
+      currentPage: state._customer.bookCopyCurrentPageNumber,
+      searchFormParameters: state._customer.bookCopySearchFormParameters,
       loading: state._customer.loading,
       partialList: state._customer.partialList,
-      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'orderDiscountCouponList', ref:state._customer, listDisplayName: '优惠券列表' }, // this is for model namespace and
-    }))(OrderDiscountCouponSearch)
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'bookCopyVendor', listName: 'bookCopyList', ref:state._customer, listDisplayName: '书籍副本列表' }, // this is for model namespace and
+    }))(BookCopySearch)
   }
-  getOrderDiscountCouponCreateForm = () => {
-   	const {OrderDiscountCouponCreateForm} = GlobalComponents;
+  getBookCopyCreateForm = () => {
+   	const {BookCopyCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
-      data: state._customer.orderDiscountCouponList,
-      count: state._customer.orderDiscountCouponCount,
-      currentPage: state._customer.orderDiscountCouponCurrentPageNumber,
-      searchFormParameters: state._customer.orderDiscountCouponSearchFormParameters,
+      data: state._customer.bookCopyList,
+      count: state._customer.bookCopyCount,
+      currentPage: state._customer.bookCopyCurrentPageNumber,
+      searchFormParameters: state._customer.bookCopySearchFormParameters,
       loading: state._customer.loading,
-      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'orderDiscountCouponList', ref:state._customer, listDisplayName: '优惠券列表'}, // this is for model namespace and
-    }))(OrderDiscountCouponCreateForm)
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'bookCopyVendor', listName: 'bookCopyList', ref:state._customer, listDisplayName: '书籍副本列表'}, // this is for model namespace and
+    }))(BookCopyCreateForm)
   }
   
-  getOrderDiscountCouponUpdateForm = () => {
-  	const {OrderDiscountCouponUpdateForm} = GlobalComponents;
+  getBookCopyUpdateForm = () => {
+  	const {BookCopyUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
       currentUpdateIndex: state._customer.currentUpdateIndex,
-      owner: { type: '_customer', id: state._customer.id, listName: 'orderDiscountCouponList', ref:state._customer, listDisplayName: '优惠券列表' }, // this is for model namespace and
-    }))(OrderDiscountCouponUpdateForm)
+      owner: { type: '_customer', id: state._customer.id, listName: 'bookCopyList', ref:state._customer, listDisplayName: '书籍副本列表' }, // this is for model namespace and
+    }))(BookCopyUpdateForm)
   }
 
-  getVehicleInspectionOrderCouponSearch = () => {
-    const {VehicleInspectionOrderCouponSearch} = GlobalComponents;
+  getBorrowingHistorySearch = () => {
+    const {BorrowingHistorySearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
-      data: state._customer.vehicleInspectionOrderCouponList,
-      count: state._customer.vehicleInspectionOrderCouponCount,
-      currentPage: state._customer.vehicleInspectionOrderCouponCurrentPageNumber,
-      searchFormParameters: state._customer.vehicleInspectionOrderCouponSearchFormParameters,
+      data: state._customer.borrowingHistoryList,
+      count: state._customer.borrowingHistoryCount,
+      currentPage: state._customer.borrowingHistoryCurrentPageNumber,
+      searchFormParameters: state._customer.borrowingHistorySearchFormParameters,
       loading: state._customer.loading,
       partialList: state._customer.partialList,
-      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'vehicleInspectionOrderCouponList', ref:state._customer, listDisplayName: '优惠券使用记录列表' }, // this is for model namespace and
-    }))(VehicleInspectionOrderCouponSearch)
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'borrower', listName: 'borrowingHistoryList', ref:state._customer, listDisplayName: '图书借还历史列表' }, // this is for model namespace and
+    }))(BorrowingHistorySearch)
   }
-  getVehicleInspectionOrderCouponCreateForm = () => {
-   	const {VehicleInspectionOrderCouponCreateForm} = GlobalComponents;
+  getBorrowingHistoryCreateForm = () => {
+   	const {BorrowingHistoryCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
-      data: state._customer.vehicleInspectionOrderCouponList,
-      count: state._customer.vehicleInspectionOrderCouponCount,
-      currentPage: state._customer.vehicleInspectionOrderCouponCurrentPageNumber,
-      searchFormParameters: state._customer.vehicleInspectionOrderCouponSearchFormParameters,
+      data: state._customer.borrowingHistoryList,
+      count: state._customer.borrowingHistoryCount,
+      currentPage: state._customer.borrowingHistoryCurrentPageNumber,
+      searchFormParameters: state._customer.borrowingHistorySearchFormParameters,
       loading: state._customer.loading,
-      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'vehicleInspectionOrderCouponList', ref:state._customer, listDisplayName: '优惠券使用记录列表'}, // this is for model namespace and
-    }))(VehicleInspectionOrderCouponCreateForm)
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'borrower', listName: 'borrowingHistoryList', ref:state._customer, listDisplayName: '图书借还历史列表'}, // this is for model namespace and
+    }))(BorrowingHistoryCreateForm)
   }
   
-  getVehicleInspectionOrderCouponUpdateForm = () => {
-  	const {VehicleInspectionOrderCouponUpdateForm} = GlobalComponents;
+  getBorrowingHistoryUpdateForm = () => {
+  	const {BorrowingHistoryUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
       currentUpdateIndex: state._customer.currentUpdateIndex,
-      owner: { type: '_customer', id: state._customer.id, listName: 'vehicleInspectionOrderCouponList', ref:state._customer, listDisplayName: '优惠券使用记录列表' }, // this is for model namespace and
-    }))(VehicleInspectionOrderCouponUpdateForm)
+      owner: { type: '_customer', id: state._customer.id, listName: 'borrowingHistoryList', ref:state._customer, listDisplayName: '图书借还历史列表' }, // this is for model namespace and
+    }))(BorrowingHistoryUpdateForm)
+  }
+
+  getBorrowingExpiredSkuSearch = () => {
+    const {BorrowingExpiredSkuSearch} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.borrowingExpiredSkuList,
+      count: state._customer.borrowingExpiredSkuCount,
+      currentPage: state._customer.borrowingExpiredSkuCurrentPageNumber,
+      searchFormParameters: state._customer.borrowingExpiredSkuSearchFormParameters,
+      loading: state._customer.loading,
+      partialList: state._customer.partialList,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'borrower', listName: 'borrowingExpiredSkuList', ref:state._customer, listDisplayName: '借书超期费列表' }, // this is for model namespace and
+    }))(BorrowingExpiredSkuSearch)
+  }
+  getBorrowingExpiredSkuCreateForm = () => {
+   	const {BorrowingExpiredSkuCreateForm} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.borrowingExpiredSkuList,
+      count: state._customer.borrowingExpiredSkuCount,
+      currentPage: state._customer.borrowingExpiredSkuCurrentPageNumber,
+      searchFormParameters: state._customer.borrowingExpiredSkuSearchFormParameters,
+      loading: state._customer.loading,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'borrower', listName: 'borrowingExpiredSkuList', ref:state._customer, listDisplayName: '借书超期费列表'}, // this is for model namespace and
+    }))(BorrowingExpiredSkuCreateForm)
+  }
+  
+  getBorrowingExpiredSkuUpdateForm = () => {
+  	const {BorrowingExpiredSkuUpdateForm} = GlobalComponents;
+    return connect(state => ({
+      selectedRows: state._customer.selectedRows,
+      currentUpdateIndex: state._customer.currentUpdateIndex,
+      owner: { type: '_customer', id: state._customer.id, listName: 'borrowingExpiredSkuList', ref:state._customer, listDisplayName: '借书超期费列表' }, // this is for model namespace and
+    }))(BorrowingExpiredSkuUpdateForm)
+  }
+
+  getBookReviewSearch = () => {
+    const {BookReviewSearch} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.bookReviewList,
+      count: state._customer.bookReviewCount,
+      currentPage: state._customer.bookReviewCurrentPageNumber,
+      searchFormParameters: state._customer.bookReviewSearchFormParameters,
+      loading: state._customer.loading,
+      partialList: state._customer.partialList,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'reviewer', listName: 'bookReviewList', ref:state._customer, listDisplayName: '书评列表' }, // this is for model namespace and
+    }))(BookReviewSearch)
+  }
+  getBookReviewCreateForm = () => {
+   	const {BookReviewCreateForm} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.bookReviewList,
+      count: state._customer.bookReviewCount,
+      currentPage: state._customer.bookReviewCurrentPageNumber,
+      searchFormParameters: state._customer.bookReviewSearchFormParameters,
+      loading: state._customer.loading,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'reviewer', listName: 'bookReviewList', ref:state._customer, listDisplayName: '书评列表'}, // this is for model namespace and
+    }))(BookReviewCreateForm)
+  }
+  
+  getBookReviewUpdateForm = () => {
+  	const {BookReviewUpdateForm} = GlobalComponents;
+    return connect(state => ({
+      selectedRows: state._customer.selectedRows,
+      currentUpdateIndex: state._customer.currentUpdateIndex,
+      owner: { type: '_customer', id: state._customer.id, listName: 'bookReviewList', ref:state._customer, listDisplayName: '书评列表' }, // this is for model namespace and
+    }))(BookReviewUpdateForm)
+  }
+
+  getBookReviewLikeSearch = () => {
+    const {BookReviewLikeSearch} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.bookReviewLikeList,
+      count: state._customer.bookReviewLikeCount,
+      currentPage: state._customer.bookReviewLikeCurrentPageNumber,
+      searchFormParameters: state._customer.bookReviewLikeSearchFormParameters,
+      loading: state._customer.loading,
+      partialList: state._customer.partialList,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'replier', listName: 'bookReviewLikeList', ref:state._customer, listDisplayName: '书评点赞列表' }, // this is for model namespace and
+    }))(BookReviewLikeSearch)
+  }
+  getBookReviewLikeCreateForm = () => {
+   	const {BookReviewLikeCreateForm} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.bookReviewLikeList,
+      count: state._customer.bookReviewLikeCount,
+      currentPage: state._customer.bookReviewLikeCurrentPageNumber,
+      searchFormParameters: state._customer.bookReviewLikeSearchFormParameters,
+      loading: state._customer.loading,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'replier', listName: 'bookReviewLikeList', ref:state._customer, listDisplayName: '书评点赞列表'}, // this is for model namespace and
+    }))(BookReviewLikeCreateForm)
+  }
+  
+  getBookReviewLikeUpdateForm = () => {
+  	const {BookReviewLikeUpdateForm} = GlobalComponents;
+    return connect(state => ({
+      selectedRows: state._customer.selectedRows,
+      currentUpdateIndex: state._customer.currentUpdateIndex,
+      owner: { type: '_customer', id: state._customer.id, listName: 'bookReviewLikeList', ref:state._customer, listDisplayName: '书评点赞列表' }, // this is for model namespace and
+    }))(BookReviewLikeUpdateForm)
+  }
+
+  getBookCopySharingApplicationSearch = () => {
+    const {BookCopySharingApplicationSearch} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.bookCopySharingApplicationList,
+      count: state._customer.bookCopySharingApplicationCount,
+      currentPage: state._customer.bookCopySharingApplicationCurrentPageNumber,
+      searchFormParameters: state._customer.bookCopySharingApplicationSearchFormParameters,
+      loading: state._customer.loading,
+      partialList: state._customer.partialList,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'bookCopySharingApplicationList', ref:state._customer, listDisplayName: '图书共享申请列表' }, // this is for model namespace and
+    }))(BookCopySharingApplicationSearch)
+  }
+  getBookCopySharingApplicationCreateForm = () => {
+   	const {BookCopySharingApplicationCreateForm} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.bookCopySharingApplicationList,
+      count: state._customer.bookCopySharingApplicationCount,
+      currentPage: state._customer.bookCopySharingApplicationCurrentPageNumber,
+      searchFormParameters: state._customer.bookCopySharingApplicationSearchFormParameters,
+      loading: state._customer.loading,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'bookCopySharingApplicationList', ref:state._customer, listDisplayName: '图书共享申请列表'}, // this is for model namespace and
+    }))(BookCopySharingApplicationCreateForm)
+  }
+  
+  getBookCopySharingApplicationUpdateForm = () => {
+  	const {BookCopySharingApplicationUpdateForm} = GlobalComponents;
+    return connect(state => ({
+      selectedRows: state._customer.selectedRows,
+      currentUpdateIndex: state._customer.currentUpdateIndex,
+      owner: { type: '_customer', id: state._customer.id, listName: 'bookCopySharingApplicationList', ref:state._customer, listDisplayName: '图书共享申请列表' }, // this is for model namespace and
+    }))(BookCopySharingApplicationUpdateForm)
+  }
+
+  getMemberServiceRevenueSearch = () => {
+    const {MemberServiceRevenueSearch} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.memberServiceRevenueList,
+      count: state._customer.memberServiceRevenueCount,
+      currentPage: state._customer.memberServiceRevenueCurrentPageNumber,
+      searchFormParameters: state._customer.memberServiceRevenueSearchFormParameters,
+      loading: state._customer.loading,
+      partialList: state._customer.partialList,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'member', listName: 'memberServiceRevenueList', ref:state._customer, listDisplayName: '会员服务收益列表' }, // this is for model namespace and
+    }))(MemberServiceRevenueSearch)
+  }
+  getMemberServiceRevenueCreateForm = () => {
+   	const {MemberServiceRevenueCreateForm} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.memberServiceRevenueList,
+      count: state._customer.memberServiceRevenueCount,
+      currentPage: state._customer.memberServiceRevenueCurrentPageNumber,
+      searchFormParameters: state._customer.memberServiceRevenueSearchFormParameters,
+      loading: state._customer.loading,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'member', listName: 'memberServiceRevenueList', ref:state._customer, listDisplayName: '会员服务收益列表'}, // this is for model namespace and
+    }))(MemberServiceRevenueCreateForm)
+  }
+  
+  getMemberServiceRevenueUpdateForm = () => {
+  	const {MemberServiceRevenueUpdateForm} = GlobalComponents;
+    return connect(state => ({
+      selectedRows: state._customer.selectedRows,
+      currentUpdateIndex: state._customer.currentUpdateIndex,
+      owner: { type: '_customer', id: state._customer.id, listName: 'memberServiceRevenueList', ref:state._customer, listDisplayName: '会员服务收益列表' }, // this is for model namespace and
+    }))(MemberServiceRevenueUpdateForm)
+  }
+
+  getCustomerAccountTransactionSearch = () => {
+    const {CustomerAccountTransactionSearch} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.customerAccountTransactionList,
+      count: state._customer.customerAccountTransactionCount,
+      currentPage: state._customer.customerAccountTransactionCurrentPageNumber,
+      searchFormParameters: state._customer.customerAccountTransactionSearchFormParameters,
+      loading: state._customer.loading,
+      partialList: state._customer.partialList,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'customerAccountTransactionList', ref:state._customer, listDisplayName: '客户账户明细列表' }, // this is for model namespace and
+    }))(CustomerAccountTransactionSearch)
+  }
+  getCustomerAccountTransactionCreateForm = () => {
+   	const {CustomerAccountTransactionCreateForm} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.customerAccountTransactionList,
+      count: state._customer.customerAccountTransactionCount,
+      currentPage: state._customer.customerAccountTransactionCurrentPageNumber,
+      searchFormParameters: state._customer.customerAccountTransactionSearchFormParameters,
+      loading: state._customer.loading,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'customerAccountTransactionList', ref:state._customer, listDisplayName: '客户账户明细列表'}, // this is for model namespace and
+    }))(CustomerAccountTransactionCreateForm)
+  }
+  
+  getCustomerAccountTransactionUpdateForm = () => {
+  	const {CustomerAccountTransactionUpdateForm} = GlobalComponents;
+    return connect(state => ({
+      selectedRows: state._customer.selectedRows,
+      currentUpdateIndex: state._customer.currentUpdateIndex,
+      owner: { type: '_customer', id: state._customer.id, listName: 'customerAccountTransactionList', ref:state._customer, listDisplayName: '客户账户明细列表' }, // this is for model namespace and
+    }))(CustomerAccountTransactionUpdateForm)
+  }
+
+  getCampaignRegisterHistorySearch = () => {
+    const {CampaignRegisterHistorySearch} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.campaignRegisterHistoryList,
+      count: state._customer.campaignRegisterHistoryCount,
+      currentPage: state._customer.campaignRegisterHistoryCurrentPageNumber,
+      searchFormParameters: state._customer.campaignRegisterHistorySearchFormParameters,
+      loading: state._customer.loading,
+      partialList: state._customer.partialList,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'registerMember', listName: 'campaignRegisterHistoryList', ref:state._customer, listDisplayName: '活动报名记录列表' }, // this is for model namespace and
+    }))(CampaignRegisterHistorySearch)
+  }
+  getCampaignRegisterHistoryCreateForm = () => {
+   	const {CampaignRegisterHistoryCreateForm} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.campaignRegisterHistoryList,
+      count: state._customer.campaignRegisterHistoryCount,
+      currentPage: state._customer.campaignRegisterHistoryCurrentPageNumber,
+      searchFormParameters: state._customer.campaignRegisterHistorySearchFormParameters,
+      loading: state._customer.loading,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'registerMember', listName: 'campaignRegisterHistoryList', ref:state._customer, listDisplayName: '活动报名记录列表'}, // this is for model namespace and
+    }))(CampaignRegisterHistoryCreateForm)
+  }
+  
+  getCampaignRegisterHistoryUpdateForm = () => {
+  	const {CampaignRegisterHistoryUpdateForm} = GlobalComponents;
+    return connect(state => ({
+      selectedRows: state._customer.selectedRows,
+      currentUpdateIndex: state._customer.currentUpdateIndex,
+      owner: { type: '_customer', id: state._customer.id, listName: 'campaignRegisterHistoryList', ref:state._customer, listDisplayName: '活动报名记录列表' }, // this is for model namespace and
+    }))(CampaignRegisterHistoryUpdateForm)
+  }
+
+  getCampaignReviewSearch = () => {
+    const {CampaignReviewSearch} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.campaignReviewList,
+      count: state._customer.campaignReviewCount,
+      currentPage: state._customer.campaignReviewCurrentPageNumber,
+      searchFormParameters: state._customer.campaignReviewSearchFormParameters,
+      loading: state._customer.loading,
+      partialList: state._customer.partialList,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'reviewer', listName: 'campaignReviewList', ref:state._customer, listDisplayName: '活动评论列表' }, // this is for model namespace and
+    }))(CampaignReviewSearch)
+  }
+  getCampaignReviewCreateForm = () => {
+   	const {CampaignReviewCreateForm} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.campaignReviewList,
+      count: state._customer.campaignReviewCount,
+      currentPage: state._customer.campaignReviewCurrentPageNumber,
+      searchFormParameters: state._customer.campaignReviewSearchFormParameters,
+      loading: state._customer.loading,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'reviewer', listName: 'campaignReviewList', ref:state._customer, listDisplayName: '活动评论列表'}, // this is for model namespace and
+    }))(CampaignReviewCreateForm)
+  }
+  
+  getCampaignReviewUpdateForm = () => {
+  	const {CampaignReviewUpdateForm} = GlobalComponents;
+    return connect(state => ({
+      selectedRows: state._customer.selectedRows,
+      currentUpdateIndex: state._customer.currentUpdateIndex,
+      owner: { type: '_customer', id: state._customer.id, listName: 'campaignReviewList', ref:state._customer, listDisplayName: '活动评论列表' }, // this is for model namespace and
+    }))(CampaignReviewUpdateForm)
+  }
+
+  getCampaignLikeSearch = () => {
+    const {CampaignLikeSearch} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.campaignLikeList,
+      count: state._customer.campaignLikeCount,
+      currentPage: state._customer.campaignLikeCurrentPageNumber,
+      searchFormParameters: state._customer.campaignLikeSearchFormParameters,
+      loading: state._customer.loading,
+      partialList: state._customer.partialList,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'replier', listName: 'campaignLikeList', ref:state._customer, listDisplayName: '活动点赞列表' }, // this is for model namespace and
+    }))(CampaignLikeSearch)
+  }
+  getCampaignLikeCreateForm = () => {
+   	const {CampaignLikeCreateForm} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.campaignLikeList,
+      count: state._customer.campaignLikeCount,
+      currentPage: state._customer.campaignLikeCurrentPageNumber,
+      searchFormParameters: state._customer.campaignLikeSearchFormParameters,
+      loading: state._customer.loading,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'replier', listName: 'campaignLikeList', ref:state._customer, listDisplayName: '活动点赞列表'}, // this is for model namespace and
+    }))(CampaignLikeCreateForm)
+  }
+  
+  getCampaignLikeUpdateForm = () => {
+  	const {CampaignLikeUpdateForm} = GlobalComponents;
+    return connect(state => ({
+      selectedRows: state._customer.selectedRows,
+      currentUpdateIndex: state._customer.currentUpdateIndex,
+      owner: { type: '_customer', id: state._customer.id, listName: 'campaignLikeList', ref:state._customer, listDisplayName: '活动点赞列表' }, // this is for model namespace and
+    }))(CampaignLikeUpdateForm)
+  }
+
+  getCampaignReviewLikeSearch = () => {
+    const {CampaignReviewLikeSearch} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.campaignReviewLikeList,
+      count: state._customer.campaignReviewLikeCount,
+      currentPage: state._customer.campaignReviewLikeCurrentPageNumber,
+      searchFormParameters: state._customer.campaignReviewLikeSearchFormParameters,
+      loading: state._customer.loading,
+      partialList: state._customer.partialList,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'replier', listName: 'campaignReviewLikeList', ref:state._customer, listDisplayName: '活动评论点赞列表' }, // this is for model namespace and
+    }))(CampaignReviewLikeSearch)
+  }
+  getCampaignReviewLikeCreateForm = () => {
+   	const {CampaignReviewLikeCreateForm} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.campaignReviewLikeList,
+      count: state._customer.campaignReviewLikeCount,
+      currentPage: state._customer.campaignReviewLikeCurrentPageNumber,
+      searchFormParameters: state._customer.campaignReviewLikeSearchFormParameters,
+      loading: state._customer.loading,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'replier', listName: 'campaignReviewLikeList', ref:state._customer, listDisplayName: '活动评论点赞列表'}, // this is for model namespace and
+    }))(CampaignReviewLikeCreateForm)
+  }
+  
+  getCampaignReviewLikeUpdateForm = () => {
+  	const {CampaignReviewLikeUpdateForm} = GlobalComponents;
+    return connect(state => ({
+      selectedRows: state._customer.selectedRows,
+      currentUpdateIndex: state._customer.currentUpdateIndex,
+      owner: { type: '_customer', id: state._customer.id, listName: 'campaignReviewLikeList', ref:state._customer, listDisplayName: '活动评论点赞列表' }, // this is for model namespace and
+    }))(CampaignReviewLikeUpdateForm)
+  }
+
+  getCustomerFootprintSearch = () => {
+    const {CustomerFootprintSearch} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.customerFootprintList,
+      count: state._customer.customerFootprintCount,
+      currentPage: state._customer.customerFootprintCurrentPageNumber,
+      searchFormParameters: state._customer.customerFootprintSearchFormParameters,
+      loading: state._customer.loading,
+      partialList: state._customer.partialList,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'customerFootprintList', ref:state._customer, listDisplayName: '用户历程列表' }, // this is for model namespace and
+    }))(CustomerFootprintSearch)
+  }
+  getCustomerFootprintCreateForm = () => {
+   	const {CustomerFootprintCreateForm} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.customerFootprintList,
+      count: state._customer.customerFootprintCount,
+      currentPage: state._customer.customerFootprintCurrentPageNumber,
+      searchFormParameters: state._customer.customerFootprintSearchFormParameters,
+      loading: state._customer.loading,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'customerFootprintList', ref:state._customer, listDisplayName: '用户历程列表'}, // this is for model namespace and
+    }))(CustomerFootprintCreateForm)
+  }
+  
+  getCustomerFootprintUpdateForm = () => {
+  	const {CustomerFootprintUpdateForm} = GlobalComponents;
+    return connect(state => ({
+      selectedRows: state._customer.selectedRows,
+      currentUpdateIndex: state._customer.currentUpdateIndex,
+      owner: { type: '_customer', id: state._customer.id, listName: 'customerFootprintList', ref:state._customer, listDisplayName: '用户历程列表' }, // this is for model namespace and
+    }))(CustomerFootprintUpdateForm)
+  }
+
+  getShieldCustomerAsCustomerSearch = () => {
+    const {ShieldCustomerSearch} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.shieldCustomerListAsCustomer,
+      count: state._customer.shieldCustomerAsCustomerCount,
+      currentPage: state._customer.shieldCustomerAsCustomerCurrentPageNumber,
+      searchFormParameters: state._customer.shieldCustomerAsCustomerSearchFormParameters,
+      loading: state._customer.loading,
+      partialList: state._customer.partialList,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'shieldCustomerListAsCustomer', ref:state._customer, listDisplayName: '屏蔽用户列表' }, // this is for model namespace and
+    }))(ShieldCustomerSearch)
+  }
+  getShieldCustomerAsCustomerCreateForm = () => {
+   	const {ShieldCustomerCreateForm} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.shieldCustomerListAsCustomer,
+      count: state._customer.shieldCustomerAsCustomerCount,
+      currentPage: state._customer.shieldCustomerAsCustomerCurrentPageNumber,
+      searchFormParameters: state._customer.shieldCustomerAsCustomerSearchFormParameters,
+      loading: state._customer.loading,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'shieldCustomerListAsCustomer', ref:state._customer, listDisplayName: '屏蔽用户列表'}, // this is for model namespace and
+    }))(ShieldCustomerCreateForm)
+  }
+  
+  getShieldCustomerAsCustomerUpdateForm = () => {
+  	const {ShieldCustomerUpdateForm} = GlobalComponents;
+    return connect(state => ({
+      selectedRows: state._customer.selectedRows,
+      currentUpdateIndex: state._customer.currentUpdateIndex,
+      owner: { type: '_customer', id: state._customer.id, listName: 'shieldCustomerListAsCustomer', ref:state._customer, listDisplayName: '屏蔽用户列表' }, // this is for model namespace and
+    }))(ShieldCustomerUpdateForm)
+  }
+
+  getShieldCustomerAsShieldSearch = () => {
+    const {ShieldCustomerSearch} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.shieldCustomerListAsShield,
+      count: state._customer.shieldCustomerAsShieldCount,
+      currentPage: state._customer.shieldCustomerAsShieldCurrentPageNumber,
+      searchFormParameters: state._customer.shieldCustomerAsShieldSearchFormParameters,
+      loading: state._customer.loading,
+      partialList: state._customer.partialList,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'shield', listName: 'shieldCustomerListAsShield', ref:state._customer, listDisplayName: '屏蔽用户列表' }, // this is for model namespace and
+    }))(ShieldCustomerSearch)
+  }
+  getShieldCustomerAsShieldCreateForm = () => {
+   	const {ShieldCustomerCreateForm} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.shieldCustomerListAsShield,
+      count: state._customer.shieldCustomerAsShieldCount,
+      currentPage: state._customer.shieldCustomerAsShieldCurrentPageNumber,
+      searchFormParameters: state._customer.shieldCustomerAsShieldSearchFormParameters,
+      loading: state._customer.loading,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'shield', listName: 'shieldCustomerListAsShield', ref:state._customer, listDisplayName: '屏蔽用户列表'}, // this is for model namespace and
+    }))(ShieldCustomerCreateForm)
+  }
+  
+  getShieldCustomerAsShieldUpdateForm = () => {
+  	const {ShieldCustomerUpdateForm} = GlobalComponents;
+    return connect(state => ({
+      selectedRows: state._customer.selectedRows,
+      currentUpdateIndex: state._customer.currentUpdateIndex,
+      owner: { type: '_customer', id: state._customer.id, listName: 'shieldCustomerListAsShield', ref:state._customer, listDisplayName: '屏蔽用户列表' }, // this is for model namespace and
+    }))(ShieldCustomerUpdateForm)
+  }
+
+  getInformSearch = () => {
+    const {InformSearch} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.informList,
+      count: state._customer.informCount,
+      currentPage: state._customer.informCurrentPageNumber,
+      searchFormParameters: state._customer.informSearchFormParameters,
+      loading: state._customer.loading,
+      partialList: state._customer.partialList,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'informer', listName: 'informList', ref:state._customer, listDisplayName: '举报列表' }, // this is for model namespace and
+    }))(InformSearch)
+  }
+  getInformCreateForm = () => {
+   	const {InformCreateForm} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.informList,
+      count: state._customer.informCount,
+      currentPage: state._customer.informCurrentPageNumber,
+      searchFormParameters: state._customer.informSearchFormParameters,
+      loading: state._customer.loading,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'informer', listName: 'informList', ref:state._customer, listDisplayName: '举报列表'}, // this is for model namespace and
+    }))(InformCreateForm)
+  }
+  
+  getInformUpdateForm = () => {
+  	const {InformUpdateForm} = GlobalComponents;
+    return connect(state => ({
+      selectedRows: state._customer.selectedRows,
+      currentUpdateIndex: state._customer.currentUpdateIndex,
+      owner: { type: '_customer', id: state._customer.id, listName: 'informList', ref:state._customer, listDisplayName: '举报列表' }, // this is for model namespace and
+    }))(InformUpdateForm)
+  }
+
+  getUndistributedProfitSearch = () => {
+    const {UndistributedProfitSearch} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.undistributedProfitList,
+      count: state._customer.undistributedProfitCount,
+      currentPage: state._customer.undistributedProfitCurrentPageNumber,
+      searchFormParameters: state._customer.undistributedProfitSearchFormParameters,
+      loading: state._customer.loading,
+      partialList: state._customer.partialList,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'undistributedProfitList', ref:state._customer, listDisplayName: '未分配利润列表' }, // this is for model namespace and
+    }))(UndistributedProfitSearch)
+  }
+  getUndistributedProfitCreateForm = () => {
+   	const {UndistributedProfitCreateForm} = GlobalComponents;
+    return connect(state => ({
+      rule: state.rule,
+      data: state._customer.undistributedProfitList,
+      count: state._customer.undistributedProfitCount,
+      currentPage: state._customer.undistributedProfitCurrentPageNumber,
+      searchFormParameters: state._customer.undistributedProfitSearchFormParameters,
+      loading: state._customer.loading,
+      owner: { type: '_customer', id: state._customer.id, referenceName: 'customer', listName: 'undistributedProfitList', ref:state._customer, listDisplayName: '未分配利润列表'}, // this is for model namespace and
+    }))(UndistributedProfitCreateForm)
+  }
+  
+  getUndistributedProfitUpdateForm = () => {
+  	const {UndistributedProfitUpdateForm} = GlobalComponents;
+    return connect(state => ({
+      selectedRows: state._customer.selectedRows,
+      currentUpdateIndex: state._customer.currentUpdateIndex,
+      owner: { type: '_customer', id: state._customer.id, listName: 'undistributedProfitList', ref:state._customer, listDisplayName: '未分配利润列表' }, // this is for model namespace and
+    }))(UndistributedProfitUpdateForm)
   }
 
 
   
   buildRouters = () =>{
   	const {CustomerDashboard} = GlobalComponents
+  	const {CustomerPreference} = GlobalComponents
+  	
   	
   	const routers=[
   	{path:"/customer/:id/dashboard", component: CustomerDashboard},
+  	{path:"/customer/:id/preference", component: CustomerPreference},
   	
   	
-  	{path:"/customer/:id/list/companyQrcodePromotionRecordList", component: this.getCompanyQrcodePromotionRecordSearch()},
-  	{path:"/customer/:id/list/companyQrcodePromotionRecordCreateForm", component: this.getCompanyQrcodePromotionRecordCreateForm()},
-  	{path:"/customer/:id/list/companyQrcodePromotionRecordUpdateForm", component: this.getCompanyQrcodePromotionRecordUpdateForm()},
+  	
+  	{path:"/customer/:id/list/privateMessageList", component: this.getPrivateMessageSearch()},
+  	{path:"/customer/:id/list/privateMessageCreateForm", component: this.getPrivateMessageCreateForm()},
+  	{path:"/customer/:id/list/privateMessageUpdateForm", component: this.getPrivateMessageUpdateForm()},
    	
-  	{path:"/customer/:id/list/vehicleInfoList", component: this.getVehicleInfoSearch()},
-  	{path:"/customer/:id/list/vehicleInfoCreateForm", component: this.getVehicleInfoCreateForm()},
-  	{path:"/customer/:id/list/vehicleInfoUpdateForm", component: this.getVehicleInfoUpdateForm()},
+  	{path:"/customer/:id/list/lossAssessmentRecordList", component: this.getLossAssessmentRecordSearch()},
+  	{path:"/customer/:id/list/lossAssessmentRecordCreateForm", component: this.getLossAssessmentRecordCreateForm()},
+  	{path:"/customer/:id/list/lossAssessmentRecordUpdateForm", component: this.getLossAssessmentRecordUpdateForm()},
    	
-  	{path:"/customer/:id/list/vehicleInspectionOrderList", component: this.getVehicleInspectionOrderSearch()},
-  	{path:"/customer/:id/list/vehicleInspectionOrderCreateForm", component: this.getVehicleInspectionOrderCreateForm()},
-  	{path:"/customer/:id/list/vehicleInspectionOrderUpdateForm", component: this.getVehicleInspectionOrderUpdateForm()},
+  	{path:"/customer/:id/list/mainOrderList", component: this.getMainOrderSearch()},
+  	{path:"/customer/:id/list/mainOrderCreateForm", component: this.getMainOrderCreateForm()},
+  	{path:"/customer/:id/list/mainOrderUpdateForm", component: this.getMainOrderUpdateForm()},
    	
-  	{path:"/customer/:id/list/orderDiscountCouponList", component: this.getOrderDiscountCouponSearch()},
-  	{path:"/customer/:id/list/orderDiscountCouponCreateForm", component: this.getOrderDiscountCouponCreateForm()},
-  	{path:"/customer/:id/list/orderDiscountCouponUpdateForm", component: this.getOrderDiscountCouponUpdateForm()},
+  	{path:"/customer/:id/list/bookCopyList", component: this.getBookCopySearch()},
+  	{path:"/customer/:id/list/bookCopyCreateForm", component: this.getBookCopyCreateForm()},
+  	{path:"/customer/:id/list/bookCopyUpdateForm", component: this.getBookCopyUpdateForm()},
    	
-  	{path:"/customer/:id/list/vehicleInspectionOrderCouponList", component: this.getVehicleInspectionOrderCouponSearch()},
-  	{path:"/customer/:id/list/vehicleInspectionOrderCouponCreateForm", component: this.getVehicleInspectionOrderCouponCreateForm()},
-  	{path:"/customer/:id/list/vehicleInspectionOrderCouponUpdateForm", component: this.getVehicleInspectionOrderCouponUpdateForm()},
+  	{path:"/customer/:id/list/borrowingHistoryList", component: this.getBorrowingHistorySearch()},
+  	{path:"/customer/:id/list/borrowingHistoryCreateForm", component: this.getBorrowingHistoryCreateForm()},
+  	{path:"/customer/:id/list/borrowingHistoryUpdateForm", component: this.getBorrowingHistoryUpdateForm()},
+   	
+  	{path:"/customer/:id/list/borrowingExpiredSkuList", component: this.getBorrowingExpiredSkuSearch()},
+  	{path:"/customer/:id/list/borrowingExpiredSkuCreateForm", component: this.getBorrowingExpiredSkuCreateForm()},
+  	{path:"/customer/:id/list/borrowingExpiredSkuUpdateForm", component: this.getBorrowingExpiredSkuUpdateForm()},
+   	
+  	{path:"/customer/:id/list/bookReviewList", component: this.getBookReviewSearch()},
+  	{path:"/customer/:id/list/bookReviewCreateForm", component: this.getBookReviewCreateForm()},
+  	{path:"/customer/:id/list/bookReviewUpdateForm", component: this.getBookReviewUpdateForm()},
+   	
+  	{path:"/customer/:id/list/bookReviewLikeList", component: this.getBookReviewLikeSearch()},
+  	{path:"/customer/:id/list/bookReviewLikeCreateForm", component: this.getBookReviewLikeCreateForm()},
+  	{path:"/customer/:id/list/bookReviewLikeUpdateForm", component: this.getBookReviewLikeUpdateForm()},
+   	
+  	{path:"/customer/:id/list/bookCopySharingApplicationList", component: this.getBookCopySharingApplicationSearch()},
+  	{path:"/customer/:id/list/bookCopySharingApplicationCreateForm", component: this.getBookCopySharingApplicationCreateForm()},
+  	{path:"/customer/:id/list/bookCopySharingApplicationUpdateForm", component: this.getBookCopySharingApplicationUpdateForm()},
+   	
+  	{path:"/customer/:id/list/memberServiceRevenueList", component: this.getMemberServiceRevenueSearch()},
+  	{path:"/customer/:id/list/memberServiceRevenueCreateForm", component: this.getMemberServiceRevenueCreateForm()},
+  	{path:"/customer/:id/list/memberServiceRevenueUpdateForm", component: this.getMemberServiceRevenueUpdateForm()},
+   	
+  	{path:"/customer/:id/list/customerAccountTransactionList", component: this.getCustomerAccountTransactionSearch()},
+  	{path:"/customer/:id/list/customerAccountTransactionCreateForm", component: this.getCustomerAccountTransactionCreateForm()},
+  	{path:"/customer/:id/list/customerAccountTransactionUpdateForm", component: this.getCustomerAccountTransactionUpdateForm()},
+   	
+  	{path:"/customer/:id/list/campaignRegisterHistoryList", component: this.getCampaignRegisterHistorySearch()},
+  	{path:"/customer/:id/list/campaignRegisterHistoryCreateForm", component: this.getCampaignRegisterHistoryCreateForm()},
+  	{path:"/customer/:id/list/campaignRegisterHistoryUpdateForm", component: this.getCampaignRegisterHistoryUpdateForm()},
+   	
+  	{path:"/customer/:id/list/campaignReviewList", component: this.getCampaignReviewSearch()},
+  	{path:"/customer/:id/list/campaignReviewCreateForm", component: this.getCampaignReviewCreateForm()},
+  	{path:"/customer/:id/list/campaignReviewUpdateForm", component: this.getCampaignReviewUpdateForm()},
+   	
+  	{path:"/customer/:id/list/campaignLikeList", component: this.getCampaignLikeSearch()},
+  	{path:"/customer/:id/list/campaignLikeCreateForm", component: this.getCampaignLikeCreateForm()},
+  	{path:"/customer/:id/list/campaignLikeUpdateForm", component: this.getCampaignLikeUpdateForm()},
+   	
+  	{path:"/customer/:id/list/campaignReviewLikeList", component: this.getCampaignReviewLikeSearch()},
+  	{path:"/customer/:id/list/campaignReviewLikeCreateForm", component: this.getCampaignReviewLikeCreateForm()},
+  	{path:"/customer/:id/list/campaignReviewLikeUpdateForm", component: this.getCampaignReviewLikeUpdateForm()},
+   	
+  	{path:"/customer/:id/list/customerFootprintList", component: this.getCustomerFootprintSearch()},
+  	{path:"/customer/:id/list/customerFootprintCreateForm", component: this.getCustomerFootprintCreateForm()},
+  	{path:"/customer/:id/list/customerFootprintUpdateForm", component: this.getCustomerFootprintUpdateForm()},
+   	
+  	{path:"/customer/:id/list/shieldCustomerListAsCustomer", component: this.getShieldCustomerAsCustomerSearch()},
+  	{path:"/customer/:id/list/shieldCustomerAsCustomerCreateForm", component: this.getShieldCustomerAsCustomerCreateForm()},
+  	{path:"/customer/:id/list/shieldCustomerAsCustomerUpdateForm", component: this.getShieldCustomerAsCustomerUpdateForm()},
+   	
+  	{path:"/customer/:id/list/shieldCustomerListAsShield", component: this.getShieldCustomerAsShieldSearch()},
+  	{path:"/customer/:id/list/shieldCustomerAsShieldCreateForm", component: this.getShieldCustomerAsShieldCreateForm()},
+  	{path:"/customer/:id/list/shieldCustomerAsShieldUpdateForm", component: this.getShieldCustomerAsShieldUpdateForm()},
+   	
+  	{path:"/customer/:id/list/informList", component: this.getInformSearch()},
+  	{path:"/customer/:id/list/informCreateForm", component: this.getInformCreateForm()},
+  	{path:"/customer/:id/list/informUpdateForm", component: this.getInformUpdateForm()},
+   	
+  	{path:"/customer/:id/list/undistributedProfitList", component: this.getUndistributedProfitSearch()},
+  	{path:"/customer/:id/list/undistributedProfitCreateForm", component: this.getUndistributedProfitCreateForm()},
+  	{path:"/customer/:id/list/undistributedProfitUpdateForm", component: this.getUndistributedProfitUpdateForm()},
      	
   	
   	]
@@ -360,7 +953,7 @@ class CustomerBizApp extends React.PureComponent {
   getPageTitle = () => {
     // const { location } = this.props
     // const { pathname } = location
-    const title = '代审车服务平台'
+    const title = '书香社区'
     return title
   }
  
@@ -377,7 +970,11 @@ class CustomerBizApp extends React.PureComponent {
        payload: !collapsed,
      })
    }
-
+    logout = () => {
+   
+    console.log("log out called")
+    this.props.dispatch({ type: 'launcher/signOut' })
+  }
    render() {
      // const { collapsed, fetchingNotices,loading } = this.props
      const { collapsed } = this.props
@@ -401,7 +998,7 @@ class CustomerBizApp extends React.PureComponent {
           
           <div className={styles.left}>
           <img
-            src="./scm.svg"
+            src="./favicon.png"
             alt="logo"
             onClick={this.toggle}
             className={styles.logo}
@@ -411,18 +1008,11 @@ class CustomerBizApp extends React.PureComponent {
 
           })}
          </div>
-          <div className={styles.right}>
+          <div className={styles.right}  >
+          <Button type="primary"  icon="logout" onClick={()=>this.logout()}>
+          退出</Button>
+          </div>
           
-          <AutoComplete
-            className="certain-category-search"
-            placeholder="请输入名称"
-            optionLabelProp="value"
-            
-          >
-            <Input
-              suffix={<Icon type="search" className="certain-category-icon" />}
-            />
-          </AutoComplete> </div>
         </Header>
        <Layout>
          <Sider

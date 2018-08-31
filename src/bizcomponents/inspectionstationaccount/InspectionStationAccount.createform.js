@@ -20,7 +20,7 @@ const testValues = {
   inspectionType: '上线检测',
   inspectionVehicleInfo: '川A44W11',
   inspectionFinalResult: '通过',
-  inspectionDatetime: '2016-05-21 07:09:11',
+  inspectionDatetime: '2016-12-09 02:15:19',
   inspectionStationName: '大源车辆检测站',
   mainOrderNumber: 'vehicle_inspection_order',
   merchantId: 'VSC000001',
