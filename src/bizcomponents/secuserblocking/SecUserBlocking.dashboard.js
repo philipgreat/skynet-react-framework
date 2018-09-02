@@ -246,7 +246,7 @@ const internalSubListsOf = (cardsData) =>{
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
               
-              {item.addFunction&&(<Link to={`///list/CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
               
               </p>         
           </Card> </Badge>
@@ -294,7 +294,7 @@ class SecUserBlockingDashboard extends Component {
     const { id,displayName, secUserCount } = this.props.secUserBlocking
     const cardsData = {cardsName:"用户块",cardsFor: "secUserBlocking",cardsSource: this.props.secUserBlocking,
   		subItems: [
-{name: 'secUserList', displayName:'SEC的用户',type:'secUser',count:secUserCount,addFunction: true},
+{name: 'secUserList', displayName:'SEC的用户',type:'secUser',count:secUserCount,addFunction: true, role: 'secUser'},
     
       	],
   	};

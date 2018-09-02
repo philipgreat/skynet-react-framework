@@ -246,7 +246,7 @@ const internalSubListsOf = (cardsData) =>{
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
               
-              {item.addFunction&&(<Link to={`///list/CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
               
               </p>         
           </Card> </Badge>
@@ -293,7 +293,7 @@ class BorrowingStatusDashboard extends Component {
     const { id,displayName, borrowingHistoryCount } = this.props.borrowingStatus
     const cardsData = {cardsName:"借书状态",cardsFor: "borrowingStatus",cardsSource: this.props.borrowingStatus,
   		subItems: [
-{name: 'borrowingHistoryList', displayName:'图书借还历史',type:'borrowingHistory',count:borrowingHistoryCount,addFunction: false},
+{name: 'borrowingHistoryList', displayName:'图书借还历史',type:'borrowingHistory',count:borrowingHistoryCount,addFunction: false, role: 'borrowingHistory'},
     
       	],
   	};

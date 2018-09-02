@@ -246,7 +246,7 @@ const internalSubListsOf = (cardsData) =>{
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
               
-              {item.addFunction&&(<Link to={`///list/CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
               
               </p>         
           </Card> </Badge>
@@ -299,7 +299,7 @@ class FundationAccountDashboard extends Component {
     const { id,displayName, fundationAccountDetailsCount } = this.props.fundationAccount
     const cardsData = {cardsName:"平台基金账户",cardsFor: "fundationAccount",cardsSource: this.props.fundationAccount,
   		subItems: [
-{name: 'fundationAccountDetailsList', displayName:'平台基金账户明细',type:'fundationAccountDetails',count:fundationAccountDetailsCount,addFunction: false},
+{name: 'fundationAccountDetailsList', displayName:'平台基金账户明细',type:'fundationAccountDetails',count:fundationAccountDetailsCount,addFunction: false, role: 'fundationAccountDetails'},
     
       	],
   	};

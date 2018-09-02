@@ -246,7 +246,7 @@ const internalSubListsOf = (cardsData) =>{
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
               
-              {item.addFunction&&(<Link to={`///list/CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
               
               </p>         
           </Card> </Badge>
@@ -293,10 +293,10 @@ class GenericFormDashboard extends Component {
     const { id,displayName, formMessageCount, formFieldMessageCount, formFieldCount, formActionCount } = this.props.genericForm
     const cardsData = {cardsName:"通用的形式",cardsFor: "genericForm",cardsSource: this.props.genericForm,
   		subItems: [
-{name: 'formMessageList', displayName:'表单信息',type:'formMessage',count:formMessageCount,addFunction: true},
-{name: 'formFieldMessageList', displayName:'表单字段的信息',type:'formFieldMessage',count:formFieldMessageCount,addFunction: true},
-{name: 'formFieldList', displayName:'表单字段',type:'formField',count:formFieldCount,addFunction: true},
-{name: 'formActionList', displayName:'表单动作',type:'formAction',count:formActionCount,addFunction: true},
+{name: 'formMessageList', displayName:'表单信息',type:'formMessage',count:formMessageCount,addFunction: true, role: 'formMessage'},
+{name: 'formFieldMessageList', displayName:'表单字段的信息',type:'formFieldMessage',count:formFieldMessageCount,addFunction: true, role: 'formFieldMessage'},
+{name: 'formFieldList', displayName:'表单字段',type:'formField',count:formFieldCount,addFunction: true, role: 'formField'},
+{name: 'formActionList', displayName:'表单动作',type:'formAction',count:formActionCount,addFunction: true, role: 'formAction'},
     
       	],
   	};

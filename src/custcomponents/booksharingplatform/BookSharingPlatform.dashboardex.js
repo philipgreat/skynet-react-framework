@@ -97,7 +97,7 @@ const subListWithPans = (cardsData,tabbedPaneData) => {
                  <p>
 
 <Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
-{item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.type}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+{item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
 </p> 
 
 

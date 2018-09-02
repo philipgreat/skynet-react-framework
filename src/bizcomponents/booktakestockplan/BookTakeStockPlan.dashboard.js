@@ -246,7 +246,7 @@ const internalSubListsOf = (cardsData) =>{
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
               
-              {item.addFunction&&(<Link to={`///list/CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
               
               </p>         
           </Card> </Badge>
@@ -311,7 +311,7 @@ class BookTakeStockPlanDashboard extends Component {
     const { id,displayName, bookTakeStockResultCount } = this.props.bookTakeStockPlan
     const cardsData = {cardsName:"图书盘点计划",cardsFor: "bookTakeStockPlan",cardsSource: this.props.bookTakeStockPlan,
   		subItems: [
-{name: 'bookTakeStockResultList', displayName:'图书盘点结果',type:'bookTakeStockResult',count:bookTakeStockResultCount,addFunction: false},
+{name: 'bookTakeStockResultList', displayName:'图书盘点结果',type:'bookTakeStockResult',count:bookTakeStockResultCount,addFunction: false, role: 'bookTakeStockResult'},
     
       	],
   	};

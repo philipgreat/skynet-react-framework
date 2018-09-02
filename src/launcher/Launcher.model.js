@@ -31,7 +31,7 @@ export default {
 
       setInterval(()=>{
 
-        dispatch({type:"showlog"})
+        //dispatch({type:"showlog"})
 
       }, 3000);
     },

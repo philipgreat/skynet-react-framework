@@ -246,7 +246,7 @@ const internalSubListsOf = (cardsData) =>{
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
               
-              {item.addFunction&&(<Link to={`///list/CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
               
               </p>         
           </Card> </Badge>
@@ -296,7 +296,7 @@ class MemberRightsDisplayDashboard extends Component {
     const { id,displayName, memberRightsDisplayItemCount } = this.props.memberRightsDisplay
     const cardsData = {cardsName:"会员权利显示",cardsFor: "memberRightsDisplay",cardsSource: this.props.memberRightsDisplay,
   		subItems: [
-{name: 'memberRightsDisplayItemList', displayName:'会员权利显示项',type:'memberRightsDisplayItem',count:memberRightsDisplayItemCount,addFunction: true},
+{name: 'memberRightsDisplayItemList', displayName:'会员权利显示项',type:'memberRightsDisplayItem',count:memberRightsDisplayItemCount,addFunction: true, role: 'memberRightsDisplayItem'},
     
       	],
   	};

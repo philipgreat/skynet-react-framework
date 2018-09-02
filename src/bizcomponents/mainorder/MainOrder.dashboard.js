@@ -246,7 +246,7 @@ const internalSubListsOf = (cardsData) =>{
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
               
-              {item.addFunction&&(<Link to={`///list/CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
               
               </p>         
           </Card> </Badge>
@@ -303,15 +303,15 @@ class MainOrderDashboard extends Component {
     const { id,displayName, lineItemCount, mainOrderPaymentCount, orderLogCount, memberServiceRevenueCount, platformAccountDetailsCount, fundationAccountDetailsCount, storeAccountDetailsCount, customerAccountTransactionCount, undistributedProfitCount } = this.props.mainOrder
     const cardsData = {cardsName:"主订单",cardsFor: "mainOrder",cardsSource: this.props.mainOrder,
   		subItems: [
-{name: 'lineItemList', displayName:'订单项',type:'lineItem',count:lineItemCount,addFunction: false},
-{name: 'mainOrderPaymentList', displayName:'主订单支付',type:'mainOrderPayment',count:mainOrderPaymentCount,addFunction: false},
-{name: 'orderLogList', displayName:'Log',type:'orderLog',count:orderLogCount,addFunction: true},
-{name: 'memberServiceRevenueList', displayName:'会员服务收益',type:'memberServiceRevenue',count:memberServiceRevenueCount,addFunction: false},
-{name: 'platformAccountDetailsList', displayName:'平台账户明细',type:'platformAccountDetails',count:platformAccountDetailsCount,addFunction: false},
-{name: 'fundationAccountDetailsList', displayName:'平台基金账户明细',type:'fundationAccountDetails',count:fundationAccountDetailsCount,addFunction: false},
-{name: 'storeAccountDetailsList', displayName:'网点账户明细',type:'storeAccountDetails',count:storeAccountDetailsCount,addFunction: false},
-{name: 'customerAccountTransactionList', displayName:'客户账户明细',type:'customerAccountTransaction',count:customerAccountTransactionCount,addFunction: false},
-{name: 'undistributedProfitList', displayName:'未分割收入',type:'undistributedProfit',count:undistributedProfitCount,addFunction: false},
+{name: 'lineItemList', displayName:'订单项',type:'lineItem',count:lineItemCount,addFunction: false, role: 'lineItem'},
+{name: 'mainOrderPaymentList', displayName:'主订单支付',type:'mainOrderPayment',count:mainOrderPaymentCount,addFunction: false, role: 'mainOrderPayment'},
+{name: 'orderLogList', displayName:'Log',type:'orderLog',count:orderLogCount,addFunction: true, role: 'orderLog'},
+{name: 'memberServiceRevenueList', displayName:'会员服务收益',type:'memberServiceRevenue',count:memberServiceRevenueCount,addFunction: false, role: 'memberServiceRevenue'},
+{name: 'platformAccountDetailsList', displayName:'平台账户明细',type:'platformAccountDetails',count:platformAccountDetailsCount,addFunction: false, role: 'platformAccountDetails'},
+{name: 'fundationAccountDetailsList', displayName:'平台基金账户明细',type:'fundationAccountDetails',count:fundationAccountDetailsCount,addFunction: false, role: 'fundationAccountDetails'},
+{name: 'storeAccountDetailsList', displayName:'网点账户明细',type:'storeAccountDetails',count:storeAccountDetailsCount,addFunction: false, role: 'storeAccountDetails'},
+{name: 'customerAccountTransactionList', displayName:'客户账户明细',type:'customerAccountTransaction',count:customerAccountTransactionCount,addFunction: false, role: 'customerAccountTransaction'},
+{name: 'undistributedProfitList', displayName:'未分割收入',type:'undistributedProfit',count:undistributedProfitCount,addFunction: false, role: 'undistributedProfit'},
     
       	],
   	};

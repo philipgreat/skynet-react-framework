@@ -140,10 +140,10 @@ class EmployeeWorkingStoreSearch extends PureComponent {
   }
 
   handleCreate = () => {
-    const { dispatch, owner } = this.props
+    const { dispatch, owner, role } = this.props
     dispatch({
       type: `${owner.type}/gotoCreateForm`,
-      payload: { id: owner.id, type: 'employeeWorkingStore' },
+      payload: { id: owner.id, type: role },
     })
   }
 

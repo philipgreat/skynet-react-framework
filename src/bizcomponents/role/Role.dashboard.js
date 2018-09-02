@@ -248,7 +248,7 @@ const internalSubListsOf = (cardsData) =>{
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
               
-              {item.addFunction&&(<Link to={`///list/CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
               
               </p>         
           </Card> </Badge>
@@ -295,7 +295,7 @@ class RoleDashboard extends Component {
     const { id,displayName, employeeWorkingStoreCount } = this.props.role
     const cardsData = {cardsName:"角色",cardsFor: "role",cardsSource: this.props.role,
   		subItems: [
-{name: 'employeeWorkingStoreList', displayName:'员工工作的网点',type:'employeeWorkingStore',count:employeeWorkingStoreCount,addFunction: true},
+{name: 'employeeWorkingStoreList', displayName:'员工工作的网点',type:'employeeWorkingStore',count:employeeWorkingStoreCount,addFunction: true, role: 'employeeWorkingStore'},
     
       	],
   	};

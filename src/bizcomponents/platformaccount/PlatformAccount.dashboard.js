@@ -246,7 +246,7 @@ const internalSubListsOf = (cardsData) =>{
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
               
-              {item.addFunction&&(<Link to={`///list/CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
               
               </p>         
           </Card> </Badge>
@@ -299,7 +299,7 @@ class PlatformAccountDashboard extends Component {
     const { id,displayName, platformAccountDetailsCount } = this.props.platformAccount
     const cardsData = {cardsName:"平台账户",cardsFor: "platformAccount",cardsSource: this.props.platformAccount,
   		subItems: [
-{name: 'platformAccountDetailsList', displayName:'平台账户明细',type:'platformAccountDetails',count:platformAccountDetailsCount,addFunction: false},
+{name: 'platformAccountDetailsList', displayName:'平台账户明细',type:'platformAccountDetails',count:platformAccountDetailsCount,addFunction: false, role: 'platformAccountDetails'},
     
       	],
   	};

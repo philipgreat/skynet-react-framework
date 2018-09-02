@@ -247,7 +247,7 @@ const internalSubListsOf = (cardsData) =>{
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
               
-              {item.addFunction&&(<Link to={`///list/CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
               
               </p>         
           </Card> </Badge>
@@ -294,15 +294,15 @@ class EmployeeDashboard extends Component {
     const { id,displayName, messageTemplateCount, lossAssessmentRecordCount, bookCopyTransferCount, bookTakeStockPlanCount, bookTakeStockResultCount, bookCopyOperationRecordCount, bookCopySharingApplicationCount, campaignCount, employeeWorkingStoreCount } = this.props.employee
     const cardsData = {cardsName:"员工",cardsFor: "employee",cardsSource: this.props.employee,
   		subItems: [
-{name: 'messageTemplateList', displayName:'消息模板',type:'messageTemplate',count:messageTemplateCount,addFunction: true},
-{name: 'lossAssessmentRecordList', displayName:'定损记录',type:'lossAssessmentRecord',count:lossAssessmentRecordCount,addFunction: true},
-{name: 'bookCopyTransferList', displayName:'图书副本迁移记录',type:'bookCopyTransfer',count:bookCopyTransferCount,addFunction: true},
-{name: 'bookTakeStockPlanList', displayName:'图书盘点计划',type:'bookTakeStockPlan',count:bookTakeStockPlanCount,addFunction: true},
-{name: 'bookTakeStockResultList', displayName:'图书盘点结果',type:'bookTakeStockResult',count:bookTakeStockResultCount,addFunction: false},
-{name: 'bookCopyOperationRecordList', displayName:'书籍副本操作记录',type:'bookCopyOperationRecord',count:bookCopyOperationRecordCount,addFunction: false},
-{name: 'bookCopySharingApplicationList', displayName:'图书共享申请',type:'bookCopySharingApplication',count:bookCopySharingApplicationCount,addFunction: true},
-{name: 'campaignList', displayName:'活动',type:'campaign',count:campaignCount,addFunction: true},
-{name: 'employeeWorkingStoreList', displayName:'员工工作的网点',type:'employeeWorkingStore',count:employeeWorkingStoreCount,addFunction: true},
+{name: 'messageTemplateList', displayName:'消息模板',type:'messageTemplate',count:messageTemplateCount,addFunction: true, role: 'messageTemplate'},
+{name: 'lossAssessmentRecordList', displayName:'定损记录',type:'lossAssessmentRecord',count:lossAssessmentRecordCount,addFunction: true, role: 'lossAssessmentRecord'},
+{name: 'bookCopyTransferList', displayName:'图书副本迁移记录',type:'bookCopyTransfer',count:bookCopyTransferCount,addFunction: true, role: 'bookCopyTransfer'},
+{name: 'bookTakeStockPlanList', displayName:'图书盘点计划',type:'bookTakeStockPlan',count:bookTakeStockPlanCount,addFunction: true, role: 'bookTakeStockPlan'},
+{name: 'bookTakeStockResultList', displayName:'图书盘点结果',type:'bookTakeStockResult',count:bookTakeStockResultCount,addFunction: false, role: 'bookTakeStockResult'},
+{name: 'bookCopyOperationRecordList', displayName:'书籍副本操作记录',type:'bookCopyOperationRecord',count:bookCopyOperationRecordCount,addFunction: false, role: 'bookCopyOperationRecord'},
+{name: 'bookCopySharingApplicationList', displayName:'图书共享申请',type:'bookCopySharingApplication',count:bookCopySharingApplicationCount,addFunction: true, role: 'bookCopySharingApplication'},
+{name: 'campaignList', displayName:'活动',type:'campaign',count:campaignCount,addFunction: true, role: 'campaign'},
+{name: 'employeeWorkingStoreList', displayName:'员工工作的网点',type:'employeeWorkingStore',count:employeeWorkingStoreCount,addFunction: true, role: 'employeeWorkingStore'},
     
       	],
   	};

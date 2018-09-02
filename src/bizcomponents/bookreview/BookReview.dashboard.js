@@ -246,7 +246,7 @@ const internalSubListsOf = (cardsData) =>{
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
               
-              {item.addFunction&&(<Link to={`///list/CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
               
               </p>         
           </Card> </Badge>
@@ -317,8 +317,8 @@ class BookReviewDashboard extends Component {
     const { id,displayName, bookReviewLikeCount, informCount } = this.props.bookReview
     const cardsData = {cardsName:"书评",cardsFor: "bookReview",cardsSource: this.props.bookReview,
   		subItems: [
-{name: 'bookReviewLikeList', displayName:'书评点赞',type:'bookReviewLike',count:bookReviewLikeCount,addFunction: true},
-{name: 'informList', displayName:'举报',type:'inform',count:informCount,addFunction: true},
+{name: 'bookReviewLikeList', displayName:'书评点赞',type:'bookReviewLike',count:bookReviewLikeCount,addFunction: true, role: 'bookReviewLike'},
+{name: 'informList', displayName:'举报',type:'inform',count:informCount,addFunction: true, role: 'inform'},
     
       	],
   	};

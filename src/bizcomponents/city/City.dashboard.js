@@ -246,7 +246,7 @@ const internalSubListsOf = (cardsData) =>{
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
               
-              {item.addFunction&&(<Link to={`///list/CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
               
               </p>         
           </Card> </Badge>
@@ -294,7 +294,7 @@ class CityDashboard extends Component {
     const { id,displayName, storeCount } = this.props.city
     const cardsData = {cardsName:"城市",cardsFor: "city",cardsSource: this.props.city,
   		subItems: [
-{name: 'storeList', displayName:'服务网点',type:'store',count:storeCount,addFunction: true},
+{name: 'storeList', displayName:'服务网点',type:'store',count:storeCount,addFunction: true, role: 'store'},
     
       	],
   	};
