@@ -103,6 +103,9 @@ export default {
       yield put(routerRedux.push(`/secUser/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addUserApp({ payload }, { call, put }) {
       const {SecUserService} = GlobalComponents;
 
@@ -175,9 +178,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `secUser/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addLoginHistory({ payload }, { call, put }) {
       const {SecUserService} = GlobalComponents;
@@ -251,8 +256,7 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `secUser/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

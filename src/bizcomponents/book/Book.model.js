@@ -103,6 +103,9 @@ export default {
       yield put(routerRedux.push(`/book/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addBookCopy({ payload }, { call, put }) {
       const {BookService} = GlobalComponents;
 
@@ -175,9 +178,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `book/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBorrowingHistory({ payload }, { call, put }) {
       const {BookService} = GlobalComponents;
@@ -251,9 +256,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `book/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBorrowingExpiredSku({ payload }, { call, put }) {
       const {BookService} = GlobalComponents;
@@ -327,9 +334,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `book/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBookReview({ payload }, { call, put }) {
       const {BookService} = GlobalComponents;
@@ -403,9 +412,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `book/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addStoreSlide({ payload }, { call, put }) {
       const {BookService} = GlobalComponents;
@@ -479,8 +490,7 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `book/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

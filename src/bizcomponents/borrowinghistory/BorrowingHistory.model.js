@@ -103,6 +103,9 @@ export default {
       yield put(routerRedux.push(`/borrowingHistory/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addBorrowingExpiredSku({ payload }, { call, put }) {
       const {BorrowingHistoryService} = GlobalComponents;
 
@@ -175,8 +178,7 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `borrowingHistory/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

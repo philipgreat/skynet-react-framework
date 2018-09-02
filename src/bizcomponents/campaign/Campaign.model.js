@@ -103,6 +103,9 @@ export default {
       yield put(routerRedux.push(`/campaign/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addStoreSlide({ payload }, { call, put }) {
       const {CampaignService} = GlobalComponents;
 
@@ -175,9 +178,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `campaign/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addCampaignRegisterHistory({ payload }, { call, put }) {
       const {CampaignService} = GlobalComponents;
@@ -251,9 +256,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `campaign/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addCampaignReview({ payload }, { call, put }) {
       const {CampaignService} = GlobalComponents;
@@ -327,9 +334,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `campaign/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addCampaignLike({ payload }, { call, put }) {
       const {CampaignService} = GlobalComponents;
@@ -403,8 +412,7 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `campaign/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

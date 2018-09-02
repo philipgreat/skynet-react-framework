@@ -2,27 +2,83 @@
 import ImagePreview from '../../components/ImagePreview'
 import { Link } from 'dva/router'
 import moment from 'moment'
+
+
+
+
 const menuData = {menuName:"借书超期费", menuFor: "borrowingExpiredSku",
   		subItems: [
   
   		],
 }
 
+const renderTextCell=(value, record)=>{
 
+	if(!value){
+		return '';
+	}
+	if(value==null){
+		return '';
+	}
+	if(value.length>15){
+		return value.substring(0,15)+"...("+value.length+"字)"
+	}
+	return value
+	
+}
+
+const renderIdentifier=(value, record, targtObjectType)=>{
+
+	return (<Link to={`/${targtObjectType}/${value}/dashboard`}>{value}</Link>)
+	
+}
+
+const renderDateCell=(value, record)=>{
+	return moment(value).format('YYYY-MM-DD');
+}
+const renderDateTimeCell=(value, record)=>{
+	return moment(value).format('YYYY-MM-DD HH:mm');	
+}
+
+const renderImageCell=(value, record, title)=>{
+	return (<ImagePreview imageTitle={title} imageLocation={value} />)	
+}
+
+const renderMoneyCell=(value, record)=>{
+	if(!value){
+		return '空'
+	}
+	if(value == null){
+		return '空'
+	}
+	return (`￥${value.toFixed(2)}`)
+}
+
+const renderBooleanCell=(value, record)=>{
+
+	return  (value? '是' : '否')
+
+}
+
+const renderReferenceCell=(value, record)=>{
+
+	return (value ? value.displayName : '暂无') 
+
+}
 
 const displayColumns = [
-  { title: 'ID', debugtype: 'string', dataIndex: 'id', width: '20' },
-  { title: '借书人', dataIndex: 'borrower', render: (text, record) => (record.borrower ? record.borrower.displayName : '暂无') },
-  { title: '书籍副本', dataIndex: 'bookCopy', render: (text, record) => (record.bookCopy ? record.bookCopy.displayName : '暂无') },
-  { title: '书', dataIndex: 'book', render: (text, record) => (record.book ? record.book.displayName : '暂无') },
-  { title: '书名', debugtype: 'string', dataIndex: 'bookName', width: '15' },
-  { title: '借出网点', dataIndex: 'lendingStore', render: (text, record) => (record.lendingStore ? record.lendingStore.displayName : '暂无') },
-  { title: '借出日期', dataIndex: 'lendingDatetime', render: (text, record) => moment(record.lendingDatetime).format('YYYY-MM-DD HH:mm:ss') },
-  { title: '还书网点', dataIndex: 'returnStore', render: (text, record) => (record.returnStore ? record.returnStore.displayName : '暂无') },
-  { title: '还书日期', dataIndex: 'returnDatetime', render: (text, record) => moment(record.returnDatetime).format('YYYY-MM-DD HH:mm:ss') },
-  { title: '过期天数', debugtype: 'int', dataIndex: 'expiredDays', width: '5' },
-  { title: '过期费用', dataIndex: 'expiredFee', className:'money', render: (text, record) => (`￥${text.toFixed(2)}`) },
-  { title: '图书借还历史', dataIndex: 'borrowingHistory', render: (text, record) => (record.borrowingHistory ? record.borrowingHistory.displayName : '暂无') },
+  { title: 'ID', debugtype: 'string', dataIndex: 'id', width: '20',render: (text, record)=>renderTextCell(text,record) },
+  { title: '借书人', dataIndex: 'borrower', render: (text, record) => renderReferenceCell(text, record)},
+  { title: '书籍副本', dataIndex: 'bookCopy', render: (text, record) => renderReferenceCell(text, record)},
+  { title: '书', dataIndex: 'book', render: (text, record) => renderReferenceCell(text, record)},
+  { title: '书名', debugtype: 'string', dataIndex: 'bookName', width: '15',render: (text, record)=>renderTextCell(text,record) },
+  { title: '借出网点', dataIndex: 'lendingStore', render: (text, record) => renderReferenceCell(text, record)},
+  { title: '借出日期', dataIndex: 'lendingDatetime', render: (text, record) =>renderDateTimeCell(text,record)  },
+  { title: '还书网点', dataIndex: 'returnStore', render: (text, record) => renderReferenceCell(text, record)},
+  { title: '还书日期', dataIndex: 'returnDatetime', render: (text, record) =>renderDateTimeCell(text,record)  },
+  { title: '过期天数', debugtype: 'int', dataIndex: 'expiredDays', width: '5',render: (text, record)=>renderTextCell(text,record) },
+  { title: '过期费用', dataIndex: 'expiredFee', className:'money', render: (text, record) => renderMoneyCell(text, record) },
+  { title: '图书借还历史', dataIndex: 'borrowingHistory', render: (text, record) => renderReferenceCell(text, record)},
 
 ]
 

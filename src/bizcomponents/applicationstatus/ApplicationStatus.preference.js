@@ -288,7 +288,7 @@ class ApplicationStatusPreference extends Component {
   render() {
     // eslint-disable-next-line max-len
     const { id,displayName, bookCopySharingApplicationCount } = this.props.applicationStatus
-    const cardsData = {cardsName:"应用程序状态",cardsFor: "applicationStatus",cardsSource: this.props.applicationStatus,
+    const cardsData = {cardsName:"申请状态",cardsFor: "applicationStatus",cardsSource: this.props.applicationStatus,
   		subItems: [
     
       	],

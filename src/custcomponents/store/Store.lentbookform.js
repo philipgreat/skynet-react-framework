@@ -35,7 +35,7 @@ const fieldLabels = {
   id: 'ID',
   storeId:'商店序号',
   scannedIsbn:'扫描二维码或者手动输入',
-  customerId:'书的提供者',
+  customerId:'借书者',
   bookCopySharingType:'共享类型',
   bookRecommendId:'建议类目',
   bookName: '书的名字',
@@ -341,7 +341,7 @@ lentBookByEmployee = (parameters) => {
                 <Form.Item label={fieldLabels.customerId} {...formItemLayout}>
                   {getFieldDecorator('customerId', {
                     rules: [{ required: true, message: '请输入' }],
-                    initialValue:"C000001"
+                    initialValue:""
                   })(<Input placeholder="请输入" />)}
                 </Form.Item>
               </Col>    

@@ -391,16 +391,16 @@ class PlatformConfigurationUpdateForm extends Component {
           </Form>
         </Card>
 
-        <Card title="存储列表页中的消息" className={styles.card} bordered={false}>
+        <Card title="网点列表页提示信息" className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
               <Col lg={24} md={24} sm={24}>
                 <Form.Item>
                   {getFieldDecorator('messageInStoreListPage', {
                   	initialValue: selectedRow.messageInStoreListPage,
-                    rules: [{  required: true, message: '请输入存储列表页中的消息' }],
+                    rules: [{  required: true, message: '请输入网点列表页提示信息' }],
                   })(
-                    <TextArea rows={4} placeholder="请输入请输入存储列表页中的消息" />
+                    <TextArea rows={4} placeholder="请输入请输入网点列表页提示信息" />
                   )}
                 </Form.Item>
               </Col>

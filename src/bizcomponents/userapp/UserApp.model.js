@@ -103,6 +103,9 @@ export default {
       yield put(routerRedux.push(`/userApp/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addObjectAccess({ payload }, { call, put }) {
       const {UserAppService} = GlobalComponents;
 
@@ -175,8 +178,7 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `userApp/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

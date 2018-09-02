@@ -37,8 +37,9 @@ const transferToAnotherBookSharingPlatform = (id, parameters) => {
 
 
 
+
 const addBookRecommend = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookPlazaManager/addBookRecommend/bookPlazaId/name/tokensExpr/`
+  const url = `${PREFIX}bookPlazaManager/addBookRecommend /bookPlazaId/name/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -57,8 +58,9 @@ const removeBookRecommendList = (targetObjectId, parameters) => {
 }
 
 
+
 const addBookSharingIncomeMetric = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookPlazaManager/addBookSharingIncomeMetric/bookPlazaId/vendorRate/lendingStoreRate/platformRate/tokensExpr/`
+  const url = `${PREFIX}bookPlazaManager/addBookSharingIncomeMetric /bookPlazaId/vendorRate/lendingStoreRate/platformRate/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -77,8 +79,9 @@ const removeBookSharingIncomeMetricList = (targetObjectId, parameters) => {
 }
 
 
+
 const addBookDonationIncomeMetric = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookPlazaManager/addBookDonationIncomeMetric/bookPlazaId/vendorRate/lendingStoreRate/platformRate/publicServiceFundRate/tokensExpr/`
+  const url = `${PREFIX}bookPlazaManager/addBookDonationIncomeMetric /bookPlazaId/vendorRate/lendingStoreRate/platformRate/publicServiceFundRate/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -97,8 +100,9 @@ const removeBookDonationIncomeMetricList = (targetObjectId, parameters) => {
 }
 
 
+
 const addMemberServiceIncomeMetric = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookPlazaManager/addMemberServiceIncomeMetric/bookPlazaId/storeRate/platformRate/tokensExpr/`
+  const url = `${PREFIX}bookPlazaManager/addMemberServiceIncomeMetric /bookPlazaId/storeRate/platformRate/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -117,8 +121,9 @@ const removeMemberServiceIncomeMetricList = (targetObjectId, parameters) => {
 }
 
 
+
 const addBook = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookPlazaManager/addBook/bookPlazaId/bookName/bookCover/bookAuthor/bookPublisher/bookPubdate/listPrice/bookIsbn13/bookIsbn10/bookRecommendId/platformId/bookSummary/tokensExpr/`
+  const url = `${PREFIX}bookPlazaManager/addBook /bookPlazaId/bookName/bookCover/bookAuthor/bookPublisher/bookPubdate/listPrice/bookIsbn13/bookIsbn10/bookRecommendId/platformId/bookSummary/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -137,8 +142,9 @@ const removeBookList = (targetObjectId, parameters) => {
 }
 
 
+
 const addBookCopyStatus = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookPlazaManager/addBookCopyStatus/bookPlazaId/name/code/statusDescription/canBorrow/canSell/needCheckStock/alarmWhenCheck/tokensExpr/`
+  const url = `${PREFIX}bookPlazaManager/addBookCopyStatus /bookPlazaId/name/code/statusDescription/canBorrow/canSell/needCheckStock/alarmWhenCheck/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -157,8 +163,9 @@ const removeBookCopyStatusList = (targetObjectId, parameters) => {
 }
 
 
+
 const addBookReview = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookPlazaManager/addBookReview/bookPlazaId/bookInfoId/bookCopyId/reviewerId/reviewContent/tokensExpr/`
+  const url = `${PREFIX}bookPlazaManager/addBookReview /bookPlazaId/bookInfoId/bookCopyId/reviewerId/reviewContent/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }

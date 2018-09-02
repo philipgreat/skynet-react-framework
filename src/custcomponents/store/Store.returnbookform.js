@@ -35,7 +35,7 @@ const fieldLabels = {
   id: 'ID',
   storeId:'商店序号',
   scannedIsbn:'扫描二维码或者手动输入书本序号',
-  bookCopyVendorId:'书的提供者',
+  bookCopyVendorId:'借书者',
   bookCopySharingType:'共享类型',
   bookRecommendId:'建议类目',
   bookName: '书的名字',
@@ -221,14 +221,16 @@ returnBookByEmployee = (parameters) => {
     parameters
   );
   //console.log(future);
-
+  const {dynamicFormInited}=this.state
+  const {setFieldsValue} = this.props.form
   future.then(returnResult => {
-    console.log("adding result", returnResult)
+    console.log("returnResult result", returnResult)
     if(!returnResult.class){
       notification.error({
         message: "服务器端出错",
         description: "服务器出错，请尝试重新登录",
       })
+      setFieldsValue({bookCopyIdOrQrcode:""})
       return
     }
 
@@ -238,6 +240,7 @@ returnBookByEmployee = (parameters) => {
         message: "状态错误",
         description: returnResult.message,
       })
+      setFieldsValue({bookCopyIdOrQrcode:""})
       return
     }
     notification.success({
@@ -248,8 +251,7 @@ returnBookByEmployee = (parameters) => {
     this.setState({returnResult})
 
 
-    const {dynamicFormInited}=this.state
-    const {setFieldsValue} = this.props.form
+    
     setFieldsValue({bookCopyIdOrQrcode:""})
    
     

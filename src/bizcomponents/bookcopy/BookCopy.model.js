@@ -103,6 +103,9 @@ export default {
       yield put(routerRedux.push(`/bookCopy/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addLossAssessmentRecord({ payload }, { call, put }) {
       const {BookCopyService} = GlobalComponents;
 
@@ -175,9 +178,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookCopy/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBookCopyTransfer({ payload }, { call, put }) {
       const {BookCopyService} = GlobalComponents;
@@ -251,9 +256,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookCopy/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBookTakeStockResult({ payload }, { call, put }) {
       const {BookCopyService} = GlobalComponents;
@@ -327,9 +334,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookCopy/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBookCopyOperationRecord({ payload }, { call, put }) {
       const {BookCopyService} = GlobalComponents;
@@ -403,9 +412,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookCopy/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBorrowingHistory({ payload }, { call, put }) {
       const {BookCopyService} = GlobalComponents;
@@ -479,9 +490,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookCopy/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBorrowingExpiredSku({ payload }, { call, put }) {
       const {BookCopyService} = GlobalComponents;
@@ -555,9 +568,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookCopy/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBookReview({ payload }, { call, put }) {
       const {BookCopyService} = GlobalComponents;
@@ -631,8 +646,7 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookCopy/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

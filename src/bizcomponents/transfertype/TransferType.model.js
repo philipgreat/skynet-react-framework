@@ -103,6 +103,9 @@ export default {
       yield put(routerRedux.push(`/transferType/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addBookCopyTransfer({ payload }, { call, put }) {
       const {TransferTypeService} = GlobalComponents;
 
@@ -175,8 +178,7 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `transferType/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

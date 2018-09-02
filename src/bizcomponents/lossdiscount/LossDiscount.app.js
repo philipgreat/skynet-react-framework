@@ -146,13 +146,18 @@ class LossDiscountBizApp extends React.PureComponent {
     const {LossAssessmentRecordSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "定损记录",
+      role: "lossAssessmentRecord",
       data: state._lossDiscount.lossAssessmentRecordList,
       count: state._lossDiscount.lossAssessmentRecordCount,
       currentPage: state._lossDiscount.lossAssessmentRecordCurrentPageNumber,
       searchFormParameters: state._lossDiscount.lossAssessmentRecordSearchFormParameters,
       loading: state._lossDiscount.loading,
       partialList: state._lossDiscount.partialList,
-      owner: { type: '_lossDiscount', id: state._lossDiscount.id, referenceName: 'lossDiscount', listName: 'lossAssessmentRecordList', ref:state._lossDiscount, listDisplayName: '定损记录列表' }, // this is for model namespace and
+      owner: { type: '_lossDiscount', id: state._lossDiscount.id, 
+      referenceName: 'lossDiscount', 
+      listName: 'lossAssessmentRecordList', ref:state._lossDiscount, 
+      listDisplayName: '定损记录列表' }, // this is for model namespace and
     }))(LossAssessmentRecordSearch)
   }
   getLossAssessmentRecordCreateForm = () => {

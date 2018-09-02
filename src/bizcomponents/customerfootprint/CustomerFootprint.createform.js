@@ -22,14 +22,10 @@ const testValues = {
   itemId: 'B000001',
   itemDescription: '推荐3~6岁儿童阅读',
   customerId: 'C000001',
-  description: '<div>\
-	<h1>一级会员服务</h1>\
-	<ul>\
-		<li>可以借阅图书</li>\
-		<li>可以购买</li>\
-		<li>可以报名参加活动</li>\
-	</ul>\
-</div>',
+  description: '一段图片的描述，说明了该场景的实际效果。\
+\
+同时说明了一些可能出现的问题。\
+',
 }
 */
 const imageURLPrefix = '//localhost:2090'

@@ -2,22 +2,78 @@
 import ImagePreview from '../../components/ImagePreview'
 import { Link } from 'dva/router'
 import moment from 'moment'
+
+
+
+
 const menuData = {menuName:"活动评论", menuFor: "campaignReview",
   		subItems: [
-  {name: 'campaignReviewLikeList', displayName:'活动评论点赞', icon:'glass'},
+  {name: 'campaignReviewLikeList', displayName:'活动评论点赞', icon:'rev'},
   {name: 'informList', displayName:'举报', icon:'info'},
   
   		],
 }
 
+const renderTextCell=(value, record)=>{
 
+	if(!value){
+		return '';
+	}
+	if(value==null){
+		return '';
+	}
+	if(value.length>15){
+		return value.substring(0,15)+"...("+value.length+"字)"
+	}
+	return value
+	
+}
+
+const renderIdentifier=(value, record, targtObjectType)=>{
+
+	return (<Link to={`/${targtObjectType}/${value}/dashboard`}>{value}</Link>)
+	
+}
+
+const renderDateCell=(value, record)=>{
+	return moment(value).format('YYYY-MM-DD');
+}
+const renderDateTimeCell=(value, record)=>{
+	return moment(value).format('YYYY-MM-DD HH:mm');	
+}
+
+const renderImageCell=(value, record, title)=>{
+	return (<ImagePreview imageTitle={title} imageLocation={value} />)	
+}
+
+const renderMoneyCell=(value, record)=>{
+	if(!value){
+		return '空'
+	}
+	if(value == null){
+		return '空'
+	}
+	return (`￥${value.toFixed(2)}`)
+}
+
+const renderBooleanCell=(value, record)=>{
+
+	return  (value? '是' : '否')
+
+}
+
+const renderReferenceCell=(value, record)=>{
+
+	return (value ? value.displayName : '暂无') 
+
+}
 
 const displayColumns = [
-  { title: 'ID', debugtype: 'string', dataIndex: 'id', width: '20', render: (text, record)=>(<Link to={`/campaignReview/${text}/dashboard`}>{text}</Link>) },
-  { title: '评论内容', debugtype: 'string', dataIndex: 'reviewContent', width: '9' },
-  { title: '活动', dataIndex: 'campaign', render: (text, record) => (record.campaign ? record.campaign.displayName : '暂无') },
-  { title: '评论人', dataIndex: 'reviewer', render: (text, record) => (record.reviewer ? record.reviewer.displayName : '暂无') },
-  { title: '最后更新时间', dataIndex: 'lastUpdateTime', render: (text, record) => moment(record.lastUpdateTime).format('YYYY-MM-DD HH:mm:ss') },
+  { title: 'ID', debugtype: 'string', dataIndex: 'id', width: '20', render: (text, record)=>renderIdentifier(text,record,'campaignReview') },
+  { title: '评论内容', debugtype: 'string', dataIndex: 'reviewContent', width: '9',render: (text, record)=>renderTextCell(text,record) },
+  { title: '活动', dataIndex: 'campaign', render: (text, record) => renderReferenceCell(text, record)},
+  { title: '评论人', dataIndex: 'reviewer', render: (text, record) => renderReferenceCell(text, record)},
+  { title: '最后更新时间', dataIndex: 'lastUpdateTime', render: (text, record) =>renderDateTimeCell(text,record)  },
 
 ]
 

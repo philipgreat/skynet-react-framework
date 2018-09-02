@@ -141,7 +141,7 @@ class ApplicationStatusCreateForm extends Component {
       const { owner } = this.props
       dispatch({
         type: `${owner.type}/goback`,
-        payload: { id: owner.id, type: 'applicationStatus',listName:'应用程序状态列表' },
+        payload: { id: owner.id, type: 'applicationStatus',listName:'申请状态列表' },
       })
     }
     const errors = getFieldsError()
@@ -225,8 +225,8 @@ class ApplicationStatusCreateForm extends Component {
     }
     return (
       <PageHeaderLayout
-        title="新建一个应用程序状态"
-        content="新建一个应用程序状态"
+        title="新建一个申请状态"
+        content="新建一个申请状态"
         wrapperClassName={styles.advancedForm}
       >
         <Card title="基础信息" className={styles.card} bordered={false}>

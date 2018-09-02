@@ -146,13 +146,18 @@ class PrinterBizApp extends React.PureComponent {
     const {PrinterTaskSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "打印机任务",
+      role: "printerTask",
       data: state._printer.printerTaskList,
       count: state._printer.printerTaskCount,
       currentPage: state._printer.printerTaskCurrentPageNumber,
       searchFormParameters: state._printer.printerTaskSearchFormParameters,
       loading: state._printer.loading,
       partialList: state._printer.partialList,
-      owner: { type: '_printer', id: state._printer.id, referenceName: 'printer', listName: 'printerTaskList', ref:state._printer, listDisplayName: '打印机任务列表' }, // this is for model namespace and
+      owner: { type: '_printer', id: state._printer.id, 
+      referenceName: 'printer', 
+      listName: 'printerTaskList', ref:state._printer, 
+      listDisplayName: '打印机任务列表' }, // this is for model namespace and
     }))(PrinterTaskSearch)
   }
   getPrinterTaskCreateForm = () => {

@@ -142,7 +142,7 @@ class LossDiscountCreateForm extends Component {
       const { owner } = this.props
       dispatch({
         type: `${owner.type}/goback`,
-        payload: { id: owner.id, type: 'lossDiscount',listName:'损失的折扣列表' },
+        payload: { id: owner.id, type: 'lossDiscount',listName:'定损折扣列表' },
       })
     }
     const errors = getFieldsError()
@@ -226,8 +226,8 @@ class LossDiscountCreateForm extends Component {
     }
     return (
       <PageHeaderLayout
-        title="新建一个损失的折扣"
-        content="新建一个损失的折扣"
+        title="新建一个定损折扣"
+        content="新建一个定损折扣"
         wrapperClassName={styles.advancedForm}
       >
         <Card title="基础信息" className={styles.card} bordered={false}>
@@ -257,9 +257,9 @@ class LossDiscountCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.discountRatio} {...formItemLayout}>
                   {getFieldDecorator('discountRatio', {
-                    rules: [{ required: true, message: '请输入折扣比例' }],
+                    rules: [{ required: true, message: '请输入折扣' }],
                   })(
-                    <Input placeholder="请输入折扣比例" />
+                    <Input placeholder="请输入折扣" />
                   )}
                 </Form.Item>
               </Col>

@@ -103,6 +103,9 @@ export default {
       yield put(routerRedux.push(`/genericForm/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addFormMessage({ payload }, { call, put }) {
       const {GenericFormService} = GlobalComponents;
 
@@ -175,9 +178,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `genericForm/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addFormFieldMessage({ payload }, { call, put }) {
       const {GenericFormService} = GlobalComponents;
@@ -251,9 +256,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `genericForm/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addFormField({ payload }, { call, put }) {
       const {GenericFormService} = GlobalComponents;
@@ -327,9 +334,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `genericForm/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addFormAction({ payload }, { call, put }) {
       const {GenericFormService} = GlobalComponents;
@@ -403,8 +412,7 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `genericForm/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

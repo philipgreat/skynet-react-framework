@@ -103,6 +103,9 @@ export default {
       yield put(routerRedux.push(`/borrowingStatus/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addBorrowingHistory({ payload }, { call, put }) {
       const {BorrowingStatusService} = GlobalComponents;
 
@@ -175,8 +178,7 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `borrowingStatus/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

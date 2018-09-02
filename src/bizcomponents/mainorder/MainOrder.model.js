@@ -103,6 +103,9 @@ export default {
       yield put(routerRedux.push(`/mainOrder/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addLineItem({ payload }, { call, put }) {
       const {MainOrderService} = GlobalComponents;
 
@@ -175,9 +178,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `mainOrder/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addMainOrderPayment({ payload }, { call, put }) {
       const {MainOrderService} = GlobalComponents;
@@ -251,9 +256,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `mainOrder/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addOrderLog({ payload }, { call, put }) {
       const {MainOrderService} = GlobalComponents;
@@ -327,9 +334,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `mainOrder/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addMemberServiceRevenue({ payload }, { call, put }) {
       const {MainOrderService} = GlobalComponents;
@@ -403,9 +412,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `mainOrder/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addPlatformAccountDetails({ payload }, { call, put }) {
       const {MainOrderService} = GlobalComponents;
@@ -479,9 +490,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `mainOrder/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addFundationAccountDetails({ payload }, { call, put }) {
       const {MainOrderService} = GlobalComponents;
@@ -555,9 +568,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `mainOrder/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addStoreAccountDetails({ payload }, { call, put }) {
       const {MainOrderService} = GlobalComponents;
@@ -631,9 +646,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `mainOrder/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addCustomerAccountTransaction({ payload }, { call, put }) {
       const {MainOrderService} = GlobalComponents;
@@ -707,9 +724,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `mainOrder/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addUndistributedProfit({ payload }, { call, put }) {
       const {MainOrderService} = GlobalComponents;
@@ -733,7 +752,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/mainOrder/${id}/list/${type}List/未分配利润列表`, state: newState }
+      const location = { pathname: `/mainOrder/${id}/list/${type}List/未分割收入列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateUndistributedProfit({ payload }, { call, put }) {
@@ -757,7 +776,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/mainOrder/${id}/list/${type}List/未分配利润列表`, state: newPlayload }
+      const location = { pathname: `/mainOrder/${id}/list/${type}List/未分割收入列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextUndistributedProfitUpdateRow({ payload }, { call, put }) {
@@ -783,8 +802,7 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `mainOrder/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

@@ -77,10 +77,7 @@ const internalSettingListOf = (store) =>{
 
 const internalLargeTextOf = (store) =>{
 
-	return(<div> 
-   <Card title={`网点图片`} ><pre>{store.storeImage}</pre></Card>
-</div>)
-
+	return null
 	
 
 }

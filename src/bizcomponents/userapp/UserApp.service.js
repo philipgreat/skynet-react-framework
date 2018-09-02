@@ -37,8 +37,9 @@ const transferToAnotherSecUser = (id, parameters) => {
 
 
 
+
 const addObjectAccess = (targetObjectId, parameters) => {
-  const url = `${PREFIX}userAppManager/addObjectAccess/appId/name/objectType/list1/list2/list3/list4/list5/list6/list7/list8/list9/tokensExpr/`
+  const url = `${PREFIX}userAppManager/addObjectAccess /appId/name/objectType/list1/list2/list3/list4/list5/list6/list7/list8/list9/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }

@@ -37,8 +37,9 @@ const transferToAnotherStore = (id, parameters) => {
 
 
 
+
 const addPrinterTask = (targetObjectId, parameters) => {
-  const url = `${PREFIX}printerManager/addPrinterTask/printerId/title/submitter/copyCount/content1/content2/content3/content4/content5/content6/printTaskStatus/createTime/tokensExpr/`
+  const url = `${PREFIX}printerManager/addPrinterTask /printerId/title/submitter/copyCount/content1/content2/content3/content4/content5/content6/printTaskStatus/createTime/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }

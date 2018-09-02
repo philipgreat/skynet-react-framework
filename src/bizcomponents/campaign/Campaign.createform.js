@@ -17,24 +17,20 @@ const testValues = {};
 /*
 const testValues = {
   campaignName: '世界读书日读书活动',
-  campaignStartTime: '2016-08-28 01:25:50',
-  campaignFinishTime: '2015-11-12 14:35:54',
+  campaignStartTime: '2016-02-19 16:24:41',
+  campaignFinishTime: '2015-11-26 09:58:56',
   campaignHoldAddress: '成都市天府广场东侧新博物馆2楼李四光厅',
   registerDeadlineLeadHours: '1',
   minimumRegisterQuantity: '1',
-  availableRegisterQuantity: '352',
+  availableRegisterQuantity: '404',
   campaignStatusId: 'CS000001',
   publishStoreId: 'S000001',
   publishEmployeeId: 'E000001',
   campaignPlazaId: 'CP000001',
-  campaignContent: '<div>\
-	<h1>一级会员服务</h1>\
-	<ul>\
-		<li>可以借阅图书</li>\
-		<li>可以购买</li>\
-		<li>可以报名参加活动</li>\
-	</ul>\
-</div>',
+  campaignContent: '一段图片的描述，说明了该场景的实际效果。\
+\
+同时说明了一些可能出现的问题。\
+',
 }
 */
 const imageURLPrefix = '//localhost:2090'

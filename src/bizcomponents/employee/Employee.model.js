@@ -103,6 +103,9 @@ export default {
       yield put(routerRedux.push(`/employee/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addMessageTemplate({ payload }, { call, put }) {
       const {EmployeeService} = GlobalComponents;
 
@@ -175,9 +178,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `employee/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addLossAssessmentRecord({ payload }, { call, put }) {
       const {EmployeeService} = GlobalComponents;
@@ -251,9 +256,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `employee/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBookCopyTransfer({ payload }, { call, put }) {
       const {EmployeeService} = GlobalComponents;
@@ -327,9 +334,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `employee/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBookTakeStockPlan({ payload }, { call, put }) {
       const {EmployeeService} = GlobalComponents;
@@ -403,9 +412,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `employee/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBookTakeStockResult({ payload }, { call, put }) {
       const {EmployeeService} = GlobalComponents;
@@ -479,9 +490,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `employee/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBookCopyOperationRecord({ payload }, { call, put }) {
       const {EmployeeService} = GlobalComponents;
@@ -555,9 +568,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `employee/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBookCopySharingApplication({ payload }, { call, put }) {
       const {EmployeeService} = GlobalComponents;
@@ -631,9 +646,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `employee/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addCampaign({ payload }, { call, put }) {
       const {EmployeeService} = GlobalComponents;
@@ -707,9 +724,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `employee/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addEmployeeWorkingStore({ payload }, { call, put }) {
       const {EmployeeService} = GlobalComponents;
@@ -783,8 +802,7 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `employee/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

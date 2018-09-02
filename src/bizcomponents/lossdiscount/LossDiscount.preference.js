@@ -258,7 +258,7 @@ const internalSummaryOf = (lossDiscount,targetComponent) =>{
 <Description term="ID">{lossDiscount.id}</Description> 
 <Description term="名称">{lossDiscount.name}</Description> 
 <Description term="代码">{lossDiscount.code}</Description> 
-<Description term="折扣比例">{lossDiscount.discountRatio}</Description> 
+<Description term="折扣">{lossDiscount.discountRatio}</Description> 
 	
         {buildTransferModal(lossDiscount,targetComponent)}
       </DescriptionList>
@@ -289,7 +289,7 @@ class LossDiscountPreference extends Component {
   render() {
     // eslint-disable-next-line max-len
     const { id,displayName, lossAssessmentRecordCount } = this.props.lossDiscount
-    const cardsData = {cardsName:"损失的折扣",cardsFor: "lossDiscount",cardsSource: this.props.lossDiscount,
+    const cardsData = {cardsName:"定损折扣",cardsFor: "lossDiscount",cardsSource: this.props.lossDiscount,
   		subItems: [
     
       	],

@@ -80,7 +80,7 @@ const internalLargeTextOf = (platformConfiguration) =>{
    <Card title={`会员服务协议`} ><pre>{platformConfiguration.memberServiceAgreement}</pre></Card>
    <Card title={`图书共享协议`} ><pre>{platformConfiguration.bookSharingAgreement}</pre></Card>
    <Card title={`账户充值协议`} ><pre>{platformConfiguration.accountRechargeAgreement}</pre></Card>
-   <Card title={`存储列表页中的消息`} ><pre>{platformConfiguration.messageInStoreListPage}</pre></Card>
+   <Card title={`网点列表页提示信息`} ><pre>{platformConfiguration.messageInStoreListPage}</pre></Card>
    <Card title={`反馈联系信息`} ><pre>{platformConfiguration.feedbackContactInfo}</pre></Card>
 </div>)
 

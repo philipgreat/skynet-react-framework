@@ -64,10 +64,10 @@ class BookCopySharingApplicationSearchForm extends PureComponent {
       if (err) return
       const params = {
         ...this.buildStringSearchParameters(fieldsValue, 'id'),
-        ...this.buildStringSearchParameters(fieldsValue, 'bookCopyQuantity'),
-        ...this.buildStringSearchParameters(fieldsValue, 'contactAddress'),
         ...this.buildStringSearchParameters(fieldsValue, 'contactName'),
         ...this.buildStringSearchParameters(fieldsValue, 'contactMobile'),
+        ...this.buildStringSearchParameters(fieldsValue, 'contactAddress'),
+        ...this.buildStringSearchParameters(fieldsValue, 'bookCopyQuantity'),
 
       }
       const { owner } = this.props
@@ -93,9 +93,9 @@ class BookCopySharingApplicationSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="共享数量">
-              {getFieldDecorator('bookCopyQuantity')(
-                <Input placeholder="请输入共享数量" />
+            <FormItem label="联系人姓名">
+              {getFieldDecorator('contactName')(
+                <Input placeholder="请输入联系人姓名" />
                )}
             </FormItem>
           </Col>
@@ -126,9 +126,17 @@ class BookCopySharingApplicationSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="共享数量">
-              {getFieldDecorator('bookCopyQuantity')(
-                <Input placeholder="请输入共享数量" />
+            <FormItem label="联系人姓名">
+              {getFieldDecorator('contactName')(
+                <Input placeholder="请输入联系人姓名" />
+              )}
+            </FormItem>
+          </Col>
+
+          <Col md={8} sm={24}>
+            <FormItem label="联系人手机">
+              {getFieldDecorator('contactMobile')(
+                <Input placeholder="请输入联系人手机" />
               )}
             </FormItem>
           </Col>
@@ -142,17 +150,9 @@ class BookCopySharingApplicationSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="联系人姓名">
-              {getFieldDecorator('contactName')(
-                <Input placeholder="请输入联系人姓名" />
-              )}
-            </FormItem>
-          </Col>
-
-          <Col md={8} sm={24}>
-            <FormItem label="联系人手机">
-              {getFieldDecorator('contactMobile')(
-                <Input placeholder="请输入联系人手机" />
+            <FormItem label="共享数量">
+              {getFieldDecorator('bookCopyQuantity')(
+                <Input placeholder="请输入共享数量" />
               )}
             </FormItem>
           </Col>

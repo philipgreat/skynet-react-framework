@@ -37,8 +37,9 @@ const transferToAnotherBookSharingPlatform = (id, parameters) => {
 
 
 
+
 const addPlatformAccount = (targetObjectId, parameters) => {
-  const url = `${PREFIX}accountDataManager/addPlatformAccount/accountDataId/name/amount/platformId/tokensExpr/`
+  const url = `${PREFIX}accountDataManager/addPlatformAccount /accountDataId/name/amount/platformId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -57,8 +58,9 @@ const removePlatformAccountList = (targetObjectId, parameters) => {
 }
 
 
+
 const addFundationAccount = (targetObjectId, parameters) => {
-  const url = `${PREFIX}accountDataManager/addFundationAccount/accountDataId/name/amount/platformId/tokensExpr/`
+  const url = `${PREFIX}accountDataManager/addFundationAccount /accountDataId/name/amount/platformId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -77,8 +79,9 @@ const removeFundationAccountList = (targetObjectId, parameters) => {
 }
 
 
+
 const addStoreAccount = (targetObjectId, parameters) => {
-  const url = `${PREFIX}accountDataManager/addStoreAccount/accountDataId/name/amount/storeId/tokensExpr/`
+  const url = `${PREFIX}accountDataManager/addStoreAccount /accountDataId/name/amount/storeId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -97,8 +100,9 @@ const removeStoreAccountList = (targetObjectId, parameters) => {
 }
 
 
+
 const addTransactionType = (targetObjectId, parameters) => {
-  const url = `${PREFIX}accountDataManager/addTransactionType/accountDataId/name/code/tokensExpr/`
+  const url = `${PREFIX}accountDataManager/addTransactionType /accountDataId/name/code/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }

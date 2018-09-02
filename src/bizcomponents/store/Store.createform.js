@@ -22,12 +22,11 @@ const testValues = {
   storeOpenTime: '9:00~22:00,周末不休',
   storeOpenTimeSecond: '9:00~22:00,周末不休',
   storeRoomNumber: '16-02',
-  longitude: '104.92842815998158',
-  latitude: '29.383237746539283',
+  longitude: '104.93742061573113',
+  latitude: '30.945235996230487',
   storeTypeId: 'ST000001',
   cityId: 'C000001',
   platformId: 'BSP000001',
-  storeImage: 'https://www.wildgratitude.com/wp-content/uploads/2014/04/stacey-couch-boulder-bookstore.jpg',
 }
 */
 const imageURLPrefix = '//localhost:2090'
@@ -403,22 +402,6 @@ class StoreCreateForm extends Component {
 
 
 
-
-        <Card title="网点图片" className={styles.card} bordered={false}>
-          <Form >
-            <Row gutter={16}>
-              <Col lg={24} md={24} sm={24}>
-                <Form.Item>
-                  {getFieldDecorator('storeImage', {
-                    rules: [{ required: true, message: '请输入网点图片' }],
-                  })(
-                    <TextArea rows={4} placeholder="请输入请输入网点图片" />
-                  )}
-                </Form.Item>
-              </Col>
-      </Row>
-          </Form>  
-        </Card>
 
 
 

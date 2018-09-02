@@ -366,23 +366,6 @@ class BookUpdateForm extends Component {
         
         
 
-        <Card title="封面" className={styles.card} bordered={false}>
-          <Form >
-            <Row gutter={16}>
-              <Col lg={24} md={24} sm={24}>
-                <Form.Item>
-                  {getFieldDecorator('bookCover', {
-                  	initialValue: selectedRow.bookCover,
-                    rules: [{  required: true, message: '请输入封面' }],
-                  })(
-                    <TextArea rows={4} placeholder="请输入请输入封面" />
-                  )}
-                </Form.Item>
-              </Col>
-            </Row>
-          </Form>
-        </Card>
-
 
         <Card title={<div>附件 <Popover title="扫描二维码可以从手机上传图片或者附件" content={<div><img src='./qrtest.png'/></div>}><Icon type="qrcode" ></Icon></Popover></div>} className={styles.card} bordered={false}>
           <Form >

@@ -278,9 +278,9 @@ class LossAssessmentRecordUpdateForm extends Component {
                 <Form.Item label={fieldLabels.bookCopyEvaluationPrice} {...formItemLayout}>
                   {getFieldDecorator('bookCopyEvaluationPrice', {
                     initialValue: selectedRow.bookCopyEvaluationPrice,
-                    rules: [{ required: true, message: '请输入书副本评估价格' }],
+                    rules: [{ required: true, message: '请输入评估价' }],
                   })(
-                    <Input placeholder="请输入书副本评估价格" />
+                    <Input placeholder="请输入评估价" />
                     
                   )}
                 </Form.Item>
@@ -301,7 +301,7 @@ class LossAssessmentRecordUpdateForm extends Component {
 
               <Col lg={6} md={12} sm={24}>
                 <ImageComponent
-                  buttonTitle="损失图像"
+                  buttonTitle="定损照片"
                   handlePreview={this.handlePreview}
                   handleChange={event => this.handleChange(event, 'lossImage')}
                   fileList={convertedImagesValues.lossImage}

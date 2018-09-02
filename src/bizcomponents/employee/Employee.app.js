@@ -146,13 +146,18 @@ class EmployeeBizApp extends React.PureComponent {
     const {MessageTemplateSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "消息模板",
+      role: "messageTemplate",
       data: state._employee.messageTemplateList,
       count: state._employee.messageTemplateCount,
       currentPage: state._employee.messageTemplateCurrentPageNumber,
       searchFormParameters: state._employee.messageTemplateSearchFormParameters,
       loading: state._employee.loading,
       partialList: state._employee.partialList,
-      owner: { type: '_employee', id: state._employee.id, referenceName: 'updatedBy', listName: 'messageTemplateList', ref:state._employee, listDisplayName: '消息模板列表' }, // this is for model namespace and
+      owner: { type: '_employee', id: state._employee.id, 
+      referenceName: 'updatedBy', 
+      listName: 'messageTemplateList', ref:state._employee, 
+      listDisplayName: '消息模板列表' }, // this is for model namespace and
     }))(MessageTemplateSearch)
   }
   getMessageTemplateCreateForm = () => {
@@ -181,13 +186,18 @@ class EmployeeBizApp extends React.PureComponent {
     const {LossAssessmentRecordSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "定损记录",
+      role: "lossAssessmentRecord",
       data: state._employee.lossAssessmentRecordList,
       count: state._employee.lossAssessmentRecordCount,
       currentPage: state._employee.lossAssessmentRecordCurrentPageNumber,
       searchFormParameters: state._employee.lossAssessmentRecordSearchFormParameters,
       loading: state._employee.loading,
       partialList: state._employee.partialList,
-      owner: { type: '_employee', id: state._employee.id, referenceName: 'recordPerson', listName: 'lossAssessmentRecordList', ref:state._employee, listDisplayName: '定损记录列表' }, // this is for model namespace and
+      owner: { type: '_employee', id: state._employee.id, 
+      referenceName: 'recordPerson', 
+      listName: 'lossAssessmentRecordList', ref:state._employee, 
+      listDisplayName: '定损记录列表' }, // this is for model namespace and
     }))(LossAssessmentRecordSearch)
   }
   getLossAssessmentRecordCreateForm = () => {
@@ -216,13 +226,18 @@ class EmployeeBizApp extends React.PureComponent {
     const {BookCopyTransferSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "图书副本迁移记录",
+      role: "bookCopyTransfer",
       data: state._employee.bookCopyTransferList,
       count: state._employee.bookCopyTransferCount,
       currentPage: state._employee.bookCopyTransferCurrentPageNumber,
       searchFormParameters: state._employee.bookCopyTransferSearchFormParameters,
       loading: state._employee.loading,
       partialList: state._employee.partialList,
-      owner: { type: '_employee', id: state._employee.id, referenceName: 'responsibleEmployee', listName: 'bookCopyTransferList', ref:state._employee, listDisplayName: '图书副本迁移记录列表' }, // this is for model namespace and
+      owner: { type: '_employee', id: state._employee.id, 
+      referenceName: 'responsibleEmployee', 
+      listName: 'bookCopyTransferList', ref:state._employee, 
+      listDisplayName: '图书副本迁移记录列表' }, // this is for model namespace and
     }))(BookCopyTransferSearch)
   }
   getBookCopyTransferCreateForm = () => {
@@ -251,13 +266,18 @@ class EmployeeBizApp extends React.PureComponent {
     const {BookTakeStockPlanSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "图书盘点计划",
+      role: "bookTakeStockPlan",
       data: state._employee.bookTakeStockPlanList,
       count: state._employee.bookTakeStockPlanCount,
       currentPage: state._employee.bookTakeStockPlanCurrentPageNumber,
       searchFormParameters: state._employee.bookTakeStockPlanSearchFormParameters,
       loading: state._employee.loading,
       partialList: state._employee.partialList,
-      owner: { type: '_employee', id: state._employee.id, referenceName: 'planCreator', listName: 'bookTakeStockPlanList', ref:state._employee, listDisplayName: '图书盘点计划列表' }, // this is for model namespace and
+      owner: { type: '_employee', id: state._employee.id, 
+      referenceName: 'planCreator', 
+      listName: 'bookTakeStockPlanList', ref:state._employee, 
+      listDisplayName: '图书盘点计划列表' }, // this is for model namespace and
     }))(BookTakeStockPlanSearch)
   }
   getBookTakeStockPlanCreateForm = () => {
@@ -286,13 +306,18 @@ class EmployeeBizApp extends React.PureComponent {
     const {BookTakeStockResultSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "图书盘点结果",
+      role: "bookTakeStockResult",
       data: state._employee.bookTakeStockResultList,
       count: state._employee.bookTakeStockResultCount,
       currentPage: state._employee.bookTakeStockResultCurrentPageNumber,
       searchFormParameters: state._employee.bookTakeStockResultSearchFormParameters,
       loading: state._employee.loading,
       partialList: state._employee.partialList,
-      owner: { type: '_employee', id: state._employee.id, referenceName: 'employee', listName: 'bookTakeStockResultList', ref:state._employee, listDisplayName: '图书盘点结果列表' }, // this is for model namespace and
+      owner: { type: '_employee', id: state._employee.id, 
+      referenceName: 'employee', 
+      listName: 'bookTakeStockResultList', ref:state._employee, 
+      listDisplayName: '图书盘点结果列表' }, // this is for model namespace and
     }))(BookTakeStockResultSearch)
   }
   getBookTakeStockResultCreateForm = () => {
@@ -321,13 +346,18 @@ class EmployeeBizApp extends React.PureComponent {
     const {BookCopyOperationRecordSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "书籍副本操作记录",
+      role: "bookCopyOperationRecord",
       data: state._employee.bookCopyOperationRecordList,
       count: state._employee.bookCopyOperationRecordCount,
       currentPage: state._employee.bookCopyOperationRecordCurrentPageNumber,
       searchFormParameters: state._employee.bookCopyOperationRecordSearchFormParameters,
       loading: state._employee.loading,
       partialList: state._employee.partialList,
-      owner: { type: '_employee', id: state._employee.id, referenceName: 'operationEmployee', listName: 'bookCopyOperationRecordList', ref:state._employee, listDisplayName: '书籍副本操作记录列表' }, // this is for model namespace and
+      owner: { type: '_employee', id: state._employee.id, 
+      referenceName: 'operationEmployee', 
+      listName: 'bookCopyOperationRecordList', ref:state._employee, 
+      listDisplayName: '书籍副本操作记录列表' }, // this is for model namespace and
     }))(BookCopyOperationRecordSearch)
   }
   getBookCopyOperationRecordCreateForm = () => {
@@ -356,13 +386,18 @@ class EmployeeBizApp extends React.PureComponent {
     const {BookCopySharingApplicationSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "图书共享申请",
+      role: "bookCopySharingApplication",
       data: state._employee.bookCopySharingApplicationList,
       count: state._employee.bookCopySharingApplicationCount,
       currentPage: state._employee.bookCopySharingApplicationCurrentPageNumber,
       searchFormParameters: state._employee.bookCopySharingApplicationSearchFormParameters,
       loading: state._employee.loading,
       partialList: state._employee.partialList,
-      owner: { type: '_employee', id: state._employee.id, referenceName: 'employee', listName: 'bookCopySharingApplicationList', ref:state._employee, listDisplayName: '图书共享申请列表' }, // this is for model namespace and
+      owner: { type: '_employee', id: state._employee.id, 
+      referenceName: 'employee', 
+      listName: 'bookCopySharingApplicationList', ref:state._employee, 
+      listDisplayName: '图书共享申请列表' }, // this is for model namespace and
     }))(BookCopySharingApplicationSearch)
   }
   getBookCopySharingApplicationCreateForm = () => {
@@ -391,13 +426,18 @@ class EmployeeBizApp extends React.PureComponent {
     const {CampaignSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "活动",
+      role: "campaign",
       data: state._employee.campaignList,
       count: state._employee.campaignCount,
       currentPage: state._employee.campaignCurrentPageNumber,
       searchFormParameters: state._employee.campaignSearchFormParameters,
       loading: state._employee.loading,
       partialList: state._employee.partialList,
-      owner: { type: '_employee', id: state._employee.id, referenceName: 'publishEmployee', listName: 'campaignList', ref:state._employee, listDisplayName: '活动列表' }, // this is for model namespace and
+      owner: { type: '_employee', id: state._employee.id, 
+      referenceName: 'publishEmployee', 
+      listName: 'campaignList', ref:state._employee, 
+      listDisplayName: '活动列表' }, // this is for model namespace and
     }))(CampaignSearch)
   }
   getCampaignCreateForm = () => {
@@ -426,13 +466,18 @@ class EmployeeBizApp extends React.PureComponent {
     const {EmployeeWorkingStoreSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "员工工作的网点",
+      role: "employeeWorkingStore",
       data: state._employee.employeeWorkingStoreList,
       count: state._employee.employeeWorkingStoreCount,
       currentPage: state._employee.employeeWorkingStoreCurrentPageNumber,
       searchFormParameters: state._employee.employeeWorkingStoreSearchFormParameters,
       loading: state._employee.loading,
       partialList: state._employee.partialList,
-      owner: { type: '_employee', id: state._employee.id, referenceName: 'employee', listName: 'employeeWorkingStoreList', ref:state._employee, listDisplayName: '员工工作的网点列表' }, // this is for model namespace and
+      owner: { type: '_employee', id: state._employee.id, 
+      referenceName: 'employee', 
+      listName: 'employeeWorkingStoreList', ref:state._employee, 
+      listDisplayName: '员工工作的网点列表' }, // this is for model namespace and
     }))(EmployeeWorkingStoreSearch)
   }
   getEmployeeWorkingStoreCreateForm = () => {

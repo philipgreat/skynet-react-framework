@@ -146,13 +146,18 @@ class BookCopyOperateTypeBizApp extends React.PureComponent {
     const {BookCopyOperationRecordSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "书籍副本操作记录",
+      role: "bookCopyOperationRecord",
       data: state._bookCopyOperateType.bookCopyOperationRecordList,
       count: state._bookCopyOperateType.bookCopyOperationRecordCount,
       currentPage: state._bookCopyOperateType.bookCopyOperationRecordCurrentPageNumber,
       searchFormParameters: state._bookCopyOperateType.bookCopyOperationRecordSearchFormParameters,
       loading: state._bookCopyOperateType.loading,
       partialList: state._bookCopyOperateType.partialList,
-      owner: { type: '_bookCopyOperateType', id: state._bookCopyOperateType.id, referenceName: 'bookCopyOperateType', listName: 'bookCopyOperationRecordList', ref:state._bookCopyOperateType, listDisplayName: '书籍副本操作记录列表' }, // this is for model namespace and
+      owner: { type: '_bookCopyOperateType', id: state._bookCopyOperateType.id, 
+      referenceName: 'bookCopyOperateType', 
+      listName: 'bookCopyOperationRecordList', ref:state._bookCopyOperateType, 
+      listDisplayName: '书籍副本操作记录列表' }, // this is for model namespace and
     }))(BookCopyOperationRecordSearch)
   }
   getBookCopyOperationRecordCreateForm = () => {

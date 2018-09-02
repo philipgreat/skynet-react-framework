@@ -146,13 +146,18 @@ class UserAppBizApp extends React.PureComponent {
     const {ObjectAccessSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "对象访问",
+      role: "objectAccess",
       data: state._userApp.objectAccessList,
       count: state._userApp.objectAccessCount,
       currentPage: state._userApp.objectAccessCurrentPageNumber,
       searchFormParameters: state._userApp.objectAccessSearchFormParameters,
       loading: state._userApp.loading,
       partialList: state._userApp.partialList,
-      owner: { type: '_userApp', id: state._userApp.id, referenceName: 'app', listName: 'objectAccessList', ref:state._userApp, listDisplayName: '对象访问列表' }, // this is for model namespace and
+      owner: { type: '_userApp', id: state._userApp.id, 
+      referenceName: 'app', 
+      listName: 'objectAccessList', ref:state._userApp, 
+      listDisplayName: '对象访问列表' }, // this is for model namespace and
     }))(ObjectAccessSearch)
   }
   getObjectAccessCreateForm = () => {

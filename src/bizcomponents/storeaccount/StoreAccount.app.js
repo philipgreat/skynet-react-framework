@@ -146,13 +146,18 @@ class StoreAccountBizApp extends React.PureComponent {
     const {StoreAccountDetailsSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "网点账户明细",
+      role: "storeAccountDetails",
       data: state._storeAccount.storeAccountDetailsList,
       count: state._storeAccount.storeAccountDetailsCount,
       currentPage: state._storeAccount.storeAccountDetailsCurrentPageNumber,
       searchFormParameters: state._storeAccount.storeAccountDetailsSearchFormParameters,
       loading: state._storeAccount.loading,
       partialList: state._storeAccount.partialList,
-      owner: { type: '_storeAccount', id: state._storeAccount.id, referenceName: 'storeAccount', listName: 'storeAccountDetailsList', ref:state._storeAccount, listDisplayName: '网点账户明细列表' }, // this is for model namespace and
+      owner: { type: '_storeAccount', id: state._storeAccount.id, 
+      referenceName: 'storeAccount', 
+      listName: 'storeAccountDetailsList', ref:state._storeAccount, 
+      listDisplayName: '网点账户明细列表' }, // this is for model namespace and
     }))(StoreAccountDetailsSearch)
   }
   getStoreAccountDetailsCreateForm = () => {

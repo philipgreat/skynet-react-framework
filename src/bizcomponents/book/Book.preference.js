@@ -77,10 +77,7 @@ const internalSettingListOf = (book) =>{
 
 const internalLargeTextOf = (book) =>{
 
-	return(<div> 
-   <Card title={`封面`} ><pre>{book.bookCover}</pre></Card>
-</div>)
-
+	return null
 	
 
 }

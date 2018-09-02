@@ -146,13 +146,18 @@ class BookTakeStockStatusBizApp extends React.PureComponent {
     const {BookTakeStockResultSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "图书盘点结果",
+      role: "bookTakeStockResult",
       data: state._bookTakeStockStatus.bookTakeStockResultList,
       count: state._bookTakeStockStatus.bookTakeStockResultCount,
       currentPage: state._bookTakeStockStatus.bookTakeStockResultCurrentPageNumber,
       searchFormParameters: state._bookTakeStockStatus.bookTakeStockResultSearchFormParameters,
       loading: state._bookTakeStockStatus.loading,
       partialList: state._bookTakeStockStatus.partialList,
-      owner: { type: '_bookTakeStockStatus', id: state._bookTakeStockStatus.id, referenceName: 'bookTakeStockStatus', listName: 'bookTakeStockResultList', ref:state._bookTakeStockStatus, listDisplayName: '图书盘点结果列表' }, // this is for model namespace and
+      owner: { type: '_bookTakeStockStatus', id: state._bookTakeStockStatus.id, 
+      referenceName: 'bookTakeStockStatus', 
+      listName: 'bookTakeStockResultList', ref:state._bookTakeStockStatus, 
+      listDisplayName: '图书盘点结果列表' }, // this is for model namespace and
     }))(BookTakeStockResultSearch)
   }
   getBookTakeStockResultCreateForm = () => {

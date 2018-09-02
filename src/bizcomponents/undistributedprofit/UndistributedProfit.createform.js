@@ -17,10 +17,10 @@ const testValues = {};
 /*
 const testValues = {
   summary: '6个月会员费',
-  chargeStartDate: '2016-07-29',
-  chargeEndDate: '2017-02-12',
-  amount: '80.82',
-  balance: '8.20',
+  chargeStartDate: '2017-11-16',
+  chargeEndDate: '2015-11-30',
+  amount: '70.64',
+  balance: '8.61',
   profitTypeId: 'PT000001',
   profitDistributeStateId: 'PDS000001',
   mainOrderId: 'MO000001',
@@ -248,7 +248,7 @@ class UndistributedProfitCreateForm extends Component {
       const { owner } = this.props
       dispatch({
         type: `${owner.type}/goback`,
-        payload: { id: owner.id, type: 'undistributedProfit',listName:'未分配利润列表' },
+        payload: { id: owner.id, type: 'undistributedProfit',listName:'未分割收入列表' },
       })
     }
     const errors = getFieldsError()
@@ -368,8 +368,8 @@ class UndistributedProfitCreateForm extends Component {
     }
     return (
       <PageHeaderLayout
-        title="新建一个未分配利润"
-        content="新建一个未分配利润"
+        title="新建一个未分割收入"
+        content="新建一个未分割收入"
         wrapperClassName={styles.advancedForm}
       >
         <Card title="基础信息" className={styles.card} bordered={false}>

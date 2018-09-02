@@ -19,15 +19,14 @@ const testValues = {
   bookName: '飘',
   bookAuthor: '吕之华',
   bookPublisher: '中信出版社',
-  bookPubdate: '2016-04-17',
-  listPrice: '71.76',
+  bookPubdate: '2015-10-27',
+  listPrice: '74.70',
   bookIsbn13: '978-7-505-71566-0',
   bookIsbn10: '',
   bookSummary: '这个简介有点短',
   bookRecommendId: 'BR000001',
   bookPlazaId: 'BP000001',
   platformId: 'BSP000001',
-  bookCover: 'http://luxuryreading.com/wp-content/uploads/2013/07/war-and-peace.jpg',
 }
 */
 const imageURLPrefix = '//localhost:2090'
@@ -403,22 +402,6 @@ class BookCreateForm extends Component {
 
 
 
-
-        <Card title="封面" className={styles.card} bordered={false}>
-          <Form >
-            <Row gutter={16}>
-              <Col lg={24} md={24} sm={24}>
-                <Form.Item>
-                  {getFieldDecorator('bookCover', {
-                    rules: [{ required: true, message: '请输入封面' }],
-                  })(
-                    <TextArea rows={4} placeholder="请输入请输入封面" />
-                  )}
-                </Form.Item>
-              </Col>
-      </Row>
-          </Form>  
-        </Card>
 
 
 

@@ -37,8 +37,9 @@ const transferToAnotherDomain = (id, parameters) => {
 
 
 
+
 const addUserApp = (targetObjectId, parameters) => {
-  const url = `${PREFIX}secUserManager/addUserApp/secUserId/title/appIcon/fullAccess/permission/objectType/objectId/location/tokensExpr/`
+  const url = `${PREFIX}secUserManager/addUserApp /secUserId/title/appIcon/fullAccess/permission/objectType/objectId/location/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -57,8 +58,9 @@ const removeUserAppList = (targetObjectId, parameters) => {
 }
 
 
+
 const addLoginHistory = (targetObjectId, parameters) => {
-  const url = `${PREFIX}secUserManager/addLoginHistory/secUserId/fromIp/description/tokensExpr/`
+  const url = `${PREFIX}secUserManager/addLoginHistory /secUserId/fromIp/description/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }

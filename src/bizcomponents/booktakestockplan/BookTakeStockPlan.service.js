@@ -69,8 +69,9 @@ const transferToAnotherTakeStockStatus = (id, parameters) => {
 
 
 
+
 const addBookTakeStockResult = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookTakeStockPlanManager/addBookTakeStockResult/bookTakeStockPlanId/bookName/bookCopyId/bookTakeStockStatusId/employeeId/takeStoreResultsId/tokensExpr/`
+  const url = `${PREFIX}bookTakeStockPlanManager/addBookTakeStockResult /bookTakeStockPlanId/bookName/bookCopyId/bookTakeStockStatusId/employeeId/takeStoreResultsId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }

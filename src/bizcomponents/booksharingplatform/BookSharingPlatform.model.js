@@ -103,6 +103,9 @@ export default {
       yield put(routerRedux.push(`/bookSharingPlatform/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addLossDiscount({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
 
@@ -125,7 +128,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/损失的折扣列表`, state: newState }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/定损折扣列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateLossDiscount({ payload }, { call, put }) {
@@ -149,7 +152,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/损失的折扣列表`, state: newPlayload }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/定损折扣列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextLossDiscountUpdateRow({ payload }, { call, put }) {
@@ -175,9 +178,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addPlatformConfiguration({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -251,9 +256,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addAccountData({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -327,9 +334,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addCity({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -403,9 +412,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBookPlaza({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -479,9 +490,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addMemberServiceProduct({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -555,9 +568,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addMainOrder({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -631,9 +646,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBook({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -707,9 +724,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addTransferType({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -783,9 +802,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addTakeStockStatus({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -859,9 +880,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBookTakeStockStatus({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -935,9 +958,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addTakeStoreResults({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -1011,9 +1036,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBookCopyOperateType({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -1087,9 +1114,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBorrowingStatus({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -1163,9 +1192,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addDeliverMethod({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -1239,9 +1270,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addApplicationStatus({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -1265,7 +1298,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/应用程序状态列表`, state: newState }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/申请状态列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateApplicationStatus({ payload }, { call, put }) {
@@ -1289,7 +1322,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/应用程序状态列表`, state: newPlayload }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/申请状态列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextApplicationStatusUpdateRow({ payload }, { call, put }) {
@@ -1315,9 +1348,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addPlatformAccount({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -1391,9 +1426,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addFundationAccount({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -1467,9 +1504,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addStoreType({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -1543,9 +1582,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addStore({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -1619,9 +1660,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addSlideType({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -1695,9 +1738,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addCampaignPlaza({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -1771,9 +1816,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addCampaignStatus({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -1847,9 +1894,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addCustomer({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -1923,9 +1972,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addEmployee({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -1999,9 +2050,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addProfitType({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -2075,9 +2128,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addProfitDistributeState({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -2151,9 +2206,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addUndistributedProfit({ payload }, { call, put }) {
       const {BookSharingPlatformService} = GlobalComponents;
@@ -2177,7 +2234,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/未分配利润列表`, state: newState }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/未分割收入列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateUndistributedProfit({ payload }, { call, put }) {
@@ -2201,7 +2258,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/未分配利润列表`, state: newPlayload }
+      const location = { pathname: `/bookSharingPlatform/${id}/list/${type}List/未分割收入列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextUndistributedProfitUpdateRow({ payload }, { call, put }) {
@@ -2227,8 +2284,7 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookSharingPlatform/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

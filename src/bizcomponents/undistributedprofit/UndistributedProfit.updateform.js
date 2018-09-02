@@ -183,7 +183,7 @@ class UndistributedProfitUpdateForm extends Component {
         payload: {
           id: owner.id,
           type: 'undistributedProfit',
-          listName:'未分配利润列表' 
+          listName:'未分割收入列表' 
         },
       })
     }
@@ -243,8 +243,8 @@ class UndistributedProfitUpdateForm extends Component {
 
     return (
       <PageHeaderLayout
-        title={"更新未分配利润"+(currentUpdateIndex+1)+"/"+selectedRows.length}
-        content="更新未分配利润"
+        title={"更新未分割收入"+(currentUpdateIndex+1)+"/"+selectedRows.length}
+        content="更新未分割收入"
         wrapperClassName={styles.advancedForm}
       >
         <Card title="基础信息" className={styles.card} bordered={false}>

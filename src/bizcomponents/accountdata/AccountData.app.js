@@ -146,13 +146,18 @@ class AccountDataBizApp extends React.PureComponent {
     const {PlatformAccountSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "平台账户",
+      role: "platformAccount",
       data: state._accountData.platformAccountList,
       count: state._accountData.platformAccountCount,
       currentPage: state._accountData.platformAccountCurrentPageNumber,
       searchFormParameters: state._accountData.platformAccountSearchFormParameters,
       loading: state._accountData.loading,
       partialList: state._accountData.partialList,
-      owner: { type: '_accountData', id: state._accountData.id, referenceName: 'accountData', listName: 'platformAccountList', ref:state._accountData, listDisplayName: '平台账户列表' }, // this is for model namespace and
+      owner: { type: '_accountData', id: state._accountData.id, 
+      referenceName: 'accountData', 
+      listName: 'platformAccountList', ref:state._accountData, 
+      listDisplayName: '平台账户列表' }, // this is for model namespace and
     }))(PlatformAccountSearch)
   }
   getPlatformAccountCreateForm = () => {
@@ -181,13 +186,18 @@ class AccountDataBizApp extends React.PureComponent {
     const {FundationAccountSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "平台基金账户",
+      role: "fundationAccount",
       data: state._accountData.fundationAccountList,
       count: state._accountData.fundationAccountCount,
       currentPage: state._accountData.fundationAccountCurrentPageNumber,
       searchFormParameters: state._accountData.fundationAccountSearchFormParameters,
       loading: state._accountData.loading,
       partialList: state._accountData.partialList,
-      owner: { type: '_accountData', id: state._accountData.id, referenceName: 'accountData', listName: 'fundationAccountList', ref:state._accountData, listDisplayName: '平台基金账户列表' }, // this is for model namespace and
+      owner: { type: '_accountData', id: state._accountData.id, 
+      referenceName: 'accountData', 
+      listName: 'fundationAccountList', ref:state._accountData, 
+      listDisplayName: '平台基金账户列表' }, // this is for model namespace and
     }))(FundationAccountSearch)
   }
   getFundationAccountCreateForm = () => {
@@ -216,13 +226,18 @@ class AccountDataBizApp extends React.PureComponent {
     const {StoreAccountSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "网点账户",
+      role: "storeAccount",
       data: state._accountData.storeAccountList,
       count: state._accountData.storeAccountCount,
       currentPage: state._accountData.storeAccountCurrentPageNumber,
       searchFormParameters: state._accountData.storeAccountSearchFormParameters,
       loading: state._accountData.loading,
       partialList: state._accountData.partialList,
-      owner: { type: '_accountData', id: state._accountData.id, referenceName: 'accountData', listName: 'storeAccountList', ref:state._accountData, listDisplayName: '网点账户列表' }, // this is for model namespace and
+      owner: { type: '_accountData', id: state._accountData.id, 
+      referenceName: 'accountData', 
+      listName: 'storeAccountList', ref:state._accountData, 
+      listDisplayName: '网点账户列表' }, // this is for model namespace and
     }))(StoreAccountSearch)
   }
   getStoreAccountCreateForm = () => {
@@ -251,13 +266,18 @@ class AccountDataBizApp extends React.PureComponent {
     const {TransactionTypeSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "交易类型",
+      role: "transactionType",
       data: state._accountData.transactionTypeList,
       count: state._accountData.transactionTypeCount,
       currentPage: state._accountData.transactionTypeCurrentPageNumber,
       searchFormParameters: state._accountData.transactionTypeSearchFormParameters,
       loading: state._accountData.loading,
       partialList: state._accountData.partialList,
-      owner: { type: '_accountData', id: state._accountData.id, referenceName: 'accountData', listName: 'transactionTypeList', ref:state._accountData, listDisplayName: '交易类型列表' }, // this is for model namespace and
+      owner: { type: '_accountData', id: state._accountData.id, 
+      referenceName: 'accountData', 
+      listName: 'transactionTypeList', ref:state._accountData, 
+      listDisplayName: '交易类型列表' }, // this is for model namespace and
     }))(TransactionTypeSearch)
   }
   getTransactionTypeCreateForm = () => {

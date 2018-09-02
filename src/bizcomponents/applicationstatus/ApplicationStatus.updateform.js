@@ -179,7 +179,7 @@ class ApplicationStatusUpdateForm extends Component {
         payload: {
           id: owner.id,
           type: 'applicationStatus',
-          listName:'应用程序状态列表' 
+          listName:'申请状态列表' 
         },
       })
     }
@@ -239,8 +239,8 @@ class ApplicationStatusUpdateForm extends Component {
 
     return (
       <PageHeaderLayout
-        title={"更新应用程序状态"+(currentUpdateIndex+1)+"/"+selectedRows.length}
-        content="更新应用程序状态"
+        title={"更新申请状态"+(currentUpdateIndex+1)+"/"+selectedRows.length}
+        content="更新申请状态"
         wrapperClassName={styles.advancedForm}
       >
         <Card title="基础信息" className={styles.card} bordered={false}>

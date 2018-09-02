@@ -103,6 +103,9 @@ export default {
       yield put(routerRedux.push(`/accountData/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addPlatformAccount({ payload }, { call, put }) {
       const {AccountDataService} = GlobalComponents;
 
@@ -175,9 +178,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `accountData/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addFundationAccount({ payload }, { call, put }) {
       const {AccountDataService} = GlobalComponents;
@@ -251,9 +256,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `accountData/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addStoreAccount({ payload }, { call, put }) {
       const {AccountDataService} = GlobalComponents;
@@ -327,9 +334,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `accountData/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addTransactionType({ payload }, { call, put }) {
       const {AccountDataService} = GlobalComponents;
@@ -403,8 +412,7 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `accountData/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

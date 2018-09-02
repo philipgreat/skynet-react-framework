@@ -146,13 +146,18 @@ class ProfitTypeBizApp extends React.PureComponent {
     const {UndistributedProfitSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "未分割收入",
+      role: "undistributedProfit",
       data: state._profitType.undistributedProfitList,
       count: state._profitType.undistributedProfitCount,
       currentPage: state._profitType.undistributedProfitCurrentPageNumber,
       searchFormParameters: state._profitType.undistributedProfitSearchFormParameters,
       loading: state._profitType.loading,
       partialList: state._profitType.partialList,
-      owner: { type: '_profitType', id: state._profitType.id, referenceName: 'profitType', listName: 'undistributedProfitList', ref:state._profitType, listDisplayName: '未分配利润列表' }, // this is for model namespace and
+      owner: { type: '_profitType', id: state._profitType.id, 
+      referenceName: 'profitType', 
+      listName: 'undistributedProfitList', ref:state._profitType, 
+      listDisplayName: '未分割收入列表' }, // this is for model namespace and
     }))(UndistributedProfitSearch)
   }
   getUndistributedProfitCreateForm = () => {
@@ -164,7 +169,7 @@ class ProfitTypeBizApp extends React.PureComponent {
       currentPage: state._profitType.undistributedProfitCurrentPageNumber,
       searchFormParameters: state._profitType.undistributedProfitSearchFormParameters,
       loading: state._profitType.loading,
-      owner: { type: '_profitType', id: state._profitType.id, referenceName: 'profitType', listName: 'undistributedProfitList', ref:state._profitType, listDisplayName: '未分配利润列表'}, // this is for model namespace and
+      owner: { type: '_profitType', id: state._profitType.id, referenceName: 'profitType', listName: 'undistributedProfitList', ref:state._profitType, listDisplayName: '未分割收入列表'}, // this is for model namespace and
     }))(UndistributedProfitCreateForm)
   }
   
@@ -173,7 +178,7 @@ class ProfitTypeBizApp extends React.PureComponent {
     return connect(state => ({
       selectedRows: state._profitType.selectedRows,
       currentUpdateIndex: state._profitType.currentUpdateIndex,
-      owner: { type: '_profitType', id: state._profitType.id, listName: 'undistributedProfitList', ref:state._profitType, listDisplayName: '未分配利润列表' }, // this is for model namespace and
+      owner: { type: '_profitType', id: state._profitType.id, listName: 'undistributedProfitList', ref:state._profitType, listDisplayName: '未分割收入列表' }, // this is for model namespace and
     }))(UndistributedProfitUpdateForm)
   }
 

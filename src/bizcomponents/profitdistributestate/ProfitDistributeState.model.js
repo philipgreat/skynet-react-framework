@@ -103,6 +103,9 @@ export default {
       yield put(routerRedux.push(`/profitDistributeState/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addUndistributedProfit({ payload }, { call, put }) {
       const {ProfitDistributeStateService} = GlobalComponents;
 
@@ -125,7 +128,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/profitDistributeState/${id}/list/${type}List/未分配利润列表`, state: newState }
+      const location = { pathname: `/profitDistributeState/${id}/list/${type}List/未分割收入列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateUndistributedProfit({ payload }, { call, put }) {
@@ -149,7 +152,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/profitDistributeState/${id}/list/${type}List/未分配利润列表`, state: newPlayload }
+      const location = { pathname: `/profitDistributeState/${id}/list/${type}List/未分割收入列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextUndistributedProfitUpdateRow({ payload }, { call, put }) {
@@ -175,8 +178,7 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `profitDistributeState/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

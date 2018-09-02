@@ -179,7 +179,7 @@ class LossDiscountUpdateForm extends Component {
         payload: {
           id: owner.id,
           type: 'lossDiscount',
-          listName:'损失的折扣列表' 
+          listName:'定损折扣列表' 
         },
       })
     }
@@ -239,8 +239,8 @@ class LossDiscountUpdateForm extends Component {
 
     return (
       <PageHeaderLayout
-        title={"更新损失的折扣"+(currentUpdateIndex+1)+"/"+selectedRows.length}
-        content="更新损失的折扣"
+        title={"更新定损折扣"+(currentUpdateIndex+1)+"/"+selectedRows.length}
+        content="更新定损折扣"
         wrapperClassName={styles.advancedForm}
       >
         <Card title="基础信息" className={styles.card} bordered={false}>
@@ -288,9 +288,9 @@ class LossDiscountUpdateForm extends Component {
                 <Form.Item label={fieldLabels.discountRatio} {...formItemLayout}>
                   {getFieldDecorator('discountRatio', {
                     initialValue: selectedRow.discountRatio,
-                    rules: [{ required: true, message: '请输入折扣比例' }],
+                    rules: [{ required: true, message: '请输入折扣' }],
                   })(
-                    <Input placeholder="请输入折扣比例" />
+                    <Input placeholder="请输入折扣" />
                     
                   )}
                 </Form.Item>

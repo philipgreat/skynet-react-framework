@@ -37,8 +37,9 @@ const transferToAnotherBookSharingPlatform = (id, parameters) => {
 
 
 
+
 const addMessageTemplate = (targetObjectId, parameters) => {
-  const url = `${PREFIX}employeeManager/addMessageTemplate/updatedById/name/template/tokensExpr/`
+  const url = `${PREFIX}employeeManager/addMessageTemplate /updatedById/name/template/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -57,8 +58,9 @@ const removeMessageTemplateList = (targetObjectId, parameters) => {
 }
 
 
+
 const addLossAssessmentRecord = (targetObjectId, parameters) => {
-  const url = `${PREFIX}employeeManager/addLossAssessmentRecord/recordPersonId/bookCopyId/recordStoreId/lossComment/lossImage/bookCopyEvaluationPrice/lossDiscountId/damagePersonId/tokensExpr/`
+  const url = `${PREFIX}employeeManager/addLossAssessmentRecord /recordPersonId/bookCopyId/recordStoreId/lossComment/lossImage/bookCopyEvaluationPrice/lossDiscountId/damagePersonId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -77,8 +79,9 @@ const removeLossAssessmentRecordList = (targetObjectId, parameters) => {
 }
 
 
+
 const addBookCopyTransfer = (targetObjectId, parameters) => {
-  const url = `${PREFIX}employeeManager/addBookCopyTransfer/responsibleEmployeeId/bookName/bookCopyId/originalStoreId/newStoreId/transferTypeId/tokensExpr/`
+  const url = `${PREFIX}employeeManager/addBookCopyTransfer /responsibleEmployeeId/bookName/bookCopyId/originalStoreId/newStoreId/transferTypeId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -97,8 +100,9 @@ const removeBookCopyTransferList = (targetObjectId, parameters) => {
 }
 
 
+
 const addBookTakeStockPlan = (targetObjectId, parameters) => {
-  const url = `${PREFIX}employeeManager/addBookTakeStockPlan/planCreatorId/planName/storeId/planDatetime/takeStockStatusId/tokensExpr/`
+  const url = `${PREFIX}employeeManager/addBookTakeStockPlan /planCreatorId/planName/storeId/planDatetime/takeStockStatusId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -117,8 +121,9 @@ const removeBookTakeStockPlanList = (targetObjectId, parameters) => {
 }
 
 
+
 const addBookTakeStockResult = (targetObjectId, parameters) => {
-  const url = `${PREFIX}employeeManager/addBookTakeStockResult/employeeId/bookName/bookCopyId/bookTakeStockStatusId/takeStoreResultsId/bookTakeStockPlanId/tokensExpr/`
+  const url = `${PREFIX}employeeManager/addBookTakeStockResult /employeeId/bookName/bookCopyId/bookTakeStockStatusId/takeStoreResultsId/bookTakeStockPlanId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -137,8 +142,9 @@ const removeBookTakeStockResultList = (targetObjectId, parameters) => {
 }
 
 
+
 const addBookCopyOperationRecord = (targetObjectId, parameters) => {
-  const url = `${PREFIX}employeeManager/addBookCopyOperationRecord/operationEmployeeId/bookName/bookCopyId/bookCopyOperateTypeId/operateStoreId/tokensExpr/`
+  const url = `${PREFIX}employeeManager/addBookCopyOperationRecord /operationEmployeeId/bookName/bookCopyId/bookCopyOperateTypeId/operateStoreId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -157,14 +163,15 @@ const removeBookCopyOperationRecordList = (targetObjectId, parameters) => {
 }
 
 
+
 const addBookCopySharingApplication = (targetObjectId, parameters) => {
-  const url = `${PREFIX}employeeManager/addBookCopySharingApplication/employeeId/bookCopyQuantity/deliverMethodId/destinationStoreId/contactAddress/contactName/contactMobile/applicationStatusId/customerId/tokensExpr/`
+  const url = `${PREFIX}employeeManager/addBookCopySharingApplication /employeeId/contactName/contactMobile/applicationStatusId/deliverMethodId/contactAddress/bookCopyQuantity/customerId/destinationStoreId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateBookCopySharingApplication = (targetObjectId, parameters) => {
-  const url = `${PREFIX}employeeManager/updateBookCopySharingApplicationProperties/employeeId/id/bookCopyQuantity/contactAddress/contactName/contactMobile/tokensExpr/`
+  const url = `${PREFIX}employeeManager/updateBookCopySharingApplicationProperties/employeeId/id/contactName/contactMobile/contactAddress/bookCopyQuantity/tokensExpr/`
   const employeeId = targetObjectId
   const requestParameters = { ...parameters, employeeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
@@ -177,8 +184,9 @@ const removeBookCopySharingApplicationList = (targetObjectId, parameters) => {
 }
 
 
+
 const addCampaign = (targetObjectId, parameters) => {
-  const url = `${PREFIX}employeeManager/addCampaign/publishEmployeeId/campaignName/campaignContent/campaignImage/campaignStatusId/campaignStartTime/campaignFinishTime/campaignHoldAddress/registerDeadlineLeadHours/minimumRegisterQuantity/availableRegisterQuantity/publishStoreId/campaignPlazaId/tokensExpr/`
+  const url = `${PREFIX}employeeManager/addCampaign /publishEmployeeId/campaignName/campaignContent/campaignImage/campaignStatusId/campaignStartTime/campaignFinishTime/campaignHoldAddress/registerDeadlineLeadHours/minimumRegisterQuantity/availableRegisterQuantity/publishStoreId/campaignPlazaId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -197,8 +205,9 @@ const removeCampaignList = (targetObjectId, parameters) => {
 }
 
 
+
 const addEmployeeWorkingStore = (targetObjectId, parameters) => {
-  const url = `${PREFIX}employeeManager/addEmployeeWorkingStore/employeeId/description/roleId/storeId/startDate/terminatedDate/tokensExpr/`
+  const url = `${PREFIX}employeeManager/addEmployeeWorkingStore /employeeId/description/roleId/storeId/startDate/terminatedDate/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }

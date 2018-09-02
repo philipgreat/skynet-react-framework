@@ -35,7 +35,7 @@ const fieldLabels = {
   id: 'ID',
   storeId:'商店序号',
   scannedIsbn:'扫描二维码或者手动输入',
-  bookCopyVendorId:'书的提供者',
+  bookCopyVendorId:'客户ID',
   bookCopySharingType:'共享类型',
   bookRecommendId:'建议类目',
   bookName: '书的名字',

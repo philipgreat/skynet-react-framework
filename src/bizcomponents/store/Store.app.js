@@ -146,13 +146,18 @@ class StoreBizApp extends React.PureComponent {
     const {LossAssessmentRecordSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "定损记录",
+      role: "lossAssessmentRecord",
       data: state._store.lossAssessmentRecordList,
       count: state._store.lossAssessmentRecordCount,
       currentPage: state._store.lossAssessmentRecordCurrentPageNumber,
       searchFormParameters: state._store.lossAssessmentRecordSearchFormParameters,
       loading: state._store.loading,
       partialList: state._store.partialList,
-      owner: { type: '_store', id: state._store.id, referenceName: 'recordStore', listName: 'lossAssessmentRecordList', ref:state._store, listDisplayName: '定损记录列表' }, // this is for model namespace and
+      owner: { type: '_store', id: state._store.id, 
+      referenceName: 'recordStore', 
+      listName: 'lossAssessmentRecordList', ref:state._store, 
+      listDisplayName: '定损记录列表' }, // this is for model namespace and
     }))(LossAssessmentRecordSearch)
   }
   getLossAssessmentRecordCreateForm = () => {
@@ -181,13 +186,18 @@ class StoreBizApp extends React.PureComponent {
     const {PrinterSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "打印机",
+      role: "printer",
       data: state._store.printerList,
       count: state._store.printerCount,
       currentPage: state._store.printerCurrentPageNumber,
       searchFormParameters: state._store.printerSearchFormParameters,
       loading: state._store.loading,
       partialList: state._store.partialList,
-      owner: { type: '_store', id: state._store.id, referenceName: 'store', listName: 'printerList', ref:state._store, listDisplayName: '打印机列表' }, // this is for model namespace and
+      owner: { type: '_store', id: state._store.id, 
+      referenceName: 'store', 
+      listName: 'printerList', ref:state._store, 
+      listDisplayName: '打印机列表' }, // this is for model namespace and
     }))(PrinterSearch)
   }
   getPrinterCreateForm = () => {
@@ -216,13 +226,18 @@ class StoreBizApp extends React.PureComponent {
     const {BookCopySearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "书籍副本",
+      role: "bookCopy",
       data: state._store.bookCopyList,
       count: state._store.bookCopyCount,
       currentPage: state._store.bookCopyCurrentPageNumber,
       searchFormParameters: state._store.bookCopySearchFormParameters,
       loading: state._store.loading,
       partialList: state._store.partialList,
-      owner: { type: '_store', id: state._store.id, referenceName: 'locationStore', listName: 'bookCopyList', ref:state._store, listDisplayName: '书籍副本列表' }, // this is for model namespace and
+      owner: { type: '_store', id: state._store.id, 
+      referenceName: 'locationStore', 
+      listName: 'bookCopyList', ref:state._store, 
+      listDisplayName: '书籍副本列表' }, // this is for model namespace and
     }))(BookCopySearch)
   }
   getBookCopyCreateForm = () => {
@@ -251,13 +266,18 @@ class StoreBizApp extends React.PureComponent {
     const {BookCopyTransferSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "图书副本迁移记录(原网点)",
+      role: "bookCopyTransferAsOriginalStore",
       data: state._store.bookCopyTransferListAsOriginalStore,
       count: state._store.bookCopyTransferAsOriginalStoreCount,
       currentPage: state._store.bookCopyTransferAsOriginalStoreCurrentPageNumber,
       searchFormParameters: state._store.bookCopyTransferAsOriginalStoreSearchFormParameters,
       loading: state._store.loading,
       partialList: state._store.partialList,
-      owner: { type: '_store', id: state._store.id, referenceName: 'originalStore', listName: 'bookCopyTransferListAsOriginalStore', ref:state._store, listDisplayName: '图书副本迁移记录列表' }, // this is for model namespace and
+      owner: { type: '_store', id: state._store.id, 
+      referenceName: 'originalStore', 
+      listName: 'bookCopyTransferListAsOriginalStore', ref:state._store, 
+      listDisplayName: '图书副本迁移记录(原网点)列表' }, // this is for model namespace and
     }))(BookCopyTransferSearch)
   }
   getBookCopyTransferAsOriginalStoreCreateForm = () => {
@@ -286,13 +306,18 @@ class StoreBizApp extends React.PureComponent {
     const {BookCopyTransferSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "图书副本迁移记录(新网点)",
+      role: "bookCopyTransferAsNewStore",
       data: state._store.bookCopyTransferListAsNewStore,
       count: state._store.bookCopyTransferAsNewStoreCount,
       currentPage: state._store.bookCopyTransferAsNewStoreCurrentPageNumber,
       searchFormParameters: state._store.bookCopyTransferAsNewStoreSearchFormParameters,
       loading: state._store.loading,
       partialList: state._store.partialList,
-      owner: { type: '_store', id: state._store.id, referenceName: 'newStore', listName: 'bookCopyTransferListAsNewStore', ref:state._store, listDisplayName: '图书副本迁移记录列表' }, // this is for model namespace and
+      owner: { type: '_store', id: state._store.id, 
+      referenceName: 'newStore', 
+      listName: 'bookCopyTransferListAsNewStore', ref:state._store, 
+      listDisplayName: '图书副本迁移记录(新网点)列表' }, // this is for model namespace and
     }))(BookCopyTransferSearch)
   }
   getBookCopyTransferAsNewStoreCreateForm = () => {
@@ -321,13 +346,18 @@ class StoreBizApp extends React.PureComponent {
     const {BookTakeStockPlanSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "图书盘点计划",
+      role: "bookTakeStockPlan",
       data: state._store.bookTakeStockPlanList,
       count: state._store.bookTakeStockPlanCount,
       currentPage: state._store.bookTakeStockPlanCurrentPageNumber,
       searchFormParameters: state._store.bookTakeStockPlanSearchFormParameters,
       loading: state._store.loading,
       partialList: state._store.partialList,
-      owner: { type: '_store', id: state._store.id, referenceName: 'store', listName: 'bookTakeStockPlanList', ref:state._store, listDisplayName: '图书盘点计划列表' }, // this is for model namespace and
+      owner: { type: '_store', id: state._store.id, 
+      referenceName: 'store', 
+      listName: 'bookTakeStockPlanList', ref:state._store, 
+      listDisplayName: '图书盘点计划列表' }, // this is for model namespace and
     }))(BookTakeStockPlanSearch)
   }
   getBookTakeStockPlanCreateForm = () => {
@@ -356,13 +386,18 @@ class StoreBizApp extends React.PureComponent {
     const {BookCopyOperationRecordSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "书籍副本操作记录",
+      role: "bookCopyOperationRecord",
       data: state._store.bookCopyOperationRecordList,
       count: state._store.bookCopyOperationRecordCount,
       currentPage: state._store.bookCopyOperationRecordCurrentPageNumber,
       searchFormParameters: state._store.bookCopyOperationRecordSearchFormParameters,
       loading: state._store.loading,
       partialList: state._store.partialList,
-      owner: { type: '_store', id: state._store.id, referenceName: 'operateStore', listName: 'bookCopyOperationRecordList', ref:state._store, listDisplayName: '书籍副本操作记录列表' }, // this is for model namespace and
+      owner: { type: '_store', id: state._store.id, 
+      referenceName: 'operateStore', 
+      listName: 'bookCopyOperationRecordList', ref:state._store, 
+      listDisplayName: '书籍副本操作记录列表' }, // this is for model namespace and
     }))(BookCopyOperationRecordSearch)
   }
   getBookCopyOperationRecordCreateForm = () => {
@@ -391,13 +426,18 @@ class StoreBizApp extends React.PureComponent {
     const {BorrowingHistorySearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "图书借还历史(借出网点)",
+      role: "borrowingHistoryAsLendingStore",
       data: state._store.borrowingHistoryListAsLendingStore,
       count: state._store.borrowingHistoryAsLendingStoreCount,
       currentPage: state._store.borrowingHistoryAsLendingStoreCurrentPageNumber,
       searchFormParameters: state._store.borrowingHistoryAsLendingStoreSearchFormParameters,
       loading: state._store.loading,
       partialList: state._store.partialList,
-      owner: { type: '_store', id: state._store.id, referenceName: 'lendingStore', listName: 'borrowingHistoryListAsLendingStore', ref:state._store, listDisplayName: '图书借还历史列表' }, // this is for model namespace and
+      owner: { type: '_store', id: state._store.id, 
+      referenceName: 'lendingStore', 
+      listName: 'borrowingHistoryListAsLendingStore', ref:state._store, 
+      listDisplayName: '图书借还历史(借出网点)列表' }, // this is for model namespace and
     }))(BorrowingHistorySearch)
   }
   getBorrowingHistoryAsLendingStoreCreateForm = () => {
@@ -426,13 +466,18 @@ class StoreBizApp extends React.PureComponent {
     const {BorrowingHistorySearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "图书借还历史(还书网点)",
+      role: "borrowingHistoryAsReturnStore",
       data: state._store.borrowingHistoryListAsReturnStore,
       count: state._store.borrowingHistoryAsReturnStoreCount,
       currentPage: state._store.borrowingHistoryAsReturnStoreCurrentPageNumber,
       searchFormParameters: state._store.borrowingHistoryAsReturnStoreSearchFormParameters,
       loading: state._store.loading,
       partialList: state._store.partialList,
-      owner: { type: '_store', id: state._store.id, referenceName: 'returnStore', listName: 'borrowingHistoryListAsReturnStore', ref:state._store, listDisplayName: '图书借还历史列表' }, // this is for model namespace and
+      owner: { type: '_store', id: state._store.id, 
+      referenceName: 'returnStore', 
+      listName: 'borrowingHistoryListAsReturnStore', ref:state._store, 
+      listDisplayName: '图书借还历史(还书网点)列表' }, // this is for model namespace and
     }))(BorrowingHistorySearch)
   }
   getBorrowingHistoryAsReturnStoreCreateForm = () => {
@@ -461,13 +506,18 @@ class StoreBizApp extends React.PureComponent {
     const {BorrowingExpiredSkuSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "借书超期费(借出网点)",
+      role: "borrowingExpiredSkuAsLendingStore",
       data: state._store.borrowingExpiredSkuListAsLendingStore,
       count: state._store.borrowingExpiredSkuAsLendingStoreCount,
       currentPage: state._store.borrowingExpiredSkuAsLendingStoreCurrentPageNumber,
       searchFormParameters: state._store.borrowingExpiredSkuAsLendingStoreSearchFormParameters,
       loading: state._store.loading,
       partialList: state._store.partialList,
-      owner: { type: '_store', id: state._store.id, referenceName: 'lendingStore', listName: 'borrowingExpiredSkuListAsLendingStore', ref:state._store, listDisplayName: '借书超期费列表' }, // this is for model namespace and
+      owner: { type: '_store', id: state._store.id, 
+      referenceName: 'lendingStore', 
+      listName: 'borrowingExpiredSkuListAsLendingStore', ref:state._store, 
+      listDisplayName: '借书超期费(借出网点)列表' }, // this is for model namespace and
     }))(BorrowingExpiredSkuSearch)
   }
   getBorrowingExpiredSkuAsLendingStoreCreateForm = () => {
@@ -496,13 +546,18 @@ class StoreBizApp extends React.PureComponent {
     const {BorrowingExpiredSkuSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "借书超期费(还书网点)",
+      role: "borrowingExpiredSkuAsReturnStore",
       data: state._store.borrowingExpiredSkuListAsReturnStore,
       count: state._store.borrowingExpiredSkuAsReturnStoreCount,
       currentPage: state._store.borrowingExpiredSkuAsReturnStoreCurrentPageNumber,
       searchFormParameters: state._store.borrowingExpiredSkuAsReturnStoreSearchFormParameters,
       loading: state._store.loading,
       partialList: state._store.partialList,
-      owner: { type: '_store', id: state._store.id, referenceName: 'returnStore', listName: 'borrowingExpiredSkuListAsReturnStore', ref:state._store, listDisplayName: '借书超期费列表' }, // this is for model namespace and
+      owner: { type: '_store', id: state._store.id, 
+      referenceName: 'returnStore', 
+      listName: 'borrowingExpiredSkuListAsReturnStore', ref:state._store, 
+      listDisplayName: '借书超期费(还书网点)列表' }, // this is for model namespace and
     }))(BorrowingExpiredSkuSearch)
   }
   getBorrowingExpiredSkuAsReturnStoreCreateForm = () => {
@@ -531,13 +586,18 @@ class StoreBizApp extends React.PureComponent {
     const {BookCopySharingApplicationSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "图书共享申请",
+      role: "bookCopySharingApplication",
       data: state._store.bookCopySharingApplicationList,
       count: state._store.bookCopySharingApplicationCount,
       currentPage: state._store.bookCopySharingApplicationCurrentPageNumber,
       searchFormParameters: state._store.bookCopySharingApplicationSearchFormParameters,
       loading: state._store.loading,
       partialList: state._store.partialList,
-      owner: { type: '_store', id: state._store.id, referenceName: 'destinationStore', listName: 'bookCopySharingApplicationList', ref:state._store, listDisplayName: '图书共享申请列表' }, // this is for model namespace and
+      owner: { type: '_store', id: state._store.id, 
+      referenceName: 'destinationStore', 
+      listName: 'bookCopySharingApplicationList', ref:state._store, 
+      listDisplayName: '图书共享申请列表' }, // this is for model namespace and
     }))(BookCopySharingApplicationSearch)
   }
   getBookCopySharingApplicationCreateForm = () => {
@@ -566,13 +626,18 @@ class StoreBizApp extends React.PureComponent {
     const {MemberServiceRevenueSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "会员服务收益",
+      role: "memberServiceRevenue",
       data: state._store.memberServiceRevenueList,
       count: state._store.memberServiceRevenueCount,
       currentPage: state._store.memberServiceRevenueCurrentPageNumber,
       searchFormParameters: state._store.memberServiceRevenueSearchFormParameters,
       loading: state._store.loading,
       partialList: state._store.partialList,
-      owner: { type: '_store', id: state._store.id, referenceName: 'store', listName: 'memberServiceRevenueList', ref:state._store, listDisplayName: '会员服务收益列表' }, // this is for model namespace and
+      owner: { type: '_store', id: state._store.id, 
+      referenceName: 'store', 
+      listName: 'memberServiceRevenueList', ref:state._store, 
+      listDisplayName: '会员服务收益列表' }, // this is for model namespace and
     }))(MemberServiceRevenueSearch)
   }
   getMemberServiceRevenueCreateForm = () => {
@@ -601,13 +666,18 @@ class StoreBizApp extends React.PureComponent {
     const {StoreAccountSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "网点账户",
+      role: "storeAccount",
       data: state._store.storeAccountList,
       count: state._store.storeAccountCount,
       currentPage: state._store.storeAccountCurrentPageNumber,
       searchFormParameters: state._store.storeAccountSearchFormParameters,
       loading: state._store.loading,
       partialList: state._store.partialList,
-      owner: { type: '_store', id: state._store.id, referenceName: 'store', listName: 'storeAccountList', ref:state._store, listDisplayName: '网点账户列表' }, // this is for model namespace and
+      owner: { type: '_store', id: state._store.id, 
+      referenceName: 'store', 
+      listName: 'storeAccountList', ref:state._store, 
+      listDisplayName: '网点账户列表' }, // this is for model namespace and
     }))(StoreAccountSearch)
   }
   getStoreAccountCreateForm = () => {
@@ -636,13 +706,18 @@ class StoreBizApp extends React.PureComponent {
     const {StoreSlideSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "网点海报",
+      role: "storeSlide",
       data: state._store.storeSlideList,
       count: state._store.storeSlideCount,
       currentPage: state._store.storeSlideCurrentPageNumber,
       searchFormParameters: state._store.storeSlideSearchFormParameters,
       loading: state._store.loading,
       partialList: state._store.partialList,
-      owner: { type: '_store', id: state._store.id, referenceName: 'store', listName: 'storeSlideList', ref:state._store, listDisplayName: '网点海报列表' }, // this is for model namespace and
+      owner: { type: '_store', id: state._store.id, 
+      referenceName: 'store', 
+      listName: 'storeSlideList', ref:state._store, 
+      listDisplayName: '网点海报列表' }, // this is for model namespace and
     }))(StoreSlideSearch)
   }
   getStoreSlideCreateForm = () => {
@@ -671,13 +746,18 @@ class StoreBizApp extends React.PureComponent {
     const {CampaignSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "活动",
+      role: "campaign",
       data: state._store.campaignList,
       count: state._store.campaignCount,
       currentPage: state._store.campaignCurrentPageNumber,
       searchFormParameters: state._store.campaignSearchFormParameters,
       loading: state._store.loading,
       partialList: state._store.partialList,
-      owner: { type: '_store', id: state._store.id, referenceName: 'publishStore', listName: 'campaignList', ref:state._store, listDisplayName: '活动列表' }, // this is for model namespace and
+      owner: { type: '_store', id: state._store.id, 
+      referenceName: 'publishStore', 
+      listName: 'campaignList', ref:state._store, 
+      listDisplayName: '活动列表' }, // this is for model namespace and
     }))(CampaignSearch)
   }
   getCampaignCreateForm = () => {
@@ -706,13 +786,18 @@ class StoreBizApp extends React.PureComponent {
     const {CustomerSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "用户",
+      role: "customer",
       data: state._store.customerList,
       count: state._store.customerCount,
       currentPage: state._store.customerCurrentPageNumber,
       searchFormParameters: state._store.customerSearchFormParameters,
       loading: state._store.loading,
       partialList: state._store.partialList,
-      owner: { type: '_store', id: state._store.id, referenceName: 'favouriteStore', listName: 'customerList', ref:state._store, listDisplayName: '用户列表' }, // this is for model namespace and
+      owner: { type: '_store', id: state._store.id, 
+      referenceName: 'favouriteStore', 
+      listName: 'customerList', ref:state._store, 
+      listDisplayName: '用户列表' }, // this is for model namespace and
     }))(CustomerSearch)
   }
   getCustomerCreateForm = () => {
@@ -741,13 +826,18 @@ class StoreBizApp extends React.PureComponent {
     const {EmployeeWorkingStoreSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "员工工作的网点",
+      role: "employeeWorkingStore",
       data: state._store.employeeWorkingStoreList,
       count: state._store.employeeWorkingStoreCount,
       currentPage: state._store.employeeWorkingStoreCurrentPageNumber,
       searchFormParameters: state._store.employeeWorkingStoreSearchFormParameters,
       loading: state._store.loading,
       partialList: state._store.partialList,
-      owner: { type: '_store', id: state._store.id, referenceName: 'store', listName: 'employeeWorkingStoreList', ref:state._store, listDisplayName: '员工工作的网点列表' }, // this is for model namespace and
+      owner: { type: '_store', id: state._store.id, 
+      referenceName: 'store', 
+      listName: 'employeeWorkingStoreList', ref:state._store, 
+      listDisplayName: '员工工作的网点列表' }, // this is for model namespace and
     }))(EmployeeWorkingStoreSearch)
   }
   getEmployeeWorkingStoreCreateForm = () => {

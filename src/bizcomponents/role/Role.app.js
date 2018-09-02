@@ -146,13 +146,18 @@ class RoleBizApp extends React.PureComponent {
     const {EmployeeWorkingStoreSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "员工工作的网点",
+      role: "employeeWorkingStore",
       data: state._role.employeeWorkingStoreList,
       count: state._role.employeeWorkingStoreCount,
       currentPage: state._role.employeeWorkingStoreCurrentPageNumber,
       searchFormParameters: state._role.employeeWorkingStoreSearchFormParameters,
       loading: state._role.loading,
       partialList: state._role.partialList,
-      owner: { type: '_role', id: state._role.id, referenceName: 'role', listName: 'employeeWorkingStoreList', ref:state._role, listDisplayName: '员工工作的网点列表' }, // this is for model namespace and
+      owner: { type: '_role', id: state._role.id, 
+      referenceName: 'role', 
+      listName: 'employeeWorkingStoreList', ref:state._role, 
+      listDisplayName: '员工工作的网点列表' }, // this is for model namespace and
     }))(EmployeeWorkingStoreSearch)
   }
   getEmployeeWorkingStoreCreateForm = () => {

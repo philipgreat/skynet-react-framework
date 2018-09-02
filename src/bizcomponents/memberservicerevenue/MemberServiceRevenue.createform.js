@@ -17,14 +17,14 @@ const testValues = {};
 /*
 const testValues = {
   memberName: '张三',
-  serviceStartDate: '2016-07-14',
-  serviceEndDate: '2017-06-14',
-  monthlyServiceFee: '18.88',
+  serviceStartDate: '2017-12-30',
+  serviceEndDate: '2016-09-29',
+  monthlyServiceFee: '15.03',
   storeName: '书香社区慕和南道店',
   storeServiceCount: '0',
   totalServiceCount: '0',
   storeServiceRevenueRate: '80%',
-  storeServiceRevenue: '7.70',
+  storeServiceRevenue: '6.02',
   memberId: 'C000001',
   storeId: 'S000001',
   mainOrderId: 'MO000001',

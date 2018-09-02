@@ -21,8 +21,9 @@ const load = (targetObjectId, parameters) => {
 
 
 
+
 const addSecUser = (targetObjectId, parameters) => {
-  const url = `${PREFIX}userDomainManager/addSecUser/domainId/login/mobile/email/pwd/verificationCode/verificationCodeExpire/lastLoginTime/tokensExpr/`
+  const url = `${PREFIX}userDomainManager/addSecUser /domainId/login/mobile/email/pwd/verificationCode/verificationCodeExpire/lastLoginTime/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }

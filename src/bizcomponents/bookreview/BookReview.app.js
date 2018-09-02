@@ -146,13 +146,18 @@ class BookReviewBizApp extends React.PureComponent {
     const {BookReviewLikeSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "书评点赞",
+      role: "bookReviewLike",
       data: state._bookReview.bookReviewLikeList,
       count: state._bookReview.bookReviewLikeCount,
       currentPage: state._bookReview.bookReviewLikeCurrentPageNumber,
       searchFormParameters: state._bookReview.bookReviewLikeSearchFormParameters,
       loading: state._bookReview.loading,
       partialList: state._bookReview.partialList,
-      owner: { type: '_bookReview', id: state._bookReview.id, referenceName: 'bookReview', listName: 'bookReviewLikeList', ref:state._bookReview, listDisplayName: '书评点赞列表' }, // this is for model namespace and
+      owner: { type: '_bookReview', id: state._bookReview.id, 
+      referenceName: 'bookReview', 
+      listName: 'bookReviewLikeList', ref:state._bookReview, 
+      listDisplayName: '书评点赞列表' }, // this is for model namespace and
     }))(BookReviewLikeSearch)
   }
   getBookReviewLikeCreateForm = () => {
@@ -181,13 +186,18 @@ class BookReviewBizApp extends React.PureComponent {
     const {InformSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "举报",
+      role: "inform",
       data: state._bookReview.informList,
       count: state._bookReview.informCount,
       currentPage: state._bookReview.informCurrentPageNumber,
       searchFormParameters: state._bookReview.informSearchFormParameters,
       loading: state._bookReview.loading,
       partialList: state._bookReview.partialList,
-      owner: { type: '_bookReview', id: state._bookReview.id, referenceName: 'bookReview', listName: 'informList', ref:state._bookReview, listDisplayName: '举报列表' }, // this is for model namespace and
+      owner: { type: '_bookReview', id: state._bookReview.id, 
+      referenceName: 'bookReview', 
+      listName: 'informList', ref:state._bookReview, 
+      listDisplayName: '举报列表' }, // this is for model namespace and
     }))(InformSearch)
   }
   getInformCreateForm = () => {

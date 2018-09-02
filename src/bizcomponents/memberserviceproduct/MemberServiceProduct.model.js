@@ -103,6 +103,9 @@ export default {
       yield put(routerRedux.push(`/memberServiceProduct/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addMemberServiceBundleSku({ payload }, { call, put }) {
       const {MemberServiceProductService} = GlobalComponents;
 
@@ -175,9 +178,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `memberServiceProduct/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addStoreSlide({ payload }, { call, put }) {
       const {MemberServiceProductService} = GlobalComponents;
@@ -251,9 +256,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `memberServiceProduct/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addCustomer({ payload }, { call, put }) {
       const {MemberServiceProductService} = GlobalComponents;
@@ -327,8 +334,7 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `memberServiceProduct/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

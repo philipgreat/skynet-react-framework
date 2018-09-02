@@ -103,6 +103,9 @@ export default {
       yield put(routerRedux.push(`/bookPlaza/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addBookRecommend({ payload }, { call, put }) {
       const {BookPlazaService} = GlobalComponents;
 
@@ -175,9 +178,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookPlaza/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBookSharingIncomeMetric({ payload }, { call, put }) {
       const {BookPlazaService} = GlobalComponents;
@@ -251,9 +256,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookPlaza/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBookDonationIncomeMetric({ payload }, { call, put }) {
       const {BookPlazaService} = GlobalComponents;
@@ -327,9 +334,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookPlaza/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addMemberServiceIncomeMetric({ payload }, { call, put }) {
       const {BookPlazaService} = GlobalComponents;
@@ -403,9 +412,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookPlaza/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBook({ payload }, { call, put }) {
       const {BookPlazaService} = GlobalComponents;
@@ -479,9 +490,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookPlaza/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBookCopyStatus({ payload }, { call, put }) {
       const {BookPlazaService} = GlobalComponents;
@@ -555,9 +568,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookPlaza/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBookReview({ payload }, { call, put }) {
       const {BookPlazaService} = GlobalComponents;
@@ -631,8 +646,7 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookPlaza/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

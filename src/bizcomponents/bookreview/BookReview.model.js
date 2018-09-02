@@ -103,6 +103,9 @@ export default {
       yield put(routerRedux.push(`/bookReview/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addBookReviewLike({ payload }, { call, put }) {
       const {BookReviewService} = GlobalComponents;
 
@@ -175,9 +178,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookReview/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addInform({ payload }, { call, put }) {
       const {BookReviewService} = GlobalComponents;
@@ -251,8 +256,7 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `bookReview/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

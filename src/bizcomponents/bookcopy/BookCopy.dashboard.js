@@ -244,8 +244,11 @@ const internalSubListsOf = (cardsData) =>{
            {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="gear"  />&nbsp;管理</Link></p>
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.type}CreateForm`}><FontAwesome name="plus"  />&nbsp;新增</Link></p>              
+              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
+              
+              {item.addFunction&&(<Link to={`///list/CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              
+              </p>         
           </Card> </Badge>
             </Col>))}
           </Row>)
@@ -317,13 +320,13 @@ class BookCopyDashboard extends Component {
     const { id,displayName, lossAssessmentRecordCount, bookCopyTransferCount, bookTakeStockResultCount, bookCopyOperationRecordCount, borrowingHistoryCount, borrowingExpiredSkuCount, bookReviewCount } = this.props.bookCopy
     const cardsData = {cardsName:"书籍副本",cardsFor: "bookCopy",cardsSource: this.props.bookCopy,
   		subItems: [
-{name: 'lossAssessmentRecordList', displayName:'定损记录',type:'lossAssessmentRecord',count:lossAssessmentRecordCount},
-{name: 'bookCopyTransferList', displayName:'图书副本迁移记录',type:'bookCopyTransfer',count:bookCopyTransferCount},
-{name: 'bookTakeStockResultList', displayName:'图书盘点结果',type:'bookTakeStockResult',count:bookTakeStockResultCount},
-{name: 'bookCopyOperationRecordList', displayName:'书籍副本操作记录',type:'bookCopyOperationRecord',count:bookCopyOperationRecordCount},
-{name: 'borrowingHistoryList', displayName:'图书借还历史',type:'borrowingHistory',count:borrowingHistoryCount},
-{name: 'borrowingExpiredSkuList', displayName:'借书超期费',type:'borrowingExpiredSku',count:borrowingExpiredSkuCount},
-{name: 'bookReviewList', displayName:'书评',type:'bookReview',count:bookReviewCount},
+{name: 'lossAssessmentRecordList', displayName:'定损记录',type:'lossAssessmentRecord',count:lossAssessmentRecordCount,addFunction: true},
+{name: 'bookCopyTransferList', displayName:'图书副本迁移记录',type:'bookCopyTransfer',count:bookCopyTransferCount,addFunction: true},
+{name: 'bookTakeStockResultList', displayName:'图书盘点结果',type:'bookTakeStockResult',count:bookTakeStockResultCount,addFunction: false},
+{name: 'bookCopyOperationRecordList', displayName:'书籍副本操作记录',type:'bookCopyOperationRecord',count:bookCopyOperationRecordCount,addFunction: false},
+{name: 'borrowingHistoryList', displayName:'图书借还历史',type:'borrowingHistory',count:borrowingHistoryCount,addFunction: false},
+{name: 'borrowingExpiredSkuList', displayName:'借书超期费',type:'borrowingExpiredSku',count:borrowingExpiredSkuCount,addFunction: true},
+{name: 'bookReviewList', displayName:'书评',type:'bookReview',count:bookReviewCount,addFunction: true},
     
       	],
   	};

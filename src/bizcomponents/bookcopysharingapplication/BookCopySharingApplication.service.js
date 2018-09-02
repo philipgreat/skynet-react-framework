@@ -18,38 +18,6 @@ const load = (targetObjectId, parameters) => {
 
 
 
-const requestCandidateDeliverMethod = (ownerClass, id, filterKey, pageNo) => {
-  //const parametersExpr = joinParameters(parameters)
-  return get({
-    url: `${PREFIX}bookCopySharingApplicationManager/requestCandidateDeliverMethod/${ownerClass}/${id}/${filterKey}/${pageNo}/`,
-  })
-}	
-
-const transferToAnotherDeliverMethod = (id, parameters) => {
-  //const parametersExpr = joinParameters(parameters)
-  const url = `${PREFIX}bookCopySharingApplicationManager/transferToAnotherDeliverMethod/id/anotherDeliverMethodId/`
-  const requestParameters = {id, ...parameters}
-  return postForm({url,requestParameters})
-}
-
-
-
-const requestCandidateDestinationStore = (ownerClass, id, filterKey, pageNo) => {
-  //const parametersExpr = joinParameters(parameters)
-  return get({
-    url: `${PREFIX}bookCopySharingApplicationManager/requestCandidateDestinationStore/${ownerClass}/${id}/${filterKey}/${pageNo}/`,
-  })
-}	
-
-const transferToAnotherDestinationStore = (id, parameters) => {
-  //const parametersExpr = joinParameters(parameters)
-  const url = `${PREFIX}bookCopySharingApplicationManager/transferToAnotherDestinationStore/id/anotherDestinationStoreId/`
-  const requestParameters = {id, ...parameters}
-  return postForm({url,requestParameters})
-}
-
-
-
 const requestCandidateApplicationStatus = (ownerClass, id, filterKey, pageNo) => {
   //const parametersExpr = joinParameters(parameters)
   return get({
@@ -60,6 +28,22 @@ const requestCandidateApplicationStatus = (ownerClass, id, filterKey, pageNo) =>
 const transferToAnotherApplicationStatus = (id, parameters) => {
   //const parametersExpr = joinParameters(parameters)
   const url = `${PREFIX}bookCopySharingApplicationManager/transferToAnotherApplicationStatus/id/anotherApplicationStatusId/`
+  const requestParameters = {id, ...parameters}
+  return postForm({url,requestParameters})
+}
+
+
+
+const requestCandidateDeliverMethod = (ownerClass, id, filterKey, pageNo) => {
+  //const parametersExpr = joinParameters(parameters)
+  return get({
+    url: `${PREFIX}bookCopySharingApplicationManager/requestCandidateDeliverMethod/${ownerClass}/${id}/${filterKey}/${pageNo}/`,
+  })
+}	
+
+const transferToAnotherDeliverMethod = (id, parameters) => {
+  //const parametersExpr = joinParameters(parameters)
+  const url = `${PREFIX}bookCopySharingApplicationManager/transferToAnotherDeliverMethod/id/anotherDeliverMethodId/`
   const requestParameters = {id, ...parameters}
   return postForm({url,requestParameters})
 }
@@ -98,20 +82,36 @@ const transferToAnotherEmployee = (id, parameters) => {
 
 
 
+const requestCandidateDestinationStore = (ownerClass, id, filterKey, pageNo) => {
+  //const parametersExpr = joinParameters(parameters)
+  return get({
+    url: `${PREFIX}bookCopySharingApplicationManager/requestCandidateDestinationStore/${ownerClass}/${id}/${filterKey}/${pageNo}/`,
+  })
+}	
+
+const transferToAnotherDestinationStore = (id, parameters) => {
+  //const parametersExpr = joinParameters(parameters)
+  const url = `${PREFIX}bookCopySharingApplicationManager/transferToAnotherDestinationStore/id/anotherDestinationStoreId/`
+  const requestParameters = {id, ...parameters}
+  return postForm({url,requestParameters})
+}
+
+
+
 
 
 
 const BookCopySharingApplicationService = { view,
   load,
-  requestCandidateDeliverMethod,
-  requestCandidateDestinationStore,
   requestCandidateApplicationStatus,
+  requestCandidateDeliverMethod,
   requestCandidateCustomer,
   requestCandidateEmployee,
-  transferToAnotherDeliverMethod,
-  transferToAnotherDestinationStore,
+  requestCandidateDestinationStore,
   transferToAnotherApplicationStatus,
+  transferToAnotherDeliverMethod,
   transferToAnotherCustomer,
-  transferToAnotherEmployee }
+  transferToAnotherEmployee,
+  transferToAnotherDestinationStore }
 export default BookCopySharingApplicationService
 

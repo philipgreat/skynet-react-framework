@@ -37,8 +37,9 @@ const transferToAnotherAccountData = (id, parameters) => {
 
 
 
+
 const addPlatformAccountDetails = (targetObjectId, parameters) => {
-  const url = `${PREFIX}transactionTypeManager/addPlatformAccountDetails/transactionTypeId/summary/amount/platformAccountId/relatedMainOrderId/tokensExpr/`
+  const url = `${PREFIX}transactionTypeManager/addPlatformAccountDetails /transactionTypeId/summary/amount/platformAccountId/relatedMainOrderId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -57,8 +58,9 @@ const removePlatformAccountDetailsList = (targetObjectId, parameters) => {
 }
 
 
+
 const addFundationAccountDetails = (targetObjectId, parameters) => {
-  const url = `${PREFIX}transactionTypeManager/addFundationAccountDetails/transactionTypeId/summary/amount/fundationAccountId/relatedMainOrderId/tokensExpr/`
+  const url = `${PREFIX}transactionTypeManager/addFundationAccountDetails /transactionTypeId/summary/amount/fundationAccountId/relatedMainOrderId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -77,8 +79,9 @@ const removeFundationAccountDetailsList = (targetObjectId, parameters) => {
 }
 
 
+
 const addStoreAccountDetails = (targetObjectId, parameters) => {
-  const url = `${PREFIX}transactionTypeManager/addStoreAccountDetails/transactionTypeId/summary/amount/storeAccountId/relatedMainOrderId/tokensExpr/`
+  const url = `${PREFIX}transactionTypeManager/addStoreAccountDetails /transactionTypeId/summary/amount/storeAccountId/relatedMainOrderId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
@@ -97,8 +100,9 @@ const removeStoreAccountDetailsList = (targetObjectId, parameters) => {
 }
 
 
+
 const addCustomerAccountTransaction = (targetObjectId, parameters) => {
-  const url = `${PREFIX}transactionTypeManager/addCustomerAccountTransaction/transactionTypeId/summary/amount/balance/customerId/relatedMainOrderId/tokensExpr/`
+  const url = `${PREFIX}transactionTypeManager/addCustomerAccountTransaction /transactionTypeId/summary/amount/balance/customerId/relatedMainOrderId/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }

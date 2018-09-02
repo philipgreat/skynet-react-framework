@@ -157,13 +157,7 @@ class BorrowingHistorySearch extends PureComponent {
       payload: { id: owner.id, type: 'borrowingHistory', selectedRows, currentUpdateIndex },
     })
   }
-  
-  handleAddInput = (e) => {
-    this.setState({
-      addInputValue: e.target.value,
-    })
-  }
-
+ 
     
   handleCloseAlert = () => {
       const { dispatch, owner,location } = this.props;
@@ -172,19 +166,7 @@ class BorrowingHistorySearch extends PureComponent {
       dispatch({ type: `${owner.type}/view`, payload: { id: owner.id,pathname,displayName:'图书借还历史列表' } })
 
   };  
-    
-  handleAdd = () => {
-    this.props.dispatch({
-      type: 'rule/add',
-      payload: {
-        description: this.state.addInputValue,
-      },
-    })
-    message.success('添加成功')
-    this.setState({
-      modalVisible: false,
-    })
-  }
+ 
 
   render() {
     const { data, loading, count, currentPage, owner,partialList } = this.props;
@@ -240,17 +222,16 @@ class BorrowingHistorySearch extends PureComponent {
     }
     
     return (
-      <PageHeaderLayout title={`${displayName}: 图书借还历史列表`}>
+      <PageHeaderLayout title={`${displayName}:${this.props.name}列表`}>
         <Card bordered={false}>
           <div className={styles.tableList}>
             <div className={styles.tableListForm}>
               <BorrowingHistorySearchForm {...this.props} />
             </div>
             <div className={styles.tableListOperator}>
-              <Button icon="plus" type="primary" onClick={() => this.handleCreate()}>新建</Button>
-              <Button onClick={this.handleModalVisible} type="danger" icon="delete" disabled={selectedRows.length === 0}>批量删除</Button>
-              <Button onClick={this.handleUpdate} type="primary" icon="update" disabled={selectedRows.length === 0}>批量更新</Button>
+            
               
+               
                
               {partialList&&(
               <div className={styles.searchAlert}>

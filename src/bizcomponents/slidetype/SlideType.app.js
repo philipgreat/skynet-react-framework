@@ -146,13 +146,18 @@ class SlideTypeBizApp extends React.PureComponent {
     const {StoreSlideSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "网点海报",
+      role: "storeSlide",
       data: state._slideType.storeSlideList,
       count: state._slideType.storeSlideCount,
       currentPage: state._slideType.storeSlideCurrentPageNumber,
       searchFormParameters: state._slideType.storeSlideSearchFormParameters,
       loading: state._slideType.loading,
       partialList: state._slideType.partialList,
-      owner: { type: '_slideType', id: state._slideType.id, referenceName: 'slideType', listName: 'storeSlideList', ref:state._slideType, listDisplayName: '网点海报列表' }, // this is for model namespace and
+      owner: { type: '_slideType', id: state._slideType.id, 
+      referenceName: 'slideType', 
+      listName: 'storeSlideList', ref:state._slideType, 
+      listDisplayName: '网点海报列表' }, // this is for model namespace and
     }))(StoreSlideSearch)
   }
   getStoreSlideCreateForm = () => {

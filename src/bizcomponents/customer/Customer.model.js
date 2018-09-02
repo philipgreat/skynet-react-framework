@@ -103,6 +103,9 @@ export default {
       yield put(routerRedux.push(`/customer/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addPrivateMessage({ payload }, { call, put }) {
       const {CustomerService} = GlobalComponents;
 
@@ -175,9 +178,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `customer/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addLossAssessmentRecord({ payload }, { call, put }) {
       const {CustomerService} = GlobalComponents;
@@ -251,9 +256,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `customer/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addMainOrder({ payload }, { call, put }) {
       const {CustomerService} = GlobalComponents;
@@ -327,9 +334,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `customer/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBookCopy({ payload }, { call, put }) {
       const {CustomerService} = GlobalComponents;
@@ -403,9 +412,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `customer/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBorrowingHistory({ payload }, { call, put }) {
       const {CustomerService} = GlobalComponents;
@@ -479,9 +490,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `customer/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBorrowingExpiredSku({ payload }, { call, put }) {
       const {CustomerService} = GlobalComponents;
@@ -555,9 +568,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `customer/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBookReview({ payload }, { call, put }) {
       const {CustomerService} = GlobalComponents;
@@ -631,9 +646,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `customer/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBookReviewLike({ payload }, { call, put }) {
       const {CustomerService} = GlobalComponents;
@@ -707,9 +724,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `customer/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addBookCopySharingApplication({ payload }, { call, put }) {
       const {CustomerService} = GlobalComponents;
@@ -783,9 +802,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `customer/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addMemberServiceRevenue({ payload }, { call, put }) {
       const {CustomerService} = GlobalComponents;
@@ -859,9 +880,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `customer/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addCustomerAccountTransaction({ payload }, { call, put }) {
       const {CustomerService} = GlobalComponents;
@@ -935,9 +958,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `customer/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addCampaignRegisterHistory({ payload }, { call, put }) {
       const {CustomerService} = GlobalComponents;
@@ -1011,9 +1036,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `customer/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addCampaignReview({ payload }, { call, put }) {
       const {CustomerService} = GlobalComponents;
@@ -1087,9 +1114,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `customer/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addCampaignLike({ payload }, { call, put }) {
       const {CustomerService} = GlobalComponents;
@@ -1163,9 +1192,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `customer/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addCampaignReviewLike({ payload }, { call, put }) {
       const {CustomerService} = GlobalComponents;
@@ -1239,9 +1270,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `customer/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addCustomerFootprint({ payload }, { call, put }) {
       const {CustomerService} = GlobalComponents;
@@ -1315,16 +1348,18 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `customer/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
-    *addShieldCustomer({ payload }, { call, put }) {
+
+
+
+    *addShieldCustomerAsCustomer({ payload }, { call, put }) {
       const {CustomerService} = GlobalComponents;
 
       const { id, type, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
-      const data = yield call(CustomerService.addShieldCustomer, id, parameters)
+      const data = yield call(CustomerService.addShieldCustomerAsCustomer, id, parameters)
       if (hasError(data)) {
         handleServerError(data)
         return
@@ -1344,11 +1379,11 @@ export default {
       const location = { pathname: `/customer/${id}/list/${type}List/屏蔽用户列表`, state: newState }
       yield put(routerRedux.push(location))
     },
-    *updateShieldCustomer({ payload }, { call, put }) {
+    *updateShieldCustomerAsCustomer({ payload }, { call, put }) {
       const {CustomerService} = GlobalComponents;      
       const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
       console.log('get form parameters', parameters)
-      const data = yield call(CustomerService.updateShieldCustomer, id, parameters)
+      const data = yield call(CustomerService.updateShieldCustomerAsCustomer, id, parameters)
       if (hasError(data)) {
         handleServerError(data)
         return
@@ -1373,11 +1408,11 @@ export default {
       const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
       yield put({ type: 'updateState', payload: newPlayload })
     },
-    *removeShieldCustomerList({ payload }, { call, put }) {
+    *removeShieldCustomerListAsCustomer({ payload }, { call, put }) {
       const {CustomerService} = GlobalComponents; 
       const { id, type, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
-      const data = yield call(CustomerService.removeShieldCustomerList, id, parameters)
+      const data = yield call(CustomerService.removeShieldCustomerListAsCustomer, id, parameters)
       if (hasError(data)) {
         handleServerError(data)
         return
@@ -1391,9 +1426,89 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `customer/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
+
+    *addShieldCustomerAsShield({ payload }, { call, put }) {
+      const {CustomerService} = GlobalComponents;
+
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(CustomerService.addShieldCustomerAsShield, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+      yield put({ type: 'updateState', payload: newPlayload })
+      // yield put(routerRedux.push(`/customer/${id}/list/${type}CreateForm'))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      if (continueNext) {
+        return
+      }
+      const partialList = true
+      const newState = {...data, partialList}
+      const location = { pathname: `/customer/${id}/list/${type}List/屏蔽用户列表`, state: newState }
+      yield put(routerRedux.push(location))
+    },
+    *updateShieldCustomerAsShield({ payload }, { call, put }) {
+      const {CustomerService} = GlobalComponents;      
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(CustomerService.updateShieldCustomerAsShield, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const partialList = true
+      
+      const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
+      yield put({ type: 'updateState', payload: newPlayload })
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+      
+      if (continueNext) {
+        return
+      }
+      const location = { pathname: `/customer/${id}/list/${type}List/屏蔽用户列表`, state: newPlayload }
+      yield put(routerRedux.push(location))
+    },
+    *gotoNextShieldCustomerUpdateRow({ payload }, { call, put }) {
+      const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
+      const newPlayload = { ...payload, selectedRows, currentUpdateIndex }
+      yield put({ type: 'updateState', payload: newPlayload })
+    },
+    *removeShieldCustomerListAsShield({ payload }, { call, put }) {
+      const {CustomerService} = GlobalComponents; 
+      const { id, type, parameters, continueNext } = payload
+      console.log('get form parameters', parameters)
+      const data = yield call(CustomerService.removeShieldCustomerListAsShield, id, parameters)
+      if (hasError(data)) {
+        handleServerError(data)
+        return
+      }
+      const newPlayload = { ...payload, ...data }
+
+      yield put({ type: 'updateState', payload: newPlayload })
+        
+      // yield put(routerRedux.push(`/customer/${id}/list/${type}CreateForm`))
+      notification.success({
+        message: '执行成功',
+        description: '执行成功',
+      })
+
+    },
+
+
+
 
     *addInform({ payload }, { call, put }) {
       const {CustomerService} = GlobalComponents;
@@ -1467,9 +1582,11 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `customer/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addUndistributedProfit({ payload }, { call, put }) {
       const {CustomerService} = GlobalComponents;
@@ -1493,7 +1610,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/customer/${id}/list/${type}List/未分配利润列表`, state: newState }
+      const location = { pathname: `/customer/${id}/list/${type}List/未分割收入列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateUndistributedProfit({ payload }, { call, put }) {
@@ -1517,7 +1634,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/customer/${id}/list/${type}List/未分配利润列表`, state: newPlayload }
+      const location = { pathname: `/customer/${id}/list/${type}List/未分割收入列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextUndistributedProfitUpdateRow({ payload }, { call, put }) {
@@ -1543,8 +1660,7 @@ export default {
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `customer/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

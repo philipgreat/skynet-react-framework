@@ -317,7 +317,7 @@ class UndistributedProfitPreference extends Component {
   render() {
     // eslint-disable-next-line max-len
     const { id,displayName,  } = this.props.undistributedProfit
-    const cardsData = {cardsName:"未分配利润",cardsFor: "undistributedProfit",cardsSource: this.props.undistributedProfit,
+    const cardsData = {cardsName:"未分割收入",cardsFor: "undistributedProfit",cardsSource: this.props.undistributedProfit,
   		subItems: [
     
       	],

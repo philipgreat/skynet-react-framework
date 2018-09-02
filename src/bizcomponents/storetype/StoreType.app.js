@@ -146,13 +146,18 @@ class StoreTypeBizApp extends React.PureComponent {
     const {StoreSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "服务网点",
+      role: "store",
       data: state._storeType.storeList,
       count: state._storeType.storeCount,
       currentPage: state._storeType.storeCurrentPageNumber,
       searchFormParameters: state._storeType.storeSearchFormParameters,
       loading: state._storeType.loading,
       partialList: state._storeType.partialList,
-      owner: { type: '_storeType', id: state._storeType.id, referenceName: 'storeType', listName: 'storeList', ref:state._storeType, listDisplayName: '服务网点列表' }, // this is for model namespace and
+      owner: { type: '_storeType', id: state._storeType.id, 
+      referenceName: 'storeType', 
+      listName: 'storeList', ref:state._storeType, 
+      listDisplayName: '服务网点列表' }, // this is for model namespace and
     }))(StoreSearch)
   }
   getStoreCreateForm = () => {

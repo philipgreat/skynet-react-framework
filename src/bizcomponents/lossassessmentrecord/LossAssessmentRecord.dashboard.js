@@ -37,7 +37,7 @@ const topColResponsiveProps = {
 const internalImageListOf = (lossAssessmentRecord) =>{
 
   const imageList = [
-	   {"title":'损失图像',"imageLocation":lossAssessmentRecord.lossImage},
+	   {"title":'定损照片',"imageLocation":lossAssessmentRecord.lossImage},
 ]
   const filteredList = imageList.filter((item)=>item.imageLocation!=null)
   if(filteredList.length===0){
@@ -245,8 +245,11 @@ const internalSubListsOf = (cardsData) =>{
            {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="gear"  />&nbsp;管理</Link></p>
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.type}CreateForm`}><FontAwesome name="plus"  />&nbsp;新增</Link></p>              
+              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
+              
+              {item.addFunction&&(<Link to={`///list/CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              
+              </p>         
           </Card> </Badge>
             </Col>))}
           </Row>)
@@ -271,10 +274,10 @@ const internalSummaryOf = (lossAssessmentRecord,targetComponent) =>{
   style={{fontSize: 20,color:"red"}} />
 </Description>
 <Description term="定损备注">{lossAssessmentRecord.lossComment}</Description> 
-<Description term="书副本评估价格">{lossAssessmentRecord.bookCopyEvaluationPrice}</Description> 
-<Description term="损失的折扣">{lossAssessmentRecord.lossDiscount==null?"未分配":lossAssessmentRecord.lossDiscount.displayName}
+<Description term="评估价">{lossAssessmentRecord.bookCopyEvaluationPrice}</Description> 
+<Description term="定损折扣">{lossAssessmentRecord.lossDiscount==null?"未分配":lossAssessmentRecord.lossDiscount.displayName}
  <Icon type="swap" onClick={()=>
-  showTransferModel(targetComponent,"损失的折扣","lossDiscount","requestCandidateLossDiscount",
+  showTransferModel(targetComponent,"定损折扣","lossDiscount","requestCandidateLossDiscount",
 	      "transferToAnotherLossDiscount","anotherLossDiscountId",lossAssessmentRecord.lossDiscount?lossAssessmentRecord.lossDiscount.id:"")} 
   style={{fontSize: 20,color:"red"}} />
 </Description>

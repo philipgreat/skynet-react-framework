@@ -248,8 +248,11 @@ const internalSubListsOf = (cardsData) =>{
            {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="gear"  />&nbsp;管理</Link></p>
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.type}CreateForm`}><FontAwesome name="plus"  />&nbsp;新增</Link></p>              
+              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
+              
+              {item.addFunction&&(<Link to={`///list/CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              
+              </p>         
           </Card> </Badge>
             </Col>))}
           </Row>)
@@ -299,9 +302,9 @@ class MemberServiceProductDashboard extends Component {
     const { id,displayName, memberServiceBundleSkuCount, storeSlideCount, customerCount } = this.props.memberServiceProduct
     const cardsData = {cardsName:"会员服务产品",cardsFor: "memberServiceProduct",cardsSource: this.props.memberServiceProduct,
   		subItems: [
-{name: 'memberServiceBundleSkuList', displayName:'会员服务包',type:'memberServiceBundleSku',count:memberServiceBundleSkuCount},
-{name: 'storeSlideList', displayName:'网点海报',type:'storeSlide',count:storeSlideCount},
-{name: 'customerList', displayName:'用户',type:'customer',count:customerCount},
+{name: 'memberServiceBundleSkuList', displayName:'会员服务包',type:'memberServiceBundleSku',count:memberServiceBundleSkuCount,addFunction: true},
+{name: 'storeSlideList', displayName:'网点海报',type:'storeSlide',count:storeSlideCount,addFunction: true},
+{name: 'customerList', displayName:'用户',type:'customer',count:customerCount,addFunction: false},
     
       	],
   	};

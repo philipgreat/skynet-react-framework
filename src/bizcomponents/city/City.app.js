@@ -146,13 +146,18 @@ class CityBizApp extends React.PureComponent {
     const {StoreSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "服务网点",
+      role: "store",
       data: state._city.storeList,
       count: state._city.storeCount,
       currentPage: state._city.storeCurrentPageNumber,
       searchFormParameters: state._city.storeSearchFormParameters,
       loading: state._city.loading,
       partialList: state._city.partialList,
-      owner: { type: '_city', id: state._city.id, referenceName: 'city', listName: 'storeList', ref:state._city, listDisplayName: '服务网点列表' }, // this is for model namespace and
+      owner: { type: '_city', id: state._city.id, 
+      referenceName: 'city', 
+      listName: 'storeList', ref:state._city, 
+      listDisplayName: '服务网点列表' }, // this is for model namespace and
     }))(StoreSearch)
   }
   getStoreCreateForm = () => {

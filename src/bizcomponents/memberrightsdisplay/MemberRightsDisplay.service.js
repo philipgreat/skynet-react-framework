@@ -21,8 +21,9 @@ const load = (targetObjectId, parameters) => {
 
 
 
+
 const addMemberRightsDisplayItem = (targetObjectId, parameters) => {
-  const url = `${PREFIX}memberRightsDisplayManager/addMemberRightsDisplayItem/memberRightsId/image/summary/tokensExpr/`
+  const url = `${PREFIX}memberRightsDisplayManager/addMemberRightsDisplayItem /memberRightsId/image/summary/tokensExpr/`
   const requestParameters = { ...parameters, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }

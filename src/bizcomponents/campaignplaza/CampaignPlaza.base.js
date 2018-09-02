@@ -2,19 +2,75 @@
 import ImagePreview from '../../components/ImagePreview'
 import { Link } from 'dva/router'
 import moment from 'moment'
+
+
+
+
 const menuData = {menuName:"活动广场", menuFor: "campaignPlaza",
   		subItems: [
-  {name: 'campaignList', displayName:'活动', icon:'glass'},
+  {name: 'campaignList', displayName:'活动', icon:'500px'},
   
   		],
 }
 
+const renderTextCell=(value, record)=>{
 
+	if(!value){
+		return '';
+	}
+	if(value==null){
+		return '';
+	}
+	if(value.length>15){
+		return value.substring(0,15)+"...("+value.length+"字)"
+	}
+	return value
+	
+}
+
+const renderIdentifier=(value, record, targtObjectType)=>{
+
+	return (<Link to={`/${targtObjectType}/${value}/dashboard`}>{value}</Link>)
+	
+}
+
+const renderDateCell=(value, record)=>{
+	return moment(value).format('YYYY-MM-DD');
+}
+const renderDateTimeCell=(value, record)=>{
+	return moment(value).format('YYYY-MM-DD HH:mm');	
+}
+
+const renderImageCell=(value, record, title)=>{
+	return (<ImagePreview imageTitle={title} imageLocation={value} />)	
+}
+
+const renderMoneyCell=(value, record)=>{
+	if(!value){
+		return '空'
+	}
+	if(value == null){
+		return '空'
+	}
+	return (`￥${value.toFixed(2)}`)
+}
+
+const renderBooleanCell=(value, record)=>{
+
+	return  (value? '是' : '否')
+
+}
+
+const renderReferenceCell=(value, record)=>{
+
+	return (value ? value.displayName : '暂无') 
+
+}
 
 const displayColumns = [
-  { title: 'ID', debugtype: 'string', dataIndex: 'id', width: '20', render: (text, record)=>(<Link to={`/campaignPlaza/${text}/dashboard`}>{text}</Link>) },
-  { title: '名称', debugtype: 'string', dataIndex: 'name', width: '10' },
-  { title: '平台', dataIndex: 'platform', render: (text, record) => (record.platform ? record.platform.displayName : '暂无') },
+  { title: 'ID', debugtype: 'string', dataIndex: 'id', width: '20', render: (text, record)=>renderIdentifier(text,record,'campaignPlaza') },
+  { title: '名称', debugtype: 'string', dataIndex: 'name', width: '10',render: (text, record)=>renderTextCell(text,record) },
+  { title: '平台', dataIndex: 'platform', render: (text, record) => renderReferenceCell(text, record)},
 
 ]
 

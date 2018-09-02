@@ -6,6 +6,8 @@ import BookSharingPlatformBizApp from './booksharingplatform/BookSharingPlatform
 import EmployeeDashboard from './employee/Employee.dashboardex';
 import EmployeeBizApp from './employee/Employee.appex';
 
+import BookTakeStockPlanDashboard from './booktakestockplan/BookTakeStockPlan.dashboardex';
+import BookTakeStockPlanBizApp from './booktakestockplan/BookTakeStockPlan.appex';
 
 
 //CarInspectionPlatformDashboard,VehicleServiceCompanyEmployeeCreateForm,ProvinceCreateForm
@@ -14,7 +16,9 @@ const result = {
     StoreDashboard, StoreBizApp,
     BookSharingPlatformDashboard, BookSharingPlatformBizApp,
     EmployeeDashboard,
-    EmployeeBizApp
+    EmployeeBizApp,
+    BookTakeStockPlanDashboard,
+    BookTakeStockPlanBizApp
 };
 
 //const result={}

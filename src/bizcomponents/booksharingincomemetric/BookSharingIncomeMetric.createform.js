@@ -16,9 +16,9 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
-  vendorRate: '0.58',
-  lendingStoreRate: '0.07',
-  platformRate: '0.10',
+  vendorRate: '0.65',
+  lendingStoreRate: '0.14',
+  platformRate: '0.05',
   bookPlazaId: 'BP000001',
 }
 */

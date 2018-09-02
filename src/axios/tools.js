@@ -128,6 +128,12 @@ export const joinPostParameters = parameters => {
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
       const value = obj[key];
+      if(!value){
+        continue
+      }
+      if(value==null){
+        continue
+      }
       const postValue = formatPostData(value);
       if (!Array.isArray(value)) {
         arr.push(key + '=' + encodeURIComponent(postValue));

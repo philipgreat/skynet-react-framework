@@ -146,13 +146,18 @@ class FundationAccountBizApp extends React.PureComponent {
     const {FundationAccountDetailsSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "平台基金账户明细",
+      role: "fundationAccountDetails",
       data: state._fundationAccount.fundationAccountDetailsList,
       count: state._fundationAccount.fundationAccountDetailsCount,
       currentPage: state._fundationAccount.fundationAccountDetailsCurrentPageNumber,
       searchFormParameters: state._fundationAccount.fundationAccountDetailsSearchFormParameters,
       loading: state._fundationAccount.loading,
       partialList: state._fundationAccount.partialList,
-      owner: { type: '_fundationAccount', id: state._fundationAccount.id, referenceName: 'fundationAccount', listName: 'fundationAccountDetailsList', ref:state._fundationAccount, listDisplayName: '平台基金账户明细列表' }, // this is for model namespace and
+      owner: { type: '_fundationAccount', id: state._fundationAccount.id, 
+      referenceName: 'fundationAccount', 
+      listName: 'fundationAccountDetailsList', ref:state._fundationAccount, 
+      listDisplayName: '平台基金账户明细列表' }, // this is for model namespace and
     }))(FundationAccountDetailsSearch)
   }
   getFundationAccountDetailsCreateForm = () => {

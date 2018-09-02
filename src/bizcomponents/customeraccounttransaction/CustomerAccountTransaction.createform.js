@@ -17,8 +17,8 @@ const testValues = {};
 /*
 const testValues = {
   summary: '共享收益',
-  amount: '0.97',
-  balance: '0.90',
+  amount: '0.76',
+  balance: '0.76',
   transactionTypeId: 'TT000001',
   customerId: 'C000001',
   relatedMainOrderId: 'MO000001',

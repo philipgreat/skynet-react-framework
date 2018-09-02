@@ -290,7 +290,7 @@ class BookSharingPlatformPreference extends Component {
     const { id,displayName, lossDiscountCount, platformConfigurationCount, accountDataCount, cityCount, bookPlazaCount, memberServiceProductCount, mainOrderCount, bookCount, transferTypeCount, takeStockStatusCount, bookTakeStockStatusCount, takeStoreResultsCount, bookCopyOperateTypeCount, borrowingStatusCount, deliverMethodCount, applicationStatusCount, platformAccountCount, fundationAccountCount, storeTypeCount, storeCount, slideTypeCount, campaignPlazaCount, campaignStatusCount, customerCount, employeeCount, profitTypeCount, profitDistributeStateCount, undistributedProfitCount } = this.props.bookSharingPlatform
     const cardsData = {cardsName:"图书共享平台",cardsFor: "bookSharingPlatform",cardsSource: this.props.bookSharingPlatform,
   		subItems: [
-{name: 'lossDiscountList', displayName:'损失的折扣',type:'lossDiscount',count:lossDiscountCount},
+{name: 'lossDiscountList', displayName:'定损折扣',type:'lossDiscount',count:lossDiscountCount},
 {name: 'transferTypeList', displayName:'转移类型',type:'transferType',count:transferTypeCount},
 {name: 'takeStockStatusList', displayName:'盘点状态',type:'takeStockStatus',count:takeStockStatusCount},
 {name: 'bookTakeStockStatusList', displayName:'图书盘点状态',type:'bookTakeStockStatus',count:bookTakeStockStatusCount},
@@ -298,7 +298,7 @@ class BookSharingPlatformPreference extends Component {
 {name: 'bookCopyOperateTypeList', displayName:'书籍副本操作类型',type:'bookCopyOperateType',count:bookCopyOperateTypeCount},
 {name: 'borrowingStatusList', displayName:'借书状态',type:'borrowingStatus',count:borrowingStatusCount},
 {name: 'deliverMethodList', displayName:'共享方式',type:'deliverMethod',count:deliverMethodCount},
-{name: 'applicationStatusList', displayName:'应用程序状态',type:'applicationStatus',count:applicationStatusCount},
+{name: 'applicationStatusList', displayName:'申请状态',type:'applicationStatus',count:applicationStatusCount},
 {name: 'storeTypeList', displayName:'网点类型',type:'storeType',count:storeTypeCount},
 {name: 'slideTypeList', displayName:'海报类型',type:'slideType',count:slideTypeCount},
 {name: 'campaignStatusList', displayName:'活动状态',type:'campaignStatus',count:campaignStatusCount},

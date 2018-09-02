@@ -16,8 +16,8 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
-  storeRate: '0.57',
-  platformRate: '0.16',
+  storeRate: '0.66',
+  platformRate: '0.18',
   bookPlazaId: 'BP000001',
 }
 */
