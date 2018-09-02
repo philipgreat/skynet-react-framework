@@ -89,13 +89,13 @@ export default {
     
     
     *gotoCreateForm({ payload }, { put }) {
-      const { id, type } = payload
-      yield put(routerRedux.push(`/transferType/${id}/list/${type}CreateForm`))
+      const { id, role } = payload
+      yield put(routerRedux.push(`/transferType/${id}/list/${role}CreateForm`))
     },
     *gotoUpdateForm({ payload }, { put }) {
-      const { id, type, selectedRows, currentUpdateIndex } = payload
-      const state = { id, type, selectedRows, currentUpdateIndex }
-      const location = { pathname: `/transferType/${id}/list/${type}UpdateForm`, state }
+      const { id, role, selectedRows, currentUpdateIndex } = payload
+      const state = { id, role, selectedRows, currentUpdateIndex }
+      const location = { pathname: `/transferType/${id}/list/${role}UpdateForm`, state }
       yield put(routerRedux.push(location))
     },
     *goback({ payload }, { put }) {
@@ -109,7 +109,7 @@ export default {
     *addBookCopyTransfer({ payload }, { call, put }) {
       const {TransferTypeService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(TransferTypeService.addBookCopyTransfer, id, parameters)
       if (hasError(data)) {
@@ -118,7 +118,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/transferType/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/transferType/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -128,7 +128,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/transferType/${id}/list/${type}List/图书副本迁移记录列表`, state: newState }
+      const location = { pathname: `/transferType/${id}/list/\BookCopyTransferList/图书副本迁移记录列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateBookCopyTransfer({ payload }, { call, put }) {
@@ -152,7 +152,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/transferType/${id}/list/${type}List/图书副本迁移记录列表`, state: newPlayload }
+      const location = { pathname: `/transferType/${id}/list/\BookCopyTransferList/图书副本迁移记录列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextBookCopyTransferUpdateRow({ payload }, { call, put }) {
@@ -162,7 +162,7 @@ export default {
     },
     *removeBookCopyTransferList({ payload }, { call, put }) {
       const {TransferTypeService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(TransferTypeService.removeBookCopyTransferList, id, parameters)
       if (hasError(data)) {
@@ -173,7 +173,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/transferType/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',

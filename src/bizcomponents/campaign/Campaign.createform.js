@@ -17,12 +17,12 @@ const testValues = {};
 /*
 const testValues = {
   campaignName: '世界读书日读书活动',
-  campaignStartTime: '2016-02-19 16:24:41',
-  campaignFinishTime: '2015-11-26 09:58:56',
+  campaignStartTime: '2016-12-23 06:06:05',
+  campaignFinishTime: '2016-01-18 21:24:50',
   campaignHoldAddress: '成都市天府广场东侧新博物馆2楼李四光厅',
   registerDeadlineLeadHours: '1',
   minimumRegisterQuantity: '1',
-  availableRegisterQuantity: '404',
+  availableRegisterQuantity: '464',
   campaignStatusId: 'CS000001',
   publishStoreId: 'S000001',
   publishEmployeeId: 'E000001',
@@ -182,14 +182,22 @@ class CampaignCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = CampaignBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -201,9 +209,10 @@ class CampaignCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addCampaign`,
-          payload: { id: owner.id, type: 'campaign', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }

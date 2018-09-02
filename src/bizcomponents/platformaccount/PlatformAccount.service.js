@@ -55,8 +55,9 @@ const transferToAnotherAccountData = (id, parameters) => {
 
 
 const addPlatformAccountDetails = (targetObjectId, parameters) => {
-  const url = `${PREFIX}platformAccountManager/addPlatformAccountDetails /platformAccountId/summary/amount/transactionTypeId/relatedMainOrderId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}platformAccountManager/addPlatformAccountDetails/platformAccountId/summary/amount/transactionTypeId/relatedMainOrderId/tokensExpr/`
+  const platformAccountId = targetObjectId
+  const requestParameters = { ...parameters, platformAccountId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 

@@ -164,6 +164,7 @@ class EmployeeBizApp extends React.PureComponent {
    	const {MessageTemplateCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "messageTemplate",
       data: state._employee.messageTemplateList,
       count: state._employee.messageTemplateCount,
       currentPage: state._employee.messageTemplateCurrentPageNumber,
@@ -177,6 +178,7 @@ class EmployeeBizApp extends React.PureComponent {
   	const {MessageTemplateUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._employee.selectedRows,
+      role: "messageTemplate",
       currentUpdateIndex: state._employee.currentUpdateIndex,
       owner: { type: '_employee', id: state._employee.id, listName: 'messageTemplateList', ref:state._employee, listDisplayName: '消息模板列表' }, // this is for model namespace and
     }))(MessageTemplateUpdateForm)
@@ -204,6 +206,7 @@ class EmployeeBizApp extends React.PureComponent {
    	const {LossAssessmentRecordCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "lossAssessmentRecord",
       data: state._employee.lossAssessmentRecordList,
       count: state._employee.lossAssessmentRecordCount,
       currentPage: state._employee.lossAssessmentRecordCurrentPageNumber,
@@ -217,6 +220,7 @@ class EmployeeBizApp extends React.PureComponent {
   	const {LossAssessmentRecordUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._employee.selectedRows,
+      role: "lossAssessmentRecord",
       currentUpdateIndex: state._employee.currentUpdateIndex,
       owner: { type: '_employee', id: state._employee.id, listName: 'lossAssessmentRecordList', ref:state._employee, listDisplayName: '定损记录列表' }, // this is for model namespace and
     }))(LossAssessmentRecordUpdateForm)
@@ -244,6 +248,7 @@ class EmployeeBizApp extends React.PureComponent {
    	const {BookCopyTransferCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookCopyTransfer",
       data: state._employee.bookCopyTransferList,
       count: state._employee.bookCopyTransferCount,
       currentPage: state._employee.bookCopyTransferCurrentPageNumber,
@@ -257,6 +262,7 @@ class EmployeeBizApp extends React.PureComponent {
   	const {BookCopyTransferUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._employee.selectedRows,
+      role: "bookCopyTransfer",
       currentUpdateIndex: state._employee.currentUpdateIndex,
       owner: { type: '_employee', id: state._employee.id, listName: 'bookCopyTransferList', ref:state._employee, listDisplayName: '图书副本迁移记录列表' }, // this is for model namespace and
     }))(BookCopyTransferUpdateForm)
@@ -284,6 +290,7 @@ class EmployeeBizApp extends React.PureComponent {
    	const {BookTakeStockPlanCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookTakeStockPlan",
       data: state._employee.bookTakeStockPlanList,
       count: state._employee.bookTakeStockPlanCount,
       currentPage: state._employee.bookTakeStockPlanCurrentPageNumber,
@@ -297,6 +304,7 @@ class EmployeeBizApp extends React.PureComponent {
   	const {BookTakeStockPlanUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._employee.selectedRows,
+      role: "bookTakeStockPlan",
       currentUpdateIndex: state._employee.currentUpdateIndex,
       owner: { type: '_employee', id: state._employee.id, listName: 'bookTakeStockPlanList', ref:state._employee, listDisplayName: '图书盘点计划列表' }, // this is for model namespace and
     }))(BookTakeStockPlanUpdateForm)
@@ -324,6 +332,7 @@ class EmployeeBizApp extends React.PureComponent {
    	const {BookTakeStockResultCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookTakeStockResult",
       data: state._employee.bookTakeStockResultList,
       count: state._employee.bookTakeStockResultCount,
       currentPage: state._employee.bookTakeStockResultCurrentPageNumber,
@@ -337,6 +346,7 @@ class EmployeeBizApp extends React.PureComponent {
   	const {BookTakeStockResultUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._employee.selectedRows,
+      role: "bookTakeStockResult",
       currentUpdateIndex: state._employee.currentUpdateIndex,
       owner: { type: '_employee', id: state._employee.id, listName: 'bookTakeStockResultList', ref:state._employee, listDisplayName: '图书盘点结果列表' }, // this is for model namespace and
     }))(BookTakeStockResultUpdateForm)
@@ -364,6 +374,7 @@ class EmployeeBizApp extends React.PureComponent {
    	const {BookCopyOperationRecordCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookCopyOperationRecord",
       data: state._employee.bookCopyOperationRecordList,
       count: state._employee.bookCopyOperationRecordCount,
       currentPage: state._employee.bookCopyOperationRecordCurrentPageNumber,
@@ -377,6 +388,7 @@ class EmployeeBizApp extends React.PureComponent {
   	const {BookCopyOperationRecordUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._employee.selectedRows,
+      role: "bookCopyOperationRecord",
       currentUpdateIndex: state._employee.currentUpdateIndex,
       owner: { type: '_employee', id: state._employee.id, listName: 'bookCopyOperationRecordList', ref:state._employee, listDisplayName: '书籍副本操作记录列表' }, // this is for model namespace and
     }))(BookCopyOperationRecordUpdateForm)
@@ -404,6 +416,7 @@ class EmployeeBizApp extends React.PureComponent {
    	const {BookCopySharingApplicationCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookCopySharingApplication",
       data: state._employee.bookCopySharingApplicationList,
       count: state._employee.bookCopySharingApplicationCount,
       currentPage: state._employee.bookCopySharingApplicationCurrentPageNumber,
@@ -417,6 +430,7 @@ class EmployeeBizApp extends React.PureComponent {
   	const {BookCopySharingApplicationUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._employee.selectedRows,
+      role: "bookCopySharingApplication",
       currentUpdateIndex: state._employee.currentUpdateIndex,
       owner: { type: '_employee', id: state._employee.id, listName: 'bookCopySharingApplicationList', ref:state._employee, listDisplayName: '图书共享申请列表' }, // this is for model namespace and
     }))(BookCopySharingApplicationUpdateForm)
@@ -444,6 +458,7 @@ class EmployeeBizApp extends React.PureComponent {
    	const {CampaignCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "campaign",
       data: state._employee.campaignList,
       count: state._employee.campaignCount,
       currentPage: state._employee.campaignCurrentPageNumber,
@@ -457,6 +472,7 @@ class EmployeeBizApp extends React.PureComponent {
   	const {CampaignUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._employee.selectedRows,
+      role: "campaign",
       currentUpdateIndex: state._employee.currentUpdateIndex,
       owner: { type: '_employee', id: state._employee.id, listName: 'campaignList', ref:state._employee, listDisplayName: '活动列表' }, // this is for model namespace and
     }))(CampaignUpdateForm)
@@ -484,6 +500,7 @@ class EmployeeBizApp extends React.PureComponent {
    	const {EmployeeWorkingStoreCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "employeeWorkingStore",
       data: state._employee.employeeWorkingStoreList,
       count: state._employee.employeeWorkingStoreCount,
       currentPage: state._employee.employeeWorkingStoreCurrentPageNumber,
@@ -497,6 +514,7 @@ class EmployeeBizApp extends React.PureComponent {
   	const {EmployeeWorkingStoreUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._employee.selectedRows,
+      role: "employeeWorkingStore",
       currentUpdateIndex: state._employee.currentUpdateIndex,
       owner: { type: '_employee', id: state._employee.id, listName: 'employeeWorkingStoreList', ref:state._employee, listDisplayName: '员工工作的网点列表' }, // this is for model namespace and
     }))(EmployeeWorkingStoreUpdateForm)

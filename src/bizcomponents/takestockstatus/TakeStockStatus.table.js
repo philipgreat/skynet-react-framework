@@ -91,7 +91,7 @@ class TakeStockStatusTable extends PureComponent {
   
   gotoEdit = (text, record) =>{
     this.handleRowSelectChange([record.id], [record])
-    const{dispatch,owner} = this.props
+    const{dispatch,owner,role} = this.props
     const selectedRows = [];
     selectedRows.push(record)
     console.log("selectedRows",selectedRows)
@@ -104,7 +104,7 @@ class TakeStockStatusTable extends PureComponent {
       type: `${owner.type}/gotoUpdateForm`,
       payload: {
         id: owner.id,
-        type: 'takeStockStatus',
+        role: role,
         selectedRows,
         currentUpdateIndex,
       },

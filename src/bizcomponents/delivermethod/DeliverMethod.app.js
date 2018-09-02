@@ -164,6 +164,7 @@ class DeliverMethodBizApp extends React.PureComponent {
    	const {BookCopySharingApplicationCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookCopySharingApplication",
       data: state._deliverMethod.bookCopySharingApplicationList,
       count: state._deliverMethod.bookCopySharingApplicationCount,
       currentPage: state._deliverMethod.bookCopySharingApplicationCurrentPageNumber,
@@ -177,6 +178,7 @@ class DeliverMethodBizApp extends React.PureComponent {
   	const {BookCopySharingApplicationUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._deliverMethod.selectedRows,
+      role: "bookCopySharingApplication",
       currentUpdateIndex: state._deliverMethod.currentUpdateIndex,
       owner: { type: '_deliverMethod', id: state._deliverMethod.id, listName: 'bookCopySharingApplicationList', ref:state._deliverMethod, listDisplayName: '图书共享申请列表' }, // this is for model namespace and
     }))(BookCopySharingApplicationUpdateForm)

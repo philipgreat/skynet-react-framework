@@ -164,6 +164,7 @@ class BookRecommendBizApp extends React.PureComponent {
    	const {BookCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "book",
       data: state._bookRecommend.bookList,
       count: state._bookRecommend.bookCount,
       currentPage: state._bookRecommend.bookCurrentPageNumber,
@@ -177,6 +178,7 @@ class BookRecommendBizApp extends React.PureComponent {
   	const {BookUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookRecommend.selectedRows,
+      role: "book",
       currentUpdateIndex: state._bookRecommend.currentUpdateIndex,
       owner: { type: '_bookRecommend', id: state._bookRecommend.id, listName: 'bookList', ref:state._bookRecommend, listDisplayName: '书列表' }, // this is for model namespace and
     }))(BookUpdateForm)

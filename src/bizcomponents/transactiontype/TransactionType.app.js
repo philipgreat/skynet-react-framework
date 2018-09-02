@@ -164,6 +164,7 @@ class TransactionTypeBizApp extends React.PureComponent {
    	const {PlatformAccountDetailsCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "platformAccountDetails",
       data: state._transactionType.platformAccountDetailsList,
       count: state._transactionType.platformAccountDetailsCount,
       currentPage: state._transactionType.platformAccountDetailsCurrentPageNumber,
@@ -177,6 +178,7 @@ class TransactionTypeBizApp extends React.PureComponent {
   	const {PlatformAccountDetailsUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._transactionType.selectedRows,
+      role: "platformAccountDetails",
       currentUpdateIndex: state._transactionType.currentUpdateIndex,
       owner: { type: '_transactionType', id: state._transactionType.id, listName: 'platformAccountDetailsList', ref:state._transactionType, listDisplayName: '平台账户明细列表' }, // this is for model namespace and
     }))(PlatformAccountDetailsUpdateForm)
@@ -204,6 +206,7 @@ class TransactionTypeBizApp extends React.PureComponent {
    	const {FundationAccountDetailsCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "fundationAccountDetails",
       data: state._transactionType.fundationAccountDetailsList,
       count: state._transactionType.fundationAccountDetailsCount,
       currentPage: state._transactionType.fundationAccountDetailsCurrentPageNumber,
@@ -217,6 +220,7 @@ class TransactionTypeBizApp extends React.PureComponent {
   	const {FundationAccountDetailsUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._transactionType.selectedRows,
+      role: "fundationAccountDetails",
       currentUpdateIndex: state._transactionType.currentUpdateIndex,
       owner: { type: '_transactionType', id: state._transactionType.id, listName: 'fundationAccountDetailsList', ref:state._transactionType, listDisplayName: '平台基金账户明细列表' }, // this is for model namespace and
     }))(FundationAccountDetailsUpdateForm)
@@ -244,6 +248,7 @@ class TransactionTypeBizApp extends React.PureComponent {
    	const {StoreAccountDetailsCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "storeAccountDetails",
       data: state._transactionType.storeAccountDetailsList,
       count: state._transactionType.storeAccountDetailsCount,
       currentPage: state._transactionType.storeAccountDetailsCurrentPageNumber,
@@ -257,6 +262,7 @@ class TransactionTypeBizApp extends React.PureComponent {
   	const {StoreAccountDetailsUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._transactionType.selectedRows,
+      role: "storeAccountDetails",
       currentUpdateIndex: state._transactionType.currentUpdateIndex,
       owner: { type: '_transactionType', id: state._transactionType.id, listName: 'storeAccountDetailsList', ref:state._transactionType, listDisplayName: '网点账户明细列表' }, // this is for model namespace and
     }))(StoreAccountDetailsUpdateForm)
@@ -284,6 +290,7 @@ class TransactionTypeBizApp extends React.PureComponent {
    	const {CustomerAccountTransactionCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "customerAccountTransaction",
       data: state._transactionType.customerAccountTransactionList,
       count: state._transactionType.customerAccountTransactionCount,
       currentPage: state._transactionType.customerAccountTransactionCurrentPageNumber,
@@ -297,6 +304,7 @@ class TransactionTypeBizApp extends React.PureComponent {
   	const {CustomerAccountTransactionUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._transactionType.selectedRows,
+      role: "customerAccountTransaction",
       currentUpdateIndex: state._transactionType.currentUpdateIndex,
       owner: { type: '_transactionType', id: state._transactionType.id, listName: 'customerAccountTransactionList', ref:state._transactionType, listDisplayName: '客户账户明细列表' }, // this is for model namespace and
     }))(CustomerAccountTransactionUpdateForm)

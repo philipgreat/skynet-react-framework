@@ -164,6 +164,7 @@ class TransferTypeBizApp extends React.PureComponent {
    	const {BookCopyTransferCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookCopyTransfer",
       data: state._transferType.bookCopyTransferList,
       count: state._transferType.bookCopyTransferCount,
       currentPage: state._transferType.bookCopyTransferCurrentPageNumber,
@@ -177,6 +178,7 @@ class TransferTypeBizApp extends React.PureComponent {
   	const {BookCopyTransferUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._transferType.selectedRows,
+      role: "bookCopyTransfer",
       currentUpdateIndex: state._transferType.currentUpdateIndex,
       owner: { type: '_transferType', id: state._transferType.id, listName: 'bookCopyTransferList', ref:state._transferType, listDisplayName: '图书副本迁移记录列表' }, // this is for model namespace and
     }))(BookCopyTransferUpdateForm)

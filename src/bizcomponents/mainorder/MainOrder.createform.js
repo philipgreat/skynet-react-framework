@@ -18,9 +18,9 @@ const testValues = {};
 const testValues = {
   title: '图书《无限接近透明的蓝》借阅超期费用',
   mainOrderStatus: '未支付',
-  createTime: '2018-02-22 23:55:45',
-  originalAmount: '893.09',
-  actualAmount: '705.13',
+  createTime: '2016-01-17 16:11:23',
+  originalAmount: '835.21',
+  actualAmount: '764.83',
   customerId: 'C000001',
   bookSharingPlatformId: 'BSP000001',
 }
@@ -123,14 +123,22 @@ class MainOrderCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = MainOrderBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -142,9 +150,10 @@ class MainOrderCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addMainOrder`,
-          payload: { id: owner.id, type: 'mainOrder', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }

@@ -39,8 +39,9 @@ const transferToAnotherPlatform = (id, parameters) => {
 
 
 const addCampaign = (targetObjectId, parameters) => {
-  const url = `${PREFIX}campaignPlazaManager/addCampaign /campaignPlazaId/campaignName/campaignContent/campaignImage/campaignStatusId/campaignStartTime/campaignFinishTime/campaignHoldAddress/registerDeadlineLeadHours/minimumRegisterQuantity/availableRegisterQuantity/publishStoreId/publishEmployeeId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}campaignPlazaManager/addCampaign/campaignPlazaId/campaignName/campaignContent/campaignImage/campaignStatusId/campaignStartTime/campaignFinishTime/campaignHoldAddress/registerDeadlineLeadHours/minimumRegisterQuantity/availableRegisterQuantity/publishStoreId/publishEmployeeId/tokensExpr/`
+  const campaignPlazaId = targetObjectId
+  const requestParameters = { ...parameters, campaignPlazaId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 

@@ -17,7 +17,7 @@ const testValues = {};
 /*
 const testValues = {
   lossComment: '第2页到第5页缺失',
-  bookCopyEvaluationPrice: '30.12',
+  bookCopyEvaluationPrice: '29.18',
   bookCopyId: 'BC000001',
   recordStoreId: 'S000001',
   lossDiscountId: 'LD000001',
@@ -199,14 +199,22 @@ class LossAssessmentRecordCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = LossAssessmentRecordBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -218,9 +226,10 @@ class LossAssessmentRecordCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addLossAssessmentRecord`,
-          payload: { id: owner.id, type: 'lossAssessmentRecord', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }

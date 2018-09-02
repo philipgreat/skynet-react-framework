@@ -164,6 +164,7 @@ class AccountDataBizApp extends React.PureComponent {
    	const {PlatformAccountCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "platformAccount",
       data: state._accountData.platformAccountList,
       count: state._accountData.platformAccountCount,
       currentPage: state._accountData.platformAccountCurrentPageNumber,
@@ -177,6 +178,7 @@ class AccountDataBizApp extends React.PureComponent {
   	const {PlatformAccountUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._accountData.selectedRows,
+      role: "platformAccount",
       currentUpdateIndex: state._accountData.currentUpdateIndex,
       owner: { type: '_accountData', id: state._accountData.id, listName: 'platformAccountList', ref:state._accountData, listDisplayName: '平台账户列表' }, // this is for model namespace and
     }))(PlatformAccountUpdateForm)
@@ -204,6 +206,7 @@ class AccountDataBizApp extends React.PureComponent {
    	const {FundationAccountCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "fundationAccount",
       data: state._accountData.fundationAccountList,
       count: state._accountData.fundationAccountCount,
       currentPage: state._accountData.fundationAccountCurrentPageNumber,
@@ -217,6 +220,7 @@ class AccountDataBizApp extends React.PureComponent {
   	const {FundationAccountUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._accountData.selectedRows,
+      role: "fundationAccount",
       currentUpdateIndex: state._accountData.currentUpdateIndex,
       owner: { type: '_accountData', id: state._accountData.id, listName: 'fundationAccountList', ref:state._accountData, listDisplayName: '平台基金账户列表' }, // this is for model namespace and
     }))(FundationAccountUpdateForm)
@@ -244,6 +248,7 @@ class AccountDataBizApp extends React.PureComponent {
    	const {StoreAccountCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "storeAccount",
       data: state._accountData.storeAccountList,
       count: state._accountData.storeAccountCount,
       currentPage: state._accountData.storeAccountCurrentPageNumber,
@@ -257,6 +262,7 @@ class AccountDataBizApp extends React.PureComponent {
   	const {StoreAccountUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._accountData.selectedRows,
+      role: "storeAccount",
       currentUpdateIndex: state._accountData.currentUpdateIndex,
       owner: { type: '_accountData', id: state._accountData.id, listName: 'storeAccountList', ref:state._accountData, listDisplayName: '网点账户列表' }, // this is for model namespace and
     }))(StoreAccountUpdateForm)
@@ -284,6 +290,7 @@ class AccountDataBizApp extends React.PureComponent {
    	const {TransactionTypeCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "transactionType",
       data: state._accountData.transactionTypeList,
       count: state._accountData.transactionTypeCount,
       currentPage: state._accountData.transactionTypeCurrentPageNumber,
@@ -297,6 +304,7 @@ class AccountDataBizApp extends React.PureComponent {
   	const {TransactionTypeUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._accountData.selectedRows,
+      role: "transactionType",
       currentUpdateIndex: state._accountData.currentUpdateIndex,
       owner: { type: '_accountData', id: state._accountData.id, listName: 'transactionTypeList', ref:state._accountData, listDisplayName: '交易类型列表' }, // this is for model namespace and
     }))(TransactionTypeUpdateForm)

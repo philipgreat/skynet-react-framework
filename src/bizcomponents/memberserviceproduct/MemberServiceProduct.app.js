@@ -164,6 +164,7 @@ class MemberServiceProductBizApp extends React.PureComponent {
    	const {MemberServiceBundleSkuCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "memberServiceBundleSku",
       data: state._memberServiceProduct.memberServiceBundleSkuList,
       count: state._memberServiceProduct.memberServiceBundleSkuCount,
       currentPage: state._memberServiceProduct.memberServiceBundleSkuCurrentPageNumber,
@@ -177,6 +178,7 @@ class MemberServiceProductBizApp extends React.PureComponent {
   	const {MemberServiceBundleSkuUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._memberServiceProduct.selectedRows,
+      role: "memberServiceBundleSku",
       currentUpdateIndex: state._memberServiceProduct.currentUpdateIndex,
       owner: { type: '_memberServiceProduct', id: state._memberServiceProduct.id, listName: 'memberServiceBundleSkuList', ref:state._memberServiceProduct, listDisplayName: '会员服务包列表' }, // this is for model namespace and
     }))(MemberServiceBundleSkuUpdateForm)
@@ -204,6 +206,7 @@ class MemberServiceProductBizApp extends React.PureComponent {
    	const {StoreSlideCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "storeSlide",
       data: state._memberServiceProduct.storeSlideList,
       count: state._memberServiceProduct.storeSlideCount,
       currentPage: state._memberServiceProduct.storeSlideCurrentPageNumber,
@@ -217,6 +220,7 @@ class MemberServiceProductBizApp extends React.PureComponent {
   	const {StoreSlideUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._memberServiceProduct.selectedRows,
+      role: "storeSlide",
       currentUpdateIndex: state._memberServiceProduct.currentUpdateIndex,
       owner: { type: '_memberServiceProduct', id: state._memberServiceProduct.id, listName: 'storeSlideList', ref:state._memberServiceProduct, listDisplayName: '网点海报列表' }, // this is for model namespace and
     }))(StoreSlideUpdateForm)
@@ -244,6 +248,7 @@ class MemberServiceProductBizApp extends React.PureComponent {
    	const {CustomerCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "customer",
       data: state._memberServiceProduct.customerList,
       count: state._memberServiceProduct.customerCount,
       currentPage: state._memberServiceProduct.customerCurrentPageNumber,
@@ -257,6 +262,7 @@ class MemberServiceProductBizApp extends React.PureComponent {
   	const {CustomerUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._memberServiceProduct.selectedRows,
+      role: "customer",
       currentUpdateIndex: state._memberServiceProduct.currentUpdateIndex,
       owner: { type: '_memberServiceProduct', id: state._memberServiceProduct.id, listName: 'customerList', ref:state._memberServiceProduct, listDisplayName: '用户列表' }, // this is for model namespace and
     }))(CustomerUpdateForm)

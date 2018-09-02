@@ -164,6 +164,7 @@ class CampaignStatusBizApp extends React.PureComponent {
    	const {CampaignCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "campaign",
       data: state._campaignStatus.campaignList,
       count: state._campaignStatus.campaignCount,
       currentPage: state._campaignStatus.campaignCurrentPageNumber,
@@ -177,6 +178,7 @@ class CampaignStatusBizApp extends React.PureComponent {
   	const {CampaignUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._campaignStatus.selectedRows,
+      role: "campaign",
       currentUpdateIndex: state._campaignStatus.currentUpdateIndex,
       owner: { type: '_campaignStatus', id: state._campaignStatus.id, listName: 'campaignList', ref:state._campaignStatus, listDisplayName: '活动列表' }, // this is for model namespace and
     }))(CampaignUpdateForm)

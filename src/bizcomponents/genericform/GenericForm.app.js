@@ -164,6 +164,7 @@ class GenericFormBizApp extends React.PureComponent {
    	const {FormMessageCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "formMessage",
       data: state._genericForm.formMessageList,
       count: state._genericForm.formMessageCount,
       currentPage: state._genericForm.formMessageCurrentPageNumber,
@@ -177,6 +178,7 @@ class GenericFormBizApp extends React.PureComponent {
   	const {FormMessageUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._genericForm.selectedRows,
+      role: "formMessage",
       currentUpdateIndex: state._genericForm.currentUpdateIndex,
       owner: { type: '_genericForm', id: state._genericForm.id, listName: 'formMessageList', ref:state._genericForm, listDisplayName: '表单信息列表' }, // this is for model namespace and
     }))(FormMessageUpdateForm)
@@ -204,6 +206,7 @@ class GenericFormBizApp extends React.PureComponent {
    	const {FormFieldMessageCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "formFieldMessage",
       data: state._genericForm.formFieldMessageList,
       count: state._genericForm.formFieldMessageCount,
       currentPage: state._genericForm.formFieldMessageCurrentPageNumber,
@@ -217,6 +220,7 @@ class GenericFormBizApp extends React.PureComponent {
   	const {FormFieldMessageUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._genericForm.selectedRows,
+      role: "formFieldMessage",
       currentUpdateIndex: state._genericForm.currentUpdateIndex,
       owner: { type: '_genericForm', id: state._genericForm.id, listName: 'formFieldMessageList', ref:state._genericForm, listDisplayName: '表单字段的信息列表' }, // this is for model namespace and
     }))(FormFieldMessageUpdateForm)
@@ -244,6 +248,7 @@ class GenericFormBizApp extends React.PureComponent {
    	const {FormFieldCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "formField",
       data: state._genericForm.formFieldList,
       count: state._genericForm.formFieldCount,
       currentPage: state._genericForm.formFieldCurrentPageNumber,
@@ -257,6 +262,7 @@ class GenericFormBizApp extends React.PureComponent {
   	const {FormFieldUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._genericForm.selectedRows,
+      role: "formField",
       currentUpdateIndex: state._genericForm.currentUpdateIndex,
       owner: { type: '_genericForm', id: state._genericForm.id, listName: 'formFieldList', ref:state._genericForm, listDisplayName: '表单字段列表' }, // this is for model namespace and
     }))(FormFieldUpdateForm)
@@ -284,6 +290,7 @@ class GenericFormBizApp extends React.PureComponent {
    	const {FormActionCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "formAction",
       data: state._genericForm.formActionList,
       count: state._genericForm.formActionCount,
       currentPage: state._genericForm.formActionCurrentPageNumber,
@@ -297,6 +304,7 @@ class GenericFormBizApp extends React.PureComponent {
   	const {FormActionUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._genericForm.selectedRows,
+      role: "formAction",
       currentUpdateIndex: state._genericForm.currentUpdateIndex,
       owner: { type: '_genericForm', id: state._genericForm.id, listName: 'formActionList', ref:state._genericForm, listDisplayName: '表单动作列表' }, // this is for model namespace and
     }))(FormActionUpdateForm)

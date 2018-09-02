@@ -164,6 +164,7 @@ class UserAppBizApp extends React.PureComponent {
    	const {ObjectAccessCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "objectAccess",
       data: state._userApp.objectAccessList,
       count: state._userApp.objectAccessCount,
       currentPage: state._userApp.objectAccessCurrentPageNumber,
@@ -177,6 +178,7 @@ class UserAppBizApp extends React.PureComponent {
   	const {ObjectAccessUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._userApp.selectedRows,
+      role: "objectAccess",
       currentUpdateIndex: state._userApp.currentUpdateIndex,
       owner: { type: '_userApp', id: state._userApp.id, listName: 'objectAccessList', ref:state._userApp, listDisplayName: '对象访问列表' }, // this is for model namespace and
     }))(ObjectAccessUpdateForm)

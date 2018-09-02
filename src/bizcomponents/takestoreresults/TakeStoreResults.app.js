@@ -164,6 +164,7 @@ class TakeStoreResultsBizApp extends React.PureComponent {
    	const {BookTakeStockResultCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookTakeStockResult",
       data: state._takeStoreResults.bookTakeStockResultList,
       count: state._takeStoreResults.bookTakeStockResultCount,
       currentPage: state._takeStoreResults.bookTakeStockResultCurrentPageNumber,
@@ -177,6 +178,7 @@ class TakeStoreResultsBizApp extends React.PureComponent {
   	const {BookTakeStockResultUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._takeStoreResults.selectedRows,
+      role: "bookTakeStockResult",
       currentUpdateIndex: state._takeStoreResults.currentUpdateIndex,
       owner: { type: '_takeStoreResults', id: state._takeStoreResults.id, listName: 'bookTakeStockResultList', ref:state._takeStoreResults, listDisplayName: '图书盘点结果列表' }, // this is for model namespace and
     }))(BookTakeStockResultUpdateForm)

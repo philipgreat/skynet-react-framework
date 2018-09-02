@@ -164,6 +164,7 @@ class FundationAccountBizApp extends React.PureComponent {
    	const {FundationAccountDetailsCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "fundationAccountDetails",
       data: state._fundationAccount.fundationAccountDetailsList,
       count: state._fundationAccount.fundationAccountDetailsCount,
       currentPage: state._fundationAccount.fundationAccountDetailsCurrentPageNumber,
@@ -177,6 +178,7 @@ class FundationAccountBizApp extends React.PureComponent {
   	const {FundationAccountDetailsUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._fundationAccount.selectedRows,
+      role: "fundationAccountDetails",
       currentUpdateIndex: state._fundationAccount.currentUpdateIndex,
       owner: { type: '_fundationAccount', id: state._fundationAccount.id, listName: 'fundationAccountDetailsList', ref:state._fundationAccount, listDisplayName: '平台基金账户明细列表' }, // this is for model namespace and
     }))(FundationAccountDetailsUpdateForm)

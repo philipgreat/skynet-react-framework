@@ -164,6 +164,7 @@ class BookReviewBizApp extends React.PureComponent {
    	const {BookReviewLikeCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookReviewLike",
       data: state._bookReview.bookReviewLikeList,
       count: state._bookReview.bookReviewLikeCount,
       currentPage: state._bookReview.bookReviewLikeCurrentPageNumber,
@@ -177,6 +178,7 @@ class BookReviewBizApp extends React.PureComponent {
   	const {BookReviewLikeUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookReview.selectedRows,
+      role: "bookReviewLike",
       currentUpdateIndex: state._bookReview.currentUpdateIndex,
       owner: { type: '_bookReview', id: state._bookReview.id, listName: 'bookReviewLikeList', ref:state._bookReview, listDisplayName: '书评点赞列表' }, // this is for model namespace and
     }))(BookReviewLikeUpdateForm)
@@ -204,6 +206,7 @@ class BookReviewBizApp extends React.PureComponent {
    	const {InformCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "inform",
       data: state._bookReview.informList,
       count: state._bookReview.informCount,
       currentPage: state._bookReview.informCurrentPageNumber,
@@ -217,6 +220,7 @@ class BookReviewBizApp extends React.PureComponent {
   	const {InformUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookReview.selectedRows,
+      role: "inform",
       currentUpdateIndex: state._bookReview.currentUpdateIndex,
       owner: { type: '_bookReview', id: state._bookReview.id, listName: 'informList', ref:state._bookReview, listDisplayName: '举报列表' }, // this is for model namespace and
     }))(InformUpdateForm)

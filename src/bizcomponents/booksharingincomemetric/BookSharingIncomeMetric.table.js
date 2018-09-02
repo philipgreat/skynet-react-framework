@@ -95,7 +95,7 @@ class BookSharingIncomeMetricTable extends PureComponent {
   
   gotoEdit = (text, record) =>{
     this.handleRowSelectChange([record.id], [record])
-    const{dispatch,owner} = this.props
+    const{dispatch,owner,role} = this.props
     const selectedRows = [];
     selectedRows.push(record)
     console.log("selectedRows",selectedRows)
@@ -108,7 +108,7 @@ class BookSharingIncomeMetricTable extends PureComponent {
       type: `${owner.type}/gotoUpdateForm`,
       payload: {
         id: owner.id,
-        type: 'bookSharingIncomeMetric',
+        role: role,
         selectedRows,
         currentUpdateIndex,
       },

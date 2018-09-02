@@ -17,8 +17,8 @@ const testValues = {};
 /*
 const testValues = {
   summary: '共享收益',
-  amount: '0.76',
-  balance: '0.76',
+  amount: '0.75',
+  balance: '0.74',
   transactionTypeId: 'TT000001',
   customerId: 'C000001',
   relatedMainOrderId: 'MO000001',
@@ -147,14 +147,22 @@ class CustomerAccountTransactionCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = CustomerAccountTransactionBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -166,9 +174,10 @@ class CustomerAccountTransactionCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addCustomerAccountTransaction`,
-          payload: { id: owner.id, type: 'customerAccountTransaction', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }

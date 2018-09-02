@@ -91,7 +91,11 @@ class MainOrderPaymentUpdateForm extends Component {
     const { convertedImagesValues } = this.state
     const { setFieldsValue } = this.props.form
     const {fieldLabels} = MainOrderPaymentBase
-    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
     const submitUpdateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -99,17 +103,18 @@ class MainOrderPaymentUpdateForm extends Component {
           return
         }
 
-        const { owner } = this.props
+        const { owner, role } = this.props
         const mainOrderPaymentId = values.id
         const imagesValues = mapBackToImageValues(convertedImagesValues)
         const parameters = { ...values, mainOrderPaymentId, ...imagesValues }
 
-        // const newIndex= currentUpdateIndex + 1
+        
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/updateMainOrderPayment`,
+          type: `${owner.type}/update${cappedRoleName}`,
           payload: {
             id: owner.id,
-            type: 'mainOrderPayment',
+            role: role,
             parameters,
             selectedRows,
             currentUpdateIndex: 0,

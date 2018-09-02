@@ -164,6 +164,7 @@ class CustomerBizApp extends React.PureComponent {
    	const {PrivateMessageCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "privateMessage",
       data: state._customer.privateMessageList,
       count: state._customer.privateMessageCount,
       currentPage: state._customer.privateMessageCurrentPageNumber,
@@ -177,6 +178,7 @@ class CustomerBizApp extends React.PureComponent {
   	const {PrivateMessageUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
+      role: "privateMessage",
       currentUpdateIndex: state._customer.currentUpdateIndex,
       owner: { type: '_customer', id: state._customer.id, listName: 'privateMessageList', ref:state._customer, listDisplayName: '私信消息列表' }, // this is for model namespace and
     }))(PrivateMessageUpdateForm)
@@ -204,6 +206,7 @@ class CustomerBizApp extends React.PureComponent {
    	const {LossAssessmentRecordCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "lossAssessmentRecord",
       data: state._customer.lossAssessmentRecordList,
       count: state._customer.lossAssessmentRecordCount,
       currentPage: state._customer.lossAssessmentRecordCurrentPageNumber,
@@ -217,6 +220,7 @@ class CustomerBizApp extends React.PureComponent {
   	const {LossAssessmentRecordUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
+      role: "lossAssessmentRecord",
       currentUpdateIndex: state._customer.currentUpdateIndex,
       owner: { type: '_customer', id: state._customer.id, listName: 'lossAssessmentRecordList', ref:state._customer, listDisplayName: '定损记录列表' }, // this is for model namespace and
     }))(LossAssessmentRecordUpdateForm)
@@ -244,6 +248,7 @@ class CustomerBizApp extends React.PureComponent {
    	const {MainOrderCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "mainOrder",
       data: state._customer.mainOrderList,
       count: state._customer.mainOrderCount,
       currentPage: state._customer.mainOrderCurrentPageNumber,
@@ -257,6 +262,7 @@ class CustomerBizApp extends React.PureComponent {
   	const {MainOrderUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
+      role: "mainOrder",
       currentUpdateIndex: state._customer.currentUpdateIndex,
       owner: { type: '_customer', id: state._customer.id, listName: 'mainOrderList', ref:state._customer, listDisplayName: '主订单列表' }, // this is for model namespace and
     }))(MainOrderUpdateForm)
@@ -284,6 +290,7 @@ class CustomerBizApp extends React.PureComponent {
    	const {BookCopyCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookCopy",
       data: state._customer.bookCopyList,
       count: state._customer.bookCopyCount,
       currentPage: state._customer.bookCopyCurrentPageNumber,
@@ -297,6 +304,7 @@ class CustomerBizApp extends React.PureComponent {
   	const {BookCopyUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
+      role: "bookCopy",
       currentUpdateIndex: state._customer.currentUpdateIndex,
       owner: { type: '_customer', id: state._customer.id, listName: 'bookCopyList', ref:state._customer, listDisplayName: '书籍副本列表' }, // this is for model namespace and
     }))(BookCopyUpdateForm)
@@ -324,6 +332,7 @@ class CustomerBizApp extends React.PureComponent {
    	const {BorrowingHistoryCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "borrowingHistory",
       data: state._customer.borrowingHistoryList,
       count: state._customer.borrowingHistoryCount,
       currentPage: state._customer.borrowingHistoryCurrentPageNumber,
@@ -337,6 +346,7 @@ class CustomerBizApp extends React.PureComponent {
   	const {BorrowingHistoryUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
+      role: "borrowingHistory",
       currentUpdateIndex: state._customer.currentUpdateIndex,
       owner: { type: '_customer', id: state._customer.id, listName: 'borrowingHistoryList', ref:state._customer, listDisplayName: '图书借还历史列表' }, // this is for model namespace and
     }))(BorrowingHistoryUpdateForm)
@@ -364,6 +374,7 @@ class CustomerBizApp extends React.PureComponent {
    	const {BorrowingExpiredSkuCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "borrowingExpiredSku",
       data: state._customer.borrowingExpiredSkuList,
       count: state._customer.borrowingExpiredSkuCount,
       currentPage: state._customer.borrowingExpiredSkuCurrentPageNumber,
@@ -377,6 +388,7 @@ class CustomerBizApp extends React.PureComponent {
   	const {BorrowingExpiredSkuUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
+      role: "borrowingExpiredSku",
       currentUpdateIndex: state._customer.currentUpdateIndex,
       owner: { type: '_customer', id: state._customer.id, listName: 'borrowingExpiredSkuList', ref:state._customer, listDisplayName: '借书超期费列表' }, // this is for model namespace and
     }))(BorrowingExpiredSkuUpdateForm)
@@ -404,6 +416,7 @@ class CustomerBizApp extends React.PureComponent {
    	const {BookReviewCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookReview",
       data: state._customer.bookReviewList,
       count: state._customer.bookReviewCount,
       currentPage: state._customer.bookReviewCurrentPageNumber,
@@ -417,6 +430,7 @@ class CustomerBizApp extends React.PureComponent {
   	const {BookReviewUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
+      role: "bookReview",
       currentUpdateIndex: state._customer.currentUpdateIndex,
       owner: { type: '_customer', id: state._customer.id, listName: 'bookReviewList', ref:state._customer, listDisplayName: '书评列表' }, // this is for model namespace and
     }))(BookReviewUpdateForm)
@@ -444,6 +458,7 @@ class CustomerBizApp extends React.PureComponent {
    	const {BookReviewLikeCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookReviewLike",
       data: state._customer.bookReviewLikeList,
       count: state._customer.bookReviewLikeCount,
       currentPage: state._customer.bookReviewLikeCurrentPageNumber,
@@ -457,6 +472,7 @@ class CustomerBizApp extends React.PureComponent {
   	const {BookReviewLikeUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
+      role: "bookReviewLike",
       currentUpdateIndex: state._customer.currentUpdateIndex,
       owner: { type: '_customer', id: state._customer.id, listName: 'bookReviewLikeList', ref:state._customer, listDisplayName: '书评点赞列表' }, // this is for model namespace and
     }))(BookReviewLikeUpdateForm)
@@ -484,6 +500,7 @@ class CustomerBizApp extends React.PureComponent {
    	const {BookCopySharingApplicationCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookCopySharingApplication",
       data: state._customer.bookCopySharingApplicationList,
       count: state._customer.bookCopySharingApplicationCount,
       currentPage: state._customer.bookCopySharingApplicationCurrentPageNumber,
@@ -497,6 +514,7 @@ class CustomerBizApp extends React.PureComponent {
   	const {BookCopySharingApplicationUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
+      role: "bookCopySharingApplication",
       currentUpdateIndex: state._customer.currentUpdateIndex,
       owner: { type: '_customer', id: state._customer.id, listName: 'bookCopySharingApplicationList', ref:state._customer, listDisplayName: '图书共享申请列表' }, // this is for model namespace and
     }))(BookCopySharingApplicationUpdateForm)
@@ -524,6 +542,7 @@ class CustomerBizApp extends React.PureComponent {
    	const {MemberServiceRevenueCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "memberServiceRevenue",
       data: state._customer.memberServiceRevenueList,
       count: state._customer.memberServiceRevenueCount,
       currentPage: state._customer.memberServiceRevenueCurrentPageNumber,
@@ -537,6 +556,7 @@ class CustomerBizApp extends React.PureComponent {
   	const {MemberServiceRevenueUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
+      role: "memberServiceRevenue",
       currentUpdateIndex: state._customer.currentUpdateIndex,
       owner: { type: '_customer', id: state._customer.id, listName: 'memberServiceRevenueList', ref:state._customer, listDisplayName: '会员服务收益列表' }, // this is for model namespace and
     }))(MemberServiceRevenueUpdateForm)
@@ -564,6 +584,7 @@ class CustomerBizApp extends React.PureComponent {
    	const {CustomerAccountTransactionCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "customerAccountTransaction",
       data: state._customer.customerAccountTransactionList,
       count: state._customer.customerAccountTransactionCount,
       currentPage: state._customer.customerAccountTransactionCurrentPageNumber,
@@ -577,6 +598,7 @@ class CustomerBizApp extends React.PureComponent {
   	const {CustomerAccountTransactionUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
+      role: "customerAccountTransaction",
       currentUpdateIndex: state._customer.currentUpdateIndex,
       owner: { type: '_customer', id: state._customer.id, listName: 'customerAccountTransactionList', ref:state._customer, listDisplayName: '客户账户明细列表' }, // this is for model namespace and
     }))(CustomerAccountTransactionUpdateForm)
@@ -604,6 +626,7 @@ class CustomerBizApp extends React.PureComponent {
    	const {CampaignRegisterHistoryCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "campaignRegisterHistory",
       data: state._customer.campaignRegisterHistoryList,
       count: state._customer.campaignRegisterHistoryCount,
       currentPage: state._customer.campaignRegisterHistoryCurrentPageNumber,
@@ -617,6 +640,7 @@ class CustomerBizApp extends React.PureComponent {
   	const {CampaignRegisterHistoryUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
+      role: "campaignRegisterHistory",
       currentUpdateIndex: state._customer.currentUpdateIndex,
       owner: { type: '_customer', id: state._customer.id, listName: 'campaignRegisterHistoryList', ref:state._customer, listDisplayName: '活动报名记录列表' }, // this is for model namespace and
     }))(CampaignRegisterHistoryUpdateForm)
@@ -644,6 +668,7 @@ class CustomerBizApp extends React.PureComponent {
    	const {CampaignReviewCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "campaignReview",
       data: state._customer.campaignReviewList,
       count: state._customer.campaignReviewCount,
       currentPage: state._customer.campaignReviewCurrentPageNumber,
@@ -657,6 +682,7 @@ class CustomerBizApp extends React.PureComponent {
   	const {CampaignReviewUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
+      role: "campaignReview",
       currentUpdateIndex: state._customer.currentUpdateIndex,
       owner: { type: '_customer', id: state._customer.id, listName: 'campaignReviewList', ref:state._customer, listDisplayName: '活动评论列表' }, // this is for model namespace and
     }))(CampaignReviewUpdateForm)
@@ -684,6 +710,7 @@ class CustomerBizApp extends React.PureComponent {
    	const {CampaignLikeCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "campaignLike",
       data: state._customer.campaignLikeList,
       count: state._customer.campaignLikeCount,
       currentPage: state._customer.campaignLikeCurrentPageNumber,
@@ -697,6 +724,7 @@ class CustomerBizApp extends React.PureComponent {
   	const {CampaignLikeUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
+      role: "campaignLike",
       currentUpdateIndex: state._customer.currentUpdateIndex,
       owner: { type: '_customer', id: state._customer.id, listName: 'campaignLikeList', ref:state._customer, listDisplayName: '活动点赞列表' }, // this is for model namespace and
     }))(CampaignLikeUpdateForm)
@@ -724,6 +752,7 @@ class CustomerBizApp extends React.PureComponent {
    	const {CampaignReviewLikeCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "campaignReviewLike",
       data: state._customer.campaignReviewLikeList,
       count: state._customer.campaignReviewLikeCount,
       currentPage: state._customer.campaignReviewLikeCurrentPageNumber,
@@ -737,6 +766,7 @@ class CustomerBizApp extends React.PureComponent {
   	const {CampaignReviewLikeUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
+      role: "campaignReviewLike",
       currentUpdateIndex: state._customer.currentUpdateIndex,
       owner: { type: '_customer', id: state._customer.id, listName: 'campaignReviewLikeList', ref:state._customer, listDisplayName: '活动评论点赞列表' }, // this is for model namespace and
     }))(CampaignReviewLikeUpdateForm)
@@ -764,6 +794,7 @@ class CustomerBizApp extends React.PureComponent {
    	const {CustomerFootprintCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "customerFootprint",
       data: state._customer.customerFootprintList,
       count: state._customer.customerFootprintCount,
       currentPage: state._customer.customerFootprintCurrentPageNumber,
@@ -777,6 +808,7 @@ class CustomerBizApp extends React.PureComponent {
   	const {CustomerFootprintUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
+      role: "customerFootprint",
       currentUpdateIndex: state._customer.currentUpdateIndex,
       owner: { type: '_customer', id: state._customer.id, listName: 'customerFootprintList', ref:state._customer, listDisplayName: '用户历程列表' }, // this is for model namespace and
     }))(CustomerFootprintUpdateForm)
@@ -804,6 +836,7 @@ class CustomerBizApp extends React.PureComponent {
    	const {ShieldCustomerCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "shieldCustomerAsCustomer",
       data: state._customer.shieldCustomerListAsCustomer,
       count: state._customer.shieldCustomerAsCustomerCount,
       currentPage: state._customer.shieldCustomerAsCustomerCurrentPageNumber,
@@ -817,6 +850,7 @@ class CustomerBizApp extends React.PureComponent {
   	const {ShieldCustomerUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
+      role: "shieldCustomerAsCustomer",
       currentUpdateIndex: state._customer.currentUpdateIndex,
       owner: { type: '_customer', id: state._customer.id, listName: 'shieldCustomerListAsCustomer', ref:state._customer, listDisplayName: '屏蔽用户列表' }, // this is for model namespace and
     }))(ShieldCustomerUpdateForm)
@@ -844,6 +878,7 @@ class CustomerBizApp extends React.PureComponent {
    	const {ShieldCustomerCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "shieldCustomerAsShield",
       data: state._customer.shieldCustomerListAsShield,
       count: state._customer.shieldCustomerAsShieldCount,
       currentPage: state._customer.shieldCustomerAsShieldCurrentPageNumber,
@@ -857,6 +892,7 @@ class CustomerBizApp extends React.PureComponent {
   	const {ShieldCustomerUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
+      role: "shieldCustomerAsShield",
       currentUpdateIndex: state._customer.currentUpdateIndex,
       owner: { type: '_customer', id: state._customer.id, listName: 'shieldCustomerListAsShield', ref:state._customer, listDisplayName: '屏蔽用户列表' }, // this is for model namespace and
     }))(ShieldCustomerUpdateForm)
@@ -884,6 +920,7 @@ class CustomerBizApp extends React.PureComponent {
    	const {InformCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "inform",
       data: state._customer.informList,
       count: state._customer.informCount,
       currentPage: state._customer.informCurrentPageNumber,
@@ -897,6 +934,7 @@ class CustomerBizApp extends React.PureComponent {
   	const {InformUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
+      role: "inform",
       currentUpdateIndex: state._customer.currentUpdateIndex,
       owner: { type: '_customer', id: state._customer.id, listName: 'informList', ref:state._customer, listDisplayName: '举报列表' }, // this is for model namespace and
     }))(InformUpdateForm)
@@ -924,6 +962,7 @@ class CustomerBizApp extends React.PureComponent {
    	const {UndistributedProfitCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "undistributedProfit",
       data: state._customer.undistributedProfitList,
       count: state._customer.undistributedProfitCount,
       currentPage: state._customer.undistributedProfitCurrentPageNumber,
@@ -937,6 +976,7 @@ class CustomerBizApp extends React.PureComponent {
   	const {UndistributedProfitUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._customer.selectedRows,
+      role: "undistributedProfit",
       currentUpdateIndex: state._customer.currentUpdateIndex,
       owner: { type: '_customer', id: state._customer.id, listName: 'undistributedProfitList', ref:state._customer, listDisplayName: '未分割收入列表' }, // this is for model namespace and
     }))(UndistributedProfitUpdateForm)

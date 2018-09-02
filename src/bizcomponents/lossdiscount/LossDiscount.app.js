@@ -164,6 +164,7 @@ class LossDiscountBizApp extends React.PureComponent {
    	const {LossAssessmentRecordCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "lossAssessmentRecord",
       data: state._lossDiscount.lossAssessmentRecordList,
       count: state._lossDiscount.lossAssessmentRecordCount,
       currentPage: state._lossDiscount.lossAssessmentRecordCurrentPageNumber,
@@ -177,6 +178,7 @@ class LossDiscountBizApp extends React.PureComponent {
   	const {LossAssessmentRecordUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._lossDiscount.selectedRows,
+      role: "lossAssessmentRecord",
       currentUpdateIndex: state._lossDiscount.currentUpdateIndex,
       owner: { type: '_lossDiscount', id: state._lossDiscount.id, listName: 'lossAssessmentRecordList', ref:state._lossDiscount, listDisplayName: '定损记录列表' }, // this is for model namespace and
     }))(LossAssessmentRecordUpdateForm)

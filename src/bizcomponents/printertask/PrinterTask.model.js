@@ -89,13 +89,13 @@ export default {
     
     
     *gotoCreateForm({ payload }, { put }) {
-      const { id, type } = payload
-      yield put(routerRedux.push(`/printerTask/${id}/list/${type}CreateForm`))
+      const { id, role } = payload
+      yield put(routerRedux.push(`/printerTask/${id}/list/${role}CreateForm`))
     },
     *gotoUpdateForm({ payload }, { put }) {
-      const { id, type, selectedRows, currentUpdateIndex } = payload
-      const state = { id, type, selectedRows, currentUpdateIndex }
-      const location = { pathname: `/printerTask/${id}/list/${type}UpdateForm`, state }
+      const { id, role, selectedRows, currentUpdateIndex } = payload
+      const state = { id, role, selectedRows, currentUpdateIndex }
+      const location = { pathname: `/printerTask/${id}/list/${role}UpdateForm`, state }
       yield put(routerRedux.push(location))
     },
     *goback({ payload }, { put }) {

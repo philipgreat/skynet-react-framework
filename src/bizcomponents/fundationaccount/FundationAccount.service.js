@@ -55,8 +55,9 @@ const transferToAnotherAccountData = (id, parameters) => {
 
 
 const addFundationAccountDetails = (targetObjectId, parameters) => {
-  const url = `${PREFIX}fundationAccountManager/addFundationAccountDetails /fundationAccountId/summary/amount/transactionTypeId/relatedMainOrderId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}fundationAccountManager/addFundationAccountDetails/fundationAccountId/summary/amount/transactionTypeId/relatedMainOrderId/tokensExpr/`
+  const fundationAccountId = targetObjectId
+  const requestParameters = { ...parameters, fundationAccountId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 

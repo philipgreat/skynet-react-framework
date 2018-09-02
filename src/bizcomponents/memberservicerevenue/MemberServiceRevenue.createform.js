@@ -17,14 +17,14 @@ const testValues = {};
 /*
 const testValues = {
   memberName: '张三',
-  serviceStartDate: '2017-12-30',
-  serviceEndDate: '2016-09-29',
-  monthlyServiceFee: '15.03',
+  serviceStartDate: '2016-09-15',
+  serviceEndDate: '2016-07-25',
+  monthlyServiceFee: '19.88',
   storeName: '书香社区慕和南道店',
   storeServiceCount: '0',
   totalServiceCount: '0',
   storeServiceRevenueRate: '80%',
-  storeServiceRevenue: '6.02',
+  storeServiceRevenue: '6.10',
   memberId: 'C000001',
   storeId: 'S000001',
   mainOrderId: 'MO000001',
@@ -153,14 +153,22 @@ class MemberServiceRevenueCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = MemberServiceRevenueBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -172,9 +180,10 @@ class MemberServiceRevenueCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addMemberServiceRevenue`,
-          payload: { id: owner.id, type: 'memberServiceRevenue', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }

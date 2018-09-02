@@ -89,13 +89,13 @@ export default {
     
     
     *gotoCreateForm({ payload }, { put }) {
-      const { id, type } = payload
-      yield put(routerRedux.push(`/accountData/${id}/list/${type}CreateForm`))
+      const { id, role } = payload
+      yield put(routerRedux.push(`/accountData/${id}/list/${role}CreateForm`))
     },
     *gotoUpdateForm({ payload }, { put }) {
-      const { id, type, selectedRows, currentUpdateIndex } = payload
-      const state = { id, type, selectedRows, currentUpdateIndex }
-      const location = { pathname: `/accountData/${id}/list/${type}UpdateForm`, state }
+      const { id, role, selectedRows, currentUpdateIndex } = payload
+      const state = { id, role, selectedRows, currentUpdateIndex }
+      const location = { pathname: `/accountData/${id}/list/${role}UpdateForm`, state }
       yield put(routerRedux.push(location))
     },
     *goback({ payload }, { put }) {
@@ -109,7 +109,7 @@ export default {
     *addPlatformAccount({ payload }, { call, put }) {
       const {AccountDataService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(AccountDataService.addPlatformAccount, id, parameters)
       if (hasError(data)) {
@@ -118,7 +118,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/accountData/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/accountData/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -128,7 +128,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/accountData/${id}/list/${type}List/平台账户列表`, state: newState }
+      const location = { pathname: `/accountData/${id}/list/\PlatformAccountList/平台账户列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updatePlatformAccount({ payload }, { call, put }) {
@@ -152,7 +152,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/accountData/${id}/list/${type}List/平台账户列表`, state: newPlayload }
+      const location = { pathname: `/accountData/${id}/list/\PlatformAccountList/平台账户列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextPlatformAccountUpdateRow({ payload }, { call, put }) {
@@ -162,7 +162,7 @@ export default {
     },
     *removePlatformAccountList({ payload }, { call, put }) {
       const {AccountDataService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(AccountDataService.removePlatformAccountList, id, parameters)
       if (hasError(data)) {
@@ -173,7 +173,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/accountData/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -187,7 +187,7 @@ export default {
     *addFundationAccount({ payload }, { call, put }) {
       const {AccountDataService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(AccountDataService.addFundationAccount, id, parameters)
       if (hasError(data)) {
@@ -196,7 +196,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/accountData/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/accountData/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -206,7 +206,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/accountData/${id}/list/${type}List/平台基金账户列表`, state: newState }
+      const location = { pathname: `/accountData/${id}/list/\FundationAccountList/平台基金账户列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateFundationAccount({ payload }, { call, put }) {
@@ -230,7 +230,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/accountData/${id}/list/${type}List/平台基金账户列表`, state: newPlayload }
+      const location = { pathname: `/accountData/${id}/list/\FundationAccountList/平台基金账户列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextFundationAccountUpdateRow({ payload }, { call, put }) {
@@ -240,7 +240,7 @@ export default {
     },
     *removeFundationAccountList({ payload }, { call, put }) {
       const {AccountDataService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(AccountDataService.removeFundationAccountList, id, parameters)
       if (hasError(data)) {
@@ -251,7 +251,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/accountData/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -265,7 +265,7 @@ export default {
     *addStoreAccount({ payload }, { call, put }) {
       const {AccountDataService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(AccountDataService.addStoreAccount, id, parameters)
       if (hasError(data)) {
@@ -274,7 +274,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/accountData/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/accountData/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -284,7 +284,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/accountData/${id}/list/${type}List/网点账户列表`, state: newState }
+      const location = { pathname: `/accountData/${id}/list/\StoreAccountList/网点账户列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateStoreAccount({ payload }, { call, put }) {
@@ -308,7 +308,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/accountData/${id}/list/${type}List/网点账户列表`, state: newPlayload }
+      const location = { pathname: `/accountData/${id}/list/\StoreAccountList/网点账户列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextStoreAccountUpdateRow({ payload }, { call, put }) {
@@ -318,7 +318,7 @@ export default {
     },
     *removeStoreAccountList({ payload }, { call, put }) {
       const {AccountDataService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(AccountDataService.removeStoreAccountList, id, parameters)
       if (hasError(data)) {
@@ -329,7 +329,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/accountData/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -343,7 +343,7 @@ export default {
     *addTransactionType({ payload }, { call, put }) {
       const {AccountDataService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(AccountDataService.addTransactionType, id, parameters)
       if (hasError(data)) {
@@ -352,7 +352,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/accountData/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/accountData/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -362,7 +362,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/accountData/${id}/list/${type}List/交易类型列表`, state: newState }
+      const location = { pathname: `/accountData/${id}/list/\TransactionTypeList/交易类型列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateTransactionType({ payload }, { call, put }) {
@@ -386,7 +386,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/accountData/${id}/list/${type}List/交易类型列表`, state: newPlayload }
+      const location = { pathname: `/accountData/${id}/list/\TransactionTypeList/交易类型列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextTransactionTypeUpdateRow({ payload }, { call, put }) {
@@ -396,7 +396,7 @@ export default {
     },
     *removeTransactionTypeList({ payload }, { call, put }) {
       const {AccountDataService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(AccountDataService.removeTransactionTypeList, id, parameters)
       if (hasError(data)) {
@@ -407,7 +407,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/accountData/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',

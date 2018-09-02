@@ -89,13 +89,13 @@ export default {
     
     
     *gotoCreateForm({ payload }, { put }) {
-      const { id, type } = payload
-      yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm`))
+      const { id, role } = payload
+      yield put(routerRedux.push(`/store/${id}/list/${role}CreateForm`))
     },
     *gotoUpdateForm({ payload }, { put }) {
-      const { id, type, selectedRows, currentUpdateIndex } = payload
-      const state = { id, type, selectedRows, currentUpdateIndex }
-      const location = { pathname: `/store/${id}/list/${type}UpdateForm`, state }
+      const { id, role, selectedRows, currentUpdateIndex } = payload
+      const state = { id, role, selectedRows, currentUpdateIndex }
+      const location = { pathname: `/store/${id}/list/${role}UpdateForm`, state }
       yield put(routerRedux.push(location))
     },
     *goback({ payload }, { put }) {
@@ -109,7 +109,7 @@ export default {
     *addLossAssessmentRecord({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.addLossAssessmentRecord, id, parameters)
       if (hasError(data)) {
@@ -118,7 +118,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/store/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -128,7 +128,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/store/${id}/list/${type}List/定损记录列表`, state: newState }
+      const location = { pathname: `/store/${id}/list/\LossAssessmentRecordList/定损记录列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateLossAssessmentRecord({ payload }, { call, put }) {
@@ -152,7 +152,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/store/${id}/list/${type}List/定损记录列表`, state: newPlayload }
+      const location = { pathname: `/store/${id}/list/\LossAssessmentRecordList/定损记录列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextLossAssessmentRecordUpdateRow({ payload }, { call, put }) {
@@ -162,7 +162,7 @@ export default {
     },
     *removeLossAssessmentRecordList({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.removeLossAssessmentRecordList, id, parameters)
       if (hasError(data)) {
@@ -173,7 +173,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -187,7 +187,7 @@ export default {
     *addPrinter({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.addPrinter, id, parameters)
       if (hasError(data)) {
@@ -196,7 +196,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/store/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -206,7 +206,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/store/${id}/list/${type}List/打印机列表`, state: newState }
+      const location = { pathname: `/store/${id}/list/\PrinterList/打印机列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updatePrinter({ payload }, { call, put }) {
@@ -230,7 +230,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/store/${id}/list/${type}List/打印机列表`, state: newPlayload }
+      const location = { pathname: `/store/${id}/list/\PrinterList/打印机列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextPrinterUpdateRow({ payload }, { call, put }) {
@@ -240,7 +240,7 @@ export default {
     },
     *removePrinterList({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.removePrinterList, id, parameters)
       if (hasError(data)) {
@@ -251,7 +251,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -265,7 +265,7 @@ export default {
     *addBookCopy({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.addBookCopy, id, parameters)
       if (hasError(data)) {
@@ -274,7 +274,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/store/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -284,7 +284,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/store/${id}/list/${type}List/书籍副本列表`, state: newState }
+      const location = { pathname: `/store/${id}/list/\BookCopyList/书籍副本列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateBookCopy({ payload }, { call, put }) {
@@ -308,7 +308,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/store/${id}/list/${type}List/书籍副本列表`, state: newPlayload }
+      const location = { pathname: `/store/${id}/list/\BookCopyList/书籍副本列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextBookCopyUpdateRow({ payload }, { call, put }) {
@@ -318,7 +318,7 @@ export default {
     },
     *removeBookCopyList({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.removeBookCopyList, id, parameters)
       if (hasError(data)) {
@@ -329,7 +329,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -343,7 +343,7 @@ export default {
     *addBookCopyTransferAsOriginalStore({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.addBookCopyTransferAsOriginalStore, id, parameters)
       if (hasError(data)) {
@@ -352,7 +352,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/store/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -362,7 +362,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/store/${id}/list/${type}List/图书副本迁移记录列表`, state: newState }
+      const location = { pathname: `/store/${id}/list/\BookCopyTransferListAsOriginalStore/图书副本迁移记录列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateBookCopyTransferAsOriginalStore({ payload }, { call, put }) {
@@ -386,7 +386,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/store/${id}/list/${type}List/图书副本迁移记录列表`, state: newPlayload }
+      const location = { pathname: `/store/${id}/list/\BookCopyTransferListAsOriginalStore/图书副本迁移记录列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextBookCopyTransferUpdateRow({ payload }, { call, put }) {
@@ -396,7 +396,7 @@ export default {
     },
     *removeBookCopyTransferListAsOriginalStore({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.removeBookCopyTransferListAsOriginalStore, id, parameters)
       if (hasError(data)) {
@@ -407,7 +407,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -421,7 +421,7 @@ export default {
     *addBookCopyTransferAsNewStore({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.addBookCopyTransferAsNewStore, id, parameters)
       if (hasError(data)) {
@@ -430,7 +430,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/store/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -440,7 +440,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/store/${id}/list/${type}List/图书副本迁移记录列表`, state: newState }
+      const location = { pathname: `/store/${id}/list/\BookCopyTransferListAsNewStore/图书副本迁移记录列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateBookCopyTransferAsNewStore({ payload }, { call, put }) {
@@ -464,7 +464,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/store/${id}/list/${type}List/图书副本迁移记录列表`, state: newPlayload }
+      const location = { pathname: `/store/${id}/list/\BookCopyTransferListAsNewStore/图书副本迁移记录列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextBookCopyTransferUpdateRow({ payload }, { call, put }) {
@@ -474,7 +474,7 @@ export default {
     },
     *removeBookCopyTransferListAsNewStore({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.removeBookCopyTransferListAsNewStore, id, parameters)
       if (hasError(data)) {
@@ -485,7 +485,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -499,7 +499,7 @@ export default {
     *addBookTakeStockPlan({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.addBookTakeStockPlan, id, parameters)
       if (hasError(data)) {
@@ -508,7 +508,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/store/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -518,7 +518,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/store/${id}/list/${type}List/图书盘点计划列表`, state: newState }
+      const location = { pathname: `/store/${id}/list/\BookTakeStockPlanList/图书盘点计划列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateBookTakeStockPlan({ payload }, { call, put }) {
@@ -542,7 +542,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/store/${id}/list/${type}List/图书盘点计划列表`, state: newPlayload }
+      const location = { pathname: `/store/${id}/list/\BookTakeStockPlanList/图书盘点计划列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextBookTakeStockPlanUpdateRow({ payload }, { call, put }) {
@@ -552,7 +552,7 @@ export default {
     },
     *removeBookTakeStockPlanList({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.removeBookTakeStockPlanList, id, parameters)
       if (hasError(data)) {
@@ -563,7 +563,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -577,7 +577,7 @@ export default {
     *addBookCopyOperationRecord({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.addBookCopyOperationRecord, id, parameters)
       if (hasError(data)) {
@@ -586,7 +586,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/store/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -596,7 +596,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/store/${id}/list/${type}List/书籍副本操作记录列表`, state: newState }
+      const location = { pathname: `/store/${id}/list/\BookCopyOperationRecordList/书籍副本操作记录列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateBookCopyOperationRecord({ payload }, { call, put }) {
@@ -620,7 +620,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/store/${id}/list/${type}List/书籍副本操作记录列表`, state: newPlayload }
+      const location = { pathname: `/store/${id}/list/\BookCopyOperationRecordList/书籍副本操作记录列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextBookCopyOperationRecordUpdateRow({ payload }, { call, put }) {
@@ -630,7 +630,7 @@ export default {
     },
     *removeBookCopyOperationRecordList({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.removeBookCopyOperationRecordList, id, parameters)
       if (hasError(data)) {
@@ -641,7 +641,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -655,7 +655,7 @@ export default {
     *addBorrowingHistoryAsLendingStore({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.addBorrowingHistoryAsLendingStore, id, parameters)
       if (hasError(data)) {
@@ -664,7 +664,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/store/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -674,7 +674,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/store/${id}/list/${type}List/图书借还历史列表`, state: newState }
+      const location = { pathname: `/store/${id}/list/\BorrowingHistoryListAsLendingStore/图书借还历史列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateBorrowingHistoryAsLendingStore({ payload }, { call, put }) {
@@ -698,7 +698,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/store/${id}/list/${type}List/图书借还历史列表`, state: newPlayload }
+      const location = { pathname: `/store/${id}/list/\BorrowingHistoryListAsLendingStore/图书借还历史列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextBorrowingHistoryUpdateRow({ payload }, { call, put }) {
@@ -708,7 +708,7 @@ export default {
     },
     *removeBorrowingHistoryListAsLendingStore({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.removeBorrowingHistoryListAsLendingStore, id, parameters)
       if (hasError(data)) {
@@ -719,7 +719,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -733,7 +733,7 @@ export default {
     *addBorrowingHistoryAsReturnStore({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.addBorrowingHistoryAsReturnStore, id, parameters)
       if (hasError(data)) {
@@ -742,7 +742,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/store/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -752,7 +752,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/store/${id}/list/${type}List/图书借还历史列表`, state: newState }
+      const location = { pathname: `/store/${id}/list/\BorrowingHistoryListAsReturnStore/图书借还历史列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateBorrowingHistoryAsReturnStore({ payload }, { call, put }) {
@@ -776,7 +776,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/store/${id}/list/${type}List/图书借还历史列表`, state: newPlayload }
+      const location = { pathname: `/store/${id}/list/\BorrowingHistoryListAsReturnStore/图书借还历史列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextBorrowingHistoryUpdateRow({ payload }, { call, put }) {
@@ -786,7 +786,7 @@ export default {
     },
     *removeBorrowingHistoryListAsReturnStore({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.removeBorrowingHistoryListAsReturnStore, id, parameters)
       if (hasError(data)) {
@@ -797,7 +797,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -811,7 +811,7 @@ export default {
     *addBorrowingExpiredSkuAsLendingStore({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.addBorrowingExpiredSkuAsLendingStore, id, parameters)
       if (hasError(data)) {
@@ -820,7 +820,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/store/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -830,7 +830,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/store/${id}/list/${type}List/借书超期费列表`, state: newState }
+      const location = { pathname: `/store/${id}/list/\BorrowingExpiredSkuListAsLendingStore/借书超期费列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateBorrowingExpiredSkuAsLendingStore({ payload }, { call, put }) {
@@ -854,7 +854,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/store/${id}/list/${type}List/借书超期费列表`, state: newPlayload }
+      const location = { pathname: `/store/${id}/list/\BorrowingExpiredSkuListAsLendingStore/借书超期费列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextBorrowingExpiredSkuUpdateRow({ payload }, { call, put }) {
@@ -864,7 +864,7 @@ export default {
     },
     *removeBorrowingExpiredSkuListAsLendingStore({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.removeBorrowingExpiredSkuListAsLendingStore, id, parameters)
       if (hasError(data)) {
@@ -875,7 +875,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -889,7 +889,7 @@ export default {
     *addBorrowingExpiredSkuAsReturnStore({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.addBorrowingExpiredSkuAsReturnStore, id, parameters)
       if (hasError(data)) {
@@ -898,7 +898,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/store/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -908,7 +908,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/store/${id}/list/${type}List/借书超期费列表`, state: newState }
+      const location = { pathname: `/store/${id}/list/\BorrowingExpiredSkuListAsReturnStore/借书超期费列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateBorrowingExpiredSkuAsReturnStore({ payload }, { call, put }) {
@@ -932,7 +932,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/store/${id}/list/${type}List/借书超期费列表`, state: newPlayload }
+      const location = { pathname: `/store/${id}/list/\BorrowingExpiredSkuListAsReturnStore/借书超期费列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextBorrowingExpiredSkuUpdateRow({ payload }, { call, put }) {
@@ -942,7 +942,7 @@ export default {
     },
     *removeBorrowingExpiredSkuListAsReturnStore({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.removeBorrowingExpiredSkuListAsReturnStore, id, parameters)
       if (hasError(data)) {
@@ -953,7 +953,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -967,7 +967,7 @@ export default {
     *addBookCopySharingApplication({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.addBookCopySharingApplication, id, parameters)
       if (hasError(data)) {
@@ -976,7 +976,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/store/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -986,7 +986,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/store/${id}/list/${type}List/图书共享申请列表`, state: newState }
+      const location = { pathname: `/store/${id}/list/\BookCopySharingApplicationList/图书共享申请列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateBookCopySharingApplication({ payload }, { call, put }) {
@@ -1010,7 +1010,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/store/${id}/list/${type}List/图书共享申请列表`, state: newPlayload }
+      const location = { pathname: `/store/${id}/list/\BookCopySharingApplicationList/图书共享申请列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextBookCopySharingApplicationUpdateRow({ payload }, { call, put }) {
@@ -1020,7 +1020,7 @@ export default {
     },
     *removeBookCopySharingApplicationList({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.removeBookCopySharingApplicationList, id, parameters)
       if (hasError(data)) {
@@ -1031,7 +1031,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -1045,7 +1045,7 @@ export default {
     *addMemberServiceRevenue({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.addMemberServiceRevenue, id, parameters)
       if (hasError(data)) {
@@ -1054,7 +1054,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/store/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -1064,7 +1064,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/store/${id}/list/${type}List/会员服务收益列表`, state: newState }
+      const location = { pathname: `/store/${id}/list/\MemberServiceRevenueList/会员服务收益列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateMemberServiceRevenue({ payload }, { call, put }) {
@@ -1088,7 +1088,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/store/${id}/list/${type}List/会员服务收益列表`, state: newPlayload }
+      const location = { pathname: `/store/${id}/list/\MemberServiceRevenueList/会员服务收益列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextMemberServiceRevenueUpdateRow({ payload }, { call, put }) {
@@ -1098,7 +1098,7 @@ export default {
     },
     *removeMemberServiceRevenueList({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.removeMemberServiceRevenueList, id, parameters)
       if (hasError(data)) {
@@ -1109,7 +1109,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -1123,7 +1123,7 @@ export default {
     *addStoreAccount({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.addStoreAccount, id, parameters)
       if (hasError(data)) {
@@ -1132,7 +1132,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/store/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -1142,7 +1142,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/store/${id}/list/${type}List/网点账户列表`, state: newState }
+      const location = { pathname: `/store/${id}/list/\StoreAccountList/网点账户列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateStoreAccount({ payload }, { call, put }) {
@@ -1166,7 +1166,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/store/${id}/list/${type}List/网点账户列表`, state: newPlayload }
+      const location = { pathname: `/store/${id}/list/\StoreAccountList/网点账户列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextStoreAccountUpdateRow({ payload }, { call, put }) {
@@ -1176,7 +1176,7 @@ export default {
     },
     *removeStoreAccountList({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.removeStoreAccountList, id, parameters)
       if (hasError(data)) {
@@ -1187,7 +1187,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -1201,7 +1201,7 @@ export default {
     *addStoreSlide({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.addStoreSlide, id, parameters)
       if (hasError(data)) {
@@ -1210,7 +1210,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/store/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -1220,7 +1220,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/store/${id}/list/${type}List/网点海报列表`, state: newState }
+      const location = { pathname: `/store/${id}/list/\StoreSlideList/网点海报列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateStoreSlide({ payload }, { call, put }) {
@@ -1244,7 +1244,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/store/${id}/list/${type}List/网点海报列表`, state: newPlayload }
+      const location = { pathname: `/store/${id}/list/\StoreSlideList/网点海报列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextStoreSlideUpdateRow({ payload }, { call, put }) {
@@ -1254,7 +1254,7 @@ export default {
     },
     *removeStoreSlideList({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.removeStoreSlideList, id, parameters)
       if (hasError(data)) {
@@ -1265,7 +1265,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -1279,7 +1279,7 @@ export default {
     *addCampaign({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.addCampaign, id, parameters)
       if (hasError(data)) {
@@ -1288,7 +1288,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/store/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -1298,7 +1298,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/store/${id}/list/${type}List/活动列表`, state: newState }
+      const location = { pathname: `/store/${id}/list/\CampaignList/活动列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateCampaign({ payload }, { call, put }) {
@@ -1322,7 +1322,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/store/${id}/list/${type}List/活动列表`, state: newPlayload }
+      const location = { pathname: `/store/${id}/list/\CampaignList/活动列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextCampaignUpdateRow({ payload }, { call, put }) {
@@ -1332,7 +1332,7 @@ export default {
     },
     *removeCampaignList({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.removeCampaignList, id, parameters)
       if (hasError(data)) {
@@ -1343,7 +1343,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -1357,7 +1357,7 @@ export default {
     *addCustomer({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.addCustomer, id, parameters)
       if (hasError(data)) {
@@ -1366,7 +1366,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/store/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -1376,7 +1376,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/store/${id}/list/${type}List/用户列表`, state: newState }
+      const location = { pathname: `/store/${id}/list/\CustomerList/用户列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateCustomer({ payload }, { call, put }) {
@@ -1400,7 +1400,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/store/${id}/list/${type}List/用户列表`, state: newPlayload }
+      const location = { pathname: `/store/${id}/list/\CustomerList/用户列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextCustomerUpdateRow({ payload }, { call, put }) {
@@ -1410,7 +1410,7 @@ export default {
     },
     *removeCustomerList({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.removeCustomerList, id, parameters)
       if (hasError(data)) {
@@ -1421,7 +1421,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -1435,7 +1435,7 @@ export default {
     *addEmployeeWorkingStore({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.addEmployeeWorkingStore, id, parameters)
       if (hasError(data)) {
@@ -1444,7 +1444,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/store/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -1454,7 +1454,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/store/${id}/list/${type}List/员工工作的网点列表`, state: newState }
+      const location = { pathname: `/store/${id}/list/\EmployeeWorkingStoreList/员工工作的网点列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateEmployeeWorkingStore({ payload }, { call, put }) {
@@ -1478,7 +1478,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/store/${id}/list/${type}List/员工工作的网点列表`, state: newPlayload }
+      const location = { pathname: `/store/${id}/list/\EmployeeWorkingStoreList/员工工作的网点列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextEmployeeWorkingStoreUpdateRow({ payload }, { call, put }) {
@@ -1488,7 +1488,7 @@ export default {
     },
     *removeEmployeeWorkingStoreList({ payload }, { call, put }) {
       const {StoreService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(StoreService.removeEmployeeWorkingStoreList, id, parameters)
       if (hasError(data)) {
@@ -1499,7 +1499,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/store/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',

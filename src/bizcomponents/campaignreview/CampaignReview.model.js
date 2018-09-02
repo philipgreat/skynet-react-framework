@@ -89,13 +89,13 @@ export default {
     
     
     *gotoCreateForm({ payload }, { put }) {
-      const { id, type } = payload
-      yield put(routerRedux.push(`/campaignReview/${id}/list/${type}CreateForm`))
+      const { id, role } = payload
+      yield put(routerRedux.push(`/campaignReview/${id}/list/${role}CreateForm`))
     },
     *gotoUpdateForm({ payload }, { put }) {
-      const { id, type, selectedRows, currentUpdateIndex } = payload
-      const state = { id, type, selectedRows, currentUpdateIndex }
-      const location = { pathname: `/campaignReview/${id}/list/${type}UpdateForm`, state }
+      const { id, role, selectedRows, currentUpdateIndex } = payload
+      const state = { id, role, selectedRows, currentUpdateIndex }
+      const location = { pathname: `/campaignReview/${id}/list/${role}UpdateForm`, state }
       yield put(routerRedux.push(location))
     },
     *goback({ payload }, { put }) {
@@ -109,7 +109,7 @@ export default {
     *addCampaignReviewLike({ payload }, { call, put }) {
       const {CampaignReviewService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(CampaignReviewService.addCampaignReviewLike, id, parameters)
       if (hasError(data)) {
@@ -118,7 +118,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/campaignReview/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/campaignReview/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -128,7 +128,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/campaignReview/${id}/list/${type}List/活动评论点赞列表`, state: newState }
+      const location = { pathname: `/campaignReview/${id}/list/\CampaignReviewLikeList/活动评论点赞列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateCampaignReviewLike({ payload }, { call, put }) {
@@ -152,7 +152,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/campaignReview/${id}/list/${type}List/活动评论点赞列表`, state: newPlayload }
+      const location = { pathname: `/campaignReview/${id}/list/\CampaignReviewLikeList/活动评论点赞列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextCampaignReviewLikeUpdateRow({ payload }, { call, put }) {
@@ -162,7 +162,7 @@ export default {
     },
     *removeCampaignReviewLikeList({ payload }, { call, put }) {
       const {CampaignReviewService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(CampaignReviewService.removeCampaignReviewLikeList, id, parameters)
       if (hasError(data)) {
@@ -173,7 +173,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/campaignReview/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -187,7 +187,7 @@ export default {
     *addInform({ payload }, { call, put }) {
       const {CampaignReviewService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(CampaignReviewService.addInform, id, parameters)
       if (hasError(data)) {
@@ -196,7 +196,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/campaignReview/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/campaignReview/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -206,7 +206,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/campaignReview/${id}/list/${type}List/举报列表`, state: newState }
+      const location = { pathname: `/campaignReview/${id}/list/\InformList/举报列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateInform({ payload }, { call, put }) {
@@ -230,7 +230,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/campaignReview/${id}/list/${type}List/举报列表`, state: newPlayload }
+      const location = { pathname: `/campaignReview/${id}/list/\InformList/举报列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextInformUpdateRow({ payload }, { call, put }) {
@@ -240,7 +240,7 @@ export default {
     },
     *removeInformList({ payload }, { call, put }) {
       const {CampaignReviewService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(CampaignReviewService.removeInformList, id, parameters)
       if (hasError(data)) {
@@ -251,7 +251,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/campaignReview/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',

@@ -105,19 +105,25 @@ class MainOrderPaymentSearch extends PureComponent {
 
   handleDelete = () => {
     const { selectedRows } = this.state
-    const { dispatch, owner } = this.props
+    const { dispatch, owner, role } = this.props
     console.log('things to delete', selectedRows)
     this.setState({
       modalVisible: true,
       showDeleteResult: true,
     })
-    
+    const {listName} = owner;
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
     const mainOrderPaymentIds = selectedRows.map((item) => { return item.id })
     console.log('mainOrderPaymentIds', mainOrderPaymentIds)
     const parameters = { mainOrderPaymentIds }
+    const cappedRoleName = capFirstChar(listName)
     dispatch({
-      type: `${owner.type}/removeMainOrderPaymentList`,
-      payload: { id: owner.id, type: 'mainOrderPayment', parameters },
+      type: `${owner.type}/remove${cappedRoleName}`,
+      payload: { id: owner.id, role: role, parameters },
     })
   }
   
@@ -143,7 +149,7 @@ class MainOrderPaymentSearch extends PureComponent {
     const { dispatch, owner, role } = this.props
     dispatch({
       type: `${owner.type}/gotoCreateForm`,
-      payload: { id: owner.id, type: role },
+      payload: { id: owner.id, role: role },
     })
   }
 

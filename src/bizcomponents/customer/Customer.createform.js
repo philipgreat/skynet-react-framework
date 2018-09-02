@@ -20,18 +20,18 @@ const testValues = {
   mobileNumber: 'A13312345678',
   realName: '张世博',
   sexuality: '男',
-  memberServiceStartDate: '2016-04-18',
-  memberServiceExpireDate: '2017-10-13',
-  accountBalance: '78.26',
+  memberServiceStartDate: '2017-02-11',
+  memberServiceExpireDate: '2017-01-21',
+  accountBalance: '77.36',
   miniProgramOpenid: 'wx012345',
   serviceAccountOpenid: 'wx012345',
   wechatUnionId: 'wx012345',
-  longitude: '105.22595846112958',
-  latitude: '29.636694235870344',
-  birthday: '2016-07-29',
+  longitude: '104.38187690743213',
+  latitude: '31.818993592701258',
+  birthday: '2016-12-03',
   identityCardNumber: '510922876512348875',
   familyAddress: '四川省成都市高新区文家场兴业街19-21号',
-  memberServiceDailyPay: '11.85',
+  memberServiceDailyPay: '11.16',
   memberServiceId: 'MSP000001',
   favouriteStoreId: 'S000001',
   platformId: 'BSP000001',
@@ -161,14 +161,22 @@ class CustomerCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = CustomerBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -180,9 +188,10 @@ class CustomerCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addCustomer`,
-          payload: { id: owner.id, type: 'customer', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }

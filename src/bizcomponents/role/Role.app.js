@@ -164,6 +164,7 @@ class RoleBizApp extends React.PureComponent {
    	const {EmployeeWorkingStoreCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "employeeWorkingStore",
       data: state._role.employeeWorkingStoreList,
       count: state._role.employeeWorkingStoreCount,
       currentPage: state._role.employeeWorkingStoreCurrentPageNumber,
@@ -177,6 +178,7 @@ class RoleBizApp extends React.PureComponent {
   	const {EmployeeWorkingStoreUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._role.selectedRows,
+      role: "employeeWorkingStore",
       currentUpdateIndex: state._role.currentUpdateIndex,
       owner: { type: '_role', id: state._role.id, listName: 'employeeWorkingStoreList', ref:state._role, listDisplayName: '员工工作的网点列表' }, // this is for model namespace and
     }))(EmployeeWorkingStoreUpdateForm)

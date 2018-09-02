@@ -105,19 +105,25 @@ class ObjectAccessSearch extends PureComponent {
 
   handleDelete = () => {
     const { selectedRows } = this.state
-    const { dispatch, owner } = this.props
+    const { dispatch, owner, role } = this.props
     console.log('things to delete', selectedRows)
     this.setState({
       modalVisible: true,
       showDeleteResult: true,
     })
-    
+    const {listName} = owner;
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
     const objectAccessIds = selectedRows.map((item) => { return item.id })
     console.log('objectAccessIds', objectAccessIds)
     const parameters = { objectAccessIds }
+    const cappedRoleName = capFirstChar(listName)
     dispatch({
-      type: `${owner.type}/removeObjectAccessList`,
-      payload: { id: owner.id, type: 'objectAccess', parameters },
+      type: `${owner.type}/remove${cappedRoleName}`,
+      payload: { id: owner.id, role: role, parameters },
     })
   }
   
@@ -143,7 +149,7 @@ class ObjectAccessSearch extends PureComponent {
     const { dispatch, owner, role } = this.props
     dispatch({
       type: `${owner.type}/gotoCreateForm`,
-      payload: { id: owner.id, type: role },
+      payload: { id: owner.id, role: role },
     })
   }
 

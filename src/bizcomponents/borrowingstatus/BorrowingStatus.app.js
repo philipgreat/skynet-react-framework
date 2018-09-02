@@ -164,6 +164,7 @@ class BorrowingStatusBizApp extends React.PureComponent {
    	const {BorrowingHistoryCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "borrowingHistory",
       data: state._borrowingStatus.borrowingHistoryList,
       count: state._borrowingStatus.borrowingHistoryCount,
       currentPage: state._borrowingStatus.borrowingHistoryCurrentPageNumber,
@@ -177,6 +178,7 @@ class BorrowingStatusBizApp extends React.PureComponent {
   	const {BorrowingHistoryUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._borrowingStatus.selectedRows,
+      role: "borrowingHistory",
       currentUpdateIndex: state._borrowingStatus.currentUpdateIndex,
       owner: { type: '_borrowingStatus', id: state._borrowingStatus.id, listName: 'borrowingHistoryList', ref:state._borrowingStatus, listDisplayName: '图书借还历史列表' }, // this is for model namespace and
     }))(BorrowingHistoryUpdateForm)

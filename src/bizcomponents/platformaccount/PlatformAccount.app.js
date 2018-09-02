@@ -164,6 +164,7 @@ class PlatformAccountBizApp extends React.PureComponent {
    	const {PlatformAccountDetailsCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "platformAccountDetails",
       data: state._platformAccount.platformAccountDetailsList,
       count: state._platformAccount.platformAccountDetailsCount,
       currentPage: state._platformAccount.platformAccountDetailsCurrentPageNumber,
@@ -177,6 +178,7 @@ class PlatformAccountBizApp extends React.PureComponent {
   	const {PlatformAccountDetailsUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._platformAccount.selectedRows,
+      role: "platformAccountDetails",
       currentUpdateIndex: state._platformAccount.currentUpdateIndex,
       owner: { type: '_platformAccount', id: state._platformAccount.id, listName: 'platformAccountDetailsList', ref:state._platformAccount, listDisplayName: '平台账户明细列表' }, // this is for model namespace and
     }))(PlatformAccountDetailsUpdateForm)

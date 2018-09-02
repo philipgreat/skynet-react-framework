@@ -17,9 +17,9 @@ const testValues = {};
 /*
 const testValues = {
   vendorRate: '0.00',
-  lendingStoreRate: '0.14',
+  lendingStoreRate: '0.12',
   platformRate: '0.04',
-  publicServiceFundRate: '0.60',
+  publicServiceFundRate: '0.74',
   bookPlazaId: 'BP000001',
 }
 */
@@ -96,14 +96,22 @@ class BookDonationIncomeMetricCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = BookDonationIncomeMetricBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -115,9 +123,10 @@ class BookDonationIncomeMetricCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addBookDonationIncomeMetric`,
-          payload: { id: owner.id, type: 'bookDonationIncomeMetric', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }

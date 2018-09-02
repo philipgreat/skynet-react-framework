@@ -89,13 +89,13 @@ export default {
     
     
     *gotoCreateForm({ payload }, { put }) {
-      const { id, type } = payload
-      yield put(routerRedux.push(`/memberServiceProduct/${id}/list/${type}CreateForm`))
+      const { id, role } = payload
+      yield put(routerRedux.push(`/memberServiceProduct/${id}/list/${role}CreateForm`))
     },
     *gotoUpdateForm({ payload }, { put }) {
-      const { id, type, selectedRows, currentUpdateIndex } = payload
-      const state = { id, type, selectedRows, currentUpdateIndex }
-      const location = { pathname: `/memberServiceProduct/${id}/list/${type}UpdateForm`, state }
+      const { id, role, selectedRows, currentUpdateIndex } = payload
+      const state = { id, role, selectedRows, currentUpdateIndex }
+      const location = { pathname: `/memberServiceProduct/${id}/list/${role}UpdateForm`, state }
       yield put(routerRedux.push(location))
     },
     *goback({ payload }, { put }) {
@@ -109,7 +109,7 @@ export default {
     *addMemberServiceBundleSku({ payload }, { call, put }) {
       const {MemberServiceProductService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(MemberServiceProductService.addMemberServiceBundleSku, id, parameters)
       if (hasError(data)) {
@@ -118,7 +118,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/memberServiceProduct/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/memberServiceProduct/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -128,7 +128,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/memberServiceProduct/${id}/list/${type}List/会员服务包列表`, state: newState }
+      const location = { pathname: `/memberServiceProduct/${id}/list/\MemberServiceBundleSkuList/会员服务包列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateMemberServiceBundleSku({ payload }, { call, put }) {
@@ -152,7 +152,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/memberServiceProduct/${id}/list/${type}List/会员服务包列表`, state: newPlayload }
+      const location = { pathname: `/memberServiceProduct/${id}/list/\MemberServiceBundleSkuList/会员服务包列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextMemberServiceBundleSkuUpdateRow({ payload }, { call, put }) {
@@ -162,7 +162,7 @@ export default {
     },
     *removeMemberServiceBundleSkuList({ payload }, { call, put }) {
       const {MemberServiceProductService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(MemberServiceProductService.removeMemberServiceBundleSkuList, id, parameters)
       if (hasError(data)) {
@@ -173,7 +173,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/memberServiceProduct/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -187,7 +187,7 @@ export default {
     *addStoreSlide({ payload }, { call, put }) {
       const {MemberServiceProductService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(MemberServiceProductService.addStoreSlide, id, parameters)
       if (hasError(data)) {
@@ -196,7 +196,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/memberServiceProduct/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/memberServiceProduct/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -206,7 +206,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/memberServiceProduct/${id}/list/${type}List/网点海报列表`, state: newState }
+      const location = { pathname: `/memberServiceProduct/${id}/list/\StoreSlideList/网点海报列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateStoreSlide({ payload }, { call, put }) {
@@ -230,7 +230,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/memberServiceProduct/${id}/list/${type}List/网点海报列表`, state: newPlayload }
+      const location = { pathname: `/memberServiceProduct/${id}/list/\StoreSlideList/网点海报列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextStoreSlideUpdateRow({ payload }, { call, put }) {
@@ -240,7 +240,7 @@ export default {
     },
     *removeStoreSlideList({ payload }, { call, put }) {
       const {MemberServiceProductService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(MemberServiceProductService.removeStoreSlideList, id, parameters)
       if (hasError(data)) {
@@ -251,7 +251,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/memberServiceProduct/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -265,7 +265,7 @@ export default {
     *addCustomer({ payload }, { call, put }) {
       const {MemberServiceProductService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(MemberServiceProductService.addCustomer, id, parameters)
       if (hasError(data)) {
@@ -274,7 +274,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/memberServiceProduct/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/memberServiceProduct/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -284,7 +284,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/memberServiceProduct/${id}/list/${type}List/用户列表`, state: newState }
+      const location = { pathname: `/memberServiceProduct/${id}/list/\CustomerList/用户列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateCustomer({ payload }, { call, put }) {
@@ -308,7 +308,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/memberServiceProduct/${id}/list/${type}List/用户列表`, state: newPlayload }
+      const location = { pathname: `/memberServiceProduct/${id}/list/\CustomerList/用户列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextCustomerUpdateRow({ payload }, { call, put }) {
@@ -318,7 +318,7 @@ export default {
     },
     *removeCustomerList({ payload }, { call, put }) {
       const {MemberServiceProductService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(MemberServiceProductService.removeCustomerList, id, parameters)
       if (hasError(data)) {
@@ -329,7 +329,7 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/memberServiceProduct/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',

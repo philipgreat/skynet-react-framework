@@ -16,8 +16,8 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
-  storeRate: '0.66',
-  platformRate: '0.18',
+  storeRate: '0.78',
+  platformRate: '0.17',
   bookPlazaId: 'BP000001',
 }
 */
@@ -94,14 +94,22 @@ class MemberServiceIncomeMetricCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = MemberServiceIncomeMetricBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -113,9 +121,10 @@ class MemberServiceIncomeMetricCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addMemberServiceIncomeMetric`,
-          payload: { id: owner.id, type: 'memberServiceIncomeMetric', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }

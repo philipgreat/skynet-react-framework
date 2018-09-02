@@ -90,7 +90,11 @@ class OrderLogUpdateForm extends Component {
     const { convertedImagesValues } = this.state
     const { setFieldsValue } = this.props.form
     const {fieldLabels} = OrderLogBase
-    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
     const submitUpdateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -98,17 +102,18 @@ class OrderLogUpdateForm extends Component {
           return
         }
 
-        const { owner } = this.props
+        const { owner, role } = this.props
         const orderLogId = values.id
         const imagesValues = mapBackToImageValues(convertedImagesValues)
         const parameters = { ...values, orderLogId, ...imagesValues }
 
-        // const newIndex= currentUpdateIndex + 1
+        
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/updateOrderLog`,
+          type: `${owner.type}/update${cappedRoleName}`,
           payload: {
             id: owner.id,
-            type: 'orderLog',
+            role: role,
             parameters,
             selectedRows,
             currentUpdateIndex: 0,

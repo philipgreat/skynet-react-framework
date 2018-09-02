@@ -164,6 +164,7 @@ class SecUserBizApp extends React.PureComponent {
    	const {UserAppCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "userApp",
       data: state._secUser.userAppList,
       count: state._secUser.userAppCount,
       currentPage: state._secUser.userAppCurrentPageNumber,
@@ -177,6 +178,7 @@ class SecUserBizApp extends React.PureComponent {
   	const {UserAppUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._secUser.selectedRows,
+      role: "userApp",
       currentUpdateIndex: state._secUser.currentUpdateIndex,
       owner: { type: '_secUser', id: state._secUser.id, listName: 'userAppList', ref:state._secUser, listDisplayName: '用户应用程序列表' }, // this is for model namespace and
     }))(UserAppUpdateForm)
@@ -204,6 +206,7 @@ class SecUserBizApp extends React.PureComponent {
    	const {LoginHistoryCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "loginHistory",
       data: state._secUser.loginHistoryList,
       count: state._secUser.loginHistoryCount,
       currentPage: state._secUser.loginHistoryCurrentPageNumber,
@@ -217,6 +220,7 @@ class SecUserBizApp extends React.PureComponent {
   	const {LoginHistoryUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._secUser.selectedRows,
+      role: "loginHistory",
       currentUpdateIndex: state._secUser.currentUpdateIndex,
       owner: { type: '_secUser', id: state._secUser.id, listName: 'loginHistoryList', ref:state._secUser, listDisplayName: '登录历史列表' }, // this is for model namespace and
     }))(LoginHistoryUpdateForm)

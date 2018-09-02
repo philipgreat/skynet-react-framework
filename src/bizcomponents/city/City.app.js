@@ -164,6 +164,7 @@ class CityBizApp extends React.PureComponent {
    	const {StoreCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "store",
       data: state._city.storeList,
       count: state._city.storeCount,
       currentPage: state._city.storeCurrentPageNumber,
@@ -177,6 +178,7 @@ class CityBizApp extends React.PureComponent {
   	const {StoreUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._city.selectedRows,
+      role: "store",
       currentUpdateIndex: state._city.currentUpdateIndex,
       owner: { type: '_city', id: state._city.id, listName: 'storeList', ref:state._city, listDisplayName: '服务网点列表' }, // this is for model namespace and
     }))(StoreUpdateForm)

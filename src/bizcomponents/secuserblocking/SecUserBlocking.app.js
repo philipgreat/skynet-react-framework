@@ -164,6 +164,7 @@ class SecUserBlockingBizApp extends React.PureComponent {
    	const {SecUserCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "secUser",
       data: state._secUserBlocking.secUserList,
       count: state._secUserBlocking.secUserCount,
       currentPage: state._secUserBlocking.secUserCurrentPageNumber,
@@ -177,6 +178,7 @@ class SecUserBlockingBizApp extends React.PureComponent {
   	const {SecUserUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._secUserBlocking.selectedRows,
+      role: "secUser",
       currentUpdateIndex: state._secUserBlocking.currentUpdateIndex,
       owner: { type: '_secUserBlocking', id: state._secUserBlocking.id, listName: 'secUserList', ref:state._secUserBlocking, listDisplayName: 'SEC的用户列表' }, // this is for model namespace and
     }))(SecUserUpdateForm)

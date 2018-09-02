@@ -164,6 +164,7 @@ class BookCopyBizApp extends React.PureComponent {
    	const {LossAssessmentRecordCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "lossAssessmentRecord",
       data: state._bookCopy.lossAssessmentRecordList,
       count: state._bookCopy.lossAssessmentRecordCount,
       currentPage: state._bookCopy.lossAssessmentRecordCurrentPageNumber,
@@ -177,6 +178,7 @@ class BookCopyBizApp extends React.PureComponent {
   	const {LossAssessmentRecordUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookCopy.selectedRows,
+      role: "lossAssessmentRecord",
       currentUpdateIndex: state._bookCopy.currentUpdateIndex,
       owner: { type: '_bookCopy', id: state._bookCopy.id, listName: 'lossAssessmentRecordList', ref:state._bookCopy, listDisplayName: '定损记录列表' }, // this is for model namespace and
     }))(LossAssessmentRecordUpdateForm)
@@ -204,6 +206,7 @@ class BookCopyBizApp extends React.PureComponent {
    	const {BookCopyTransferCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookCopyTransfer",
       data: state._bookCopy.bookCopyTransferList,
       count: state._bookCopy.bookCopyTransferCount,
       currentPage: state._bookCopy.bookCopyTransferCurrentPageNumber,
@@ -217,6 +220,7 @@ class BookCopyBizApp extends React.PureComponent {
   	const {BookCopyTransferUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookCopy.selectedRows,
+      role: "bookCopyTransfer",
       currentUpdateIndex: state._bookCopy.currentUpdateIndex,
       owner: { type: '_bookCopy', id: state._bookCopy.id, listName: 'bookCopyTransferList', ref:state._bookCopy, listDisplayName: '图书副本迁移记录列表' }, // this is for model namespace and
     }))(BookCopyTransferUpdateForm)
@@ -244,6 +248,7 @@ class BookCopyBizApp extends React.PureComponent {
    	const {BookTakeStockResultCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookTakeStockResult",
       data: state._bookCopy.bookTakeStockResultList,
       count: state._bookCopy.bookTakeStockResultCount,
       currentPage: state._bookCopy.bookTakeStockResultCurrentPageNumber,
@@ -257,6 +262,7 @@ class BookCopyBizApp extends React.PureComponent {
   	const {BookTakeStockResultUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookCopy.selectedRows,
+      role: "bookTakeStockResult",
       currentUpdateIndex: state._bookCopy.currentUpdateIndex,
       owner: { type: '_bookCopy', id: state._bookCopy.id, listName: 'bookTakeStockResultList', ref:state._bookCopy, listDisplayName: '图书盘点结果列表' }, // this is for model namespace and
     }))(BookTakeStockResultUpdateForm)
@@ -284,6 +290,7 @@ class BookCopyBizApp extends React.PureComponent {
    	const {BookCopyOperationRecordCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookCopyOperationRecord",
       data: state._bookCopy.bookCopyOperationRecordList,
       count: state._bookCopy.bookCopyOperationRecordCount,
       currentPage: state._bookCopy.bookCopyOperationRecordCurrentPageNumber,
@@ -297,6 +304,7 @@ class BookCopyBizApp extends React.PureComponent {
   	const {BookCopyOperationRecordUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookCopy.selectedRows,
+      role: "bookCopyOperationRecord",
       currentUpdateIndex: state._bookCopy.currentUpdateIndex,
       owner: { type: '_bookCopy', id: state._bookCopy.id, listName: 'bookCopyOperationRecordList', ref:state._bookCopy, listDisplayName: '书籍副本操作记录列表' }, // this is for model namespace and
     }))(BookCopyOperationRecordUpdateForm)
@@ -324,6 +332,7 @@ class BookCopyBizApp extends React.PureComponent {
    	const {BorrowingHistoryCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "borrowingHistory",
       data: state._bookCopy.borrowingHistoryList,
       count: state._bookCopy.borrowingHistoryCount,
       currentPage: state._bookCopy.borrowingHistoryCurrentPageNumber,
@@ -337,6 +346,7 @@ class BookCopyBizApp extends React.PureComponent {
   	const {BorrowingHistoryUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookCopy.selectedRows,
+      role: "borrowingHistory",
       currentUpdateIndex: state._bookCopy.currentUpdateIndex,
       owner: { type: '_bookCopy', id: state._bookCopy.id, listName: 'borrowingHistoryList', ref:state._bookCopy, listDisplayName: '图书借还历史列表' }, // this is for model namespace and
     }))(BorrowingHistoryUpdateForm)
@@ -364,6 +374,7 @@ class BookCopyBizApp extends React.PureComponent {
    	const {BorrowingExpiredSkuCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "borrowingExpiredSku",
       data: state._bookCopy.borrowingExpiredSkuList,
       count: state._bookCopy.borrowingExpiredSkuCount,
       currentPage: state._bookCopy.borrowingExpiredSkuCurrentPageNumber,
@@ -377,6 +388,7 @@ class BookCopyBizApp extends React.PureComponent {
   	const {BorrowingExpiredSkuUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookCopy.selectedRows,
+      role: "borrowingExpiredSku",
       currentUpdateIndex: state._bookCopy.currentUpdateIndex,
       owner: { type: '_bookCopy', id: state._bookCopy.id, listName: 'borrowingExpiredSkuList', ref:state._bookCopy, listDisplayName: '借书超期费列表' }, // this is for model namespace and
     }))(BorrowingExpiredSkuUpdateForm)
@@ -404,6 +416,7 @@ class BookCopyBizApp extends React.PureComponent {
    	const {BookReviewCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookReview",
       data: state._bookCopy.bookReviewList,
       count: state._bookCopy.bookReviewCount,
       currentPage: state._bookCopy.bookReviewCurrentPageNumber,
@@ -417,6 +430,7 @@ class BookCopyBizApp extends React.PureComponent {
   	const {BookReviewUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookCopy.selectedRows,
+      role: "bookReview",
       currentUpdateIndex: state._bookCopy.currentUpdateIndex,
       owner: { type: '_bookCopy', id: state._bookCopy.id, listName: 'bookReviewList', ref:state._bookCopy, listDisplayName: '书评列表' }, // this is for model namespace and
     }))(BookReviewUpdateForm)

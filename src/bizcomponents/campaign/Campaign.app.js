@@ -164,6 +164,7 @@ class CampaignBizApp extends React.PureComponent {
    	const {StoreSlideCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "storeSlide",
       data: state._campaign.storeSlideList,
       count: state._campaign.storeSlideCount,
       currentPage: state._campaign.storeSlideCurrentPageNumber,
@@ -177,6 +178,7 @@ class CampaignBizApp extends React.PureComponent {
   	const {StoreSlideUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._campaign.selectedRows,
+      role: "storeSlide",
       currentUpdateIndex: state._campaign.currentUpdateIndex,
       owner: { type: '_campaign', id: state._campaign.id, listName: 'storeSlideList', ref:state._campaign, listDisplayName: '网点海报列表' }, // this is for model namespace and
     }))(StoreSlideUpdateForm)
@@ -204,6 +206,7 @@ class CampaignBizApp extends React.PureComponent {
    	const {CampaignRegisterHistoryCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "campaignRegisterHistory",
       data: state._campaign.campaignRegisterHistoryList,
       count: state._campaign.campaignRegisterHistoryCount,
       currentPage: state._campaign.campaignRegisterHistoryCurrentPageNumber,
@@ -217,6 +220,7 @@ class CampaignBizApp extends React.PureComponent {
   	const {CampaignRegisterHistoryUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._campaign.selectedRows,
+      role: "campaignRegisterHistory",
       currentUpdateIndex: state._campaign.currentUpdateIndex,
       owner: { type: '_campaign', id: state._campaign.id, listName: 'campaignRegisterHistoryList', ref:state._campaign, listDisplayName: '活动报名记录列表' }, // this is for model namespace and
     }))(CampaignRegisterHistoryUpdateForm)
@@ -244,6 +248,7 @@ class CampaignBizApp extends React.PureComponent {
    	const {CampaignReviewCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "campaignReview",
       data: state._campaign.campaignReviewList,
       count: state._campaign.campaignReviewCount,
       currentPage: state._campaign.campaignReviewCurrentPageNumber,
@@ -257,6 +262,7 @@ class CampaignBizApp extends React.PureComponent {
   	const {CampaignReviewUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._campaign.selectedRows,
+      role: "campaignReview",
       currentUpdateIndex: state._campaign.currentUpdateIndex,
       owner: { type: '_campaign', id: state._campaign.id, listName: 'campaignReviewList', ref:state._campaign, listDisplayName: '活动评论列表' }, // this is for model namespace and
     }))(CampaignReviewUpdateForm)
@@ -284,6 +290,7 @@ class CampaignBizApp extends React.PureComponent {
    	const {CampaignLikeCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "campaignLike",
       data: state._campaign.campaignLikeList,
       count: state._campaign.campaignLikeCount,
       currentPage: state._campaign.campaignLikeCurrentPageNumber,
@@ -297,6 +304,7 @@ class CampaignBizApp extends React.PureComponent {
   	const {CampaignLikeUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._campaign.selectedRows,
+      role: "campaignLike",
       currentUpdateIndex: state._campaign.currentUpdateIndex,
       owner: { type: '_campaign', id: state._campaign.id, listName: 'campaignLikeList', ref:state._campaign, listDisplayName: '活动点赞列表' }, // this is for model namespace and
     }))(CampaignLikeUpdateForm)

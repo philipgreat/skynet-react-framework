@@ -39,8 +39,9 @@ const transferToAnotherBookPlaza = (id, parameters) => {
 
 
 const addBookCopy = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookCopyStatusManager/addBookCopy /bookCopyStatusId/bookInfoId/bookCopyVendorId/bookCopySharingType/locationStoreId/evaluationPrice/wxaId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}bookCopyStatusManager/addBookCopy/bookCopyStatusId/bookInfoId/bookCopyVendorId/bookCopySharingType/locationStoreId/evaluationPrice/wxaId/tokensExpr/`
+  const bookCopyStatusId = targetObjectId
+  const requestParameters = { ...parameters, bookCopyStatusId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 

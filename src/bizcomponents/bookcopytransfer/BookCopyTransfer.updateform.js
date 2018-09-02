@@ -90,7 +90,11 @@ class BookCopyTransferUpdateForm extends Component {
     const { convertedImagesValues } = this.state
     const { setFieldsValue } = this.props.form
     const {fieldLabels} = BookCopyTransferBase
-    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
     const submitUpdateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -98,17 +102,18 @@ class BookCopyTransferUpdateForm extends Component {
           return
         }
 
-        const { owner } = this.props
+        const { owner, role } = this.props
         const bookCopyTransferId = values.id
         const imagesValues = mapBackToImageValues(convertedImagesValues)
         const parameters = { ...values, bookCopyTransferId, ...imagesValues }
 
-        // const newIndex= currentUpdateIndex + 1
+        
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/updateBookCopyTransfer`,
+          type: `${owner.type}/update${cappedRoleName}`,
           payload: {
             id: owner.id,
-            type: 'bookCopyTransfer',
+            role: role,
             parameters,
             selectedRows,
             currentUpdateIndex: 0,

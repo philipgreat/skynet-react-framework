@@ -17,7 +17,7 @@ const testValues = {};
 /*
 const testValues = {
   planName: '盘点计划名称',
-  planDatetime: '2016-04-28 06:51:52',
+  planDatetime: '2015-10-12 03:06:30',
   storeId: 'S000001',
   planCreatorId: 'E000001',
   takeStockStatusId: 'TSS000001',
@@ -146,14 +146,22 @@ class BookTakeStockPlanCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = BookTakeStockPlanBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -165,9 +173,10 @@ class BookTakeStockPlanCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addBookTakeStockPlan`,
-          payload: { id: owner.id, type: 'bookTakeStockPlan', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }

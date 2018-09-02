@@ -16,16 +16,16 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
-  lendingDatetime: '2017-07-21 07:59:39',
+  lendingDatetime: '2018-06-20 00:04:16',
   bookName: '飘',
   borrowerMemberLevel: '普通会员',
-  borrowerMemberServiceExpiredDatetime: '2018-03-11 14:36:40',
+  borrowerMemberServiceExpiredDatetime: '2017-11-23 23:22:36',
   bookCopySharingType: '共享',
   lendingStoreType: '社区',
-  freeLendingDays: '7',
-  freeLendingExpiredDatetime: '2016-11-26 01:11:07',
-  overduePay: '0.84',
-  returnDatetime: '2016-12-02 14:39:48',
+  freeLendingDays: '6',
+  freeLendingExpiredDatetime: '2015-10-15 00:43:09',
+  overduePay: '0.93',
+  returnDatetime: '2015-09-19 14:43:56',
   lendingDays: '14',
   borrowerId: 'C000001',
   bookId: 'B000001',
@@ -233,14 +233,22 @@ class BorrowingHistoryCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = BorrowingHistoryBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -252,9 +260,10 @@ class BorrowingHistoryCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addBorrowingHistory`,
-          payload: { id: owner.id, type: 'borrowingHistory', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }

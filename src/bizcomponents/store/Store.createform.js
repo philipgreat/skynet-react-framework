@@ -22,8 +22,8 @@ const testValues = {
   storeOpenTime: '9:00~22:00,周末不休',
   storeOpenTimeSecond: '9:00~22:00,周末不休',
   storeRoomNumber: '16-02',
-  longitude: '104.93742061573113',
-  latitude: '30.945235996230487',
+  longitude: '105.48746438798324',
+  latitude: '32.109117550913616',
   storeTypeId: 'ST000001',
   cityId: 'C000001',
   platformId: 'BSP000001',
@@ -153,14 +153,22 @@ class StoreCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = StoreBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -172,9 +180,10 @@ class StoreCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addStore`,
-          payload: { id: owner.id, type: 'store', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }

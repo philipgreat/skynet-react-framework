@@ -164,6 +164,7 @@ class StoreAccountBizApp extends React.PureComponent {
    	const {StoreAccountDetailsCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "storeAccountDetails",
       data: state._storeAccount.storeAccountDetailsList,
       count: state._storeAccount.storeAccountDetailsCount,
       currentPage: state._storeAccount.storeAccountDetailsCurrentPageNumber,
@@ -177,6 +178,7 @@ class StoreAccountBizApp extends React.PureComponent {
   	const {StoreAccountDetailsUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._storeAccount.selectedRows,
+      role: "storeAccountDetails",
       currentUpdateIndex: state._storeAccount.currentUpdateIndex,
       owner: { type: '_storeAccount', id: state._storeAccount.id, listName: 'storeAccountDetailsList', ref:state._storeAccount, listDisplayName: '网点账户明细列表' }, // this is for model namespace and
     }))(StoreAccountDetailsUpdateForm)

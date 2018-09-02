@@ -164,6 +164,7 @@ class BookCopyOperateTypeBizApp extends React.PureComponent {
    	const {BookCopyOperationRecordCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookCopyOperationRecord",
       data: state._bookCopyOperateType.bookCopyOperationRecordList,
       count: state._bookCopyOperateType.bookCopyOperationRecordCount,
       currentPage: state._bookCopyOperateType.bookCopyOperationRecordCurrentPageNumber,
@@ -177,6 +178,7 @@ class BookCopyOperateTypeBizApp extends React.PureComponent {
   	const {BookCopyOperationRecordUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookCopyOperateType.selectedRows,
+      role: "bookCopyOperationRecord",
       currentUpdateIndex: state._bookCopyOperateType.currentUpdateIndex,
       owner: { type: '_bookCopyOperateType', id: state._bookCopyOperateType.id, listName: 'bookCopyOperationRecordList', ref:state._bookCopyOperateType, listDisplayName: '书籍副本操作记录列表' }, // this is for model namespace and
     }))(BookCopyOperationRecordUpdateForm)

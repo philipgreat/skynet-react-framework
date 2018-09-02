@@ -164,6 +164,7 @@ class BookPlazaBizApp extends React.PureComponent {
    	const {BookRecommendCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookRecommend",
       data: state._bookPlaza.bookRecommendList,
       count: state._bookPlaza.bookRecommendCount,
       currentPage: state._bookPlaza.bookRecommendCurrentPageNumber,
@@ -177,6 +178,7 @@ class BookPlazaBizApp extends React.PureComponent {
   	const {BookRecommendUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookPlaza.selectedRows,
+      role: "bookRecommend",
       currentUpdateIndex: state._bookPlaza.currentUpdateIndex,
       owner: { type: '_bookPlaza', id: state._bookPlaza.id, listName: 'bookRecommendList', ref:state._bookPlaza, listDisplayName: '图书推荐列表' }, // this is for model namespace and
     }))(BookRecommendUpdateForm)
@@ -204,6 +206,7 @@ class BookPlazaBizApp extends React.PureComponent {
    	const {BookSharingIncomeMetricCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookSharingIncomeMetric",
       data: state._bookPlaza.bookSharingIncomeMetricList,
       count: state._bookPlaza.bookSharingIncomeMetricCount,
       currentPage: state._bookPlaza.bookSharingIncomeMetricCurrentPageNumber,
@@ -217,6 +220,7 @@ class BookPlazaBizApp extends React.PureComponent {
   	const {BookSharingIncomeMetricUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookPlaza.selectedRows,
+      role: "bookSharingIncomeMetric",
       currentUpdateIndex: state._bookPlaza.currentUpdateIndex,
       owner: { type: '_bookPlaza', id: state._bookPlaza.id, listName: 'bookSharingIncomeMetricList', ref:state._bookPlaza, listDisplayName: '共享图书收益分成配置列表' }, // this is for model namespace and
     }))(BookSharingIncomeMetricUpdateForm)
@@ -244,6 +248,7 @@ class BookPlazaBizApp extends React.PureComponent {
    	const {BookDonationIncomeMetricCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookDonationIncomeMetric",
       data: state._bookPlaza.bookDonationIncomeMetricList,
       count: state._bookPlaza.bookDonationIncomeMetricCount,
       currentPage: state._bookPlaza.bookDonationIncomeMetricCurrentPageNumber,
@@ -257,6 +262,7 @@ class BookPlazaBizApp extends React.PureComponent {
   	const {BookDonationIncomeMetricUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookPlaza.selectedRows,
+      role: "bookDonationIncomeMetric",
       currentUpdateIndex: state._bookPlaza.currentUpdateIndex,
       owner: { type: '_bookPlaza', id: state._bookPlaza.id, listName: 'bookDonationIncomeMetricList', ref:state._bookPlaza, listDisplayName: '捐赠图书收益分成配置列表' }, // this is for model namespace and
     }))(BookDonationIncomeMetricUpdateForm)
@@ -284,6 +290,7 @@ class BookPlazaBizApp extends React.PureComponent {
    	const {MemberServiceIncomeMetricCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "memberServiceIncomeMetric",
       data: state._bookPlaza.memberServiceIncomeMetricList,
       count: state._bookPlaza.memberServiceIncomeMetricCount,
       currentPage: state._bookPlaza.memberServiceIncomeMetricCurrentPageNumber,
@@ -297,6 +304,7 @@ class BookPlazaBizApp extends React.PureComponent {
   	const {MemberServiceIncomeMetricUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookPlaza.selectedRows,
+      role: "memberServiceIncomeMetric",
       currentUpdateIndex: state._bookPlaza.currentUpdateIndex,
       owner: { type: '_bookPlaza', id: state._bookPlaza.id, listName: 'memberServiceIncomeMetricList', ref:state._bookPlaza, listDisplayName: '会员服务费收入分成配置列表' }, // this is for model namespace and
     }))(MemberServiceIncomeMetricUpdateForm)
@@ -324,6 +332,7 @@ class BookPlazaBizApp extends React.PureComponent {
    	const {BookCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "book",
       data: state._bookPlaza.bookList,
       count: state._bookPlaza.bookCount,
       currentPage: state._bookPlaza.bookCurrentPageNumber,
@@ -337,6 +346,7 @@ class BookPlazaBizApp extends React.PureComponent {
   	const {BookUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookPlaza.selectedRows,
+      role: "book",
       currentUpdateIndex: state._bookPlaza.currentUpdateIndex,
       owner: { type: '_bookPlaza', id: state._bookPlaza.id, listName: 'bookList', ref:state._bookPlaza, listDisplayName: '书列表' }, // this is for model namespace and
     }))(BookUpdateForm)
@@ -364,6 +374,7 @@ class BookPlazaBizApp extends React.PureComponent {
    	const {BookCopyStatusCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookCopyStatus",
       data: state._bookPlaza.bookCopyStatusList,
       count: state._bookPlaza.bookCopyStatusCount,
       currentPage: state._bookPlaza.bookCopyStatusCurrentPageNumber,
@@ -377,6 +388,7 @@ class BookPlazaBizApp extends React.PureComponent {
   	const {BookCopyStatusUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookPlaza.selectedRows,
+      role: "bookCopyStatus",
       currentUpdateIndex: state._bookPlaza.currentUpdateIndex,
       owner: { type: '_bookPlaza', id: state._bookPlaza.id, listName: 'bookCopyStatusList', ref:state._bookPlaza, listDisplayName: '书籍副本状态列表' }, // this is for model namespace and
     }))(BookCopyStatusUpdateForm)
@@ -404,6 +416,7 @@ class BookPlazaBizApp extends React.PureComponent {
    	const {BookReviewCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookReview",
       data: state._bookPlaza.bookReviewList,
       count: state._bookPlaza.bookReviewCount,
       currentPage: state._bookPlaza.bookReviewCurrentPageNumber,
@@ -417,6 +430,7 @@ class BookPlazaBizApp extends React.PureComponent {
   	const {BookReviewUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookPlaza.selectedRows,
+      role: "bookReview",
       currentUpdateIndex: state._bookPlaza.currentUpdateIndex,
       owner: { type: '_bookPlaza', id: state._bookPlaza.id, listName: 'bookReviewList', ref:state._bookPlaza, listDisplayName: '书评列表' }, // this is for model namespace and
     }))(BookReviewUpdateForm)

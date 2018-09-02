@@ -164,6 +164,7 @@ class CampaignReviewBizApp extends React.PureComponent {
    	const {CampaignReviewLikeCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "campaignReviewLike",
       data: state._campaignReview.campaignReviewLikeList,
       count: state._campaignReview.campaignReviewLikeCount,
       currentPage: state._campaignReview.campaignReviewLikeCurrentPageNumber,
@@ -177,6 +178,7 @@ class CampaignReviewBizApp extends React.PureComponent {
   	const {CampaignReviewLikeUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._campaignReview.selectedRows,
+      role: "campaignReviewLike",
       currentUpdateIndex: state._campaignReview.currentUpdateIndex,
       owner: { type: '_campaignReview', id: state._campaignReview.id, listName: 'campaignReviewLikeList', ref:state._campaignReview, listDisplayName: '活动评论点赞列表' }, // this is for model namespace and
     }))(CampaignReviewLikeUpdateForm)
@@ -204,6 +206,7 @@ class CampaignReviewBizApp extends React.PureComponent {
    	const {InformCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "inform",
       data: state._campaignReview.informList,
       count: state._campaignReview.informCount,
       currentPage: state._campaignReview.informCurrentPageNumber,
@@ -217,6 +220,7 @@ class CampaignReviewBizApp extends React.PureComponent {
   	const {InformUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._campaignReview.selectedRows,
+      role: "inform",
       currentUpdateIndex: state._campaignReview.currentUpdateIndex,
       owner: { type: '_campaignReview', id: state._campaignReview.id, listName: 'informList', ref:state._campaignReview, listDisplayName: '举报列表' }, // this is for model namespace and
     }))(InformUpdateForm)

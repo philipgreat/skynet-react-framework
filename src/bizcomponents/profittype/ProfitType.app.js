@@ -164,6 +164,7 @@ class ProfitTypeBizApp extends React.PureComponent {
    	const {UndistributedProfitCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "undistributedProfit",
       data: state._profitType.undistributedProfitList,
       count: state._profitType.undistributedProfitCount,
       currentPage: state._profitType.undistributedProfitCurrentPageNumber,
@@ -177,6 +178,7 @@ class ProfitTypeBizApp extends React.PureComponent {
   	const {UndistributedProfitUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._profitType.selectedRows,
+      role: "undistributedProfit",
       currentUpdateIndex: state._profitType.currentUpdateIndex,
       owner: { type: '_profitType', id: state._profitType.id, listName: 'undistributedProfitList', ref:state._profitType, listDisplayName: '未分割收入列表' }, // this is for model namespace and
     }))(UndistributedProfitUpdateForm)

@@ -164,6 +164,7 @@ class PrinterBizApp extends React.PureComponent {
    	const {PrinterTaskCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "printerTask",
       data: state._printer.printerTaskList,
       count: state._printer.printerTaskCount,
       currentPage: state._printer.printerTaskCurrentPageNumber,
@@ -177,6 +178,7 @@ class PrinterBizApp extends React.PureComponent {
   	const {PrinterTaskUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._printer.selectedRows,
+      role: "printerTask",
       currentUpdateIndex: state._printer.currentUpdateIndex,
       owner: { type: '_printer', id: state._printer.id, listName: 'printerTaskList', ref:state._printer, listDisplayName: '打印机任务列表' }, // this is for model namespace and
     }))(PrinterTaskUpdateForm)

@@ -164,6 +164,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {LossDiscountCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "lossDiscount",
       data: state._bookSharingPlatform.lossDiscountList,
       count: state._bookSharingPlatform.lossDiscountCount,
       currentPage: state._bookSharingPlatform.lossDiscountCurrentPageNumber,
@@ -177,6 +178,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {LossDiscountUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "lossDiscount",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'lossDiscountList', ref:state._bookSharingPlatform, listDisplayName: '定损折扣列表' }, // this is for model namespace and
     }))(LossDiscountUpdateForm)
@@ -204,6 +206,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {PlatformConfigurationCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "platformConfiguration",
       data: state._bookSharingPlatform.platformConfigurationList,
       count: state._bookSharingPlatform.platformConfigurationCount,
       currentPage: state._bookSharingPlatform.platformConfigurationCurrentPageNumber,
@@ -217,6 +220,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {PlatformConfigurationUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "platformConfiguration",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'platformConfigurationList', ref:state._bookSharingPlatform, listDisplayName: '平台配置列表' }, // this is for model namespace and
     }))(PlatformConfigurationUpdateForm)
@@ -244,6 +248,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {AccountDataCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "accountData",
       data: state._bookSharingPlatform.accountDataList,
       count: state._bookSharingPlatform.accountDataCount,
       currentPage: state._bookSharingPlatform.accountDataCurrentPageNumber,
@@ -257,6 +262,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {AccountDataUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "accountData",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'accountDataList', ref:state._bookSharingPlatform, listDisplayName: '帐户数据列表' }, // this is for model namespace and
     }))(AccountDataUpdateForm)
@@ -284,6 +290,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {CityCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "city",
       data: state._bookSharingPlatform.cityList,
       count: state._bookSharingPlatform.cityCount,
       currentPage: state._bookSharingPlatform.cityCurrentPageNumber,
@@ -297,6 +304,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {CityUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "city",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'cityList', ref:state._bookSharingPlatform, listDisplayName: '城市列表' }, // this is for model namespace and
     }))(CityUpdateForm)
@@ -324,6 +332,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {BookPlazaCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookPlaza",
       data: state._bookSharingPlatform.bookPlazaList,
       count: state._bookSharingPlatform.bookPlazaCount,
       currentPage: state._bookSharingPlatform.bookPlazaCurrentPageNumber,
@@ -337,6 +346,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {BookPlazaUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "bookPlaza",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'bookPlazaList', ref:state._bookSharingPlatform, listDisplayName: '图书天地列表' }, // this is for model namespace and
     }))(BookPlazaUpdateForm)
@@ -364,6 +374,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {MemberServiceProductCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "memberServiceProduct",
       data: state._bookSharingPlatform.memberServiceProductList,
       count: state._bookSharingPlatform.memberServiceProductCount,
       currentPage: state._bookSharingPlatform.memberServiceProductCurrentPageNumber,
@@ -377,6 +388,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {MemberServiceProductUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "memberServiceProduct",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'memberServiceProductList', ref:state._bookSharingPlatform, listDisplayName: '会员服务产品列表' }, // this is for model namespace and
     }))(MemberServiceProductUpdateForm)
@@ -404,6 +416,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {MainOrderCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "mainOrder",
       data: state._bookSharingPlatform.mainOrderList,
       count: state._bookSharingPlatform.mainOrderCount,
       currentPage: state._bookSharingPlatform.mainOrderCurrentPageNumber,
@@ -417,6 +430,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {MainOrderUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "mainOrder",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'mainOrderList', ref:state._bookSharingPlatform, listDisplayName: '主订单列表' }, // this is for model namespace and
     }))(MainOrderUpdateForm)
@@ -444,6 +458,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {BookCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "book",
       data: state._bookSharingPlatform.bookList,
       count: state._bookSharingPlatform.bookCount,
       currentPage: state._bookSharingPlatform.bookCurrentPageNumber,
@@ -457,6 +472,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {BookUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "book",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'bookList', ref:state._bookSharingPlatform, listDisplayName: '书列表' }, // this is for model namespace and
     }))(BookUpdateForm)
@@ -484,6 +500,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {TransferTypeCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "transferType",
       data: state._bookSharingPlatform.transferTypeList,
       count: state._bookSharingPlatform.transferTypeCount,
       currentPage: state._bookSharingPlatform.transferTypeCurrentPageNumber,
@@ -497,6 +514,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {TransferTypeUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "transferType",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'transferTypeList', ref:state._bookSharingPlatform, listDisplayName: '转移类型列表' }, // this is for model namespace and
     }))(TransferTypeUpdateForm)
@@ -524,6 +542,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {TakeStockStatusCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "takeStockStatus",
       data: state._bookSharingPlatform.takeStockStatusList,
       count: state._bookSharingPlatform.takeStockStatusCount,
       currentPage: state._bookSharingPlatform.takeStockStatusCurrentPageNumber,
@@ -537,6 +556,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {TakeStockStatusUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "takeStockStatus",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'takeStockStatusList', ref:state._bookSharingPlatform, listDisplayName: '盘点状态列表' }, // this is for model namespace and
     }))(TakeStockStatusUpdateForm)
@@ -564,6 +584,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {BookTakeStockStatusCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookTakeStockStatus",
       data: state._bookSharingPlatform.bookTakeStockStatusList,
       count: state._bookSharingPlatform.bookTakeStockStatusCount,
       currentPage: state._bookSharingPlatform.bookTakeStockStatusCurrentPageNumber,
@@ -577,6 +598,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {BookTakeStockStatusUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "bookTakeStockStatus",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'bookTakeStockStatusList', ref:state._bookSharingPlatform, listDisplayName: '图书盘点状态列表' }, // this is for model namespace and
     }))(BookTakeStockStatusUpdateForm)
@@ -604,6 +626,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {TakeStoreResultsCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "takeStoreResults",
       data: state._bookSharingPlatform.takeStoreResultsList,
       count: state._bookSharingPlatform.takeStoreResultsCount,
       currentPage: state._bookSharingPlatform.takeStoreResultsCurrentPageNumber,
@@ -617,6 +640,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {TakeStoreResultsUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "takeStoreResults",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'takeStoreResultsList', ref:state._bookSharingPlatform, listDisplayName: '盘点结果列表' }, // this is for model namespace and
     }))(TakeStoreResultsUpdateForm)
@@ -644,6 +668,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {BookCopyOperateTypeCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookCopyOperateType",
       data: state._bookSharingPlatform.bookCopyOperateTypeList,
       count: state._bookSharingPlatform.bookCopyOperateTypeCount,
       currentPage: state._bookSharingPlatform.bookCopyOperateTypeCurrentPageNumber,
@@ -657,6 +682,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {BookCopyOperateTypeUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "bookCopyOperateType",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'bookCopyOperateTypeList', ref:state._bookSharingPlatform, listDisplayName: '书籍副本操作类型列表' }, // this is for model namespace and
     }))(BookCopyOperateTypeUpdateForm)
@@ -684,6 +710,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {BorrowingStatusCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "borrowingStatus",
       data: state._bookSharingPlatform.borrowingStatusList,
       count: state._bookSharingPlatform.borrowingStatusCount,
       currentPage: state._bookSharingPlatform.borrowingStatusCurrentPageNumber,
@@ -697,6 +724,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {BorrowingStatusUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "borrowingStatus",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'borrowingStatusList', ref:state._bookSharingPlatform, listDisplayName: '借书状态列表' }, // this is for model namespace and
     }))(BorrowingStatusUpdateForm)
@@ -724,6 +752,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {DeliverMethodCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "deliverMethod",
       data: state._bookSharingPlatform.deliverMethodList,
       count: state._bookSharingPlatform.deliverMethodCount,
       currentPage: state._bookSharingPlatform.deliverMethodCurrentPageNumber,
@@ -737,6 +766,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {DeliverMethodUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "deliverMethod",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'deliverMethodList', ref:state._bookSharingPlatform, listDisplayName: '共享方式列表' }, // this is for model namespace and
     }))(DeliverMethodUpdateForm)
@@ -764,6 +794,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {ApplicationStatusCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "applicationStatus",
       data: state._bookSharingPlatform.applicationStatusList,
       count: state._bookSharingPlatform.applicationStatusCount,
       currentPage: state._bookSharingPlatform.applicationStatusCurrentPageNumber,
@@ -777,6 +808,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {ApplicationStatusUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "applicationStatus",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'applicationStatusList', ref:state._bookSharingPlatform, listDisplayName: '申请状态列表' }, // this is for model namespace and
     }))(ApplicationStatusUpdateForm)
@@ -804,6 +836,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {PlatformAccountCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "platformAccount",
       data: state._bookSharingPlatform.platformAccountList,
       count: state._bookSharingPlatform.platformAccountCount,
       currentPage: state._bookSharingPlatform.platformAccountCurrentPageNumber,
@@ -817,6 +850,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {PlatformAccountUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "platformAccount",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'platformAccountList', ref:state._bookSharingPlatform, listDisplayName: '平台账户列表' }, // this is for model namespace and
     }))(PlatformAccountUpdateForm)
@@ -844,6 +878,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {FundationAccountCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "fundationAccount",
       data: state._bookSharingPlatform.fundationAccountList,
       count: state._bookSharingPlatform.fundationAccountCount,
       currentPage: state._bookSharingPlatform.fundationAccountCurrentPageNumber,
@@ -857,6 +892,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {FundationAccountUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "fundationAccount",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'fundationAccountList', ref:state._bookSharingPlatform, listDisplayName: '平台基金账户列表' }, // this is for model namespace and
     }))(FundationAccountUpdateForm)
@@ -884,6 +920,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {StoreTypeCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "storeType",
       data: state._bookSharingPlatform.storeTypeList,
       count: state._bookSharingPlatform.storeTypeCount,
       currentPage: state._bookSharingPlatform.storeTypeCurrentPageNumber,
@@ -897,6 +934,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {StoreTypeUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "storeType",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'storeTypeList', ref:state._bookSharingPlatform, listDisplayName: '网点类型列表' }, // this is for model namespace and
     }))(StoreTypeUpdateForm)
@@ -924,6 +962,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {StoreCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "store",
       data: state._bookSharingPlatform.storeList,
       count: state._bookSharingPlatform.storeCount,
       currentPage: state._bookSharingPlatform.storeCurrentPageNumber,
@@ -937,6 +976,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {StoreUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "store",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'storeList', ref:state._bookSharingPlatform, listDisplayName: '服务网点列表' }, // this is for model namespace and
     }))(StoreUpdateForm)
@@ -964,6 +1004,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {SlideTypeCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "slideType",
       data: state._bookSharingPlatform.slideTypeList,
       count: state._bookSharingPlatform.slideTypeCount,
       currentPage: state._bookSharingPlatform.slideTypeCurrentPageNumber,
@@ -977,6 +1018,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {SlideTypeUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "slideType",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'slideTypeList', ref:state._bookSharingPlatform, listDisplayName: '海报类型列表' }, // this is for model namespace and
     }))(SlideTypeUpdateForm)
@@ -1004,6 +1046,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {CampaignPlazaCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "campaignPlaza",
       data: state._bookSharingPlatform.campaignPlazaList,
       count: state._bookSharingPlatform.campaignPlazaCount,
       currentPage: state._bookSharingPlatform.campaignPlazaCurrentPageNumber,
@@ -1017,6 +1060,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {CampaignPlazaUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "campaignPlaza",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'campaignPlazaList', ref:state._bookSharingPlatform, listDisplayName: '活动广场列表' }, // this is for model namespace and
     }))(CampaignPlazaUpdateForm)
@@ -1044,6 +1088,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {CampaignStatusCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "campaignStatus",
       data: state._bookSharingPlatform.campaignStatusList,
       count: state._bookSharingPlatform.campaignStatusCount,
       currentPage: state._bookSharingPlatform.campaignStatusCurrentPageNumber,
@@ -1057,6 +1102,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {CampaignStatusUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "campaignStatus",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'campaignStatusList', ref:state._bookSharingPlatform, listDisplayName: '活动状态列表' }, // this is for model namespace and
     }))(CampaignStatusUpdateForm)
@@ -1084,6 +1130,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {CustomerCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "customer",
       data: state._bookSharingPlatform.customerList,
       count: state._bookSharingPlatform.customerCount,
       currentPage: state._bookSharingPlatform.customerCurrentPageNumber,
@@ -1097,6 +1144,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {CustomerUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "customer",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'customerList', ref:state._bookSharingPlatform, listDisplayName: '用户列表' }, // this is for model namespace and
     }))(CustomerUpdateForm)
@@ -1124,6 +1172,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {EmployeeCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "employee",
       data: state._bookSharingPlatform.employeeList,
       count: state._bookSharingPlatform.employeeCount,
       currentPage: state._bookSharingPlatform.employeeCurrentPageNumber,
@@ -1137,6 +1186,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {EmployeeUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "employee",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'employeeList', ref:state._bookSharingPlatform, listDisplayName: '员工列表' }, // this is for model namespace and
     }))(EmployeeUpdateForm)
@@ -1164,6 +1214,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {ProfitTypeCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "profitType",
       data: state._bookSharingPlatform.profitTypeList,
       count: state._bookSharingPlatform.profitTypeCount,
       currentPage: state._bookSharingPlatform.profitTypeCurrentPageNumber,
@@ -1177,6 +1228,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {ProfitTypeUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "profitType",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'profitTypeList', ref:state._bookSharingPlatform, listDisplayName: '利润类型列表' }, // this is for model namespace and
     }))(ProfitTypeUpdateForm)
@@ -1204,6 +1256,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {ProfitDistributeStateCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "profitDistributeState",
       data: state._bookSharingPlatform.profitDistributeStateList,
       count: state._bookSharingPlatform.profitDistributeStateCount,
       currentPage: state._bookSharingPlatform.profitDistributeStateCurrentPageNumber,
@@ -1217,6 +1270,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {ProfitDistributeStateUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "profitDistributeState",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'profitDistributeStateList', ref:state._bookSharingPlatform, listDisplayName: '利润分配状态列表' }, // this is for model namespace and
     }))(ProfitDistributeStateUpdateForm)
@@ -1244,6 +1298,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
    	const {UndistributedProfitCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "undistributedProfit",
       data: state._bookSharingPlatform.undistributedProfitList,
       count: state._bookSharingPlatform.undistributedProfitCount,
       currentPage: state._bookSharingPlatform.undistributedProfitCurrentPageNumber,
@@ -1257,6 +1312,7 @@ class BookSharingPlatformBizApp extends React.PureComponent {
   	const {UndistributedProfitUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookSharingPlatform.selectedRows,
+      role: "undistributedProfit",
       currentUpdateIndex: state._bookSharingPlatform.currentUpdateIndex,
       owner: { type: '_bookSharingPlatform', id: state._bookSharingPlatform.id, listName: 'undistributedProfitList', ref:state._bookSharingPlatform, listDisplayName: '未分割收入列表' }, // this is for model namespace and
     }))(UndistributedProfitUpdateForm)

@@ -55,8 +55,9 @@ const transferToAnotherReviewer = (id, parameters) => {
 
 
 const addCampaignReviewLike = (targetObjectId, parameters) => {
-  const url = `${PREFIX}campaignReviewManager/addCampaignReviewLike /reviewId/replierId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}campaignReviewManager/addCampaignReviewLike/campaignReviewId/replierId/tokensExpr/`
+  const campaignReviewId = targetObjectId
+  const requestParameters = { ...parameters, campaignReviewId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -76,8 +77,9 @@ const removeCampaignReviewLikeList = (targetObjectId, parameters) => {
 
 
 const addInform = (targetObjectId, parameters) => {
-  const url = `${PREFIX}campaignReviewManager/addInform /campaignReviewId/informerId/bookReviewId/comments/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}campaignReviewManager/addInform/campaignReviewId/informerId/bookReviewId/comments/tokensExpr/`
+  const campaignReviewId = targetObjectId
+  const requestParameters = { ...parameters, campaignReviewId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 

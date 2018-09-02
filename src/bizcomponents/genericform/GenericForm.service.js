@@ -23,8 +23,9 @@ const load = (targetObjectId, parameters) => {
 
 
 const addFormMessage = (targetObjectId, parameters) => {
-  const url = `${PREFIX}genericFormManager/addFormMessage /formId/title/level/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}genericFormManager/addFormMessage/genericFormId/title/level/tokensExpr/`
+  const genericFormId = targetObjectId
+  const requestParameters = { ...parameters, genericFormId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -44,8 +45,9 @@ const removeFormMessageList = (targetObjectId, parameters) => {
 
 
 const addFormFieldMessage = (targetObjectId, parameters) => {
-  const url = `${PREFIX}genericFormManager/addFormFieldMessage /formId/title/parameterName/level/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}genericFormManager/addFormFieldMessage/genericFormId/title/parameterName/level/tokensExpr/`
+  const genericFormId = targetObjectId
+  const requestParameters = { ...parameters, genericFormId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -65,8 +67,9 @@ const removeFormFieldMessageList = (targetObjectId, parameters) => {
 
 
 const addFormField = (targetObjectId, parameters) => {
-  const url = `${PREFIX}genericFormManager/addFormField /formId/label/localeKey/parameterName/type/placeholder/defaultValue/description/fieldGroup/minimumValue/maximumValue/required/disabled/customRendering/candidateValues/suggestValues/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}genericFormManager/addFormField/genericFormId/label/localeKey/parameterName/type/placeholder/defaultValue/description/fieldGroup/minimumValue/maximumValue/required/disabled/customRendering/candidateValues/suggestValues/tokensExpr/`
+  const genericFormId = targetObjectId
+  const requestParameters = { ...parameters, genericFormId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -86,8 +89,9 @@ const removeFormFieldList = (targetObjectId, parameters) => {
 
 
 const addFormAction = (targetObjectId, parameters) => {
-  const url = `${PREFIX}genericFormManager/addFormAction /formId/label/localeKey/actionKey/level/url/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}genericFormManager/addFormAction/genericFormId/label/localeKey/actionKey/level/url/tokensExpr/`
+  const genericFormId = targetObjectId
+  const requestParameters = { ...parameters, genericFormId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 

@@ -39,8 +39,9 @@ const transferToAnotherBookSharingPlatform = (id, parameters) => {
 
 
 const addBookCopySharingApplication = (targetObjectId, parameters) => {
-  const url = `${PREFIX}applicationStatusManager/addBookCopySharingApplication /applicationStatusId/contactName/contactMobile/deliverMethodId/contactAddress/bookCopyQuantity/customerId/employeeId/destinationStoreId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}applicationStatusManager/addBookCopySharingApplication/applicationStatusId/contactName/contactMobile/deliverMethodId/contactAddress/bookCopyQuantity/customerId/employeeId/destinationStoreId/tokensExpr/`
+  const applicationStatusId = targetObjectId
+  const requestParameters = { ...parameters, applicationStatusId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 

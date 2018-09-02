@@ -164,6 +164,7 @@ class SlideTypeBizApp extends React.PureComponent {
    	const {StoreSlideCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "storeSlide",
       data: state._slideType.storeSlideList,
       count: state._slideType.storeSlideCount,
       currentPage: state._slideType.storeSlideCurrentPageNumber,
@@ -177,6 +178,7 @@ class SlideTypeBizApp extends React.PureComponent {
   	const {StoreSlideUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._slideType.selectedRows,
+      role: "storeSlide",
       currentUpdateIndex: state._slideType.currentUpdateIndex,
       owner: { type: '_slideType', id: state._slideType.id, listName: 'storeSlideList', ref:state._slideType, listDisplayName: '网点海报列表' }, // this is for model namespace and
     }))(StoreSlideUpdateForm)

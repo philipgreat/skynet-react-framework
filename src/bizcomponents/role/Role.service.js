@@ -23,8 +23,9 @@ const load = (targetObjectId, parameters) => {
 
 
 const addEmployeeWorkingStore = (targetObjectId, parameters) => {
-  const url = `${PREFIX}roleManager/addEmployeeWorkingStore /roleId/description/employeeId/storeId/startDate/terminatedDate/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}roleManager/addEmployeeWorkingStore/roleId/description/employeeId/storeId/startDate/terminatedDate/tokensExpr/`
+  const roleId = targetObjectId
+  const requestParameters = { ...parameters, roleId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
