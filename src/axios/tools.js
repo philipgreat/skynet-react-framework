@@ -89,7 +89,7 @@ export const getURLPrefix = () => {
     return `http://${url.hostname}:8080/naf/`;
   }
   if (url.hostname === 'localhost') {
-    return `http://${url.hostname}:8080/cis/`
+    return `http://${url.hostname}:8080/${SYSTEM_SHORT_NAME}/`
   }
   if (url.hostname === '127.0.0.1') {
     return `https://xm.jl51.com.cn/cis/`
