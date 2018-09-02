@@ -17,7 +17,7 @@ const testValues = {};
 /*
 const testValues = {
   summary: '共享图书《书名》付费阅读收益',
-  amount: '0.70',
+  amount: '0.76',
   transactionTypeId: 'TT000001',
   platformAccountId: 'PA000001',
   relatedMainOrderId: 'MO000001',

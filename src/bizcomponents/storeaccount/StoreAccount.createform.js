@@ -17,7 +17,7 @@ const testValues = {};
 /*
 const testValues = {
   name: '书香社区慕和南道店账户',
-  amount: '86.35',
+  amount: '97.17',
   storeId: 'S000001',
   accountDataId: 'AD000001',
 }

@@ -293,7 +293,7 @@ class TransferTypeDashboard extends Component {
     const { id,displayName, bookCopyTransferCount } = this.props.transferType
     const cardsData = {cardsName:"转移类型",cardsFor: "transferType",cardsSource: this.props.transferType,
   		subItems: [
-{name: 'bookCopyTransferList', displayName:'图书副本迁移记录',type:'bookCopyTransfer',count:bookCopyTransferCount,addFunction: true, role: 'bookCopyTransfer'},
+{name: 'bookCopyTransferList', displayName:'图书副本迁移记录',type:'bookCopyTransfer',count:bookCopyTransferCount,addFunction: false, role: 'bookCopyTransfer'},
     
       	],
   	};

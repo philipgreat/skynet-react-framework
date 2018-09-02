@@ -47,7 +47,7 @@ class BookCopyTransferTable extends PureComponent {
     if(!referenceName){
       return displayColumns
     }
-    const remainColumns = displayColumns.filter((item,index)=> item.dataIndex!=referenceName&&index<7&&item.dataIndex!=='content')
+    const remainColumns = displayColumns.filter((item,index)=> item.dataIndex!=referenceName&&item.dataIndex!=='content')
     //fixed: 'right',
     const operationColumn={
       title: '操作',
@@ -64,10 +64,6 @@ class BookCopyTransferTable extends PureComponent {
         </span>
       ),
     }
-    
-    remainColumns.push(
-      operationColumn
-    )
     
     return remainColumns
 
@@ -145,7 +141,7 @@ class BookCopyTransferTable extends PureComponent {
           <Alert
             message={selectedRowKeys.length===0?(
               <span>
-                一共 <a style={{ fontWeight: 600 }}>{count}</a> 项, 请选择要操作的项来执行更多功能 
+                一共 <a style={{ fontWeight: 600 }}>{count}</a> 项
               </span>
             ):(
               <span>
@@ -162,8 +158,6 @@ class BookCopyTransferTable extends PureComponent {
           size="middle"
           rowKey={record => record.id}
            
-          rowSelection={rowSelection}
-          
           dataSource={data}
           columns={calcDisplayColumns()}
           pagination={paginationProps}

@@ -17,10 +17,10 @@ const testValues = {};
 /*
 const testValues = {
   bookName: '飘',
-  lendingDatetime: '2016-03-23 12:57:20',
-  returnDatetime: '2016-03-28 22:31:52',
+  lendingDatetime: '2016-03-23 22:12:00',
+  returnDatetime: '2015-09-07 17:43:54',
   expiredDays: '7',
-  expiredFee: '7.10',
+  expiredFee: '6.57',
   borrowerId: 'C000001',
   bookCopyId: 'BC000001',
   bookId: 'B000001',

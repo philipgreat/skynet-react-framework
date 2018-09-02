@@ -17,7 +17,7 @@ const testValues = {};
 /*
 const testValues = {
   lossComment: '第2页到第5页缺失',
-  bookCopyEvaluationPrice: '29.18',
+  bookCopyEvaluationPrice: '38.06',
   bookCopyId: 'BC000001',
   recordStoreId: 'S000001',
   lossDiscountId: 'LD000001',

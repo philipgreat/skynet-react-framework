@@ -17,10 +17,10 @@ const testValues = {};
 /*
 const testValues = {
   summary: '6个月会员费',
-  chargeStartDate: '2016-04-05',
-  chargeEndDate: '2017-11-06',
-  amount: '70.36',
-  balance: '9.46',
+  chargeStartDate: '2017-12-10',
+  chargeEndDate: '2018-04-03',
+  amount: '89.08',
+  balance: '9.73',
   profitTypeId: 'PT000001',
   profitDistributeStateId: 'PDS000001',
   mainOrderId: 'MO000001',

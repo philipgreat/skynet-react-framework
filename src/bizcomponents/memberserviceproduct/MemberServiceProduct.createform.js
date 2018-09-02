@@ -21,7 +21,7 @@ const testValues = {
   bookBorrowingLimitPrice: '50.00',
   bookBorrowingCount: '1',
   bookPurchasingDiscountRate: '0.9',
-  overduePay: '0.92',
+  overduePay: '0.81',
   freeBorrowingDays: '10',
   platformId: 'BSP000001',
   productDescription: '一段图片的描述，说明了该场景的实际效果。\

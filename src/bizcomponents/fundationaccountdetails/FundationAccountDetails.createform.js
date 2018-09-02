@@ -17,7 +17,7 @@ const testValues = {};
 /*
 const testValues = {
   summary: '捐赠图书借书收益',
-  amount: '7.35',
+  amount: '6.30',
   transactionTypeId: 'TT000001',
   fundationAccountId: 'FA000001',
   relatedMainOrderId: 'MO000001',

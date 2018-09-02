@@ -26,7 +26,7 @@ const testValues = {
   content5: '',
   content6: '',
   printTaskStatus: '等待中',
-  createTime: '2018-06-30 23:58:27',
+  createTime: '2018-06-28 09:37:25',
   printerId: 'P000001',
 }
 */

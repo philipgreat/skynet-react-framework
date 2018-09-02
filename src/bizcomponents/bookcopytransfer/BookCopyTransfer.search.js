@@ -235,13 +235,8 @@ class BookCopyTransferSearch extends PureComponent {
             </div>
             <div className={styles.tableListOperator}>
             
-              <Button icon="plus" type="primary" onClick={() => this.handleCreate()}>新建</Button>
               
-              <Button onClick={this.handleModalVisible} type="danger" icon="delete" disabled={selectedRows.length === 0}>批量删除</Button>
                
-               
-              <Button onClick={this.handleUpdate} type="primary" icon="update" disabled={selectedRows.length === 0}>批量更新</Button>
-                
                
               {partialList&&(
               <div className={styles.searchAlert}>

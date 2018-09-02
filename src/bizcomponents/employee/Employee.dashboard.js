@@ -296,7 +296,7 @@ class EmployeeDashboard extends Component {
   		subItems: [
 {name: 'messageTemplateList', displayName:'消息模板',type:'messageTemplate',count:messageTemplateCount,addFunction: true, role: 'messageTemplate'},
 {name: 'lossAssessmentRecordList', displayName:'定损记录',type:'lossAssessmentRecord',count:lossAssessmentRecordCount,addFunction: true, role: 'lossAssessmentRecord'},
-{name: 'bookCopyTransferList', displayName:'图书副本迁移记录',type:'bookCopyTransfer',count:bookCopyTransferCount,addFunction: true, role: 'bookCopyTransfer'},
+{name: 'bookCopyTransferList', displayName:'图书副本迁移记录',type:'bookCopyTransfer',count:bookCopyTransferCount,addFunction: false, role: 'bookCopyTransfer'},
 {name: 'bookTakeStockPlanList', displayName:'图书盘点计划',type:'bookTakeStockPlan',count:bookTakeStockPlanCount,addFunction: true, role: 'bookTakeStockPlan'},
 {name: 'bookTakeStockResultList', displayName:'图书盘点结果',type:'bookTakeStockResult',count:bookTakeStockResultCount,addFunction: false, role: 'bookTakeStockResult'},
 {name: 'bookCopyOperationRecordList', displayName:'书籍副本操作记录',type:'bookCopyOperationRecord',count:bookCopyOperationRecordCount,addFunction: false, role: 'bookCopyOperationRecord'},
