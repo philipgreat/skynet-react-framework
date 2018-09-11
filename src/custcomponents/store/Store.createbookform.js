@@ -35,7 +35,7 @@ const fieldLabels = {
   id: 'ID',
   storeId:'商店序号',
   scannedIsbn:'扫描ISBN',
-  bookCopyVendorId:'书的提供者',
+  bookCopyVendorId:'客户ID',
   bookCopySharingType:'共享类型',
   bookRecommendId:'建议类目',
   bookName: '书的名字',
@@ -549,7 +549,7 @@ class BookCreateForm extends Component {
                   {getFieldDecorator('bookCopyVendorId', {
 
                     rules: [{ required: true, message: '请输入' }],
-                    initialValue:"C000001"
+                    initialValue:""
                   })(<Input placeholder="请输入" />)}
                 </Form.Item>
               </Col>    

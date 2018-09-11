@@ -53,9 +53,11 @@ const transferToAnotherAccountData = (id, parameters) => {
 
 
 
+
 const addStoreAccountDetails = (targetObjectId, parameters) => {
   const url = `${PREFIX}storeAccountManager/addStoreAccountDetails/storeAccountId/summary/amount/transactionTypeId/relatedMainOrderId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const storeAccountId = targetObjectId
+  const requestParameters = { ...parameters, storeAccountId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 

@@ -146,19 +146,25 @@ class BookBizApp extends React.PureComponent {
     const {BookCopySearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "书籍副本",
+      role: "bookCopy",
       data: state._book.bookCopyList,
       count: state._book.bookCopyCount,
       currentPage: state._book.bookCopyCurrentPageNumber,
       searchFormParameters: state._book.bookCopySearchFormParameters,
       loading: state._book.loading,
       partialList: state._book.partialList,
-      owner: { type: '_book', id: state._book.id, referenceName: 'bookInfo', listName: 'bookCopyList', ref:state._book, listDisplayName: '书籍副本列表' }, // this is for model namespace and
+      owner: { type: '_book', id: state._book.id, 
+      referenceName: 'bookInfo', 
+      listName: 'bookCopyList', ref:state._book, 
+      listDisplayName: '书籍副本列表' }, // this is for model namespace and
     }))(BookCopySearch)
   }
   getBookCopyCreateForm = () => {
    	const {BookCopyCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookCopy",
       data: state._book.bookCopyList,
       count: state._book.bookCopyCount,
       currentPage: state._book.bookCopyCurrentPageNumber,
@@ -172,6 +178,7 @@ class BookBizApp extends React.PureComponent {
   	const {BookCopyUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._book.selectedRows,
+      role: "bookCopy",
       currentUpdateIndex: state._book.currentUpdateIndex,
       owner: { type: '_book', id: state._book.id, listName: 'bookCopyList', ref:state._book, listDisplayName: '书籍副本列表' }, // this is for model namespace and
     }))(BookCopyUpdateForm)
@@ -181,19 +188,25 @@ class BookBizApp extends React.PureComponent {
     const {BorrowingHistorySearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "图书借还历史",
+      role: "borrowingHistory",
       data: state._book.borrowingHistoryList,
       count: state._book.borrowingHistoryCount,
       currentPage: state._book.borrowingHistoryCurrentPageNumber,
       searchFormParameters: state._book.borrowingHistorySearchFormParameters,
       loading: state._book.loading,
       partialList: state._book.partialList,
-      owner: { type: '_book', id: state._book.id, referenceName: 'book', listName: 'borrowingHistoryList', ref:state._book, listDisplayName: '图书借还历史列表' }, // this is for model namespace and
+      owner: { type: '_book', id: state._book.id, 
+      referenceName: 'book', 
+      listName: 'borrowingHistoryList', ref:state._book, 
+      listDisplayName: '图书借还历史列表' }, // this is for model namespace and
     }))(BorrowingHistorySearch)
   }
   getBorrowingHistoryCreateForm = () => {
    	const {BorrowingHistoryCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "borrowingHistory",
       data: state._book.borrowingHistoryList,
       count: state._book.borrowingHistoryCount,
       currentPage: state._book.borrowingHistoryCurrentPageNumber,
@@ -207,6 +220,7 @@ class BookBizApp extends React.PureComponent {
   	const {BorrowingHistoryUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._book.selectedRows,
+      role: "borrowingHistory",
       currentUpdateIndex: state._book.currentUpdateIndex,
       owner: { type: '_book', id: state._book.id, listName: 'borrowingHistoryList', ref:state._book, listDisplayName: '图书借还历史列表' }, // this is for model namespace and
     }))(BorrowingHistoryUpdateForm)
@@ -216,19 +230,25 @@ class BookBizApp extends React.PureComponent {
     const {BorrowingExpiredSkuSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "借书超期费",
+      role: "borrowingExpiredSku",
       data: state._book.borrowingExpiredSkuList,
       count: state._book.borrowingExpiredSkuCount,
       currentPage: state._book.borrowingExpiredSkuCurrentPageNumber,
       searchFormParameters: state._book.borrowingExpiredSkuSearchFormParameters,
       loading: state._book.loading,
       partialList: state._book.partialList,
-      owner: { type: '_book', id: state._book.id, referenceName: 'book', listName: 'borrowingExpiredSkuList', ref:state._book, listDisplayName: '借书超期费列表' }, // this is for model namespace and
+      owner: { type: '_book', id: state._book.id, 
+      referenceName: 'book', 
+      listName: 'borrowingExpiredSkuList', ref:state._book, 
+      listDisplayName: '借书超期费列表' }, // this is for model namespace and
     }))(BorrowingExpiredSkuSearch)
   }
   getBorrowingExpiredSkuCreateForm = () => {
    	const {BorrowingExpiredSkuCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "borrowingExpiredSku",
       data: state._book.borrowingExpiredSkuList,
       count: state._book.borrowingExpiredSkuCount,
       currentPage: state._book.borrowingExpiredSkuCurrentPageNumber,
@@ -242,6 +262,7 @@ class BookBizApp extends React.PureComponent {
   	const {BorrowingExpiredSkuUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._book.selectedRows,
+      role: "borrowingExpiredSku",
       currentUpdateIndex: state._book.currentUpdateIndex,
       owner: { type: '_book', id: state._book.id, listName: 'borrowingExpiredSkuList', ref:state._book, listDisplayName: '借书超期费列表' }, // this is for model namespace and
     }))(BorrowingExpiredSkuUpdateForm)
@@ -251,19 +272,25 @@ class BookBizApp extends React.PureComponent {
     const {BookReviewSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "书评",
+      role: "bookReview",
       data: state._book.bookReviewList,
       count: state._book.bookReviewCount,
       currentPage: state._book.bookReviewCurrentPageNumber,
       searchFormParameters: state._book.bookReviewSearchFormParameters,
       loading: state._book.loading,
       partialList: state._book.partialList,
-      owner: { type: '_book', id: state._book.id, referenceName: 'bookInfo', listName: 'bookReviewList', ref:state._book, listDisplayName: '书评列表' }, // this is for model namespace and
+      owner: { type: '_book', id: state._book.id, 
+      referenceName: 'bookInfo', 
+      listName: 'bookReviewList', ref:state._book, 
+      listDisplayName: '书评列表' }, // this is for model namespace and
     }))(BookReviewSearch)
   }
   getBookReviewCreateForm = () => {
    	const {BookReviewCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookReview",
       data: state._book.bookReviewList,
       count: state._book.bookReviewCount,
       currentPage: state._book.bookReviewCurrentPageNumber,
@@ -277,6 +304,7 @@ class BookBizApp extends React.PureComponent {
   	const {BookReviewUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._book.selectedRows,
+      role: "bookReview",
       currentUpdateIndex: state._book.currentUpdateIndex,
       owner: { type: '_book', id: state._book.id, listName: 'bookReviewList', ref:state._book, listDisplayName: '书评列表' }, // this is for model namespace and
     }))(BookReviewUpdateForm)
@@ -286,19 +314,25 @@ class BookBizApp extends React.PureComponent {
     const {StoreSlideSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "网点海报",
+      role: "storeSlide",
       data: state._book.storeSlideList,
       count: state._book.storeSlideCount,
       currentPage: state._book.storeSlideCurrentPageNumber,
       searchFormParameters: state._book.storeSlideSearchFormParameters,
       loading: state._book.loading,
       partialList: state._book.partialList,
-      owner: { type: '_book', id: state._book.id, referenceName: 'book', listName: 'storeSlideList', ref:state._book, listDisplayName: '网点海报列表' }, // this is for model namespace and
+      owner: { type: '_book', id: state._book.id, 
+      referenceName: 'book', 
+      listName: 'storeSlideList', ref:state._book, 
+      listDisplayName: '网点海报列表' }, // this is for model namespace and
     }))(StoreSlideSearch)
   }
   getStoreSlideCreateForm = () => {
    	const {StoreSlideCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "storeSlide",
       data: state._book.storeSlideList,
       count: state._book.storeSlideCount,
       currentPage: state._book.storeSlideCurrentPageNumber,
@@ -312,6 +346,7 @@ class BookBizApp extends React.PureComponent {
   	const {StoreSlideUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._book.selectedRows,
+      role: "storeSlide",
       currentUpdateIndex: state._book.currentUpdateIndex,
       owner: { type: '_book', id: state._book.id, listName: 'storeSlideList', ref:state._book, listDisplayName: '网点海报列表' }, // this is for model namespace and
     }))(StoreSlideUpdateForm)

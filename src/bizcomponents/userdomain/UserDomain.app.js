@@ -146,19 +146,25 @@ class UserDomainBizApp extends React.PureComponent {
     const {SecUserSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "SEC的用户",
+      role: "secUser",
       data: state._userDomain.secUserList,
       count: state._userDomain.secUserCount,
       currentPage: state._userDomain.secUserCurrentPageNumber,
       searchFormParameters: state._userDomain.secUserSearchFormParameters,
       loading: state._userDomain.loading,
       partialList: state._userDomain.partialList,
-      owner: { type: '_userDomain', id: state._userDomain.id, referenceName: 'domain', listName: 'secUserList', ref:state._userDomain, listDisplayName: 'SEC的用户列表' }, // this is for model namespace and
+      owner: { type: '_userDomain', id: state._userDomain.id, 
+      referenceName: 'domain', 
+      listName: 'secUserList', ref:state._userDomain, 
+      listDisplayName: 'SEC的用户列表' }, // this is for model namespace and
     }))(SecUserSearch)
   }
   getSecUserCreateForm = () => {
    	const {SecUserCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "secUser",
       data: state._userDomain.secUserList,
       count: state._userDomain.secUserCount,
       currentPage: state._userDomain.secUserCurrentPageNumber,
@@ -172,6 +178,7 @@ class UserDomainBizApp extends React.PureComponent {
   	const {SecUserUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._userDomain.selectedRows,
+      role: "secUser",
       currentUpdateIndex: state._userDomain.currentUpdateIndex,
       owner: { type: '_userDomain', id: state._userDomain.id, listName: 'secUserList', ref:state._userDomain, listDisplayName: 'SEC的用户列表' }, // this is for model namespace and
     }))(SecUserUpdateForm)

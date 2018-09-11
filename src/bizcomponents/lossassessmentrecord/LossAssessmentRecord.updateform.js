@@ -91,7 +91,11 @@ class LossAssessmentRecordUpdateForm extends Component {
     const { convertedImagesValues } = this.state
     const { setFieldsValue } = this.props.form
     const {fieldLabels} = LossAssessmentRecordBase
-    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
     const submitUpdateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -99,17 +103,18 @@ class LossAssessmentRecordUpdateForm extends Component {
           return
         }
 
-        const { owner } = this.props
+        const { owner, role } = this.props
         const lossAssessmentRecordId = values.id
         const imagesValues = mapBackToImageValues(convertedImagesValues)
         const parameters = { ...values, lossAssessmentRecordId, ...imagesValues }
 
-        // const newIndex= currentUpdateIndex + 1
+        
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/updateLossAssessmentRecord`,
+          type: `${owner.type}/update${cappedRoleName}`,
           payload: {
             id: owner.id,
-            type: 'lossAssessmentRecord',
+            role: role,
             parameters,
             selectedRows,
             currentUpdateIndex: 0,
@@ -278,9 +283,9 @@ class LossAssessmentRecordUpdateForm extends Component {
                 <Form.Item label={fieldLabels.bookCopyEvaluationPrice} {...formItemLayout}>
                   {getFieldDecorator('bookCopyEvaluationPrice', {
                     initialValue: selectedRow.bookCopyEvaluationPrice,
-                    rules: [{ required: true, message: '请输入书副本评估价格' }],
+                    rules: [{ required: true, message: '请输入评估价' }],
                   })(
-                    <Input placeholder="请输入书副本评估价格" />
+                    <Input placeholder="请输入评估价" />
                     
                   )}
                 </Form.Item>
@@ -301,7 +306,7 @@ class LossAssessmentRecordUpdateForm extends Component {
 
               <Col lg={6} md={12} sm={24}>
                 <ImageComponent
-                  buttonTitle="损失图像"
+                  buttonTitle="定损照片"
                   handlePreview={this.handlePreview}
                   handleChange={event => this.handleChange(event, 'lossImage')}
                   fileList={convertedImagesValues.lossImage}

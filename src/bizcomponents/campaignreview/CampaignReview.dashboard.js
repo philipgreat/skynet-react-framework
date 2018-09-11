@@ -244,8 +244,11 @@ const internalSubListsOf = (cardsData) =>{
            {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="gear"  />&nbsp;管理</Link></p>
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.type}CreateForm`}><FontAwesome name="plus"  />&nbsp;新增</Link></p>              
+              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
+              
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              
+              </p>         
           </Card> </Badge>
             </Col>))}
           </Row>)
@@ -302,8 +305,8 @@ class CampaignReviewDashboard extends Component {
     const { id,displayName, campaignReviewLikeCount, informCount } = this.props.campaignReview
     const cardsData = {cardsName:"活动评论",cardsFor: "campaignReview",cardsSource: this.props.campaignReview,
   		subItems: [
-{name: 'campaignReviewLikeList', displayName:'活动评论点赞',type:'campaignReviewLike',count:campaignReviewLikeCount},
-{name: 'informList', displayName:'举报',type:'inform',count:informCount},
+{name: 'campaignReviewLikeList', displayName:'活动评论点赞',type:'campaignReviewLike',count:campaignReviewLikeCount,addFunction: true, role: 'campaignReviewLike'},
+{name: 'informList', displayName:'举报',type:'inform',count:informCount,addFunction: true, role: 'inform'},
     
       	],
   	};

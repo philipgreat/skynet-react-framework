@@ -244,8 +244,11 @@ const internalSubListsOf = (cardsData) =>{
            {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="gear"  />&nbsp;管理</Link></p>
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.type}CreateForm`}><FontAwesome name="plus"  />&nbsp;新增</Link></p>              
+              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
+              
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              
+              </p>         
           </Card> </Badge>
             </Col>))}
           </Row>)
@@ -289,9 +292,9 @@ class AccountDataDashboard extends Component {
     const { id,displayName, platformAccountCount, fundationAccountCount, storeAccountCount, transactionTypeCount } = this.props.accountData
     const cardsData = {cardsName:"帐户数据",cardsFor: "accountData",cardsSource: this.props.accountData,
   		subItems: [
-{name: 'platformAccountList', displayName:'平台账户',type:'platformAccount',count:platformAccountCount},
-{name: 'fundationAccountList', displayName:'平台基金账户',type:'fundationAccount',count:fundationAccountCount},
-{name: 'storeAccountList', displayName:'网点账户',type:'storeAccount',count:storeAccountCount},
+{name: 'platformAccountList', displayName:'平台账户',type:'platformAccount',count:platformAccountCount,addFunction: false, role: 'platformAccount'},
+{name: 'fundationAccountList', displayName:'平台基金账户',type:'fundationAccount',count:fundationAccountCount,addFunction: false, role: 'fundationAccount'},
+{name: 'storeAccountList', displayName:'网点账户',type:'storeAccount',count:storeAccountCount,addFunction: false, role: 'storeAccount'},
     
       	],
   	};

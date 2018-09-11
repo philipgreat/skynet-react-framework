@@ -244,8 +244,11 @@ const internalSubListsOf = (cardsData) =>{
            {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="gear"  />&nbsp;管理</Link></p>
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.type}CreateForm`}><FontAwesome name="plus"  />&nbsp;新增</Link></p>              
+              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
+              
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              
+              </p>         
           </Card> </Badge>
             </Col>))}
           </Row>)
@@ -258,7 +261,7 @@ const internalSummaryOf = (lossDiscount,targetComponent) =>{
 <Description term="ID">{lossDiscount.id}</Description> 
 <Description term="名称">{lossDiscount.name}</Description> 
 <Description term="代码">{lossDiscount.code}</Description> 
-<Description term="折扣比例">{lossDiscount.discountRatio}</Description> 
+<Description term="折扣">{lossDiscount.discountRatio}</Description> 
 	
         {buildTransferModal(lossDiscount,targetComponent)}
       </DescriptionList>
@@ -289,9 +292,9 @@ class LossDiscountDashboard extends Component {
   render() {
     // eslint-disable-next-line max-len
     const { id,displayName, lossAssessmentRecordCount } = this.props.lossDiscount
-    const cardsData = {cardsName:"损失的折扣",cardsFor: "lossDiscount",cardsSource: this.props.lossDiscount,
+    const cardsData = {cardsName:"定损折扣",cardsFor: "lossDiscount",cardsSource: this.props.lossDiscount,
   		subItems: [
-{name: 'lossAssessmentRecordList', displayName:'定损记录',type:'lossAssessmentRecord',count:lossAssessmentRecordCount},
+{name: 'lossAssessmentRecordList', displayName:'定损记录',type:'lossAssessmentRecord',count:lossAssessmentRecordCount,addFunction: true, role: 'lossAssessmentRecord'},
     
       	],
   	};

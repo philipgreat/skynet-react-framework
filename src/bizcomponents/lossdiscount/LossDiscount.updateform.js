@@ -89,7 +89,11 @@ class LossDiscountUpdateForm extends Component {
     const { convertedImagesValues } = this.state
     const { setFieldsValue } = this.props.form
     const {fieldLabels} = LossDiscountBase
-    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
     const submitUpdateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -97,17 +101,18 @@ class LossDiscountUpdateForm extends Component {
           return
         }
 
-        const { owner } = this.props
+        const { owner, role } = this.props
         const lossDiscountId = values.id
         const imagesValues = mapBackToImageValues(convertedImagesValues)
         const parameters = { ...values, lossDiscountId, ...imagesValues }
 
-        // const newIndex= currentUpdateIndex + 1
+        
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/updateLossDiscount`,
+          type: `${owner.type}/update${cappedRoleName}`,
           payload: {
             id: owner.id,
-            type: 'lossDiscount',
+            role: role,
             parameters,
             selectedRows,
             currentUpdateIndex: 0,
@@ -179,7 +184,7 @@ class LossDiscountUpdateForm extends Component {
         payload: {
           id: owner.id,
           type: 'lossDiscount',
-          listName:'损失的折扣列表' 
+          listName:'定损折扣列表' 
         },
       })
     }
@@ -239,8 +244,8 @@ class LossDiscountUpdateForm extends Component {
 
     return (
       <PageHeaderLayout
-        title={"更新损失的折扣"+(currentUpdateIndex+1)+"/"+selectedRows.length}
-        content="更新损失的折扣"
+        title={"更新定损折扣"+(currentUpdateIndex+1)+"/"+selectedRows.length}
+        content="更新定损折扣"
         wrapperClassName={styles.advancedForm}
       >
         <Card title="基础信息" className={styles.card} bordered={false}>
@@ -288,9 +293,9 @@ class LossDiscountUpdateForm extends Component {
                 <Form.Item label={fieldLabels.discountRatio} {...formItemLayout}>
                   {getFieldDecorator('discountRatio', {
                     initialValue: selectedRow.discountRatio,
-                    rules: [{ required: true, message: '请输入折扣比例' }],
+                    rules: [{ required: true, message: '请输入折扣' }],
                   })(
-                    <Input placeholder="请输入折扣比例" />
+                    <Input placeholder="请输入折扣" />
                     
                   )}
                 </Form.Item>

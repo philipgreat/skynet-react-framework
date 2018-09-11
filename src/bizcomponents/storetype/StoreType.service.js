@@ -37,9 +37,11 @@ const transferToAnotherPlatform = (id, parameters) => {
 
 
 
+
 const addStore = (targetObjectId, parameters) => {
   const url = `${PREFIX}storeTypeManager/addStore/storeTypeId/storeName/storeSubname/storeAddress/storeOpenTime/storeOpenTimeSecond/storeRoomNumber/longitude/latitude/storeImage/cityId/platformId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const storeTypeId = targetObjectId
+  const requestParameters = { ...parameters, storeTypeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 

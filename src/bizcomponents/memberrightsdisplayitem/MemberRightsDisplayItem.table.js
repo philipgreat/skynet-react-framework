@@ -53,7 +53,10 @@ class MemberRightsDisplayItemTable extends PureComponent {
       title: '操作',
       render: (text, record) => (
         <span>
+          
           <a key="__" onClick={()=>this.gotoEdit(text, record)}>编辑</a>
+          
+          
           {
             record.actionList&&record.actionList.map((item)=>(<a key={item.actionId} onClick={()=>this.executeAction(item,text, record)}><span className={styles.splitLine} />{item.actionName}</a>))
 
@@ -61,9 +64,11 @@ class MemberRightsDisplayItemTable extends PureComponent {
         </span>
       ),
     }
+    
     remainColumns.push(
       operationColumn
     )
+    
     return remainColumns
 
   }
@@ -90,7 +95,7 @@ class MemberRightsDisplayItemTable extends PureComponent {
   
   gotoEdit = (text, record) =>{
     this.handleRowSelectChange([record.id], [record])
-    const{dispatch,owner} = this.props
+    const{dispatch,owner,role} = this.props
     const selectedRows = [];
     selectedRows.push(record)
     console.log("selectedRows",selectedRows)
@@ -103,7 +108,7 @@ class MemberRightsDisplayItemTable extends PureComponent {
       type: `${owner.type}/gotoUpdateForm`,
       payload: {
         id: owner.id,
-        type: 'memberRightsDisplayItem',
+        role: role,
         selectedRows,
         currentUpdateIndex,
       },
@@ -140,7 +145,7 @@ class MemberRightsDisplayItemTable extends PureComponent {
           <Alert
             message={selectedRowKeys.length===0?(
               <span>
-                一共 <a style={{ fontWeight: 600 }}>{count}</a> 项, 请选择要操作的项来执行更多功能
+                一共 <a style={{ fontWeight: 600 }}>{count}</a> 项, 请选择要操作的项来执行更多功能 
               </span>
             ):(
               <span>
@@ -156,7 +161,9 @@ class MemberRightsDisplayItemTable extends PureComponent {
           loading={false}
           size="middle"
           rowKey={record => record.id}
+           
           rowSelection={rowSelection}
+          
           dataSource={data}
           columns={calcDisplayColumns()}
           pagination={paginationProps}

@@ -21,17 +21,13 @@ const testValues = {
   bookBorrowingLimitPrice: '50.00',
   bookBorrowingCount: '1',
   bookPurchasingDiscountRate: '0.9',
-  overduePay: '0.73',
+  overduePay: '0.81',
   freeBorrowingDays: '10',
   platformId: 'BSP000001',
-  productDescription: '<div>\
-	<h1>一级会员服务</h1>\
-	<ul>\
-		<li>可以借阅图书</li>\
-		<li>可以购买</li>\
-		<li>可以报名参加活动</li>\
-	</ul>\
-</div>',
+  productDescription: '一段图片的描述，说明了该场景的实际效果。\
+\
+同时说明了一些可能出现的问题。\
+',
 }
 */
 const imageURLPrefix = '//localhost:2090'
@@ -108,14 +104,22 @@ class MemberServiceProductCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = MemberServiceProductBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -127,9 +131,10 @@ class MemberServiceProductCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addMemberServiceProduct`,
-          payload: { id: owner.id, type: 'memberServiceProduct', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }

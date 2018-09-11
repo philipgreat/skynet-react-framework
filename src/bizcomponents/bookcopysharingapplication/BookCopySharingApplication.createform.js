@@ -16,15 +16,15 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
-  bookCopyQuantity: '较少',
-  contactAddress: '成都市高新区天府五街欧香小镇',
   contactName: '张三',
-  contactMobile: '18012341234',
-  deliverMethodId: 'DM000001',
-  destinationStoreId: 'S000001',
+  contactMobile: 'A18012341234',
+  contactAddress: '成都市高新区天府五街欧香小镇',
+  bookCopyQuantity: '较少',
   applicationStatusId: 'AS000001',
+  deliverMethodId: 'DM000001',
   customerId: 'C000001',
   employeeId: 'E000001',
+  destinationStoreId: 'S000001',
 }
 */
 const imageURLPrefix = '//localhost:2090'
@@ -46,19 +46,19 @@ class BookCopySharingApplicationCreateForm extends Component {
     const { setFieldsValue } = this.props.form
     //setFieldsValue(testValues)
       
-    this.executeCandidateDeliverMethodSearch("")
-    
-    
-    this.executeCandidateDestinationStoreSearch("")
-    
-    
     this.executeCandidateApplicationStatusSearch("")
+    
+    
+    this.executeCandidateDeliverMethodSearch("")
     
     
     this.executeCandidateCustomerSearch("")
     
     
     this.executeCandidateEmployeeSearch("")
+    
+    
+    this.executeCandidateDestinationStoreSearch("")
     
  
     
@@ -77,50 +77,6 @@ class BookCopySharingApplicationCreateForm extends Component {
   }
 
   
-  executeCandidateDeliverMethodSearch = (filterKey) =>{
-
-    const {BookCopySharingApplicationService} = GlobalComponents;
-    
-    const id = "";//not used for now
-    const pageNo = 1;
-    const future = BookCopySharingApplicationService.requestCandidateDeliverMethod("deliverMethod", id, filterKey, pageNo);
-    console.log(future);
-    
-
-    future.then(candidateDeliverMethodList=>{
-      this.setState({
-        candidateDeliverMethodList
-      })
-
-    })
-
-  }	 
-  handleCandidateDeliverMethodSearch = (value) => {
-    this.executeCandidateDeliverMethodSearch(value)
-  }
-
-  executeCandidateDestinationStoreSearch = (filterKey) =>{
-
-    const {BookCopySharingApplicationService} = GlobalComponents;
-    
-    const id = "";//not used for now
-    const pageNo = 1;
-    const future = BookCopySharingApplicationService.requestCandidateDestinationStore("store", id, filterKey, pageNo);
-    console.log(future);
-    
-
-    future.then(candidateDestinationStoreList=>{
-      this.setState({
-        candidateDestinationStoreList
-      })
-
-    })
-
-  }	 
-  handleCandidateDestinationStoreSearch = (value) => {
-    this.executeCandidateDestinationStoreSearch(value)
-  }
-
   executeCandidateApplicationStatusSearch = (filterKey) =>{
 
     const {BookCopySharingApplicationService} = GlobalComponents;
@@ -141,6 +97,28 @@ class BookCopySharingApplicationCreateForm extends Component {
   }	 
   handleCandidateApplicationStatusSearch = (value) => {
     this.executeCandidateApplicationStatusSearch(value)
+  }
+
+  executeCandidateDeliverMethodSearch = (filterKey) =>{
+
+    const {BookCopySharingApplicationService} = GlobalComponents;
+    
+    const id = "";//not used for now
+    const pageNo = 1;
+    const future = BookCopySharingApplicationService.requestCandidateDeliverMethod("deliverMethod", id, filterKey, pageNo);
+    console.log(future);
+    
+
+    future.then(candidateDeliverMethodList=>{
+      this.setState({
+        candidateDeliverMethodList
+      })
+
+    })
+
+  }	 
+  handleCandidateDeliverMethodSearch = (value) => {
+    this.executeCandidateDeliverMethodSearch(value)
   }
 
   executeCandidateCustomerSearch = (filterKey) =>{
@@ -186,6 +164,28 @@ class BookCopySharingApplicationCreateForm extends Component {
   handleCandidateEmployeeSearch = (value) => {
     this.executeCandidateEmployeeSearch(value)
   }
+
+  executeCandidateDestinationStoreSearch = (filterKey) =>{
+
+    const {BookCopySharingApplicationService} = GlobalComponents;
+    
+    const id = "";//not used for now
+    const pageNo = 1;
+    const future = BookCopySharingApplicationService.requestCandidateDestinationStore("store", id, filterKey, pageNo);
+    console.log(future);
+    
+
+    future.then(candidateDestinationStoreList=>{
+      this.setState({
+        candidateDestinationStoreList
+      })
+
+    })
+
+  }	 
+  handleCandidateDestinationStoreSearch = (value) => {
+    this.executeCandidateDestinationStoreSearch(value)
+  }
  
 
 
@@ -200,14 +200,22 @@ class BookCopySharingApplicationCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = BookCopySharingApplicationBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -219,9 +227,10 @@ class BookCopySharingApplicationCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addBookCopySharingApplication`,
-          payload: { id: owner.id, type: 'bookCopySharingApplication', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }
@@ -293,29 +302,20 @@ class BookCopySharingApplicationCreateForm extends Component {
     
 
     
-    const {candidateDeliverMethodList} = this.state
-    if(!candidateDeliverMethodList){
-      return (<div>等等</div>)
-    }
-    if(!candidateDeliverMethodList.candidates){
-      return (<div>等等</div>)
-    }   
-    
-    
-    const {candidateDestinationStoreList} = this.state
-    if(!candidateDestinationStoreList){
-      return (<div>等等</div>)
-    }
-    if(!candidateDestinationStoreList.candidates){
-      return (<div>等等</div>)
-    }   
-    
-    
     const {candidateApplicationStatusList} = this.state
     if(!candidateApplicationStatusList){
       return (<div>等等</div>)
     }
     if(!candidateApplicationStatusList.candidates){
+      return (<div>等等</div>)
+    }   
+    
+    
+    const {candidateDeliverMethodList} = this.state
+    if(!candidateDeliverMethodList){
+      return (<div>等等</div>)
+    }
+    if(!candidateDeliverMethodList.candidates){
       return (<div>等等</div>)
     }   
     
@@ -334,6 +334,15 @@ class BookCopySharingApplicationCreateForm extends Component {
       return (<div>等等</div>)
     }
     if(!candidateEmployeeList.candidates){
+      return (<div>等等</div>)
+    }   
+    
+    
+    const {candidateDestinationStoreList} = this.state
+    if(!candidateDestinationStoreList){
+      return (<div>等等</div>)
+    }
+    if(!candidateDestinationStoreList.candidates){
       return (<div>等等</div>)
     }   
     
@@ -376,26 +385,6 @@ class BookCopySharingApplicationCreateForm extends Component {
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.bookCopyQuantity} {...formItemLayout}>
-                  {getFieldDecorator('bookCopyQuantity', {
-                    rules: [{ required: true, message: '请输入共享数量' }],
-                  })(
-                    <Input placeholder="请输入共享数量" />
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.contactAddress} {...formItemLayout}>
-                  {getFieldDecorator('contactAddress', {
-                    rules: [{ required: true, message: '请输入联系地址' }],
-                  })(
-                    <Input placeholder="请输入联系地址" />
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.contactName} {...formItemLayout}>
                   {getFieldDecorator('contactName', {
                     rules: [{ required: true, message: '请输入联系人姓名' }],
@@ -411,6 +400,26 @@ class BookCopySharingApplicationCreateForm extends Component {
                     rules: [{ required: true, message: '请输入联系人手机' }],
                   })(
                     <Input placeholder="请输入联系人手机" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.contactAddress} {...formItemLayout}>
+                  {getFieldDecorator('contactAddress', {
+                    rules: [{ required: true, message: '请输入联系地址' }],
+                  })(
+                    <Input placeholder="请输入联系地址" />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.bookCopyQuantity} {...formItemLayout}>
+                  {getFieldDecorator('bookCopyQuantity', {
+                    rules: [{ required: true, message: '请输入共享数量' }],
+                  })(
+                    <Input placeholder="请输入共享数量" />
                   )}
                 </Form.Item>
               </Col>
@@ -437,6 +446,31 @@ class BookCopySharingApplicationCreateForm extends Component {
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.applicationStatus} {...formItemLayout}>
+                  {getFieldDecorator('applicationStatusId', {
+                  	initialValue: tryinit('applicationStatus'),
+                    rules: [{ required: true, message: '请输入申请状态' }],
+                  })(
+                  
+                  <AutoComplete
+                    dataSource={candidateApplicationStatusList.candidates}
+                    
+                    
+                    onSearch={this.handleCandidateApplicationStatusSearch}
+                    placeholder="请输入申请状态"
+                    
+                    disabled={!availableForEdit('applicationStatus')}
+                  >
+                  {candidateApplicationStatusList.candidates.map(item=>{
+                return (<Option key={item.id}>{`${item.name}(${item.id})`}</Option>);
+            })}
+                  
+                  </AutoComplete>
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.deliverMethod} {...formItemLayout}>
                   {getFieldDecorator('deliverMethodId', {
                   	initialValue: tryinit('deliverMethod'),
@@ -453,56 +487,6 @@ class BookCopySharingApplicationCreateForm extends Component {
                     disabled={!availableForEdit('deliverMethod')}
                   >
                   {candidateDeliverMethodList.candidates.map(item=>{
-                return (<Option key={item.id}>{`${item.name}(${item.id})`}</Option>);
-            })}
-                  
-                  </AutoComplete>
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.destinationStore} {...formItemLayout}>
-                  {getFieldDecorator('destinationStoreId', {
-                  	initialValue: tryinit('destinationStore'),
-                    rules: [{ required: true, message: '请输入目标网点' }],
-                  })(
-                  
-                  <AutoComplete
-                    dataSource={candidateDestinationStoreList.candidates}
-                    
-                    
-                    onSearch={this.handleCandidateDestinationStoreSearch}
-                    placeholder="请输入目标网点"
-                    
-                    disabled={!availableForEdit('destinationStore')}
-                  >
-                  {candidateDestinationStoreList.candidates.map(item=>{
-                return (<Option key={item.id}>{`${item.storeName}(${item.id})`}</Option>);
-            })}
-                  
-                  </AutoComplete>
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.applicationStatus} {...formItemLayout}>
-                  {getFieldDecorator('applicationStatusId', {
-                  	initialValue: tryinit('applicationStatus'),
-                    rules: [{ required: true, message: '请输入应用程序状态' }],
-                  })(
-                  
-                  <AutoComplete
-                    dataSource={candidateApplicationStatusList.candidates}
-                    
-                    
-                    onSearch={this.handleCandidateApplicationStatusSearch}
-                    placeholder="请输入应用程序状态"
-                    
-                    disabled={!availableForEdit('applicationStatus')}
-                  >
-                  {candidateApplicationStatusList.candidates.map(item=>{
                 return (<Option key={item.id}>{`${item.name}(${item.id})`}</Option>);
             })}
                   
@@ -554,6 +538,31 @@ class BookCopySharingApplicationCreateForm extends Component {
                   >
                   {candidateEmployeeList.candidates.map(item=>{
                 return (<Option key={item.id}>{`${item.name}(${item.id})`}</Option>);
+            })}
+                  
+                  </AutoComplete>
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.destinationStore} {...formItemLayout}>
+                  {getFieldDecorator('destinationStoreId', {
+                  	initialValue: tryinit('destinationStore'),
+                    rules: [{ required: true, message: '请输入目标网点' }],
+                  })(
+                  
+                  <AutoComplete
+                    dataSource={candidateDestinationStoreList.candidates}
+                    
+                    
+                    onSearch={this.handleCandidateDestinationStoreSearch}
+                    placeholder="请输入目标网点"
+                    
+                    disabled={!availableForEdit('destinationStore')}
+                  >
+                  {candidateDestinationStoreList.candidates.map(item=>{
+                return (<Option key={item.id}>{`${item.storeName}(${item.id})`}</Option>);
             })}
                   
                   </AutoComplete>

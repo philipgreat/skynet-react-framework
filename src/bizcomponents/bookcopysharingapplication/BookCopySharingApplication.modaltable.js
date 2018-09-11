@@ -31,7 +31,7 @@ class BookCopySharingApplicationModalTable extends PureComponent {
           dataSource={data}
           columns={displayColumns}
           size="small"
-          scroll={{ x: 1590 }}
+          scroll={{ x: 1605 }}
         />
       </div>
     )

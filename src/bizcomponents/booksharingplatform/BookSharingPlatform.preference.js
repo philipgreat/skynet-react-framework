@@ -244,8 +244,11 @@ const internalSubListsOf = (cardsData) =>{
            {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="gear"  />&nbsp;管理</Link></p>
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.type}CreateForm`}><FontAwesome name="plus"  />&nbsp;新增</Link></p>              
+              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
+              
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              
+              </p>         
           </Card> </Badge>
             </Col>))}
           </Row>)
@@ -290,20 +293,20 @@ class BookSharingPlatformPreference extends Component {
     const { id,displayName, lossDiscountCount, platformConfigurationCount, accountDataCount, cityCount, bookPlazaCount, memberServiceProductCount, mainOrderCount, bookCount, transferTypeCount, takeStockStatusCount, bookTakeStockStatusCount, takeStoreResultsCount, bookCopyOperateTypeCount, borrowingStatusCount, deliverMethodCount, applicationStatusCount, platformAccountCount, fundationAccountCount, storeTypeCount, storeCount, slideTypeCount, campaignPlazaCount, campaignStatusCount, customerCount, employeeCount, profitTypeCount, profitDistributeStateCount, undistributedProfitCount } = this.props.bookSharingPlatform
     const cardsData = {cardsName:"图书共享平台",cardsFor: "bookSharingPlatform",cardsSource: this.props.bookSharingPlatform,
   		subItems: [
-{name: 'lossDiscountList', displayName:'损失的折扣',type:'lossDiscount',count:lossDiscountCount},
-{name: 'transferTypeList', displayName:'转移类型',type:'transferType',count:transferTypeCount},
-{name: 'takeStockStatusList', displayName:'盘点状态',type:'takeStockStatus',count:takeStockStatusCount},
-{name: 'bookTakeStockStatusList', displayName:'图书盘点状态',type:'bookTakeStockStatus',count:bookTakeStockStatusCount},
-{name: 'takeStoreResultsList', displayName:'盘点结果',type:'takeStoreResults',count:takeStoreResultsCount},
-{name: 'bookCopyOperateTypeList', displayName:'书籍副本操作类型',type:'bookCopyOperateType',count:bookCopyOperateTypeCount},
-{name: 'borrowingStatusList', displayName:'借书状态',type:'borrowingStatus',count:borrowingStatusCount},
-{name: 'deliverMethodList', displayName:'共享方式',type:'deliverMethod',count:deliverMethodCount},
-{name: 'applicationStatusList', displayName:'应用程序状态',type:'applicationStatus',count:applicationStatusCount},
-{name: 'storeTypeList', displayName:'网点类型',type:'storeType',count:storeTypeCount},
-{name: 'slideTypeList', displayName:'海报类型',type:'slideType',count:slideTypeCount},
-{name: 'campaignStatusList', displayName:'活动状态',type:'campaignStatus',count:campaignStatusCount},
-{name: 'profitTypeList', displayName:'利润类型',type:'profitType',count:profitTypeCount},
-{name: 'profitDistributeStateList', displayName:'利润分配状态',type:'profitDistributeState',count:profitDistributeStateCount},
+{name: 'lossDiscountList', displayName:'定损折扣',type:'lossDiscount',count:lossDiscountCount,addFunction: false, role: 'lossDiscount'},
+{name: 'transferTypeList', displayName:'转移类型',type:'transferType',count:transferTypeCount,addFunction: false, role: 'transferType'},
+{name: 'takeStockStatusList', displayName:'盘点状态',type:'takeStockStatus',count:takeStockStatusCount,addFunction: false, role: 'takeStockStatus'},
+{name: 'bookTakeStockStatusList', displayName:'图书盘点状态',type:'bookTakeStockStatus',count:bookTakeStockStatusCount,addFunction: false, role: 'bookTakeStockStatus'},
+{name: 'takeStoreResultsList', displayName:'盘点结果',type:'takeStoreResults',count:takeStoreResultsCount,addFunction: false, role: 'takeStoreResults'},
+{name: 'bookCopyOperateTypeList', displayName:'书籍副本操作类型',type:'bookCopyOperateType',count:bookCopyOperateTypeCount,addFunction: false, role: 'bookCopyOperateType'},
+{name: 'borrowingStatusList', displayName:'借书状态',type:'borrowingStatus',count:borrowingStatusCount,addFunction: false, role: 'borrowingStatus'},
+{name: 'deliverMethodList', displayName:'共享方式',type:'deliverMethod',count:deliverMethodCount,addFunction: false, role: 'deliverMethod'},
+{name: 'applicationStatusList', displayName:'申请状态',type:'applicationStatus',count:applicationStatusCount,addFunction: false, role: 'applicationStatus'},
+{name: 'storeTypeList', displayName:'网点类型',type:'storeType',count:storeTypeCount,addFunction: false, role: 'storeType'},
+{name: 'slideTypeList', displayName:'海报类型',type:'slideType',count:slideTypeCount,addFunction: false, role: 'slideType'},
+{name: 'campaignStatusList', displayName:'活动状态',type:'campaignStatus',count:campaignStatusCount,addFunction: false, role: 'campaignStatus'},
+{name: 'profitTypeList', displayName:'利润类型',type:'profitType',count:profitTypeCount,addFunction: false, role: 'profitType'},
+{name: 'profitDistributeStateList', displayName:'利润分配状态',type:'profitDistributeState',count:profitDistributeStateCount,addFunction: false, role: 'profitDistributeState'},
     
       	],
   	};

@@ -35,7 +35,7 @@ const renderExtraHeader = store => {
     {name:'新书入库',link:`/store/${store.id}/bookCreateForm`,icon:"login"},
     // {name:'转入',link:`/store/${store.id}/bookLentForm`,icon:"menu-unfold"},
     //{name:'出库',link:`/store/${store.id}/bookLentForm`,icon:"logout"},
-    {name:'盘点',link:`/store/${store.id}/stockTakingForm`,icon:"calculator"},
+    //{name:'盘点',link:`/store/${store.id}/stockTakingForm`,icon:"calculator"},
     
 
 
@@ -82,6 +82,11 @@ const topColResponsiveProps = {
 }
 
 /**<Tabs tabBarExtraContent={salesExtra} size="large" tabBarStyle={{ marginBottom: 24 }}>
+ * 
+ * {name: 'borrowingExpiredSkuListAsLendingStore', displayName:'借书超期费(借出网点)',type:'borrowingExpiredSku',count:borrowingExpiredSkuAsLendingStoreCount},
+{name: 'borrowingExpiredSkuListAsReturnStore
+ * 
+ * 
               <TabPane tab="销售额" key="sales"> */
 
 
@@ -91,8 +96,9 @@ const panesData =[
   "bookCopyTransferListAsOriginalStore","bookCopyTransferListAsNewStore",
   "bookCopyOperationRecordList","borrowingHistoryListAsLendingStore",
   "borrowingHistoryListAsReturnStore","bookCopySharingApplicationList"]},
-  {name:'活动管理',subItems:["campaignList"]},
-  {name:'经营成果中心',subItems:["memberServiceRevenueList","customerList"]},
+  {name:'推广中心',subItems:["campaignList","storeSlideList"]},
+  {name:'经营成果中心',subItems:["memberServiceRevenueList",
+  "customerList","storeAccountList","borrowingExpiredSkuListAsLendingStore","borrowingExpiredSkuListAsReturnStore"]},
   {name:'店内设备',subItems:["printerList"]},
   {name:'店内工作人员',subItems:["employeeWorkingStoreList"]},
 
@@ -116,8 +122,11 @@ const subListWithPans = (cardsData,tabbedPaneData) => {
                 <Col {...topColResponsiveProps} key={item.name}>   
                 <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
                  <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
-                   <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="gear"  />&nbsp;管理</Link></p>
-                   <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.type}CreateForm`}><FontAwesome name="plus"  />&nbsp;新增</Link></p>              
+                   <p>
+
+                     <Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+               </p>        
                </Card> </Badge>
                  </Col>)
 

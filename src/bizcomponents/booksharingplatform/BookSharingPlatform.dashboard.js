@@ -244,8 +244,11 @@ const internalSubListsOf = (cardsData) =>{
            {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="gear"  />&nbsp;管理</Link></p>
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.type}CreateForm`}><FontAwesome name="plus"  />&nbsp;新增</Link></p>              
+              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
+              
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              
+              </p>         
           </Card> </Badge>
             </Col>))}
           </Row>)
@@ -290,20 +293,20 @@ class BookSharingPlatformDashboard extends Component {
     const { id,displayName, lossDiscountCount, platformConfigurationCount, accountDataCount, cityCount, bookPlazaCount, memberServiceProductCount, mainOrderCount, bookCount, transferTypeCount, takeStockStatusCount, bookTakeStockStatusCount, takeStoreResultsCount, bookCopyOperateTypeCount, borrowingStatusCount, deliverMethodCount, applicationStatusCount, platformAccountCount, fundationAccountCount, storeTypeCount, storeCount, slideTypeCount, campaignPlazaCount, campaignStatusCount, customerCount, employeeCount, profitTypeCount, profitDistributeStateCount, undistributedProfitCount } = this.props.bookSharingPlatform
     const cardsData = {cardsName:"图书共享平台",cardsFor: "bookSharingPlatform",cardsSource: this.props.bookSharingPlatform,
   		subItems: [
-{name: 'platformConfigurationList', displayName:'平台配置',type:'platformConfiguration',count:platformConfigurationCount},
-{name: 'accountDataList', displayName:'帐户数据',type:'accountData',count:accountDataCount},
-{name: 'cityList', displayName:'城市',type:'city',count:cityCount},
-{name: 'bookPlazaList', displayName:'图书天地',type:'bookPlaza',count:bookPlazaCount},
-{name: 'memberServiceProductList', displayName:'会员服务产品',type:'memberServiceProduct',count:memberServiceProductCount},
-{name: 'mainOrderList', displayName:'主订单',type:'mainOrder',count:mainOrderCount},
-{name: 'bookList', displayName:'书',type:'book',count:bookCount},
-{name: 'platformAccountList', displayName:'平台账户',type:'platformAccount',count:platformAccountCount},
-{name: 'fundationAccountList', displayName:'平台基金账户',type:'fundationAccount',count:fundationAccountCount},
-{name: 'storeList', displayName:'服务网点',type:'store',count:storeCount},
-{name: 'campaignPlazaList', displayName:'活动广场',type:'campaignPlaza',count:campaignPlazaCount},
-{name: 'customerList', displayName:'用户',type:'customer',count:customerCount},
-{name: 'employeeList', displayName:'员工',type:'employee',count:employeeCount},
-{name: 'undistributedProfitList', displayName:'未分配利润',type:'undistributedProfit',count:undistributedProfitCount},
+{name: 'platformConfigurationList', displayName:'平台配置',type:'platformConfiguration',count:platformConfigurationCount,addFunction: true, role: 'platformConfiguration'},
+{name: 'accountDataList', displayName:'帐户数据',type:'accountData',count:accountDataCount,addFunction: true, role: 'accountData'},
+{name: 'cityList', displayName:'城市',type:'city',count:cityCount,addFunction: true, role: 'city'},
+{name: 'bookPlazaList', displayName:'图书天地',type:'bookPlaza',count:bookPlazaCount,addFunction: true, role: 'bookPlaza'},
+{name: 'memberServiceProductList', displayName:'会员服务产品',type:'memberServiceProduct',count:memberServiceProductCount,addFunction: true, role: 'memberServiceProduct'},
+{name: 'mainOrderList', displayName:'主订单',type:'mainOrder',count:mainOrderCount,addFunction: false, role: 'mainOrder'},
+{name: 'bookList', displayName:'书',type:'book',count:bookCount,addFunction: true, role: 'book'},
+{name: 'platformAccountList', displayName:'平台账户',type:'platformAccount',count:platformAccountCount,addFunction: false, role: 'platformAccount'},
+{name: 'fundationAccountList', displayName:'平台基金账户',type:'fundationAccount',count:fundationAccountCount,addFunction: false, role: 'fundationAccount'},
+{name: 'storeList', displayName:'服务网点',type:'store',count:storeCount,addFunction: true, role: 'store'},
+{name: 'campaignPlazaList', displayName:'活动广场',type:'campaignPlaza',count:campaignPlazaCount,addFunction: true, role: 'campaignPlaza'},
+{name: 'customerList', displayName:'用户',type:'customer',count:customerCount,addFunction: false, role: 'customer'},
+{name: 'employeeList', displayName:'员工',type:'employee',count:employeeCount,addFunction: true, role: 'employee'},
+{name: 'undistributedProfitList', displayName:'未分割收入',type:'undistributedProfit',count:undistributedProfitCount,addFunction: false, role: 'undistributedProfit'},
     
       	],
   	};

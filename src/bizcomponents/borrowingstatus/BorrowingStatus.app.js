@@ -146,19 +146,25 @@ class BorrowingStatusBizApp extends React.PureComponent {
     const {BorrowingHistorySearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "图书借还历史",
+      role: "borrowingHistory",
       data: state._borrowingStatus.borrowingHistoryList,
       count: state._borrowingStatus.borrowingHistoryCount,
       currentPage: state._borrowingStatus.borrowingHistoryCurrentPageNumber,
       searchFormParameters: state._borrowingStatus.borrowingHistorySearchFormParameters,
       loading: state._borrowingStatus.loading,
       partialList: state._borrowingStatus.partialList,
-      owner: { type: '_borrowingStatus', id: state._borrowingStatus.id, referenceName: 'borrowingStatus', listName: 'borrowingHistoryList', ref:state._borrowingStatus, listDisplayName: '图书借还历史列表' }, // this is for model namespace and
+      owner: { type: '_borrowingStatus', id: state._borrowingStatus.id, 
+      referenceName: 'borrowingStatus', 
+      listName: 'borrowingHistoryList', ref:state._borrowingStatus, 
+      listDisplayName: '图书借还历史列表' }, // this is for model namespace and
     }))(BorrowingHistorySearch)
   }
   getBorrowingHistoryCreateForm = () => {
    	const {BorrowingHistoryCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "borrowingHistory",
       data: state._borrowingStatus.borrowingHistoryList,
       count: state._borrowingStatus.borrowingHistoryCount,
       currentPage: state._borrowingStatus.borrowingHistoryCurrentPageNumber,
@@ -172,6 +178,7 @@ class BorrowingStatusBizApp extends React.PureComponent {
   	const {BorrowingHistoryUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._borrowingStatus.selectedRows,
+      role: "borrowingHistory",
       currentUpdateIndex: state._borrowingStatus.currentUpdateIndex,
       owner: { type: '_borrowingStatus', id: state._borrowingStatus.id, listName: 'borrowingHistoryList', ref:state._borrowingStatus, listDisplayName: '图书借还历史列表' }, // this is for model namespace and
     }))(BorrowingHistoryUpdateForm)

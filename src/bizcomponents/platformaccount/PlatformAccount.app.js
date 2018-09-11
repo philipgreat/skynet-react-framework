@@ -146,19 +146,25 @@ class PlatformAccountBizApp extends React.PureComponent {
     const {PlatformAccountDetailsSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "平台账户明细",
+      role: "platformAccountDetails",
       data: state._platformAccount.platformAccountDetailsList,
       count: state._platformAccount.platformAccountDetailsCount,
       currentPage: state._platformAccount.platformAccountDetailsCurrentPageNumber,
       searchFormParameters: state._platformAccount.platformAccountDetailsSearchFormParameters,
       loading: state._platformAccount.loading,
       partialList: state._platformAccount.partialList,
-      owner: { type: '_platformAccount', id: state._platformAccount.id, referenceName: 'platformAccount', listName: 'platformAccountDetailsList', ref:state._platformAccount, listDisplayName: '平台账户明细列表' }, // this is for model namespace and
+      owner: { type: '_platformAccount', id: state._platformAccount.id, 
+      referenceName: 'platformAccount', 
+      listName: 'platformAccountDetailsList', ref:state._platformAccount, 
+      listDisplayName: '平台账户明细列表' }, // this is for model namespace and
     }))(PlatformAccountDetailsSearch)
   }
   getPlatformAccountDetailsCreateForm = () => {
    	const {PlatformAccountDetailsCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "platformAccountDetails",
       data: state._platformAccount.platformAccountDetailsList,
       count: state._platformAccount.platformAccountDetailsCount,
       currentPage: state._platformAccount.platformAccountDetailsCurrentPageNumber,
@@ -172,6 +178,7 @@ class PlatformAccountBizApp extends React.PureComponent {
   	const {PlatformAccountDetailsUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._platformAccount.selectedRows,
+      role: "platformAccountDetails",
       currentUpdateIndex: state._platformAccount.currentUpdateIndex,
       owner: { type: '_platformAccount', id: state._platformAccount.id, listName: 'platformAccountDetailsList', ref:state._platformAccount, listDisplayName: '平台账户明细列表' }, // this is for model namespace and
     }))(PlatformAccountDetailsUpdateForm)

@@ -37,9 +37,11 @@ const transferToAnotherPlatform = (id, parameters) => {
 
 
 
+
 const addBookCopyTransfer = (targetObjectId, parameters) => {
   const url = `${PREFIX}transferTypeManager/addBookCopyTransfer/transferTypeId/bookName/bookCopyId/originalStoreId/newStoreId/responsibleEmployeeId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const transferTypeId = targetObjectId
+  const requestParameters = { ...parameters, transferTypeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 

@@ -245,8 +245,11 @@ const internalSubListsOf = (cardsData) =>{
            {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="gear"  />&nbsp;管理</Link></p>
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.type}CreateForm`}><FontAwesome name="plus"  />&nbsp;新增</Link></p>              
+              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
+              
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              
+              </p>         
           </Card> </Badge>
             </Col>))}
           </Row>)
@@ -317,26 +320,26 @@ class CustomerDashboard extends Component {
     const { id,displayName, privateMessageCount, lossAssessmentRecordCount, mainOrderCount, bookCopyCount, borrowingHistoryCount, borrowingExpiredSkuCount, bookReviewCount, bookReviewLikeCount, bookCopySharingApplicationCount, memberServiceRevenueCount, customerAccountTransactionCount, campaignRegisterHistoryCount, campaignReviewCount, campaignLikeCount, campaignReviewLikeCount, customerFootprintCount, shieldCustomerAsCustomerCount, shieldCustomerAsShieldCount, informCount, undistributedProfitCount } = this.props.customer
     const cardsData = {cardsName:"用户",cardsFor: "customer",cardsSource: this.props.customer,
   		subItems: [
-{name: 'privateMessageList', displayName:'私信消息',type:'privateMessage',count:privateMessageCount},
-{name: 'lossAssessmentRecordList', displayName:'定损记录',type:'lossAssessmentRecord',count:lossAssessmentRecordCount},
-{name: 'mainOrderList', displayName:'主订单',type:'mainOrder',count:mainOrderCount},
-{name: 'bookCopyList', displayName:'书籍副本',type:'bookCopy',count:bookCopyCount},
-{name: 'borrowingHistoryList', displayName:'图书借还历史',type:'borrowingHistory',count:borrowingHistoryCount},
-{name: 'borrowingExpiredSkuList', displayName:'借书超期费',type:'borrowingExpiredSku',count:borrowingExpiredSkuCount},
-{name: 'bookReviewList', displayName:'书评',type:'bookReview',count:bookReviewCount},
-{name: 'bookReviewLikeList', displayName:'书评点赞',type:'bookReviewLike',count:bookReviewLikeCount},
-{name: 'bookCopySharingApplicationList', displayName:'图书共享申请',type:'bookCopySharingApplication',count:bookCopySharingApplicationCount},
-{name: 'memberServiceRevenueList', displayName:'会员服务收益',type:'memberServiceRevenue',count:memberServiceRevenueCount},
-{name: 'customerAccountTransactionList', displayName:'客户账户明细',type:'customerAccountTransaction',count:customerAccountTransactionCount},
-{name: 'campaignRegisterHistoryList', displayName:'活动报名记录',type:'campaignRegisterHistory',count:campaignRegisterHistoryCount},
-{name: 'campaignReviewList', displayName:'活动评论',type:'campaignReview',count:campaignReviewCount},
-{name: 'campaignLikeList', displayName:'活动点赞',type:'campaignLike',count:campaignLikeCount},
-{name: 'campaignReviewLikeList', displayName:'活动评论点赞',type:'campaignReviewLike',count:campaignReviewLikeCount},
-{name: 'customerFootprintList', displayName:'用户历程',type:'customerFootprint',count:customerFootprintCount},
-{name: 'shieldCustomerListAsCustomer', displayName:'屏蔽用户',type:'shieldCustomer',count:shieldCustomerAsCustomerCount},
-{name: 'shieldCustomerListAsShield', displayName:'屏蔽用户',type:'shieldCustomer',count:shieldCustomerAsShieldCount},
-{name: 'informList', displayName:'举报',type:'inform',count:informCount},
-{name: 'undistributedProfitList', displayName:'未分配利润',type:'undistributedProfit',count:undistributedProfitCount},
+{name: 'privateMessageList', displayName:'私信消息',type:'privateMessage',count:privateMessageCount,addFunction: true, role: 'privateMessage'},
+{name: 'lossAssessmentRecordList', displayName:'定损记录',type:'lossAssessmentRecord',count:lossAssessmentRecordCount,addFunction: true, role: 'lossAssessmentRecord'},
+{name: 'mainOrderList', displayName:'主订单',type:'mainOrder',count:mainOrderCount,addFunction: false, role: 'mainOrder'},
+{name: 'bookCopyList', displayName:'书籍副本',type:'bookCopy',count:bookCopyCount,addFunction: true, role: 'bookCopy'},
+{name: 'borrowingHistoryList', displayName:'图书借还历史',type:'borrowingHistory',count:borrowingHistoryCount,addFunction: false, role: 'borrowingHistory'},
+{name: 'borrowingExpiredSkuList', displayName:'借书超期费',type:'borrowingExpiredSku',count:borrowingExpiredSkuCount,addFunction: true, role: 'borrowingExpiredSku'},
+{name: 'bookReviewList', displayName:'书评',type:'bookReview',count:bookReviewCount,addFunction: true, role: 'bookReview'},
+{name: 'bookReviewLikeList', displayName:'书评点赞',type:'bookReviewLike',count:bookReviewLikeCount,addFunction: true, role: 'bookReviewLike'},
+{name: 'bookCopySharingApplicationList', displayName:'图书共享申请',type:'bookCopySharingApplication',count:bookCopySharingApplicationCount,addFunction: true, role: 'bookCopySharingApplication'},
+{name: 'memberServiceRevenueList', displayName:'会员服务收益',type:'memberServiceRevenue',count:memberServiceRevenueCount,addFunction: false, role: 'memberServiceRevenue'},
+{name: 'customerAccountTransactionList', displayName:'客户账户明细',type:'customerAccountTransaction',count:customerAccountTransactionCount,addFunction: false, role: 'customerAccountTransaction'},
+{name: 'campaignRegisterHistoryList', displayName:'活动报名记录',type:'campaignRegisterHistory',count:campaignRegisterHistoryCount,addFunction: true, role: 'campaignRegisterHistory'},
+{name: 'campaignReviewList', displayName:'活动评论',type:'campaignReview',count:campaignReviewCount,addFunction: true, role: 'campaignReview'},
+{name: 'campaignLikeList', displayName:'活动点赞',type:'campaignLike',count:campaignLikeCount,addFunction: true, role: 'campaignLike'},
+{name: 'campaignReviewLikeList', displayName:'活动评论点赞',type:'campaignReviewLike',count:campaignReviewLikeCount,addFunction: true, role: 'campaignReviewLike'},
+{name: 'customerFootprintList', displayName:'用户历程',type:'customerFootprint',count:customerFootprintCount,addFunction: true, role: 'customerFootprint'},
+{name: 'shieldCustomerListAsCustomer', displayName:'屏蔽用户(用户)',type:'shieldCustomer',count:shieldCustomerAsCustomerCount,addFunction: true, role: 'shieldCustomerAsCustomer'},
+{name: 'shieldCustomerListAsShield', displayName:'屏蔽用户(屏蔽)',type:'shieldCustomer',count:shieldCustomerAsShieldCount,addFunction: true, role: 'shieldCustomerAsShield'},
+{name: 'informList', displayName:'举报',type:'inform',count:informCount,addFunction: true, role: 'inform'},
+{name: 'undistributedProfitList', displayName:'未分割收入',type:'undistributedProfit',count:undistributedProfitCount,addFunction: false, role: 'undistributedProfit'},
     
       	],
   	};

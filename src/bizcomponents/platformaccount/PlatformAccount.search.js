@@ -105,19 +105,25 @@ class PlatformAccountSearch extends PureComponent {
 
   handleDelete = () => {
     const { selectedRows } = this.state
-    const { dispatch, owner } = this.props
+    const { dispatch, owner, role } = this.props
     console.log('things to delete', selectedRows)
     this.setState({
       modalVisible: true,
       showDeleteResult: true,
     })
-    
+    const {listName} = owner;
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
     const platformAccountIds = selectedRows.map((item) => { return item.id })
     console.log('platformAccountIds', platformAccountIds)
     const parameters = { platformAccountIds }
+    const cappedRoleName = capFirstChar(listName)
     dispatch({
-      type: `${owner.type}/removePlatformAccountList`,
-      payload: { id: owner.id, type: 'platformAccount', parameters },
+      type: `${owner.type}/remove${cappedRoleName}`,
+      payload: { id: owner.id, role: role, parameters },
     })
   }
   
@@ -140,10 +146,10 @@ class PlatformAccountSearch extends PureComponent {
   }
 
   handleCreate = () => {
-    const { dispatch, owner } = this.props
+    const { dispatch, owner, role } = this.props
     dispatch({
       type: `${owner.type}/gotoCreateForm`,
-      payload: { id: owner.id, type: 'platformAccount' },
+      payload: { id: owner.id, role: role },
     })
   }
 
@@ -157,13 +163,7 @@ class PlatformAccountSearch extends PureComponent {
       payload: { id: owner.id, type: 'platformAccount', selectedRows, currentUpdateIndex },
     })
   }
-  
-  handleAddInput = (e) => {
-    this.setState({
-      addInputValue: e.target.value,
-    })
-  }
-
+ 
     
   handleCloseAlert = () => {
       const { dispatch, owner,location } = this.props;
@@ -172,19 +172,7 @@ class PlatformAccountSearch extends PureComponent {
       dispatch({ type: `${owner.type}/view`, payload: { id: owner.id,pathname,displayName:'平台账户列表' } })
 
   };  
-    
-  handleAdd = () => {
-    this.props.dispatch({
-      type: 'rule/add',
-      payload: {
-        description: this.state.addInputValue,
-      },
-    })
-    message.success('添加成功')
-    this.setState({
-      modalVisible: false,
-    })
-  }
+ 
 
   render() {
     const { data, loading, count, currentPage, owner,partialList } = this.props;
@@ -236,17 +224,16 @@ class PlatformAccountSearch extends PureComponent {
     }
     
     return (
-      <PageHeaderLayout title={`${displayName}: 平台账户列表`}>
+      <PageHeaderLayout title={`${displayName}:${this.props.name}列表`}>
         <Card bordered={false}>
           <div className={styles.tableList}>
             <div className={styles.tableListForm}>
               <PlatformAccountSearchForm {...this.props} />
             </div>
             <div className={styles.tableListOperator}>
-              <Button icon="plus" type="primary" onClick={() => this.handleCreate()}>新建</Button>
-              <Button onClick={this.handleModalVisible} type="danger" icon="delete" disabled={selectedRows.length === 0}>批量删除</Button>
-              <Button onClick={this.handleUpdate} type="primary" icon="update" disabled={selectedRows.length === 0}>批量更新</Button>
+            
               
+               
                
               {partialList&&(
               <div className={styles.searchAlert}>

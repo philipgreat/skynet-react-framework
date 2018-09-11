@@ -94,14 +94,22 @@ class ApplicationStatusCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = ApplicationStatusBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -113,9 +121,10 @@ class ApplicationStatusCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addApplicationStatus`,
-          payload: { id: owner.id, type: 'applicationStatus', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }
@@ -141,7 +150,7 @@ class ApplicationStatusCreateForm extends Component {
       const { owner } = this.props
       dispatch({
         type: `${owner.type}/goback`,
-        payload: { id: owner.id, type: 'applicationStatus',listName:'应用程序状态列表' },
+        payload: { id: owner.id, type: 'applicationStatus',listName:'申请状态列表' },
       })
     }
     const errors = getFieldsError()
@@ -225,8 +234,8 @@ class ApplicationStatusCreateForm extends Component {
     }
     return (
       <PageHeaderLayout
-        title="新建一个应用程序状态"
-        content="新建一个应用程序状态"
+        title="新建一个申请状态"
+        content="新建一个申请状态"
         wrapperClassName={styles.advancedForm}
       >
         <Card title="基础信息" className={styles.card} bordered={false}>

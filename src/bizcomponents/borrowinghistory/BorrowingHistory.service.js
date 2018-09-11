@@ -117,9 +117,11 @@ const transferToAnotherBorrowingStatus = (id, parameters) => {
 
 
 
+
 const addBorrowingExpiredSku = (targetObjectId, parameters) => {
   const url = `${PREFIX}borrowingHistoryManager/addBorrowingExpiredSku/borrowingHistoryId/borrowerId/bookCopyId/bookId/bookName/lendingStoreId/lendingDatetime/returnStoreId/returnDatetime/expiredDays/expiredFee/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const borrowingHistoryId = targetObjectId
+  const requestParameters = { ...parameters, borrowingHistoryId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 

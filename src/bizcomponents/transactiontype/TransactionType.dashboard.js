@@ -244,8 +244,11 @@ const internalSubListsOf = (cardsData) =>{
            {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="gear"  />&nbsp;管理</Link></p>
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.type}CreateForm`}><FontAwesome name="plus"  />&nbsp;新增</Link></p>              
+              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
+              
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              
+              </p>         
           </Card> </Badge>
             </Col>))}
           </Row>)
@@ -296,10 +299,10 @@ class TransactionTypeDashboard extends Component {
     const { id,displayName, platformAccountDetailsCount, fundationAccountDetailsCount, storeAccountDetailsCount, customerAccountTransactionCount } = this.props.transactionType
     const cardsData = {cardsName:"交易类型",cardsFor: "transactionType",cardsSource: this.props.transactionType,
   		subItems: [
-{name: 'platformAccountDetailsList', displayName:'平台账户明细',type:'platformAccountDetails',count:platformAccountDetailsCount},
-{name: 'fundationAccountDetailsList', displayName:'平台基金账户明细',type:'fundationAccountDetails',count:fundationAccountDetailsCount},
-{name: 'storeAccountDetailsList', displayName:'网点账户明细',type:'storeAccountDetails',count:storeAccountDetailsCount},
-{name: 'customerAccountTransactionList', displayName:'客户账户明细',type:'customerAccountTransaction',count:customerAccountTransactionCount},
+{name: 'platformAccountDetailsList', displayName:'平台账户明细',type:'platformAccountDetails',count:platformAccountDetailsCount,addFunction: false, role: 'platformAccountDetails'},
+{name: 'fundationAccountDetailsList', displayName:'平台基金账户明细',type:'fundationAccountDetails',count:fundationAccountDetailsCount,addFunction: false, role: 'fundationAccountDetails'},
+{name: 'storeAccountDetailsList', displayName:'网点账户明细',type:'storeAccountDetails',count:storeAccountDetailsCount,addFunction: false, role: 'storeAccountDetails'},
+{name: 'customerAccountTransactionList', displayName:'客户账户明细',type:'customerAccountTransaction',count:customerAccountTransactionCount,addFunction: false, role: 'customerAccountTransaction'},
     
       	],
   	};

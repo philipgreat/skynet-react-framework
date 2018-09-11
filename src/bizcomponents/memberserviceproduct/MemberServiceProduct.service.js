@@ -37,9 +37,11 @@ const transferToAnotherPlatform = (id, parameters) => {
 
 
 
+
 const addMemberServiceBundleSku = (targetObjectId, parameters) => {
-  const url = `${PREFIX}memberServiceProductManager/addMemberServiceBundleSku/memberProductId/memberServiceName/description/listPrice/salePrice/servicePeriodMonths/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}memberServiceProductManager/addMemberServiceBundleSku/memberServiceProductId/memberServiceName/description/listPrice/salePrice/servicePeriodMonths/tokensExpr/`
+  const memberServiceProductId = targetObjectId
+  const requestParameters = { ...parameters, memberServiceProductId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -57,9 +59,11 @@ const removeMemberServiceBundleSkuList = (targetObjectId, parameters) => {
 }
 
 
+
 const addStoreSlide = (targetObjectId, parameters) => {
   const url = `${PREFIX}memberServiceProductManager/addStoreSlide/memberServiceProductId/tips/bannerImage/wxaLinkUrl/antdLinkUrl/slideTypeId/bookId/campaignId/storeId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const memberServiceProductId = targetObjectId
+  const requestParameters = { ...parameters, memberServiceProductId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -77,9 +81,11 @@ const removeStoreSlideList = (targetObjectId, parameters) => {
 }
 
 
+
 const addCustomer = (targetObjectId, parameters) => {
-  const url = `${PREFIX}memberServiceProductManager/addCustomer/memberServiceId/nickName/logoImage/mobileNumber/realName/sexuality/memberServiceStartDate/memberServiceExpireDate/accountBalance/miniProgramOpenid/serviceAccountOpenid/wechatUnionId/longitude/latitude/birthday/identityCardNumber/familyAddress/memberServiceDailyPay/favouriteStoreId/platformId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}memberServiceProductManager/addCustomer/memberServiceProductId/nickName/logoImage/mobileNumber/realName/sexuality/memberServiceStartDate/memberServiceExpireDate/accountBalance/miniProgramOpenid/serviceAccountOpenid/wechatUnionId/longitude/latitude/birthday/identityCardNumber/familyAddress/memberServiceDailyPay/favouriteStoreId/platformId/tokensExpr/`
+  const memberServiceProductId = targetObjectId
+  const requestParameters = { ...parameters, memberServiceProductId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 

@@ -146,19 +146,25 @@ class CampaignPlazaBizApp extends React.PureComponent {
     const {CampaignSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "活动",
+      role: "campaign",
       data: state._campaignPlaza.campaignList,
       count: state._campaignPlaza.campaignCount,
       currentPage: state._campaignPlaza.campaignCurrentPageNumber,
       searchFormParameters: state._campaignPlaza.campaignSearchFormParameters,
       loading: state._campaignPlaza.loading,
       partialList: state._campaignPlaza.partialList,
-      owner: { type: '_campaignPlaza', id: state._campaignPlaza.id, referenceName: 'campaignPlaza', listName: 'campaignList', ref:state._campaignPlaza, listDisplayName: '活动列表' }, // this is for model namespace and
+      owner: { type: '_campaignPlaza', id: state._campaignPlaza.id, 
+      referenceName: 'campaignPlaza', 
+      listName: 'campaignList', ref:state._campaignPlaza, 
+      listDisplayName: '活动列表' }, // this is for model namespace and
     }))(CampaignSearch)
   }
   getCampaignCreateForm = () => {
    	const {CampaignCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "campaign",
       data: state._campaignPlaza.campaignList,
       count: state._campaignPlaza.campaignCount,
       currentPage: state._campaignPlaza.campaignCurrentPageNumber,
@@ -172,6 +178,7 @@ class CampaignPlazaBizApp extends React.PureComponent {
   	const {CampaignUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._campaignPlaza.selectedRows,
+      role: "campaign",
       currentUpdateIndex: state._campaignPlaza.currentUpdateIndex,
       owner: { type: '_campaignPlaza', id: state._campaignPlaza.id, listName: 'campaignList', ref:state._campaignPlaza, listDisplayName: '活动列表' }, // this is for model namespace and
     }))(CampaignUpdateForm)

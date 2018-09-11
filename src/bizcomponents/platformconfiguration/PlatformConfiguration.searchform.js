@@ -157,9 +157,9 @@ class PlatformConfigurationSearchForm extends PureComponent {
           </Col>
 
           <Col md={8} sm={24}>
-            <FormItem label="存储列表页中的消息">
+            <FormItem label="网点列表页提示信息">
               {getFieldDecorator('messageInStoreListPage')(
-                <Input placeholder="请输入存储列表页中的消息" />
+                <Input placeholder="请输入网点列表页提示信息" />
               )}
             </FormItem>
           </Col>

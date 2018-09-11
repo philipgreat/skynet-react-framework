@@ -69,9 +69,11 @@ const transferToAnotherPlatform = (id, parameters) => {
 
 
 
+
 const addLossAssessmentRecord = (targetObjectId, parameters) => {
-  const url = `${PREFIX}storeManager/addLossAssessmentRecord/recordStoreId/bookCopyId/lossComment/lossImage/bookCopyEvaluationPrice/lossDiscountId/recordPersonId/damagePersonId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}storeManager/addLossAssessmentRecord/storeId/bookCopyId/lossComment/lossImage/bookCopyEvaluationPrice/lossDiscountId/recordPersonId/damagePersonId/tokensExpr/`
+  const storeId = targetObjectId
+  const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -89,9 +91,11 @@ const removeLossAssessmentRecordList = (targetObjectId, parameters) => {
 }
 
 
+
 const addPrinter = (targetObjectId, parameters) => {
   const url = `${PREFIX}storeManager/addPrinter/storeId/name/location/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const storeId = targetObjectId
+  const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -109,9 +113,11 @@ const removePrinterList = (targetObjectId, parameters) => {
 }
 
 
+
 const addBookCopy = (targetObjectId, parameters) => {
-  const url = `${PREFIX}storeManager/addBookCopy/locationStoreId/bookInfoId/bookCopyVendorId/bookCopySharingType/evaluationPrice/bookCopyStatusId/wxaId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}storeManager/addBookCopy/storeId/bookInfoId/bookCopyVendorId/bookCopySharingType/evaluationPrice/bookCopyStatusId/wxaId/tokensExpr/`
+  const storeId = targetObjectId
+  const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -129,29 +135,55 @@ const removeBookCopyList = (targetObjectId, parameters) => {
 }
 
 
-const addBookCopyTransfer = (targetObjectId, parameters) => {
-  const url = `${PREFIX}storeManager/addBookCopyTransfer/newStoreId/originalStoreId/bookName/bookCopyId/transferTypeId/responsibleEmployeeId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
-  return postForm({ url,requestParameters})
-}
 
-const updateBookCopyTransfer = (targetObjectId, parameters) => {
-  const url = `${PREFIX}storeManager/updateBookCopyTransferProperties/storeId/id/bookName/tokensExpr/`
+const addBookCopyTransferAsOriginalStore = (targetObjectId, parameters) => {
+  const url = `${PREFIX}storeManager/addBookCopyTransferAsOriginalStore/storeId/bookName/bookCopyId/transferTypeId/responsibleEmployeeId/tokensExpr/`
   const storeId = targetObjectId
   const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
-const removeBookCopyTransferList = (targetObjectId, parameters) => {
-  const url = `${PREFIX}storeManager/removeBookCopyTransferList/storeId/bookCopyTransferIds/tokensExpr/`
+const updateBookCopyTransferAsOriginalStore = (targetObjectId, parameters) => {
+  const url = `${PREFIX}storeManager/updateBookCopyTransferAsOriginalStoreProperties/storeId/id/bookName/tokensExpr/`
+  const storeId = targetObjectId
+  const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+const removeBookCopyTransferListAsOriginalStore = (targetObjectId, parameters) => {
+  const url = `${PREFIX}storeManager/removeBookCopyTransferListAsOriginalStore/storeId/bookCopyTransferIds/tokensExpr/`
   const requestParameters = { ...parameters, storeId: targetObjectId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 
+
+const addBookCopyTransferAsNewStore = (targetObjectId, parameters) => {
+  const url = `${PREFIX}storeManager/addBookCopyTransferAsNewStore/storeId/bookName/bookCopyId/transferTypeId/responsibleEmployeeId/tokensExpr/`
+  const storeId = targetObjectId
+  const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+const updateBookCopyTransferAsNewStore = (targetObjectId, parameters) => {
+  const url = `${PREFIX}storeManager/updateBookCopyTransferAsNewStoreProperties/storeId/id/bookName/tokensExpr/`
+  const storeId = targetObjectId
+  const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+const removeBookCopyTransferListAsNewStore = (targetObjectId, parameters) => {
+  const url = `${PREFIX}storeManager/removeBookCopyTransferListAsNewStore/storeId/bookCopyTransferIds/tokensExpr/`
+  const requestParameters = { ...parameters, storeId: targetObjectId, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+
+
 const addBookTakeStockPlan = (targetObjectId, parameters) => {
   const url = `${PREFIX}storeManager/addBookTakeStockPlan/storeId/planName/planDatetime/planCreatorId/takeStockStatusId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const storeId = targetObjectId
+  const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -169,9 +201,11 @@ const removeBookTakeStockPlanList = (targetObjectId, parameters) => {
 }
 
 
+
 const addBookCopyOperationRecord = (targetObjectId, parameters) => {
-  const url = `${PREFIX}storeManager/addBookCopyOperationRecord/operateStoreId/bookName/bookCopyId/bookCopyOperateTypeId/operationEmployeeId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}storeManager/addBookCopyOperationRecord/storeId/bookName/bookCopyId/bookCopyOperateTypeId/operationEmployeeId/tokensExpr/`
+  const storeId = targetObjectId
+  const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -189,54 +223,104 @@ const removeBookCopyOperationRecordList = (targetObjectId, parameters) => {
 }
 
 
-const addBorrowingHistory = (targetObjectId, parameters) => {
-  const url = `${PREFIX}storeManager/addBorrowingHistory/returnStoreId/lendingStoreId/lendingDatetime/bookName/borrowerId/borrowerMemberLevel/borrowerMemberServiceExpiredDatetime/bookId/bookCopyId/bookCopySharingType/lendingStoreType/freeLendingDays/freeLendingExpiredDatetime/overduePay/returnDatetime/lendingDays/freeLendingExpired/borrowingStatusId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
-  return postForm({ url,requestParameters})
-}
 
-const updateBorrowingHistory = (targetObjectId, parameters) => {
-  const url = `${PREFIX}storeManager/updateBorrowingHistoryProperties/storeId/id/lendingDatetime/bookName/borrowerMemberLevel/borrowerMemberServiceExpiredDatetime/bookCopySharingType/lendingStoreType/freeLendingDays/freeLendingExpiredDatetime/overduePay/returnDatetime/lendingDays/freeLendingExpired/tokensExpr/`
+const addBorrowingHistoryAsLendingStore = (targetObjectId, parameters) => {
+  const url = `${PREFIX}storeManager/addBorrowingHistoryAsLendingStore/storeId/lendingDatetime/bookName/borrowerId/borrowerMemberLevel/borrowerMemberServiceExpiredDatetime/bookId/bookCopyId/bookCopySharingType/lendingStoreType/freeLendingDays/freeLendingExpiredDatetime/overduePay/returnDatetime/lendingDays/freeLendingExpired/borrowingStatusId/tokensExpr/`
   const storeId = targetObjectId
   const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
-const removeBorrowingHistoryList = (targetObjectId, parameters) => {
-  const url = `${PREFIX}storeManager/removeBorrowingHistoryList/storeId/borrowingHistoryIds/tokensExpr/`
-  const requestParameters = { ...parameters, storeId: targetObjectId, tokensExpr: 'none' }
-  return postForm({ url,requestParameters})
-}
-
-
-const addBorrowingExpiredSku = (targetObjectId, parameters) => {
-  const url = `${PREFIX}storeManager/addBorrowingExpiredSku/returnStoreId/lendingStoreId/borrowerId/bookCopyId/bookId/bookName/lendingDatetime/returnDatetime/expiredDays/expiredFee/borrowingHistoryId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
-  return postForm({ url,requestParameters})
-}
-
-const updateBorrowingExpiredSku = (targetObjectId, parameters) => {
-  const url = `${PREFIX}storeManager/updateBorrowingExpiredSkuProperties/storeId/id/bookName/lendingDatetime/returnDatetime/expiredDays/expiredFee/tokensExpr/`
+const updateBorrowingHistoryAsLendingStore = (targetObjectId, parameters) => {
+  const url = `${PREFIX}storeManager/updateBorrowingHistoryAsLendingStoreProperties/storeId/id/lendingDatetime/bookName/borrowerMemberLevel/borrowerMemberServiceExpiredDatetime/bookCopySharingType/lendingStoreType/freeLendingDays/freeLendingExpiredDatetime/overduePay/returnDatetime/lendingDays/freeLendingExpired/tokensExpr/`
   const storeId = targetObjectId
   const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
-const removeBorrowingExpiredSkuList = (targetObjectId, parameters) => {
-  const url = `${PREFIX}storeManager/removeBorrowingExpiredSkuList/storeId/borrowingExpiredSkuIds/tokensExpr/`
+const removeBorrowingHistoryListAsLendingStore = (targetObjectId, parameters) => {
+  const url = `${PREFIX}storeManager/removeBorrowingHistoryListAsLendingStore/storeId/borrowingHistoryIds/tokensExpr/`
   const requestParameters = { ...parameters, storeId: targetObjectId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
+
+
+
+const addBorrowingHistoryAsReturnStore = (targetObjectId, parameters) => {
+  const url = `${PREFIX}storeManager/addBorrowingHistoryAsReturnStore/storeId/lendingDatetime/bookName/borrowerId/borrowerMemberLevel/borrowerMemberServiceExpiredDatetime/bookId/bookCopyId/bookCopySharingType/lendingStoreType/freeLendingDays/freeLendingExpiredDatetime/overduePay/returnDatetime/lendingDays/freeLendingExpired/borrowingStatusId/tokensExpr/`
+  const storeId = targetObjectId
+  const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+const updateBorrowingHistoryAsReturnStore = (targetObjectId, parameters) => {
+  const url = `${PREFIX}storeManager/updateBorrowingHistoryAsReturnStoreProperties/storeId/id/lendingDatetime/bookName/borrowerMemberLevel/borrowerMemberServiceExpiredDatetime/bookCopySharingType/lendingStoreType/freeLendingDays/freeLendingExpiredDatetime/overduePay/returnDatetime/lendingDays/freeLendingExpired/tokensExpr/`
+  const storeId = targetObjectId
+  const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+const removeBorrowingHistoryListAsReturnStore = (targetObjectId, parameters) => {
+  const url = `${PREFIX}storeManager/removeBorrowingHistoryListAsReturnStore/storeId/borrowingHistoryIds/tokensExpr/`
+  const requestParameters = { ...parameters, storeId: targetObjectId, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+
+
+const addBorrowingExpiredSkuAsLendingStore = (targetObjectId, parameters) => {
+  const url = `${PREFIX}storeManager/addBorrowingExpiredSkuAsLendingStore/storeId/borrowerId/bookCopyId/bookId/bookName/lendingDatetime/returnDatetime/expiredDays/expiredFee/borrowingHistoryId/tokensExpr/`
+  const storeId = targetObjectId
+  const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+const updateBorrowingExpiredSkuAsLendingStore = (targetObjectId, parameters) => {
+  const url = `${PREFIX}storeManager/updateBorrowingExpiredSkuAsLendingStoreProperties/storeId/id/bookName/lendingDatetime/returnDatetime/expiredDays/expiredFee/tokensExpr/`
+  const storeId = targetObjectId
+  const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+const removeBorrowingExpiredSkuListAsLendingStore = (targetObjectId, parameters) => {
+  const url = `${PREFIX}storeManager/removeBorrowingExpiredSkuListAsLendingStore/storeId/borrowingExpiredSkuIds/tokensExpr/`
+  const requestParameters = { ...parameters, storeId: targetObjectId, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+
+
+const addBorrowingExpiredSkuAsReturnStore = (targetObjectId, parameters) => {
+  const url = `${PREFIX}storeManager/addBorrowingExpiredSkuAsReturnStore/storeId/borrowerId/bookCopyId/bookId/bookName/lendingDatetime/returnDatetime/expiredDays/expiredFee/borrowingHistoryId/tokensExpr/`
+  const storeId = targetObjectId
+  const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+const updateBorrowingExpiredSkuAsReturnStore = (targetObjectId, parameters) => {
+  const url = `${PREFIX}storeManager/updateBorrowingExpiredSkuAsReturnStoreProperties/storeId/id/bookName/lendingDatetime/returnDatetime/expiredDays/expiredFee/tokensExpr/`
+  const storeId = targetObjectId
+  const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
+const removeBorrowingExpiredSkuListAsReturnStore = (targetObjectId, parameters) => {
+  const url = `${PREFIX}storeManager/removeBorrowingExpiredSkuListAsReturnStore/storeId/borrowingExpiredSkuIds/tokensExpr/`
+  const requestParameters = { ...parameters, storeId: targetObjectId, tokensExpr: 'none' }
+  return postForm({ url,requestParameters})
+}
+
 
 
 const addBookCopySharingApplication = (targetObjectId, parameters) => {
-  const url = `${PREFIX}storeManager/addBookCopySharingApplication/destinationStoreId/bookCopyQuantity/deliverMethodId/contactAddress/contactName/contactMobile/applicationStatusId/customerId/employeeId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}storeManager/addBookCopySharingApplication/storeId/contactName/contactMobile/applicationStatusId/deliverMethodId/contactAddress/bookCopyQuantity/customerId/employeeId/tokensExpr/`
+  const storeId = targetObjectId
+  const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateBookCopySharingApplication = (targetObjectId, parameters) => {
-  const url = `${PREFIX}storeManager/updateBookCopySharingApplicationProperties/storeId/id/bookCopyQuantity/contactAddress/contactName/contactMobile/tokensExpr/`
+  const url = `${PREFIX}storeManager/updateBookCopySharingApplicationProperties/storeId/id/contactName/contactMobile/contactAddress/bookCopyQuantity/tokensExpr/`
   const storeId = targetObjectId
   const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
@@ -249,9 +333,11 @@ const removeBookCopySharingApplicationList = (targetObjectId, parameters) => {
 }
 
 
+
 const addMemberServiceRevenue = (targetObjectId, parameters) => {
   const url = `${PREFIX}storeManager/addMemberServiceRevenue/storeId/memberId/memberName/serviceStartDate/serviceEndDate/monthlyServiceFee/storeName/storeServiceCount/totalServiceCount/storeServiceRevenueRate/storeServiceRevenue/mainOrderId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const storeId = targetObjectId
+  const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -269,9 +355,11 @@ const removeMemberServiceRevenueList = (targetObjectId, parameters) => {
 }
 
 
+
 const addStoreAccount = (targetObjectId, parameters) => {
   const url = `${PREFIX}storeManager/addStoreAccount/storeId/name/amount/accountDataId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const storeId = targetObjectId
+  const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -289,9 +377,11 @@ const removeStoreAccountList = (targetObjectId, parameters) => {
 }
 
 
+
 const addStoreSlide = (targetObjectId, parameters) => {
   const url = `${PREFIX}storeManager/addStoreSlide/storeId/tips/bannerImage/wxaLinkUrl/antdLinkUrl/slideTypeId/bookId/campaignId/memberServiceProductId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const storeId = targetObjectId
+  const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -309,9 +399,11 @@ const removeStoreSlideList = (targetObjectId, parameters) => {
 }
 
 
+
 const addCampaign = (targetObjectId, parameters) => {
-  const url = `${PREFIX}storeManager/addCampaign/publishStoreId/campaignName/campaignContent/campaignImage/campaignStatusId/campaignStartTime/campaignFinishTime/campaignHoldAddress/registerDeadlineLeadHours/minimumRegisterQuantity/availableRegisterQuantity/publishEmployeeId/campaignPlazaId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}storeManager/addCampaign/storeId/campaignName/campaignContent/campaignImage/campaignStatusId/campaignStartTime/campaignFinishTime/campaignHoldAddress/registerDeadlineLeadHours/minimumRegisterQuantity/availableRegisterQuantity/publishEmployeeId/campaignPlazaId/tokensExpr/`
+  const storeId = targetObjectId
+  const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -329,9 +421,11 @@ const removeCampaignList = (targetObjectId, parameters) => {
 }
 
 
+
 const addCustomer = (targetObjectId, parameters) => {
-  const url = `${PREFIX}storeManager/addCustomer/favouriteStoreId/nickName/logoImage/mobileNumber/realName/sexuality/memberServiceId/memberServiceStartDate/memberServiceExpireDate/accountBalance/miniProgramOpenid/serviceAccountOpenid/wechatUnionId/longitude/latitude/birthday/identityCardNumber/familyAddress/memberServiceDailyPay/platformId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}storeManager/addCustomer/storeId/nickName/logoImage/mobileNumber/realName/sexuality/memberServiceId/memberServiceStartDate/memberServiceExpireDate/accountBalance/miniProgramOpenid/serviceAccountOpenid/wechatUnionId/longitude/latitude/birthday/identityCardNumber/familyAddress/memberServiceDailyPay/platformId/tokensExpr/`
+  const storeId = targetObjectId
+  const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -349,9 +443,11 @@ const removeCustomerList = (targetObjectId, parameters) => {
 }
 
 
+
 const addEmployeeWorkingStore = (targetObjectId, parameters) => {
   const url = `${PREFIX}storeManager/addEmployeeWorkingStore/storeId/description/roleId/employeeId/startDate/terminatedDate/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const storeId = targetObjectId
+  const requestParameters = { ...parameters, storeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -374,11 +470,14 @@ const StoreService = { view,
   addLossAssessmentRecord,
   addPrinter,
   addBookCopy,
-  addBookCopyTransfer,
+  addBookCopyTransferAsOriginalStore,
+  addBookCopyTransferAsNewStore,
   addBookTakeStockPlan,
   addBookCopyOperationRecord,
-  addBorrowingHistory,
-  addBorrowingExpiredSku,
+  addBorrowingHistoryAsLendingStore,
+  addBorrowingHistoryAsReturnStore,
+  addBorrowingExpiredSkuAsLendingStore,
+  addBorrowingExpiredSkuAsReturnStore,
   addBookCopySharingApplication,
   addMemberServiceRevenue,
   addStoreAccount,
@@ -389,11 +488,14 @@ const StoreService = { view,
   updateLossAssessmentRecord,
   updatePrinter,
   updateBookCopy,
-  updateBookCopyTransfer,
+  updateBookCopyTransferAsOriginalStore,
+  updateBookCopyTransferAsNewStore,
   updateBookTakeStockPlan,
   updateBookCopyOperationRecord,
-  updateBorrowingHistory,
-  updateBorrowingExpiredSku,
+  updateBorrowingHistoryAsLendingStore,
+  updateBorrowingHistoryAsReturnStore,
+  updateBorrowingExpiredSkuAsLendingStore,
+  updateBorrowingExpiredSkuAsReturnStore,
   updateBookCopySharingApplication,
   updateMemberServiceRevenue,
   updateStoreAccount,
@@ -404,11 +506,14 @@ const StoreService = { view,
   removeLossAssessmentRecordList,
   removePrinterList,
   removeBookCopyList,
-  removeBookCopyTransferList,
+  removeBookCopyTransferListAsOriginalStore,
+  removeBookCopyTransferListAsNewStore,
   removeBookTakeStockPlanList,
   removeBookCopyOperationRecordList,
-  removeBorrowingHistoryList,
-  removeBorrowingExpiredSkuList,
+  removeBorrowingHistoryListAsLendingStore,
+  removeBorrowingHistoryListAsReturnStore,
+  removeBorrowingExpiredSkuListAsLendingStore,
+  removeBorrowingExpiredSkuListAsReturnStore,
   removeBookCopySharingApplicationList,
   removeMemberServiceRevenueList,
   removeStoreAccountList,

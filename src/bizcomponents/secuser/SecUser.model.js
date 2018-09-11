@@ -89,13 +89,13 @@ export default {
     
     
     *gotoCreateForm({ payload }, { put }) {
-      const { id, type } = payload
-      yield put(routerRedux.push(`/secUser/${id}/list/${type}CreateForm`))
+      const { id, role } = payload
+      yield put(routerRedux.push(`/secUser/${id}/list/${role}CreateForm`))
     },
     *gotoUpdateForm({ payload }, { put }) {
-      const { id, type, selectedRows, currentUpdateIndex } = payload
-      const state = { id, type, selectedRows, currentUpdateIndex }
-      const location = { pathname: `/secUser/${id}/list/${type}UpdateForm`, state }
+      const { id, role, selectedRows, currentUpdateIndex } = payload
+      const state = { id, role, selectedRows, currentUpdateIndex }
+      const location = { pathname: `/secUser/${id}/list/${role}UpdateForm`, state }
       yield put(routerRedux.push(location))
     },
     *goback({ payload }, { put }) {
@@ -103,10 +103,13 @@ export default {
       yield put(routerRedux.push(`/secUser/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addUserApp({ payload }, { call, put }) {
       const {SecUserService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(SecUserService.addUserApp, id, parameters)
       if (hasError(data)) {
@@ -115,7 +118,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/secUser/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/secUser/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -125,7 +128,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/secUser/${id}/list/${type}List/用户应用程序列表`, state: newState }
+      const location = { pathname: `/secUser/${id}/list/\UserAppList/用户应用程序列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateUserApp({ payload }, { call, put }) {
@@ -149,7 +152,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/secUser/${id}/list/${type}List/用户应用程序列表`, state: newPlayload }
+      const location = { pathname: `/secUser/${id}/list/\UserAppList/用户应用程序列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextUserAppUpdateRow({ payload }, { call, put }) {
@@ -159,7 +162,7 @@ export default {
     },
     *removeUserAppList({ payload }, { call, put }) {
       const {SecUserService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(SecUserService.removeUserAppList, id, parameters)
       if (hasError(data)) {
@@ -170,19 +173,21 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/secUser/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `secUser/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addLoginHistory({ payload }, { call, put }) {
       const {SecUserService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(SecUserService.addLoginHistory, id, parameters)
       if (hasError(data)) {
@@ -191,7 +196,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/secUser/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/secUser/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -201,7 +206,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/secUser/${id}/list/${type}List/登录历史列表`, state: newState }
+      const location = { pathname: `/secUser/${id}/list/\LoginHistoryList/登录历史列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateLoginHistory({ payload }, { call, put }) {
@@ -225,7 +230,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/secUser/${id}/list/${type}List/登录历史列表`, state: newPlayload }
+      const location = { pathname: `/secUser/${id}/list/\LoginHistoryList/登录历史列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextLoginHistoryUpdateRow({ payload }, { call, put }) {
@@ -235,7 +240,7 @@ export default {
     },
     *removeLoginHistoryList({ payload }, { call, put }) {
       const {SecUserService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(SecUserService.removeLoginHistoryList, id, parameters)
       if (hasError(data)) {
@@ -246,13 +251,12 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/secUser/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `secUser/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

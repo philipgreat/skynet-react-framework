@@ -22,12 +22,11 @@ const testValues = {
   storeOpenTime: '9:00~22:00,周末不休',
   storeOpenTimeSecond: '9:00~22:00,周末不休',
   storeRoomNumber: '16-02',
-  longitude: '104.92842815998158',
-  latitude: '29.383237746539283',
+  longitude: '105.62668078709567',
+  latitude: '29.624546136958358',
   storeTypeId: 'ST000001',
   cityId: 'C000001',
   platformId: 'BSP000001',
-  storeImage: 'https://www.wildgratitude.com/wp-content/uploads/2014/04/stacey-couch-boulder-bookstore.jpg',
 }
 */
 const imageURLPrefix = '//localhost:2090'
@@ -154,14 +153,22 @@ class StoreCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = StoreBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -173,9 +180,10 @@ class StoreCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addStore`,
-          payload: { id: owner.id, type: 'store', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }
@@ -403,22 +411,6 @@ class StoreCreateForm extends Component {
 
 
 
-
-        <Card title="网点图片" className={styles.card} bordered={false}>
-          <Form >
-            <Row gutter={16}>
-              <Col lg={24} md={24} sm={24}>
-                <Form.Item>
-                  {getFieldDecorator('storeImage', {
-                    rules: [{ required: true, message: '请输入网点图片' }],
-                  })(
-                    <TextArea rows={4} placeholder="请输入请输入网点图片" />
-                  )}
-                </Form.Item>
-              </Col>
-      </Row>
-          </Form>  
-        </Card>
 
 
 

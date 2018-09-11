@@ -16,9 +16,9 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
-  vendorRate: '0.58',
-  lendingStoreRate: '0.07',
-  platformRate: '0.10',
+  vendorRate: '0.61',
+  lendingStoreRate: '0.15',
+  platformRate: '0.04',
   bookPlazaId: 'BP000001',
 }
 */
@@ -95,14 +95,22 @@ class BookSharingIncomeMetricCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = BookSharingIncomeMetricBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -114,9 +122,10 @@ class BookSharingIncomeMetricCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addBookSharingIncomeMetric`,
-          payload: { id: owner.id, type: 'bookSharingIncomeMetric', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }

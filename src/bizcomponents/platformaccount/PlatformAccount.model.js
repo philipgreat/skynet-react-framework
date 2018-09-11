@@ -89,13 +89,13 @@ export default {
     
     
     *gotoCreateForm({ payload }, { put }) {
-      const { id, type } = payload
-      yield put(routerRedux.push(`/platformAccount/${id}/list/${type}CreateForm`))
+      const { id, role } = payload
+      yield put(routerRedux.push(`/platformAccount/${id}/list/${role}CreateForm`))
     },
     *gotoUpdateForm({ payload }, { put }) {
-      const { id, type, selectedRows, currentUpdateIndex } = payload
-      const state = { id, type, selectedRows, currentUpdateIndex }
-      const location = { pathname: `/platformAccount/${id}/list/${type}UpdateForm`, state }
+      const { id, role, selectedRows, currentUpdateIndex } = payload
+      const state = { id, role, selectedRows, currentUpdateIndex }
+      const location = { pathname: `/platformAccount/${id}/list/${role}UpdateForm`, state }
       yield put(routerRedux.push(location))
     },
     *goback({ payload }, { put }) {
@@ -103,10 +103,13 @@ export default {
       yield put(routerRedux.push(`/platformAccount/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addPlatformAccountDetails({ payload }, { call, put }) {
       const {PlatformAccountService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(PlatformAccountService.addPlatformAccountDetails, id, parameters)
       if (hasError(data)) {
@@ -115,7 +118,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/platformAccount/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/platformAccount/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -125,7 +128,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/platformAccount/${id}/list/${type}List/平台账户明细列表`, state: newState }
+      const location = { pathname: `/platformAccount/${id}/list/\PlatformAccountDetailsList/平台账户明细列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updatePlatformAccountDetails({ payload }, { call, put }) {
@@ -149,7 +152,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/platformAccount/${id}/list/${type}List/平台账户明细列表`, state: newPlayload }
+      const location = { pathname: `/platformAccount/${id}/list/\PlatformAccountDetailsList/平台账户明细列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextPlatformAccountDetailsUpdateRow({ payload }, { call, put }) {
@@ -159,7 +162,7 @@ export default {
     },
     *removePlatformAccountDetailsList({ payload }, { call, put }) {
       const {PlatformAccountService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(PlatformAccountService.removePlatformAccountDetailsList, id, parameters)
       if (hasError(data)) {
@@ -170,13 +173,12 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/platformAccount/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `platformAccount/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

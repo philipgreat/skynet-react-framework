@@ -17,10 +17,10 @@ const testValues = {};
 /*
 const testValues = {
   bookName: '飘',
-  lendingDatetime: '2016-06-14 07:11:25',
-  returnDatetime: '2016-06-03 19:43:18',
-  expiredDays: '8',
-  expiredFee: '7.06',
+  lendingDatetime: '2016-03-23 22:12:00',
+  returnDatetime: '2015-09-07 17:43:54',
+  expiredDays: '7',
+  expiredFee: '6.57',
   borrowerId: 'C000001',
   bookCopyId: 'BC000001',
   bookId: 'B000001',
@@ -227,14 +227,22 @@ class BorrowingExpiredSkuCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = BorrowingExpiredSkuBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -246,9 +254,10 @@ class BorrowingExpiredSkuCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addBorrowingExpiredSku`,
-          payload: { id: owner.id, type: 'borrowingExpiredSku', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }

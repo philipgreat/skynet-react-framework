@@ -89,13 +89,13 @@ export default {
     
     
     *gotoCreateForm({ payload }, { put }) {
-      const { id, type } = payload
-      yield put(routerRedux.push(`/memberRightsDisplay/${id}/list/${type}CreateForm`))
+      const { id, role } = payload
+      yield put(routerRedux.push(`/memberRightsDisplay/${id}/list/${role}CreateForm`))
     },
     *gotoUpdateForm({ payload }, { put }) {
-      const { id, type, selectedRows, currentUpdateIndex } = payload
-      const state = { id, type, selectedRows, currentUpdateIndex }
-      const location = { pathname: `/memberRightsDisplay/${id}/list/${type}UpdateForm`, state }
+      const { id, role, selectedRows, currentUpdateIndex } = payload
+      const state = { id, role, selectedRows, currentUpdateIndex }
+      const location = { pathname: `/memberRightsDisplay/${id}/list/${role}UpdateForm`, state }
       yield put(routerRedux.push(location))
     },
     *goback({ payload }, { put }) {
@@ -103,10 +103,13 @@ export default {
       yield put(routerRedux.push(`/memberRightsDisplay/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addMemberRightsDisplayItem({ payload }, { call, put }) {
       const {MemberRightsDisplayService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(MemberRightsDisplayService.addMemberRightsDisplayItem, id, parameters)
       if (hasError(data)) {
@@ -115,7 +118,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/memberRightsDisplay/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/memberRightsDisplay/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -125,7 +128,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/memberRightsDisplay/${id}/list/${type}List/会员权利显示项列表`, state: newState }
+      const location = { pathname: `/memberRightsDisplay/${id}/list/\MemberRightsDisplayItemList/会员权利显示项列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateMemberRightsDisplayItem({ payload }, { call, put }) {
@@ -149,7 +152,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/memberRightsDisplay/${id}/list/${type}List/会员权利显示项列表`, state: newPlayload }
+      const location = { pathname: `/memberRightsDisplay/${id}/list/\MemberRightsDisplayItemList/会员权利显示项列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextMemberRightsDisplayItemUpdateRow({ payload }, { call, put }) {
@@ -159,7 +162,7 @@ export default {
     },
     *removeMemberRightsDisplayItemList({ payload }, { call, put }) {
       const {MemberRightsDisplayService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(MemberRightsDisplayService.removeMemberRightsDisplayItemList, id, parameters)
       if (hasError(data)) {
@@ -170,13 +173,12 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/memberRightsDisplay/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `memberRightsDisplay/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

@@ -37,9 +37,11 @@ const transferToAnotherBookSharingPlatform = (id, parameters) => {
 
 
 
+
 const addBookTakeStockPlan = (targetObjectId, parameters) => {
   const url = `${PREFIX}takeStockStatusManager/addBookTakeStockPlan/takeStockStatusId/planName/storeId/planDatetime/planCreatorId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const takeStockStatusId = targetObjectId
+  const requestParameters = { ...parameters, takeStockStatusId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 

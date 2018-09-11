@@ -19,15 +19,14 @@ const testValues = {
   bookName: '飘',
   bookAuthor: '吕之华',
   bookPublisher: '中信出版社',
-  bookPubdate: '2016-04-17',
-  listPrice: '71.76',
+  bookPubdate: '2017-05-09',
+  listPrice: '78.91',
   bookIsbn13: '978-7-505-71566-0',
   bookIsbn10: '',
   bookSummary: '这个简介有点短',
   bookRecommendId: 'BR000001',
   bookPlazaId: 'BP000001',
   platformId: 'BSP000001',
-  bookCover: 'http://luxuryreading.com/wp-content/uploads/2013/07/war-and-peace.jpg',
 }
 */
 const imageURLPrefix = '//localhost:2090'
@@ -154,14 +153,22 @@ class BookCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = BookBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -173,9 +180,10 @@ class BookCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addBook`,
-          payload: { id: owner.id, type: 'book', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }
@@ -403,22 +411,6 @@ class BookCreateForm extends Component {
 
 
 
-
-        <Card title="封面" className={styles.card} bordered={false}>
-          <Form >
-            <Row gutter={16}>
-              <Col lg={24} md={24} sm={24}>
-                <Form.Item>
-                  {getFieldDecorator('bookCover', {
-                    rules: [{ required: true, message: '请输入封面' }],
-                  })(
-                    <TextArea rows={4} placeholder="请输入请输入封面" />
-                  )}
-                </Form.Item>
-              </Col>
-      </Row>
-          </Form>  
-        </Card>
 
 
 

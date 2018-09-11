@@ -37,9 +37,11 @@ const transferToAnotherPlatform = (id, parameters) => {
 
 
 
+
 const addStoreSlide = (targetObjectId, parameters) => {
   const url = `${PREFIX}slideTypeManager/addStoreSlide/slideTypeId/tips/bannerImage/wxaLinkUrl/antdLinkUrl/bookId/campaignId/memberServiceProductId/storeId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const slideTypeId = targetObjectId
+  const requestParameters = { ...parameters, slideTypeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 

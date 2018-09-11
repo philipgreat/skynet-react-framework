@@ -31,7 +31,11 @@ export default {
 
       setInterval(()=>{
 
+<<<<<<< HEAD
         dispatch({type:"showlog"})
+=======
+        //dispatch({type:"showlog"})
+>>>>>>> 592c5012b333787d66602918615159db86583265
 
       }, 3000);
     },

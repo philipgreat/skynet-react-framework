@@ -77,10 +77,7 @@ const internalSettingListOf = (store) =>{
 
 const internalLargeTextOf = (store) =>{
 
-	return(<div> 
-   <Card title={`网点图片`} ><pre>{store.storeImage}</pre></Card>
-</div>)
-
+	return null
 	
 
 }
@@ -248,8 +245,11 @@ const internalSubListsOf = (cardsData) =>{
            {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="gear"  />&nbsp;管理</Link></p>
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.type}CreateForm`}><FontAwesome name="plus"  />&nbsp;新增</Link></p>              
+              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
+              
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              
+              </p>         
           </Card> </Badge>
             </Col>))}
           </Row>)
@@ -312,24 +312,24 @@ class StoreDashboard extends Component {
     const { id,displayName, lossAssessmentRecordCount, printerCount, bookCopyCount, bookCopyTransferAsOriginalStoreCount, bookCopyTransferAsNewStoreCount, bookTakeStockPlanCount, bookCopyOperationRecordCount, borrowingHistoryAsLendingStoreCount, borrowingHistoryAsReturnStoreCount, borrowingExpiredSkuAsLendingStoreCount, borrowingExpiredSkuAsReturnStoreCount, bookCopySharingApplicationCount, memberServiceRevenueCount, storeAccountCount, storeSlideCount, campaignCount, customerCount, employeeWorkingStoreCount } = this.props.store
     const cardsData = {cardsName:"服务网点",cardsFor: "store",cardsSource: this.props.store,
   		subItems: [
-{name: 'lossAssessmentRecordList', displayName:'定损记录',type:'lossAssessmentRecord',count:lossAssessmentRecordCount},
-{name: 'printerList', displayName:'打印机',type:'printer',count:printerCount},
-{name: 'bookCopyList', displayName:'书籍副本',type:'bookCopy',count:bookCopyCount},
-{name: 'bookCopyTransferListAsOriginalStore', displayName:'图书副本迁移记录',type:'bookCopyTransfer',count:bookCopyTransferAsOriginalStoreCount},
-{name: 'bookCopyTransferListAsNewStore', displayName:'图书副本迁移记录',type:'bookCopyTransfer',count:bookCopyTransferAsNewStoreCount},
-{name: 'bookTakeStockPlanList', displayName:'图书盘点计划',type:'bookTakeStockPlan',count:bookTakeStockPlanCount},
-{name: 'bookCopyOperationRecordList', displayName:'书籍副本操作记录',type:'bookCopyOperationRecord',count:bookCopyOperationRecordCount},
-{name: 'borrowingHistoryListAsLendingStore', displayName:'图书借还历史',type:'borrowingHistory',count:borrowingHistoryAsLendingStoreCount},
-{name: 'borrowingHistoryListAsReturnStore', displayName:'图书借还历史',type:'borrowingHistory',count:borrowingHistoryAsReturnStoreCount},
-{name: 'borrowingExpiredSkuListAsLendingStore', displayName:'借书超期费',type:'borrowingExpiredSku',count:borrowingExpiredSkuAsLendingStoreCount},
-{name: 'borrowingExpiredSkuListAsReturnStore', displayName:'借书超期费',type:'borrowingExpiredSku',count:borrowingExpiredSkuAsReturnStoreCount},
-{name: 'bookCopySharingApplicationList', displayName:'图书共享申请',type:'bookCopySharingApplication',count:bookCopySharingApplicationCount},
-{name: 'memberServiceRevenueList', displayName:'会员服务收益',type:'memberServiceRevenue',count:memberServiceRevenueCount},
-{name: 'storeAccountList', displayName:'网点账户',type:'storeAccount',count:storeAccountCount},
-{name: 'storeSlideList', displayName:'网点海报',type:'storeSlide',count:storeSlideCount},
-{name: 'campaignList', displayName:'活动',type:'campaign',count:campaignCount},
-{name: 'customerList', displayName:'用户',type:'customer',count:customerCount},
-{name: 'employeeWorkingStoreList', displayName:'员工工作的网点',type:'employeeWorkingStore',count:employeeWorkingStoreCount},
+{name: 'lossAssessmentRecordList', displayName:'定损记录',type:'lossAssessmentRecord',count:lossAssessmentRecordCount,addFunction: true, role: 'lossAssessmentRecord'},
+{name: 'printerList', displayName:'打印机',type:'printer',count:printerCount,addFunction: true, role: 'printer'},
+{name: 'bookCopyList', displayName:'书籍副本',type:'bookCopy',count:bookCopyCount,addFunction: true, role: 'bookCopy'},
+{name: 'bookCopyTransferListAsOriginalStore', displayName:'图书副本迁移记录(原网点)',type:'bookCopyTransfer',count:bookCopyTransferAsOriginalStoreCount,addFunction: false, role: 'bookCopyTransferAsOriginalStore'},
+{name: 'bookCopyTransferListAsNewStore', displayName:'图书副本迁移记录(新网点)',type:'bookCopyTransfer',count:bookCopyTransferAsNewStoreCount,addFunction: false, role: 'bookCopyTransferAsNewStore'},
+{name: 'bookTakeStockPlanList', displayName:'图书盘点计划',type:'bookTakeStockPlan',count:bookTakeStockPlanCount,addFunction: true, role: 'bookTakeStockPlan'},
+{name: 'bookCopyOperationRecordList', displayName:'书籍副本操作记录',type:'bookCopyOperationRecord',count:bookCopyOperationRecordCount,addFunction: false, role: 'bookCopyOperationRecord'},
+{name: 'borrowingHistoryListAsLendingStore', displayName:'图书借还历史(借出网点)',type:'borrowingHistory',count:borrowingHistoryAsLendingStoreCount,addFunction: false, role: 'borrowingHistoryAsLendingStore'},
+{name: 'borrowingHistoryListAsReturnStore', displayName:'图书借还历史(还书网点)',type:'borrowingHistory',count:borrowingHistoryAsReturnStoreCount,addFunction: false, role: 'borrowingHistoryAsReturnStore'},
+{name: 'borrowingExpiredSkuListAsLendingStore', displayName:'借书超期费(借出网点)',type:'borrowingExpiredSku',count:borrowingExpiredSkuAsLendingStoreCount,addFunction: true, role: 'borrowingExpiredSkuAsLendingStore'},
+{name: 'borrowingExpiredSkuListAsReturnStore', displayName:'借书超期费(还书网点)',type:'borrowingExpiredSku',count:borrowingExpiredSkuAsReturnStoreCount,addFunction: true, role: 'borrowingExpiredSkuAsReturnStore'},
+{name: 'bookCopySharingApplicationList', displayName:'图书共享申请',type:'bookCopySharingApplication',count:bookCopySharingApplicationCount,addFunction: true, role: 'bookCopySharingApplication'},
+{name: 'memberServiceRevenueList', displayName:'会员服务收益',type:'memberServiceRevenue',count:memberServiceRevenueCount,addFunction: false, role: 'memberServiceRevenue'},
+{name: 'storeAccountList', displayName:'网点账户',type:'storeAccount',count:storeAccountCount,addFunction: false, role: 'storeAccount'},
+{name: 'storeSlideList', displayName:'网点海报',type:'storeSlide',count:storeSlideCount,addFunction: true, role: 'storeSlide'},
+{name: 'campaignList', displayName:'活动',type:'campaign',count:campaignCount,addFunction: true, role: 'campaign'},
+{name: 'customerList', displayName:'用户',type:'customer',count:customerCount,addFunction: false, role: 'customer'},
+{name: 'employeeWorkingStoreList', displayName:'员工工作的网点',type:'employeeWorkingStore',count:employeeWorkingStoreCount,addFunction: true, role: 'employeeWorkingStore'},
     
       	],
   	};

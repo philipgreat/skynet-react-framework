@@ -21,9 +21,11 @@ const load = (targetObjectId, parameters) => {
 
 
 
+
 const addLossDiscount = (targetObjectId, parameters) => {
   const url = `${PREFIX}bookSharingPlatformManager/addLossDiscount/bookSharingPlatformId/name/code/discountRatio/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -41,9 +43,11 @@ const removeLossDiscountList = (targetObjectId, parameters) => {
 }
 
 
+
 const addPlatformConfiguration = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookSharingPlatformManager/addPlatformConfiguration/platformId/memberServiceAgreement/bookSharingAgreement/accountRechargeAgreement/messageInStoreListPage/feedbackContactInfo/myRightsTitle/myBorrowingTitle/myCampaignTitle/myBalanceTitle/myBookReviewTitle/myOrderTitle/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}bookSharingPlatformManager/addPlatformConfiguration/bookSharingPlatformId/memberServiceAgreement/bookSharingAgreement/accountRechargeAgreement/messageInStoreListPage/feedbackContactInfo/myRightsTitle/myBorrowingTitle/myCampaignTitle/myBalanceTitle/myBookReviewTitle/myOrderTitle/tokensExpr/`
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -61,9 +65,11 @@ const removePlatformConfigurationList = (targetObjectId, parameters) => {
 }
 
 
+
 const addAccountData = (targetObjectId, parameters) => {
   const url = `${PREFIX}bookSharingPlatformManager/addAccountData/bookSharingPlatformId/summary/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -81,9 +87,11 @@ const removeAccountDataList = (targetObjectId, parameters) => {
 }
 
 
+
 const addCity = (targetObjectId, parameters) => {
   const url = `${PREFIX}bookSharingPlatformManager/addCity/bookSharingPlatformId/name/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -101,9 +109,11 @@ const removeCityList = (targetObjectId, parameters) => {
 }
 
 
+
 const addBookPlaza = (targetObjectId, parameters) => {
   const url = `${PREFIX}bookSharingPlatformManager/addBookPlaza/bookSharingPlatformId/bookPlazaName/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -121,9 +131,11 @@ const removeBookPlazaList = (targetObjectId, parameters) => {
 }
 
 
+
 const addMemberServiceProduct = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookSharingPlatformManager/addMemberServiceProduct/platformId/productName/productDescription/productPriority/productCoverImage/bookBorrowingLimitPrice/bookBorrowingCount/bookPurchasingDiscountRate/overduePay/freeBorrowingDays/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}bookSharingPlatformManager/addMemberServiceProduct/bookSharingPlatformId/productName/productDescription/productPriority/productCoverImage/bookBorrowingLimitPrice/bookBorrowingCount/bookPurchasingDiscountRate/overduePay/freeBorrowingDays/tokensExpr/`
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -141,9 +153,11 @@ const removeMemberServiceProductList = (targetObjectId, parameters) => {
 }
 
 
+
 const addMainOrder = (targetObjectId, parameters) => {
   const url = `${PREFIX}bookSharingPlatformManager/addMainOrder/bookSharingPlatformId/title/mainOrderStatus/createTime/customerId/originalAmount/actualAmount/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -161,9 +175,11 @@ const removeMainOrderList = (targetObjectId, parameters) => {
 }
 
 
+
 const addBook = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookSharingPlatformManager/addBook/platformId/bookName/bookCover/bookAuthor/bookPublisher/bookPubdate/listPrice/bookIsbn13/bookIsbn10/bookRecommendId/bookPlazaId/bookSummary/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}bookSharingPlatformManager/addBook/bookSharingPlatformId/bookName/bookCover/bookAuthor/bookPublisher/bookPubdate/listPrice/bookIsbn13/bookIsbn10/bookRecommendId/bookPlazaId/bookSummary/tokensExpr/`
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -181,9 +197,11 @@ const removeBookList = (targetObjectId, parameters) => {
 }
 
 
+
 const addTransferType = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookSharingPlatformManager/addTransferType/platformId/name/code/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}bookSharingPlatformManager/addTransferType/bookSharingPlatformId/name/code/tokensExpr/`
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -201,9 +219,11 @@ const removeTransferTypeList = (targetObjectId, parameters) => {
 }
 
 
+
 const addTakeStockStatus = (targetObjectId, parameters) => {
   const url = `${PREFIX}bookSharingPlatformManager/addTakeStockStatus/bookSharingPlatformId/name/code/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -221,9 +241,11 @@ const removeTakeStockStatusList = (targetObjectId, parameters) => {
 }
 
 
+
 const addBookTakeStockStatus = (targetObjectId, parameters) => {
   const url = `${PREFIX}bookSharingPlatformManager/addBookTakeStockStatus/bookSharingPlatformId/name/code/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -241,9 +263,11 @@ const removeBookTakeStockStatusList = (targetObjectId, parameters) => {
 }
 
 
+
 const addTakeStoreResults = (targetObjectId, parameters) => {
   const url = `${PREFIX}bookSharingPlatformManager/addTakeStoreResults/bookSharingPlatformId/name/code/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -261,9 +285,11 @@ const removeTakeStoreResultsList = (targetObjectId, parameters) => {
 }
 
 
+
 const addBookCopyOperateType = (targetObjectId, parameters) => {
   const url = `${PREFIX}bookSharingPlatformManager/addBookCopyOperateType/bookSharingPlatformId/name/code/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -281,9 +307,11 @@ const removeBookCopyOperateTypeList = (targetObjectId, parameters) => {
 }
 
 
+
 const addBorrowingStatus = (targetObjectId, parameters) => {
   const url = `${PREFIX}bookSharingPlatformManager/addBorrowingStatus/bookSharingPlatformId/name/code/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -301,9 +329,11 @@ const removeBorrowingStatusList = (targetObjectId, parameters) => {
 }
 
 
+
 const addDeliverMethod = (targetObjectId, parameters) => {
   const url = `${PREFIX}bookSharingPlatformManager/addDeliverMethod/bookSharingPlatformId/name/code/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -321,9 +351,11 @@ const removeDeliverMethodList = (targetObjectId, parameters) => {
 }
 
 
+
 const addApplicationStatus = (targetObjectId, parameters) => {
   const url = `${PREFIX}bookSharingPlatformManager/addApplicationStatus/bookSharingPlatformId/name/code/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -341,9 +373,11 @@ const removeApplicationStatusList = (targetObjectId, parameters) => {
 }
 
 
+
 const addPlatformAccount = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookSharingPlatformManager/addPlatformAccount/platformId/name/amount/accountDataId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}bookSharingPlatformManager/addPlatformAccount/bookSharingPlatformId/name/amount/accountDataId/tokensExpr/`
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -361,9 +395,11 @@ const removePlatformAccountList = (targetObjectId, parameters) => {
 }
 
 
+
 const addFundationAccount = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookSharingPlatformManager/addFundationAccount/platformId/name/amount/accountDataId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}bookSharingPlatformManager/addFundationAccount/bookSharingPlatformId/name/amount/accountDataId/tokensExpr/`
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -381,9 +417,11 @@ const removeFundationAccountList = (targetObjectId, parameters) => {
 }
 
 
+
 const addStoreType = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookSharingPlatformManager/addStoreType/platformId/name/code/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}bookSharingPlatformManager/addStoreType/bookSharingPlatformId/name/code/tokensExpr/`
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -401,9 +439,11 @@ const removeStoreTypeList = (targetObjectId, parameters) => {
 }
 
 
+
 const addStore = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookSharingPlatformManager/addStore/platformId/storeName/storeSubname/storeAddress/storeOpenTime/storeOpenTimeSecond/storeRoomNumber/longitude/latitude/storeImage/storeTypeId/cityId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}bookSharingPlatformManager/addStore/bookSharingPlatformId/storeName/storeSubname/storeAddress/storeOpenTime/storeOpenTimeSecond/storeRoomNumber/longitude/latitude/storeImage/storeTypeId/cityId/tokensExpr/`
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -421,9 +461,11 @@ const removeStoreList = (targetObjectId, parameters) => {
 }
 
 
+
 const addSlideType = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookSharingPlatformManager/addSlideType/platformId/name/code/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}bookSharingPlatformManager/addSlideType/bookSharingPlatformId/name/code/tokensExpr/`
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -441,9 +483,11 @@ const removeSlideTypeList = (targetObjectId, parameters) => {
 }
 
 
+
 const addCampaignPlaza = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookSharingPlatformManager/addCampaignPlaza/platformId/name/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}bookSharingPlatformManager/addCampaignPlaza/bookSharingPlatformId/name/tokensExpr/`
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -461,9 +505,11 @@ const removeCampaignPlazaList = (targetObjectId, parameters) => {
 }
 
 
+
 const addCampaignStatus = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookSharingPlatformManager/addCampaignStatus/platformId/name/code/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}bookSharingPlatformManager/addCampaignStatus/bookSharingPlatformId/name/code/tokensExpr/`
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -481,9 +527,11 @@ const removeCampaignStatusList = (targetObjectId, parameters) => {
 }
 
 
+
 const addCustomer = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookSharingPlatformManager/addCustomer/platformId/nickName/logoImage/mobileNumber/realName/sexuality/memberServiceId/memberServiceStartDate/memberServiceExpireDate/accountBalance/miniProgramOpenid/serviceAccountOpenid/wechatUnionId/longitude/latitude/birthday/identityCardNumber/familyAddress/memberServiceDailyPay/favouriteStoreId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}bookSharingPlatformManager/addCustomer/bookSharingPlatformId/nickName/logoImage/mobileNumber/realName/sexuality/memberServiceId/memberServiceStartDate/memberServiceExpireDate/accountBalance/miniProgramOpenid/serviceAccountOpenid/wechatUnionId/longitude/latitude/birthday/identityCardNumber/familyAddress/memberServiceDailyPay/favouriteStoreId/tokensExpr/`
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -501,9 +549,11 @@ const removeCustomerList = (targetObjectId, parameters) => {
 }
 
 
+
 const addEmployee = (targetObjectId, parameters) => {
   const url = `${PREFIX}bookSharingPlatformManager/addEmployee/bookSharingPlatformId/name/employeeImage/mobileNumber/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -521,9 +571,11 @@ const removeEmployeeList = (targetObjectId, parameters) => {
 }
 
 
+
 const addProfitType = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookSharingPlatformManager/addProfitType/platformId/name/code/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}bookSharingPlatformManager/addProfitType/bookSharingPlatformId/name/code/tokensExpr/`
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -541,9 +593,11 @@ const removeProfitTypeList = (targetObjectId, parameters) => {
 }
 
 
+
 const addProfitDistributeState = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookSharingPlatformManager/addProfitDistributeState/platformId/name/code/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}bookSharingPlatformManager/addProfitDistributeState/bookSharingPlatformId/name/code/tokensExpr/`
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -561,9 +615,11 @@ const removeProfitDistributeStateList = (targetObjectId, parameters) => {
 }
 
 
+
 const addUndistributedProfit = (targetObjectId, parameters) => {
-  const url = `${PREFIX}bookSharingPlatformManager/addUndistributedProfit/platformId/summary/chargeStartDate/chargeEndDate/profitTypeId/profitDistributeStateId/mainOrderId/amount/balance/customerId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}bookSharingPlatformManager/addUndistributedProfit/bookSharingPlatformId/summary/chargeStartDate/chargeEndDate/profitTypeId/profitDistributeStateId/mainOrderId/amount/balance/customerId/tokensExpr/`
+  const bookSharingPlatformId = targetObjectId
+  const requestParameters = { ...parameters, bookSharingPlatformId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 

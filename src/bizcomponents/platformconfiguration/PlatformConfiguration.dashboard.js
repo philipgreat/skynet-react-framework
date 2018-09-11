@@ -80,7 +80,7 @@ const internalLargeTextOf = (platformConfiguration) =>{
    <Card title={`会员服务协议`} ><pre>{platformConfiguration.memberServiceAgreement}</pre></Card>
    <Card title={`图书共享协议`} ><pre>{platformConfiguration.bookSharingAgreement}</pre></Card>
    <Card title={`账户充值协议`} ><pre>{platformConfiguration.accountRechargeAgreement}</pre></Card>
-   <Card title={`存储列表页中的消息`} ><pre>{platformConfiguration.messageInStoreListPage}</pre></Card>
+   <Card title={`网点列表页提示信息`} ><pre>{platformConfiguration.messageInStoreListPage}</pre></Card>
    <Card title={`反馈联系信息`} ><pre>{platformConfiguration.feedbackContactInfo}</pre></Card>
 </div>)
 
@@ -251,8 +251,11 @@ const internalSubListsOf = (cardsData) =>{
            {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="gear"  />&nbsp;管理</Link></p>
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.type}CreateForm`}><FontAwesome name="plus"  />&nbsp;新增</Link></p>              
+              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
+              
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              
+              </p>         
           </Card> </Badge>
             </Col>))}
           </Row>)

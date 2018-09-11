@@ -2,6 +2,10 @@
 import ImagePreview from '../../components/ImagePreview'
 import { Link } from 'dva/router'
 import moment from 'moment'
+
+
+
+
 const menuData = {menuName:"SEC的用户", menuFor: "secUser",
   		subItems: [
   {name: 'userAppList', displayName:'用户应用程序', icon:'user'},
@@ -10,20 +14,72 @@ const menuData = {menuName:"SEC的用户", menuFor: "secUser",
   		],
 }
 
+const renderTextCell=(value, record)=>{
 
+	if(!value){
+		return '';
+	}
+	if(value==null){
+		return '';
+	}
+	if(value.length>15){
+		return value.substring(0,15)+"...("+value.length+"字)"
+	}
+	return value
+	
+}
+
+const renderIdentifier=(value, record, targtObjectType)=>{
+
+	return (<Link to={`/${targtObjectType}/${value}/dashboard`}>{value}</Link>)
+	
+}
+
+const renderDateCell=(value, record)=>{
+	return moment(value).format('YYYY-MM-DD');
+}
+const renderDateTimeCell=(value, record)=>{
+	return moment(value).format('YYYY-MM-DD HH:mm');	
+}
+
+const renderImageCell=(value, record, title)=>{
+	return (<ImagePreview imageTitle={title} imageLocation={value} />)	
+}
+
+const renderMoneyCell=(value, record)=>{
+	if(!value){
+		return '空'
+	}
+	if(value == null){
+		return '空'
+	}
+	return (`￥${value.toFixed(2)}`)
+}
+
+const renderBooleanCell=(value, record)=>{
+
+	return  (value? '是' : '否')
+
+}
+
+const renderReferenceCell=(value, record)=>{
+
+	return (value ? value.displayName : '暂无') 
+
+}
 
 const displayColumns = [
-  { title: 'ID', debugtype: 'string', dataIndex: 'id', width: '20', render: (text, record)=>(<Link to={`/secUser/${text}/dashboard`}>{text}</Link>) },
-  { title: '登录', debugtype: 'string', dataIndex: 'login', width: '9' },
-  { title: '手机号码', debugtype: 'string_china_mobile_phone', dataIndex: 'mobile', width: '15' },
-  { title: '电子邮件', debugtype: 'string_email', dataIndex: 'email', width: '23' },
-  { title: '密码', debugtype: 'string_password', dataIndex: 'pwd', width: '11' },
-  { title: '验证码', debugtype: 'int', dataIndex: 'verificationCode', width: '11' },
-  { title: '验证码过期', dataIndex: 'verificationCodeExpire', render: (text, record) => moment(record.verificationCodeExpire).format('YYYY-MM-DD HH:mm:ss') },
-  { title: '最后登录时间', dataIndex: 'lastLoginTime', render: (text, record) => moment(record.lastLoginTime).format('YYYY-MM-DD HH:mm:ss') },
-  { title: '域', dataIndex: 'domain', render: (text, record) => (record.domain ? record.domain.displayName : '暂无') },
-  { title: '屏蔽', dataIndex: 'blocking', render: (text, record) => (record.blocking ? record.blocking.displayName : '暂无') },
-  { title: '当前状态', debugtype: 'string', dataIndex: 'currentStatus', width: '11' },
+  { title: 'ID', debugtype: 'string', dataIndex: 'id', width: '20', render: (text, record)=>renderIdentifier(text,record,'secUser') },
+  { title: '登录', debugtype: 'string', dataIndex: 'login', width: '9',render: (text, record)=>renderTextCell(text,record) },
+  { title: '手机号码', debugtype: 'string_china_mobile_phone', dataIndex: 'mobile', width: '15',render: (text, record)=>renderTextCell(text,record) },
+  { title: '电子邮件', debugtype: 'string_email', dataIndex: 'email', width: '23',render: (text, record)=>renderTextCell(text,record) },
+  { title: '密码', debugtype: 'string_password', dataIndex: 'pwd', width: '11',render: (text, record)=>renderTextCell(text,record) },
+  { title: '验证码', debugtype: 'int', dataIndex: 'verificationCode', width: '11',render: (text, record)=>renderTextCell(text,record) },
+  { title: '验证码过期', dataIndex: 'verificationCodeExpire', render: (text, record) =>renderDateTimeCell(text,record)  },
+  { title: '最后登录时间', dataIndex: 'lastLoginTime', render: (text, record) =>renderDateTimeCell(text,record)  },
+  { title: '域', dataIndex: 'domain', render: (text, record) => renderReferenceCell(text, record)},
+  { title: '屏蔽', dataIndex: 'blocking', render: (text, record) => renderReferenceCell(text, record)},
+  { title: '当前状态', debugtype: 'string', dataIndex: 'currentStatus', width: '11',render: (text, record)=>renderTextCell(text,record) },
 
 ]
 

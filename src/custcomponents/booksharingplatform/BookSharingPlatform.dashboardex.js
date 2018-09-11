@@ -94,8 +94,13 @@ const subListWithPans = (cardsData,tabbedPaneData) => {
                 <Col {...topColResponsiveProps} key={item.name}>   
                 <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
                  <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
-                   <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="gear"  />&nbsp;管理</Link></p>
-                   <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.type}CreateForm`}><FontAwesome name="plus"  />&nbsp;新增</Link></p>              
+                 <p>
+
+<Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
+{item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+</p> 
+
+
                </Card> </Badge>
                  </Col>)
 

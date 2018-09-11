@@ -93,7 +93,11 @@ class UndistributedProfitUpdateForm extends Component {
     const { convertedImagesValues } = this.state
     const { setFieldsValue } = this.props.form
     const {fieldLabels} = UndistributedProfitBase
-    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
     const submitUpdateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -101,17 +105,18 @@ class UndistributedProfitUpdateForm extends Component {
           return
         }
 
-        const { owner } = this.props
+        const { owner, role } = this.props
         const undistributedProfitId = values.id
         const imagesValues = mapBackToImageValues(convertedImagesValues)
         const parameters = { ...values, undistributedProfitId, ...imagesValues }
 
-        // const newIndex= currentUpdateIndex + 1
+        
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/updateUndistributedProfit`,
+          type: `${owner.type}/update${cappedRoleName}`,
           payload: {
             id: owner.id,
-            type: 'undistributedProfit',
+            role: role,
             parameters,
             selectedRows,
             currentUpdateIndex: 0,
@@ -183,7 +188,7 @@ class UndistributedProfitUpdateForm extends Component {
         payload: {
           id: owner.id,
           type: 'undistributedProfit',
-          listName:'未分配利润列表' 
+          listName:'未分割收入列表' 
         },
       })
     }
@@ -243,8 +248,8 @@ class UndistributedProfitUpdateForm extends Component {
 
     return (
       <PageHeaderLayout
-        title={"更新未分配利润"+(currentUpdateIndex+1)+"/"+selectedRows.length}
-        content="更新未分配利润"
+        title={"更新未分割收入"+(currentUpdateIndex+1)+"/"+selectedRows.length}
+        content="更新未分割收入"
         wrapperClassName={styles.advancedForm}
       >
         <Card title="基础信息" className={styles.card} bordered={false}>

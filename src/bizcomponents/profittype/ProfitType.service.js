@@ -37,9 +37,11 @@ const transferToAnotherPlatform = (id, parameters) => {
 
 
 
+
 const addUndistributedProfit = (targetObjectId, parameters) => {
   const url = `${PREFIX}profitTypeManager/addUndistributedProfit/profitTypeId/summary/chargeStartDate/chargeEndDate/profitDistributeStateId/mainOrderId/amount/balance/customerId/platformId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const profitTypeId = targetObjectId
+  const requestParameters = { ...parameters, profitTypeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 

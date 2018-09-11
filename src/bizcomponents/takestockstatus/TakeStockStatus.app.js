@@ -146,19 +146,25 @@ class TakeStockStatusBizApp extends React.PureComponent {
     const {BookTakeStockPlanSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "图书盘点计划",
+      role: "bookTakeStockPlan",
       data: state._takeStockStatus.bookTakeStockPlanList,
       count: state._takeStockStatus.bookTakeStockPlanCount,
       currentPage: state._takeStockStatus.bookTakeStockPlanCurrentPageNumber,
       searchFormParameters: state._takeStockStatus.bookTakeStockPlanSearchFormParameters,
       loading: state._takeStockStatus.loading,
       partialList: state._takeStockStatus.partialList,
-      owner: { type: '_takeStockStatus', id: state._takeStockStatus.id, referenceName: 'takeStockStatus', listName: 'bookTakeStockPlanList', ref:state._takeStockStatus, listDisplayName: '图书盘点计划列表' }, // this is for model namespace and
+      owner: { type: '_takeStockStatus', id: state._takeStockStatus.id, 
+      referenceName: 'takeStockStatus', 
+      listName: 'bookTakeStockPlanList', ref:state._takeStockStatus, 
+      listDisplayName: '图书盘点计划列表' }, // this is for model namespace and
     }))(BookTakeStockPlanSearch)
   }
   getBookTakeStockPlanCreateForm = () => {
    	const {BookTakeStockPlanCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookTakeStockPlan",
       data: state._takeStockStatus.bookTakeStockPlanList,
       count: state._takeStockStatus.bookTakeStockPlanCount,
       currentPage: state._takeStockStatus.bookTakeStockPlanCurrentPageNumber,
@@ -172,6 +178,7 @@ class TakeStockStatusBizApp extends React.PureComponent {
   	const {BookTakeStockPlanUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._takeStockStatus.selectedRows,
+      role: "bookTakeStockPlan",
       currentUpdateIndex: state._takeStockStatus.currentUpdateIndex,
       owner: { type: '_takeStockStatus', id: state._takeStockStatus.id, listName: 'bookTakeStockPlanList', ref:state._takeStockStatus, listDisplayName: '图书盘点计划列表' }, // this is for model namespace and
     }))(BookTakeStockPlanUpdateForm)

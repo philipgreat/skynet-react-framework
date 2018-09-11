@@ -7,6 +7,10 @@ import zhCN from 'antd/lib/locale-provider/zh_CN'
 // import enUS from 'antd/lib/locale-provider/en_US'
 import Launcher from '../launcher/Launcher'
 import ForgetPasswordForm from '../launcher/ForgetPasswordForm'
+<<<<<<< HEAD
+=======
+
+>>>>>>> 592c5012b333787d66602918615159db86583265
 import GlobalComponents from './'
 
 
@@ -103,9 +107,14 @@ function RouterConfig({ history }) {
     <LocaleProvider locale={zhCN}>
       <Router history={history}>
         <Switch>
+<<<<<<< HEAD
         <Route path="/home" component={Launcher} />
         
         <Route path="/forgetpass" component={ForgetPasswordForm} />
+=======
+         <Route path="/home" component={Launcher} />
+         <Route path="/forgetpass" component={ForgetPasswordForm} />
+>>>>>>> 592c5012b333787d66602918615159db86583265
           <Route path="/privateMessage/" component={PrivateMessageBizApp} />
           <Route path="/messageTemplate/" component={MessageTemplateBizApp} />
           <Route path="/lossAssessmentRecord/" component={LossAssessmentRecordBizApp} />

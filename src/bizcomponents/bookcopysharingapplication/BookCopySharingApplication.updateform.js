@@ -58,8 +58,8 @@ class BookCopySharingApplicationUpdateForm extends Component {
     const convertiedValues = selectedRows.map((item) => {
       return {
         ...item,
-        submittedDate: moment(item.submittedDate),
         processedDate: moment(item.processedDate),
+        submittedDate: moment(item.submittedDate),
 
       }
     })
@@ -91,7 +91,11 @@ class BookCopySharingApplicationUpdateForm extends Component {
     const { convertedImagesValues } = this.state
     const { setFieldsValue } = this.props.form
     const {fieldLabels} = BookCopySharingApplicationBase
-    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
     const submitUpdateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -99,17 +103,18 @@ class BookCopySharingApplicationUpdateForm extends Component {
           return
         }
 
-        const { owner } = this.props
+        const { owner, role } = this.props
         const bookCopySharingApplicationId = values.id
         const imagesValues = mapBackToImageValues(convertedImagesValues)
         const parameters = { ...values, bookCopySharingApplicationId, ...imagesValues }
 
-        // const newIndex= currentUpdateIndex + 1
+        
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/updateBookCopySharingApplication`,
+          type: `${owner.type}/update${cappedRoleName}`,
           payload: {
             id: owner.id,
-            type: 'bookCopySharingApplication',
+            role: role,
             parameters,
             selectedRows,
             currentUpdateIndex: 0,
@@ -263,30 +268,6 @@ class BookCopySharingApplicationUpdateForm extends Component {
               </Col>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.bookCopyQuantity} {...formItemLayout}>
-                  {getFieldDecorator('bookCopyQuantity', {
-                    initialValue: selectedRow.bookCopyQuantity,
-                    rules: [{ required: true, message: '请输入共享数量' }],
-                  })(
-                    <Input placeholder="请输入共享数量" />
-                    
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.contactAddress} {...formItemLayout}>
-                  {getFieldDecorator('contactAddress', {
-                    initialValue: selectedRow.contactAddress,
-                    rules: [{ required: true, message: '请输入联系地址' }],
-                  })(
-                    <Input placeholder="请输入联系地址" />
-                    
-                  )}
-                </Form.Item>
-              </Col>
-
-              <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.contactName} {...formItemLayout}>
                   {getFieldDecorator('contactName', {
                     initialValue: selectedRow.contactName,
@@ -305,6 +286,30 @@ class BookCopySharingApplicationUpdateForm extends Component {
                     rules: [{ required: true, message: '请输入联系人手机' }],
                   })(
                     <Input placeholder="请输入联系人手机" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.contactAddress} {...formItemLayout}>
+                  {getFieldDecorator('contactAddress', {
+                    initialValue: selectedRow.contactAddress,
+                    rules: [{ required: true, message: '请输入联系地址' }],
+                  })(
+                    <Input placeholder="请输入联系地址" />
+                    
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col lg={12} md={12} sm={24}>
+                <Form.Item label={fieldLabels.bookCopyQuantity} {...formItemLayout}>
+                  {getFieldDecorator('bookCopyQuantity', {
+                    initialValue: selectedRow.bookCopyQuantity,
+                    rules: [{ required: true, message: '请输入共享数量' }],
+                  })(
+                    <Input placeholder="请输入共享数量" />
                     
                   )}
                 </Form.Item>

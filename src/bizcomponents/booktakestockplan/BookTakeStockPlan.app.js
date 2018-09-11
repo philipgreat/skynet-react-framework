@@ -146,19 +146,25 @@ class BookTakeStockPlanBizApp extends React.PureComponent {
     const {BookTakeStockResultSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "图书盘点结果",
+      role: "bookTakeStockResult",
       data: state._bookTakeStockPlan.bookTakeStockResultList,
       count: state._bookTakeStockPlan.bookTakeStockResultCount,
       currentPage: state._bookTakeStockPlan.bookTakeStockResultCurrentPageNumber,
       searchFormParameters: state._bookTakeStockPlan.bookTakeStockResultSearchFormParameters,
       loading: state._bookTakeStockPlan.loading,
       partialList: state._bookTakeStockPlan.partialList,
-      owner: { type: '_bookTakeStockPlan', id: state._bookTakeStockPlan.id, referenceName: 'bookTakeStockPlan', listName: 'bookTakeStockResultList', ref:state._bookTakeStockPlan, listDisplayName: '图书盘点结果列表' }, // this is for model namespace and
+      owner: { type: '_bookTakeStockPlan', id: state._bookTakeStockPlan.id, 
+      referenceName: 'bookTakeStockPlan', 
+      listName: 'bookTakeStockResultList', ref:state._bookTakeStockPlan, 
+      listDisplayName: '图书盘点结果列表' }, // this is for model namespace and
     }))(BookTakeStockResultSearch)
   }
   getBookTakeStockResultCreateForm = () => {
    	const {BookTakeStockResultCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookTakeStockResult",
       data: state._bookTakeStockPlan.bookTakeStockResultList,
       count: state._bookTakeStockPlan.bookTakeStockResultCount,
       currentPage: state._bookTakeStockPlan.bookTakeStockResultCurrentPageNumber,
@@ -172,6 +178,7 @@ class BookTakeStockPlanBizApp extends React.PureComponent {
   	const {BookTakeStockResultUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookTakeStockPlan.selectedRows,
+      role: "bookTakeStockResult",
       currentUpdateIndex: state._bookTakeStockPlan.currentUpdateIndex,
       owner: { type: '_bookTakeStockPlan', id: state._bookTakeStockPlan.id, listName: 'bookTakeStockResultList', ref:state._bookTakeStockPlan, listDisplayName: '图书盘点结果列表' }, // this is for model namespace and
     }))(BookTakeStockResultUpdateForm)

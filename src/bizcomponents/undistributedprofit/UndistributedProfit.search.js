@@ -105,19 +105,25 @@ class UndistributedProfitSearch extends PureComponent {
 
   handleDelete = () => {
     const { selectedRows } = this.state
-    const { dispatch, owner } = this.props
+    const { dispatch, owner, role } = this.props
     console.log('things to delete', selectedRows)
     this.setState({
       modalVisible: true,
       showDeleteResult: true,
     })
-    
+    const {listName} = owner;
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
     const undistributedProfitIds = selectedRows.map((item) => { return item.id })
     console.log('undistributedProfitIds', undistributedProfitIds)
     const parameters = { undistributedProfitIds }
+    const cappedRoleName = capFirstChar(listName)
     dispatch({
-      type: `${owner.type}/removeUndistributedProfitList`,
-      payload: { id: owner.id, type: 'undistributedProfit', parameters },
+      type: `${owner.type}/remove${cappedRoleName}`,
+      payload: { id: owner.id, role: role, parameters },
     })
   }
   
@@ -140,10 +146,10 @@ class UndistributedProfitSearch extends PureComponent {
   }
 
   handleCreate = () => {
-    const { dispatch, owner } = this.props
+    const { dispatch, owner, role } = this.props
     dispatch({
       type: `${owner.type}/gotoCreateForm`,
-      payload: { id: owner.id, type: 'undistributedProfit' },
+      payload: { id: owner.id, role: role },
     })
   }
 
@@ -157,34 +163,16 @@ class UndistributedProfitSearch extends PureComponent {
       payload: { id: owner.id, type: 'undistributedProfit', selectedRows, currentUpdateIndex },
     })
   }
-  
-  handleAddInput = (e) => {
-    this.setState({
-      addInputValue: e.target.value,
-    })
-  }
-
+ 
     
   handleCloseAlert = () => {
       const { dispatch, owner,location } = this.props;
       console.log("trying to call handleCloseAlert",owner)
       const pathname = location.pathname
-      dispatch({ type: `${owner.type}/view`, payload: { id: owner.id,pathname,displayName:'未分配利润列表' } })
+      dispatch({ type: `${owner.type}/view`, payload: { id: owner.id,pathname,displayName:'未分割收入列表' } })
 
   };  
-    
-  handleAdd = () => {
-    this.props.dispatch({
-      type: 'rule/add',
-      payload: {
-        description: this.state.addInputValue,
-      },
-    })
-    message.success('添加成功')
-    this.setState({
-      modalVisible: false,
-    })
-  }
+ 
 
   render() {
     const { data, loading, count, currentPage, owner,partialList } = this.props;
@@ -239,17 +227,16 @@ class UndistributedProfitSearch extends PureComponent {
     }
     
     return (
-      <PageHeaderLayout title={`${displayName}: 未分配利润列表`}>
+      <PageHeaderLayout title={`${displayName}:${this.props.name}列表`}>
         <Card bordered={false}>
           <div className={styles.tableList}>
             <div className={styles.tableListForm}>
               <UndistributedProfitSearchForm {...this.props} />
             </div>
             <div className={styles.tableListOperator}>
-              <Button icon="plus" type="primary" onClick={() => this.handleCreate()}>新建</Button>
-              <Button onClick={this.handleModalVisible} type="danger" icon="delete" disabled={selectedRows.length === 0}>批量删除</Button>
-              <Button onClick={this.handleUpdate} type="primary" icon="update" disabled={selectedRows.length === 0}>批量更新</Button>
+            
               
+               
                
               {partialList&&(
               <div className={styles.searchAlert}>

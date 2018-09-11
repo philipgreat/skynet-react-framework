@@ -89,7 +89,11 @@ class PlatformConfigurationUpdateForm extends Component {
     const { convertedImagesValues } = this.state
     const { setFieldsValue } = this.props.form
     const {fieldLabels} = PlatformConfigurationBase
-    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
     const submitUpdateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -97,17 +101,18 @@ class PlatformConfigurationUpdateForm extends Component {
           return
         }
 
-        const { owner } = this.props
+        const { owner, role } = this.props
         const platformConfigurationId = values.id
         const imagesValues = mapBackToImageValues(convertedImagesValues)
         const parameters = { ...values, platformConfigurationId, ...imagesValues }
 
-        // const newIndex= currentUpdateIndex + 1
+        
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/updatePlatformConfiguration`,
+          type: `${owner.type}/update${cappedRoleName}`,
           payload: {
             id: owner.id,
-            type: 'platformConfiguration',
+            role: role,
             parameters,
             selectedRows,
             currentUpdateIndex: 0,
@@ -391,16 +396,16 @@ class PlatformConfigurationUpdateForm extends Component {
           </Form>
         </Card>
 
-        <Card title="存储列表页中的消息" className={styles.card} bordered={false}>
+        <Card title="网点列表页提示信息" className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
               <Col lg={24} md={24} sm={24}>
                 <Form.Item>
                   {getFieldDecorator('messageInStoreListPage', {
                   	initialValue: selectedRow.messageInStoreListPage,
-                    rules: [{  required: true, message: '请输入存储列表页中的消息' }],
+                    rules: [{  required: true, message: '请输入网点列表页提示信息' }],
                   })(
-                    <TextArea rows={4} placeholder="请输入请输入存储列表页中的消息" />
+                    <TextArea rows={4} placeholder="请输入请输入网点列表页提示信息" />
                   )}
                 </Form.Item>
               </Col>

@@ -146,19 +146,25 @@ class SecUserBizApp extends React.PureComponent {
     const {UserAppSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "用户应用程序",
+      role: "userApp",
       data: state._secUser.userAppList,
       count: state._secUser.userAppCount,
       currentPage: state._secUser.userAppCurrentPageNumber,
       searchFormParameters: state._secUser.userAppSearchFormParameters,
       loading: state._secUser.loading,
       partialList: state._secUser.partialList,
-      owner: { type: '_secUser', id: state._secUser.id, referenceName: 'secUser', listName: 'userAppList', ref:state._secUser, listDisplayName: '用户应用程序列表' }, // this is for model namespace and
+      owner: { type: '_secUser', id: state._secUser.id, 
+      referenceName: 'secUser', 
+      listName: 'userAppList', ref:state._secUser, 
+      listDisplayName: '用户应用程序列表' }, // this is for model namespace and
     }))(UserAppSearch)
   }
   getUserAppCreateForm = () => {
    	const {UserAppCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "userApp",
       data: state._secUser.userAppList,
       count: state._secUser.userAppCount,
       currentPage: state._secUser.userAppCurrentPageNumber,
@@ -172,6 +178,7 @@ class SecUserBizApp extends React.PureComponent {
   	const {UserAppUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._secUser.selectedRows,
+      role: "userApp",
       currentUpdateIndex: state._secUser.currentUpdateIndex,
       owner: { type: '_secUser', id: state._secUser.id, listName: 'userAppList', ref:state._secUser, listDisplayName: '用户应用程序列表' }, // this is for model namespace and
     }))(UserAppUpdateForm)
@@ -181,19 +188,25 @@ class SecUserBizApp extends React.PureComponent {
     const {LoginHistorySearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "登录历史",
+      role: "loginHistory",
       data: state._secUser.loginHistoryList,
       count: state._secUser.loginHistoryCount,
       currentPage: state._secUser.loginHistoryCurrentPageNumber,
       searchFormParameters: state._secUser.loginHistorySearchFormParameters,
       loading: state._secUser.loading,
       partialList: state._secUser.partialList,
-      owner: { type: '_secUser', id: state._secUser.id, referenceName: 'secUser', listName: 'loginHistoryList', ref:state._secUser, listDisplayName: '登录历史列表' }, // this is for model namespace and
+      owner: { type: '_secUser', id: state._secUser.id, 
+      referenceName: 'secUser', 
+      listName: 'loginHistoryList', ref:state._secUser, 
+      listDisplayName: '登录历史列表' }, // this is for model namespace and
     }))(LoginHistorySearch)
   }
   getLoginHistoryCreateForm = () => {
    	const {LoginHistoryCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "loginHistory",
       data: state._secUser.loginHistoryList,
       count: state._secUser.loginHistoryCount,
       currentPage: state._secUser.loginHistoryCurrentPageNumber,
@@ -207,6 +220,7 @@ class SecUserBizApp extends React.PureComponent {
   	const {LoginHistoryUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._secUser.selectedRows,
+      role: "loginHistory",
       currentUpdateIndex: state._secUser.currentUpdateIndex,
       owner: { type: '_secUser', id: state._secUser.id, listName: 'loginHistoryList', ref:state._secUser, listDisplayName: '登录历史列表' }, // this is for model namespace and
     }))(LoginHistoryUpdateForm)

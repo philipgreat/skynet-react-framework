@@ -146,19 +146,25 @@ class DeliverMethodBizApp extends React.PureComponent {
     const {BookCopySharingApplicationSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "图书共享申请",
+      role: "bookCopySharingApplication",
       data: state._deliverMethod.bookCopySharingApplicationList,
       count: state._deliverMethod.bookCopySharingApplicationCount,
       currentPage: state._deliverMethod.bookCopySharingApplicationCurrentPageNumber,
       searchFormParameters: state._deliverMethod.bookCopySharingApplicationSearchFormParameters,
       loading: state._deliverMethod.loading,
       partialList: state._deliverMethod.partialList,
-      owner: { type: '_deliverMethod', id: state._deliverMethod.id, referenceName: 'deliverMethod', listName: 'bookCopySharingApplicationList', ref:state._deliverMethod, listDisplayName: '图书共享申请列表' }, // this is for model namespace and
+      owner: { type: '_deliverMethod', id: state._deliverMethod.id, 
+      referenceName: 'deliverMethod', 
+      listName: 'bookCopySharingApplicationList', ref:state._deliverMethod, 
+      listDisplayName: '图书共享申请列表' }, // this is for model namespace and
     }))(BookCopySharingApplicationSearch)
   }
   getBookCopySharingApplicationCreateForm = () => {
    	const {BookCopySharingApplicationCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookCopySharingApplication",
       data: state._deliverMethod.bookCopySharingApplicationList,
       count: state._deliverMethod.bookCopySharingApplicationCount,
       currentPage: state._deliverMethod.bookCopySharingApplicationCurrentPageNumber,
@@ -172,6 +178,7 @@ class DeliverMethodBizApp extends React.PureComponent {
   	const {BookCopySharingApplicationUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._deliverMethod.selectedRows,
+      role: "bookCopySharingApplication",
       currentUpdateIndex: state._deliverMethod.currentUpdateIndex,
       owner: { type: '_deliverMethod', id: state._deliverMethod.id, listName: 'bookCopySharingApplicationList', ref:state._deliverMethod, listDisplayName: '图书共享申请列表' }, // this is for model namespace and
     }))(BookCopySharingApplicationUpdateForm)

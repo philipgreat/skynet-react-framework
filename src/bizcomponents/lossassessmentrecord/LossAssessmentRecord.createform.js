@@ -17,7 +17,7 @@ const testValues = {};
 /*
 const testValues = {
   lossComment: '第2页到第5页缺失',
-  bookCopyEvaluationPrice: '29.13',
+  bookCopyEvaluationPrice: '38.06',
   bookCopyId: 'BC000001',
   recordStoreId: 'S000001',
   lossDiscountId: 'LD000001',
@@ -199,14 +199,22 @@ class LossAssessmentRecordCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = LossAssessmentRecordBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -218,9 +226,10 @@ class LossAssessmentRecordCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addLossAssessmentRecord`,
-          payload: { id: owner.id, type: 'lossAssessmentRecord', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }
@@ -387,9 +396,9 @@ class LossAssessmentRecordCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.bookCopyEvaluationPrice} {...formItemLayout}>
                   {getFieldDecorator('bookCopyEvaluationPrice', {
-                    rules: [{ required: true, message: '请输入书副本评估价格' }],
+                    rules: [{ required: true, message: '请输入评估价' }],
                   })(
-                    <Input placeholder="请输入书副本评估价格" />
+                    <Input placeholder="请输入评估价" />
                   )}
                 </Form.Item>
               </Col>
@@ -415,7 +424,7 @@ class LossAssessmentRecordCreateForm extends Component {
 
               <Col lg={6} md={12} sm={24}>
                 <ImageComponent
-                  buttonTitle="损失图像"
+                  buttonTitle="定损照片"
                   handlePreview={this.handlePreview}
                   handleChange={event => this.handleChange(event, 'lossImage')}
                   fileList={convertedImagesValues.lossImage}
@@ -486,7 +495,7 @@ class LossAssessmentRecordCreateForm extends Component {
                 <Form.Item label={fieldLabels.lossDiscount} {...formItemLayout}>
                   {getFieldDecorator('lossDiscountId', {
                   	initialValue: tryinit('lossDiscount'),
-                    rules: [{ required: true, message: '请输入损失的折扣' }],
+                    rules: [{ required: true, message: '请输入定损折扣' }],
                   })(
                   
                   <AutoComplete
@@ -494,7 +503,7 @@ class LossAssessmentRecordCreateForm extends Component {
                     
                     
                     onSearch={this.handleCandidateLossDiscountSearch}
-                    placeholder="请输入损失的折扣"
+                    placeholder="请输入定损折扣"
                     
                     disabled={!availableForEdit('lossDiscount')}
                   >

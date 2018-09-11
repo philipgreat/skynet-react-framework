@@ -146,19 +146,25 @@ class BookRecommendBizApp extends React.PureComponent {
     const {BookSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "书",
+      role: "book",
       data: state._bookRecommend.bookList,
       count: state._bookRecommend.bookCount,
       currentPage: state._bookRecommend.bookCurrentPageNumber,
       searchFormParameters: state._bookRecommend.bookSearchFormParameters,
       loading: state._bookRecommend.loading,
       partialList: state._bookRecommend.partialList,
-      owner: { type: '_bookRecommend', id: state._bookRecommend.id, referenceName: 'bookRecommend', listName: 'bookList', ref:state._bookRecommend, listDisplayName: '书列表' }, // this is for model namespace and
+      owner: { type: '_bookRecommend', id: state._bookRecommend.id, 
+      referenceName: 'bookRecommend', 
+      listName: 'bookList', ref:state._bookRecommend, 
+      listDisplayName: '书列表' }, // this is for model namespace and
     }))(BookSearch)
   }
   getBookCreateForm = () => {
    	const {BookCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "book",
       data: state._bookRecommend.bookList,
       count: state._bookRecommend.bookCount,
       currentPage: state._bookRecommend.bookCurrentPageNumber,
@@ -172,6 +178,7 @@ class BookRecommendBizApp extends React.PureComponent {
   	const {BookUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._bookRecommend.selectedRows,
+      role: "book",
       currentUpdateIndex: state._bookRecommend.currentUpdateIndex,
       owner: { type: '_bookRecommend', id: state._bookRecommend.id, listName: 'bookList', ref:state._bookRecommend, listDisplayName: '书列表' }, // this is for model namespace and
     }))(BookUpdateForm)

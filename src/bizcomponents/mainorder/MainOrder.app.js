@@ -146,19 +146,25 @@ class MainOrderBizApp extends React.PureComponent {
     const {LineItemSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "订单项",
+      role: "lineItem",
       data: state._mainOrder.lineItemList,
       count: state._mainOrder.lineItemCount,
       currentPage: state._mainOrder.lineItemCurrentPageNumber,
       searchFormParameters: state._mainOrder.lineItemSearchFormParameters,
       loading: state._mainOrder.loading,
       partialList: state._mainOrder.partialList,
-      owner: { type: '_mainOrder', id: state._mainOrder.id, referenceName: 'mainOrder', listName: 'lineItemList', ref:state._mainOrder, listDisplayName: '订单项列表' }, // this is for model namespace and
+      owner: { type: '_mainOrder', id: state._mainOrder.id, 
+      referenceName: 'mainOrder', 
+      listName: 'lineItemList', ref:state._mainOrder, 
+      listDisplayName: '订单项列表' }, // this is for model namespace and
     }))(LineItemSearch)
   }
   getLineItemCreateForm = () => {
    	const {LineItemCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "lineItem",
       data: state._mainOrder.lineItemList,
       count: state._mainOrder.lineItemCount,
       currentPage: state._mainOrder.lineItemCurrentPageNumber,
@@ -172,6 +178,7 @@ class MainOrderBizApp extends React.PureComponent {
   	const {LineItemUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._mainOrder.selectedRows,
+      role: "lineItem",
       currentUpdateIndex: state._mainOrder.currentUpdateIndex,
       owner: { type: '_mainOrder', id: state._mainOrder.id, listName: 'lineItemList', ref:state._mainOrder, listDisplayName: '订单项列表' }, // this is for model namespace and
     }))(LineItemUpdateForm)
@@ -181,19 +188,25 @@ class MainOrderBizApp extends React.PureComponent {
     const {MainOrderPaymentSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "主订单支付",
+      role: "mainOrderPayment",
       data: state._mainOrder.mainOrderPaymentList,
       count: state._mainOrder.mainOrderPaymentCount,
       currentPage: state._mainOrder.mainOrderPaymentCurrentPageNumber,
       searchFormParameters: state._mainOrder.mainOrderPaymentSearchFormParameters,
       loading: state._mainOrder.loading,
       partialList: state._mainOrder.partialList,
-      owner: { type: '_mainOrder', id: state._mainOrder.id, referenceName: 'mainOrder', listName: 'mainOrderPaymentList', ref:state._mainOrder, listDisplayName: '主订单支付列表' }, // this is for model namespace and
+      owner: { type: '_mainOrder', id: state._mainOrder.id, 
+      referenceName: 'mainOrder', 
+      listName: 'mainOrderPaymentList', ref:state._mainOrder, 
+      listDisplayName: '主订单支付列表' }, // this is for model namespace and
     }))(MainOrderPaymentSearch)
   }
   getMainOrderPaymentCreateForm = () => {
    	const {MainOrderPaymentCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "mainOrderPayment",
       data: state._mainOrder.mainOrderPaymentList,
       count: state._mainOrder.mainOrderPaymentCount,
       currentPage: state._mainOrder.mainOrderPaymentCurrentPageNumber,
@@ -207,6 +220,7 @@ class MainOrderBizApp extends React.PureComponent {
   	const {MainOrderPaymentUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._mainOrder.selectedRows,
+      role: "mainOrderPayment",
       currentUpdateIndex: state._mainOrder.currentUpdateIndex,
       owner: { type: '_mainOrder', id: state._mainOrder.id, listName: 'mainOrderPaymentList', ref:state._mainOrder, listDisplayName: '主订单支付列表' }, // this is for model namespace and
     }))(MainOrderPaymentUpdateForm)
@@ -216,19 +230,25 @@ class MainOrderBizApp extends React.PureComponent {
     const {OrderLogSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "Log",
+      role: "orderLog",
       data: state._mainOrder.orderLogList,
       count: state._mainOrder.orderLogCount,
       currentPage: state._mainOrder.orderLogCurrentPageNumber,
       searchFormParameters: state._mainOrder.orderLogSearchFormParameters,
       loading: state._mainOrder.loading,
       partialList: state._mainOrder.partialList,
-      owner: { type: '_mainOrder', id: state._mainOrder.id, referenceName: 'mainOrder', listName: 'orderLogList', ref:state._mainOrder, listDisplayName: 'Log列表' }, // this is for model namespace and
+      owner: { type: '_mainOrder', id: state._mainOrder.id, 
+      referenceName: 'mainOrder', 
+      listName: 'orderLogList', ref:state._mainOrder, 
+      listDisplayName: 'Log列表' }, // this is for model namespace and
     }))(OrderLogSearch)
   }
   getOrderLogCreateForm = () => {
    	const {OrderLogCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "orderLog",
       data: state._mainOrder.orderLogList,
       count: state._mainOrder.orderLogCount,
       currentPage: state._mainOrder.orderLogCurrentPageNumber,
@@ -242,6 +262,7 @@ class MainOrderBizApp extends React.PureComponent {
   	const {OrderLogUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._mainOrder.selectedRows,
+      role: "orderLog",
       currentUpdateIndex: state._mainOrder.currentUpdateIndex,
       owner: { type: '_mainOrder', id: state._mainOrder.id, listName: 'orderLogList', ref:state._mainOrder, listDisplayName: 'Log列表' }, // this is for model namespace and
     }))(OrderLogUpdateForm)
@@ -251,19 +272,25 @@ class MainOrderBizApp extends React.PureComponent {
     const {MemberServiceRevenueSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "会员服务收益",
+      role: "memberServiceRevenue",
       data: state._mainOrder.memberServiceRevenueList,
       count: state._mainOrder.memberServiceRevenueCount,
       currentPage: state._mainOrder.memberServiceRevenueCurrentPageNumber,
       searchFormParameters: state._mainOrder.memberServiceRevenueSearchFormParameters,
       loading: state._mainOrder.loading,
       partialList: state._mainOrder.partialList,
-      owner: { type: '_mainOrder', id: state._mainOrder.id, referenceName: 'mainOrder', listName: 'memberServiceRevenueList', ref:state._mainOrder, listDisplayName: '会员服务收益列表' }, // this is for model namespace and
+      owner: { type: '_mainOrder', id: state._mainOrder.id, 
+      referenceName: 'mainOrder', 
+      listName: 'memberServiceRevenueList', ref:state._mainOrder, 
+      listDisplayName: '会员服务收益列表' }, // this is for model namespace and
     }))(MemberServiceRevenueSearch)
   }
   getMemberServiceRevenueCreateForm = () => {
    	const {MemberServiceRevenueCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "memberServiceRevenue",
       data: state._mainOrder.memberServiceRevenueList,
       count: state._mainOrder.memberServiceRevenueCount,
       currentPage: state._mainOrder.memberServiceRevenueCurrentPageNumber,
@@ -277,6 +304,7 @@ class MainOrderBizApp extends React.PureComponent {
   	const {MemberServiceRevenueUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._mainOrder.selectedRows,
+      role: "memberServiceRevenue",
       currentUpdateIndex: state._mainOrder.currentUpdateIndex,
       owner: { type: '_mainOrder', id: state._mainOrder.id, listName: 'memberServiceRevenueList', ref:state._mainOrder, listDisplayName: '会员服务收益列表' }, // this is for model namespace and
     }))(MemberServiceRevenueUpdateForm)
@@ -286,19 +314,25 @@ class MainOrderBizApp extends React.PureComponent {
     const {PlatformAccountDetailsSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "平台账户明细",
+      role: "platformAccountDetails",
       data: state._mainOrder.platformAccountDetailsList,
       count: state._mainOrder.platformAccountDetailsCount,
       currentPage: state._mainOrder.platformAccountDetailsCurrentPageNumber,
       searchFormParameters: state._mainOrder.platformAccountDetailsSearchFormParameters,
       loading: state._mainOrder.loading,
       partialList: state._mainOrder.partialList,
-      owner: { type: '_mainOrder', id: state._mainOrder.id, referenceName: 'relatedMainOrder', listName: 'platformAccountDetailsList', ref:state._mainOrder, listDisplayName: '平台账户明细列表' }, // this is for model namespace and
+      owner: { type: '_mainOrder', id: state._mainOrder.id, 
+      referenceName: 'relatedMainOrder', 
+      listName: 'platformAccountDetailsList', ref:state._mainOrder, 
+      listDisplayName: '平台账户明细列表' }, // this is for model namespace and
     }))(PlatformAccountDetailsSearch)
   }
   getPlatformAccountDetailsCreateForm = () => {
    	const {PlatformAccountDetailsCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "platformAccountDetails",
       data: state._mainOrder.platformAccountDetailsList,
       count: state._mainOrder.platformAccountDetailsCount,
       currentPage: state._mainOrder.platformAccountDetailsCurrentPageNumber,
@@ -312,6 +346,7 @@ class MainOrderBizApp extends React.PureComponent {
   	const {PlatformAccountDetailsUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._mainOrder.selectedRows,
+      role: "platformAccountDetails",
       currentUpdateIndex: state._mainOrder.currentUpdateIndex,
       owner: { type: '_mainOrder', id: state._mainOrder.id, listName: 'platformAccountDetailsList', ref:state._mainOrder, listDisplayName: '平台账户明细列表' }, // this is for model namespace and
     }))(PlatformAccountDetailsUpdateForm)
@@ -321,19 +356,25 @@ class MainOrderBizApp extends React.PureComponent {
     const {FundationAccountDetailsSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "平台基金账户明细",
+      role: "fundationAccountDetails",
       data: state._mainOrder.fundationAccountDetailsList,
       count: state._mainOrder.fundationAccountDetailsCount,
       currentPage: state._mainOrder.fundationAccountDetailsCurrentPageNumber,
       searchFormParameters: state._mainOrder.fundationAccountDetailsSearchFormParameters,
       loading: state._mainOrder.loading,
       partialList: state._mainOrder.partialList,
-      owner: { type: '_mainOrder', id: state._mainOrder.id, referenceName: 'relatedMainOrder', listName: 'fundationAccountDetailsList', ref:state._mainOrder, listDisplayName: '平台基金账户明细列表' }, // this is for model namespace and
+      owner: { type: '_mainOrder', id: state._mainOrder.id, 
+      referenceName: 'relatedMainOrder', 
+      listName: 'fundationAccountDetailsList', ref:state._mainOrder, 
+      listDisplayName: '平台基金账户明细列表' }, // this is for model namespace and
     }))(FundationAccountDetailsSearch)
   }
   getFundationAccountDetailsCreateForm = () => {
    	const {FundationAccountDetailsCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "fundationAccountDetails",
       data: state._mainOrder.fundationAccountDetailsList,
       count: state._mainOrder.fundationAccountDetailsCount,
       currentPage: state._mainOrder.fundationAccountDetailsCurrentPageNumber,
@@ -347,6 +388,7 @@ class MainOrderBizApp extends React.PureComponent {
   	const {FundationAccountDetailsUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._mainOrder.selectedRows,
+      role: "fundationAccountDetails",
       currentUpdateIndex: state._mainOrder.currentUpdateIndex,
       owner: { type: '_mainOrder', id: state._mainOrder.id, listName: 'fundationAccountDetailsList', ref:state._mainOrder, listDisplayName: '平台基金账户明细列表' }, // this is for model namespace and
     }))(FundationAccountDetailsUpdateForm)
@@ -356,19 +398,25 @@ class MainOrderBizApp extends React.PureComponent {
     const {StoreAccountDetailsSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "网点账户明细",
+      role: "storeAccountDetails",
       data: state._mainOrder.storeAccountDetailsList,
       count: state._mainOrder.storeAccountDetailsCount,
       currentPage: state._mainOrder.storeAccountDetailsCurrentPageNumber,
       searchFormParameters: state._mainOrder.storeAccountDetailsSearchFormParameters,
       loading: state._mainOrder.loading,
       partialList: state._mainOrder.partialList,
-      owner: { type: '_mainOrder', id: state._mainOrder.id, referenceName: 'relatedMainOrder', listName: 'storeAccountDetailsList', ref:state._mainOrder, listDisplayName: '网点账户明细列表' }, // this is for model namespace and
+      owner: { type: '_mainOrder', id: state._mainOrder.id, 
+      referenceName: 'relatedMainOrder', 
+      listName: 'storeAccountDetailsList', ref:state._mainOrder, 
+      listDisplayName: '网点账户明细列表' }, // this is for model namespace and
     }))(StoreAccountDetailsSearch)
   }
   getStoreAccountDetailsCreateForm = () => {
    	const {StoreAccountDetailsCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "storeAccountDetails",
       data: state._mainOrder.storeAccountDetailsList,
       count: state._mainOrder.storeAccountDetailsCount,
       currentPage: state._mainOrder.storeAccountDetailsCurrentPageNumber,
@@ -382,6 +430,7 @@ class MainOrderBizApp extends React.PureComponent {
   	const {StoreAccountDetailsUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._mainOrder.selectedRows,
+      role: "storeAccountDetails",
       currentUpdateIndex: state._mainOrder.currentUpdateIndex,
       owner: { type: '_mainOrder', id: state._mainOrder.id, listName: 'storeAccountDetailsList', ref:state._mainOrder, listDisplayName: '网点账户明细列表' }, // this is for model namespace and
     }))(StoreAccountDetailsUpdateForm)
@@ -391,19 +440,25 @@ class MainOrderBizApp extends React.PureComponent {
     const {CustomerAccountTransactionSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "客户账户明细",
+      role: "customerAccountTransaction",
       data: state._mainOrder.customerAccountTransactionList,
       count: state._mainOrder.customerAccountTransactionCount,
       currentPage: state._mainOrder.customerAccountTransactionCurrentPageNumber,
       searchFormParameters: state._mainOrder.customerAccountTransactionSearchFormParameters,
       loading: state._mainOrder.loading,
       partialList: state._mainOrder.partialList,
-      owner: { type: '_mainOrder', id: state._mainOrder.id, referenceName: 'relatedMainOrder', listName: 'customerAccountTransactionList', ref:state._mainOrder, listDisplayName: '客户账户明细列表' }, // this is for model namespace and
+      owner: { type: '_mainOrder', id: state._mainOrder.id, 
+      referenceName: 'relatedMainOrder', 
+      listName: 'customerAccountTransactionList', ref:state._mainOrder, 
+      listDisplayName: '客户账户明细列表' }, // this is for model namespace and
     }))(CustomerAccountTransactionSearch)
   }
   getCustomerAccountTransactionCreateForm = () => {
    	const {CustomerAccountTransactionCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "customerAccountTransaction",
       data: state._mainOrder.customerAccountTransactionList,
       count: state._mainOrder.customerAccountTransactionCount,
       currentPage: state._mainOrder.customerAccountTransactionCurrentPageNumber,
@@ -417,6 +472,7 @@ class MainOrderBizApp extends React.PureComponent {
   	const {CustomerAccountTransactionUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._mainOrder.selectedRows,
+      role: "customerAccountTransaction",
       currentUpdateIndex: state._mainOrder.currentUpdateIndex,
       owner: { type: '_mainOrder', id: state._mainOrder.id, listName: 'customerAccountTransactionList', ref:state._mainOrder, listDisplayName: '客户账户明细列表' }, // this is for model namespace and
     }))(CustomerAccountTransactionUpdateForm)
@@ -426,25 +482,31 @@ class MainOrderBizApp extends React.PureComponent {
     const {UndistributedProfitSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "未分割收入",
+      role: "undistributedProfit",
       data: state._mainOrder.undistributedProfitList,
       count: state._mainOrder.undistributedProfitCount,
       currentPage: state._mainOrder.undistributedProfitCurrentPageNumber,
       searchFormParameters: state._mainOrder.undistributedProfitSearchFormParameters,
       loading: state._mainOrder.loading,
       partialList: state._mainOrder.partialList,
-      owner: { type: '_mainOrder', id: state._mainOrder.id, referenceName: 'mainOrder', listName: 'undistributedProfitList', ref:state._mainOrder, listDisplayName: '未分配利润列表' }, // this is for model namespace and
+      owner: { type: '_mainOrder', id: state._mainOrder.id, 
+      referenceName: 'mainOrder', 
+      listName: 'undistributedProfitList', ref:state._mainOrder, 
+      listDisplayName: '未分割收入列表' }, // this is for model namespace and
     }))(UndistributedProfitSearch)
   }
   getUndistributedProfitCreateForm = () => {
    	const {UndistributedProfitCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "undistributedProfit",
       data: state._mainOrder.undistributedProfitList,
       count: state._mainOrder.undistributedProfitCount,
       currentPage: state._mainOrder.undistributedProfitCurrentPageNumber,
       searchFormParameters: state._mainOrder.undistributedProfitSearchFormParameters,
       loading: state._mainOrder.loading,
-      owner: { type: '_mainOrder', id: state._mainOrder.id, referenceName: 'mainOrder', listName: 'undistributedProfitList', ref:state._mainOrder, listDisplayName: '未分配利润列表'}, // this is for model namespace and
+      owner: { type: '_mainOrder', id: state._mainOrder.id, referenceName: 'mainOrder', listName: 'undistributedProfitList', ref:state._mainOrder, listDisplayName: '未分割收入列表'}, // this is for model namespace and
     }))(UndistributedProfitCreateForm)
   }
   
@@ -452,8 +514,9 @@ class MainOrderBizApp extends React.PureComponent {
   	const {UndistributedProfitUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._mainOrder.selectedRows,
+      role: "undistributedProfit",
       currentUpdateIndex: state._mainOrder.currentUpdateIndex,
-      owner: { type: '_mainOrder', id: state._mainOrder.id, listName: 'undistributedProfitList', ref:state._mainOrder, listDisplayName: '未分配利润列表' }, // this is for model namespace and
+      owner: { type: '_mainOrder', id: state._mainOrder.id, listName: 'undistributedProfitList', ref:state._mainOrder, listDisplayName: '未分割收入列表' }, // this is for model namespace and
     }))(UndistributedProfitUpdateForm)
   }
 

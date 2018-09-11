@@ -89,13 +89,13 @@ export default {
     
     
     *gotoCreateForm({ payload }, { put }) {
-      const { id, type } = payload
-      yield put(routerRedux.push(`/genericForm/${id}/list/${type}CreateForm`))
+      const { id, role } = payload
+      yield put(routerRedux.push(`/genericForm/${id}/list/${role}CreateForm`))
     },
     *gotoUpdateForm({ payload }, { put }) {
-      const { id, type, selectedRows, currentUpdateIndex } = payload
-      const state = { id, type, selectedRows, currentUpdateIndex }
-      const location = { pathname: `/genericForm/${id}/list/${type}UpdateForm`, state }
+      const { id, role, selectedRows, currentUpdateIndex } = payload
+      const state = { id, role, selectedRows, currentUpdateIndex }
+      const location = { pathname: `/genericForm/${id}/list/${role}UpdateForm`, state }
       yield put(routerRedux.push(location))
     },
     *goback({ payload }, { put }) {
@@ -103,10 +103,13 @@ export default {
       yield put(routerRedux.push(`/genericForm/${id}/list/${type}List/${listName}`))
     },
 
+
+
+
     *addFormMessage({ payload }, { call, put }) {
       const {GenericFormService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(GenericFormService.addFormMessage, id, parameters)
       if (hasError(data)) {
@@ -115,7 +118,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/genericForm/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/genericForm/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -125,7 +128,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/genericForm/${id}/list/${type}List/表单信息列表`, state: newState }
+      const location = { pathname: `/genericForm/${id}/list/\FormMessageList/表单信息列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateFormMessage({ payload }, { call, put }) {
@@ -149,7 +152,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/genericForm/${id}/list/${type}List/表单信息列表`, state: newPlayload }
+      const location = { pathname: `/genericForm/${id}/list/\FormMessageList/表单信息列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextFormMessageUpdateRow({ payload }, { call, put }) {
@@ -159,7 +162,7 @@ export default {
     },
     *removeFormMessageList({ payload }, { call, put }) {
       const {GenericFormService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(GenericFormService.removeFormMessageList, id, parameters)
       if (hasError(data)) {
@@ -170,19 +173,21 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/genericForm/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `genericForm/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addFormFieldMessage({ payload }, { call, put }) {
       const {GenericFormService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(GenericFormService.addFormFieldMessage, id, parameters)
       if (hasError(data)) {
@@ -191,7 +196,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/genericForm/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/genericForm/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -201,7 +206,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/genericForm/${id}/list/${type}List/表单字段的信息列表`, state: newState }
+      const location = { pathname: `/genericForm/${id}/list/\FormFieldMessageList/表单字段的信息列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateFormFieldMessage({ payload }, { call, put }) {
@@ -225,7 +230,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/genericForm/${id}/list/${type}List/表单字段的信息列表`, state: newPlayload }
+      const location = { pathname: `/genericForm/${id}/list/\FormFieldMessageList/表单字段的信息列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextFormFieldMessageUpdateRow({ payload }, { call, put }) {
@@ -235,7 +240,7 @@ export default {
     },
     *removeFormFieldMessageList({ payload }, { call, put }) {
       const {GenericFormService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(GenericFormService.removeFormFieldMessageList, id, parameters)
       if (hasError(data)) {
@@ -246,19 +251,21 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/genericForm/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `genericForm/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addFormField({ payload }, { call, put }) {
       const {GenericFormService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(GenericFormService.addFormField, id, parameters)
       if (hasError(data)) {
@@ -267,7 +274,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/genericForm/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/genericForm/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -277,7 +284,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/genericForm/${id}/list/${type}List/表单字段列表`, state: newState }
+      const location = { pathname: `/genericForm/${id}/list/\FormFieldList/表单字段列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateFormField({ payload }, { call, put }) {
@@ -301,7 +308,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/genericForm/${id}/list/${type}List/表单字段列表`, state: newPlayload }
+      const location = { pathname: `/genericForm/${id}/list/\FormFieldList/表单字段列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextFormFieldUpdateRow({ payload }, { call, put }) {
@@ -311,7 +318,7 @@ export default {
     },
     *removeFormFieldList({ payload }, { call, put }) {
       const {GenericFormService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(GenericFormService.removeFormFieldList, id, parameters)
       if (hasError(data)) {
@@ -322,19 +329,21 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/genericForm/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `genericForm/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
+
+
+
 
     *addFormAction({ payload }, { call, put }) {
       const {GenericFormService} = GlobalComponents;
 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(GenericFormService.addFormAction, id, parameters)
       if (hasError(data)) {
@@ -343,7 +352,7 @@ export default {
       }
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
-      // yield put(routerRedux.push(`/genericForm/${id}/list/${type}CreateForm'))
+      // yield put(routerRedux.push(`/genericForm/${id}/list/${role}CreateForm'))
       notification.success({
         message: '执行成功',
         description: '执行成功',
@@ -353,7 +362,7 @@ export default {
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/genericForm/${id}/list/${type}List/表单动作列表`, state: newState }
+      const location = { pathname: `/genericForm/${id}/list/\FormActionList/表单动作列表`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateFormAction({ payload }, { call, put }) {
@@ -377,7 +386,7 @@ export default {
       if (continueNext) {
         return
       }
-      const location = { pathname: `/genericForm/${id}/list/${type}List/表单动作列表`, state: newPlayload }
+      const location = { pathname: `/genericForm/${id}/list/\FormActionList/表单动作列表`, state: newPlayload }
       yield put(routerRedux.push(location))
     },
     *gotoNextFormActionUpdateRow({ payload }, { call, put }) {
@@ -387,7 +396,7 @@ export default {
     },
     *removeFormActionList({ payload }, { call, put }) {
       const {GenericFormService} = GlobalComponents; 
-      const { id, type, parameters, continueNext } = payload
+      const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
       const data = yield call(GenericFormService.removeFormActionList, id, parameters)
       if (hasError(data)) {
@@ -398,13 +407,12 @@ export default {
 
       yield put({ type: 'updateState', payload: newPlayload })
         
-      // yield put(routerRedux.push(`/genericForm/${id}/list/${type}CreateForm`))
+     
       notification.success({
         message: '执行成功',
         description: '执行成功',
       })
-      // const location = { pathname: `genericForm/${id}/list/${type}List`, state: data}
-      // yield put(routerRedux.push(location))
+
     },
 
   },

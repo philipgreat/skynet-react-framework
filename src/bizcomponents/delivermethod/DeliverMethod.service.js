@@ -37,14 +37,16 @@ const transferToAnotherBookSharingPlatform = (id, parameters) => {
 
 
 
+
 const addBookCopySharingApplication = (targetObjectId, parameters) => {
-  const url = `${PREFIX}deliverMethodManager/addBookCopySharingApplication/deliverMethodId/bookCopyQuantity/destinationStoreId/contactAddress/contactName/contactMobile/applicationStatusId/customerId/employeeId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const url = `${PREFIX}deliverMethodManager/addBookCopySharingApplication/deliverMethodId/contactName/contactMobile/applicationStatusId/contactAddress/bookCopyQuantity/customerId/employeeId/destinationStoreId/tokensExpr/`
+  const deliverMethodId = targetObjectId
+  const requestParameters = { ...parameters, deliverMethodId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateBookCopySharingApplication = (targetObjectId, parameters) => {
-  const url = `${PREFIX}deliverMethodManager/updateBookCopySharingApplicationProperties/deliverMethodId/id/bookCopyQuantity/contactAddress/contactName/contactMobile/tokensExpr/`
+  const url = `${PREFIX}deliverMethodManager/updateBookCopySharingApplicationProperties/deliverMethodId/id/contactName/contactMobile/contactAddress/bookCopyQuantity/tokensExpr/`
   const deliverMethodId = targetObjectId
   const requestParameters = { ...parameters, deliverMethodId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})

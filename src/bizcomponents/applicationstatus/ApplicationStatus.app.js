@@ -146,19 +146,25 @@ class ApplicationStatusBizApp extends React.PureComponent {
     const {BookCopySharingApplicationSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "图书共享申请",
+      role: "bookCopySharingApplication",
       data: state._applicationStatus.bookCopySharingApplicationList,
       count: state._applicationStatus.bookCopySharingApplicationCount,
       currentPage: state._applicationStatus.bookCopySharingApplicationCurrentPageNumber,
       searchFormParameters: state._applicationStatus.bookCopySharingApplicationSearchFormParameters,
       loading: state._applicationStatus.loading,
       partialList: state._applicationStatus.partialList,
-      owner: { type: '_applicationStatus', id: state._applicationStatus.id, referenceName: 'applicationStatus', listName: 'bookCopySharingApplicationList', ref:state._applicationStatus, listDisplayName: '图书共享申请列表' }, // this is for model namespace and
+      owner: { type: '_applicationStatus', id: state._applicationStatus.id, 
+      referenceName: 'applicationStatus', 
+      listName: 'bookCopySharingApplicationList', ref:state._applicationStatus, 
+      listDisplayName: '图书共享申请列表' }, // this is for model namespace and
     }))(BookCopySharingApplicationSearch)
   }
   getBookCopySharingApplicationCreateForm = () => {
    	const {BookCopySharingApplicationCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookCopySharingApplication",
       data: state._applicationStatus.bookCopySharingApplicationList,
       count: state._applicationStatus.bookCopySharingApplicationCount,
       currentPage: state._applicationStatus.bookCopySharingApplicationCurrentPageNumber,
@@ -172,6 +178,7 @@ class ApplicationStatusBizApp extends React.PureComponent {
   	const {BookCopySharingApplicationUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._applicationStatus.selectedRows,
+      role: "bookCopySharingApplication",
       currentUpdateIndex: state._applicationStatus.currentUpdateIndex,
       owner: { type: '_applicationStatus', id: state._applicationStatus.id, listName: 'bookCopySharingApplicationList', ref:state._applicationStatus, listDisplayName: '图书共享申请列表' }, // this is for model namespace and
     }))(BookCopySharingApplicationUpdateForm)

@@ -37,9 +37,11 @@ const transferToAnotherBookSharingPlatform = (id, parameters) => {
 
 
 
+
 const addBookCopyOperationRecord = (targetObjectId, parameters) => {
   const url = `${PREFIX}bookCopyOperateTypeManager/addBookCopyOperationRecord/bookCopyOperateTypeId/bookName/bookCopyId/operateStoreId/operationEmployeeId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const bookCopyOperateTypeId = targetObjectId
+  const requestParameters = { ...parameters, bookCopyOperateTypeId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 

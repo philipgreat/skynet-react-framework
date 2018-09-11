@@ -146,19 +146,25 @@ class BorrowingHistoryBizApp extends React.PureComponent {
     const {BorrowingExpiredSkuSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "借书超期费",
+      role: "borrowingExpiredSku",
       data: state._borrowingHistory.borrowingExpiredSkuList,
       count: state._borrowingHistory.borrowingExpiredSkuCount,
       currentPage: state._borrowingHistory.borrowingExpiredSkuCurrentPageNumber,
       searchFormParameters: state._borrowingHistory.borrowingExpiredSkuSearchFormParameters,
       loading: state._borrowingHistory.loading,
       partialList: state._borrowingHistory.partialList,
-      owner: { type: '_borrowingHistory', id: state._borrowingHistory.id, referenceName: 'borrowingHistory', listName: 'borrowingExpiredSkuList', ref:state._borrowingHistory, listDisplayName: '借书超期费列表' }, // this is for model namespace and
+      owner: { type: '_borrowingHistory', id: state._borrowingHistory.id, 
+      referenceName: 'borrowingHistory', 
+      listName: 'borrowingExpiredSkuList', ref:state._borrowingHistory, 
+      listDisplayName: '借书超期费列表' }, // this is for model namespace and
     }))(BorrowingExpiredSkuSearch)
   }
   getBorrowingExpiredSkuCreateForm = () => {
    	const {BorrowingExpiredSkuCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "borrowingExpiredSku",
       data: state._borrowingHistory.borrowingExpiredSkuList,
       count: state._borrowingHistory.borrowingExpiredSkuCount,
       currentPage: state._borrowingHistory.borrowingExpiredSkuCurrentPageNumber,
@@ -172,6 +178,7 @@ class BorrowingHistoryBizApp extends React.PureComponent {
   	const {BorrowingExpiredSkuUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._borrowingHistory.selectedRows,
+      role: "borrowingExpiredSku",
       currentUpdateIndex: state._borrowingHistory.currentUpdateIndex,
       owner: { type: '_borrowingHistory', id: state._borrowingHistory.id, listName: 'borrowingExpiredSkuList', ref:state._borrowingHistory, listDisplayName: '借书超期费列表' }, // this is for model namespace and
     }))(BorrowingExpiredSkuUpdateForm)

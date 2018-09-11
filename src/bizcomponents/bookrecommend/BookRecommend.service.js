@@ -37,9 +37,11 @@ const transferToAnotherBookPlaza = (id, parameters) => {
 
 
 
+
 const addBook = (targetObjectId, parameters) => {
   const url = `${PREFIX}bookRecommendManager/addBook/bookRecommendId/bookName/bookCover/bookAuthor/bookPublisher/bookPubdate/listPrice/bookIsbn13/bookIsbn10/bookPlazaId/platformId/bookSummary/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const bookRecommendId = targetObjectId
+  const requestParameters = { ...parameters, bookRecommendId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 

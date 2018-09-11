@@ -248,8 +248,11 @@ const internalSubListsOf = (cardsData) =>{
            {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="gear"  />&nbsp;管理</Link></p>
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.type}CreateForm`}><FontAwesome name="plus"  />&nbsp;新增</Link></p>              
+              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
+              
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              
+              </p>         
           </Card> </Badge>
             </Col>))}
           </Row>)
@@ -324,10 +327,10 @@ class CampaignDashboard extends Component {
     const { id,displayName, storeSlideCount, campaignRegisterHistoryCount, campaignReviewCount, campaignLikeCount } = this.props.campaign
     const cardsData = {cardsName:"活动",cardsFor: "campaign",cardsSource: this.props.campaign,
   		subItems: [
-{name: 'storeSlideList', displayName:'网点海报',type:'storeSlide',count:storeSlideCount},
-{name: 'campaignRegisterHistoryList', displayName:'活动报名记录',type:'campaignRegisterHistory',count:campaignRegisterHistoryCount},
-{name: 'campaignReviewList', displayName:'活动评论',type:'campaignReview',count:campaignReviewCount},
-{name: 'campaignLikeList', displayName:'活动点赞',type:'campaignLike',count:campaignLikeCount},
+{name: 'storeSlideList', displayName:'网点海报',type:'storeSlide',count:storeSlideCount,addFunction: true, role: 'storeSlide'},
+{name: 'campaignRegisterHistoryList', displayName:'活动报名记录',type:'campaignRegisterHistory',count:campaignRegisterHistoryCount,addFunction: true, role: 'campaignRegisterHistory'},
+{name: 'campaignReviewList', displayName:'活动评论',type:'campaignReview',count:campaignReviewCount,addFunction: true, role: 'campaignReview'},
+{name: 'campaignLikeList', displayName:'活动点赞',type:'campaignLike',count:campaignLikeCount,addFunction: true, role: 'campaignLike'},
     
       	],
   	};

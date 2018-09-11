@@ -146,25 +146,31 @@ class ProfitDistributeStateBizApp extends React.PureComponent {
     const {UndistributedProfitSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "未分割收入",
+      role: "undistributedProfit",
       data: state._profitDistributeState.undistributedProfitList,
       count: state._profitDistributeState.undistributedProfitCount,
       currentPage: state._profitDistributeState.undistributedProfitCurrentPageNumber,
       searchFormParameters: state._profitDistributeState.undistributedProfitSearchFormParameters,
       loading: state._profitDistributeState.loading,
       partialList: state._profitDistributeState.partialList,
-      owner: { type: '_profitDistributeState', id: state._profitDistributeState.id, referenceName: 'profitDistributeState', listName: 'undistributedProfitList', ref:state._profitDistributeState, listDisplayName: '未分配利润列表' }, // this is for model namespace and
+      owner: { type: '_profitDistributeState', id: state._profitDistributeState.id, 
+      referenceName: 'profitDistributeState', 
+      listName: 'undistributedProfitList', ref:state._profitDistributeState, 
+      listDisplayName: '未分割收入列表' }, // this is for model namespace and
     }))(UndistributedProfitSearch)
   }
   getUndistributedProfitCreateForm = () => {
    	const {UndistributedProfitCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "undistributedProfit",
       data: state._profitDistributeState.undistributedProfitList,
       count: state._profitDistributeState.undistributedProfitCount,
       currentPage: state._profitDistributeState.undistributedProfitCurrentPageNumber,
       searchFormParameters: state._profitDistributeState.undistributedProfitSearchFormParameters,
       loading: state._profitDistributeState.loading,
-      owner: { type: '_profitDistributeState', id: state._profitDistributeState.id, referenceName: 'profitDistributeState', listName: 'undistributedProfitList', ref:state._profitDistributeState, listDisplayName: '未分配利润列表'}, // this is for model namespace and
+      owner: { type: '_profitDistributeState', id: state._profitDistributeState.id, referenceName: 'profitDistributeState', listName: 'undistributedProfitList', ref:state._profitDistributeState, listDisplayName: '未分割收入列表'}, // this is for model namespace and
     }))(UndistributedProfitCreateForm)
   }
   
@@ -172,8 +178,9 @@ class ProfitDistributeStateBizApp extends React.PureComponent {
   	const {UndistributedProfitUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._profitDistributeState.selectedRows,
+      role: "undistributedProfit",
       currentUpdateIndex: state._profitDistributeState.currentUpdateIndex,
-      owner: { type: '_profitDistributeState', id: state._profitDistributeState.id, listName: 'undistributedProfitList', ref:state._profitDistributeState, listDisplayName: '未分配利润列表' }, // this is for model namespace and
+      owner: { type: '_profitDistributeState', id: state._profitDistributeState.id, listName: 'undistributedProfitList', ref:state._profitDistributeState, listDisplayName: '未分割收入列表' }, // this is for model namespace and
     }))(UndistributedProfitUpdateForm)
   }
 

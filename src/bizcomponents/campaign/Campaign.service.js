@@ -85,9 +85,11 @@ const transferToAnotherCampaignPlaza = (id, parameters) => {
 
 
 
+
 const addStoreSlide = (targetObjectId, parameters) => {
   const url = `${PREFIX}campaignManager/addStoreSlide/campaignId/tips/bannerImage/wxaLinkUrl/antdLinkUrl/slideTypeId/bookId/memberServiceProductId/storeId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const campaignId = targetObjectId
+  const requestParameters = { ...parameters, campaignId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -105,9 +107,11 @@ const removeStoreSlideList = (targetObjectId, parameters) => {
 }
 
 
+
 const addCampaignRegisterHistory = (targetObjectId, parameters) => {
   const url = `${PREFIX}campaignManager/addCampaignRegisterHistory/campaignId/cancelled/registerMemberId/registerDatetime/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const campaignId = targetObjectId
+  const requestParameters = { ...parameters, campaignId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -125,9 +129,11 @@ const removeCampaignRegisterHistoryList = (targetObjectId, parameters) => {
 }
 
 
+
 const addCampaignReview = (targetObjectId, parameters) => {
   const url = `${PREFIX}campaignManager/addCampaignReview/campaignId/reviewContent/reviewerId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const campaignId = targetObjectId
+  const requestParameters = { ...parameters, campaignId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
@@ -145,9 +151,11 @@ const removeCampaignReviewList = (targetObjectId, parameters) => {
 }
 
 
+
 const addCampaignLike = (targetObjectId, parameters) => {
   const url = `${PREFIX}campaignManager/addCampaignLike/campaignId/replierId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const campaignId = targetObjectId
+  const requestParameters = { ...parameters, campaignId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 

@@ -86,7 +86,7 @@ export const getURLPrefix = () => {
     return `http://${url.hostname}:8080/naf/`;
   }
   if (url.hostname === 'localhost') {
-    return `http://${url.hostname}:8080/cis/`
+    return `http://${url.hostname}:8080/${SYSTEM_SHORT_NAME}/`
   }
   if (url.hostname === '127.0.0.1') {
     return `https://xm.jl51.com.cn/cis/`
@@ -116,8 +116,9 @@ const formatPostData = (value) => {
     if(value._isAMomentObject){
         return moment(value).format('YYYY-MM-DDTHH:mm:ss');
     }
-    return value
-
+    
+  
+  return value
 }
 export const joinPostParameters = (parameters) => {
     const obj = parameters // {value1: 'prop1', value2: 'prop2', value3: 'prop3'}

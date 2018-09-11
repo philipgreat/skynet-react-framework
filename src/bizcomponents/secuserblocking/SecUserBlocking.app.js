@@ -146,19 +146,25 @@ class SecUserBlockingBizApp extends React.PureComponent {
     const {SecUserSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "SEC的用户",
+      role: "secUser",
       data: state._secUserBlocking.secUserList,
       count: state._secUserBlocking.secUserCount,
       currentPage: state._secUserBlocking.secUserCurrentPageNumber,
       searchFormParameters: state._secUserBlocking.secUserSearchFormParameters,
       loading: state._secUserBlocking.loading,
       partialList: state._secUserBlocking.partialList,
-      owner: { type: '_secUserBlocking', id: state._secUserBlocking.id, referenceName: 'blocking', listName: 'secUserList', ref:state._secUserBlocking, listDisplayName: 'SEC的用户列表' }, // this is for model namespace and
+      owner: { type: '_secUserBlocking', id: state._secUserBlocking.id, 
+      referenceName: 'blocking', 
+      listName: 'secUserList', ref:state._secUserBlocking, 
+      listDisplayName: 'SEC的用户列表' }, // this is for model namespace and
     }))(SecUserSearch)
   }
   getSecUserCreateForm = () => {
    	const {SecUserCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "secUser",
       data: state._secUserBlocking.secUserList,
       count: state._secUserBlocking.secUserCount,
       currentPage: state._secUserBlocking.secUserCurrentPageNumber,
@@ -172,6 +178,7 @@ class SecUserBlockingBizApp extends React.PureComponent {
   	const {SecUserUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._secUserBlocking.selectedRows,
+      role: "secUser",
       currentUpdateIndex: state._secUserBlocking.currentUpdateIndex,
       owner: { type: '_secUserBlocking', id: state._secUserBlocking.id, listName: 'secUserList', ref:state._secUserBlocking, listDisplayName: 'SEC的用户列表' }, // this is for model namespace and
     }))(SecUserUpdateForm)

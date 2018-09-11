@@ -23,46 +23,26 @@ const testValues = {
   myBookReviewTitle: '札记记录',
   myOrderTitle: '订单记录',
   platformId: 'BSP000001',
-  memberServiceAgreement: '<div>\
-	<h1>一级会员服务</h1>\
-	<ul>\
-		<li>可以借阅图书</li>\
-		<li>可以购买</li>\
-		<li>可以报名参加活动</li>\
-	</ul>\
-</div>',
-  bookSharingAgreement: '<div>\
-	<h1>一级会员服务</h1>\
-	<ul>\
-		<li>可以借阅图书</li>\
-		<li>可以购买</li>\
-		<li>可以报名参加活动</li>\
-	</ul>\
-</div>',
-  accountRechargeAgreement: '<div>\
-	<h1>一级会员服务</h1>\
-	<ul>\
-		<li>可以借阅图书</li>\
-		<li>可以购买</li>\
-		<li>可以报名参加活动</li>\
-	</ul>\
-</div>',
-  messageInStoreListPage: '<div>\
-	<h1>一级会员服务</h1>\
-	<ul>\
-		<li>可以借阅图书</li>\
-		<li>可以购买</li>\
-		<li>可以报名参加活动</li>\
-	</ul>\
-</div>',
-  feedbackContactInfo: '<div>\
-	<h1>一级会员服务</h1>\
-	<ul>\
-		<li>可以借阅图书</li>\
-		<li>可以购买</li>\
-		<li>可以报名参加活动</li>\
-	</ul>\
-</div>',
+  memberServiceAgreement: '一段图片的描述，说明了该场景的实际效果。\
+\
+同时说明了一些可能出现的问题。\
+',
+  bookSharingAgreement: '一段图片的描述，说明了该场景的实际效果。\
+\
+同时说明了一些可能出现的问题。\
+',
+  accountRechargeAgreement: '一段图片的描述，说明了该场景的实际效果。\
+\
+同时说明了一些可能出现的问题。\
+',
+  messageInStoreListPage: '一段图片的描述，说明了该场景的实际效果。\
+\
+同时说明了一些可能出现的问题。\
+',
+  feedbackContactInfo: '一段图片的描述，说明了该场景的实际效果。\
+\
+同时说明了一些可能出现的问题。\
+',
 }
 */
 const imageURLPrefix = '//localhost:2090'
@@ -138,14 +118,22 @@ class PlatformConfigurationCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = PlatformConfigurationBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -157,9 +145,10 @@ class PlatformConfigurationCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addPlatformConfiguration`,
-          payload: { id: owner.id, type: 'platformConfiguration', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }
@@ -398,15 +387,15 @@ class PlatformConfigurationCreateForm extends Component {
           </Form>  
         </Card>
 
-        <Card title="存储列表页中的消息" className={styles.card} bordered={false}>
+        <Card title="网点列表页提示信息" className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
               <Col lg={24} md={24} sm={24}>
                 <Form.Item>
                   {getFieldDecorator('messageInStoreListPage', {
-                    rules: [{ required: true, message: '请输入存储列表页中的消息' }],
+                    rules: [{ required: true, message: '请输入网点列表页提示信息' }],
                   })(
-                    <TextArea rows={4} placeholder="请输入请输入存储列表页中的消息" />
+                    <TextArea rows={4} placeholder="请输入请输入网点列表页提示信息" />
                   )}
                 </Form.Item>
               </Col>

@@ -17,21 +17,21 @@ const testValues = {};
 /*
 const testValues = {
   nickName: '张俊宝',
-  mobileNumber: '13312345678',
+  mobileNumber: 'A13312345678',
   realName: '张世博',
   sexuality: '男',
-  memberServiceStartDate: '2016-11-11',
-  memberServiceExpireDate: '2017-02-25',
-  accountBalance: '92.39',
+  memberServiceStartDate: '2017-09-29',
+  memberServiceExpireDate: '2017-08-17',
+  accountBalance: '85.79',
   miniProgramOpenid: 'wx012345',
   serviceAccountOpenid: 'wx012345',
   wechatUnionId: 'wx012345',
-  longitude: '105.16830899895795',
-  latitude: '31.625624853745812',
-  birthday: '2017-05-17',
+  longitude: '103.25323524085756',
+  latitude: '32.20627069457508',
+  birthday: '2017-07-13',
   identityCardNumber: '510922876512348875',
   familyAddress: '四川省成都市高新区文家场兴业街19-21号',
-  memberServiceDailyPay: '10.68',
+  memberServiceDailyPay: '9.90',
   memberServiceId: 'MSP000001',
   favouriteStoreId: 'S000001',
   platformId: 'BSP000001',
@@ -161,14 +161,22 @@ class CustomerCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = CustomerBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -180,9 +188,10 @@ class CustomerCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addCustomer`,
-          payload: { id: owner.id, type: 'customer', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }

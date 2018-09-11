@@ -2,24 +2,80 @@
 import ImagePreview from '../../components/ImagePreview'
 import { Link } from 'dva/router'
 import moment from 'moment'
+
+
+
+
 const menuData = {menuName:"图书盘点结果", menuFor: "bookTakeStockResult",
   		subItems: [
   
   		],
 }
 
+const renderTextCell=(value, record)=>{
 
+	if(!value){
+		return '';
+	}
+	if(value==null){
+		return '';
+	}
+	if(value.length>15){
+		return value.substring(0,15)+"...("+value.length+"字)"
+	}
+	return value
+	
+}
+
+const renderIdentifier=(value, record, targtObjectType)=>{
+
+	return (<Link to={`/${targtObjectType}/${value}/dashboard`}>{value}</Link>)
+	
+}
+
+const renderDateCell=(value, record)=>{
+	return moment(value).format('YYYY-MM-DD');
+}
+const renderDateTimeCell=(value, record)=>{
+	return moment(value).format('YYYY-MM-DD HH:mm');	
+}
+
+const renderImageCell=(value, record, title)=>{
+	return (<ImagePreview imageTitle={title} imageLocation={value} />)	
+}
+
+const renderMoneyCell=(value, record)=>{
+	if(!value){
+		return '空'
+	}
+	if(value == null){
+		return '空'
+	}
+	return (`￥${value.toFixed(2)}`)
+}
+
+const renderBooleanCell=(value, record)=>{
+
+	return  (value? '是' : '否')
+
+}
+
+const renderReferenceCell=(value, record)=>{
+
+	return (value ? value.displayName : '暂无') 
+
+}
 
 const displayColumns = [
-  { title: 'ID', debugtype: 'string', dataIndex: 'id', width: '20' },
-  { title: '书名', debugtype: 'string', dataIndex: 'bookName', width: '15' },
-  { title: '书籍副本', dataIndex: 'bookCopy', render: (text, record) => (record.bookCopy ? record.bookCopy.displayName : '暂无') },
-  { title: '图书盘点状态', dataIndex: 'bookTakeStockStatus', render: (text, record) => (record.bookTakeStockStatus ? record.bookTakeStockStatus.displayName : '暂无') },
-  { title: '图书盘点执行时间', dataIndex: 'bookCopyCheckDatetime', render: (text, record) => moment(record.bookCopyCheckDatetime).format('YYYY-MM-DD HH:mm:ss') },
-  { title: '员工', dataIndex: 'employee', render: (text, record) => (record.employee ? record.employee.displayName : '暂无') },
-  { title: '盘点结果', dataIndex: 'takeStoreResults', render: (text, record) => (record.takeStoreResults ? record.takeStoreResults.displayName : '暂无') },
-  { title: '盘点日期时间', dataIndex: 'takeStockDatetime', render: (text, record) => moment(record.takeStockDatetime).format('YYYY-MM-DD HH:mm:ss') },
-  { title: '图书盘点计划', dataIndex: 'bookTakeStockPlan', render: (text, record) => (record.bookTakeStockPlan ? record.bookTakeStockPlan.displayName : '暂无') },
+  { title: 'ID', debugtype: 'string', dataIndex: 'id', width: '20',render: (text, record)=>renderTextCell(text,record) },
+  { title: '书名', debugtype: 'string', dataIndex: 'bookName', width: '15',render: (text, record)=>renderTextCell(text,record) },
+  { title: '书籍副本', dataIndex: 'bookCopy', render: (text, record) => renderReferenceCell(text, record)},
+  { title: '图书盘点状态', dataIndex: 'bookTakeStockStatus', render: (text, record) => renderReferenceCell(text, record)},
+  { title: '图书盘点执行时间', dataIndex: 'bookCopyCheckDatetime', render: (text, record) =>renderDateTimeCell(text,record)  },
+  { title: '员工', dataIndex: 'employee', render: (text, record) => renderReferenceCell(text, record)},
+  { title: '盘点结果', dataIndex: 'takeStoreResults', render: (text, record) => renderReferenceCell(text, record)},
+  { title: '盘点日期时间', dataIndex: 'takeStockDatetime', render: (text, record) =>renderDateTimeCell(text,record)  },
+  { title: '图书盘点计划', dataIndex: 'bookTakeStockPlan', render: (text, record) => renderReferenceCell(text, record)},
 
 ]
 

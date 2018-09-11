@@ -37,9 +37,11 @@ const transferToAnotherBookSharingPlatform = (id, parameters) => {
 
 
 
+
 const addLossAssessmentRecord = (targetObjectId, parameters) => {
   const url = `${PREFIX}lossDiscountManager/addLossAssessmentRecord/lossDiscountId/bookCopyId/recordStoreId/lossComment/lossImage/bookCopyEvaluationPrice/recordPersonId/damagePersonId/tokensExpr/`
-  const requestParameters = { ...parameters, tokensExpr: 'none' }
+  const lossDiscountId = targetObjectId
+  const requestParameters = { ...parameters, lossDiscountId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 

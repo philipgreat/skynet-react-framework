@@ -146,19 +146,25 @@ class MemberRightsDisplayBizApp extends React.PureComponent {
     const {MemberRightsDisplayItemSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "会员权利显示项",
+      role: "memberRightsDisplayItem",
       data: state._memberRightsDisplay.memberRightsDisplayItemList,
       count: state._memberRightsDisplay.memberRightsDisplayItemCount,
       currentPage: state._memberRightsDisplay.memberRightsDisplayItemCurrentPageNumber,
       searchFormParameters: state._memberRightsDisplay.memberRightsDisplayItemSearchFormParameters,
       loading: state._memberRightsDisplay.loading,
       partialList: state._memberRightsDisplay.partialList,
-      owner: { type: '_memberRightsDisplay', id: state._memberRightsDisplay.id, referenceName: 'memberRights', listName: 'memberRightsDisplayItemList', ref:state._memberRightsDisplay, listDisplayName: '会员权利显示项列表' }, // this is for model namespace and
+      owner: { type: '_memberRightsDisplay', id: state._memberRightsDisplay.id, 
+      referenceName: 'memberRights', 
+      listName: 'memberRightsDisplayItemList', ref:state._memberRightsDisplay, 
+      listDisplayName: '会员权利显示项列表' }, // this is for model namespace and
     }))(MemberRightsDisplayItemSearch)
   }
   getMemberRightsDisplayItemCreateForm = () => {
    	const {MemberRightsDisplayItemCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "memberRightsDisplayItem",
       data: state._memberRightsDisplay.memberRightsDisplayItemList,
       count: state._memberRightsDisplay.memberRightsDisplayItemCount,
       currentPage: state._memberRightsDisplay.memberRightsDisplayItemCurrentPageNumber,
@@ -172,6 +178,7 @@ class MemberRightsDisplayBizApp extends React.PureComponent {
   	const {MemberRightsDisplayItemUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._memberRightsDisplay.selectedRows,
+      role: "memberRightsDisplayItem",
       currentUpdateIndex: state._memberRightsDisplay.currentUpdateIndex,
       owner: { type: '_memberRightsDisplay', id: state._memberRightsDisplay.id, listName: 'memberRightsDisplayItemList', ref:state._memberRightsDisplay, listDisplayName: '会员权利显示项列表' }, // this is for model namespace and
     }))(MemberRightsDisplayItemUpdateForm)

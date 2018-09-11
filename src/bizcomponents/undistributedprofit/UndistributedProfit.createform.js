@@ -17,10 +17,10 @@ const testValues = {};
 /*
 const testValues = {
   summary: '6个月会员费',
-  chargeStartDate: '2016-07-29',
-  chargeEndDate: '2017-02-12',
-  amount: '80.82',
-  balance: '8.20',
+  chargeStartDate: '2017-12-10',
+  chargeEndDate: '2018-04-03',
+  amount: '89.08',
+  balance: '9.73',
   profitTypeId: 'PT000001',
   profitDistributeStateId: 'PDS000001',
   mainOrderId: 'MO000001',
@@ -201,14 +201,22 @@ class UndistributedProfitCreateForm extends Component {
     this.setState({ convertedImagesValues })
     console.log('/get file list from change in update change:', source)
   }
-
+	
+  
 
   render() {
-    const { form, dispatch, submitting } = this.props
+    const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = UndistributedProfitBase
+    
+    const capFirstChar = (value)=>{
+    	//const upper = value.replace(/^\w/, c => c.toUpperCase());
+  		const upper = value.charAt(0).toUpperCase() + value.substr(1);
+  		return upper
+  	}
+    
     const submitCreateForm = () => {
       validateFieldsAndScroll((error, values) => {
         if (error) {
@@ -220,9 +228,10 @@ class UndistributedProfitCreateForm extends Component {
         const imagesValues = mapBackToImageValues(convertedImagesValues)
 
         const parameters = { ...values, ...imagesValues }
+        const cappedRoleName = capFirstChar(role)
         dispatch({
-          type: `${owner.type}/addUndistributedProfit`,
-          payload: { id: owner.id, type: 'undistributedProfit', parameters },
+          type: `${owner.type}/add${cappedRoleName}`,
+          payload: { id: owner.id, role: role, parameters },
         })
       })
     }
@@ -248,7 +257,7 @@ class UndistributedProfitCreateForm extends Component {
       const { owner } = this.props
       dispatch({
         type: `${owner.type}/goback`,
-        payload: { id: owner.id, type: 'undistributedProfit',listName:'未分配利润列表' },
+        payload: { id: owner.id, type: 'undistributedProfit',listName:'未分割收入列表' },
       })
     }
     const errors = getFieldsError()
@@ -368,8 +377,8 @@ class UndistributedProfitCreateForm extends Component {
     }
     return (
       <PageHeaderLayout
-        title="新建一个未分配利润"
-        content="新建一个未分配利润"
+        title="新建一个未分割收入"
+        content="新建一个未分割收入"
         wrapperClassName={styles.advancedForm}
       >
         <Card title="基础信息" className={styles.card} bordered={false}>

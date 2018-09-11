@@ -244,8 +244,11 @@ const internalSubListsOf = (cardsData) =>{
            {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="gear"  />&nbsp;管理</Link></p>
-              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.type}CreateForm`}><FontAwesome name="plus"  />&nbsp;新增</Link></p>              
+              <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
+              
+              {item.addFunction&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+              
+              </p>         
           </Card> </Badge>
             </Col>))}
           </Row>)
@@ -256,30 +259,24 @@ const internalSummaryOf = (bookCopySharingApplication,targetComponent) =>{
 	return (
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="ID">{bookCopySharingApplication.id}</Description> 
-<Description term="共享数量">{bookCopySharingApplication.bookCopyQuantity}</Description> 
+<Description term="联系人姓名">{bookCopySharingApplication.contactName}</Description> 
+<Description term="联系人手机">{bookCopySharingApplication.contactMobile}</Description> 
+<Description term="申请状态">{bookCopySharingApplication.applicationStatus==null?"未分配":bookCopySharingApplication.applicationStatus.displayName}
+ <Icon type="swap" onClick={()=>
+  showTransferModel(targetComponent,"申请状态","applicationStatus","requestCandidateApplicationStatus",
+	      "transferToAnotherApplicationStatus","anotherApplicationStatusId",bookCopySharingApplication.applicationStatus?bookCopySharingApplication.applicationStatus.id:"")} 
+  style={{fontSize: 20,color:"red"}} />
+</Description>
 <Description term="共享方式">{bookCopySharingApplication.deliverMethod==null?"未分配":bookCopySharingApplication.deliverMethod.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"共享方式","deliverMethod","requestCandidateDeliverMethod",
 	      "transferToAnotherDeliverMethod","anotherDeliverMethodId",bookCopySharingApplication.deliverMethod?bookCopySharingApplication.deliverMethod.id:"")} 
   style={{fontSize: 20,color:"red"}} />
 </Description>
-<Description term="目标网点">{bookCopySharingApplication.destinationStore==null?"未分配":bookCopySharingApplication.destinationStore.displayName}
- <Icon type="swap" onClick={()=>
-  showTransferModel(targetComponent,"目标网点","store","requestCandidateDestinationStore",
-	      "transferToAnotherDestinationStore","anotherDestinationStoreId",bookCopySharingApplication.destinationStore?bookCopySharingApplication.destinationStore.id:"")} 
-  style={{fontSize: 20,color:"red"}} />
-</Description>
-<Description term="联系地址">{bookCopySharingApplication.contactAddress}</Description> 
-<Description term="联系人姓名">{bookCopySharingApplication.contactName}</Description> 
-<Description term="联系人手机">{bookCopySharingApplication.contactMobile}</Description> 
-<Description term="应用程序状态">{bookCopySharingApplication.applicationStatus==null?"未分配":bookCopySharingApplication.applicationStatus.displayName}
- <Icon type="swap" onClick={()=>
-  showTransferModel(targetComponent,"应用程序状态","applicationStatus","requestCandidateApplicationStatus",
-	      "transferToAnotherApplicationStatus","anotherApplicationStatusId",bookCopySharingApplication.applicationStatus?bookCopySharingApplication.applicationStatus.id:"")} 
-  style={{fontSize: 20,color:"red"}} />
-</Description>
-<Description term="提交日期">{ moment(bookCopySharingApplication.submittedDate).format('YYYY-MM-DD')}</Description> 
 <Description term="处理日期">{ moment(bookCopySharingApplication.processedDate).format('YYYY-MM-DD')}</Description> 
+<Description term="联系地址">{bookCopySharingApplication.contactAddress}</Description> 
+<Description term="共享数量">{bookCopySharingApplication.bookCopyQuantity}</Description> 
+<Description term="提交日期">{ moment(bookCopySharingApplication.submittedDate).format('YYYY-MM-DD')}</Description> 
 <Description term="用户">{bookCopySharingApplication.customer==null?"未分配":bookCopySharingApplication.customer.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"用户","customer","requestCandidateCustomer",
@@ -290,6 +287,12 @@ const internalSummaryOf = (bookCopySharingApplication,targetComponent) =>{
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"员工","employee","requestCandidateEmployee",
 	      "transferToAnotherEmployee","anotherEmployeeId",bookCopySharingApplication.employee?bookCopySharingApplication.employee.id:"")} 
+  style={{fontSize: 20,color:"red"}} />
+</Description>
+<Description term="目标网点">{bookCopySharingApplication.destinationStore==null?"未分配":bookCopySharingApplication.destinationStore.displayName}
+ <Icon type="swap" onClick={()=>
+  showTransferModel(targetComponent,"目标网点","store","requestCandidateDestinationStore",
+	      "transferToAnotherDestinationStore","anotherDestinationStoreId",bookCopySharingApplication.destinationStore?bookCopySharingApplication.destinationStore.id:"")} 
   style={{fontSize: 20,color:"red"}} />
 </Description>
 	

@@ -146,19 +146,25 @@ class TransferTypeBizApp extends React.PureComponent {
     const {BookCopyTransferSearch} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      name: "图书副本迁移记录",
+      role: "bookCopyTransfer",
       data: state._transferType.bookCopyTransferList,
       count: state._transferType.bookCopyTransferCount,
       currentPage: state._transferType.bookCopyTransferCurrentPageNumber,
       searchFormParameters: state._transferType.bookCopyTransferSearchFormParameters,
       loading: state._transferType.loading,
       partialList: state._transferType.partialList,
-      owner: { type: '_transferType', id: state._transferType.id, referenceName: 'transferType', listName: 'bookCopyTransferList', ref:state._transferType, listDisplayName: '图书副本迁移记录列表' }, // this is for model namespace and
+      owner: { type: '_transferType', id: state._transferType.id, 
+      referenceName: 'transferType', 
+      listName: 'bookCopyTransferList', ref:state._transferType, 
+      listDisplayName: '图书副本迁移记录列表' }, // this is for model namespace and
     }))(BookCopyTransferSearch)
   }
   getBookCopyTransferCreateForm = () => {
    	const {BookCopyTransferCreateForm} = GlobalComponents;
     return connect(state => ({
       rule: state.rule,
+      role: "bookCopyTransfer",
       data: state._transferType.bookCopyTransferList,
       count: state._transferType.bookCopyTransferCount,
       currentPage: state._transferType.bookCopyTransferCurrentPageNumber,
@@ -172,6 +178,7 @@ class TransferTypeBizApp extends React.PureComponent {
   	const {BookCopyTransferUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._transferType.selectedRows,
+      role: "bookCopyTransfer",
       currentUpdateIndex: state._transferType.currentUpdateIndex,
       owner: { type: '_transferType', id: state._transferType.id, listName: 'bookCopyTransferList', ref:state._transferType, listDisplayName: '图书副本迁移记录列表' }, // this is for model namespace and
     }))(BookCopyTransferUpdateForm)
