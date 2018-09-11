@@ -1,7 +1,4 @@
-/**
- * Created by 叶子 on 2017/7/30.
- * http通用工具函数
- */
+
 import axios from 'axios';
 import { message } from 'antd';
 import { SYSTEM_SHORT_NAME } from './config';
@@ -131,13 +128,12 @@ export const joinPostParameters = (parameters) => {
             if(!value){
               continue
             }
+            
+            if(value==null){
+              continue
+            }
             const postValue = formatPostData(value)
-            if(!postValue){
-              continue
-            }
-            if(postValue==null){
-              continue
-            }
+            
             if (!Array.isArray(value)) {
                 arr.push(key + '=' + encodeURIComponent(postValue))
                 continue
@@ -148,10 +144,10 @@ export const joinPostParameters = (parameters) => {
             }
         }
     }
-  }
+  
   const result = arr.join('&');
   return result;
-};
+}
 
 export const PREFIX = getURLPrefix();
 /**
@@ -279,11 +275,8 @@ export const mapFromImageValues = (selectedRow, imageKeys) => {
   return targetImages;
 };
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 3c66414da2f491b86a6917eca2ec2b40cd77ed52
 export function playSound(sound){
   var audio = new Audio(sound+'.mp3');
   audio.play();

@@ -60,6 +60,14 @@ class NormalForgetPassword extends Component {
             const future = LauncherService.getVerificationCode(currentValues.mobile)
             future.then(result => {
                 console.log("the result is ",result)
+                if(result=="USER_NOT_FOUNT"||result=="USER_NOT_FOUNT"){
+                    notification.error({
+                        message: `该手机号${currentValues.mobile}关联的用户找不到, 请联系管理员`,
+                        description: `该手机号${currentValues.mobile}关联的用户找不到, 请联系管理员`,
+                      });
+                    return
+
+                }
                 const nextStep = this.getNextStep(currentStep)
                 this.setState({currentValues,currentStep:nextStep})
             })
@@ -156,10 +164,16 @@ class NormalForgetPassword extends Component {
                })(
                    <Input prefix={<Icon type="lock" style={{ fontSize: 20 }} />}  placeholder="验证码" />
                )}
-           </FormItem> <Button type="primary" htmlType="submit" className="login-form-button" style={{width: '100%'}}>
+           </FormItem> 
+                   <FormItem>
+                   <Button type="primary" htmlType="submit" className="login-form-button" style={{width: '100%'}}>
                        下一步
                        
-                   </Button><Link to="/" style={{float: 'right'}}>返回主页</Link></Form>)
+                   </Button>
+                   </FormItem> <FormItem>
+                   <Link to="/" style={{float: 'right'}}>返回主页</Link> </FormItem>
+                   
+                   </Form>)
 
     }
 
