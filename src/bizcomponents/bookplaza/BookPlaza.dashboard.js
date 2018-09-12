@@ -241,7 +241,7 @@ const internalSubListsOf = (cardsData) =>{
 	const {id} = cardsData.cardsSource;
 	return (<Row gutter={24}>
 
-           {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
+           {cardsData.subItems.filter(item=>item.accessiable).sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
@@ -289,15 +289,15 @@ class BookPlazaDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, bookRecommendCount, bookSharingIncomeMetricCount, bookDonationIncomeMetricCount, memberServiceIncomeMetricCount, bookCount, bookCopyStatusCount, bookReviewCount } = this.props.bookPlaza
+    const { id,displayName, bookRecommendAccessiable, bookSharingIncomeMetricAccessiable, bookDonationIncomeMetricAccessiable, memberServiceIncomeMetricAccessiable, bookAccessiable, bookCopyStatusAccessiable, bookReviewAccessiable, bookRecommendCount, bookSharingIncomeMetricCount, bookDonationIncomeMetricCount, memberServiceIncomeMetricCount, bookCount, bookCopyStatusCount, bookReviewCount } = this.props.bookPlaza
     const cardsData = {cardsName:"图书天地",cardsFor: "bookPlaza",cardsSource: this.props.bookPlaza,
   		subItems: [
-{name: 'bookRecommendList', displayName:'图书推荐',type:'bookRecommend',count:bookRecommendCount,addFunction: true, role: 'bookRecommend'},
-{name: 'bookSharingIncomeMetricList', displayName:'共享图书收益分成配置',type:'bookSharingIncomeMetric',count:bookSharingIncomeMetricCount,addFunction: true, role: 'bookSharingIncomeMetric'},
-{name: 'bookDonationIncomeMetricList', displayName:'捐赠图书收益分成配置',type:'bookDonationIncomeMetric',count:bookDonationIncomeMetricCount,addFunction: true, role: 'bookDonationIncomeMetric'},
-{name: 'memberServiceIncomeMetricList', displayName:'会员服务费收入分成配置',type:'memberServiceIncomeMetric',count:memberServiceIncomeMetricCount,addFunction: true, role: 'memberServiceIncomeMetric'},
-{name: 'bookList', displayName:'书',type:'book',count:bookCount,addFunction: true, role: 'book'},
-{name: 'bookReviewList', displayName:'书评',type:'bookReview',count:bookReviewCount,addFunction: true, role: 'bookReview'},
+{name: 'bookRecommendList', displayName:'图书推荐',type:'bookRecommend',count:bookRecommendCount,addFunction: true, role: 'bookRecommend', accessiable: bookRecommendAccessiable},
+{name: 'bookSharingIncomeMetricList', displayName:'共享图书收益分成配置',type:'bookSharingIncomeMetric',count:bookSharingIncomeMetricCount,addFunction: true, role: 'bookSharingIncomeMetric', accessiable: bookSharingIncomeMetricAccessiable},
+{name: 'bookDonationIncomeMetricList', displayName:'捐赠图书收益分成配置',type:'bookDonationIncomeMetric',count:bookDonationIncomeMetricCount,addFunction: true, role: 'bookDonationIncomeMetric', accessiable: bookDonationIncomeMetricAccessiable},
+{name: 'memberServiceIncomeMetricList', displayName:'会员服务费收入分成配置',type:'memberServiceIncomeMetric',count:memberServiceIncomeMetricCount,addFunction: true, role: 'memberServiceIncomeMetric', accessiable: memberServiceIncomeMetricAccessiable},
+{name: 'bookList', displayName:'书',type:'book',count:bookCount,addFunction: true, role: 'book', accessiable: bookAccessiable},
+{name: 'bookReviewList', displayName:'书评',type:'bookReview',count:bookReviewCount,addFunction: true, role: 'bookReview', accessiable: bookReviewAccessiable},
     
       	],
   	};

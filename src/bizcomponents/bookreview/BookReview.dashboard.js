@@ -241,7 +241,7 @@ const internalSubListsOf = (cardsData) =>{
 	const {id} = cardsData.cardsSource;
 	return (<Row gutter={24}>
 
-           {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
+           {cardsData.subItems.filter(item=>item.accessiable).sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
@@ -314,11 +314,11 @@ class BookReviewDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, bookReviewLikeCount, informCount } = this.props.bookReview
+    const { id,displayName, bookReviewLikeAccessiable, informAccessiable, bookReviewLikeCount, informCount } = this.props.bookReview
     const cardsData = {cardsName:"书评",cardsFor: "bookReview",cardsSource: this.props.bookReview,
   		subItems: [
-{name: 'bookReviewLikeList', displayName:'书评点赞',type:'bookReviewLike',count:bookReviewLikeCount,addFunction: true, role: 'bookReviewLike'},
-{name: 'informList', displayName:'举报',type:'inform',count:informCount,addFunction: true, role: 'inform'},
+{name: 'bookReviewLikeList', displayName:'书评点赞',type:'bookReviewLike',count:bookReviewLikeCount,addFunction: true, role: 'bookReviewLike', accessiable: bookReviewLikeAccessiable},
+{name: 'informList', displayName:'举报',type:'inform',count:informCount,addFunction: true, role: 'inform', accessiable: informAccessiable},
     
       	],
   	};

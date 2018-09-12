@@ -241,7 +241,7 @@ const internalSubListsOf = (cardsData) =>{
 	const {id} = cardsData.cardsSource;
 	return (<Row gutter={24}>
 
-           {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
+           {cardsData.subItems.filter(item=>item.accessiable).sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
@@ -296,10 +296,10 @@ class PlatformAccountDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, platformAccountDetailsCount } = this.props.platformAccount
+    const { id,displayName, platformAccountDetailsAccessiable, platformAccountDetailsCount } = this.props.platformAccount
     const cardsData = {cardsName:"平台账户",cardsFor: "platformAccount",cardsSource: this.props.platformAccount,
   		subItems: [
-{name: 'platformAccountDetailsList', displayName:'平台账户明细',type:'platformAccountDetails',count:platformAccountDetailsCount,addFunction: false, role: 'platformAccountDetails'},
+{name: 'platformAccountDetailsList', displayName:'平台账户明细',type:'platformAccountDetails',count:platformAccountDetailsCount,addFunction: false, role: 'platformAccountDetails', accessiable: platformAccountDetailsAccessiable},
     
       	],
   	};

@@ -18,8 +18,8 @@ const testValues = {};
 const testValues = {
   memberServiceName: '1个月1级会员服务',
   description: 'SKU描述信息',
-  listPrice: '15.93',
-  salePrice: '16.87',
+  listPrice: '17.53',
+  salePrice: '16.66',
   servicePeriodMonths: '1',
   memberProductId: 'MSP000001',
 }

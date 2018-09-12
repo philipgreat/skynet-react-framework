@@ -241,7 +241,7 @@ const internalSubListsOf = (cardsData) =>{
 	const {id} = cardsData.cardsSource;
 	return (<Row gutter={24}>
 
-           {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
+           {cardsData.subItems.filter(item=>item.accessiable).sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
@@ -290,23 +290,23 @@ class BookSharingPlatformDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, lossDiscountCount, platformConfigurationCount, accountDataCount, cityCount, bookPlazaCount, memberServiceProductCount, mainOrderCount, bookCount, transferTypeCount, takeStockStatusCount, bookTakeStockStatusCount, takeStoreResultsCount, bookCopyOperateTypeCount, borrowingStatusCount, deliverMethodCount, applicationStatusCount, platformAccountCount, fundationAccountCount, storeTypeCount, storeCount, slideTypeCount, campaignPlazaCount, campaignStatusCount, customerCount, employeeCount, profitTypeCount, profitDistributeStateCount, undistributedProfitCount } = this.props.bookSharingPlatform
+    const { id,displayName, lossDiscountAccessiable, platformConfigurationAccessiable, accountDataAccessiable, cityAccessiable, bookPlazaAccessiable, memberServiceProductAccessiable, mainOrderAccessiable, bookAccessiable, transferTypeAccessiable, takeStockStatusAccessiable, bookTakeStockStatusAccessiable, takeStoreResultsAccessiable, bookCopyOperateTypeAccessiable, borrowingStatusAccessiable, deliverMethodAccessiable, applicationStatusAccessiable, platformAccountAccessiable, fundationAccountAccessiable, storeTypeAccessiable, storeAccessiable, slideTypeAccessiable, campaignPlazaAccessiable, campaignStatusAccessiable, customerAccessiable, employeeAccessiable, profitTypeAccessiable, profitDistributeStateAccessiable, undistributedProfitAccessiable, lossDiscountCount, platformConfigurationCount, accountDataCount, cityCount, bookPlazaCount, memberServiceProductCount, mainOrderCount, bookCount, transferTypeCount, takeStockStatusCount, bookTakeStockStatusCount, takeStoreResultsCount, bookCopyOperateTypeCount, borrowingStatusCount, deliverMethodCount, applicationStatusCount, platformAccountCount, fundationAccountCount, storeTypeCount, storeCount, slideTypeCount, campaignPlazaCount, campaignStatusCount, customerCount, employeeCount, profitTypeCount, profitDistributeStateCount, undistributedProfitCount } = this.props.bookSharingPlatform
     const cardsData = {cardsName:"图书共享平台",cardsFor: "bookSharingPlatform",cardsSource: this.props.bookSharingPlatform,
   		subItems: [
-{name: 'platformConfigurationList', displayName:'平台配置',type:'platformConfiguration',count:platformConfigurationCount,addFunction: true, role: 'platformConfiguration'},
-{name: 'accountDataList', displayName:'帐户数据',type:'accountData',count:accountDataCount,addFunction: true, role: 'accountData'},
-{name: 'cityList', displayName:'城市',type:'city',count:cityCount,addFunction: true, role: 'city'},
-{name: 'bookPlazaList', displayName:'图书天地',type:'bookPlaza',count:bookPlazaCount,addFunction: true, role: 'bookPlaza'},
-{name: 'memberServiceProductList', displayName:'会员服务产品',type:'memberServiceProduct',count:memberServiceProductCount,addFunction: true, role: 'memberServiceProduct'},
-{name: 'mainOrderList', displayName:'主订单',type:'mainOrder',count:mainOrderCount,addFunction: false, role: 'mainOrder'},
-{name: 'bookList', displayName:'书',type:'book',count:bookCount,addFunction: true, role: 'book'},
-{name: 'platformAccountList', displayName:'平台账户',type:'platformAccount',count:platformAccountCount,addFunction: false, role: 'platformAccount'},
-{name: 'fundationAccountList', displayName:'平台基金账户',type:'fundationAccount',count:fundationAccountCount,addFunction: false, role: 'fundationAccount'},
-{name: 'storeList', displayName:'服务网点',type:'store',count:storeCount,addFunction: true, role: 'store'},
-{name: 'campaignPlazaList', displayName:'活动广场',type:'campaignPlaza',count:campaignPlazaCount,addFunction: true, role: 'campaignPlaza'},
-{name: 'customerList', displayName:'用户',type:'customer',count:customerCount,addFunction: false, role: 'customer'},
-{name: 'employeeList', displayName:'员工',type:'employee',count:employeeCount,addFunction: true, role: 'employee'},
-{name: 'undistributedProfitList', displayName:'未分割收入',type:'undistributedProfit',count:undistributedProfitCount,addFunction: false, role: 'undistributedProfit'},
+{name: 'platformConfigurationList', displayName:'平台配置',type:'platformConfiguration',count:platformConfigurationCount,addFunction: true, role: 'platformConfiguration', accessiable: platformConfigurationAccessiable},
+{name: 'accountDataList', displayName:'帐户数据',type:'accountData',count:accountDataCount,addFunction: true, role: 'accountData', accessiable: accountDataAccessiable},
+{name: 'cityList', displayName:'城市',type:'city',count:cityCount,addFunction: true, role: 'city', accessiable: cityAccessiable},
+{name: 'bookPlazaList', displayName:'图书天地',type:'bookPlaza',count:bookPlazaCount,addFunction: true, role: 'bookPlaza', accessiable: bookPlazaAccessiable},
+{name: 'memberServiceProductList', displayName:'会员服务产品',type:'memberServiceProduct',count:memberServiceProductCount,addFunction: true, role: 'memberServiceProduct', accessiable: memberServiceProductAccessiable},
+{name: 'mainOrderList', displayName:'主订单',type:'mainOrder',count:mainOrderCount,addFunction: false, role: 'mainOrder', accessiable: mainOrderAccessiable},
+{name: 'bookList', displayName:'书',type:'book',count:bookCount,addFunction: true, role: 'book', accessiable: bookAccessiable},
+{name: 'platformAccountList', displayName:'平台账户',type:'platformAccount',count:platformAccountCount,addFunction: false, role: 'platformAccount', accessiable: platformAccountAccessiable},
+{name: 'fundationAccountList', displayName:'平台基金账户',type:'fundationAccount',count:fundationAccountCount,addFunction: false, role: 'fundationAccount', accessiable: fundationAccountAccessiable},
+{name: 'storeList', displayName:'服务网点',type:'store',count:storeCount,addFunction: true, role: 'store', accessiable: storeAccessiable},
+{name: 'campaignPlazaList', displayName:'活动广场',type:'campaignPlaza',count:campaignPlazaCount,addFunction: true, role: 'campaignPlaza', accessiable: campaignPlazaAccessiable},
+{name: 'customerList', displayName:'用户',type:'customer',count:customerCount,addFunction: false, role: 'customer', accessiable: customerAccessiable},
+{name: 'employeeList', displayName:'员工',type:'employee',count:employeeCount,addFunction: true, role: 'employee', accessiable: employeeAccessiable},
+{name: 'undistributedProfitList', displayName:'未分割收入',type:'undistributedProfit',count:undistributedProfitCount,addFunction: false, role: 'undistributedProfit', accessiable: undistributedProfitAccessiable},
     
       	],
   	};

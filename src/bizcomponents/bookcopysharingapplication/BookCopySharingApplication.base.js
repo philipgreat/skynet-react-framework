@@ -69,7 +69,7 @@ const renderReferenceCell=(value, record)=>{
 const displayColumns = [
   { title: 'ID', debugtype: 'string', dataIndex: 'id', width: '20',render: (text, record)=>renderTextCell(text,record) },
   { title: '联系人姓名', debugtype: 'string', dataIndex: 'contactName', width: '6',render: (text, record)=>renderTextCell(text,record) },
-  { title: '联系人手机', debugtype: 'string', dataIndex: 'contactMobile', width: '16',render: (text, record)=>renderTextCell(text,record) },
+  { title: '联系人手机', debugtype: 'string', dataIndex: 'contactMobile', width: '12',render: (text, record)=>renderTextCell(text,record) },
   { title: '申请状态', dataIndex: 'applicationStatus', render: (text, record) => renderReferenceCell(text, record)},
   { title: '共享方式', dataIndex: 'deliverMethod', render: (text, record) => renderReferenceCell(text, record)},
   { title: '处理日期', dataIndex: 'processedDate', render: (text, record) =>renderDateTimeCell(text,record)  },

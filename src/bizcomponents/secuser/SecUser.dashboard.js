@@ -241,7 +241,7 @@ const internalSubListsOf = (cardsData) =>{
 	const {id} = cardsData.cardsSource;
 	return (<Row gutter={24}>
 
-           {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
+           {cardsData.subItems.filter(item=>item.accessiable).sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
@@ -296,11 +296,11 @@ class SecUserDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, userAppCount, loginHistoryCount } = this.props.secUser
+    const { id,displayName, userAppAccessiable, loginHistoryAccessiable, userAppCount, loginHistoryCount } = this.props.secUser
     const cardsData = {cardsName:"SEC的用户",cardsFor: "secUser",cardsSource: this.props.secUser,
   		subItems: [
-{name: 'userAppList', displayName:'用户应用程序',type:'userApp',count:userAppCount,addFunction: true, role: 'userApp'},
-{name: 'loginHistoryList', displayName:'登录历史',type:'loginHistory',count:loginHistoryCount,addFunction: false, role: 'loginHistory'},
+{name: 'userAppList', displayName:'用户应用程序',type:'userApp',count:userAppCount,addFunction: true, role: 'userApp', accessiable: userAppAccessiable},
+{name: 'loginHistoryList', displayName:'登录历史',type:'loginHistory',count:loginHistoryCount,addFunction: false, role: 'loginHistory', accessiable: loginHistoryAccessiable},
     
       	],
   	};

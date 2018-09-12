@@ -241,7 +241,7 @@ const internalSubListsOf = (cardsData) =>{
 	const {id} = cardsData.cardsSource;
 	return (<Row gutter={24}>
 
-           {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
+           {cardsData.subItems.filter(item=>item.accessiable).sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
@@ -295,10 +295,10 @@ class BookRecommendDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, bookCount } = this.props.bookRecommend
+    const { id,displayName, bookAccessiable, bookCount } = this.props.bookRecommend
     const cardsData = {cardsName:"图书推荐",cardsFor: "bookRecommend",cardsSource: this.props.bookRecommend,
   		subItems: [
-{name: 'bookList', displayName:'书',type:'book',count:bookCount,addFunction: true, role: 'book'},
+{name: 'bookList', displayName:'书',type:'book',count:bookCount,addFunction: true, role: 'book', accessiable: bookAccessiable},
     
       	],
   	};

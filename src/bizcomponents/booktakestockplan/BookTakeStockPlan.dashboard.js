@@ -241,7 +241,7 @@ const internalSubListsOf = (cardsData) =>{
 	const {id} = cardsData.cardsSource;
 	return (<Row gutter={24}>
 
-           {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
+           {cardsData.subItems.filter(item=>item.accessiable).sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
@@ -308,10 +308,10 @@ class BookTakeStockPlanDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, bookTakeStockResultCount } = this.props.bookTakeStockPlan
+    const { id,displayName, bookTakeStockResultAccessiable, bookTakeStockResultCount } = this.props.bookTakeStockPlan
     const cardsData = {cardsName:"图书盘点计划",cardsFor: "bookTakeStockPlan",cardsSource: this.props.bookTakeStockPlan,
   		subItems: [
-{name: 'bookTakeStockResultList', displayName:'图书盘点结果',type:'bookTakeStockResult',count:bookTakeStockResultCount,addFunction: false, role: 'bookTakeStockResult'},
+{name: 'bookTakeStockResultList', displayName:'图书盘点结果',type:'bookTakeStockResult',count:bookTakeStockResultCount,addFunction: false, role: 'bookTakeStockResult', accessiable: bookTakeStockResultAccessiable},
     
       	],
   	};

@@ -17,8 +17,8 @@ const testValues = {};
 /*
 const testValues = {
   description: '五星级员工，负责3个店，作为示范',
-  startDate: '2017-05-20',
-  terminatedDate: '2018-06-15',
+  startDate: '2016-08-18',
+  terminatedDate: '2017-08-10',
   roleId: 'R000001',
   employeeId: 'E000001',
   storeId: 'S000001',

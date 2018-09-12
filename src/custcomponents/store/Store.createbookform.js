@@ -150,6 +150,26 @@ class BookCreateForm extends Component {
       const {dynamicFormInited}=this.state
       const {setFieldsValue} = this.props.form
  
+      if(!addingResult){
+        return null
+      }
+      if(addingResult.class!='com.terapico.shuxiang.book.BookWarehouseForm'){
+        return null
+      }
+      
+      if(!!addingResult.formMessageList&&addingResult.formMessageList.length>0){
+
+        notification.error({
+          message: "失败",
+          description: addingResult.formMessageList[0].title,
+        })
+        playSound("inventory-error")
+      }else{
+        playSound("newbook")
+      }
+
+
+
       if(dynamicFormInited){
         var formData = this.props.form.getFieldsValue();
         console.log("form data", formData, dynamicFormInited);
@@ -191,7 +211,7 @@ class BookCreateForm extends Component {
         convertedImagesValues[item.parameterName] = fileList;
         this.setState({ convertedImagesValues });
       })
-      playSound("newbook")
+      
       this.setState({
         addingResult,
         dynamicFormInited: true
@@ -437,7 +457,9 @@ class BookCreateForm extends Component {
       if(addingResult.class!='com.terapico.shuxiang.book.BookWarehouseForm'){
         return null
       }
- 
+      
+     
+      
       return (
         
             <Row gutter={16}>

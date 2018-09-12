@@ -1,51 +1,116 @@
-.errorMessage{
-
+.errorMessage {
   padding: 12px;
-
 }
-.login{
+.login {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-  background: #070707;
+  background: #171c48 url('../launcher/timg.jpg') no-repeat center center;
+  background-size: cover;
   width: 100%;
-  .loginForm{
-    width: 520px;
-    height: 540px;
-    padding: 76px;
-    font-size: 30px;
-    box-shadow: 0 0 100px rgba(0,0,0,.08);
-    background: rgb(99, 95, 104);
-    padding-left: 50px;
+  .loginForm {
+    width: 480px;
+    padding: 50px 66px;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 1);
+    border-radius: 7px;
     :global {
+      .ant-row.ant-form-item {
+        margin-bottom: 20px;
+
+        .ant-input-prefix {
+          color: #333743;
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
+      label {
+        float: left;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      .login-form-forgot {
+        color: #40a7dc;
+        float: right;
+      }
+
       .ant-input {
         height: 40px;
-        font-size: 28px;
-        padding-left: 50px;
+        font-size: 16px;
+        padding-left: 40px;
+
+        &:hover,
+        &:focus {
+          border-color: rgba(51, 55, 67, 0.3);
+          box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+        }
       }
+
       .ant-btn {
+        color: #fff;
+        background-color: #40a7dc;
+        border-color: #40a7dc;
+        margin-top: 0;
+        width: 75% !important;
         height: 40px;
-        font-size: 28px;
+        float: left;
+
+        span {
+          height: auto;
+          font-size: 18px;
+          font-weight: 400;
+          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+          float: none;
+        }
+      }
+
+      .ant-input-affix-wrapper:hover .ant-input:not(.ant-input-disabled) {
+        border-color: rgba(51, 55, 67, 0.3);
+        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+      }
+
+      .ant-checkbox-checked .ant-checkbox-inner,
+      .ant-checkbox-indeterminate .ant-checkbox-inner {
+        background-color: #40a7dc;
+        border-color: #40a7dc;
+      }
+
+      .has-error .ant-input,
+      .has-error .ant-input:hover {
+        border-color: rgba(241, 26, 78, 0.6);
+        box-shadow: 0 0 2px 1px rgba(241, 26, 78, 0.2);
+      }
+
+      .has-error .ant-input-prefix {
+        color: #f11a4e;
+      }
+
+      .has-error .ant-form-explain,
+      .has-error .ant-form-split {
+        color: #f11a4e;
+        text-align: left;
+        margin-top: 5px;
       }
     }
-    .loginLogo{
+
+    .loginLogo {
       text-align: center;
-      height: 100px;
-      line-height: 40px;
-      cursor: pointer;
-      margin-bottom: 24px;
+
       span {
-        vertical-align: center;
-        font-size: 35px;
-        color:#fff;
-        height: 100px;
-        text-transform: uppercase;
-        display: inline-block;
+        font-size: 30px;
+        color: #333743;
+        display: block;
+        letter-spacing: 4px;
+        margin-bottom: 30px;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       }
-     
-      
     }
   }
 }
-

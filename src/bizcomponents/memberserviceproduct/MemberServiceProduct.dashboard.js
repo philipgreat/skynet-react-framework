@@ -245,7 +245,7 @@ const internalSubListsOf = (cardsData) =>{
 	const {id} = cardsData.cardsSource;
 	return (<Row gutter={24}>
 
-           {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
+           {cardsData.subItems.filter(item=>item.accessiable).sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
@@ -299,12 +299,12 @@ class MemberServiceProductDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, memberServiceBundleSkuCount, storeSlideCount, customerCount } = this.props.memberServiceProduct
+    const { id,displayName, memberServiceBundleSkuAccessiable, storeSlideAccessiable, customerAccessiable, memberServiceBundleSkuCount, storeSlideCount, customerCount } = this.props.memberServiceProduct
     const cardsData = {cardsName:"会员服务产品",cardsFor: "memberServiceProduct",cardsSource: this.props.memberServiceProduct,
   		subItems: [
-{name: 'memberServiceBundleSkuList', displayName:'会员服务包',type:'memberServiceBundleSku',count:memberServiceBundleSkuCount,addFunction: true, role: 'memberServiceBundleSku'},
-{name: 'storeSlideList', displayName:'网点海报',type:'storeSlide',count:storeSlideCount,addFunction: true, role: 'storeSlide'},
-{name: 'customerList', displayName:'用户',type:'customer',count:customerCount,addFunction: false, role: 'customer'},
+{name: 'memberServiceBundleSkuList', displayName:'会员服务包',type:'memberServiceBundleSku',count:memberServiceBundleSkuCount,addFunction: true, role: 'memberServiceBundleSku', accessiable: memberServiceBundleSkuAccessiable},
+{name: 'storeSlideList', displayName:'网点海报',type:'storeSlide',count:storeSlideCount,addFunction: true, role: 'storeSlide', accessiable: storeSlideAccessiable},
+{name: 'customerList', displayName:'用户',type:'customer',count:customerCount,addFunction: false, role: 'customer', accessiable: customerAccessiable},
     
       	],
   	};

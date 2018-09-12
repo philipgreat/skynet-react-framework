@@ -241,7 +241,7 @@ const internalSubListsOf = (cardsData) =>{
 	const {id} = cardsData.cardsSource;
 	return (<Row gutter={24}>
 
-           {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
+           {cardsData.subItems.filter(item=>item.accessiable).sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
@@ -289,10 +289,10 @@ class CampaignPlazaDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, campaignCount } = this.props.campaignPlaza
+    const { id,displayName, campaignAccessiable, campaignCount } = this.props.campaignPlaza
     const cardsData = {cardsName:"活动广场",cardsFor: "campaignPlaza",cardsSource: this.props.campaignPlaza,
   		subItems: [
-{name: 'campaignList', displayName:'活动',type:'campaign',count:campaignCount,addFunction: true, role: 'campaign'},
+{name: 'campaignList', displayName:'活动',type:'campaign',count:campaignCount,addFunction: true, role: 'campaign', accessiable: campaignAccessiable},
     
       	],
   	};

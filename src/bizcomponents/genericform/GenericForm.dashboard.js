@@ -241,7 +241,7 @@ const internalSubListsOf = (cardsData) =>{
 	const {id} = cardsData.cardsSource;
 	return (<Row gutter={24}>
 
-           {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
+           {cardsData.subItems.filter(item=>item.accessiable).sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
@@ -290,13 +290,13 @@ class GenericFormDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, formMessageCount, formFieldMessageCount, formFieldCount, formActionCount } = this.props.genericForm
+    const { id,displayName, formMessageAccessiable, formFieldMessageAccessiable, formFieldAccessiable, formActionAccessiable, formMessageCount, formFieldMessageCount, formFieldCount, formActionCount } = this.props.genericForm
     const cardsData = {cardsName:"通用的形式",cardsFor: "genericForm",cardsSource: this.props.genericForm,
   		subItems: [
-{name: 'formMessageList', displayName:'表单信息',type:'formMessage',count:formMessageCount,addFunction: true, role: 'formMessage'},
-{name: 'formFieldMessageList', displayName:'表单字段的信息',type:'formFieldMessage',count:formFieldMessageCount,addFunction: true, role: 'formFieldMessage'},
-{name: 'formFieldList', displayName:'表单字段',type:'formField',count:formFieldCount,addFunction: true, role: 'formField'},
-{name: 'formActionList', displayName:'表单动作',type:'formAction',count:formActionCount,addFunction: true, role: 'formAction'},
+{name: 'formMessageList', displayName:'表单信息',type:'formMessage',count:formMessageCount,addFunction: true, role: 'formMessage', accessiable: formMessageAccessiable},
+{name: 'formFieldMessageList', displayName:'表单字段的信息',type:'formFieldMessage',count:formFieldMessageCount,addFunction: true, role: 'formFieldMessage', accessiable: formFieldMessageAccessiable},
+{name: 'formFieldList', displayName:'表单字段',type:'formField',count:formFieldCount,addFunction: true, role: 'formField', accessiable: formFieldAccessiable},
+{name: 'formActionList', displayName:'表单动作',type:'formAction',count:formActionCount,addFunction: true, role: 'formAction', accessiable: formActionAccessiable},
     
       	],
   	};

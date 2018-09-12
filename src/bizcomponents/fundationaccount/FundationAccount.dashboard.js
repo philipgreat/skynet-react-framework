@@ -241,7 +241,7 @@ const internalSubListsOf = (cardsData) =>{
 	const {id} = cardsData.cardsSource;
 	return (<Row gutter={24}>
 
-           {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
+           {cardsData.subItems.filter(item=>item.accessiable).sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
@@ -296,10 +296,10 @@ class FundationAccountDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, fundationAccountDetailsCount } = this.props.fundationAccount
+    const { id,displayName, fundationAccountDetailsAccessiable, fundationAccountDetailsCount } = this.props.fundationAccount
     const cardsData = {cardsName:"平台基金账户",cardsFor: "fundationAccount",cardsSource: this.props.fundationAccount,
   		subItems: [
-{name: 'fundationAccountDetailsList', displayName:'平台基金账户明细',type:'fundationAccountDetails',count:fundationAccountDetailsCount,addFunction: false, role: 'fundationAccountDetails'},
+{name: 'fundationAccountDetailsList', displayName:'平台基金账户明细',type:'fundationAccountDetails',count:fundationAccountDetailsCount,addFunction: false, role: 'fundationAccountDetails', accessiable: fundationAccountDetailsAccessiable},
     
       	],
   	};

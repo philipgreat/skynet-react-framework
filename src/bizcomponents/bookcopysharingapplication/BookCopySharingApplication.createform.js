@@ -17,7 +17,7 @@ const testValues = {};
 /*
 const testValues = {
   contactName: '张三',
-  contactMobile: 'A18012341234',
+  contactMobile: 'A1801234',
   contactAddress: '成都市高新区天府五街欧香小镇',
   bookCopyQuantity: '较少',
   applicationStatusId: 'AS000001',

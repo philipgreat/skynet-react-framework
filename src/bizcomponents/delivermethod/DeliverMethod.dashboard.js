@@ -241,7 +241,7 @@ const internalSubListsOf = (cardsData) =>{
 	const {id} = cardsData.cardsSource;
 	return (<Row gutter={24}>
 
-           {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
+           {cardsData.subItems.filter(item=>item.accessiable).sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
@@ -290,10 +290,10 @@ class DeliverMethodDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, bookCopySharingApplicationCount } = this.props.deliverMethod
+    const { id,displayName, bookCopySharingApplicationAccessiable, bookCopySharingApplicationCount } = this.props.deliverMethod
     const cardsData = {cardsName:"共享方式",cardsFor: "deliverMethod",cardsSource: this.props.deliverMethod,
   		subItems: [
-{name: 'bookCopySharingApplicationList', displayName:'图书共享申请',type:'bookCopySharingApplication',count:bookCopySharingApplicationCount,addFunction: true, role: 'bookCopySharingApplication'},
+{name: 'bookCopySharingApplicationList', displayName:'图书共享申请',type:'bookCopySharingApplication',count:bookCopySharingApplicationCount,addFunction: true, role: 'bookCopySharingApplication', accessiable: bookCopySharingApplicationAccessiable},
     
       	],
   	};

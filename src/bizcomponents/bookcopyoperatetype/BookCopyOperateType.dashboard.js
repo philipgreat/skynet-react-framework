@@ -241,7 +241,7 @@ const internalSubListsOf = (cardsData) =>{
 	const {id} = cardsData.cardsSource;
 	return (<Row gutter={24}>
 
-           {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
+           {cardsData.subItems.filter(item=>item.accessiable).sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
@@ -290,10 +290,10 @@ class BookCopyOperateTypeDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, bookCopyOperationRecordCount } = this.props.bookCopyOperateType
+    const { id,displayName, bookCopyOperationRecordAccessiable, bookCopyOperationRecordCount } = this.props.bookCopyOperateType
     const cardsData = {cardsName:"书籍副本操作类型",cardsFor: "bookCopyOperateType",cardsSource: this.props.bookCopyOperateType,
   		subItems: [
-{name: 'bookCopyOperationRecordList', displayName:'书籍副本操作记录',type:'bookCopyOperationRecord',count:bookCopyOperationRecordCount,addFunction: false, role: 'bookCopyOperationRecord'},
+{name: 'bookCopyOperationRecordList', displayName:'书籍副本操作记录',type:'bookCopyOperationRecord',count:bookCopyOperationRecordCount,addFunction: false, role: 'bookCopyOperationRecord', accessiable: bookCopyOperationRecordAccessiable},
     
       	],
   	};

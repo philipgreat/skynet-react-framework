@@ -154,13 +154,13 @@ class MemberServiceIncomeMetricSearch extends PureComponent {
   }
 
   handleUpdate = () => {
-    const { dispatch, owner } = this.props
+    const { dispatch, owner, role } = this.props
     // const { showDeleteResult, selectedRows, modalVisible, addInputValue } = this.state
     const { selectedRows } = this.state
     const currentUpdateIndex = 0
     dispatch({
       type: `${owner.type}/gotoUpdateForm`,
-      payload: { id: owner.id, type: 'memberServiceIncomeMetric', selectedRows, currentUpdateIndex },
+      payload: { id: owner.id, role: role, selectedRows, currentUpdateIndex },
     })
   }
  

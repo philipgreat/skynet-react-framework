@@ -17,12 +17,12 @@ const testValues = {};
 /*
 const testValues = {
   campaignName: '世界读书日读书活动',
-  campaignStartTime: '2015-10-30 18:08:53',
-  campaignFinishTime: '2016-12-16 18:15:09',
+  campaignStartTime: '2018-03-27 20:57:43',
+  campaignFinishTime: '2017-03-28 08:57:48',
   campaignHoldAddress: '成都市天府广场东侧新博物馆2楼李四光厅',
   registerDeadlineLeadHours: '1',
   minimumRegisterQuantity: '1',
-  availableRegisterQuantity: '478',
+  availableRegisterQuantity: '481',
   campaignStatusId: 'CS000001',
   publishStoreId: 'S000001',
   publishEmployeeId: 'E000001',

@@ -242,7 +242,7 @@ const internalSubListsOf = (cardsData) =>{
 	const {id} = cardsData.cardsSource;
 	return (<Row gutter={24}>
 
-           {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
+           {cardsData.subItems.filter(item=>item.accessiable).sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
@@ -317,29 +317,29 @@ class CustomerDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, privateMessageCount, lossAssessmentRecordCount, mainOrderCount, bookCopyCount, borrowingHistoryCount, borrowingExpiredSkuCount, bookReviewCount, bookReviewLikeCount, bookCopySharingApplicationCount, memberServiceRevenueCount, customerAccountTransactionCount, campaignRegisterHistoryCount, campaignReviewCount, campaignLikeCount, campaignReviewLikeCount, customerFootprintCount, shieldCustomerAsCustomerCount, shieldCustomerAsShieldCount, informCount, undistributedProfitCount } = this.props.customer
+    const { id,displayName, privateMessageAccessiable, lossAssessmentRecordAccessiable, mainOrderAccessiable, bookCopyAccessiable, borrowingHistoryAccessiable, borrowingExpiredSkuAccessiable, bookReviewAccessiable, bookReviewLikeAccessiable, bookCopySharingApplicationAccessiable, memberServiceRevenueAccessiable, customerAccountTransactionAccessiable, campaignRegisterHistoryAccessiable, campaignReviewAccessiable, campaignLikeAccessiable, campaignReviewLikeAccessiable, customerFootprintAccessiable, shieldCustomerAsCustomerAccessiable, shieldCustomerAsShieldAccessiable, informAccessiable, undistributedProfitAccessiable, privateMessageCount, lossAssessmentRecordCount, mainOrderCount, bookCopyCount, borrowingHistoryCount, borrowingExpiredSkuCount, bookReviewCount, bookReviewLikeCount, bookCopySharingApplicationCount, memberServiceRevenueCount, customerAccountTransactionCount, campaignRegisterHistoryCount, campaignReviewCount, campaignLikeCount, campaignReviewLikeCount, customerFootprintCount, shieldCustomerAsCustomerCount, shieldCustomerAsShieldCount, informCount, undistributedProfitCount } = this.props.customer
     const cardsData = {cardsName:"用户",cardsFor: "customer",cardsSource: this.props.customer,
   		subItems: [
-{name: 'privateMessageList', displayName:'私信消息',type:'privateMessage',count:privateMessageCount,addFunction: true, role: 'privateMessage'},
-{name: 'lossAssessmentRecordList', displayName:'定损记录',type:'lossAssessmentRecord',count:lossAssessmentRecordCount,addFunction: true, role: 'lossAssessmentRecord'},
-{name: 'mainOrderList', displayName:'主订单',type:'mainOrder',count:mainOrderCount,addFunction: false, role: 'mainOrder'},
-{name: 'bookCopyList', displayName:'书籍副本',type:'bookCopy',count:bookCopyCount,addFunction: true, role: 'bookCopy'},
-{name: 'borrowingHistoryList', displayName:'图书借还历史',type:'borrowingHistory',count:borrowingHistoryCount,addFunction: false, role: 'borrowingHistory'},
-{name: 'borrowingExpiredSkuList', displayName:'借书超期费',type:'borrowingExpiredSku',count:borrowingExpiredSkuCount,addFunction: true, role: 'borrowingExpiredSku'},
-{name: 'bookReviewList', displayName:'书评',type:'bookReview',count:bookReviewCount,addFunction: true, role: 'bookReview'},
-{name: 'bookReviewLikeList', displayName:'书评点赞',type:'bookReviewLike',count:bookReviewLikeCount,addFunction: true, role: 'bookReviewLike'},
-{name: 'bookCopySharingApplicationList', displayName:'图书共享申请',type:'bookCopySharingApplication',count:bookCopySharingApplicationCount,addFunction: true, role: 'bookCopySharingApplication'},
-{name: 'memberServiceRevenueList', displayName:'会员服务收益',type:'memberServiceRevenue',count:memberServiceRevenueCount,addFunction: false, role: 'memberServiceRevenue'},
-{name: 'customerAccountTransactionList', displayName:'客户账户明细',type:'customerAccountTransaction',count:customerAccountTransactionCount,addFunction: false, role: 'customerAccountTransaction'},
-{name: 'campaignRegisterHistoryList', displayName:'活动报名记录',type:'campaignRegisterHistory',count:campaignRegisterHistoryCount,addFunction: true, role: 'campaignRegisterHistory'},
-{name: 'campaignReviewList', displayName:'活动评论',type:'campaignReview',count:campaignReviewCount,addFunction: true, role: 'campaignReview'},
-{name: 'campaignLikeList', displayName:'活动点赞',type:'campaignLike',count:campaignLikeCount,addFunction: true, role: 'campaignLike'},
-{name: 'campaignReviewLikeList', displayName:'活动评论点赞',type:'campaignReviewLike',count:campaignReviewLikeCount,addFunction: true, role: 'campaignReviewLike'},
-{name: 'customerFootprintList', displayName:'用户历程',type:'customerFootprint',count:customerFootprintCount,addFunction: true, role: 'customerFootprint'},
-{name: 'shieldCustomerListAsCustomer', displayName:'屏蔽用户(用户)',type:'shieldCustomer',count:shieldCustomerAsCustomerCount,addFunction: true, role: 'shieldCustomerAsCustomer'},
-{name: 'shieldCustomerListAsShield', displayName:'屏蔽用户(屏蔽)',type:'shieldCustomer',count:shieldCustomerAsShieldCount,addFunction: true, role: 'shieldCustomerAsShield'},
-{name: 'informList', displayName:'举报',type:'inform',count:informCount,addFunction: true, role: 'inform'},
-{name: 'undistributedProfitList', displayName:'未分割收入',type:'undistributedProfit',count:undistributedProfitCount,addFunction: false, role: 'undistributedProfit'},
+{name: 'privateMessageList', displayName:'私信消息',type:'privateMessage',count:privateMessageCount,addFunction: true, role: 'privateMessage', accessiable: privateMessageAccessiable},
+{name: 'lossAssessmentRecordList', displayName:'定损记录',type:'lossAssessmentRecord',count:lossAssessmentRecordCount,addFunction: true, role: 'lossAssessmentRecord', accessiable: lossAssessmentRecordAccessiable},
+{name: 'mainOrderList', displayName:'主订单',type:'mainOrder',count:mainOrderCount,addFunction: false, role: 'mainOrder', accessiable: mainOrderAccessiable},
+{name: 'bookCopyList', displayName:'书籍副本',type:'bookCopy',count:bookCopyCount,addFunction: true, role: 'bookCopy', accessiable: bookCopyAccessiable},
+{name: 'borrowingHistoryList', displayName:'图书借还历史',type:'borrowingHistory',count:borrowingHistoryCount,addFunction: false, role: 'borrowingHistory', accessiable: borrowingHistoryAccessiable},
+{name: 'borrowingExpiredSkuList', displayName:'借书超期费',type:'borrowingExpiredSku',count:borrowingExpiredSkuCount,addFunction: true, role: 'borrowingExpiredSku', accessiable: borrowingExpiredSkuAccessiable},
+{name: 'bookReviewList', displayName:'书评',type:'bookReview',count:bookReviewCount,addFunction: true, role: 'bookReview', accessiable: bookReviewAccessiable},
+{name: 'bookReviewLikeList', displayName:'书评点赞',type:'bookReviewLike',count:bookReviewLikeCount,addFunction: true, role: 'bookReviewLike', accessiable: bookReviewLikeAccessiable},
+{name: 'bookCopySharingApplicationList', displayName:'图书共享申请',type:'bookCopySharingApplication',count:bookCopySharingApplicationCount,addFunction: true, role: 'bookCopySharingApplication', accessiable: bookCopySharingApplicationAccessiable},
+{name: 'memberServiceRevenueList', displayName:'会员服务收益',type:'memberServiceRevenue',count:memberServiceRevenueCount,addFunction: false, role: 'memberServiceRevenue', accessiable: memberServiceRevenueAccessiable},
+{name: 'customerAccountTransactionList', displayName:'客户账户明细',type:'customerAccountTransaction',count:customerAccountTransactionCount,addFunction: false, role: 'customerAccountTransaction', accessiable: customerAccountTransactionAccessiable},
+{name: 'campaignRegisterHistoryList', displayName:'活动报名记录',type:'campaignRegisterHistory',count:campaignRegisterHistoryCount,addFunction: true, role: 'campaignRegisterHistory', accessiable: campaignRegisterHistoryAccessiable},
+{name: 'campaignReviewList', displayName:'活动评论',type:'campaignReview',count:campaignReviewCount,addFunction: true, role: 'campaignReview', accessiable: campaignReviewAccessiable},
+{name: 'campaignLikeList', displayName:'活动点赞',type:'campaignLike',count:campaignLikeCount,addFunction: true, role: 'campaignLike', accessiable: campaignLikeAccessiable},
+{name: 'campaignReviewLikeList', displayName:'活动评论点赞',type:'campaignReviewLike',count:campaignReviewLikeCount,addFunction: true, role: 'campaignReviewLike', accessiable: campaignReviewLikeAccessiable},
+{name: 'customerFootprintList', displayName:'用户历程',type:'customerFootprint',count:customerFootprintCount,addFunction: true, role: 'customerFootprint', accessiable: customerFootprintAccessiable},
+{name: 'shieldCustomerListAsCustomer', displayName:'屏蔽用户(用户)',type:'shieldCustomer',count:shieldCustomerAsCustomerCount,addFunction: true, role: 'shieldCustomerAsCustomer', accessiable: shieldCustomerAsCustomerAccessiable},
+{name: 'shieldCustomerListAsShield', displayName:'屏蔽用户(屏蔽)',type:'shieldCustomer',count:shieldCustomerAsShieldCount,addFunction: true, role: 'shieldCustomerAsShield', accessiable: shieldCustomerAsShieldAccessiable},
+{name: 'informList', displayName:'举报',type:'inform',count:informCount,addFunction: true, role: 'inform', accessiable: informAccessiable},
+{name: 'undistributedProfitList', displayName:'未分割收入',type:'undistributedProfit',count:undistributedProfitCount,addFunction: false, role: 'undistributedProfit', accessiable: undistributedProfitAccessiable},
     
       	],
   	};

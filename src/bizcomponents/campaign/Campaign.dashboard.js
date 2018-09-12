@@ -245,7 +245,7 @@ const internalSubListsOf = (cardsData) =>{
 	const {id} = cardsData.cardsSource;
 	return (<Row gutter={24}>
 
-           {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
+           {cardsData.subItems.filter(item=>item.accessiable).sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
@@ -324,13 +324,13 @@ class CampaignDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, storeSlideCount, campaignRegisterHistoryCount, campaignReviewCount, campaignLikeCount } = this.props.campaign
+    const { id,displayName, storeSlideAccessiable, campaignRegisterHistoryAccessiable, campaignReviewAccessiable, campaignLikeAccessiable, storeSlideCount, campaignRegisterHistoryCount, campaignReviewCount, campaignLikeCount } = this.props.campaign
     const cardsData = {cardsName:"活动",cardsFor: "campaign",cardsSource: this.props.campaign,
   		subItems: [
-{name: 'storeSlideList', displayName:'网点海报',type:'storeSlide',count:storeSlideCount,addFunction: true, role: 'storeSlide'},
-{name: 'campaignRegisterHistoryList', displayName:'活动报名记录',type:'campaignRegisterHistory',count:campaignRegisterHistoryCount,addFunction: true, role: 'campaignRegisterHistory'},
-{name: 'campaignReviewList', displayName:'活动评论',type:'campaignReview',count:campaignReviewCount,addFunction: true, role: 'campaignReview'},
-{name: 'campaignLikeList', displayName:'活动点赞',type:'campaignLike',count:campaignLikeCount,addFunction: true, role: 'campaignLike'},
+{name: 'storeSlideList', displayName:'网点海报',type:'storeSlide',count:storeSlideCount,addFunction: true, role: 'storeSlide', accessiable: storeSlideAccessiable},
+{name: 'campaignRegisterHistoryList', displayName:'活动报名记录',type:'campaignRegisterHistory',count:campaignRegisterHistoryCount,addFunction: true, role: 'campaignRegisterHistory', accessiable: campaignRegisterHistoryAccessiable},
+{name: 'campaignReviewList', displayName:'活动评论',type:'campaignReview',count:campaignReviewCount,addFunction: true, role: 'campaignReview', accessiable: campaignReviewAccessiable},
+{name: 'campaignLikeList', displayName:'活动点赞',type:'campaignLike',count:campaignLikeCount,addFunction: true, role: 'campaignLike', accessiable: campaignLikeAccessiable},
     
       	],
   	};

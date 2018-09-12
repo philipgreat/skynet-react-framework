@@ -242,7 +242,7 @@ const internalSubListsOf = (cardsData) =>{
 	const {id} = cardsData.cardsSource;
 	return (<Row gutter={24}>
 
-           {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
+           {cardsData.subItems.filter(item=>item.accessiable).sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
@@ -309,14 +309,14 @@ class BookDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, bookCopyCount, borrowingHistoryCount, borrowingExpiredSkuCount, bookReviewCount, storeSlideCount } = this.props.book
+    const { id,displayName, bookCopyAccessiable, borrowingHistoryAccessiable, borrowingExpiredSkuAccessiable, bookReviewAccessiable, storeSlideAccessiable, bookCopyCount, borrowingHistoryCount, borrowingExpiredSkuCount, bookReviewCount, storeSlideCount } = this.props.book
     const cardsData = {cardsName:"书",cardsFor: "book",cardsSource: this.props.book,
   		subItems: [
-{name: 'bookCopyList', displayName:'书籍副本',type:'bookCopy',count:bookCopyCount,addFunction: true, role: 'bookCopy'},
-{name: 'borrowingHistoryList', displayName:'图书借还历史',type:'borrowingHistory',count:borrowingHistoryCount,addFunction: false, role: 'borrowingHistory'},
-{name: 'borrowingExpiredSkuList', displayName:'借书超期费',type:'borrowingExpiredSku',count:borrowingExpiredSkuCount,addFunction: true, role: 'borrowingExpiredSku'},
-{name: 'bookReviewList', displayName:'书评',type:'bookReview',count:bookReviewCount,addFunction: true, role: 'bookReview'},
-{name: 'storeSlideList', displayName:'网点海报',type:'storeSlide',count:storeSlideCount,addFunction: true, role: 'storeSlide'},
+{name: 'bookCopyList', displayName:'书籍副本',type:'bookCopy',count:bookCopyCount,addFunction: true, role: 'bookCopy', accessiable: bookCopyAccessiable},
+{name: 'borrowingHistoryList', displayName:'图书借还历史',type:'borrowingHistory',count:borrowingHistoryCount,addFunction: false, role: 'borrowingHistory', accessiable: borrowingHistoryAccessiable},
+{name: 'borrowingExpiredSkuList', displayName:'借书超期费',type:'borrowingExpiredSku',count:borrowingExpiredSkuCount,addFunction: true, role: 'borrowingExpiredSku', accessiable: borrowingExpiredSkuAccessiable},
+{name: 'bookReviewList', displayName:'书评',type:'bookReview',count:bookReviewCount,addFunction: true, role: 'bookReview', accessiable: bookReviewAccessiable},
+{name: 'storeSlideList', displayName:'网点海报',type:'storeSlide',count:storeSlideCount,addFunction: true, role: 'storeSlide', accessiable: storeSlideAccessiable},
     
       	],
   	};

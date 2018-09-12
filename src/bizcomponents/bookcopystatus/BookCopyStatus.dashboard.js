@@ -245,7 +245,7 @@ const internalSubListsOf = (cardsData) =>{
 	const {id} = cardsData.cardsSource;
 	return (<Row gutter={24}>
 
-           {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
+           {cardsData.subItems.filter(item=>item.accessiable).sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
            <Badge count={item.count} style={{ backgroundColor: '#52c41a' }} overflowCount={9999999999}>        
             <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
               <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
@@ -301,10 +301,10 @@ class BookCopyStatusDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, bookCopyCount } = this.props.bookCopyStatus
+    const { id,displayName, bookCopyAccessiable, bookCopyCount } = this.props.bookCopyStatus
     const cardsData = {cardsName:"书籍副本状态",cardsFor: "bookCopyStatus",cardsSource: this.props.bookCopyStatus,
   		subItems: [
-{name: 'bookCopyList', displayName:'书籍副本',type:'bookCopy',count:bookCopyCount,addFunction: true, role: 'bookCopy'},
+{name: 'bookCopyList', displayName:'书籍副本',type:'bookCopy',count:bookCopyCount,addFunction: true, role: 'bookCopy', accessiable: bookCopyAccessiable},
     
       	],
   	};

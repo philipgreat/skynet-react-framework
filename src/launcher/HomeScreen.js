@@ -66,38 +66,44 @@ class HomeScreen extends React.Component {
         const appList = this.props.launcher.data.userAppList;
         const calcLink = this.calcLink;
         const { systemName }=this.props.launcher;
-        const styleList="icon-effect-1 icon-effect-1a";
+        const styleList="icon-effect-1 icon-effect-1a icon-item";
         var effectClasses = classNames({
             styleList
           });
       
-        console.log(styleList);
+        // console.log(styleList);
 
-        return (<div className={"wrapper"} style={{"height":"100%"}} >
+        return (<div className={"wrapper"}>
                 <Row key="1" >
                     <Col className="gutter-row" span={24} >
+                        <span className="logo"></span>
                         <TopMenu {...this.props} />
                     </Col>
                 </Row>
-                <Row key="2" gutter={16}>
-                    <Col className="gutter-row" span={24} style={{ paddingTop: "20px", textAlign: "center" }}>
+                <Row key="2">
+                    <Col className="gutter-row heading" span={24}>
                         <h1>{systemName}</h1>
+                        <div className="desc">
+                        
+                        
+                       书香社区，就在你身边
+                        
+                        
+                        </div>
                     </Col>
                 </Row>
-                <Row key="3" gutter={16} justify="center" align="center"   >
+                <Row key="3" className="icon-item-list" justify="center" align="center">
                     {appList.map((app, i) => (
                         <Col className={styleList} key={i}  span={6} style={{ textAlign: "center"}}
                             onClick={(e)=>this.gotoApp(e,app)}
                         >
-                                <br /><br />
+                            <div className="icon-item-box">
                                 <FontAwesome name={app.appIcon}  style={{color:'brown'}} className={"icon"}/>
-                                <br />{app.title}
-                            
+                                <p>{app.title}</p> 
+                            </div>
                         </Col>))}
                 </Row>
-
             </div>)
-
     }
 }
 
