@@ -1,7 +1,4 @@
-/**
- * Created by 叶子 on 2017/7/30.
- * http通用工具函数
- */
+
 import axios from 'axios';
 import { message } from 'antd';
 import { SYSTEM_SHORT_NAME } from './config';
@@ -123,32 +120,35 @@ const formatPostData = (value) => {
   
   return value
 }
-export const joinPostParameters = parameters => {
-  const obj = parameters; // {value1: 'prop1', value2: 'prop2', value3: 'prop3'}
-  const arr = [];
-  for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      const value = obj[key];
-      if(!value){
-        continue
-      }
-      if(value==null){
-        continue
-      }
-      const postValue = formatPostData(value);
-      if (!Array.isArray(value)) {
-        arr.push(key + '=' + encodeURIComponent(postValue));
-        continue;
-      }
-      for (const subKey in value) {
-        const subvalue = value[subKey];
-        arr.push(key + '=' + encodeURIComponent(subvalue));
-      }
+export const joinPostParameters = (parameters) => {
+    const obj = parameters // {value1: 'prop1', value2: 'prop2', value3: 'prop3'}
+    const arr = []
+    for (const key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            const value = obj[key]
+            if(!value){
+              continue
+            }
+            
+            if(value==null){
+              continue
+            }
+            const postValue = formatPostData(value)
+            
+            if (!Array.isArray(value)) {
+                arr.push(key + '=' + encodeURIComponent(postValue))
+                continue
+            }
+            for (const subKey in value) {
+                const subvalue = value[subKey]
+                arr.push(key + '=' + encodeURIComponent(subvalue))
+            }
+        }
     }
-  }
+  
   const result = arr.join('&');
   return result;
-};
+}
 
 export const PREFIX = getURLPrefix();
 /**

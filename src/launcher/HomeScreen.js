@@ -86,8 +86,12 @@ class HomeScreen extends React.Component {
                         <div className="desc">
                         
                         
+<<<<<<< HEAD
                        书香社区，就在你身边
                         
+=======
+                        为客户构造新消费场景的集成平台，打造运营的专属品质。
+>>>>>>> 22aa464c676b50b930efad209df85089839f7f26
                         
                         </div>
                     </Col>
