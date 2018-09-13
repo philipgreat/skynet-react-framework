@@ -42,7 +42,11 @@ class TopMenu extends React.Component {
         theme="dark"
       >
         
+<<<<<<< HEAD
         <Menu.Item key="app1" style={{float:"right"}}>
+=======
+        <Menu.Item key="app1" style={{float:"left"}}>
+>>>>>>> 54f63ff8e71cdc6f91d66177f7ca7649da111cca
         <Icon type="logout" />退出
         </Menu.Item>
        
