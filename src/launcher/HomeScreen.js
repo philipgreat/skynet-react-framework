@@ -84,7 +84,7 @@ class HomeScreen extends React.Component {
                 <Row key="2">
                     <Col className="gutter-row heading" span={24}>
                         <h1>{systemName}</h1>
-                        <div className="desc">千万级数据可视化渲染能力 SVG + Canvas 双引擎动力更佳 数据样式分离及扁平配置让开发更便捷 首创无障碍访问支持 微信小程序、PPT，哪里都能用</div>
+                        <div className="desc"></div>
                         <a href="#more" className="btn">更多特性</a>
                     </Col>
                 </Row>
