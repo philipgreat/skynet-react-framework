@@ -48,21 +48,19 @@ class NormalLoginForm extends Component {
                     {getFieldDecorator('username', {
                         rules: [{ required: true, message: '请输入用户名!' }],
                     })(
-                        <Input prefix={<Icon type="user" style={{ fontSize: 20 }} />} placeholder="用户名" />
+                        <Input prefix={<Icon type="user" />} placeholder="用户名" />
                     )}
                 </FormItem>
                 <FormItem>
                     {getFieldDecorator('password', {
                         rules: [{ required: true, message: '请输入密码!' }],
                     })(
-                        <Input prefix={<Icon type="lock" style={{ fontSize: 20 }} />} type="password" placeholder="密码" />
+                        <Input prefix={<Icon type="lock" />} type="password" placeholder="密码" />
                     )}
-                    
                 </FormItem>
                 <FormItem>
-                    
+                <Link className="login-form-forgot" to="/forgetpass" style={{float: 'right'}}>忘记密码</Link>
                    
-                    <Link to="/forgetpass" style={{float: 'right'}}>忘记密码</Link>
                     <Button type="primary" htmlType="submit" className="login-form-button" style={{width: '100%'}}>
                         登录
                     </Button>

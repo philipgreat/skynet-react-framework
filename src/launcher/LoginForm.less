@@ -1,29 +1,40 @@
 .errorMessage {
   padding: 12px;
 }
+
 .login {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-  background: #171c48 url('../launcher/timg.jpg') no-repeat center center;
+  background: #293c55 url('../launcher/login-background.jpg') no-repeat 0 0;
   background-size: cover;
   width: 100%;
+
   .loginForm {
     width: 480px;
-    padding: 50px 66px;
-    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
-    background: rgba(255, 255, 255, 1);
-    border-radius: 7px;
+    padding: 40px 0;
+    margin-left: 40%;
+    text-align: left;
+
     :global {
+      input:-webkit-autofill { 
+        -webkit-text-fill-color: #d8e0ec !important;
+        transition: background-color 5000s ease-in-out 0s;
+      }
+
       .ant-row.ant-form-item {
-        margin-bottom: 20px;
+        margin-bottom: 30px;
 
         .ant-input-prefix {
-          color: #333743;
-
+          color: rgba(216, 224, 236, 1);
+          left: 0;
           &:focus {
             outline: none;
+          }
+
+          .anticon {
+            font-size: 18px;
           }
         }
       }
@@ -34,27 +45,39 @@
         text-align: left;
         margin-bottom: 10px;
         display: block;
+        color: #d8e0ec;
+      }
+
+      .ant-form {
+        width: 70%;
       }
 
       .login-form-forgot {
-        color: #40a7dc;
+        color: #d8e0ec;
         float: right;
       }
 
       .ant-input {
         height: 40px;
-        font-size: 16px;
-        padding-left: 40px;
+        font-size: 15px;
+        color: #d8e0ec;
+        padding-left: 30px;
+        background: transparent;
+        border-radius: 0;
+        border: 0;
+        border-bottom: 1px solid rgba(216, 224, 236, 0.5);
 
         &:hover,
         &:focus {
-          border-color: rgba(51, 55, 67, 0.3);
-          box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+          border: 0;
+          box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+          background: transparent;
+          border-bottom: 1px solid rgba(216, 224, 236, 1);
         }
       }
 
       .ant-btn {
-        color: #fff;
+        color: #d8e0ec;
         background-color: #40a7dc;
         border-color: #40a7dc;
         margin-top: 0;
@@ -72,40 +95,52 @@
       }
 
       .ant-input-affix-wrapper:hover .ant-input:not(.ant-input-disabled) {
-        border-color: rgba(51, 55, 67, 0.3);
-        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+        border: 0;
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        border-bottom: 1px solid rgba(216, 224, 236, 1);
+      }
+
+      .ant-checkbox-inner {
+        background: transparent;
+        border: 1px solid rgba(216, 224, 236, 0.5);
       }
 
       .ant-checkbox-checked .ant-checkbox-inner,
       .ant-checkbox-indeterminate .ant-checkbox-inner {
-        background-color: #40a7dc;
-        border-color: #40a7dc;
+        background: transparent;
+        border: 1px solid rgba(216, 224, 236, 1);
       }
 
       .has-error .ant-input,
       .has-error .ant-input:hover {
-        border-color: rgba(241, 26, 78, 0.6);
-        box-shadow: 0 0 2px 1px rgba(241, 26, 78, 0.2);
+        border: 0;
+        box-shadow: 0 0 0 0 rgba(241, 26, 78, 0);
+        color: #ee297c;
+        border-bottom: 1px solid #ee297c!important;
       }
 
       .has-error .ant-input-prefix {
-        color: #f11a4e;
+        color: #ee297c!important;
       }
 
       .has-error .ant-form-explain,
       .has-error .ant-form-split {
-        color: #f11a4e;
+        color: #ee297c;
         text-align: left;
         margin-top: 5px;
+      }
+
+      .has-success .ant-input {
+        background: transparent;
       }
     }
 
     .loginLogo {
-      text-align: center;
+      text-align: left;
 
       span {
-        font-size: 30px;
-        color: #333743;
+        font-size: 40px;
+        color: #d8e0ec;
         display: block;
         letter-spacing: 4px;
         margin-bottom: 30px;

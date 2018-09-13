@@ -2,7 +2,7 @@ import FontAwesome from 'react-fontawesome';
 import { Row, Col, Card, Table, Popconfirm, Button } from 'antd';
 
 import React from 'react';
-import { Link } from 'react-router';
+
 import TopMenu from './TopMenu';
 import classNames from 'classnames'
 //import BizRouter from './BizRouter'
@@ -83,15 +83,11 @@ class HomeScreen extends React.Component {
                 <Row key="2">
                     <Col className="gutter-row heading" span={24}>
                         <h1>{systemName}</h1>
-                        <div className="desc">
-                        
-                        
-                        为客户构造新消费场景的集成平台，打造运营的专属品质。
-                        
-                        </div>
+                        <div className="desc">千万级数据可视化渲染能力 SVG + Canvas 双引擎动力更佳 数据样式分离及扁平配置让开发更便捷 首创无障碍访问支持 微信小程序、PPT，哪里都能用</div>
+                        <a href="#more" className="btn">更多特性</a>
                     </Col>
                 </Row>
-                <Row key="3" className="icon-item-list" justify="center" align="center">
+                <Row key="3" className="icon-item-list" justify="center" align="center" id="more">
                     {appList.map((app, i) => (
                         <Col className={styleList} key={i}  span={6} style={{ textAlign: "center"}}
                             onClick={(e)=>this.gotoApp(e,app)}
