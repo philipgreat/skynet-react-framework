@@ -7,92 +7,105 @@ import zhCN from 'antd/lib/locale-provider/zh_CN'
 // import enUS from 'antd/lib/locale-provider/en_US'
 import Launcher from '../launcher/Launcher'
 import ForgetPasswordForm from '../launcher/ForgetPasswordForm'
-<<<<<<< HEAD
-=======
 
->>>>>>> 592c5012b333787d66602918615159db86583265
 import GlobalComponents from './'
 
 
 function RouterConfig({ history }) {
 
-	const {PrivateMessageBizApp} = GlobalComponents
-	const {MessageTemplateBizApp} = GlobalComponents
-	const {LossAssessmentRecordBizApp} = GlobalComponents
-	const {LossDiscountBizApp} = GlobalComponents
-	const {BookSharingPlatformBizApp} = GlobalComponents
-	const {PlatformConfigurationBizApp} = GlobalComponents
-	const {AccountDataBizApp} = GlobalComponents
-	const {CityBizApp} = GlobalComponents
-	const {BookPlazaBizApp} = GlobalComponents
-	const {BookRecommendBizApp} = GlobalComponents
-	const {BookSharingIncomeMetricBizApp} = GlobalComponents
-	const {BookDonationIncomeMetricBizApp} = GlobalComponents
-	const {MemberServiceIncomeMetricBizApp} = GlobalComponents
-	const {MemberServiceProductBizApp} = GlobalComponents
-	const {MemberRightsDisplayBizApp} = GlobalComponents
-	const {MemberRightsDisplayItemBizApp} = GlobalComponents
-	const {MemberServiceBundleSkuBizApp} = GlobalComponents
-	const {LineItemBizApp} = GlobalComponents
-	const {MainOrderPaymentBizApp} = GlobalComponents
-	const {MainOrderBizApp} = GlobalComponents
-	const {OrderLogBizApp} = GlobalComponents
-	const {BookBizApp} = GlobalComponents
-	const {PrinterBizApp} = GlobalComponents
-	const {PrinterTaskBizApp} = GlobalComponents
-	const {BookCopyStatusBizApp} = GlobalComponents
-	const {BookCopyBizApp} = GlobalComponents
-	const {TransferTypeBizApp} = GlobalComponents
-	const {BookCopyTransferBizApp} = GlobalComponents
-	const {TakeStockStatusBizApp} = GlobalComponents
-	const {BookTakeStockPlanBizApp} = GlobalComponents
-	const {BookTakeStockStatusBizApp} = GlobalComponents
-	const {TakeStoreResultsBizApp} = GlobalComponents
-	const {BookTakeStockResultBizApp} = GlobalComponents
-	const {BookCopyOperateTypeBizApp} = GlobalComponents
-	const {BookCopyOperationRecordBizApp} = GlobalComponents
-	const {BorrowingStatusBizApp} = GlobalComponents
-	const {BorrowingHistoryBizApp} = GlobalComponents
-	const {BorrowingExpiredSkuBizApp} = GlobalComponents
-	const {BookReviewBizApp} = GlobalComponents
-	const {BookReviewLikeBizApp} = GlobalComponents
-	const {DeliverMethodBizApp} = GlobalComponents
-	const {ApplicationStatusBizApp} = GlobalComponents
-	const {BookCopySharingApplicationBizApp} = GlobalComponents
-	const {PlatformAccountBizApp} = GlobalComponents
-	const {MemberServiceRevenueBizApp} = GlobalComponents
-	const {PlatformAccountDetailsBizApp} = GlobalComponents
-	const {FundationAccountBizApp} = GlobalComponents
-	const {FundationAccountDetailsBizApp} = GlobalComponents
-	const {StoreAccountBizApp} = GlobalComponents
-	const {StoreAccountDetailsBizApp} = GlobalComponents
-	const {TransactionTypeBizApp} = GlobalComponents
-	const {CustomerAccountTransactionBizApp} = GlobalComponents
-	const {StoreTypeBizApp} = GlobalComponents
-	const {StoreBizApp} = GlobalComponents
+	const {MoyiBizApp} = GlobalComponents
+	const {MoyiPlatformConfigurationBizApp} = GlobalComponents
+	const {SurvivalStatusBizApp} = GlobalComponents
+	const {SlideBizApp} = GlobalComponents
 	const {SlideTypeBizApp} = GlobalComponents
-	const {StoreSlideBizApp} = GlobalComponents
-	const {CampaignPlazaBizApp} = GlobalComponents
-	const {CampaignStatusBizApp} = GlobalComponents
-	const {CampaignBizApp} = GlobalComponents
-	const {CampaignRegisterHistoryBizApp} = GlobalComponents
-	const {CampaignReviewBizApp} = GlobalComponents
-	const {CampaignLikeBizApp} = GlobalComponents
-	const {CampaignReviewLikeBizApp} = GlobalComponents
-	const {CustomerBizApp} = GlobalComponents
-	const {CustomerFootprintBizApp} = GlobalComponents
-	const {ShieldCustomerBizApp} = GlobalComponents
-	const {InformBizApp} = GlobalComponents
-	const {EmployeeBizApp} = GlobalComponents
-	const {EmployeeWorkingStoreBizApp} = GlobalComponents
-	const {RoleBizApp} = GlobalComponents
-	const {ProfitTypeBizApp} = GlobalComponents
-	const {ProfitDistributeStateBizApp} = GlobalComponents
-	const {UndistributedProfitBizApp} = GlobalComponents
+	const {ChannelBizApp} = GlobalComponents
+	const {ChannelTypeBizApp} = GlobalComponents
+	const {ChannelSectionTypeBizApp} = GlobalComponents
+	const {ChannelSectionBizApp} = GlobalComponents
+	const {ChannelArticleBizApp} = GlobalComponents
+	const {MasterColumnBizApp} = GlobalComponents
+	const {SectionBizApp} = GlobalComponents
+	const {SectionArtworkRelationshipBizApp} = GlobalComponents
+	const {SectionFansBizApp} = GlobalComponents
+	const {ModeratorBizApp} = GlobalComponents
+	const {ModeratorPunishmentBizApp} = GlobalComponents
+	const {ModeratorBonusBizApp} = GlobalComponents
+	const {EliteArticleBizApp} = GlobalComponents
+	const {SectionTopArticleBizApp} = GlobalComponents
+	const {SectionBroadcastArticleBizApp} = GlobalComponents
+	const {ArticleBonusBizApp} = GlobalComponents
+	const {BonusTypeBizApp} = GlobalComponents
+	const {ArtistBizApp} = GlobalComponents
+	const {ArtistFansBizApp} = GlobalComponents
+	const {MoyiUserBizApp} = GlobalComponents
+	const {UserInviteCodeBizApp} = GlobalComponents
+	const {UserInviteRegistrationInfoBizApp} = GlobalComponents
+	const {OrganizationBizApp} = GlobalComponents
+	const {OrganizationTypeBizApp} = GlobalComponents
+	const {MoyiUserFansBizApp} = GlobalComponents
+	const {MoyiUserCheckinRecordBizApp} = GlobalComponents
+	const {TransactionDirectionBizApp} = GlobalComponents
+	const {RewardDetailRecordBizApp} = GlobalComponents
+	const {ArtworkBizApp} = GlobalComponents
+	const {ArtworkImageBizApp} = GlobalComponents
+	const {ArtworkLikeBizApp} = GlobalComponents
+	const {ArtworkFansBizApp} = GlobalComponents
+	const {ArtworkCertificateBizApp} = GlobalComponents
+	const {ArtTypeBizApp} = GlobalComponents
+	const {ArtworkTypeBizApp} = GlobalComponents
+	const {ArtworkTypeImageBizApp} = GlobalComponents
+	const {ArtworkMaterialBizApp} = GlobalComponents
+	const {ArtworkStyleBizApp} = GlobalComponents
+	const {ArtworkCategoryBizApp} = GlobalComponents
+	const {ArtworkSkillBizApp} = GlobalComponents
+	const {ArtworkTopicBizApp} = GlobalComponents
+	const {ArtworkCountryBizApp} = GlobalComponents
+	const {ArtworkFigureBizApp} = GlobalComponents
+	const {ArtworkFontStyleBizApp} = GlobalComponents
+	const {ArtworkDynastyBizApp} = GlobalComponents
+	const {ArtworkKindBizApp} = GlobalComponents
+	const {ArtworkDecadeBizApp} = GlobalComponents
+	const {ArticleBizApp} = GlobalComponents
+	const {EditorSuggestionBizApp} = GlobalComponents
+	const {DisplayModeBizApp} = GlobalComponents
+	const {ArticleTypeBizApp} = GlobalComponents
+	const {ArticleImageBizApp} = GlobalComponents
+	const {ArticleLikeBizApp} = GlobalComponents
+	const {ContentTagBizApp} = GlobalComponents
+	const {ReviewBizApp} = GlobalComponents
+	const {ReviewLikeBizApp} = GlobalComponents
+	const {SuperNodeUserBizApp} = GlobalComponents
+	const {SuperPartnerUserBizApp} = GlobalComponents
+	const {MoyiEditorUserBizApp} = GlobalComponents
+	const {MoyiColumnAuthorBizApp} = GlobalComponents
+	const {MoyiArtworkReviewAuthorBizApp} = GlobalComponents
+	const {MoyiMasterOpinionAuthorBizApp} = GlobalComponents
+	const {MoyiUserDailyInkValueBizApp} = GlobalComponents
+	const {MoyiDailyTopUserBizApp} = GlobalComponents
+	const {ArtworkDailyInkValueBizApp} = GlobalComponents
+	const {MoyiDailyTopArtworkBizApp} = GlobalComponents
+	const {SpamReportBizApp} = GlobalComponents
+	const {SystemMessageBizApp} = GlobalComponents
+	const {PrivateMessageBizApp} = GlobalComponents
+	const {InkCoinIncentiveRuleBizApp} = GlobalComponents
+	const {MoyiExperienceRuleBizApp} = GlobalComponents
+	const {UserLevelBizApp} = GlobalComponents
+	const {MoyiExperienceRecordBizApp} = GlobalComponents
+	const {ConfirmationStatusBizApp} = GlobalComponents
+	const {BlockingTypeBizApp} = GlobalComponents
+	const {UserBlockingBizApp} = GlobalComponents
+	const {ReviewBlockingBizApp} = GlobalComponents
+	const {ArticleBlockingBizApp} = GlobalComponents
+	const {ArtworkBlockingBizApp} = GlobalComponents
+	const {DeliverArtworkBizApp} = GlobalComponents
+	const {DeliverArticleBizApp} = GlobalComponents
+	const {TipArticleBizApp} = GlobalComponents
+	const {TipArtworkBizApp} = GlobalComponents
 	const {UserDomainBizApp} = GlobalComponents
 	const {SecUserBizApp} = GlobalComponents
 	const {SecUserBlockingBizApp} = GlobalComponents
 	const {UserAppBizApp} = GlobalComponents
+	const {ListAccessBizApp} = GlobalComponents
 	const {ObjectAccessBizApp} = GlobalComponents
 	const {LoginHistoryBizApp} = GlobalComponents
 	const {GenericFormBizApp} = GlobalComponents
@@ -107,91 +120,101 @@ function RouterConfig({ history }) {
     <LocaleProvider locale={zhCN}>
       <Router history={history}>
         <Switch>
-<<<<<<< HEAD
-        <Route path="/home" component={Launcher} />
-        
-        <Route path="/forgetpass" component={ForgetPasswordForm} />
-=======
          <Route path="/home" component={Launcher} />
          <Route path="/forgetpass" component={ForgetPasswordForm} />
->>>>>>> 592c5012b333787d66602918615159db86583265
-          <Route path="/privateMessage/" component={PrivateMessageBizApp} />
-          <Route path="/messageTemplate/" component={MessageTemplateBizApp} />
-          <Route path="/lossAssessmentRecord/" component={LossAssessmentRecordBizApp} />
-          <Route path="/lossDiscount/" component={LossDiscountBizApp} />
-          <Route path="/bookSharingPlatform/" component={BookSharingPlatformBizApp} />
-          <Route path="/platformConfiguration/" component={PlatformConfigurationBizApp} />
-          <Route path="/accountData/" component={AccountDataBizApp} />
-          <Route path="/city/" component={CityBizApp} />
-          <Route path="/bookPlaza/" component={BookPlazaBizApp} />
-          <Route path="/bookRecommend/" component={BookRecommendBizApp} />
-          <Route path="/bookSharingIncomeMetric/" component={BookSharingIncomeMetricBizApp} />
-          <Route path="/bookDonationIncomeMetric/" component={BookDonationIncomeMetricBizApp} />
-          <Route path="/memberServiceIncomeMetric/" component={MemberServiceIncomeMetricBizApp} />
-          <Route path="/memberServiceProduct/" component={MemberServiceProductBizApp} />
-          <Route path="/memberRightsDisplay/" component={MemberRightsDisplayBizApp} />
-          <Route path="/memberRightsDisplayItem/" component={MemberRightsDisplayItemBizApp} />
-          <Route path="/memberServiceBundleSku/" component={MemberServiceBundleSkuBizApp} />
-          <Route path="/lineItem/" component={LineItemBizApp} />
-          <Route path="/mainOrderPayment/" component={MainOrderPaymentBizApp} />
-          <Route path="/mainOrder/" component={MainOrderBizApp} />
-          <Route path="/orderLog/" component={OrderLogBizApp} />
-          <Route path="/book/" component={BookBizApp} />
-          <Route path="/printer/" component={PrinterBizApp} />
-          <Route path="/printerTask/" component={PrinterTaskBizApp} />
-          <Route path="/bookCopyStatus/" component={BookCopyStatusBizApp} />
-          <Route path="/bookCopy/" component={BookCopyBizApp} />
-          <Route path="/transferType/" component={TransferTypeBizApp} />
-          <Route path="/bookCopyTransfer/" component={BookCopyTransferBizApp} />
-          <Route path="/takeStockStatus/" component={TakeStockStatusBizApp} />
-          <Route path="/bookTakeStockPlan/" component={BookTakeStockPlanBizApp} />
-          <Route path="/bookTakeStockStatus/" component={BookTakeStockStatusBizApp} />
-          <Route path="/takeStoreResults/" component={TakeStoreResultsBizApp} />
-          <Route path="/bookTakeStockResult/" component={BookTakeStockResultBizApp} />
-          <Route path="/bookCopyOperateType/" component={BookCopyOperateTypeBizApp} />
-          <Route path="/bookCopyOperationRecord/" component={BookCopyOperationRecordBizApp} />
-          <Route path="/borrowingStatus/" component={BorrowingStatusBizApp} />
-          <Route path="/borrowingHistory/" component={BorrowingHistoryBizApp} />
-          <Route path="/borrowingExpiredSku/" component={BorrowingExpiredSkuBizApp} />
-          <Route path="/bookReview/" component={BookReviewBizApp} />
-          <Route path="/bookReviewLike/" component={BookReviewLikeBizApp} />
-          <Route path="/deliverMethod/" component={DeliverMethodBizApp} />
-          <Route path="/applicationStatus/" component={ApplicationStatusBizApp} />
-          <Route path="/bookCopySharingApplication/" component={BookCopySharingApplicationBizApp} />
-          <Route path="/platformAccount/" component={PlatformAccountBizApp} />
-          <Route path="/memberServiceRevenue/" component={MemberServiceRevenueBizApp} />
-          <Route path="/platformAccountDetails/" component={PlatformAccountDetailsBizApp} />
-          <Route path="/fundationAccount/" component={FundationAccountBizApp} />
-          <Route path="/fundationAccountDetails/" component={FundationAccountDetailsBizApp} />
-          <Route path="/storeAccount/" component={StoreAccountBizApp} />
-          <Route path="/storeAccountDetails/" component={StoreAccountDetailsBizApp} />
-          <Route path="/transactionType/" component={TransactionTypeBizApp} />
-          <Route path="/customerAccountTransaction/" component={CustomerAccountTransactionBizApp} />
-          <Route path="/storeType/" component={StoreTypeBizApp} />
-          <Route path="/store/" component={StoreBizApp} />
+          <Route path="/moyi/" component={MoyiBizApp} />
+          <Route path="/moyiPlatformConfiguration/" component={MoyiPlatformConfigurationBizApp} />
+          <Route path="/survivalStatus/" component={SurvivalStatusBizApp} />
+          <Route path="/slide/" component={SlideBizApp} />
           <Route path="/slideType/" component={SlideTypeBizApp} />
-          <Route path="/storeSlide/" component={StoreSlideBizApp} />
-          <Route path="/campaignPlaza/" component={CampaignPlazaBizApp} />
-          <Route path="/campaignStatus/" component={CampaignStatusBizApp} />
-          <Route path="/campaign/" component={CampaignBizApp} />
-          <Route path="/campaignRegisterHistory/" component={CampaignRegisterHistoryBizApp} />
-          <Route path="/campaignReview/" component={CampaignReviewBizApp} />
-          <Route path="/campaignLike/" component={CampaignLikeBizApp} />
-          <Route path="/campaignReviewLike/" component={CampaignReviewLikeBizApp} />
-          <Route path="/customer/" component={CustomerBizApp} />
-          <Route path="/customerFootprint/" component={CustomerFootprintBizApp} />
-          <Route path="/shieldCustomer/" component={ShieldCustomerBizApp} />
-          <Route path="/inform/" component={InformBizApp} />
-          <Route path="/employee/" component={EmployeeBizApp} />
-          <Route path="/employeeWorkingStore/" component={EmployeeWorkingStoreBizApp} />
-          <Route path="/role/" component={RoleBizApp} />
-          <Route path="/profitType/" component={ProfitTypeBizApp} />
-          <Route path="/profitDistributeState/" component={ProfitDistributeStateBizApp} />
-          <Route path="/undistributedProfit/" component={UndistributedProfitBizApp} />
+          <Route path="/channel/" component={ChannelBizApp} />
+          <Route path="/channelType/" component={ChannelTypeBizApp} />
+          <Route path="/channelSectionType/" component={ChannelSectionTypeBizApp} />
+          <Route path="/channelSection/" component={ChannelSectionBizApp} />
+          <Route path="/channelArticle/" component={ChannelArticleBizApp} />
+          <Route path="/masterColumn/" component={MasterColumnBizApp} />
+          <Route path="/section/" component={SectionBizApp} />
+          <Route path="/sectionArtworkRelationship/" component={SectionArtworkRelationshipBizApp} />
+          <Route path="/sectionFans/" component={SectionFansBizApp} />
+          <Route path="/moderator/" component={ModeratorBizApp} />
+          <Route path="/moderatorPunishment/" component={ModeratorPunishmentBizApp} />
+          <Route path="/moderatorBonus/" component={ModeratorBonusBizApp} />
+          <Route path="/eliteArticle/" component={EliteArticleBizApp} />
+          <Route path="/sectionTopArticle/" component={SectionTopArticleBizApp} />
+          <Route path="/sectionBroadcastArticle/" component={SectionBroadcastArticleBizApp} />
+          <Route path="/articleBonus/" component={ArticleBonusBizApp} />
+          <Route path="/bonusType/" component={BonusTypeBizApp} />
+          <Route path="/artist/" component={ArtistBizApp} />
+          <Route path="/artistFans/" component={ArtistFansBizApp} />
+          <Route path="/moyiUser/" component={MoyiUserBizApp} />
+          <Route path="/userInviteCode/" component={UserInviteCodeBizApp} />
+          <Route path="/userInviteRegistrationInfo/" component={UserInviteRegistrationInfoBizApp} />
+          <Route path="/organization/" component={OrganizationBizApp} />
+          <Route path="/organizationType/" component={OrganizationTypeBizApp} />
+          <Route path="/moyiUserFans/" component={MoyiUserFansBizApp} />
+          <Route path="/moyiUserCheckinRecord/" component={MoyiUserCheckinRecordBizApp} />
+          <Route path="/transactionDirection/" component={TransactionDirectionBizApp} />
+          <Route path="/rewardDetailRecord/" component={RewardDetailRecordBizApp} />
+          <Route path="/artwork/" component={ArtworkBizApp} />
+          <Route path="/artworkImage/" component={ArtworkImageBizApp} />
+          <Route path="/artworkLike/" component={ArtworkLikeBizApp} />
+          <Route path="/artworkFans/" component={ArtworkFansBizApp} />
+          <Route path="/artworkCertificate/" component={ArtworkCertificateBizApp} />
+          <Route path="/artType/" component={ArtTypeBizApp} />
+          <Route path="/artworkType/" component={ArtworkTypeBizApp} />
+          <Route path="/artworkTypeImage/" component={ArtworkTypeImageBizApp} />
+          <Route path="/artworkMaterial/" component={ArtworkMaterialBizApp} />
+          <Route path="/artworkStyle/" component={ArtworkStyleBizApp} />
+          <Route path="/artworkCategory/" component={ArtworkCategoryBizApp} />
+          <Route path="/artworkSkill/" component={ArtworkSkillBizApp} />
+          <Route path="/artworkTopic/" component={ArtworkTopicBizApp} />
+          <Route path="/artworkCountry/" component={ArtworkCountryBizApp} />
+          <Route path="/artworkFigure/" component={ArtworkFigureBizApp} />
+          <Route path="/artworkFontStyle/" component={ArtworkFontStyleBizApp} />
+          <Route path="/artworkDynasty/" component={ArtworkDynastyBizApp} />
+          <Route path="/artworkKind/" component={ArtworkKindBizApp} />
+          <Route path="/artworkDecade/" component={ArtworkDecadeBizApp} />
+          <Route path="/article/" component={ArticleBizApp} />
+          <Route path="/editorSuggestion/" component={EditorSuggestionBizApp} />
+          <Route path="/displayMode/" component={DisplayModeBizApp} />
+          <Route path="/articleType/" component={ArticleTypeBizApp} />
+          <Route path="/articleImage/" component={ArticleImageBizApp} />
+          <Route path="/articleLike/" component={ArticleLikeBizApp} />
+          <Route path="/contentTag/" component={ContentTagBizApp} />
+          <Route path="/review/" component={ReviewBizApp} />
+          <Route path="/reviewLike/" component={ReviewLikeBizApp} />
+          <Route path="/superNodeUser/" component={SuperNodeUserBizApp} />
+          <Route path="/superPartnerUser/" component={SuperPartnerUserBizApp} />
+          <Route path="/moyiEditorUser/" component={MoyiEditorUserBizApp} />
+          <Route path="/moyiColumnAuthor/" component={MoyiColumnAuthorBizApp} />
+          <Route path="/moyiArtworkReviewAuthor/" component={MoyiArtworkReviewAuthorBizApp} />
+          <Route path="/moyiMasterOpinionAuthor/" component={MoyiMasterOpinionAuthorBizApp} />
+          <Route path="/moyiUserDailyInkValue/" component={MoyiUserDailyInkValueBizApp} />
+          <Route path="/moyiDailyTopUser/" component={MoyiDailyTopUserBizApp} />
+          <Route path="/artworkDailyInkValue/" component={ArtworkDailyInkValueBizApp} />
+          <Route path="/moyiDailyTopArtwork/" component={MoyiDailyTopArtworkBizApp} />
+          <Route path="/spamReport/" component={SpamReportBizApp} />
+          <Route path="/systemMessage/" component={SystemMessageBizApp} />
+          <Route path="/privateMessage/" component={PrivateMessageBizApp} />
+          <Route path="/inkCoinIncentiveRule/" component={InkCoinIncentiveRuleBizApp} />
+          <Route path="/moyiExperienceRule/" component={MoyiExperienceRuleBizApp} />
+          <Route path="/userLevel/" component={UserLevelBizApp} />
+          <Route path="/moyiExperienceRecord/" component={MoyiExperienceRecordBizApp} />
+          <Route path="/confirmationStatus/" component={ConfirmationStatusBizApp} />
+          <Route path="/blockingType/" component={BlockingTypeBizApp} />
+          <Route path="/userBlocking/" component={UserBlockingBizApp} />
+          <Route path="/reviewBlocking/" component={ReviewBlockingBizApp} />
+          <Route path="/articleBlocking/" component={ArticleBlockingBizApp} />
+          <Route path="/artworkBlocking/" component={ArtworkBlockingBizApp} />
+          <Route path="/deliverArtwork/" component={DeliverArtworkBizApp} />
+          <Route path="/deliverArticle/" component={DeliverArticleBizApp} />
+          <Route path="/tipArticle/" component={TipArticleBizApp} />
+          <Route path="/tipArtwork/" component={TipArtworkBizApp} />
           <Route path="/userDomain/" component={UserDomainBizApp} />
           <Route path="/secUser/" component={SecUserBizApp} />
           <Route path="/secUserBlocking/" component={SecUserBlockingBizApp} />
           <Route path="/userApp/" component={UserAppBizApp} />
+          <Route path="/listAccess/" component={ListAccessBizApp} />
           <Route path="/objectAccess/" component={ObjectAccessBizApp} />
           <Route path="/loginHistory/" component={LoginHistoryBizApp} />
           <Route path="/genericForm/" component={GenericFormBizApp} />
@@ -199,8 +222,7 @@ function RouterConfig({ history }) {
           <Route path="/formFieldMessage/" component={FormFieldMessageBizApp} />
           <Route path="/formField/" component={FormFieldBizApp} />
           <Route path="/formAction/" component={FormActionBizApp} />
-          
-         
+         <Route path="/" component={Launcher} />
         </Switch>
       </Router>
     </LocaleProvider>
@@ -208,7 +230,6 @@ function RouterConfig({ history }) {
 }
 
 export default RouterConfig
-
 
 
 

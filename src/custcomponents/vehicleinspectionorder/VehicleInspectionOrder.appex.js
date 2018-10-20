@@ -1,34 +1,33 @@
-import StoreBizApp from '../../bizcomponents/store/Store.app'
+import VehicleInspectionOrderBizApp from '../../bizcomponents/vehicleinspectionorder/VehicleInspectionOrder.app'
 
 import React from 'react'
 import { connect } from 'dva'
 
-import styles from './Store.appex.less'
+import styles from './VehicleInspectionOrder.appex.less'
 
 
 import About from '../about/About'
 
-class StoreBizAppEx extends React.PureComponent {
+class VehicleInspectionOrderBizAppEx extends React.PureComponent {
   
   extraRoutesFunc=()=>{
 
-    return [{path:'/store/:id/about', component:About}];
+    return [{path:'/vehicleInspectionOrder/:id/about/:seq', component:About}];
 
   }
   render() {
      // const { collapsed, fetchingNotices,loading } = this.props
      //console.log("this.extraRoutesFunc------------",this.extraRoutesFunc());
      return (
-      <StoreBizApp extraRoutesFunc={this.extraRoutesFunc} {...this.props}/>
+      <VehicleInspectionOrderBizApp extraRoutesFunc={this.extraRoutesFunc} {...this.props}/>
      )
    }
 }
 
 
 export default connect(state => ({  
-  
   customized:'yes',
-}))(StoreBizAppEx)
+}))(VehicleInspectionOrderBizAppEx)
 
 
 /*
@@ -37,10 +36,10 @@ export default connect(state => ({
   collapsed: state.global.collapsed,
   fetchingNotices: state.global.fetchingNotices,
   notices: state.global.notices,
-  store: state._store,
+  vehicleInspectionOrder: state._vehicleInspectionOrder,
   extra:'yes',
   ...state,
-}))(StoreBizAppEx)
+}))(VehicleInspectionOrderBizAppEx)
 
 
 import PropTypes from 'prop-types'
@@ -64,7 +63,7 @@ import moment from 'moment'
 import groupBy from 'lodash/groupBy'
 import { ContainerQuery } from 'react-container-query'
 import classNames from 'classnames'
-import styles from './Store.appex.less'
+import styles from './VehicleInspectionOrder.appex.less'
 import {sessionObject} from '../../utils/utils'
 
 import HeaderSearch from '../../components/HeaderSearch';

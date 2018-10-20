@@ -8,9 +8,9 @@ import PictureEdit from '../components/PictureEdit';
 import ImageUpload from '../components/ImageUpload';
 import OssPictureEdit from '../components/OSSPictureEdit';
 
-//export const ImageComponent = OssPictureEdit
+export const ImageComponent = OssPictureEdit
 //for BBT only
-export const ImageComponent = ImageUpload;
+//export const ImageComponent = ImageUpload;
 
 /**
  * 公用get请求
@@ -88,8 +88,8 @@ export const getURLPrefix = () => {
   if (url.hostname === 'localhost') {
     return `http://${url.hostname}:8080/${SYSTEM_SHORT_NAME}/`
   }
-  if (url.hostname.indexOf("192.168")==0) {
-    return `https://shuxiang.ycinfotech.cn/shuxiang/`
+  if (url.hostname === '127.0.0.1') {
+    return `https://test01.nodeart.net/moyi/`
   }
   //return `http://xm.jl51.com.cn/cis/`
 
@@ -110,9 +110,11 @@ export const joinParameters = (parameters) => {
 }
 const formatPostData = (value) => {
     console.log("value", value)
-    if(!value){
+
+    if (typeof value == 'undefined'){
       return null
     }
+
     if(value._isAMomentObject){
         return moment(value).format('YYYY-MM-DDTHH:mm:ss');
     }
@@ -122,19 +124,16 @@ const formatPostData = (value) => {
 }
 export const joinPostParameters = (parameters) => {
     const obj = parameters // {value1: 'prop1', value2: 'prop2', value3: 'prop3'}
+    console.log("joinPostParameters",parameters)
     const arr = []
     for (const key in obj) {
         if (obj.hasOwnProperty(key)) {
             const value = obj[key]
-            if(!value){
-              continue
-            }
             
+            const postValue = formatPostData(value)
             if(value==null){
               continue
             }
-            const postValue = formatPostData(value)
-            
             if (!Array.isArray(value)) {
                 arr.push(key + '=' + encodeURIComponent(postValue))
                 continue
@@ -257,8 +256,8 @@ export const mapBackToImageValuesSkynetMediaServer = convertedImagesValues => {
   });
   return targetImages;
 };
-export const mapBackToImageValues = mapBackToImageValuesSkynetMediaServer;
-//export  const mapBackToImageValues = mapBackToImageValuesFlatResponse;
+//export const mapBackToImageValues = mapBackToImageValuesSkynetMediaServer;
+export  const mapBackToImageValues = mapBackToImageValuesFlatResponse;
 //BBT
 
 export const mapFromImageValues = (selectedRow, imageKeys) => {

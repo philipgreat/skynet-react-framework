@@ -8,32 +8,26 @@ const MenuItemGroup = Menu.ItemGroup;
 class TopMenu extends React.Component {
   state = {
     current: 'app1',
-  }
-  handleClick = (e) => {
+  };
+  handleClick = e => {
     console.log('click ', e);
 
-    console.log("props", this.props);
-    const dispatch=this.props.dispatch;
-    dispatch({type:"launcher/signOut"});
+    console.log('props', this.props);
+    const dispatch = this.props.dispatch;
+    dispatch({ type: 'launcher/signOut' });
     this.setState({
       current: e.key,
     });
-    
+  };
 
-  }
-
-  linkto = (value) => {
-    
-    console.log("current selected", value)
-    console.log("linkto props", this.props);
-    const dispatch=this.props.dispatch;
-    dispatch({type:"launcher/logout"});
-  }
+  linkto = value => {
+    console.log('current selected', value);
+    console.log('linkto props', this.props);
+    const dispatch = this.props.dispatch;
+    dispatch({ type: 'launcher/logout' });
+  };
 
   render() {
-
-
-
     return (
       <Menu
         onClick={this.handleClick}
@@ -41,16 +35,9 @@ class TopMenu extends React.Component {
         mode="horizontal"
         theme="dark"
       >
-        
-<<<<<<< HEAD
-        <Menu.Item key="app1" style={{float:"right"}}>
-=======
-        <Menu.Item key="app1" style={{float:"left"}}>
->>>>>>> 54f63ff8e71cdc6f91d66177f7ca7649da111cca
-        <Icon type="logout" />退出
+        <Menu.Item key="app1" style={{ float: 'right' }}>
+          <Icon type="logout" />退出
         </Menu.Item>
-       
- 
       </Menu>
     );
   }
