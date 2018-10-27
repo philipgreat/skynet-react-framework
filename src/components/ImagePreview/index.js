@@ -1,5 +1,29 @@
 import { Upload, Icon, Modal } from 'antd';
 
+//?x-oss-process=style/small
+
+const resizeDispayImageInList=(imageLocation)=>resizeDispayImage(imageLocation,"small")
+
+const resizeDispayImageForPreview=(imageLocation)=>resizeDispayImage(imageLocation,"xlarge")
+
+const resizeDispayImage=(imageLocation, style)=>{
+
+
+  if(!imageLocation){
+    return imageLocation
+  }
+  if(!imageLocation.indexOf){
+    return imageLocation
+  }
+  if(imageLocation.indexOf("?")<0){
+    return imageLocation+"?x-oss-process=style/"+style
+  }
+  return imageLocation
+
+}
+
+
+
 export default class ImagePreview extends React.Component {
   state = {
     previewVisible: false,
@@ -20,14 +44,16 @@ export default class ImagePreview extends React.Component {
   }
   handleCancel = () => this.setState({ previewVisible: false })
 
+
+
   handlePreview = (event, imageLocation) => {
     console.log("preview file", imageLocation)
     this.setState({
-      previewImage: imageLocation,
+      previewImage: resizeDispayImageForPreview(imageLocation),
       previewVisible: true,
     });
   }
-
+  
   handleChange = ({ fileList }) => this.setState({ fileList })
 
   render() {
@@ -42,7 +68,7 @@ export default class ImagePreview extends React.Component {
     return (
       <div className="clearfix" style={{textAlign:"center"}}>
         <img
-          src={imageLocation}
+          src={resizeDispayImageInList(imageLocation)}
           style={{height:80, width:80}}
           title={imageLocation}
           alt={imageLocation}

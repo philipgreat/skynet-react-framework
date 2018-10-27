@@ -1,5 +1,16 @@
 import { AutoComplete, Card, Button, Form, Icon, Col, Row, DatePicker, TimePicker, Input, Select, Popover,Switch } from 'antd'
 const { Option } = Select
+const valueOf = (value, candidateValues)=>{
+  if(value&&value.length!=0){
+    return value
+  }
+  
+  if(candidateValues.length==1){
+    return candidateValues[0].id
+  }
+  return ""
+}
+
 
 export default class SelectObject extends React.Component {
   state = {
@@ -21,8 +32,13 @@ export default class SelectObject extends React.Component {
     future.then(data=>{
       const candidateValues = data.candidates
       if(this._isMounted){
+        const value=valueOf(this.props.value,candidateValues)
+        const onChange = this.props.onChange;
+        if (onChange) {
+          onChange(value);
+        }
         this.setState({
-        candidateValues
+        candidateValues,value
       })}
 
     })
@@ -46,6 +62,8 @@ export default class SelectObject extends React.Component {
     }
     if ('value' in nextProps) {
       const value = nextProps.value;
+
+
       this.setState({value});
     }
   }
@@ -77,14 +95,8 @@ export default class SelectObject extends React.Component {
     if(!candidateValues){
       return (<div>正在载入候选项......</div>)
     }
-    const valueOf = (value, candidateValues)=>{
-      if(value&&value.length!=0){
-        return value
-      }
-      if(candidateValues.length==1){
-        return candidateValues[0].id
-      }
-    }
+    
+
     
 
     return (
@@ -92,7 +104,7 @@ export default class SelectObject extends React.Component {
               value={valueOf(value,candidateValues)}
                     dataSource={candidateValues}
                     onSearch={this.handleSearch}
-                    placeholder="请输入平台"
+                    placeholder="请选择列表中或者输入搜索"
                     disabled={disabled}
                     onChange={(value)=>this.handleChange(value)}
                   >
