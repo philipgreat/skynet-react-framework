@@ -1,5 +1,4 @@
 
-
 import React, { Component } from 'react'
 import FontAwesome from 'react-fontawesome';
 import { connect } from 'dva'
@@ -91,8 +90,8 @@ const  onListAccessChange =  (value, targetComponent)  =>{
       selectedUser,
       id,version,
       value.join('')
-    );
-
+    )
+    
     future.then(app => {
       console.log("app",app);
       targetComponent.setState({
@@ -284,6 +283,10 @@ const  onListAccessChange =  (value, targetComponent)  =>{
   const renderPermissionHeader = (targetComponent)=> {
    
 
+    if(!targetComponent.state.managementAccess){
+      return null
+    }
+
     const {targetObject,targetObjectMeta} = targetComponent.props
     const targetId = targetObject.id
     const {menuData} = targetObjectMeta
@@ -307,6 +310,32 @@ const  onListAccessChange =  (value, targetComponent)  =>{
       )
   }
 
+  
+  const loadInitialData = (targetComponent) => {
+
+
+    const objectType = targetComponent.props.targetObjectMeta.menuData.menuFor;
+    const objectId = targetComponent.props.targetObject.id
+
+    const future = PermissionSettingService.testIfHasManagementAccess(objectType,objectId)
+
+    future.then(testResult => {
+     
+      if(testResult=="OK"){
+        executeCandidateSecUserSearch("",targetComponent)
+        return
+      }
+
+      targetComponent.setState({
+        managementAccess: false,
+      });
+
+    });
+
+
+
+  }
+
 
   const executeCandidateSecUserSearch = (filterKey,targetComponent) => {
   
@@ -314,7 +343,7 @@ const  onListAccessChange =  (value, targetComponent)  =>{
     const id = ''; //not used for now
     const pageNo = 1;
     const future = PermissionSettingService.requestCandidateSecUser(
-      'bookRecommend',
+      '',
       id,
       filterKey,
       pageNo
@@ -325,6 +354,7 @@ const  onListAccessChange =  (value, targetComponent)  =>{
       console.log("candidateUsersResponse",candidateUsersResponse);
       targetComponent.setState({
         candidateUsers: candidateUsersResponse.candidates,
+        managementAccess:true
       });
     });
   };
@@ -350,20 +380,21 @@ class PermissionTable extends Component {
     // const { getFieldDecorator,setFieldsValue } = this.props.form
     
     //setFieldsValue(testValues)
-    executeCandidateSecUserSearch("",this)
+    loadInitialData(this)
     
   }
 
 
 
-    render() {
-      
+  render() {
+    const { targetObjectMeta, targetObject } = this.props
 
-      const { targetObjectMeta, targetObject } = this.props
-      console.log("targetObjectMeta",targetObjectMeta)
-      return renderPermissionHeader(this)
 
-    }
+
+    console.log("targetObjectMeta",targetObjectMeta)
+    return renderPermissionHeader(this)
+
+  }
 
 
 }

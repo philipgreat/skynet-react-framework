@@ -8,7 +8,7 @@ const valueOf = (value, candidateValues)=>{
   if(candidateValues.length==1){
     return candidateValues[0].id
   }
-  return ""
+  return null
 }
 
 
@@ -109,7 +109,7 @@ export default class SelectObject extends React.Component {
                     onChange={(value)=>this.handleChange(value)}
                   >
                   {candidateValues.map(item=>{
-                return (<Option key={item.id}>{`${item.id} - ${item.name}`}</Option>);
+                return (<Option key={item.id}>{`${item.id} - ${item.displayName}`}</Option>);
             })}
       </AutoComplete>
     )

@@ -89,7 +89,7 @@ export const getURLPrefix = () => {
     return `http://${url.hostname}:8080/${SYSTEM_SHORT_NAME}/`
   }
   if (url.hostname === '127.0.0.1') {
-    return `https://test01.nodeart.net/moyi/`
+    return `https://app.art0x.com/moyi/`
   }
   //return `http://xm.jl51.com.cn/cis/`
 
@@ -110,8 +110,11 @@ export const joinParameters = (parameters) => {
 }
 const formatPostData = (value) => {
     console.log("value", value)
-
+  
     if (typeof value == 'undefined'){
+      return null
+    }
+    if(value==null){
       return null
     }
 
@@ -120,7 +123,7 @@ const formatPostData = (value) => {
     }
     
   
-  return value
+    return value
 }
 export const joinPostParameters = (parameters) => {
     const obj = parameters // {value1: 'prop1', value2: 'prop2', value3: 'prop3'}

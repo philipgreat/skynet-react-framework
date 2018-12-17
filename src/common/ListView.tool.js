@@ -150,28 +150,42 @@ const handleDeletionModalVisible = (event,targetComponent) => {
       newObj[key] = getValue(filtersArg[key])
       return newObj
     }, {})
-    const { owner } = targetComponent.props
+    const { owner,searchParameters } = targetComponent.props
     const {listName} = owner;
     let listParameters = {};
     listParameters[listName]=1;
     listParameters[`${listName}CurrentPage`]=pagination.current;
     listParameters[`${listName}RowsPerPage`]=pagination.pageSize;
-    listParameters[`${listName}.orderBy.0`]="id";
-    listParameters[`${listName}.descOrAsc.0`]="desc";
-   
+
+    if(!searchParameters||!searchParameters[`${listName}.orderBy.0`]){
+      listParameters[`${listName}.orderBy.0`]="id"
+    }
+    if(!searchParameters||!searchParameters[`${listName}.descOrAsc.0`]){
+      listParameters[`${listName}.descOrAsc.0`]="desc"
+    }
     
+    
+   
+
+   
+    console.log("searchParameters",searchParameters)
+
     const params = {
       ...listParameters,
+      ...searchParameters,
       ...formValues,
       ...filters,
+
     }
     if (sorter.field) {
       params.sorter = '_'
     }
+
+    console.log("handleStandardTableChange", params)
     
     dispatch({
       type: `${owner.type}/load`,
-      payload: { id: owner.id, parameters: params },
+      payload: { id: owner.id, parameters: params,searchParameters },
     })
   }
   

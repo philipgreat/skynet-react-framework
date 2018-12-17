@@ -18,7 +18,8 @@ const resizeDispayImage=(imageLocation, style)=>{
   if(imageLocation.indexOf("?")<0){
     return imageLocation+"?x-oss-process=style/"+style
   }
-  return imageLocation
+  //there is a style
+  return imageLocation.replace("small",style)
 
 }
 

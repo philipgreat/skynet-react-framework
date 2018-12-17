@@ -15,6 +15,8 @@ function RouterConfig({ history }) {
 
 	const {MoyiBizApp} = GlobalComponents
 	const {MoyiPlatformConfigurationBizApp} = GlobalComponents
+	const {RewardValueOptionBizApp} = GlobalComponents
+	const {OperationPageBizApp} = GlobalComponents
 	const {SurvivalStatusBizApp} = GlobalComponents
 	const {SlideBizApp} = GlobalComponents
 	const {SlideTypeBizApp} = GlobalComponents
@@ -97,22 +99,19 @@ function RouterConfig({ history }) {
 	const {ReviewBlockingBizApp} = GlobalComponents
 	const {ArticleBlockingBizApp} = GlobalComponents
 	const {ArtworkBlockingBizApp} = GlobalComponents
+	const {ImportantOperationRecordBizApp} = GlobalComponents
 	const {DeliverArtworkBizApp} = GlobalComponents
 	const {DeliverArticleBizApp} = GlobalComponents
 	const {TipArticleBizApp} = GlobalComponents
 	const {TipArtworkBizApp} = GlobalComponents
 	const {UserDomainBizApp} = GlobalComponents
+	const {UserWhiteListBizApp} = GlobalComponents
 	const {SecUserBizApp} = GlobalComponents
 	const {SecUserBlockingBizApp} = GlobalComponents
 	const {UserAppBizApp} = GlobalComponents
 	const {ListAccessBizApp} = GlobalComponents
 	const {ObjectAccessBizApp} = GlobalComponents
 	const {LoginHistoryBizApp} = GlobalComponents
-	const {GenericFormBizApp} = GlobalComponents
-	const {FormMessageBizApp} = GlobalComponents
-	const {FormFieldMessageBizApp} = GlobalComponents
-	const {FormFieldBizApp} = GlobalComponents
-	const {FormActionBizApp} = GlobalComponents
 
 
 
@@ -124,6 +123,8 @@ function RouterConfig({ history }) {
          <Route path="/forgetpass" component={ForgetPasswordForm} />
           <Route path="/moyi/" component={MoyiBizApp} />
           <Route path="/moyiPlatformConfiguration/" component={MoyiPlatformConfigurationBizApp} />
+          <Route path="/rewardValueOption/" component={RewardValueOptionBizApp} />
+          <Route path="/operationPage/" component={OperationPageBizApp} />
           <Route path="/survivalStatus/" component={SurvivalStatusBizApp} />
           <Route path="/slide/" component={SlideBizApp} />
           <Route path="/slideType/" component={SlideTypeBizApp} />
@@ -206,22 +207,19 @@ function RouterConfig({ history }) {
           <Route path="/reviewBlocking/" component={ReviewBlockingBizApp} />
           <Route path="/articleBlocking/" component={ArticleBlockingBizApp} />
           <Route path="/artworkBlocking/" component={ArtworkBlockingBizApp} />
+          <Route path="/importantOperationRecord/" component={ImportantOperationRecordBizApp} />
           <Route path="/deliverArtwork/" component={DeliverArtworkBizApp} />
           <Route path="/deliverArticle/" component={DeliverArticleBizApp} />
           <Route path="/tipArticle/" component={TipArticleBizApp} />
           <Route path="/tipArtwork/" component={TipArtworkBizApp} />
           <Route path="/userDomain/" component={UserDomainBizApp} />
+          <Route path="/userWhiteList/" component={UserWhiteListBizApp} />
           <Route path="/secUser/" component={SecUserBizApp} />
           <Route path="/secUserBlocking/" component={SecUserBlockingBizApp} />
           <Route path="/userApp/" component={UserAppBizApp} />
           <Route path="/listAccess/" component={ListAccessBizApp} />
           <Route path="/objectAccess/" component={ObjectAccessBizApp} />
           <Route path="/loginHistory/" component={LoginHistoryBizApp} />
-          <Route path="/genericForm/" component={GenericFormBizApp} />
-          <Route path="/formMessage/" component={FormMessageBizApp} />
-          <Route path="/formFieldMessage/" component={FormFieldMessageBizApp} />
-          <Route path="/formField/" component={FormFieldBizApp} />
-          <Route path="/formAction/" component={FormActionBizApp} />
          <Route path="/" component={Launcher} />
         </Switch>
       </Router>

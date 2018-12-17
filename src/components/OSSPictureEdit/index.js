@@ -1,6 +1,52 @@
 import { Upload, Icon, Modal } from 'antd';
 import axios from 'axios';
-import { SYSTEM_SHORT_NAME } from '../../axios/config';
+import { getURLPrefix } from '../../axios/tools';
+import { notification } from 'antd'
+const appendStyle=(imageLocation, style)=>{
+
+  if(!imageLocation){
+    return imageLocation
+  }
+  
+
+
+  if(!imageLocation.indexOf){
+    return imageLocation
+  }
+  if(imageLocation.indexOf("?")<0){
+    return imageLocation+"?x-oss-process=style/"+style
+  }
+  return imageLocation.replace("small",style)
+  
+}
+
+const appendToObjectStyle=(imageLocation, style)=>{
+  if(typeof imageLocation=="object"){
+    const url=appendStyle(imageLocation.url,style)
+    console.log("changed url" , url,"from", imageLocation)
+    const finalLocation = {...imageLocation, url}
+    console.log("finalLocation url" , finalLocation)
+    return  finalLocation
+  
+  }
+  return appendStyle(imageLocation, style)
+}
+
+
+
+const resizeDispayImage=(imageLocation, style)=>{
+  if (Array.isArray(imageLocation)) {
+    
+    return imageLocation.map(imageLocation=>appendToObjectStyle(imageLocation,style))
+    
+  }
+  return appendStyle(imageLocation,style)
+}
+
+const resizeDispayImageInList=(imageLocation)=>resizeDispayImage(imageLocation,"small")
+
+const resizeDispayImageForPreview=(imageLocation)=>resizeDispayImage(imageLocation,"xlarge")
+
 const client = self => {
   console.log('self', self);
   const { token } = self.state;
@@ -56,6 +102,13 @@ export default class OSSPictureEdit extends React.Component {
     reader.onloadend = () => {
       uploadToOss(this, OSS_IMAGE_FILE_PATH, file).then(data => {
         console.log('data from server', data);
+        
+        notification.success({
+          message: `上传成功`,
+          description: `上传成功`,
+        })
+        
+
         const fileList = [
           {
             uid: file.uid,
@@ -79,7 +132,7 @@ export default class OSSPictureEdit extends React.Component {
       const url = new URL(window.location);
 
       return (
-        url.origin.replace('8000', '8080') + '/' + SYSTEM_SHORT_NAME + '/secUserManager/testoss/'
+        getURLPrefix() + 'secUserManager/testoss/'
       );
     };
     axios.get(getSTSURL()).then(res => {
@@ -94,12 +147,23 @@ export default class OSSPictureEdit extends React.Component {
   handleCancel = () => this.setState({ previewVisible: false });
 
   handlePreview = file => {
-    console.log('preview file', file);
+    console.log("file for preview is ", file)
+    if(!file){
+     
+      return
+    }
+    
+
+    const previewFile = appendToObjectStyle(file,"xlarge")
+    console.log('preview file', previewFile);
+    console.log('previewImage: previewFile.url || previewFile.thumbUrl', previewFile.url || previewFile.thumbUrl);
+    
+
     this.setState({
-      previewImage: file.url || file.thumbUrl,
+      previewImage: previewFile.url || previewFile.thumbUrl,
       previewVisible: true,
-    });
-  };
+    })
+  }
 
   handleChange = ({ fileList }) => this.setState({ fileList });
 
@@ -122,9 +186,9 @@ export default class OSSPictureEdit extends React.Component {
     return (
       <div className="clearfix">
         <Upload
-          action="//localhost:2090/upload/"
+          
           listType="picture-card"
-          fileList={internalFileList}
+          fileList={resizeDispayImageInList(internalFileList)}
           onPreview={this.handlePreview}
           onChange={handleChange}
           multiple={false}
