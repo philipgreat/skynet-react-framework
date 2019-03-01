@@ -10,6 +10,7 @@ import numeral from 'numeral'
 import { Link, Route, Redirect} from 'dva/router'
 import ReactEcharts from 'echarts-for-react'
 import moment from 'moment';
+import appLocaleName from './Locale.tool'
 import {
   ChartCard,
   yuan,
@@ -535,15 +536,16 @@ const defaultRenderExtraFooter = (mainObject) =>{
         return null
 }
 const defaultSubListsOf = (cardsData) =>{
-        const {id} = cardsData.cardsSource;
-        return (<Row gutter={24}>
+  const userContext = null
+  const {id} = cardsData.cardsSource;
+  return (<Row gutter={24}>
     
                {cardsData.subItems.sort((x,y)=>x.displayName.localeCompare(y.displayName, 'zh-CN')).filter(item=>hasItemReadPermission(item)).map((item)=>(<Col {...topColResponsiveProps} key={item.name}>   
               
                 <Card title={`${item.displayName}(${numeral(item.count).format('0,0')})`}  style={{ width: 180 }}>             
-                  <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="list"  />&nbsp;管理</Link>
+                  <p><Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}><FontAwesome name="eye"  />{appLocaleName(userContext,'Manage')}</Link>
                   
-                  {hasItemCreatePermission(item)&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />&nbsp;新增</Link>)}   
+                  {hasItemCreatePermission(item)&&(<Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}><span className={styles.splitLine}></span><FontAwesome name="plus"  />{appLocaleName(userContext,'Add')}</Link>)}   
                   
                   </p>         
               </Card>
