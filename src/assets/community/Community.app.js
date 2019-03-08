@@ -435,7 +435,7 @@ class CommunityBizApp extends React.PureComponent {
            className={styles.sider}
          >
            <div className={styles.logo}>
-             <img src="./favicon.png" alt="logo" onClick={this.toggle} />
+             <img src="./scm.svg" alt="logo" onClick={this.toggle} />
              <Link to="/home"> <h1>社区</h1></Link>
            </div>
 

@@ -78,13 +78,26 @@ export default {
       const data = yield call(LauncherService.login, payload.username, payload.password)
       console.log('data.........................', data)
       if (!data) {
+        notification.warn({
+          message: '登录出错',
+          description: '用户名/密码出错, 请尝试重新登录'
+        }) 
         return
       }
       if (!data.class) {
+        notification.warn({
+          message: '登录出错',
+          description: '用户名/密码出错, 请尝试重新登录'
+        }) 
         return
       }
       if (data.class.indexOf('LoginForm') > 0) {
         yield put({ type: 'showlogin', payload: { data } })
+        notification.warn({
+          message: '登录出错',
+          description: '用户名/密码出错, 请尝试重新登录'
+        }) 
+
         return
       }
       if (data.class.indexOf('SecUser') > 0) {

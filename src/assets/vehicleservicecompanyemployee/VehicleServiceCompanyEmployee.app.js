@@ -1330,7 +1330,7 @@ class VehicleServiceCompanyEmployeeBizApp extends React.PureComponent {
           className={styles.sider}
         >
           <div className={styles.logo}>
-            <img src="/favicon.png" alt="logo" onClick={this.toggle} />
+            <img src="/scm.svg" alt="logo" onClick={this.toggle} />
             <Link to="/home">
               {' '}
               <h1>服务提供商员工管理</h1>

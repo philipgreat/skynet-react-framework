@@ -75,8 +75,9 @@ const setupModel = ({ dispatch, history, location, modelName }) => {
     const match = pathToRegexp(`/${modelName}/:id/list/:listName/:listDisplayName`).exec(pathname)
     if (match) {
         const id = match[1]
+        const listName= match[2]
         const displayName = match[3]
-        dispatch({ type: 'view', payload: { id, pathname, displayName } })
+        dispatch({ type: 'view', payload: { id, pathname,listName, displayName } })
     }
     const othermatch = pathToRegexp(`/${modelName}/:id/:subpage`).exec(pathname)
     if (othermatch) {
@@ -86,6 +87,22 @@ const setupModel = ({ dispatch, history, location, modelName }) => {
     }
 
 }
+const keepValueWithKeySuffix=(targetObject,suffix)=>{
 
-const modeltool={hasError,setupModel,handleClientError,handleServerError}
+    const filteredValues = {}
+    for(var key in targetObject){
+        if(!key.endsWith(suffix)){
+          continue
+        }
+        const value = targetObject[key]
+        if(!value){
+          continue
+        }
+        filteredValues[key] = value
+       
+    }
+    return filteredValues
+  
+  }
+const modeltool={hasError,setupModel,handleClientError,handleServerError,keepValueWithKeySuffix}
 export default modeltool

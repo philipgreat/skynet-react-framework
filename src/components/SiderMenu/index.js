@@ -1,24 +1,44 @@
-import 'rc-drawer-menu/assets/index.css';
 import React from 'react';
-import DrawerMenu from 'rc-drawer-menu';
+import { Drawer } from 'antd';
 import SiderMenu from './SiderMenu';
 
-const SiderMenuWrapper = props =>
-  props.isMobile ? (
-    <DrawerMenu
-      parent={null}
-      level={null}
-      iconChild={null}
-      open={!props.collapsed}
-      onMaskClick={() => {
-        props.onCollapse(true);
+/**
+ * Recursively flatten the data
+ * [{path:string},{path:string}] => {path,path2}
+ * @param  menus
+ */
+export const getFlatMenuKeys = menuData => {
+  let keys = [];
+  menuData.forEach(item => {
+    keys.push(item.path);
+    if (item.children) {
+      keys = keys.concat(getFlatMenuKeys(item.children));
+    }
+  });
+  return keys;
+};
+
+const SiderMenuWrapper = props => {
+  const { isMobile, menuData, collapsed, onCollapse } = props;
+  return isMobile ? (
+    <Drawer
+      visible={!collapsed}
+      placement="left"
+      onClose={() => onCollapse(true)}
+      style={{
+        padding: 0,
+        height: '100vh',
       }}
-      width="256px"
     >
-      <SiderMenu {...props} collapsed={props.isMobile ? false : props.collapsed} />
-    </DrawerMenu>
+      <SiderMenu
+        {...props}
+        flatMenuKeys={getFlatMenuKeys(menuData)}
+        collapsed={isMobile ? false : collapsed}
+      />
+    </Drawer>
   ) : (
-    <SiderMenu {...props} />
+    <SiderMenu {...props} flatMenuKeys={getFlatMenuKeys(menuData)} />
   );
+};
 
 export default SiderMenuWrapper;

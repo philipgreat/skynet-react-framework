@@ -7,99 +7,159 @@ import zhCN from 'antd/lib/locale-provider/zh_CN'
 // import enUS from 'antd/lib/locale-provider/en_US'
 import Launcher from '../launcher/Launcher'
 import ForgetPasswordForm from '../launcher/ForgetPasswordForm'
-<<<<<<< HEAD
-=======
 
->>>>>>> 592c5012b333787d66602918615159db86583265
 import GlobalComponents from './'
 
 
 function RouterConfig({ history }) {
 
-	const {PrivateMessageBizApp} = GlobalComponents
-	const {MessageTemplateBizApp} = GlobalComponents
-	const {LossAssessmentRecordBizApp} = GlobalComponents
-	const {LossDiscountBizApp} = GlobalComponents
-	const {BookSharingPlatformBizApp} = GlobalComponents
-	const {PlatformConfigurationBizApp} = GlobalComponents
-	const {AccountDataBizApp} = GlobalComponents
-	const {CityBizApp} = GlobalComponents
-	const {BookPlazaBizApp} = GlobalComponents
-	const {BookRecommendBizApp} = GlobalComponents
-	const {BookSharingIncomeMetricBizApp} = GlobalComponents
-	const {BookDonationIncomeMetricBizApp} = GlobalComponents
-	const {MemberServiceIncomeMetricBizApp} = GlobalComponents
-	const {MemberServiceProductBizApp} = GlobalComponents
-	const {MemberRightsDisplayBizApp} = GlobalComponents
-	const {MemberRightsDisplayItemBizApp} = GlobalComponents
-	const {MemberServiceBundleSkuBizApp} = GlobalComponents
-	const {LineItemBizApp} = GlobalComponents
-	const {MainOrderPaymentBizApp} = GlobalComponents
-	const {MainOrderBizApp} = GlobalComponents
-	const {OrderLogBizApp} = GlobalComponents
-	const {BookBizApp} = GlobalComponents
-	const {PrinterBizApp} = GlobalComponents
-	const {PrinterTaskBizApp} = GlobalComponents
-	const {BookCopyStatusBizApp} = GlobalComponents
-	const {BookCopyBizApp} = GlobalComponents
-	const {TransferTypeBizApp} = GlobalComponents
-	const {BookCopyTransferBizApp} = GlobalComponents
-	const {TakeStockStatusBizApp} = GlobalComponents
-	const {BookTakeStockPlanBizApp} = GlobalComponents
-	const {BookTakeStockStatusBizApp} = GlobalComponents
-	const {TakeStoreResultsBizApp} = GlobalComponents
-	const {BookTakeStockResultBizApp} = GlobalComponents
-	const {BookCopyOperateTypeBizApp} = GlobalComponents
-	const {BookCopyOperationRecordBizApp} = GlobalComponents
-	const {BorrowingStatusBizApp} = GlobalComponents
-	const {BorrowingHistoryBizApp} = GlobalComponents
-	const {BorrowingExpiredSkuBizApp} = GlobalComponents
-	const {BookReviewBizApp} = GlobalComponents
-	const {BookReviewLikeBizApp} = GlobalComponents
-	const {DeliverMethodBizApp} = GlobalComponents
-	const {ApplicationStatusBizApp} = GlobalComponents
-	const {BookCopySharingApplicationBizApp} = GlobalComponents
-	const {PlatformAccountBizApp} = GlobalComponents
-	const {MemberServiceRevenueBizApp} = GlobalComponents
-	const {PlatformAccountDetailsBizApp} = GlobalComponents
-	const {FundationAccountBizApp} = GlobalComponents
-	const {FundationAccountDetailsBizApp} = GlobalComponents
-	const {StoreAccountBizApp} = GlobalComponents
-	const {StoreAccountDetailsBizApp} = GlobalComponents
-	const {TransactionTypeBizApp} = GlobalComponents
-	const {CustomerAccountTransactionBizApp} = GlobalComponents
-	const {StoreTypeBizApp} = GlobalComponents
-	const {StoreBizApp} = GlobalComponents
-	const {SlideTypeBizApp} = GlobalComponents
-	const {StoreSlideBizApp} = GlobalComponents
-	const {CampaignPlazaBizApp} = GlobalComponents
-	const {CampaignStatusBizApp} = GlobalComponents
-	const {CampaignBizApp} = GlobalComponents
-	const {CampaignRegisterHistoryBizApp} = GlobalComponents
-	const {CampaignReviewBizApp} = GlobalComponents
-	const {CampaignLikeBizApp} = GlobalComponents
-	const {CampaignReviewLikeBizApp} = GlobalComponents
-	const {CustomerBizApp} = GlobalComponents
-	const {CustomerFootprintBizApp} = GlobalComponents
-	const {ShieldCustomerBizApp} = GlobalComponents
-	const {InformBizApp} = GlobalComponents
+	const {RetailStoreCountryCenterBizApp} = GlobalComponents
+	const {ReportBizApp} = GlobalComponents
+	const {ReportLineBizApp} = GlobalComponents
+	const {CatalogBizApp} = GlobalComponents
+	const {LevelOneCategoryBizApp} = GlobalComponents
+	const {LevelTwoCategoryBizApp} = GlobalComponents
+	const {LevelThreeCategoryBizApp} = GlobalComponents
+	const {ProductBizApp} = GlobalComponents
+	const {SkuBizApp} = GlobalComponents
+	const {RetailStoreProvinceCenterBizApp} = GlobalComponents
+	const {ProvinceCenterDepartmentBizApp} = GlobalComponents
+	const {ProvinceCenterEmployeeBizApp} = GlobalComponents
+	const {RetailStoreCityServiceCenterBizApp} = GlobalComponents
+	const {CityPartnerBizApp} = GlobalComponents
+	const {PotentialCustomerBizApp} = GlobalComponents
+	const {PotentialCustomerContactPersonBizApp} = GlobalComponents
+	const {PotentialCustomerContactBizApp} = GlobalComponents
+	const {CityEventBizApp} = GlobalComponents
+	const {EventAttendanceBizApp} = GlobalComponents
+	const {RetailStoreBizApp} = GlobalComponents
+	const {RetailStoreCreationBizApp} = GlobalComponents
+	const {RetailStoreInvestmentInvitationBizApp} = GlobalComponents
+	const {RetailStoreFranchisingBizApp} = GlobalComponents
+	const {RetailStoreDecorationBizApp} = GlobalComponents
+	const {RetailStoreOpeningBizApp} = GlobalComponents
+	const {RetailStoreClosingBizApp} = GlobalComponents
+	const {RetailStoreMemberBizApp} = GlobalComponents
+	const {ConsumerOrderBizApp} = GlobalComponents
+	const {ConsumerOrderConfirmationBizApp} = GlobalComponents
+	const {ConsumerOrderApprovalBizApp} = GlobalComponents
+	const {ConsumerOrderProcessingBizApp} = GlobalComponents
+	const {ConsumerOrderShipmentBizApp} = GlobalComponents
+	const {ConsumerOrderDeliveryBizApp} = GlobalComponents
+	const {ConsumerOrderLineItemBizApp} = GlobalComponents
+	const {ConsumerOrderShippingGroupBizApp} = GlobalComponents
+	const {ConsumerOrderPaymentGroupBizApp} = GlobalComponents
+	const {ConsumerOrderPriceAdjustmentBizApp} = GlobalComponents
+	const {RetailStoreMemberCouponBizApp} = GlobalComponents
+	const {MemberWishlistBizApp} = GlobalComponents
+	const {MemberRewardPointBizApp} = GlobalComponents
+	const {MemberRewardPointRedemptionBizApp} = GlobalComponents
+	const {MemberWishlistProductBizApp} = GlobalComponents
+	const {RetailStoreMemberAddressBizApp} = GlobalComponents
+	const {RetailStoreMemberGiftCardBizApp} = GlobalComponents
+	const {RetailStoreMemberGiftCardConsumeRecordBizApp} = GlobalComponents
+	const {GoodsSupplierBizApp} = GlobalComponents
+	const {SupplierProductBizApp} = GlobalComponents
+	const {ProductSupplyDurationBizApp} = GlobalComponents
+	const {SupplyOrderBizApp} = GlobalComponents
+	const {SupplyOrderConfirmationBizApp} = GlobalComponents
+	const {SupplyOrderApprovalBizApp} = GlobalComponents
+	const {SupplyOrderProcessingBizApp} = GlobalComponents
+	const {SupplyOrderPickingBizApp} = GlobalComponents
+	const {SupplyOrderShipmentBizApp} = GlobalComponents
+	const {SupplyOrderDeliveryBizApp} = GlobalComponents
+	const {SupplyOrderLineItemBizApp} = GlobalComponents
+	const {SupplyOrderShippingGroupBizApp} = GlobalComponents
+	const {SupplyOrderPaymentGroupBizApp} = GlobalComponents
+	const {RetailStoreOrderBizApp} = GlobalComponents
+	const {RetailStoreOrderConfirmationBizApp} = GlobalComponents
+	const {RetailStoreOrderApprovalBizApp} = GlobalComponents
+	const {RetailStoreOrderProcessingBizApp} = GlobalComponents
+	const {RetailStoreOrderPickingBizApp} = GlobalComponents
+	const {RetailStoreOrderShipmentBizApp} = GlobalComponents
+	const {RetailStoreOrderDeliveryBizApp} = GlobalComponents
+	const {RetailStoreOrderLineItemBizApp} = GlobalComponents
+	const {RetailStoreOrderShippingGroupBizApp} = GlobalComponents
+	const {RetailStoreOrderPaymentGroupBizApp} = GlobalComponents
+	const {WarehouseBizApp} = GlobalComponents
+	const {StorageSpaceBizApp} = GlobalComponents
+	const {SmartPalletBizApp} = GlobalComponents
+	const {GoodsShelfBizApp} = GlobalComponents
+	const {GoodsShelfStockCountBizApp} = GlobalComponents
+	const {StockCountIssueTrackBizApp} = GlobalComponents
+	const {GoodsAllocationBizApp} = GlobalComponents
+	const {GoodsBizApp} = GlobalComponents
+	const {GoodsPackagingBizApp} = GlobalComponents
+	const {GoodsMovementBizApp} = GlobalComponents
+	const {SupplierSpaceBizApp} = GlobalComponents
+	const {ReceivingSpaceBizApp} = GlobalComponents
+	const {ShippingSpaceBizApp} = GlobalComponents
+	const {DamageSpaceBizApp} = GlobalComponents
+	const {WarehouseAssetBizApp} = GlobalComponents
+	const {TransportFleetBizApp} = GlobalComponents
+	const {TransportTruckBizApp} = GlobalComponents
+	const {TruckDriverBizApp} = GlobalComponents
+	const {TransportTaskBizApp} = GlobalComponents
+	const {TransportTaskTrackBizApp} = GlobalComponents
+	const {AccountSetBizApp} = GlobalComponents
+	const {AccountingSubjectBizApp} = GlobalComponents
+	const {AccountingPeriodBizApp} = GlobalComponents
+	const {AccountingDocumentTypeBizApp} = GlobalComponents
+	const {AccountingDocumentBizApp} = GlobalComponents
+	const {AccountingDocumentCreationBizApp} = GlobalComponents
+	const {AccountingDocumentConfirmationBizApp} = GlobalComponents
+	const {AccountingDocumentAuditingBizApp} = GlobalComponents
+	const {AccountingDocumentPostingBizApp} = GlobalComponents
+	const {OriginalVoucherBizApp} = GlobalComponents
+	const {OriginalVoucherCreationBizApp} = GlobalComponents
+	const {OriginalVoucherConfirmationBizApp} = GlobalComponents
+	const {OriginalVoucherAuditingBizApp} = GlobalComponents
+	const {AccountingDocumentLineBizApp} = GlobalComponents
+	const {LevelOneDepartmentBizApp} = GlobalComponents
+	const {LevelTwoDepartmentBizApp} = GlobalComponents
+	const {LevelThreeDepartmentBizApp} = GlobalComponents
+	const {SkillTypeBizApp} = GlobalComponents
+	const {ResponsibilityTypeBizApp} = GlobalComponents
+	const {TerminationReasonBizApp} = GlobalComponents
+	const {TerminationTypeBizApp} = GlobalComponents
+	const {OccupationTypeBizApp} = GlobalComponents
+	const {LeaveTypeBizApp} = GlobalComponents
+	const {SalaryGradeBizApp} = GlobalComponents
+	const {InterviewTypeBizApp} = GlobalComponents
+	const {TrainingCourseTypeBizApp} = GlobalComponents
+	const {PublicHolidayBizApp} = GlobalComponents
+	const {TerminationBizApp} = GlobalComponents
+	const {ViewBizApp} = GlobalComponents
 	const {EmployeeBizApp} = GlobalComponents
-	const {EmployeeWorkingStoreBizApp} = GlobalComponents
-	const {RoleBizApp} = GlobalComponents
-	const {ProfitTypeBizApp} = GlobalComponents
-	const {ProfitDistributeStateBizApp} = GlobalComponents
-	const {UndistributedProfitBizApp} = GlobalComponents
+	const {JobApplicationBizApp} = GlobalComponents
+	const {ProfessionInterviewBizApp} = GlobalComponents
+	const {HrInterviewBizApp} = GlobalComponents
+	const {OfferApprovalBizApp} = GlobalComponents
+	const {OfferAcceptanceBizApp} = GlobalComponents
+	const {EmployeeBoardingBizApp} = GlobalComponents
+	const {InstructorBizApp} = GlobalComponents
+	const {CompanyTrainingBizApp} = GlobalComponents
+	const {ScoringBizApp} = GlobalComponents
+	const {EmployeeCompanyTrainingBizApp} = GlobalComponents
+	const {EmployeeSkillBizApp} = GlobalComponents
+	const {EmployeePerformanceBizApp} = GlobalComponents
+	const {EmployeeWorkExperienceBizApp} = GlobalComponents
+	const {EmployeeLeaveBizApp} = GlobalComponents
+	const {EmployeeInterviewBizApp} = GlobalComponents
+	const {EmployeeAttendanceBizApp} = GlobalComponents
+	const {EmployeeQualifierBizApp} = GlobalComponents
+	const {EmployeeEducationBizApp} = GlobalComponents
+	const {EmployeeAwardBizApp} = GlobalComponents
+	const {EmployeeSalarySheetBizApp} = GlobalComponents
+	const {PayingOffBizApp} = GlobalComponents
 	const {UserDomainBizApp} = GlobalComponents
+	const {UserWhiteListBizApp} = GlobalComponents
 	const {SecUserBizApp} = GlobalComponents
 	const {SecUserBlockingBizApp} = GlobalComponents
 	const {UserAppBizApp} = GlobalComponents
+	const {ListAccessBizApp} = GlobalComponents
 	const {ObjectAccessBizApp} = GlobalComponents
 	const {LoginHistoryBizApp} = GlobalComponents
-	const {GenericFormBizApp} = GlobalComponents
-	const {FormMessageBizApp} = GlobalComponents
-	const {FormFieldMessageBizApp} = GlobalComponents
-	const {FormFieldBizApp} = GlobalComponents
-	const {FormActionBizApp} = GlobalComponents
 
 
 
@@ -107,100 +167,156 @@ function RouterConfig({ history }) {
     <LocaleProvider locale={zhCN}>
       <Router history={history}>
         <Switch>
-<<<<<<< HEAD
-        <Route path="/home" component={Launcher} />
-        
-        <Route path="/forgetpass" component={ForgetPasswordForm} />
-=======
          <Route path="/home" component={Launcher} />
          <Route path="/forgetpass" component={ForgetPasswordForm} />
->>>>>>> 592c5012b333787d66602918615159db86583265
-          <Route path="/privateMessage/" component={PrivateMessageBizApp} />
-          <Route path="/messageTemplate/" component={MessageTemplateBizApp} />
-          <Route path="/lossAssessmentRecord/" component={LossAssessmentRecordBizApp} />
-          <Route path="/lossDiscount/" component={LossDiscountBizApp} />
-          <Route path="/bookSharingPlatform/" component={BookSharingPlatformBizApp} />
-          <Route path="/platformConfiguration/" component={PlatformConfigurationBizApp} />
-          <Route path="/accountData/" component={AccountDataBizApp} />
-          <Route path="/city/" component={CityBizApp} />
-          <Route path="/bookPlaza/" component={BookPlazaBizApp} />
-          <Route path="/bookRecommend/" component={BookRecommendBizApp} />
-          <Route path="/bookSharingIncomeMetric/" component={BookSharingIncomeMetricBizApp} />
-          <Route path="/bookDonationIncomeMetric/" component={BookDonationIncomeMetricBizApp} />
-          <Route path="/memberServiceIncomeMetric/" component={MemberServiceIncomeMetricBizApp} />
-          <Route path="/memberServiceProduct/" component={MemberServiceProductBizApp} />
-          <Route path="/memberRightsDisplay/" component={MemberRightsDisplayBizApp} />
-          <Route path="/memberRightsDisplayItem/" component={MemberRightsDisplayItemBizApp} />
-          <Route path="/memberServiceBundleSku/" component={MemberServiceBundleSkuBizApp} />
-          <Route path="/lineItem/" component={LineItemBizApp} />
-          <Route path="/mainOrderPayment/" component={MainOrderPaymentBizApp} />
-          <Route path="/mainOrder/" component={MainOrderBizApp} />
-          <Route path="/orderLog/" component={OrderLogBizApp} />
-          <Route path="/book/" component={BookBizApp} />
-          <Route path="/printer/" component={PrinterBizApp} />
-          <Route path="/printerTask/" component={PrinterTaskBizApp} />
-          <Route path="/bookCopyStatus/" component={BookCopyStatusBizApp} />
-          <Route path="/bookCopy/" component={BookCopyBizApp} />
-          <Route path="/transferType/" component={TransferTypeBizApp} />
-          <Route path="/bookCopyTransfer/" component={BookCopyTransferBizApp} />
-          <Route path="/takeStockStatus/" component={TakeStockStatusBizApp} />
-          <Route path="/bookTakeStockPlan/" component={BookTakeStockPlanBizApp} />
-          <Route path="/bookTakeStockStatus/" component={BookTakeStockStatusBizApp} />
-          <Route path="/takeStoreResults/" component={TakeStoreResultsBizApp} />
-          <Route path="/bookTakeStockResult/" component={BookTakeStockResultBizApp} />
-          <Route path="/bookCopyOperateType/" component={BookCopyOperateTypeBizApp} />
-          <Route path="/bookCopyOperationRecord/" component={BookCopyOperationRecordBizApp} />
-          <Route path="/borrowingStatus/" component={BorrowingStatusBizApp} />
-          <Route path="/borrowingHistory/" component={BorrowingHistoryBizApp} />
-          <Route path="/borrowingExpiredSku/" component={BorrowingExpiredSkuBizApp} />
-          <Route path="/bookReview/" component={BookReviewBizApp} />
-          <Route path="/bookReviewLike/" component={BookReviewLikeBizApp} />
-          <Route path="/deliverMethod/" component={DeliverMethodBizApp} />
-          <Route path="/applicationStatus/" component={ApplicationStatusBizApp} />
-          <Route path="/bookCopySharingApplication/" component={BookCopySharingApplicationBizApp} />
-          <Route path="/platformAccount/" component={PlatformAccountBizApp} />
-          <Route path="/memberServiceRevenue/" component={MemberServiceRevenueBizApp} />
-          <Route path="/platformAccountDetails/" component={PlatformAccountDetailsBizApp} />
-          <Route path="/fundationAccount/" component={FundationAccountBizApp} />
-          <Route path="/fundationAccountDetails/" component={FundationAccountDetailsBizApp} />
-          <Route path="/storeAccount/" component={StoreAccountBizApp} />
-          <Route path="/storeAccountDetails/" component={StoreAccountDetailsBizApp} />
-          <Route path="/transactionType/" component={TransactionTypeBizApp} />
-          <Route path="/customerAccountTransaction/" component={CustomerAccountTransactionBizApp} />
-          <Route path="/storeType/" component={StoreTypeBizApp} />
-          <Route path="/store/" component={StoreBizApp} />
-          <Route path="/slideType/" component={SlideTypeBizApp} />
-          <Route path="/storeSlide/" component={StoreSlideBizApp} />
-          <Route path="/campaignPlaza/" component={CampaignPlazaBizApp} />
-          <Route path="/campaignStatus/" component={CampaignStatusBizApp} />
-          <Route path="/campaign/" component={CampaignBizApp} />
-          <Route path="/campaignRegisterHistory/" component={CampaignRegisterHistoryBizApp} />
-          <Route path="/campaignReview/" component={CampaignReviewBizApp} />
-          <Route path="/campaignLike/" component={CampaignLikeBizApp} />
-          <Route path="/campaignReviewLike/" component={CampaignReviewLikeBizApp} />
-          <Route path="/customer/" component={CustomerBizApp} />
-          <Route path="/customerFootprint/" component={CustomerFootprintBizApp} />
-          <Route path="/shieldCustomer/" component={ShieldCustomerBizApp} />
-          <Route path="/inform/" component={InformBizApp} />
+          <Route path="/retailStoreCountryCenter/" component={RetailStoreCountryCenterBizApp} />
+          <Route path="/report/" component={ReportBizApp} />
+          <Route path="/reportLine/" component={ReportLineBizApp} />
+          <Route path="/catalog/" component={CatalogBizApp} />
+          <Route path="/levelOneCategory/" component={LevelOneCategoryBizApp} />
+          <Route path="/levelTwoCategory/" component={LevelTwoCategoryBizApp} />
+          <Route path="/levelThreeCategory/" component={LevelThreeCategoryBizApp} />
+          <Route path="/product/" component={ProductBizApp} />
+          <Route path="/sku/" component={SkuBizApp} />
+          <Route path="/retailStoreProvinceCenter/" component={RetailStoreProvinceCenterBizApp} />
+          <Route path="/provinceCenterDepartment/" component={ProvinceCenterDepartmentBizApp} />
+          <Route path="/provinceCenterEmployee/" component={ProvinceCenterEmployeeBizApp} />
+          <Route path="/retailStoreCityServiceCenter/" component={RetailStoreCityServiceCenterBizApp} />
+          <Route path="/cityPartner/" component={CityPartnerBizApp} />
+          <Route path="/potentialCustomer/" component={PotentialCustomerBizApp} />
+          <Route path="/potentialCustomerContactPerson/" component={PotentialCustomerContactPersonBizApp} />
+          <Route path="/potentialCustomerContact/" component={PotentialCustomerContactBizApp} />
+          <Route path="/cityEvent/" component={CityEventBizApp} />
+          <Route path="/eventAttendance/" component={EventAttendanceBizApp} />
+          <Route path="/retailStore/" component={RetailStoreBizApp} />
+          <Route path="/retailStoreCreation/" component={RetailStoreCreationBizApp} />
+          <Route path="/retailStoreInvestmentInvitation/" component={RetailStoreInvestmentInvitationBizApp} />
+          <Route path="/retailStoreFranchising/" component={RetailStoreFranchisingBizApp} />
+          <Route path="/retailStoreDecoration/" component={RetailStoreDecorationBizApp} />
+          <Route path="/retailStoreOpening/" component={RetailStoreOpeningBizApp} />
+          <Route path="/retailStoreClosing/" component={RetailStoreClosingBizApp} />
+          <Route path="/retailStoreMember/" component={RetailStoreMemberBizApp} />
+          <Route path="/consumerOrder/" component={ConsumerOrderBizApp} />
+          <Route path="/consumerOrderConfirmation/" component={ConsumerOrderConfirmationBizApp} />
+          <Route path="/consumerOrderApproval/" component={ConsumerOrderApprovalBizApp} />
+          <Route path="/consumerOrderProcessing/" component={ConsumerOrderProcessingBizApp} />
+          <Route path="/consumerOrderShipment/" component={ConsumerOrderShipmentBizApp} />
+          <Route path="/consumerOrderDelivery/" component={ConsumerOrderDeliveryBizApp} />
+          <Route path="/consumerOrderLineItem/" component={ConsumerOrderLineItemBizApp} />
+          <Route path="/consumerOrderShippingGroup/" component={ConsumerOrderShippingGroupBizApp} />
+          <Route path="/consumerOrderPaymentGroup/" component={ConsumerOrderPaymentGroupBizApp} />
+          <Route path="/consumerOrderPriceAdjustment/" component={ConsumerOrderPriceAdjustmentBizApp} />
+          <Route path="/retailStoreMemberCoupon/" component={RetailStoreMemberCouponBizApp} />
+          <Route path="/memberWishlist/" component={MemberWishlistBizApp} />
+          <Route path="/memberRewardPoint/" component={MemberRewardPointBizApp} />
+          <Route path="/memberRewardPointRedemption/" component={MemberRewardPointRedemptionBizApp} />
+          <Route path="/memberWishlistProduct/" component={MemberWishlistProductBizApp} />
+          <Route path="/retailStoreMemberAddress/" component={RetailStoreMemberAddressBizApp} />
+          <Route path="/retailStoreMemberGiftCard/" component={RetailStoreMemberGiftCardBizApp} />
+          <Route path="/retailStoreMemberGiftCardConsumeRecord/" component={RetailStoreMemberGiftCardConsumeRecordBizApp} />
+          <Route path="/goodsSupplier/" component={GoodsSupplierBizApp} />
+          <Route path="/supplierProduct/" component={SupplierProductBizApp} />
+          <Route path="/productSupplyDuration/" component={ProductSupplyDurationBizApp} />
+          <Route path="/supplyOrder/" component={SupplyOrderBizApp} />
+          <Route path="/supplyOrderConfirmation/" component={SupplyOrderConfirmationBizApp} />
+          <Route path="/supplyOrderApproval/" component={SupplyOrderApprovalBizApp} />
+          <Route path="/supplyOrderProcessing/" component={SupplyOrderProcessingBizApp} />
+          <Route path="/supplyOrderPicking/" component={SupplyOrderPickingBizApp} />
+          <Route path="/supplyOrderShipment/" component={SupplyOrderShipmentBizApp} />
+          <Route path="/supplyOrderDelivery/" component={SupplyOrderDeliveryBizApp} />
+          <Route path="/supplyOrderLineItem/" component={SupplyOrderLineItemBizApp} />
+          <Route path="/supplyOrderShippingGroup/" component={SupplyOrderShippingGroupBizApp} />
+          <Route path="/supplyOrderPaymentGroup/" component={SupplyOrderPaymentGroupBizApp} />
+          <Route path="/retailStoreOrder/" component={RetailStoreOrderBizApp} />
+          <Route path="/retailStoreOrderConfirmation/" component={RetailStoreOrderConfirmationBizApp} />
+          <Route path="/retailStoreOrderApproval/" component={RetailStoreOrderApprovalBizApp} />
+          <Route path="/retailStoreOrderProcessing/" component={RetailStoreOrderProcessingBizApp} />
+          <Route path="/retailStoreOrderPicking/" component={RetailStoreOrderPickingBizApp} />
+          <Route path="/retailStoreOrderShipment/" component={RetailStoreOrderShipmentBizApp} />
+          <Route path="/retailStoreOrderDelivery/" component={RetailStoreOrderDeliveryBizApp} />
+          <Route path="/retailStoreOrderLineItem/" component={RetailStoreOrderLineItemBizApp} />
+          <Route path="/retailStoreOrderShippingGroup/" component={RetailStoreOrderShippingGroupBizApp} />
+          <Route path="/retailStoreOrderPaymentGroup/" component={RetailStoreOrderPaymentGroupBizApp} />
+          <Route path="/warehouse/" component={WarehouseBizApp} />
+          <Route path="/storageSpace/" component={StorageSpaceBizApp} />
+          <Route path="/smartPallet/" component={SmartPalletBizApp} />
+          <Route path="/goodsShelf/" component={GoodsShelfBizApp} />
+          <Route path="/goodsShelfStockCount/" component={GoodsShelfStockCountBizApp} />
+          <Route path="/stockCountIssueTrack/" component={StockCountIssueTrackBizApp} />
+          <Route path="/goodsAllocation/" component={GoodsAllocationBizApp} />
+          <Route path="/goods/" component={GoodsBizApp} />
+          <Route path="/goodsPackaging/" component={GoodsPackagingBizApp} />
+          <Route path="/goodsMovement/" component={GoodsMovementBizApp} />
+          <Route path="/supplierSpace/" component={SupplierSpaceBizApp} />
+          <Route path="/receivingSpace/" component={ReceivingSpaceBizApp} />
+          <Route path="/shippingSpace/" component={ShippingSpaceBizApp} />
+          <Route path="/damageSpace/" component={DamageSpaceBizApp} />
+          <Route path="/warehouseAsset/" component={WarehouseAssetBizApp} />
+          <Route path="/transportFleet/" component={TransportFleetBizApp} />
+          <Route path="/transportTruck/" component={TransportTruckBizApp} />
+          <Route path="/truckDriver/" component={TruckDriverBizApp} />
+          <Route path="/transportTask/" component={TransportTaskBizApp} />
+          <Route path="/transportTaskTrack/" component={TransportTaskTrackBizApp} />
+          <Route path="/accountSet/" component={AccountSetBizApp} />
+          <Route path="/accountingSubject/" component={AccountingSubjectBizApp} />
+          <Route path="/accountingPeriod/" component={AccountingPeriodBizApp} />
+          <Route path="/accountingDocumentType/" component={AccountingDocumentTypeBizApp} />
+          <Route path="/accountingDocument/" component={AccountingDocumentBizApp} />
+          <Route path="/accountingDocumentCreation/" component={AccountingDocumentCreationBizApp} />
+          <Route path="/accountingDocumentConfirmation/" component={AccountingDocumentConfirmationBizApp} />
+          <Route path="/accountingDocumentAuditing/" component={AccountingDocumentAuditingBizApp} />
+          <Route path="/accountingDocumentPosting/" component={AccountingDocumentPostingBizApp} />
+          <Route path="/originalVoucher/" component={OriginalVoucherBizApp} />
+          <Route path="/originalVoucherCreation/" component={OriginalVoucherCreationBizApp} />
+          <Route path="/originalVoucherConfirmation/" component={OriginalVoucherConfirmationBizApp} />
+          <Route path="/originalVoucherAuditing/" component={OriginalVoucherAuditingBizApp} />
+          <Route path="/accountingDocumentLine/" component={AccountingDocumentLineBizApp} />
+          <Route path="/levelOneDepartment/" component={LevelOneDepartmentBizApp} />
+          <Route path="/levelTwoDepartment/" component={LevelTwoDepartmentBizApp} />
+          <Route path="/levelThreeDepartment/" component={LevelThreeDepartmentBizApp} />
+          <Route path="/skillType/" component={SkillTypeBizApp} />
+          <Route path="/responsibilityType/" component={ResponsibilityTypeBizApp} />
+          <Route path="/terminationReason/" component={TerminationReasonBizApp} />
+          <Route path="/terminationType/" component={TerminationTypeBizApp} />
+          <Route path="/occupationType/" component={OccupationTypeBizApp} />
+          <Route path="/leaveType/" component={LeaveTypeBizApp} />
+          <Route path="/salaryGrade/" component={SalaryGradeBizApp} />
+          <Route path="/interviewType/" component={InterviewTypeBizApp} />
+          <Route path="/trainingCourseType/" component={TrainingCourseTypeBizApp} />
+          <Route path="/publicHoliday/" component={PublicHolidayBizApp} />
+          <Route path="/termination/" component={TerminationBizApp} />
+          <Route path="/view/" component={ViewBizApp} />
           <Route path="/employee/" component={EmployeeBizApp} />
-          <Route path="/employeeWorkingStore/" component={EmployeeWorkingStoreBizApp} />
-          <Route path="/role/" component={RoleBizApp} />
-          <Route path="/profitType/" component={ProfitTypeBizApp} />
-          <Route path="/profitDistributeState/" component={ProfitDistributeStateBizApp} />
-          <Route path="/undistributedProfit/" component={UndistributedProfitBizApp} />
+          <Route path="/jobApplication/" component={JobApplicationBizApp} />
+          <Route path="/professionInterview/" component={ProfessionInterviewBizApp} />
+          <Route path="/hrInterview/" component={HrInterviewBizApp} />
+          <Route path="/offerApproval/" component={OfferApprovalBizApp} />
+          <Route path="/offerAcceptance/" component={OfferAcceptanceBizApp} />
+          <Route path="/employeeBoarding/" component={EmployeeBoardingBizApp} />
+          <Route path="/instructor/" component={InstructorBizApp} />
+          <Route path="/companyTraining/" component={CompanyTrainingBizApp} />
+          <Route path="/scoring/" component={ScoringBizApp} />
+          <Route path="/employeeCompanyTraining/" component={EmployeeCompanyTrainingBizApp} />
+          <Route path="/employeeSkill/" component={EmployeeSkillBizApp} />
+          <Route path="/employeePerformance/" component={EmployeePerformanceBizApp} />
+          <Route path="/employeeWorkExperience/" component={EmployeeWorkExperienceBizApp} />
+          <Route path="/employeeLeave/" component={EmployeeLeaveBizApp} />
+          <Route path="/employeeInterview/" component={EmployeeInterviewBizApp} />
+          <Route path="/employeeAttendance/" component={EmployeeAttendanceBizApp} />
+          <Route path="/employeeQualifier/" component={EmployeeQualifierBizApp} />
+          <Route path="/employeeEducation/" component={EmployeeEducationBizApp} />
+          <Route path="/employeeAward/" component={EmployeeAwardBizApp} />
+          <Route path="/employeeSalarySheet/" component={EmployeeSalarySheetBizApp} />
+          <Route path="/payingOff/" component={PayingOffBizApp} />
           <Route path="/userDomain/" component={UserDomainBizApp} />
+          <Route path="/userWhiteList/" component={UserWhiteListBizApp} />
           <Route path="/secUser/" component={SecUserBizApp} />
           <Route path="/secUserBlocking/" component={SecUserBlockingBizApp} />
           <Route path="/userApp/" component={UserAppBizApp} />
+          <Route path="/listAccess/" component={ListAccessBizApp} />
           <Route path="/objectAccess/" component={ObjectAccessBizApp} />
           <Route path="/loginHistory/" component={LoginHistoryBizApp} />
-          <Route path="/genericForm/" component={GenericFormBizApp} />
-          <Route path="/formMessage/" component={FormMessageBizApp} />
-          <Route path="/formFieldMessage/" component={FormFieldMessageBizApp} />
-          <Route path="/formField/" component={FormFieldBizApp} />
-          <Route path="/formAction/" component={FormActionBizApp} />
-          
-         
+         <Route path="/" component={Launcher} />
         </Switch>
       </Router>
     </LocaleProvider>
@@ -208,7 +324,6 @@ function RouterConfig({ history }) {
 }
 
 export default RouterConfig
-
 
 
 

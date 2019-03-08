@@ -1,9 +1,17 @@
-import { get, post,PREFIX,joinParameters,joinPostParameters } from '../axios/tools'
+import { get, postForm,PREFIX,joinParameters,joinPostParameters } from '../axios/tools'
 
 
 const login=(username, password)=>{
     return get({
         url: PREFIX+`secUserManager/login/${username}/${password}/`
+
+    });
+}
+
+
+const changePassword=({currentPassword,newPassword})=>{
+    return get({
+        url: PREFIX+`secUserManager/changeCurUserPassword/${currentPassword}/${newPassword}/`
 
     });
 }
@@ -32,5 +40,5 @@ const gotoApp=(appId)=>{
     });
 }
 
-const LauncherService={login,gotoApp,logout,checkOtherLogin};
+const LauncherService={login,gotoApp,logout,checkOtherLogin,changePassword};
 export default LauncherService;
