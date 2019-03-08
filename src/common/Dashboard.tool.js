@@ -184,7 +184,7 @@ const topColResponsiveProps = {
             type: 'slider',
             show: true,
             xAxisIndex: [0],
-            start: 1,
+            start: 0,
             end: 100
         }],
     
@@ -288,7 +288,7 @@ const aggregateDataset=(mainObject)=>{
    
     const dimensions=dimensionSet.toArray()
     const defaultEntry = {}
-    dimensions.filter(item=>item!='date').map(item=>{
+    const filteredDimensions=dimensions.filter(item=>item!='date').map(item=>{
 
       defaultEntry[item]=0
 
@@ -297,7 +297,7 @@ const aggregateDataset=(mainObject)=>{
     console.log("default dimensions", dimensions)
     const dataArray = Object.entries(dataMap).map(([key, value]) => ({...defaultEntry,...value})).sort((a,b)=>a.date.localeCompare(b.date, 'zh-CN'));
     console.log("default dataArray", dataArray)
-    //I want to add it in the theme file, but failed to do that
+    // I want to add it in the theme file, but failed to do that
     const itemStyle= {
                normal: {
                           lineStyle: {
@@ -313,7 +313,7 @@ const aggregateDataset=(mainObject)=>{
       ]
   }
     
-    const series =   dimensions.map(item=>({type:"line",stack: '总量',areaStyle: {},markPoint,itemStyle}))
+    const series =   filteredDimensions.map(item=>({type:"line",stack: '总量',areaStyle: {},markPoint,itemStyle}))
     return {dimensions,series,dataArray}
   }
 
