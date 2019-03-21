@@ -5,8 +5,22 @@ import { notification } from 'antd'
 import LauncherService from './Launcher.service'
 import GlobalComponents from '../custcomponents'
 import SystemConfig  from '../axios/config'
-
+import defaultLocaleName from './Launcher.locale'
 let currentLocation = ''
+
+
+const launcherLocaleName=defaultLocaleName //you can define your version here to replace default
+
+
+const showLoginError=()=>{
+
+  notification.warn({
+    message: launcherLocaleName(null,"SignInError"),
+    description: launcherLocaleName(null,"PleaseSignInAgain")
+  }) 
+
+}
+
 
 export default {
 
@@ -68,7 +82,7 @@ export default {
         return
       }
       notification.warn({
-        message: '警告',
+        message: launcherLocaleName(userContext,"Warning"),
         description: data
       }) 
 
@@ -78,26 +92,16 @@ export default {
       const data = yield call(LauncherService.login, payload.username, payload.password)
       console.log('data.........................', data)
       if (!data) {
-        notification.warn({
-          message: '登录出错',
-          description: '用户名/密码出错, 请尝试重新登录'
-        }) 
+        showLoginError()
         return
       }
       if (!data.class) {
-        notification.warn({
-          message: '登录出错',
-          description: '用户名/密码出错, 请尝试重新登录'
-        }) 
+        showLoginError()
         return
       }
       if (data.class.indexOf('LoginForm') > 0) {
         yield put({ type: 'showlogin', payload: { data } })
-        notification.warn({
-          message: '登录出错',
-          description: '用户名/密码出错, 请尝试重新登录'
-        }) 
-
+        showLoginError()
         return
       }
       if (data.class.indexOf('SecUser') > 0) {

@@ -9,6 +9,10 @@ import { notification } from 'antd'
 import { Layout } from 'antd';
 import styles  from './LoginForm.less'
 import Result from '../components/Result'
+
+import defaultLocaleName from './Launcher.locale'
+const launcherLocaleName=defaultLocaleName //you can define your version here to replace default
+
 const { Content, Footer } = Layout;
 
 const FormItem = Form.Item;
@@ -56,14 +60,19 @@ class NormalForgetPassword extends Component {
 
     executeAction(currentStep,currentValues){
        
+        if (!this.props.launcher) {
+            return null
+          }
+          const userContext = this.props.launcher.data
+
         if(currentStep=="start"){
             const future = LauncherService.getVerificationCode(currentValues.mobile)
             future.then(result => {
                 console.log("the result is ",result)
                 if(result=="USER_NOT_FOUNT"||result=="USER_NOT_FOUNT"){
                     notification.error({
-                        message: `该手机号${currentValues.mobile}关联的用户找不到, 请联系管理员`,
-                        description: `该手机号${currentValues.mobile}关联的用户找不到, 请联系管理员`,
+                        message: `${launcherLocaleName(userContext,"ThisPhoneNumber")}${currentValues.mobile}${launcherLocaleName(userContext,"CouldNotFindUser")}, ${launcherLocaleName(userContext,"PleaseContractAdmin")}`,
+                        description: `${launcherLocaleName(userContext,"ThisPhoneNumber")}${currentValues.mobile}${launcherLocaleName(userContext,"CouldNotFindUser")}, ${launcherLocaleName(userContext,"PleaseContractAdmin")}`,
                       });
                     return
 
@@ -85,8 +94,8 @@ class NormalForgetPassword extends Component {
             
             if(password!=confirmPassword){
                 notification.error({
-                    message: "密码输入不同",
-                    description: "两次密码输入不同",
+                    message: launcherLocaleName(userContext,"PasswordsDontMatch"),
+                    description: launcherLocaleName(userContext,"Passworddoesnotmatch"),
                   });
                 return
             }
@@ -98,8 +107,8 @@ class NormalForgetPassword extends Component {
 
                 if(result=="VERIFIICATION_CODE_NOT_MATCH"){
                     notification.error({
-                        message: "验证码错误",
-                        description: "验证码错误",
+                        message: launcherLocaleName(userContext,"VerificationCodeError"),
+                        description: launcherLocaleName(userContext,"VerificationCodeError"),
                       })
                       return
                 }
@@ -138,76 +147,94 @@ class NormalForgetPassword extends Component {
 
 
     inputMobileForm = () => {
+        if (!this.props.launcher) {
+            return null
+        }
+        const userContext = this.props.launcher.data
         const { getFieldDecorator } = this.props.form;
         return (<Form onSubmit={this.gotoNextStep} >
             <FormItem  {...FormItemLayout}>
                 {getFieldDecorator('mobile', {
-                    rules: [{ required: true, message: '请输入手机号!' }],
+                    rules: [{ required: true, message: launcherLocaleName(userContext,"InputPhoneNumber") }],
                 })(
-                    <Input prefix={<Icon type="user" style={{ fontSize: 20 }} />} placeholder="手机号" />
+                    <Input prefix={<Icon type="user" style={{ fontSize: 20 }} />} placeholder={launcherLocaleName(userContext,"MobilePhone")} />
                 )}
                
             </FormItem>
             <Button type="primary" htmlType="submit" className="login-form-button" style={{width: '100%'}}>
-                    下一步
+                    {launcherLocaleName(userContext,"NextStep")}
                     
-                </Button><Link to="/" style={{float: 'right'}}>返回主页</Link>
+                </Button><Link to="/" style={{float: 'right'}}>{launcherLocaleName(userContext,"ReturnToHome")}</Link>
         </Form>)
     }
 
     inputVerficationCodeForm = () => {
+
+        if (!this.props.launcher) {
+            return null
+        }
+        const userContext = this.props.launcher.data
         const { getFieldDecorator } = this.props.form;
         return ( <Form onSubmit={this.gotoNextStep} >
             <FormItem  {...FormItemLayout}>
                {getFieldDecorator('verificationCode', {
-                   rules: [{ required: true, message: '请输入验证码!' }],
+                   rules: [{ required: true, message: launcherLocaleName(userContext,"PleaseInputVerificationCode") }],
                })(
-                   <Input prefix={<Icon type="lock" style={{ fontSize: 20 }} />}  placeholder="验证码" />
+                   <Input prefix={<Icon type="lock" style={{ fontSize: 20 }} />}  placeholder={launcherLocaleName(userContext,"VerificationCode")} />
                )}
            </FormItem> 
                    <FormItem>
                    <Button type="primary" htmlType="submit" className="login-form-button" style={{width: '100%'}}>
-                       下一步
+                       {launcherLocaleName(userContext,"NextStep")}
                        
                    </Button>
                    </FormItem> <FormItem>
-                   <Link to="/" style={{float: 'right'}}>返回主页</Link> </FormItem>
+                   <Link to="/" style={{float: 'right'}}>{launcherLocaleName(userContext,"ReturnToHome")}</Link> </FormItem>
                    
                    </Form>)
 
     }
 
     successForm = () => {
+        if (!this.props.launcher) {
+            return null
+        }
+        const userContext = this.props.launcher.data
+
         return (<Result
         type="success"
-        title="修改成功"
-        description={<Link to="/" style={{float: 'right'}}>返回主页</Link>}
+        title={launcherLocaleName(userContext,"ChangedSuccess")}
+        description={<Link to="/" style={{float: 'right'}}>{launcherLocaleName(userContext,"ReturnToHome")}</Link>}
        
         style={{ marginTop: 48, marginBottom: 16 }}
       />)
 
     }
     inputPasswordForm = () => {
+        if (!this.props.launcher) {
+            return null
+        }
+        const userContext = this.props.launcher.data
         const { getFieldDecorator } = this.props.form;
         return ( <Form onSubmit={this.gotoNextStep} >
             <FormItem  {...FormItemLayout}>
                 {getFieldDecorator('password', {
-                    rules: [{ required: true, message: '请输入密码!' }],
+                    rules: [{ required: true, message: launcherLocaleName(userContext,"PleaseInputYourPassword") }],
                 })(
-                    <Input prefix={<Icon type="lock" style={{ fontSize: 20 }} />}  type="password" placeholder="密码" />
+                    <Input prefix={<Icon type="lock" style={{ fontSize: 20 }} />}  type="password" placeholder={launcherLocaleName(userContext,"Password")} />
                 )}
             </FormItem> 
             <FormItem   {...FormItemLayout}>
                 {getFieldDecorator('confirmPassword', {
-                    rules: [{ required: true, message: '请重新输入密码!' }],
+                    rules: [{ required: true, message: launcherLocaleName(userContext,"PleaseInputNewPass") }],
                 })(
-                    <Input prefix={<Icon type="lock" style={{ fontSize: 20 }} />}  type="password" placeholder="重新输入密码" />
+                    <Input prefix={<Icon type="lock" style={{ fontSize: 20 }} />}  type="password" placeholder={launcherLocaleName(userContext,"PleaseInputPass")} />
                 )}
             </FormItem>
             <Button type="primary" htmlType="submit" className="login-form-button" style={{width: '100%'}}>
-                        修改密码
+                        {launcherLocaleName(userContext,"ChangePassword")}
                     </Button>
-                    <Link to="/" style={{float: 'right'}}>返回主页</Link>
+                    <Link to="/" style={{float: 'right'}}>{launcherLocaleName(userContext,"ReturnToHome")}</Link>
             </Form>)
 
     }
@@ -239,9 +266,14 @@ class NormalForgetPassword extends Component {
 
     render() {
        
+        if(!this.props.launcher){
+            return null
+        }
 
-
-
+        if (!this.props.launcher) {
+            return null
+        }
+        const userContext = this.props.launcher.data
 
 
         //console.log("what the type",getFieldDecorator );
@@ -250,7 +282,7 @@ class NormalForgetPassword extends Component {
     <div className={styles.login}>
                 <div className={styles.loginForm} >
                     <div className={styles.loginLogo}>
-                        <span>忘记密码</span>
+                        <span>{launcherLocaleName(userContext,"ForgetPassword")}</span>
                     </div>
                    
                     {this.showForm()}

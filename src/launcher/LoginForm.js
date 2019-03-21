@@ -9,6 +9,8 @@ import { Link, Route, Redirect, Switch } from 'dva/router'
 import { Layout } from 'antd';
 import styles  from './LoginForm.less'
 const { Content, Footer } = Layout;
+import defaultLocaleName from './Launcher.locale'
+const launcherLocaleName=defaultLocaleName //you can define your version here to replace default
 
 const FormItem = Form.Item;
 
@@ -32,8 +34,16 @@ class NormalLoginForm extends Component {
     };
     render() {
         const { getFieldDecorator } = this.props.form;
+
+        if(!this.props.launcher){
+            return null
+        }
+        const userContext = this.props.launcher.data
         const { systemName }=this.props.launcher;
         const {data} = this.props.launcher
+        if(!systemName){
+            return null
+        }
         //console.log("what the type",getFieldDecorator );
         return (
            
@@ -46,23 +56,23 @@ class NormalLoginForm extends Component {
             <Form onSubmit={this.handleSubmit} >
                 <FormItem>
                     {getFieldDecorator('username', {
-                        rules: [{ required: true, message: '请输入用户名!' }],
+                        rules: [{ required: true, message: launcherLocaleName(userContext,"PleaseInputUsername") }],
                     })(
-                        <Input prefix={<Icon type="user" />} placeholder="用户名" />
+                        <Input prefix={<Icon type="user" />} placeholder={launcherLocaleName(userContext,"Username")} />
                     )}
                 </FormItem>
                 <FormItem>
                     {getFieldDecorator('password', {
-                        rules: [{ required: true, message: '请输入密码!' }],
+                        rules: [{ required: true, message: launcherLocaleName(userContext,"PleaseInputYourPassword") }],
                     })(
-                        <Input prefix={<Icon type="lock" />} type="password" placeholder="密码" />
+                        <Input prefix={<Icon type="lock" />} type="password" placeholder={launcherLocaleName(userContext,"Password")} />
                     )}
                 </FormItem>
                 <FormItem>
-                <Link className="login-form-forgot" to="/forgetpass" style={{float: 'right'}}>忘记密码</Link>
+                <Link className="login-form-forgot" to="/forgetpass" style={{float: 'right'}}>{launcherLocaleName(userContext,"ForgetPassword")}</Link>
                    
-                    <Button type="primary" htmlType="submit" className="login-form-button" style={{width: '100%'}}>
-                        登录
+                    <Button type="primary" htmlType="submit" className="login-form-button" style={{width: '60%'}}>
+                    {launcherLocaleName(userContext,"LogIn")}
                     </Button>
                     
                 </FormItem>

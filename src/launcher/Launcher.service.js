@@ -9,7 +9,7 @@ const login=(username, password)=>{
 }
 
 
-const changePassword=({currentPassword,newPassword})=>{
+const ChangePassword=({currentPassword,newPassword})=>{
     return get({
         url: PREFIX+`secUserManager/changeCurUserPassword/${currentPassword}/${newPassword}/`
 
@@ -40,5 +40,5 @@ const gotoApp=(appId)=>{
     });
 }
 
-const LauncherService={login,gotoApp,logout,checkOtherLogin,changePassword};
+const LauncherService={login,gotoApp,logout,checkOtherLogin,ChangePassword};
 export default LauncherService;
