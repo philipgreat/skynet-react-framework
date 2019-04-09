@@ -604,20 +604,19 @@ const defaultSubListsOf = cardsData => {
 
 
 const defaultQuickFunctions = cardsData => {
-  const userContext = null;
+  
   const { id, actionList } = cardsData.cardsSource;
   return (
     <Row gutter={16}>
       {
-        actionList.filter(item => item.actionGroup==="main")
+        actionList.filter(item => item.actionGroup==="custom")
         .map(item=>(
 
           
           <Col span={6} key={`${item.actionPath}`}>
           <Card span={6} style={{fontSize:"20px"}}>
-          <a href={`${PREFIX}${item.managerBeanName}/${item.actionPath}`} >
-          
-           {item.actionKey}
+          <a href={`${PREFIX}${item.managerBeanName}/${item.actionPath}`} target="_blank">
+          <Icon type={item.actionIcon} /> {item.actionName}
           </a>
           </Card>
           </Col>
