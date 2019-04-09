@@ -7,8 +7,8 @@ import TopMenu from './TopMenu';
 import classNames from 'classnames';
 //import BizRouter from './BizRouter'
 
-import defaultLocaleName from './Launcher.locale'
-const launcherLocaleName=defaultLocaleName //you can define your version here to replace default
+import defaultLocaleName from './Launcher.locale';
+const launcherLocaleName = defaultLocaleName; //you can define your version here to replace default
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -55,43 +55,32 @@ class HomeScreen extends React.Component {
     //return '/login';
   };
 
-  render() {
+  showAppList = () =>{
+    const styleList = 'icon-effect-1 icon-effect-1a icon-item'
     
-    if(!this.props.launcher){
-      return
-    }
-    
-    const appList = this.props.launcher.data.userAppList;
-    const calcLink = this.calcLink;
-    
-
-    const { systemName } = this.props.launcher;
-    const userContext = this.props.launcher.data
-    const styleList = 'icon-effect-1 icon-effect-1a icon-item';
     var effectClasses = classNames({
       styleList,
     });
 
-    // console.log(styleList);
+    if(!this.props.launcher.data || !this.props.launcher.data.userAppList){
+      return (
+      <Row key="3" className="icon-item-list" justify="center" align="middle" id="more">
+        <Col
+          className={styleList}
+          key={i}
+          span={6}
+          style={{ textAlign: 'center' }}
+          onClick={e => this.gotoApp(e, app)}
+        >
+         登录成功，但是没有分配到任何App
+        </Col>
 
-    return (
-      <div className={'wrapper'}>
-        <Row key="1">
-          <Col className="gutter-row" span={24}>
-            <span className="logo" />
-            <TopMenu {...this.props} />
-          </Col>
-        </Row>
-        <Row key="2">
-          <Col className="gutter-row heading" span={24}>
-            <h1>{systemName}</h1>
-            <div className="desc" />
-            <a href="#more" className="btn">
-              {launcherLocaleName(userContext,"MoreFeatures")}
-            </a>
-          </Col>
-        </Row>
-        <Row key="3" className="icon-item-list" justify="center" align="middle" id="more">
+    </Row>)
+    }
+
+    const appList = this.props.launcher.data.userAppList;
+
+    return(<Row key="3" className="icon-item-list" justify="center" align="middle" id="more">
           {appList.map((app, i) => (
             <Col
               className={styleList}
@@ -106,7 +95,48 @@ class HomeScreen extends React.Component {
               </div>
             </Col>
           ))}
+        </Row>)
+
+
+
+  }
+
+  render() {
+    
+
+    const appList = this.props.launcher.data.userAppList;
+    const calcLink = this.calcLink;
+
+    const { systemName } = this.props.launcher;
+    const userContext = this.props.launcher.data;
+    
+
+    // console.log(styleList);
+
+    
+
+
+    return (
+      <div className={'wrapper'}>
+        <Row key="1">
+          <Col className="gutter-row" span={24}>
+            <span className="logo" />
+            <TopMenu {...this.props} />
+          </Col>
         </Row>
+        <Row key="2">
+          <Col className="gutter-row heading" span={24}>
+            <h1>{systemName}</h1>
+            <div className="desc" />
+            <a href="#more" className="btn">
+              {launcherLocaleName(userContext, 'MoreFeatures')}
+            </a>
+          </Col>
+        </Row>
+
+        {this.showAppList()}
+
+       
       </div>
     );
   }

@@ -3,10 +3,10 @@ import key from 'keymaster';
 import { sessionObject } from '../utils/utils';
 
 // console.log("element", )
-import defaultLocaleName from './Launcher.locale'
-const launcherLocaleName=defaultLocaleName //you can define your version here to replace default
+import defaultLocaleName from './Launcher.locale';
+const launcherLocaleName = defaultLocaleName; //you can define your version here to replace default
 
-const userContext = {}
+const userContext = {};
 
 let currentLocation = '';
 
@@ -19,7 +19,12 @@ const hasLinkInArray = (breadcrumbArray, link) => {
 export default {
   namespace: 'breadcrumb',
 
-  state: { currentApp: 'app1', app1: [{ name: launcherLocaleName(userContext,"Platform"), link: '/' }], menuData: {}, returnURL: null },
+  state: {
+    currentApp: 'app1',
+    app1: [{ name: launcherLocaleName(userContext, 'Platform'), link: '/' }],
+    menuData: {},
+    returnURL: null,
+  },
 
   subscriptions: {},
   effects: {},
