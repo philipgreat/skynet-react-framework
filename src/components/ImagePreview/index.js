@@ -2,7 +2,7 @@ import { Upload, Icon, Modal } from 'antd';
 
 
 
-const resizeDispayImageInList=(imageLocation)=>resizeDispayImage(imageLocation,"small")
+const resizeDispayImageInList=(imageLocation)=>resizeDispayImage(imageLocation,"xlarge")
 
 const resizeDispayImageForPreview=(imageLocation)=>resizeDispayImage(imageLocation,"xlarge")
 
