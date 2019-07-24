@@ -132,7 +132,7 @@ const renderForNumbers = aggregatedData => {
           return null;
         }
 
-        if (visitData.length < 5) {
+        if (visitData.length < 10) {
           return null;
         }
         let ChartComp = MiniArea;
