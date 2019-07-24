@@ -360,7 +360,7 @@ const defaultImageListOf = (mainObject, imageList) => {
           <Col span={4} key={index}>
             <ImagePreview
               imageTitle={item.title}
-              imageStyle={{width:400,height:400}}
+              imageStyle={{width:400}}
               showTitleUnderImage={true}
               imageLocation={item.imageLocation}
             >
