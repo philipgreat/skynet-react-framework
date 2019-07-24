@@ -187,7 +187,7 @@ const renderForTimeLine = aggregatedData => {
   if (!data.dataArray) {
     return null;
   }
-  if (data.dataArray.length === 0) {
+  if (data.dataArray.length < 10) {
     return null;
   }
   const option = {

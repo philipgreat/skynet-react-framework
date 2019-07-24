@@ -2,7 +2,7 @@ import { Upload, Icon, Modal } from 'antd';
 
 
 
-const resizeDispayImageInList=(imageLocation)=>resizeDispayImage(imageLocation,"xlarge")
+const resizeDispayImageInList=(imageLocation)=>resizeDispayImage(imageLocation,"small")
 
 const resizeDispayImageForPreview=(imageLocation)=>resizeDispayImage(imageLocation,"xlarge")
 
@@ -58,16 +58,18 @@ export default class ImagePreview extends React.Component {
 
   render() {
    
-    const {imageLocation,imageTitle,showTitleUnderImage, imageStyle} = this.props;
+    const {imageLocation,imageTitle,showTitleUnderImage, imageStyle, imageSize} = this.props;
     const {previewVisible,previewImage} = this.state;
     // const {fileList} = this.state;
     const suffix = " | 图片预览";
     const modalTitle = imageTitle?imageTitle+suffix:suffix;
     const internalImageStyle = imageStyle || {height:80, width:80}
+    
     return (
       <div className="clearfix" style={{textAlign:"center"}}>
         <img
           src={resizeDispayImageInList(imageLocation)}
+         
           style={internalImageStyle}
           title={imageLocation}
           alt={imageLocation}
