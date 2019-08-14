@@ -142,6 +142,7 @@ const handleDeletionModalVisible = (event,targetComponent) => {
   
   const convertToBackendSorter=({listName,sorter})=>{
 
+    console.log("sorter", sorter, "list name", listName)
     const sortProperties = {}
     
     if(!sorter){
@@ -153,7 +154,7 @@ const handleDeletionModalVisible = (event,targetComponent) => {
       return sortProperties
     }
     delete sortProperties[`${listName}.orderBy.0`]
-    delete sortProperties[`${listName}..descOrAsc.0`]
+    delete sortProperties[`${listName}.descOrAsc.0`]
     
     return sortProperties
   }
@@ -178,7 +179,7 @@ const handleDeletionModalVisible = (event,targetComponent) => {
     console.log("newSearchParameters",newSearchParameters)
     if(!sorter.field){
       delete newSearchParameters[`${listName}.orderBy.0`]
-      delete newSearchParameters[`${listName}..descOrAsc.0`]
+      delete newSearchParameters[`${listName}.descOrAsc.0`]
     }
     const params = {
       ...searchParameters,
