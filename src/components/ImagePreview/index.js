@@ -1,6 +1,6 @@
 import { Upload, Icon, Modal } from 'antd';
 
-
+import styles from './index.less'
 
 const fileMapper=[
   {type:"jpg",cover: "file-image"},
@@ -134,7 +134,7 @@ export default class ImagePreview extends React.Component {
 
     return (
 
-      <div className="clearfix" style={{textAlign:"center"}}>
+      <div className={styles.imagePreview} style={{textAlign:"center"}}>
         <img
           src={resizeDispayImageInList(imageLocation)}
          
@@ -143,11 +143,14 @@ export default class ImagePreview extends React.Component {
           alt={imageLocation}
           onClick={(event)=>this.handlePreview(event,imageLocation)}
         >
+
+
            
         </img>
         {showTitleUnderImage&&(<span style={{"display": "block"}}>{imageTitle}</span>)}
-        <Modal visible={previewVisible} title={modalTitle} footer={null} onCancel={this.handleCancel}>
-          <img alt={imageTitle}  style={{ width: '100%' }} src={previewImage} />
+        <Modal visible={previewVisible} title={modalTitle} footer={null} 
+          onCancel={this.handleCancel}   width="100%">
+          <img alt={imageTitle}  src={previewImage}  style={{"width": "100%"}}/>
         </Modal>
       </div>
     );
