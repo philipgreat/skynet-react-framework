@@ -134,7 +134,7 @@ export default class ImagePreview extends React.Component {
 
     return (
 
-      <div className={styles.imagePreview} style={{textAlign:"center"}}>
+      <div  style={{textAlign:"center"}}>
         <img
           src={resizeDispayImageInList(imageLocation)}
          

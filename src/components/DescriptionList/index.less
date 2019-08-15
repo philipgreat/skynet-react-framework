@@ -10,7 +10,7 @@
   }
 
   .title {
-    font-size: 14px;
+    font-size: 48px;
     color: @heading-color;
     font-weight: 500;
     margin-bottom: 16px;
@@ -18,13 +18,14 @@
 
   .term {
     // Line-height is 22px IE dom height will calculate error
-    line-height: 20px;
+    line-height: 10px;
     padding-bottom: 16px;
     margin-right: 8px;
     color: @heading-color;
     white-space: nowrap;
     display: table-cell;
-
+    font-size:10px;
+    color: #999;
     &:after {
       content: ':';
       margin: 0 8px 0 2px;
@@ -39,6 +40,8 @@
     padding-bottom: 16px;
     color: @text-color;
     display: table-cell;
+    font-weight: 500;
+    font-size: 20px;
   }
 
   &.small {
