@@ -357,7 +357,7 @@ const defaultImageListOf = (mainObject, imageList) => {
     <Card title="图片列表" className={styles.card}>
       <Row type="flex" justify="start" align="bottom">
         {filteredList.map((item, index) => (
-          <Col span={4} key={index}>
+          <Col span={6} key={index}>
             <ImagePreview
               imageTitle={item.title}
               imageStyle={{width:400}}
