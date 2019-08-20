@@ -177,9 +177,9 @@ const renderForNumbers = aggregatedData => {
               footer={
                 <div>
                   <Trend flag={trend(weekData)} style={{ marginRight: 16 }}>
-                    周对比({numeral(weekData.lastWeek).format('0,0')}/{numeral(
+                    上周{numeral(weekData.lastWeek).format('0,0')}/本周{numeral(
                       weekData.thisWeek
-                    ).format('0,0')})
+                    ).format('0,0')}
                     <span className={styles.trendText}>{change(weekData)}</span>
                   </Trend>
                 </div>
