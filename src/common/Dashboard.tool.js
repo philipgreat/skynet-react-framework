@@ -144,6 +144,23 @@ const renderForNumbers = aggregatedData => {
         console.log('index: ', colorIndex, colors[colorIndex % colors.length]);
 
         const chartColor = colors[colorIndex % colors.length];
+
+        const trend=(target)=>{
+
+          return target.lastWeek> target.thisWeek?"down":"up";
+
+        }
+        const change=(target)=>{
+
+          if(target.lastWeek===0){
+            return "NA"
+          }
+          const percent=(target.thisWeek-target.lastWeek)/target.lastWeek*100
+          return `${numeral(Math.abs(percent)).format('0.00')}%`
+        }
+        
+
+
         return (
           <Col key={item} {...topColResponsiveProps}>
             <ChartCard
@@ -157,11 +174,11 @@ const renderForNumbers = aggregatedData => {
               total={numeral(itemTotal).format('0,0')}
               footer={
                 <div>
-                  <Trend flag="down" style={{ marginRight: 16 }}>
+                  <Trend flag={trend(weekData)} style={{ marginRight: 16 }}>
                     周对比({numeral(weekData.lastWeek).format('0,0')}/{numeral(
                       weekData.thisWeek
                     ).format('0,0')})
-                    <span className={styles.trendText}>100%</span>
+                    <span className={styles.trendText}>{change(weekData)}</span>
                   </Trend>
                 </div>
               }
