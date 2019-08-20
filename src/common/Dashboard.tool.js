@@ -151,7 +151,9 @@ const renderForNumbers = aggregatedData => {
 
         }
         const change=(target)=>{
-
+          if(target.thisWeek===0){
+            return `${numeral(0).format('0.00')}%`
+          }
           if(target.lastWeek===0){
             return "NA"
           }
