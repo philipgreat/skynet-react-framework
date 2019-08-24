@@ -12,7 +12,7 @@ import {
   Select,
   Form,
   AutoComplete,
-  Modal,Divider,Collapse
+  Modal,Divider,Collapse,Tabs,
 } from 'antd';
 import styles from './Dashboard.tool.less';
 import ImagePreview from '../components/ImagePreview';
@@ -180,7 +180,7 @@ const renderForNumbers = aggregatedData => {
                     上周: {numeral(weekData.lastWeek).format('0,0')}/本周: {numeral(
                       weekData.thisWeek
                     ).format('0,0')}
-                    <span className={styles.trendText}>环比: {change(weekData)}</span>
+                    <span className={styles.trendText}>环比{change(weekData)}</span>
                   </Trend>
                 </div>
               }
@@ -600,8 +600,7 @@ const legalListForDisplay=(targetObject, listItem)=>{
   return true
 
 }
-
-const defaultRenderSubjectList = cardsData => {
+const defaultRenderSubjectList2 = cardsData => {
   
   // listItem.renderItem(item)
   const targetObject = cardsData.cardsSource
@@ -626,6 +625,40 @@ const defaultRenderSubjectList = cardsData => {
           </Col>
          
         ))}
+    </Row>
+    
+  );
+};
+const defaultRenderSubjectList = cardsData => {
+  
+  // listItem.renderItem(item)
+  const targetObject = cardsData.cardsSource
+  const { TabPane } = Tabs;
+  function callback(key) {
+    console.log(key);
+  }
+  return (
+    <Row gutter={16}>
+      <Tabs  onChange={callback}>
+      {cardsData.subItems
+        
+        .filter(listItem=>legalListForDisplay(targetObject,listItem))
+        .map(listItem => (
+          <TabPane tab={listItem.displayName} key={listItem.displayName}>
+          <Col key={listItem.displayName} span={24} {...wholeLineColProps}>
+            
+             <Card title={listItem.displayName} style={{ marginBottom: 24 }} >
+
+            {
+             
+              targetObject[listItem.name].map(item=>(listItem.renderItem(item)))
+            }
+           
+             </Card>
+          </Col>
+          </TabPane>
+        ))}
+        </Tabs>
     </Row>
     
   );
