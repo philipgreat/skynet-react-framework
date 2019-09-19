@@ -31,8 +31,8 @@ export default {
         }
 
         const newlocation = { pathname: '/home' };
-
-        dispatch(routerRedux.push(newlocation));
+        
+        // dispatch(routerRedux.push(newlocation));
       });
     },
     timer({ dispatch }) {
