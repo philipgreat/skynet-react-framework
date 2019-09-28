@@ -6,7 +6,6 @@ import GlobalComponents from '../custcomponents';
 import SystemConfig from '../axios/config';
 import defaultLocaleName from './Launcher.locale';
 
-
 let currentLocation = '';
 
 const launcherLocaleName = defaultLocaleName; //you can define your version here to replace default
@@ -31,7 +30,7 @@ export default {
         }
 
         const newlocation = { pathname: '/home' };
-        
+
         // dispatch(routerRedux.push(newlocation));
       });
     },
@@ -122,6 +121,14 @@ export default {
 
       yield put({ type: 'logout', payload: { data } });
       const location = { pathname: `/home`, state: data };
+      yield put(routerRedux.push(location));
+
+      // yield put({type:"showApp",payload:{data}})
+    },
+    *goHome({ payload }, { call, put }) {
+      // console.log("gotoApp has been called", payload)
+      // yield put({ type: 'logout', payload: { data } });
+      const location = { pathname: `/home` };
       yield put(routerRedux.push(location));
 
       // yield put({type:"showApp",payload:{data}})
