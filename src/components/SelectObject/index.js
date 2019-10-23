@@ -91,18 +91,25 @@ export default class SelectObject extends React.Component {
     
 
     const {candidateValues,placeholder} = this.state
-    const {value,disabled} = this.props
+    const {value,disabled,useForSearch} = this.props
     if(!candidateValues){
       return (<div>正在载入候选项......</div>)
     }
     
 
-    
+    const calcSize=()=>{
+
+      if(useForSearch){
+        return "default"
+      }
+      return "large"
+
+    }
 
     return (
       <AutoComplete
               value={valueOf(value,candidateValues)}
-                size="large"
+               size={calcSize()}
                     dataSource={candidateValues.map(item=>{
                       return (<Option key={item.id}>{`${item.id} - ${item.displayName}`}</Option>);
                     })}
