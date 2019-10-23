@@ -1,7 +1,6 @@
 const launcherEnUS = {};
 const launcherZhCN = {};
-launcherZhCN.Home = '主页';
-launcherEnUS.Home = 'Home';
+
 launcherZhCN.Exit = '退出';
 launcherEnUS.Exit = 'Exit';
 launcherZhCN.Password = '密码';
@@ -99,9 +98,9 @@ const determinLocale = userContext => {
     if (isLegalLocale(trimedLocale)) {
       return trimedLocale;
     }
-    return defaultLocale;
+    return defaultLocale
   }
-
+  
   const userLocale = userContext.userLocale;
   if (isLegalLocale(userLocale)) {
     return userLocale;

@@ -10,7 +10,6 @@ const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
 const ChangePassword = 'ChangePassword';
-const GoHome = 'gohome';
 
 class TopMenu extends React.Component {
   state = {
@@ -19,13 +18,8 @@ class TopMenu extends React.Component {
   };
   handleClick = e => {
     console.log('click ', e);
-    const dispatch = this.props.dispatch;
-    //GoHome
-    if (e.key && e.key === GoHome) {
-      dispatch({ type: 'launcher/goHome' });
-      return;
-    }
-    if (e.key && e.key === ChangePassword) {
+
+    if (e.key && e.key == ChangePassword) {
       console.log('trying to change password');
       this.setState({
         currentKey: ChangePassword,
@@ -36,7 +30,7 @@ class TopMenu extends React.Component {
     }
 
     console.log('props', this.props);
-
+    const dispatch = this.props.dispatch;
     dispatch({ type: 'launcher/signOut' });
     this.setState({
       currentKey: e.key,
@@ -58,32 +52,29 @@ class TopMenu extends React.Component {
 
   render() {
     const userContext = this.props.launcher.data;
-    const isOnHomePage = this.props.onHomePage;
-    const mode = isOnHomePage ? 'horizontal' : 'inline';
 
     return (
-      <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode={mode} theme="dark">
-       
-        <Menu.Item key={ChangePassword} >
-          <Icon type="lock" />
-          {launcherLocaleName(userContext, 'ChangePassword')}
-        </Menu.Item>
-
-        {!isOnHomePage && (
-          <Menu.Item key={'gohome'} >
-            <Icon type="home" />&nbsp;{launcherLocaleName(userContext, 'Home')}
+      <div>
+        <Menu
+          onClick={this.handleClick}
+          selectedKeys={[this.state.current]}
+          mode="horizontal"
+          theme="dark"
+        >
+          <Menu.Item key="logout" style={{ float: 'right' }}>
+            <Icon type="logout" />
+            {launcherLocaleName(userContext, 'Exit')}
           </Menu.Item>
-        )}
-        
-         <Menu.Item key="logout" >
-          <Icon type="logout" />
-          {launcherLocaleName(userContext, 'Exit')}
-        </Menu.Item>
+          <Menu.Item key={ChangePassword} style={{ float: 'right' }}>
+            <Icon type="lock" />
+            {launcherLocaleName(userContext, 'ChangePassword')}
+          </Menu.Item>
+        </Menu>{' '}
         <ChangePasswordModel
           visible={this.state.ChangePasswordVisible}
           hideModal={event => this.hideModal(event)}
         />
-      </Menu>
+      </div>
     );
   }
 }

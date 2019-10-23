@@ -61,6 +61,16 @@ const wholeLineColProps = {
 };
 
 
+
+const quckFunctionProps = {
+  xs: 24,
+  sm: 24,
+  md: 12,
+  lg: 6,
+  xl: 6,
+  
+};
+
 const renderForNumbers = aggregatedData => {
   if (!aggregatedData) {
     return null;
@@ -199,7 +209,7 @@ const renderForTimeLine = aggregatedData => {
   if (!aggregatedData) {
     return null;
   }
-  //scan all property ends with stats info
+  // scan all property ends with stats info
   console.log('aggregatedData', aggregatedData);
 
   const data = aggregatedData;
@@ -709,12 +719,12 @@ const defaultQuickFunctions = cardsData => {
   return (
     <Row gutter={16}>
       {
-        actionList.filter(item => item.actionGroup==="custom")
+       actionList&&actionList.filter(item => item.actionGroup==="custom")
         .map(item=>(
 
           
-          <Col span={6} key={`${item.actionPath}`}>
-          <Card span={6} style={{fontSize:"20px"}}>
+          <Col {...quckFunctionProps}  key={`${item.actionPath}`}>
+          <Card style={{fontSize:"20px"}}>
           <a href={`${PREFIX}${item.managerBeanName}/${item.actionPath}`} target="_blank">
           <Icon type={item.actionIcon} /> {item.actionName}
           </a>
@@ -724,11 +734,11 @@ const defaultQuickFunctions = cardsData => {
 
 
       }
-      {cardsData.subItems
+      {cardsData&&cardsData.subItems&&cardsData.subItems
         
         .filter(item => hasItemReadPermission(item))
         .map(item => (
-          <Col key={item.displayName} span={6}><Card span={6} style={{fontSize:"20px"}}>
+          <Col key={item.displayName} {...quckFunctionProps} ><Card span={6} style={{fontSize:"20px"}}>
            <Row gutter={16}>
            {hasItemCreatePermission(item) && (
           <Col span={3}>
