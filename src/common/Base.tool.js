@@ -4,6 +4,7 @@ import { Link } from 'dva/router'
 import moment from 'moment'
 import ImagePreview from '../components/ImagePreview'
 import appLocaleName from './Locale.tool'
+import { Avatar } from 'antd'
 
 const defaultRenderTextCell=(value, record)=>{
 	const userContext = null
@@ -21,7 +22,7 @@ const defaultRenderTextCell=(value, record)=>{
 	return value
 	
 }
-
+// import { Avatar, Icon } from 'antd';
 const defaultRenderIdentifier=(value, record, targtObjectType)=>{
 
 	return (<Link to={`/${targtObjectType}/${value}/dashboard`}>{value}</Link>)
@@ -33,6 +34,10 @@ const defaultRenderDateCell=(value, record)=>{
 }
 const defaultRenderDateTimeCell=(value, record)=>{
 	return moment(value).format('YYYY-MM-DD HH:mm');	
+}
+
+const defaultRenderAvatarCell=(value, record, title)=>{
+	return (<Avatar src={value} />)	
 }
 
 const defaultRenderImageCell=(value, record, title)=>{
@@ -81,7 +86,8 @@ const BaseTool = {
     defaultRenderImageCell,
     defaultRenderDateCell,
     defaultRenderIdentifier,
-    defaultRenderTextCell,
+	defaultRenderTextCell,
+	defaultRenderAvatarCell,
    
   };
   
