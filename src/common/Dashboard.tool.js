@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-indent */
 import FontAwesome from 'react-fontawesome';
 import PermissionSettingService from '../permission/PermissionSetting.service';
-import {
+import {List,
   Row,
   Col,
   Icon,
@@ -571,8 +571,46 @@ const defaultBuildTransferModal = (mainObject, targetComponent) => {
   );
 };
 
+
+const renderFunctions = (mainObject) => {
+  const actionList = mainObject.actionList.filter(item=>item.actionGroup==='changerequesttype')
+  // const actionList = platform.actionList
+
+
+  if(!actionList){
+    return null
+  }
+  if(actionList.length === 0){
+    return null
+  }
+
+  return (
+
+    <List
+    grid={{ gutter: 16, xs: 4, sm: 4, md: 4, lg: 6, xl: 6, xxl: 6 }}
+    dataSource={actionList}
+    renderItem={item => (
+      <List.Item>
+        <Card title={item.actionName}  style={{ textAlign: "center" }}><Link to={item.actionPath}>
+        
+        <Icon type={item.actionIcon} style={{ fontSize: 50, color: 'orange' }}/>
+
+       </Link></Card>
+      </List.Item>
+    )}
+  />
+
+
+
+   
+  )
+};
+
 const defaultRenderExtraHeader = mainObject => {
   
+  return renderFunctions(mainObject)
+
+
 };
 
 
@@ -840,5 +878,7 @@ const DashboardTool = {
 };
 
 export default DashboardTool;
+
+
 
 
