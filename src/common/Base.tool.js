@@ -82,7 +82,14 @@ const defaultRenderReferenceCell=(value, record)=>{
 
 
 
-const buildFunctionTitle=(menuData)=>{
+const buildFunctionTitle=(menuData,searchTerm)=>{
+
+
+	const result = menuData.subItems.filter(item=>item.name.indexOf(searchTerm)>=0||item.displayName.indexOf(searchTerm)>=0)
+
+	if(!result || result.length===0){
+		return null
+	}
 
 	return <Col span={4}>{menuData.menuName}功能</Col>
 
@@ -92,6 +99,9 @@ const buildFunctionList=(menuData,targetObject,searchTerm)=>{
 
 	const result = menuData.subItems.filter(item=>item.name.indexOf(searchTerm)>=0||item.displayName.indexOf(searchTerm)>=0)
 
+	if(!result || result.length===0){
+		return null
+	}
 
 	return <Col span={20}>{result.map(item=>(
 
@@ -144,17 +154,23 @@ const defaultSearchLocalData=(menuData, targetObject, searchName)=>{
 	const wrappedData=menuData.subItems.map(item=>({...item, data: targetObject[item.name]}))
 	const resultData=wrappedData.map(item=>{
 		const {data}=item
+		if(!data){
+			return {...item,filteredData:[]}
+		}
 		const filteredData = data.filter(innerItem=>innerItem.displayName.indexOf(searchName)>=0)
 		return {...item,filteredData}
 		
 	})
 	const filteredResult = resultData.filter(item=>item.filteredData&&item.filteredData.length>0)
 	console.log("filteredResult", filteredResult)
-	
-	return (<div >
-		<Card  key={"__function"}>
-				{buildFunctionTitle(menuData)}{buildFunctionList(menuData,targetObject,searchName)}
-			</Card>
+	const result = menuData.subItems.filter(item=>item.name.indexOf(searchName)>=0||item.displayName.indexOf(searchTerm)>=0)
+
+	return (<div >{
+		result&&result.length>0&&(<Card  key={"__function"}>
+			{buildFunctionTitle(menuData,searchName)}{buildFunctionList(menuData,targetObject,searchName)}
+			</Card>)
+		}
+		
 		{filteredResult.map(item=>(
 
 			<Card  key={item.displayName}>
