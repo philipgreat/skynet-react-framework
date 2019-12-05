@@ -22,6 +22,7 @@ import { Link, Route, Redirect } from 'dva/router';
 import ReactEcharts from 'echarts-for-react';
 import moment from 'moment';
 import appLocaleName from './Locale.tool';
+import Graph from './Graph'
 import {
   ChartCard,
   MiniArea,
@@ -608,7 +609,7 @@ const renderFunctions = (mainObject) => {
 
 const defaultRenderExtraHeader = mainObject => {
   
-  return renderFunctions(mainObject)
+  return (<div><Graph />{renderFunctions(mainObject)}</div>)
 
 
 };
@@ -622,10 +623,12 @@ const defaultRenderAnalytics= mainObject => {
   if (data.dataArray.length === 0) {
     return null;
   }
+  // {renderForTimeLine(data)}
   return (
     <div>
+      
       {renderForNumbers(data)}
-      {renderForTimeLine(data)}
+      
     </div>
   );
 };
@@ -723,6 +726,14 @@ const defaultRenderSubjectList = cardsData => {
   function callback(key) {
     console.log(key);
   }
+  if(!cardsData || !cardsData.subItems){
+    return null
+  }
+  const listWithDataLength = cardsData.subItems.filter(item=>item.count>0).length;
+  if(listWithDataLength>10){
+    return null
+  }
+
   return (
     <Row gutter={16}>
       
@@ -887,7 +898,7 @@ const functionItem=(cardsData,item)=>{
 
   
 
-  return (<Col key={item.displayName} span={4}>
+  return (<Col key={item.displayName} span={4} className={styles.functionItem}>
   
   
 
@@ -909,12 +920,12 @@ const functionItem=(cardsData,item)=>{
 const viewGroupName=(name)=>{
   if(!name){
     return <div>
-      未分组功能
+      常用功能
     </div>
   }
-  if(name ==="" || name === "_no_group"){
+  if(name ==="" || name === "__no_group"){
     return <div>
-    <Icon type="container" /> 未分组功能
+    常用功能
   </div>
   }
   return name;
@@ -929,8 +940,9 @@ const CustomFunction=(cardsData)=>{
   if(!actionList || actionList.length ===0 || actionList.filter(item => item.actionGroup==="custom").length === 0){
     return null
   }
-  return (<Row gutter={16}><Card span={6} style={{fontSize:"14px"}}>
-  <Col span={3} style={{textColor:"grey",marginTop:"5px",marginBotton:"5px"}}>
+  return (<Row gutter={16} className={styles.functionRow} >
+    <Card span={6} style={{fontSize:"14px"}}>
+        <Col span={3} className={styles.functionItem}>
         
         特别功能
        
@@ -947,7 +959,7 @@ const CustomFunction=(cardsData)=>{
         <Col span={4} key={`${item.actionPath}`} style={{marginTop:"5px",marginBotton:"5px"}}>
         
         <a href={`${PREFIX}${item.managerBeanName}/${item.actionPath}`} target="_blank">
-        <Icon type={item.actionIcon} /> {item.actionName}
+        {item.actionName}
         </a>
        
         </Col>
@@ -963,25 +975,27 @@ const CustomFunction=(cardsData)=>{
 
 const defaultQuickFunctions = cardsData => {
   
-  const { id, actionList } = cardsData.cardsSource;
+  
   return (
     <div>
     {CustomFunction(cardsData)}
     {
       groupMenuOf(cardsData).map(groupItem=>(
 
-        <Row gutter={16}><Card span={6} style={{fontSize:"14px"}}>
+        <Row gutter={16} className={styles.functionRow} >
 
-        <Col span={3} style={{textColor:"grey",marginTop:"5px",marginBotton:"5px"}}>
+          <Card span={6} style={{fontSize:"14px"}}>
+
+           <Col span={3} style={{textColor:"grey",marginTop:"5px",marginBotton:"5px"}}>
           
           {viewGroupName(groupItem.viewGroup)}
          
          
           </Col>
           <Col span={21} >
-        {groupItem.subItems.map(item=>(
-          functionItem(cardsData,item)
-        ))}
+            {groupItem.subItems.map(item=>(
+              functionItem(cardsData,item)
+            ))}
          </Col>
 
         </Card>
@@ -1065,7 +1079,6 @@ const DashboardTool = {
 };
 
 export default DashboardTool;
-
 
 
 

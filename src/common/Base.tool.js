@@ -1,10 +1,13 @@
 
 import React from 'react'
 import { Link } from 'dva/router'
+import { Icon, Divider, Avatar, Card, Col} from 'antd'
+
+
 import moment from 'moment'
 import ImagePreview from '../components/ImagePreview'
 import appLocaleName from './Locale.tool'
-import { Avatar } from 'antd'
+
 
 const defaultRenderTextCell=(value, record)=>{
 	const userContext = null
@@ -77,6 +80,96 @@ const defaultRenderReferenceCell=(value, record)=>{
 }
 
 
+
+
+const buildFunctionTitle=(menuData)=>{
+
+	return <Col span={4}>{menuData.menuName}功能</Col>
+
+}
+const buildFunctionList=(menuData,targetObject,searchTerm)=>{
+
+
+	const result = menuData.subItems.filter(item=>item.name.indexOf(searchTerm)>=0||item.displayName.indexOf(searchTerm)>=0)
+
+
+	return <Col span={20}>{result.map(item=>(
+
+		<Col span={4}><Link to={`/${menuData.menuFor}/${targetObject.id}/list/${item.name}/${item.displayName}`}>{item.displayName}</Link></Col>
+
+		
+	))}</Col>
+	
+}
+
+
+const buildCategoryTitle=(item)=>{
+
+	return <Col span={4}> {`${item.displayName}(${item.filteredData.length})`}</Col>
+
+}
+const buildCategoryContent=(item)=>{
+
+	let maxLength = 0;
+	item.filteredData.forEach(fi => {
+		const length = fi.displayName.length;
+		if(length> maxLength) {
+			maxLength = length;
+		}
+	});
+
+	// every 2 chars use a span
+
+	
+	
+	let spanCount = 4
+	if(maxLength > 10){
+		spanCount = 8
+	}
+	if(maxLength > 20){
+		spanCount = 12
+	}
+
+	return <Col span={20}>
+		 {item.filteredData.map(fi=>(<Col span={spanCount}><Link to={`/${item.type}/${fi.id}/dashboard`}>{fi.displayName}</Link></Col>))}
+		</Col>
+
+}
+const defaultSearchLocalData=(menuData, targetObject, searchName)=>{
+
+	console.log("targetObject", targetObject)
+	if(!targetObject){
+		return null
+	}
+	const wrappedData=menuData.subItems.map(item=>({...item, data: targetObject[item.name]}))
+	const resultData=wrappedData.map(item=>{
+		const {data}=item
+		const filteredData = data.filter(innerItem=>innerItem.displayName.indexOf(searchName)>=0)
+		return {...item,filteredData}
+		
+	})
+	const filteredResult = resultData.filter(item=>item.filteredData&&item.filteredData.length>0)
+	console.log("filteredResult", filteredResult)
+	
+	return (<div >
+		<Card  key={"__function"}>
+				{buildFunctionTitle(menuData)}{buildFunctionList(menuData,targetObject,searchName)}
+			</Card>
+		{filteredResult.map(item=>(
+
+			<Card  key={item.displayName}>
+				{buildCategoryTitle(item)}{buildCategoryContent(item)}
+			</Card>)
+		)}
+	  </div>)
+  
+	
+
+}
+
+
+
+
 const BaseTool = {
     defaultRenderReferenceCell,
     defaultRenderBooleanCell,
@@ -88,6 +181,7 @@ const BaseTool = {
     defaultRenderIdentifier,
 	defaultRenderTextCell,
 	defaultRenderAvatarCell,
+	defaultSearchLocalData,
    
   };
   
