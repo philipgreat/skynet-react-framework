@@ -109,7 +109,7 @@ const subgraph=(data, selectNode)=>{
 
   const nodesKeys = {}
   firstEdges.forEach(item=>{
-      nodesKeys[selectNodeName(selectNode,item)]=true
+      nodesKeys[selectNodeName(selectNode,item)]={size: 70}
   })
   
   const secondEdges=[]
@@ -122,19 +122,47 @@ const subgraph=(data, selectNode)=>{
       if(edgeMatch(edge,selectNode)){
         return
       }
-      nodesKeys[edge.source]=true
-      nodesKeys[edge.target]=true
+      if(!nodesKeys[edge.source]){
+        nodesKeys[edge.source] = {size: 50,style:{fill:'#ccc', line: 5}}
+      }
+      if(!nodesKeys[edge.target]){
+        nodesKeys[edge.target] = {size: 50,style:{fill:'#ccc', line: 5}}
+      }
+     
   })
   
-  const nodes=Object.keys(nodesKeys).map(key=>({id:key,label:key}))
+  const nodes=Object.keys(nodesKeys).map(key=>({id:key,label:key,...nodesKeys[key]}))
   const edges=firstEdges.concat(secondEdges)
 
-  nodes.push({id:selectNode,label:selectNode,size: 100,style:{fill:'yellow',line: 5}})
+  nodes.push({id:selectNode,label:selectNode,x:750,y:750,size: 100,style:{fill:'yellow',line: 5}})
   return {nodes,edges}
 }	
 
 
+/*
+layout: {
+        type: 'force',
+        preventOverlap: true,
+        linkDistance: d => {
+          if(d.depth===1){
+            return 800;
+          }
+          return 400
+          
+        },
+        nodeStrength: d => {
+          
+          return d.size-110;
+        },
+        edgeStrength: d => {
+          if(d.depth === 2){
+            return 0.3
+          }
+          return 0.8;
+        },
+      },
 
+*/
 
 export default class Graph extends React.Component {
   
@@ -147,7 +175,7 @@ export default class Graph extends React.Component {
     const graph = new G6.Graph({
       container: 'container',
       modes: {
-        default: [ 'drag-canvas', 'drag-node' ]
+        default: [ 'drag-canvas', 'drag-node']
       },
       width,
       height,
@@ -155,25 +183,35 @@ export default class Graph extends React.Component {
         type: 'force',
         preventOverlap: true,
         linkDistance: d => {
-          if(d.depth===1){
-            return 800;
+          if(d.source.size===100 || d.target.size === 100){
+            return 300;
           }
-          return 400
+          if(d.source.size===70 && d.target.size === 70){
+            return 400;
+          }
+          
+          
+
+          return 150
           
         },
         nodeStrength: d => {
-          if (d.size >= 50) {
-            return 100;
-          }
-          return 0;
+          
+          return -d.size;
         },
         edgeStrength: d => {
-          if(d.depth === 2){
-            return 0.3
+          if(d.source.size===70 && d.target.size === 70){
+            return 0.0;
           }
+
+          if(d.source.size===30 && d.target.size === 30){
+            return 0;
+          }
+
           return 0.8;
-        }
+        },
       },
+      
       defaultNode: {
         size: 90,
         color: '#5B8FF9',
@@ -222,7 +260,7 @@ export default class Graph extends React.Component {
       e.item.get('model').fy = null;
     });
 
-    
+
     graph.on('node:click', ev => {
     const node = ev.item;
     const newdata=subgraph(data,node._cfg.id)
@@ -238,13 +276,16 @@ export default class Graph extends React.Component {
       nodes,
       edges: newdata.edges.map(function(edge, i) {
         edge.id = 'edge1' + i;
-        return Object.assign({}, edge);
+        console.log("edg1e", edge)
+        return {...edge};
       })
     });
     graph.render();
+   
       //const edges = node.getEdges();
       //edges.forEach(edge => graph.setItemState(edge, 'running', true));
     });
+
 
   }
   componentWillUnmount() {
