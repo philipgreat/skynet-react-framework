@@ -163,7 +163,7 @@ const defaultSearchLocalData=(menuData, targetObject, searchName)=>{
 	})
 	const filteredResult = resultData.filter(item=>item.filteredData&&item.filteredData.length>0)
 	console.log("filteredResult", filteredResult)
-	const result = menuData.subItems.filter(item=>item.name.indexOf(searchName)>=0||item.displayName.indexOf(searchTerm)>=0)
+	const result = menuData.subItems.filter(item=>item.name.indexOf(searchName)>=0||item.displayName.indexOf(searchName)>=0)
 
 	return (<div >{
 		result&&result.length>0&&(<Card  key={"__function"}>
