@@ -145,6 +145,18 @@ const buildCategoryContent=(item)=>{
 		</Col>
 
 }
+
+const matchSearchTerm=(innerItem, searchTerm)=>{
+
+	if(innerItem.displayName.indexOf(searchTerm)>=0){
+		return true;
+	}
+	if(innerItem.id.indexOf(searchTerm)>=0){
+		return true;
+	}
+	return false
+
+}
 const defaultSearchLocalData=(menuData, targetObject, searchName)=>{
 
 	console.log("targetObject", targetObject)
@@ -157,7 +169,7 @@ const defaultSearchLocalData=(menuData, targetObject, searchName)=>{
 		if(!data){
 			return {...item,filteredData:[]}
 		}
-		const filteredData = data.filter(innerItem=>innerItem.displayName.indexOf(searchName)>=0)
+		const filteredData = data.filter(innerItem=>matchSearchTerm(innerItem,searchName))
 		return {...item,filteredData}
 		
 	})
