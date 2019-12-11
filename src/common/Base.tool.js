@@ -91,7 +91,7 @@ const buildFunctionTitle=(menuData,searchTerm)=>{
 		return null
 	}
 
-	return <Col span={4}>{menuData.menuName}功能</Col>
+	return <Col span={4} style={{fontWeight:'bold'}}>{menuData.menuName}功能</Col>
 
 }
 const buildFunctionList=(menuData,targetObject,searchTerm)=>{
@@ -115,7 +115,7 @@ const buildFunctionList=(menuData,targetObject,searchTerm)=>{
 
 const buildCategoryTitle=(item)=>{
 
-	return <Col span={4}> {`${item.displayName}(${item.filteredData.length})`}</Col>
+	return <Col span={4} style={{fontWeight:'bold'}}> {`${item.displayName}(${item.filteredData.length})`}</Col>
 
 }
 const buildCategoryContent=(item)=>{
@@ -174,18 +174,28 @@ const defaultSearchLocalData=(menuData, targetObject, searchName)=>{
 		
 	})
 	const filteredResult = resultData.filter(item=>item.filteredData&&item.filteredData.length>0)
+	
+	if(searchName&&filteredResult&&filteredResult.length===1&&filteredResult[0].filteredData.length===1&&searchName.trim().length !== 0){
+		const item = filteredResult[0]
+		const fi = filteredResult[0].filteredData[0];
+		window.location=`#/${item.type}/${fi.id}/dashboard`
+		return
+	}
+
+
+
 	console.log("filteredResult", filteredResult)
 	const result = menuData.subItems.filter(item=>item.name.indexOf(searchName)>=0||item.displayName.indexOf(searchName)>=0)
 
 	return (<div >{
-		result&&result.length>0&&(<Card  key={"__function"}>
+		result&&result.length>0&&(<Card  key={"__function"} >
 			{buildFunctionTitle(menuData,searchName)}{buildFunctionList(menuData,targetObject,searchName)}
 			</Card>)
 		}
 		
 		{filteredResult.map(item=>(
 
-			<Card  key={item.displayName}>
+			<Card  key={item.displayName} >
 				{buildCategoryTitle(item)}{buildCategoryContent(item)}
 			</Card>)
 		)}

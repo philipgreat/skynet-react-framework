@@ -592,7 +592,7 @@ const renderFunctions = (mainObject) => {
     dataSource={actionList}
     renderItem={item => (
       <List.Item>
-        <Card style={{ textAlign: "center" }}><Link to={item.actionPath}>
+        <Card className={styles.crCard}><Link to={item.actionPath}>
         
         <Icon type={item.actionIcon} style={{ fontSize: 50, color: 'orange' }}/>
         
@@ -609,7 +609,7 @@ const renderFunctions = (mainObject) => {
 
 const defaultRenderExtraHeader = mainObject => {
   
-  return (<div><Graph />{renderFunctions(mainObject)}</div>)
+  return (<div>{renderFunctions(mainObject)} <Graph /> <br/>  </div>)
 
 
 };

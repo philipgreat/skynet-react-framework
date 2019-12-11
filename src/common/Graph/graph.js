@@ -98,6 +98,7 @@ const selectNodeName=(selectedNode, item)=>{
   return item.source
 
 }
+const selectedStyle = {size: 100,style:{fill:'yellow',line: 5}}
 const edgeMatch=(edge, nodeName)=>{
   return (edge.source===nodeName || edge.target===nodeName)
 }
@@ -134,7 +135,7 @@ const subgraph=(data, selectNode)=>{
   const nodes=Object.keys(nodesKeys).map(key=>({id:key,label:key,...nodesKeys[key]}))
   const edges=firstEdges.concat(secondEdges)
 
-  nodes.push({id:selectNode,label:selectNode,x:750,y:750,size: 100,style:{fill:'yellow',line: 5}})
+  nodes.push({id:selectNode,label:selectNode,x:750,y:750,...selectedStyle})
   return {nodes,edges}
 }	
 
@@ -164,113 +165,95 @@ layout: {
 
 */
 
-export default class Graph extends React.Component {
+
+
+const renderGraph=(graphData)=>{
+
   
-
-
-
-  componentDidMount() {
-    const width = document.getElementById('container').scrollWidth;
-    const height = document.getElementById('container').scrollHeight || 500;
-    const graph = new G6.Graph({
-      container: 'container',
-      modes: {
-        default: [ 'drag-canvas', 'drag-node']
-      },
-      width,
-      height,
-      layout: {
-        type: 'force',
-        preventOverlap: true,
-        linkDistance: d => {
-          if(d.source.size===100 || d.target.size === 100){
-            return 300;
-          }
-          if(d.source.size===70 && d.target.size === 70){
-            return 400;
-          }
-          
-          
-
-          return 150
-          
-        },
-        nodeStrength: d => {
-          
-          return -d.size;
-        },
-        edgeStrength: d => {
-          if(d.source.size===70 && d.target.size === 70){
-            return 0.0;
-          }
-
-          if(d.source.size===30 && d.target.size === 30){
-            return 0;
-          }
-
-          return 0.8;
-        },
-      },
-      
-      defaultNode: {
-        size: 90,
-        color: '#5B8FF9',
-        style: {
-          lineWidth: 6,
-          fill: '#C6E5FF'
-        }
-      },
-      defaultEdge: {
-        
-        style: {
-          stroke: 'grey',
-        },
-        labelCfg: {
-          autoRotate: true,
-          
-        }
-      },
-    });
-
+  const graph = new G6.Graph({
+    container: 'container',
+    width: 1500,
+    height: 800,
+    modes: {
+      default: [ 'drag-canvas', 'drag-node']
+    },
     
-    const newdata=subgraph(data,'王亚彪')
-
-
-
-
-    const nodes = data.nodes;
-    graph.data({
-      nodes,
-      edges: data.edges.map(function(edge, i) {
-        edge.id = 'edge' + i;
-        return Object.assign({}, edge);
-      })
-    });
-    graph.render();
-
-    graph.on('node:dragstart', function(e) {
-      graph.layout();
-      refreshDragedNodePosition(e);
-    });
-    graph.on('node:drag', function(e) {
-      refreshDragedNodePosition(e);
-    });
-    graph.on('node:dragend', function(e) {
-      e.item.get('model').fx = null;
-      e.item.get('model').fy = null;
-    });
-
-
-    graph.on('node:click', ev => {
+    layout: {
+      type: 'force',
+      preventOverlap: true,
+      linkDistance: d => {
+        if(d.source.size===100 || d.target.size === 100){
+          return 300;
+        }
+        if(d.source.size===70 && d.target.size === 70){
+          return 400;
+        }
+        
+        
+  
+        return 150
+        
+      },
+      nodeStrength: d => {
+        
+        return -d.size;
+      },
+      edgeStrength: d => {
+        if(d.source.size===70 && d.target.size === 70){
+          return 0.0;
+        }
+  
+        if(d.source.size===30 && d.target.size === 30){
+          return 0;
+        }
+  
+        return 0.8;
+      },
+    },
+    
+    defaultNode: {
+      size: 90,
+      color: '#5B8FF9',
+      style: {
+        lineWidth: 6,
+        fill: '#C6E5FF'
+      }
+    },
+    defaultEdge: {
+      
+      style: {
+        stroke: 'grey',
+      },
+      labelCfg: {
+        autoRotate: true,
+        
+      },
+    },
+  });
+  
+  graph.on('node:dragstart', function(e) {
+    graph.layout();
+    refreshDragedNodePosition(e);
+  });
+  graph.on('node:drag', function(e) {
+    refreshDragedNodePosition(e);
+  });
+  graph.on('node:dragend', function(e) {
+    e.item.get('model').fx = null;
+    e.item.get('model').fy = null;
+  });
+  
+  
+  graph.on('node:click', ev => {
     const node = ev.item;
     const newdata=subgraph(data,node._cfg.id)
-
+  
     console.log("node2",node._cfg.id)
-
+  
     if(newdata.nodes.length<2){
       return
     }
-
+  
     const nodes = newdata.nodes;
     graph.data({
       nodes,
@@ -281,10 +264,42 @@ export default class Graph extends React.Component {
       })
     });
     graph.render();
+  
+    //const edges = node.getEdges();
+    //edges.forEach(edge => graph.setItemState(edge, 'running', true));
+  });
+  
+
+    
    
-      //const edges = node.getEdges();
-      //edges.forEach(edge => graph.setItemState(edge, 'running', true));
+    const nodes = graphData.nodes;
+    graph.data({
+      nodes,
+      edges: graphData.edges.map(function(edge, i) {
+        edge.id = 'edge' + i;
+        return {...edge};
+      })
     });
+    graph.render();
+
+    
+
+    return graph
+
+}
+
+export default class Graph extends React.Component {
+  
+  state = {
+    firstPerson:'',
+    secondPerson:'',
+    graph: {}
+  }
+
+
+  componentDidMount() {
+    const graph = renderGraph(data)
+    this.setState({graph})
 
 
   }
@@ -293,16 +308,109 @@ export default class Graph extends React.Component {
   }
 
   
+  onChangeFirst =(value) =>{
+    
+    const newGraph = subgraph(data,value)
+    
+    
 
+    
+    
+    document.getElementById("container").innerHTML=""
+    const graph = renderGraph(newGraph)
+    
+    this.setState({firstPerson:value})
+    console.log(`selected ${value} graph ${graph}`);
+  }
+
+  onChangeSecond =(value) =>{
+
+    const {firstPerson} = this.state
+    // this.setState({secondPerson:value})
+    const newGraph = subgraph(data,firstPerson)
+    
+    const {nodes} = newGraph
+
+    newGraph.nodes=nodes.map(node=>{
+
+      if(node.id === value){
+        return {...node, ...selectedStyle}
+      }
+      return node;
+
+    })
+
+    
+    
+    document.getElementById("container").innerHTML=""
+    const graph = renderGraph(newGraph)
+
+    console.log(`selected ${value}`);
+  }
+
+
+  
+  onBlur=()=> {
+    console.log('blur');
+  }
+  
+  onFocus=() =>{
+    console.log('focus');
+  }
+  
+  onSearch=(val) =>{
+    console.log('search:', val);
+  }
 
   render() {
     
 
-   
+    const { Option } = Select;
 
     return (
     
-          <div id='container' style={{height:'1500px', width:'1500px'}}></div>
+      <div>
+        <div><Select
+    showSearch
+    style={{ width: 200 }}
+    placeholder="选一个当事人"
+    optionFilterProp="children"
+    onChange={this.onChangeFirst}
+
+    filterOption={(input, option) =>
+      option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+    }
+  >
+    {
+      data.nodes.map(item=>( <Option key={item.id} value={item.id}>{item.id}</Option> ))
+
+    }
+    
+   
+  </Select>
+  
+  <Select
+    showSearch
+    style={{ width: 200 }}
+    placeholder="选另外一个当事人"
+    optionFilterProp="children"
+    onChange={this.onChangeSecond}
+
+    filterOption={(input, option) =>
+      option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+    }
+  >
+     {
+      data.nodes.map(item=>( <Option key={item.id}  value={item.id}>{item.id}</Option> ))
+
+    }
+  </Select>
+  
+  
+  </div>
+         <div id='container' style={{height:'800px', width:'1500px'}} ></div>
+      </div>
+         
         
     
       
