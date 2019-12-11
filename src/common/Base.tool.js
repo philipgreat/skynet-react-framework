@@ -174,7 +174,7 @@ const defaultSearchLocalData=(menuData, targetObject, searchName)=>{
 		
 	})
 	const filteredResult = resultData.filter(item=>item.filteredData&&item.filteredData.length>0)
-	
+
 	if(searchName&&filteredResult&&filteredResult.length===1&&filteredResult[0].filteredData.length===1&&searchName.trim().length !== 0){
 		const item = filteredResult[0]
 		const fi = filteredResult[0].filteredData[0];
@@ -200,7 +200,7 @@ const defaultSearchLocalData=(menuData, targetObject, searchName)=>{
 			</Card>)
 		)}
 	  </div>)
-  
+	
 	
 
 }

@@ -22,7 +22,7 @@ import { Link, Route, Redirect } from 'dva/router';
 import ReactEcharts from 'echarts-for-react';
 import moment from 'moment';
 import appLocaleName from './Locale.tool';
-import Graph from './Graph'
+
 import {
   ChartCard,
   MiniArea,
@@ -609,7 +609,7 @@ const renderFunctions = (mainObject) => {
 
 const defaultRenderExtraHeader = mainObject => {
   
-  return (<div>{renderFunctions(mainObject)} <Graph /> <br/>  </div>)
+  return (<div>{renderFunctions(mainObject)}  <br/>  </div>)
 
 
 };
@@ -977,7 +977,7 @@ const defaultQuickFunctions = cardsData => {
   
   
   return (
-    <div>
+    <div style={{marginBottom:'24px',marginLeft: '8px',marginRight:'8px'}}>
     {CustomFunction(cardsData)}
     {
       groupMenuOf(cardsData).map(groupItem=>(
