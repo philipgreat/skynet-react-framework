@@ -148,6 +148,15 @@ const buildCategoryContent=(item)=>{
 
 const matchSearchTerm=(innerItem, searchTerm)=>{
 
+	if(!innerItem){
+		return false
+	}
+	if(!innerItem.displayName){
+		return false
+	}
+	if(!innerItem.id){
+		return false
+	}
 	if(innerItem.displayName.indexOf(searchTerm)>=0){
 		return true;
 	}
