@@ -840,7 +840,7 @@ const defaultQuickFunctions2 = cardsData => {
 
          <Tooltip title={`进入${item.displayName}列表`} placement="bottom">  
          <Link  to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}>
-         {item.displayName} </Link><span style={{fontSize:"10px"}}> 共{item.count}条</span>
+         {item.displayName} 111</Link><span style={{fontSize:"10px"}}> 共{item.count}条</span>
          </Tooltip>
          
          </Col>
@@ -896,7 +896,7 @@ const showNumber=(item)=>{
 const functionItem=(cardsData,item)=>{
   const { id } = cardsData.cardsSource;
 
-  
+  console.log("item.displayName",item.displayName);
 
   return (<Col key={item.displayName} span={4} className={styles.functionItem}>
   
@@ -904,7 +904,7 @@ const functionItem=(cardsData,item)=>{
 
       <Tooltip title={`进入${item.displayName}列表${showNumber(item)}`} placement="bottom">  
       <Link  to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}>
-      {keepShort(item.displayName,9)} </Link>
+      {keepShort(item.displayName,9)}</Link>
       </Tooltip>
       
 

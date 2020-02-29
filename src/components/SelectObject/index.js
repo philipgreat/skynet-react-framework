@@ -1,4 +1,6 @@
 import { AutoComplete, Card, Button, Form, Icon, Col, Row, DatePicker, TimePicker, Input, Select, Popover,Switch } from 'antd'
+
+import G6 from '@antv/g6';
 const { Option } = Select
 const valueOf = (value, candidateValues)=>{
   if(value&&value.length!=0){
@@ -12,7 +14,7 @@ const valueOf = (value, candidateValues)=>{
 }
 
 
-export default class SelectObject extends React.Component {
+export default class Graph extends React.Component {
   state = {
     candidateValues: [],
     

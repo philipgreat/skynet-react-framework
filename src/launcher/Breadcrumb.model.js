@@ -32,6 +32,16 @@ export default {
     updateState(state, action) {
       return { ...state, ...action.payload };
     },
+    removeLink(state, action){
+     
+      const targetApp = sessionObject('targetApp');
+      const oldBreadcrumb = sessionObject(targetApp.id);
+      const {link} = action.payload;
+      console.log("trying to remove link ", link)
+      const currentBreadcrumb = oldBreadcrumb.filter(item => item.link !== link);
+      sessionObject(targetApp.id, currentBreadcrumb);
+      return { ...state }
+    },
     gotoLink(state, action) {
       const targetApp = sessionObject('targetApp');
       const currentBreadcrumb = sessionObject(targetApp.id);
@@ -48,7 +58,7 @@ export default {
 
       const name = action.payload.displayName;
 
-      const index = currentBreadcrumb.findIndex(item => item.link == link);
+      const index = currentBreadcrumb.findIndex(item => item.link === link);
       console.log('index', index);
       if (index < 0) {
         currentBreadcrumb.push({ name, link });
