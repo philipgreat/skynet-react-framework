@@ -940,7 +940,7 @@ const CustomFunction=(cardsData)=>{
   if(!actionList || actionList.length ===0 || actionList.filter(item => item.actionGroup==="custom").length === 0){
     return null
   }
-  return (<Row gutter={16} className={styles.functionRow} >
+  return (<Row key="__custom" gutter={16} className={styles.functionRow} >
     <Card span={6} style={{fontSize:"14px"}}>
         <Col span={3} className={styles.functionItem}>
         
@@ -982,7 +982,7 @@ const defaultQuickFunctions = cardsData => {
     {
       groupMenuOf(cardsData).map(groupItem=>(
 
-        <Row gutter={16} className={styles.functionRow} >
+        <Row key={groupItem.viewGroup} gutter={16} className={styles.functionRow} >
 
           <Card span={6} style={{fontSize:"14px"}}>
 
