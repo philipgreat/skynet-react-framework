@@ -166,7 +166,7 @@ export function sessionObject(key, value){
     console.error("sessionObject(key, value): key should be a string")
     return null;
   }
-  const prefix=window.location.pathname
+  const prefix=window.systemName
   const internalKey=`${prefix}:${key}`
   if(!value){
     return JSON.parse(sessionStorage.getItem(internalKey))
