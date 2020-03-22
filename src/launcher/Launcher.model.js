@@ -90,7 +90,7 @@ export default {
       }
       if (data.class.indexOf('LoginForm') > 0) {
         yield put({ type: 'showlogin', payload: { data } });
-        showLoginError();
+        // showLoginError();
         return;
       }
       if (data.class.indexOf('SecUser') > 0) {
