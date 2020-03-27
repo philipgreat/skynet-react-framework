@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { Link } from 'dva/router'
-import { Icon, Divider, Avatar, Card, Col} from 'antd'
+import { Icon, Divider, Avatar, Card, Col,Tag} from 'antd'
 
 
 import moment from 'moment'
@@ -92,7 +92,7 @@ const defaultRenderBooleanCell=(value, record)=>{
 
 const defaultRenderReferenceCell=(value, record)=>{
 	const userContext = null
-	return (value ? <span style={{fontWeight:"bold"}} title={`${value.id} - ${value.displayName}`} >{value.displayName}</span> : appLocaleName(userContext,"NotAssigned")) 
+	return (value ? <Tag color='green'><span style={{fontWeight:"bold"}} title={`${value.id} - ${value.displayName}`} >{value.displayName}</span></Tag> : appLocaleName(userContext,"NotAssigned")) 
 
 }
 
