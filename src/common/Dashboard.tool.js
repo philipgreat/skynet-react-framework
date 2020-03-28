@@ -72,10 +72,10 @@ const calcLayoutForChartCard=(count)=>{
 const wholeLineColProps = {
   xs: 24,
   sm: 24,
-  md: 12,
-  lg: 12,
-  xl: 12,
-  style: {  marginBottom: 24, marginTop: 24},
+  md: 24,
+  lg: 24,
+  xl: 24,
+  style: {  marginBottom: 24},
 };
 
 
@@ -699,7 +699,7 @@ const defaultRenderSubjectList2 = cardsData => {
 };
 
 
-const defaultRenderSubjectList3 = cardsData => {
+const defaultRenderSubjectList = cardsData => {
   
   // listItem.renderItem(item)
   const targetObject = cardsData.cardsSource
@@ -717,14 +717,13 @@ const defaultRenderSubjectList3 = cardsData => {
           <TabPane tab={listItem.displayName} key={listItem.displayName}>
           <Col key={listItem.displayName} span={24} {...wholeLineColProps}>
             
-             <Card title={listItem.displayName} style={{ marginBottom: 24 }} >
-
+             
             {
              
-              targetObject[listItem.name].map(item=>(listItem.renderItem(item)))
+              targetObject[listItem.name].map(item=>(listItem.renderItem(item,null,6)))
             }
            
-             </Card>
+    
           </Col>
           </TabPane>
         ))}
@@ -735,7 +734,7 @@ const defaultRenderSubjectList3 = cardsData => {
 };
 
 
-const defaultRenderSubjectList = cardsData => {
+const defaultRenderSubjectList4 = cardsData => {
   
   // listItem.renderItem(item)
   const targetObject = cardsData.cardsSource
