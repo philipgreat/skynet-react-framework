@@ -45,7 +45,7 @@ const { Option } = Select;
 
 const topColResponsiveProps = {
   xs: 8,
-  sm: 6,
+  sm: 8,
   md: 6,
   lg: 6,
   xl: 6,
@@ -155,14 +155,14 @@ const renderForNumbers = aggregatedData => {
             // console.log("week of the year for ", dateItem.date, " week number",weeknumber)
             itemTotal += dateItem[item];
           });
-
-        if (itemTotal < 5) {
+        
+        if (itemTotal < 2) {
           return null;
         }
-
+        /*
         if (visitData.length < 10) {
           return null;
-        }
+        }*/
         let ChartComp = MiniArea;
 
         if (visitData.length < 10) {
@@ -720,7 +720,7 @@ const defaultRenderSubjectList = cardsData => {
              
             {
              
-              targetObject[listItem.name].map(item=>(listItem.renderItem(item,null,6)))
+              targetObject[listItem.name].map(item=>(listItem.renderItem(item,null,6,listItem.name)))
             }
            
     
