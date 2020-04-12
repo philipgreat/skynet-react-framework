@@ -3,51 +3,6 @@ import { Tree, Input } from 'antd';
 const { Search } = Input;
 
 
-const sampleListData=[
-  {
-      "valuesOfGroupBy": [
-          "中级职称",
-          "副教授",
-          
-          
-      ],
-      "name": "曹顺庆",
-      "id": "P000003",
-  },
-  {
-      "valuesOfGroupBy": [
-          "中级职称",
-          "讲师",
-      ],
-      "name": "罗志田",
-      "id": "P000004",
-  },
-  {
-      "valuesOfGroupBy": [
-          "初级职称",
-          "助教",
-      ],
-      "name": "卿希泰",
-      "id": "P000001",
-  },
-  {
-      "valuesOfGroupBy": [
-          "初级职称",
-          "实习生",
-      ],
-      "name": "项楚",
-      "id": "P000002",
-  },
-  {
-    "valuesOfGroupBy": [
-        "初级职称",
-        "实习生",
-    ],
-    "name": "项楚2",
-    "id": "P000005",
-},
-]
-
 
 const subList=(listData,searchValue)=>{
     console.log("subList", listData)
@@ -137,7 +92,13 @@ export default class TreeSearch extends React.Component {
   };
 
   componentDidMount() {
-   
+
+    const {candidateValues}=this.state
+    if(candidateValues.length>0){
+      return;
+    }
+    
+    this.mounted = true;
     const {callbackFunction,callbackParameters} = this.props
     if(!callbackFunction||!callbackParameters){
         return
@@ -145,17 +106,18 @@ export default class TreeSearch extends React.Component {
     const future = callbackFunction(callbackParameters)
 
     future.then(data=>{
-        console.log("data==========>",data)
-        const candidateValues=data
-        this.setState({candidateValues,expandedKeys:allKeys(data)})
-        
+        if(this.mounted){
+            console.log("data==========>",data)
+            const candidateValues=data
+            this.setState({candidateValues,expandedKeys:allKeys(data)})
+        }
     })
 
-
-    //this.executeSearch("")
   }
 
-
+  componentWillUnmount() {
+    this.mounted = false;
+  }
 
   onExpand = expandedKeys => {
     this.setState({
@@ -179,9 +141,15 @@ export default class TreeSearch extends React.Component {
     });
   };
 
+  onSelect = (selectedKeys, info) => {
+    console.log('selected', selectedKeys, info);
+  };
+
   render() {
     const { searchValue, expandedKeys, autoExpandParent , candidateValues} = this.state;
+    const {handleSelectNode} = this.props
     const  treeData = genTree(candidateValues,searchValue)
+    const  onSelectNode = handleSelectNode || this.onSelect
     return (
       <div style={{marginRight:"10px", minHeight:'700px'}}>
         <Search style={{ marginBottom: 8 }} placeholder="搜索分类" onChange={this.onChange} />
@@ -191,6 +159,7 @@ export default class TreeSearch extends React.Component {
           onExpand={this.onExpand}
           expandedKeys={expandedKeys}
           autoExpandParent={autoExpandParent}
+          onSelect={onSelectNode}
           treeData={treeData}
         />)}
         {treeData.lenth === 0&&(<div>请重新输入搜索条件</div>)}

@@ -4,7 +4,6 @@ import { Row, Col, Card, Form, Input, Select, Icon, Button, Dropdown, Menu, Inpu
 import styles from './index.less'
 import TreeSearch from '../TreeSearch'
 
-
 class TreeContainer extends PureComponent {
 
 
@@ -24,6 +23,7 @@ class TreeContainer extends PureComponent {
                         <TreeSearch className={styles.tableList} 
                             callbackFunction={callbackFunction}
                             callbackParameters={callbackParameters}
+                            {...this.props}
                         />
                     </Card>
                 </Col>
