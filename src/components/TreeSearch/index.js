@@ -1,3 +1,4 @@
+import React from 'react'
 import { Tree, Input } from 'antd';
 
 const { Search } = Input;
@@ -146,6 +147,11 @@ export default class TreeSearch extends React.Component {
   };
 
   render() {
+
+    if(candidateValues&&candidateValues.length<0){
+      return <div>请等待</div>
+    }
+
     const { searchValue, expandedKeys, autoExpandParent , candidateValues} = this.state;
     const {handleSelectNode} = this.props
     const  treeData = genTree(candidateValues,searchValue)

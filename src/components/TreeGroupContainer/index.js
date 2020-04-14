@@ -8,6 +8,7 @@ import TreeGroupSearch from '../TreeGroupSearch'
 class TreeContainer extends PureComponent {
 
 
+
     render() {
 
         const {showLeftTree, callbackFunction, callbackParameters} = this.props
@@ -20,7 +21,7 @@ class TreeContainer extends PureComponent {
         return (
             <div>
                 <Col span={4} style={{ height: "100%" }}>
-                    <Card bordered className={styles.treeSearchCard}>
+                    <Card bordered style={{ marginRight: "10px" }}>
                         <TreeGroupSearch className={styles.tableList} 
                             callbackFunction={callbackFunction}
                             callbackParameters={callbackParameters}
@@ -34,6 +35,8 @@ class TreeContainer extends PureComponent {
             </div>)
 
     }
+
+    
 
 }
 
