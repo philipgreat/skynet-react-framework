@@ -22,7 +22,7 @@ class TreeContainer extends PureComponent {
             <div>
                 <Col span={4} style={{ height: "100%" }}>
                     <Card bordered style={{ marginRight: "10px" }}>
-                        <TreeGroupSearch className={styles.tableList} 
+                        <TreeSearch className={styles.tableList} 
                             callbackFunction={callbackFunction}
                             callbackParameters={callbackParameters}
                             {...this.props}
@@ -36,7 +36,7 @@ class TreeContainer extends PureComponent {
 
     }
 
-    
+
 
 }
 
