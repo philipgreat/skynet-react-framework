@@ -83,7 +83,7 @@ const genTree = (listData, searchValue) => {
 
 */
 
-const globalVars = { values: [] }
+const globalVars = { values: [],selectedTab:"" }
 const leftChars = (value, left) => {
   const chars = left || 4
   if (!value) {
@@ -92,32 +92,14 @@ const leftChars = (value, left) => {
   return value.substring(0, chars);
 }
 
-const menu = (
-  <Menu>
-    <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
-        1st menu item
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
-        2nd menu item
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
-        3rd menu item
-      </a>
-    </Menu.Item>
-  </Menu>
-);
+
 export default class TreeGroupSearch extends React.Component {
   state = {
     expandedKeys: allKeys(globalVars.values),
     searchValue: '',
     candidateValues: globalVars.values,
     autoExpandParent: true,
-    selectedTab: "",
+    selectedTab: globalVars.selectedTab,
   };
 
   componentDidMount() {
@@ -134,13 +116,15 @@ export default class TreeGroupSearch extends React.Component {
     }
 
     const future = callbackFunction(callbackParameters)
-
+    const { extraTargetTypes } = this.props
+    const defaultKey = globalVars.selectedTab || this.state.selectedTab || extraTargetTypes[0]
     future.then(data => {
       if (this.mounted) {
         console.log("data==========>", data)
         const candidateValues = data
         globalVars.values = data
-        this.setState({ candidateValues, expandedKeys: allKeys(data) })
+        globalVars.selectedTab = defaultKey
+        this.setState({ candidateValues, expandedKeys: allKeys(data),selectedTab:defaultKey})
       }
     })
 
@@ -179,24 +163,24 @@ export default class TreeGroupSearch extends React.Component {
 
   onTabChange = (activeKey, info) => {
     console.log('onTabChange to', activeKey);
-
+    globalVars.selectedTab = activeKey
     this.setState({ selectedTab: activeKey })
   }
 
   showTreeGroupView = () => {
 
     const { extraTargetTypes } = this.props
+    const {selectedTab} = this.state
 
-
-    const defaultKey = this.state.selectedTab || extraTargetTypes[0]
+    
     console.log("extraTargetTypes", extraTargetTypes)
     return (
       <div style={{ height: '100%' }}>
         <Search style={{ marginBottom: 4 }} placeholder="搜索分类" onChange={this.onChange} />
-        <Tabs tabBarGutter={0} defaultActiveKey={defaultKey} size={"small"} tabBarStyle={{ fontSize: "10px" }} onChange={this.onTabChange}>
+        <Tabs tabBarGutter={0} defaultActiveKey={selectedTab} size={"small"} tabBarStyle={{ fontSize: "10px" }} onChange={this.onTabChange}>
 
           {extraTargetTypes.map(item => (
-            <TabPane tab={<div style={{ fontSize: "10px" }}>{leftChars(item)}</div>} key={item} >
+            <TabPane tab={<div style={{ fontSize: "12px" }}>{leftChars(item)}</div>} key={item} >
               {this.showTreeData()}
             </TabPane>)
 

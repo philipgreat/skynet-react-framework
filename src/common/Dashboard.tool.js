@@ -626,7 +626,7 @@ const renderFunctions = (mainObject) => {
 
 const defaultRenderExtraHeader = mainObject => {
   
-  return (<div>{renderFunctions(mainObject)}  <br/>  </div>)
+  return (<div>{renderFunctions(mainObject)}  </div>)
 
 
 };
@@ -993,7 +993,7 @@ const defaultQuickFunctions = cardsData => {
   
   
   return (
-    <div style={{marginBottom:'24px',marginLeft: '8px',marginRight:'8px'}}>
+    <div style={{marginLeft: '8px',marginRight:'8px'}}>
     {CustomFunction(cardsData)}
     {
       groupMenuOf(cardsData).map(groupItem=>(
