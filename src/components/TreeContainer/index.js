@@ -21,7 +21,7 @@ class TreeContainer extends PureComponent {
             <div>
                 <Col span={4} style={{ height: "100%" }}>
                     <Card bordered className={styles.treeSearchCard}>
-                        <TreeGroupSearch className={styles.tableList} 
+                        <TreeSearch className={styles.tableList} 
                             callbackFunction={callbackFunction}
                             callbackParameters={callbackParameters}
                             {...this.props}
