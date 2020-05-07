@@ -10,6 +10,9 @@ const subList=(listData,searchValue)=>{
     return listData.filter(item=>item.name&&item.name.indexOf(searchValue)>=0)
 }
 const allKeys=(listData)=>{
+     if(listData.length > 20){
+       return []
+     }
     return listData.map(item=>item.id)
 }
 
