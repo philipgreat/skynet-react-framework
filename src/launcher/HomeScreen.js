@@ -108,17 +108,18 @@ class HomeScreen extends React.Component {
     const userContext = this.props.launcher.data;
 
     // console.log(styleList);
-
+    const sysConfig=window.sysConfig
+    const {logo,homeBackgroundImage}=sysConfig()
     return (
       <div className={'wrapper'}>
         <Row key="1">
           <Col className="gutter-row" span={24}>
-            <span className="logo" />
+            <span className="logo" style={{backgroundImage:`url(${logo})`}}/>
             <TopMenu {...this.props} onHomePage />
           </Col>
         </Row>
         <Row key="2">
-          <Col className="gutter-row heading" span={24}>
+          <Col className="gutter-row heading" style={{backgroundImage:`url(${homeBackgroundImage})`}} span={24}>
             <h1>{systemName}</h1>
             <div className="desc" />
             <a href="#more" className="btn">

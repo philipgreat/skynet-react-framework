@@ -29,15 +29,18 @@ const defaultIsMenuItemForDisplay = (item, targetObject, targetComponent) => {
   
   const defaultFilteredMenuItemsGroup = (targetObject, targetComponent) => {
     const groupedMenuItems = []
-  
+    const menuData = sessionObject('menuData')
+    const {internalName} = menuData
+    const {viewGroupItemOf} = window
     defaultFilteredMenuItems(targetObject, targetComponent).filter(item=>item.viewGroup!=='__no_group').map(item=>{
       const {viewGroup} = item
-     
+      const {presentOrder} = viewGroupItemOf(internalName,viewGroup)
       let result = groupedMenuItems.find(viewGroupItem=>(viewGroupItem.viewGroup===viewGroup))
-  
+      
       if(!result){
         // group not found
-        result = {viewGroup, subItems: []}
+        result = {viewGroup, subItems: [], presentOrder}
+        console.log("result", result, internalName,viewGroup)
         groupedMenuItems.push(result)
       }
       
@@ -46,8 +49,8 @@ const defaultIsMenuItemForDisplay = (item, targetObject, targetComponent) => {
       return item
       
     })
-    
-    return groupedMenuItems
+    // console.log("groupedMenuItems", groupedMenuItems.sort((a,b)=>a.presentOrder-b.presentOrder))
+    return groupedMenuItems.sort((a,b)=>a.presentOrder-b.presentOrder)
   }
   
   const defaultRenderMenuItem=(item,targetObject,targetComponent)=>{

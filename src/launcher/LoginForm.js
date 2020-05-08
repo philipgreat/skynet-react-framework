@@ -44,9 +44,12 @@ class NormalLoginForm extends Component {
     if (!systemName) {
       return null;
     }
+    const sysConfig=window.sysConfig
+    const {loginBackgroundImage}=sysConfig()
+
     //console.log("what the type",getFieldDecorator );
     return (
-      <div className={styles.login}>
+      <div className={styles.login} style={{backgroundImage:`url(${loginBackgroundImage})`}}>
         <div className={styles.loginForm}>
           <div className={styles.loginLogo}>
             <span>{systemName}</span>

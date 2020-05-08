@@ -164,15 +164,15 @@ export default class TreeSearch extends React.Component {
       <div style={{marginRight:"10px",height:'100%',overflow:'scroll'}}>
         <Search style={{ marginBottom: 8 }} placeholder="搜索分类" onChange={this.onChange} />
        
-        {(treeData.length>0)&&(<Tree
+        {(treeData.length>0)&&(<div className={styles.tree}><Tree
           defaultExpandAll
           onExpand={this.onExpand}
           expandedKeys={expandedKeys}
           autoExpandParent={autoExpandParent}
           onSelect={onSelectNode}
           treeData={treeData}
-          className={styles.treeSearch}
-        />)}
+          
+        /></div>)}
         {treeData.lenth === 0&&(<div>请重新输入搜索条件</div>)}
       </div>
     );
