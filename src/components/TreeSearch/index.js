@@ -160,7 +160,7 @@ export default class TreeSearch extends React.Component {
     const  treeData = genTree(candidateValues,searchValue)
     const  onSelectNode = handleSelectNode || this.onSelect
     return (
-      <div style={{marginRight:"10px", minHeight:'700px'}}>
+      <div style={{marginRight:"10px", minHeight:'700px', maxHeight:'700px',overflow:'scroll'}}>
         <Search style={{ marginBottom: 8 }} placeholder="搜索分类" onChange={this.onChange} />
        
         {(treeData.length>0)&&(<Tree
