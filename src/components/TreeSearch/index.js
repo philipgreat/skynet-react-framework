@@ -1,5 +1,6 @@
 import React from 'react'
 import { Tree, Input } from 'antd';
+import styles from './index.less'
 
 const { Search } = Input;
 
@@ -160,7 +161,7 @@ export default class TreeSearch extends React.Component {
     const  treeData = genTree(candidateValues,searchValue)
     const  onSelectNode = handleSelectNode || this.onSelect
     return (
-      <div style={{marginRight:"10px", minHeight:'700px', maxHeight:'700px',overflow:'scroll'}}>
+      <div style={{marginRight:"10px",height:'100%',overflow:'scroll'}}>
         <Search style={{ marginBottom: 8 }} placeholder="搜索分类" onChange={this.onChange} />
        
         {(treeData.length>0)&&(<Tree
@@ -170,6 +171,7 @@ export default class TreeSearch extends React.Component {
           autoExpandParent={autoExpandParent}
           onSelect={onSelectNode}
           treeData={treeData}
+          className={styles.treeSearch}
         />)}
         {treeData.lenth === 0&&(<div>请重新输入搜索条件</div>)}
       </div>

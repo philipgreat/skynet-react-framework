@@ -18,13 +18,14 @@ class TreeContainer extends PureComponent {
         }
         
         return (
-            <div>
+            <div style={{ minHeight: "800px", maxHeight: "800px",overflow:'scroll' }}>
                 <Col span={4} style={{ height: "100%" }}>
                     <Card bordered className={styles.treeSearchCard}>
                         <TreeSearch className={styles.tableList} 
                             callbackFunction={callbackFunction}
                             callbackParameters={callbackParameters}
                             {...this.props}
+                            style={{ height: "100%" }}
                         />
                     </Card>
                 </Col>
