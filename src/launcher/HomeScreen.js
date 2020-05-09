@@ -104,12 +104,12 @@ class HomeScreen extends React.Component {
     const appList = this.props.launcher.data.userAppList;
     const calcLink = this.calcLink;
 
-    const { systemName } = this.props.launcher;
+   
     const userContext = this.props.launcher.data;
 
     // console.log(styleList);
     const sysConfig=window.sysConfig
-    const {logo,homeBackgroundImage}=sysConfig()
+    const {logo,homeBackgroundImage,systemName}=sysConfig()
     return (
       <div className={'wrapper'}>
         <Row key="1">

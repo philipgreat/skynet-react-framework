@@ -12,7 +12,7 @@ import {List,
   Select,
   Form,
   AutoComplete,
-  Modal,Divider,Collapse,Tabs,
+  Modal,Divider,Collapse,Tabs, Menu,
 } from 'antd';
 import styles from './Dashboard.tool.less';
 import ImagePreview from '../components/ImagePreview';
@@ -22,7 +22,7 @@ import { Link, Route, Redirect } from 'dva/router';
 import ReactEcharts from 'echarts-for-react';
 import moment from 'moment';
 import appLocaleName from './Locale.tool';
-
+const { SubMenu } = Menu
 import {
   ChartCard,
   MiniArea,
@@ -816,7 +816,7 @@ const defaultSubListsOf = cardsData => {
 };
 
 
-const defaultQuickFunctions2 = cardsData => {
+const defaultQuickFunctions3 = cardsData => {
   
   const { id, actionList } = cardsData.cardsSource;
   return (
@@ -933,20 +933,23 @@ const functionItem=(cardsData,item)=>{
 }
 
 
-const viewGroupName=(name)=>{
+const fixName=(name)=>{
+
   if(!name){
-    return <div>
-      常用功能
-    </div>
+    return "常用功能"
   }
   if(name ==="" || name === "__no_group"){
-    return <div>
-    常用功能
-  </div>
+   
+    return "常用功能"
+  
   }
   return name;
 
+}
 
+const viewGroupName=(name)=>{
+  
+  return <span style={{fontWeight:"bolder"}}>{fixName(name)}<Icon type="down" /></span>
 
 }
 
@@ -989,7 +992,9 @@ const CustomFunction=(cardsData)=>{
 
 }
 
-const defaultQuickFunctions = cardsData => {
+
+
+const defaultQuickFunctions2 = cardsData => {
   
   
   return (
@@ -1022,6 +1027,65 @@ const defaultQuickFunctions = cardsData => {
     </div>
     
   );
+};
+
+
+const defaultQuickFunctions = cardsData => {
+  
+  /*
+  return (
+    <div style={{marginLeft: '8px',marginRight:'8px'}}>
+    {CustomFunction(cardsData)}
+    {
+      groupMenuOf(cardsData).map(groupItem=>(
+
+        <Row key={groupItem.viewGroup} gutter={16} className={styles.functionRow} >
+
+          <Card span={6} style={{fontSize:"14px"}}>
+
+           <Col span={3} style={{textColor:"grey",marginTop:"5px",marginBotton:"5px"}}>
+          
+          {viewGroupName(groupItem.viewGroup)}
+         
+         
+          </Col>
+          <Col span={21} >
+            {groupItem.subItems.map(item=>(
+              functionItem(cardsData,item)
+            ))}
+         </Col>
+
+        </Card>
+         </Row>)
+      )
+
+    }
+    </div>
+    
+  );*/
+
+  return (
+    <Menu  mode="horizontal" style={{backgroundColor:"#eee"}}>
+      {
+        groupMenuOf(cardsData).map(groupItem=>( 
+        <SubMenu title={viewGroupName(groupItem.viewGroup)} >
+          {
+            groupItem.subItems.map(item=>(
+              <Menu.Item key={item}>{functionItem(cardsData,item)}</Menu.Item> 
+            ))
+
+          }
+        </SubMenu>))
+
+
+      }
+     
+
+    </Menu>
+
+
+  )
+
 };
 
 
