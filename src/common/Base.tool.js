@@ -243,6 +243,9 @@ const allTreeLeafKeys=(listData)=>{
 }
 
 const hasTreeNodes=(listData)=>{
+	if(!listData){
+		return false
+	}
     return listData.filter(item=>item.valuesOfGroupBy&&item.valuesOfGroupBy.length>0).length>0
 }
 
