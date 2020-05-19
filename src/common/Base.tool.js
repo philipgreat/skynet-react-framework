@@ -99,26 +99,18 @@ const defaultRenderReferenceCell=(value, record)=>{
 
 
 
-const buildFunctionTitle=(menuData,searchTerm)=>{
+const buildFunctionTitle=(menuData,subfix)=>{
 
 
-	const result = menuData.subItems.filter(item=>item.name.indexOf(searchTerm)>=0||item.displayName.indexOf(searchTerm)>=0)
+	
 
-	if(!result || result.length===0){
-		return null
-	}
-
-	return <Col span={4} style={{fontWeight:'bold'}}>{menuData.menuName}功能</Col>
+return <Col span={4} style={{fontWeight:'bold'}}>{`${menuData.menuName}${subfix}`}</Col>
 
 }
-const buildFunctionList=(menuData,targetObject,searchTerm)=>{
+const buildFunctionList=(menuData,targetObject,result)=>{
 
 
-	const result = menuData.subItems.filter(item=>item.name.indexOf(searchTerm)>=0||item.displayName.indexOf(searchTerm)>=0)
-
-	if(!result || result.length===0){
-		return null
-	}
+	
 
 	return <Col span={20}>{result.map(item=>(
 
@@ -209,11 +201,16 @@ const defaultSearchLocalData=(menuData, targetObject, searchName)=>{
 
 
 	console.log("filteredResult", filteredResult)
-	const result = menuData.subItems.filter(item=>item.name.indexOf(searchName)>=0||item.displayName.indexOf(searchName)>=0)
+	const menuResult = menuData.subItems.filter(item=>item.for==="menu"&&(item.name.indexOf(searchName)>=0||item.displayName.indexOf(searchName)>=0))
+	const settingMenuResult = menuData.subItems.filter(item=>item.for==="setting"&&(item.name.indexOf(searchName)>=0||item.displayName.indexOf(searchName)>=0))
 
 	return (<div >{
-		result&&result.length>0&&(<Card  key={"__function"} >
-			{buildFunctionTitle(menuData,searchName)}{buildFunctionList(menuData,targetObject,searchName)}
+		menuResult&&menuResult.length>0&&(<Card  key={"__function"} >
+			{buildFunctionTitle(menuData,"功能")}{buildFunctionList(menuData,targetObject,menuResult)}
+			</Card>)
+		}
+		{settingMenuResult&&settingMenuResult.length>0&&(<Card  key={"__setting_function"} >
+			{buildFunctionTitle(menuData,"设置")}{buildFunctionList(menuData,targetObject,settingMenuResult)}
 			</Card>)
 		}
 		

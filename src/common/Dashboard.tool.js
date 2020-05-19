@@ -47,8 +47,8 @@ const topColResponsiveProps = {
   xs: 8,
   sm: 8,
   md: 6,
-  lg: 6,
-  xl: 6,
+  lg: 24,
+  xl: 24,
   style: { marginBottom: 24, marginTop: 24 },
 };
 
@@ -605,18 +605,20 @@ const renderFunctions = (mainObject) => {
   return (
 
     <List
-    grid={{ gutter: 16, xs: 4, sm: 4, md: 4, lg: 6, xl: 6, xxl: 6 }}
+    grid={{ gutter: 16, column: 2 }}
     dataSource={actionList}
     renderItem={item => (
       <List.Item>
         <Card className={styles.crCard}><Link to={item.actionPath}>
         
-        <Icon type={item.actionIcon} style={{ fontSize: 50, color: 'orange' }}/>
+        <Icon type={item.actionIcon} style={{ fontSize: 30, color: 'orange' }}/>
         
        </Link><br/><br/>{item.actionName}</Card>
       </List.Item>
     )}
   />
+
+
 
 
 
@@ -708,15 +710,14 @@ const defaultRenderSubjectList = cardsData => {
     console.log(key);
   }
   return (
-    <Row gutter={16}>
+   
       <Tabs  onChange={callback}>
       {cardsData.subItems
         
         .filter(listItem=>legalListForDisplay(targetObject,listItem))
         .map(listItem => (
-          <TabPane tab={listItem.displayName} key={listItem.displayName}>
-          <Col key={listItem.displayName} span={24} {...wholeLineColProps}>
-            
+          <TabPane tab={listItem.displayName} key={listItem.displayName} style={{backgroundColor:"lightgrey"}}>
+         
              
             {
              
@@ -724,11 +725,11 @@ const defaultRenderSubjectList = cardsData => {
             }
            
     
-          </Col>
+        
           </TabPane>
         ))}
         </Tabs>
-    </Row>
+   
     
   );
 };
