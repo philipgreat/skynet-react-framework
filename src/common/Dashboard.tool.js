@@ -10,7 +10,7 @@ import {List,
   Tooltip,
   Switch,
   Select,
-  Form,
+  Form,Pagination,
   AutoComplete,
   Modal,Divider,Collapse,Tabs, Menu,
 } from 'antd';
@@ -404,10 +404,10 @@ const defaultImageListOf = (mainObject, imageList) => {
     <Card title="图片列表" className={styles.card}>
       <Row type="flex" justify="start" align="bottom">
         {filteredList.map((item, index) => (
-          <Col span={6} key={index}>
+          <Col span={24} key={index}>
             <ImagePreview
               imageTitle={item.title}
-              imageStyle={{width:400}}
+              imageStyle={{width:"100%"}}
               showTitleUnderImage={true}
               imageLocation={item.imageLocation}
             >
@@ -591,6 +591,12 @@ const defaultBuildTransferModal = (mainObject, targetComponent) => {
 
 
 const renderFunctions = (mainObject) => {
+  if(!mainObject){
+    return null
+  }
+  if(!mainObject.actionList){
+    return null
+  }
   const actionList = mainObject.actionList.filter(item=>item.actionGroup==='changerequesttype')
   // const actionList = platform.actionList
 
@@ -607,11 +613,12 @@ const renderFunctions = (mainObject) => {
     <List
     grid={{ gutter: 16, column: 2 }}
     dataSource={actionList}
+    styles={{backgroundColor:"white"}}
     renderItem={item => (
       <List.Item>
         <Card className={styles.crCard}><Link to={item.actionPath}>
         
-        <Icon type={item.actionIcon} style={{ fontSize: 30, color: 'orange' }}/>
+        <Icon type={item.actionIcon} style={{ fontSize: 20, color: 'orange' }}/>
         
        </Link><br/><br/>{item.actionName}</Card>
       </List.Item>
@@ -717,11 +724,11 @@ const defaultRenderSubjectList = cardsData => {
         .filter(listItem=>legalListForDisplay(targetObject,listItem))
         .map(listItem => (
           <TabPane tab={listItem.displayName} key={listItem.displayName} style={{backgroundColor:"lightgrey"}}>
-         
-             
+           
+            
             {
              
-              targetObject[listItem.name].map(item=>(listItem.renderItem(item,null,6,listItem.name)))
+              targetObject[listItem.name].map(item=>(listItem.renderItem(item,targetObject,6,listItem.name)))
             }
            
     

@@ -48,17 +48,19 @@ const setupModel = ({ dispatch, history, location, modelName }) => {
     if (!pathname.startsWith(`/${modelName}`)) {
         return
     }
-    const newstate = location.state
-    if (newstate) {
-        dispatch({ type: 'updateState', payload: newstate })
-        return
-    }
     const dashboardmatch = pathToRegexp(`/${modelName}/:id/dashboard`).exec(pathname)
     if (dashboardmatch) {
         const id = dashboardmatch[1]
         dispatch({ type: 'view', payload: { id, pathname } })
         return
     }
+    
+    const newstate = location.state
+    if (newstate) {
+        dispatch({ type: 'updateState', payload: newstate })
+        return
+    }
+    
 
 
     const profilematch = pathToRegexp(`/${modelName}/:id/profile`).exec(pathname)
