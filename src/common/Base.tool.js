@@ -90,9 +90,19 @@ const defaultRenderBooleanCell=(value, record)=>{
 
 }
 
+const leftChars=(value, charCount)=>{
+
+	const finalCharCount = charCount || 6
+
+	if(value.length <= finalCharCount){
+		return value
+	}
+	return `${value.substring(0,finalCharCount)}...`
+
+}
 const defaultRenderReferenceCell=(value, record)=>{
 	const userContext = null
-	return (value ? <Tag color='green'><span style={{fontWeight:"bold"}} title={`${value.id} - ${value.displayName}`} >{value.displayName}</span></Tag> : appLocaleName(userContext,"NotAssigned")) 
+	return (value ? <Tag color='green'><span style={{fontWeight:"bold"}} title={`${value.id} - ${value.displayName}`} >{leftChars(value.displayName)}</span></Tag> : appLocaleName(userContext,"NotAssigned")) 
 
 }
 
