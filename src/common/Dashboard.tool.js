@@ -716,6 +716,16 @@ const defaultRenderSubjectList = cardsData => {
   function callback(key) {
     console.log(key);
   }
+
+  if(!cardsData.subItems.length){
+    return null
+  }
+  
+
+  if(cardsData.subItems.length === 0){
+    return null
+  }
+
   return (
    
       <Tabs  onChange={callback}>
