@@ -63,7 +63,7 @@ const defaultFormatNumber=(amount)=>{
 
 const defaultRenderNumberCell=(value, record)=>{
 	const userContext = null
-	if(!value){
+	if(value === undefined){
 		return appLocaleName(userContext,"Empty")
 	}
 	if(value == null){
@@ -74,7 +74,7 @@ const defaultRenderNumberCell=(value, record)=>{
 
 const defaultRenderMoneyCell=(value, record)=>{
 	const userContext = null
-	if(!value){
+	if( value === undefined){
 		return appLocaleName(userContext,"Empty")
 	}
 	if(value == null){
