@@ -2,7 +2,7 @@ import { Upload, Icon, Modal } from 'antd';
 import axios from 'axios';
 import { getURLPrefix } from '../../axios/tools';
 import { notification } from 'antd'
-
+import styles from './index.less'
 
 const fileMapper=[
   {type:"jpg",cover: "file-image"},
@@ -225,7 +225,7 @@ export default class OSSPictureEdit extends React.Component {
       if(firstFile&&firstFile.url&&firstFile.url.includes("image")){
         return  ("file-image")
       }
-      
+
       const firstFileSufix = (firstFile.url||firstFile.name).split('.').pop().toLowerCase();
       console.log("firstFileSufix",firstFileSufix);
             
@@ -286,7 +286,7 @@ export default class OSSPictureEdit extends React.Component {
     // const showUploadList = true
     
     return (
-      <div className="clearfix">
+      <div className={styles.pictureEdit}>
         <Upload
           
           listType="picture-card"
@@ -305,7 +305,7 @@ export default class OSSPictureEdit extends React.Component {
           footer={null}
           onCancel={this.handleCancel}
         >
-          <img alt={buttonTitle} style={{ width: '100%' }} src={previewImage} />
+          <img alt={buttonTitle} style={{ width:"100%" }} src={previewImage} />
         </Modal>
       </div>
     );
