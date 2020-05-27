@@ -120,7 +120,7 @@ export default class ImagePreview extends React.Component {
     // const {fileList} = this.state;
     const suffix = " | 图片预览";
     const modalTitle = imageTitle?imageTitle+suffix:suffix;
-    const internalImageStyle = imageStyle || {height:80, width:80}
+    const internalImageStyle = imageStyle || {height: "80px",width:"80px",objectFit:"contain"}
 
     if(notImageFile(imageLocation)){
       return  <div className="clearfix" style={{textAlign:"center"}} >
@@ -149,8 +149,8 @@ export default class ImagePreview extends React.Component {
         </img>
         {showTitleUnderImage&&(<span style={{"display": "block"}}>{imageTitle}</span>)}
         <Modal visible={previewVisible} title={modalTitle} footer={null} 
-          onCancel={this.handleCancel}   width="100%">
-          <img alt={imageTitle}  src={previewImage}  style={{objectFit:"contain"}}/>
+          onCancel={this.handleCancel}   style={{alignItems:"center"}}>
+          <img alt={imageTitle}  src={previewImage}  style={{width:"500px", height:"300px",objectFit:"contain"}}/>
         </Modal>
       </div>
     );
