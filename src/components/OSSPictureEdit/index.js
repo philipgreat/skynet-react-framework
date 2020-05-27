@@ -222,7 +222,7 @@ export default class OSSPictureEdit extends React.Component {
       const firstFile = uploadFileList[0]
       console.log("firstFile",firstFile);
 
-      if(firstFile&&firstFile.url&&firstFile.url.contains("image")){
+      if(firstFile&&firstFile.url&&firstFile.url.includes("image")){
         return  ("file-image")
       }
       
