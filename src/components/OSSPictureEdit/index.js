@@ -221,9 +221,12 @@ export default class OSSPictureEdit extends React.Component {
       }
       const firstFile = uploadFileList[0]
       console.log("firstFile",firstFile);
+      if(firstFile.url.contains("image")){
+        return  ("file-image")
+      }
       const firstFileSufix = (firstFile.url||firstFile.name).split('.').pop().toLowerCase();
       console.log("firstFileSufix",firstFileSufix);
-      
+            
 
       const types = fileMapper.filter(item=>item.type===firstFileSufix)
 

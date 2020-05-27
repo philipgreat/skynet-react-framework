@@ -150,7 +150,7 @@ export default class ImagePreview extends React.Component {
         {showTitleUnderImage&&(<span style={{"display": "block"}}>{imageTitle}</span>)}
         <Modal visible={previewVisible} title={modalTitle} footer={null} 
           onCancel={this.handleCancel}   width="100%">
-          <img alt={imageTitle}  src={previewImage}  style={{"width": "100%"}}/>
+          <img alt={imageTitle}  src={previewImage}  style={{objectFit:"contain"}}/>
         </Modal>
       </div>
     );
