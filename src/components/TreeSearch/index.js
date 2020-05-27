@@ -27,7 +27,7 @@ const genTree=(listData, searchValue)=>{
     subList(listData,searchValue)
       .map(item=>{
 
-        const {valuesOfGroupBy} = item
+        const {valuesOfGroupBy = []} = item
         const child = {title:item.name,key:item.id}
         const {length} = valuesOfGroupBy
         if(valuesOfGroupBy && length === 0){
