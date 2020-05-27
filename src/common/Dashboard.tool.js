@@ -175,12 +175,19 @@ const renderForNumbers = aggregatedData => {
 
         const trend=(target)=>{
 
+          if(target.lastWeek===target.thisWeek){
+            return ""
+          }
+
           return target.lastWeek> target.thisWeek?"down":"up";
 
         }
         const change=(target)=>{
+          if(target.thisWeek===0&&target.lastWeek===0){
+            return `-`
+          }
           if(target.thisWeek===0){
-            return `${numeral(0).format('0.00')}%`
+            return `100.00%`
           }
           if(target.lastWeek===0){
             return "NA"

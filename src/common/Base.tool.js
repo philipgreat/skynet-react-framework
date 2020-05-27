@@ -57,6 +57,9 @@ const defaultFormatMoney=(amount)=>{
 
 const defaultFormatNumber=(amount, precision)=>{
 	const finalPrecision = precision || 0
+	if((typeof amount) !== "number"){
+		return "N/A"
+	}
 	return Number.parseFloat(amount).toFixed(finalPrecision);
 	
 }
@@ -330,7 +333,7 @@ const BaseTool = {
 	defaultRenderAvatarCell,
 	defaultSearchLocalData,
 	defaultRenderNumberCell,
-	allTreeLeafKeys,genTree,hasTreeNodes,
+	allTreeLeafKeys,genTree,hasTreeNodes,defaultFormatNumber,
    
   };
   
