@@ -55,13 +55,13 @@ const defaultFormatMoney=(amount)=>{
 	
 }
 
-const defaultFormatNumber=(amount)=>{
-
-	return amount
+const defaultFormatNumber=(amount, precision)=>{
+	const finalPrecision = precision || 0
+	return Number.parseFloat(amount).toFixed(finalPrecision);
 	
 }
 
-const defaultRenderNumberCell=(value, record)=>{
+const defaultRenderNumberCell=(value, record, precision)=>{
 	const userContext = null
 	if(value === undefined){
 		return appLocaleName(userContext,"Empty")
@@ -69,7 +69,7 @@ const defaultRenderNumberCell=(value, record)=>{
 	if(value == null){
 		return appLocaleName(userContext,"Empty")
 	}
-	return (`${defaultFormatNumber(value)}`)
+	return (`${defaultFormatNumber(value,precision)}`)
 }
 
 const defaultRenderMoneyCell=(value, record)=>{
