@@ -100,19 +100,16 @@ const uploadToOss = (self, path, file) => {
   });
 };
 
-export default class OSSPictureEditInput extends React.Component {
+export default class OSSPictureListEditInput extends React.Component {
   
 
   constructor(props) {
     super(props);
 
-    const value = props.value || "";
+    const imageList = props.value || [];
     this.state = {
-      previewVisible: false,
-      previewImage: value,
-      fileList: [],
-      url:value,
-      token: {},
+      imageList,
+      previewVisible: false ,
     };
   }
 
@@ -136,7 +133,7 @@ export default class OSSPictureEditInput extends React.Component {
    
     if ('value' in nextProps) {
       const value = nextProps.value;
-      this.setState({ url: value, previewImage:value });
+      this.setState({ imageList:value });
       return
     }
     
@@ -163,7 +160,7 @@ export default class OSSPictureEditInput extends React.Component {
         })
         
 
-        const fileList = [
+        const imageList = [
           {
             uid: file.uid,
             name: data.name,
@@ -174,9 +171,9 @@ export default class OSSPictureEditInput extends React.Component {
             response: `${token.prefix}/${encodeURIComponent(data.name)}`,
           },
         ];
-        const event = { fileList };
-        this.setState({url:fileList[0].url, previewImage:fileList[0].url })
-        this.handleChange(event);
+       
+        this.setState({imageList})
+        this.handleChange({imageList});
       });
     };
     return false;
@@ -210,23 +207,23 @@ export default class OSSPictureEditInput extends React.Component {
   handleChange = ({ fileList }) => {
     const {onChange} = this.props;
     if (onChange) {
-      onChange(this.state.url);
+      onChange(this.state.imageList);
     }
   }
 
   handleRemove = ({ fileList }) => {
     
-    this.setState({url:""})
+    this.setState({imageList:[]})
 
   }
 
   render() {
-    const { previewVisible, previewImage, url } = this.state;
-    const componentFileList = [{url,name:url}]
+    const { previewVisible, imageList} = this.state;
+    const componentFileList = imageList
    
     const { buttonTitle } = this.props;
     // const {fileList} = this.state;
-    const internalFileList = (url==="" || (typeof url)==="undefined")?[]: [{uid:url, url,name:url,key:url}];
+    const internalFileList = imageList.map(item=>({...item, uid: item.id, url: item.imageUrl,name: item.title}))
     console.log('file list in render', internalFileList);
     const suffix = ' | 图片预览';
     const modalTitle = buttonTitle ? buttonTitle + suffix : suffix;
@@ -246,7 +243,7 @@ export default class OSSPictureEditInput extends React.Component {
         return ("file-unknown")
       }
       const firstFile = uploadFileList[0]
-      console.log("firstFile",firstFile);
+      console.log("firstFile",firstFile,"name?",firstFile.url||firstFile.name);
 
       if(firstFile&&firstFile.url&&firstFile.url.includes("image")){
         return  ("file-image")
@@ -303,6 +300,8 @@ export default class OSSPictureEditInput extends React.Component {
 
     }
 
+    const {previewImage} = this.state
+
     const showUploadList = determinShowUploadList(internalFileList)
 
     
@@ -326,7 +325,7 @@ export default class OSSPictureEditInput extends React.Component {
         > 
           {renderCover(internalFileList)}
         </Upload>
-        
+    <span>{this.state.url}</span>
         <Modal
           visible={previewVisible}
           title={modalTitle}
