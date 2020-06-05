@@ -974,7 +974,13 @@ const fixName=(name)=>{
 
 const viewGroupName=(name)=>{
   
-  return <span style={{fontWeight:"bolder", fontSize:"20px"}}>{fixName(name)}<Icon type="down" /></span>
+  return <span style={{fontWeight:"bolder"}}>{fixName(name)}</span>
+
+}
+
+const viewGroupTitle=(item)=>{
+  
+  return <span style={{fontWeight:"bolder", textAlign:"center"}}>{fixName(item.viewGroup)}</span>
 
 }
 
@@ -1023,7 +1029,7 @@ const defaultQuickFunctions2 = cardsData => {
   
   
   return (
-    <div style={{marginLeft: '8px',marginRight:'8px'}}>
+    <div style={{marginLeft: '-28px',marginRight:'-28px'}}>
     {CustomFunction(cardsData)}
     {
       groupMenuOf(cardsData).map(groupItem=>(
@@ -1057,13 +1063,16 @@ const defaultQuickFunctions2 = cardsData => {
 
 const defaultQuickFunctions = cardsData => {
   
-  
+  //style={{marginLeft: '-28px',marginRight:'-28px'}}
 
   return (
-    <Menu  mode="horizontal" style={{backgroundColor:"#eee"}}>
+    <Menu  
+      mode="horizontal" 
+      style={{marginLeft: '-28px',marginRight:'-28px',paddingLeft: "20px"}} 
+    >
       {
         groupMenuOf(cardsData).map(groupItem=>( 
-        <SubMenu title={viewGroupName(groupItem.viewGroup)} style={{padding: "0 0"}}>
+        <SubMenu key={groupItem.viewGroup} title={viewGroupTitle(groupItem)} style={{margin: "0px 10px 0px 10px"}}>
           {
             groupItem.subItems.map(item=>(
               <Menu.Item key={item} >{functionItem(cardsData,item)}</Menu.Item> 
