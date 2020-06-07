@@ -207,10 +207,10 @@ const defaultSearchLocalData=(menuData, targetObject, searchName)=>{
 	if(searchName&&filteredResult&&filteredResult.length===1&&filteredResult[0].filteredData.length===1&&searchName.trim().length !== 0){
 		const item = filteredResult[0]
 		const fi = filteredResult[0].filteredData[0];
-		window.location=`#/${item.type}/${fi.id}/dashboard`
-		return
+		//window.location=`#/${item.type}/${fi.id}/dashboard`
+		//return
 	}
-
+	
 
 
 	console.log("filteredResult", filteredResult)
