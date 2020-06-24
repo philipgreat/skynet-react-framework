@@ -1025,7 +1025,7 @@ const CustomFunction=(cardsData)=>{
 
 
 
-const defaultQuickFunctions2 = cardsData => {
+const defaultQuickFunctions = cardsData => {
   
   
   return (
@@ -1061,7 +1061,7 @@ const defaultQuickFunctions2 = cardsData => {
 };
 
 
-const defaultQuickFunctions = cardsData => {
+const defaultQuickFunctions1 = cardsData => {
   
   //style={{marginLeft: '-28px',marginRight:'-28px'}}
 
