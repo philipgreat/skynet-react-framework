@@ -228,7 +228,7 @@ const defaultSearchLocalData=(menuData, targetObject, searchName)=>{
 		}
 		
 		{filteredResult.map(item=>(
-
+			
 			<Card  key={item.displayName} >
 				{buildCategoryTitle(item)}{buildCategoryContent(item)}
 			</Card>)

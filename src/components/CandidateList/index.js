@@ -29,7 +29,7 @@ export default class CandidateList extends React.Component {
     
     
     const {requestFunction,ownerType,ownerId,listType,targetType,groupBy,scenarioCode} = this.props
-    const requestData={ownerType,ownerId,listType,targetType,groupBy,scenarioCode}
+    const requestData={ownerType,ownerId,listType,targetType,groupBy,scenarioCode,filterKey}
     const future = requestFunction(requestData)
     console.log(requestData);
     
