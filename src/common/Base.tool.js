@@ -202,18 +202,10 @@ const defaultSearchLocalData=(menuData, targetObject, searchName)=>{
 		return {...item,filteredData}
 		
 	})
-	const filteredResult = resultData.filter(item=>item.filteredData&&item.filteredData.length>0)
-	// precisely matched the record, just go to this page
-	if(searchName&&filteredResult&&filteredResult.length===1&&filteredResult[0].filteredData.length===1&&searchName.trim().length !== 0){
-		const item = filteredResult[0]
-		const fi = filteredResult[0].filteredData[0];
-		//window.location=`#/${item.type}/${fi.id}/dashboard`
-		//return
-	}
+	
 	
 
 
-	console.log("filteredResult", filteredResult)
 	const menuResult = menuData.subItems.filter(item=>item.for==="menu"&&(item.name.indexOf(searchName)>=0||item.displayName.indexOf(searchName)>=0))
 	const settingMenuResult = menuData.subItems.filter(item=>item.for==="setting"&&(item.name.indexOf(searchName)>=0||item.displayName.indexOf(searchName)>=0))
 
@@ -227,19 +219,33 @@ const defaultSearchLocalData=(menuData, targetObject, searchName)=>{
 			</Card>)
 		}
 		
-		{filteredResult.map(item=>(
-			
-			<Card  key={item.displayName} >
-				{buildCategoryTitle(item)}{buildCategoryContent(item)}
-			</Card>)
-		)}
+		
 	  </div>)
 	
 	
 
 }
+/*
+const filteredResult = resultData.filter(item=>item.filteredData&&item.filteredData.length>0)
+	// precisely matched the record, just go to this page
+	if(searchName&&filteredResult&&filteredResult.length===1&&filteredResult[0].filteredData.length===1&&searchName.trim().length !== 0){
+		const item = filteredResult[0]
+		const fi = filteredResult[0].filteredData[0];
+		//window.location=`#/${item.type}/${fi.id}/dashboard`
+		//return
+	}
+	
 
 
+	
+{filteredResult.map(item=>(
+			
+			<Card  key={item.displayName} >
+				{buildCategoryTitle(item)}{buildCategoryContent(item)}
+			</Card>)
+		)}
+
+*/ 
 
 const subList=(listData,searchValue)=>{
 
