@@ -95,6 +95,9 @@ const defaultRenderBooleanCell=(value, record)=>{
 
 const leftChars=(value, charCount)=>{
 
+	if(!value){
+		return "N/A"
+	}
 	const finalCharCount = charCount || 6
 
 	if(value.length <= finalCharCount){
