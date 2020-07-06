@@ -98,6 +98,11 @@ const leftChars=(value, charCount)=>{
 	if(!value){
 		return "N/A"
 	}
+
+	if(typeof value==='undefined'){
+		return "N/A"
+	}
+	
 	const finalCharCount = charCount || 6
 
 	if(value.length <= finalCharCount){
