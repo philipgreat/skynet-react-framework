@@ -1,4 +1,4 @@
-import FontAwesome from 'react-fontawesome';
+
 import { Row, Col, Card, Table, Popconfirm, Button } from 'antd';
 
 import React from 'react';

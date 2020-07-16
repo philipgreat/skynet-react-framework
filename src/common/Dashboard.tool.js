@@ -1,6 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/jsx-indent */
-import FontAwesome from 'react-fontawesome';
 import PermissionSettingService from '../permission/PermissionSetting.service';
 import {List,
   Row,
@@ -825,7 +824,7 @@ const defaultSubListsOf = cardsData => {
                 {hasItemCreatePermission(item) && (
                   <Link to={`/${cardsData.cardsFor}/${id}/list/${item.role}CreateForm`}>
                     <span className={styles.splitLine} />
-                    <FontAwesome name="plus" />
+                    <Icon type="plus" />
                     {appLocaleName(userContext, 'Add')}
                 </Link>)}</span>}
          

@@ -1,5 +1,5 @@
-import FontAwesome from 'react-fontawesome';
-import { Row, Col, Card, Table, Popconfirm, Button } from 'antd';
+
+import { Row, Col, Icon, Card, Table, Popconfirm, Button } from 'antd';
 
 import React from 'react';
 
@@ -29,7 +29,7 @@ class HomeScreen extends React.Component {
   appList = () => {
     return (
       <div>
-        <FontAwesome name="user" />
+        <Icon type="user" />
       </div>
     );
   };
@@ -91,7 +91,7 @@ class HomeScreen extends React.Component {
             onClick={e => this.gotoApp(e, app)}
           >
             <div className="icon-item-box">
-              <FontAwesome name={app.appIcon} style={{ color: 'brown' }} className={'icon'} />
+              <Icon type={app.appIcon} style={{ color: 'brown' }} className={'icon'} />
               <p>{app.title}</p>
             </div>
           </Col>

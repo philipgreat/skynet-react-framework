@@ -1,6 +1,5 @@
 import { Menu, Icon } from 'antd';
 import React from 'react';
-import FontAwesome from 'react-fontawesome';
 import { connect } from 'react-redux';
 
 import {sessionObject} from '../utils/utils'
