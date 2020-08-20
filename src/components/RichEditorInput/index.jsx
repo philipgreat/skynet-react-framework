@@ -20,7 +20,7 @@ class RichTextInput extends React.Component {
     if (!('value' in this.props)) {
       // this.setState({ value: currentValue });
     }
-    
+
     const {onChange} = this.props
 
     console.log("onChange value", onChange)
@@ -39,7 +39,7 @@ class RichTextInput extends React.Component {
   
     
     return (<RichEditor
-        content=''
+        
         apiKey='r3lgalooz3dady4ma2yyqqop3pg722okrj3mx95pkxj8ewhj'
         height={800}
         placeholder='请输入内容'
