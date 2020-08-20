@@ -10,8 +10,23 @@ import RichEditor from '../../components/RichEditor'
 
 class RichTextInput extends React.Component {
 
+
+  componentDidMount() {
+    this._isMounted = true
+    
+  }
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
+
+
   handleEditorChange = currentValue => {
 
+
+    if(!this._isMounted){
+      return 
+    }
     
 
     console.log("current value", currentValue)
