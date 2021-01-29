@@ -617,7 +617,7 @@ const renderFunctions = (mainObject) => {
   return (
 
     <List
-    grid={{ gutter: 16, column: 2 }}
+    grid={{ gutter: 16, column: 6 }}
     dataSource={actionList}
     styles={{backgroundColor:"white"}}
     renderItem={item => (

@@ -84,6 +84,20 @@ export const getURLPrefix = () => {
     //return `http://${url.hostname}:8080/naf/`
     return `http://clariones.doublechaintech.com/naf/`;
   }
+
+  if (url.hostname === 'lab.doublechaintech.com') {
+	  const pathArray = url.pathname.split('/');
+  if(pathArray.length < 2 ){
+      return `${url.origin}/${SYSTEM_SHORT_NAME}/`;
+  }
+  return `${url.protocol}//${url.hostname}/${pathArray[1]}/model/`
+
+
+  }
+
+
+
+
   if (url.hostname === '30.30.126.37') {
     return `http://${url.hostname}:8080/naf/`;
   }
