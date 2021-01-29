@@ -20,7 +20,7 @@ class PriceInput extends React.Component {
       this.setState(value);
     }
   }
-  handleNumberChange = (e) => {
+  handleNumberChange = e => {
     const number = parseFloat(e.target.value || 0, 10);
     if (isNaN(number)) {
       return;
@@ -29,20 +29,20 @@ class PriceInput extends React.Component {
       this.setState({ number });
     }
     this.triggerChange({ number });
-  }
-  handleCurrencyChange = (currency) => {
+  };
+  handleCurrencyChange = currency => {
     if (!('value' in this.props)) {
       this.setState({ currency });
     }
     this.triggerChange({ currency });
-  }
-  triggerChange = (changedValue) => {
+  };
+  triggerChange = changedValue => {
     // Should provide an event to pass value to Form.
     const onChange = this.props.onChange;
     if (onChange) {
       onChange(Object.assign({}, this.state, changedValue));
     }
-  }
+  };
   render() {
     const { size } = this.props;
     const state = this.state;
@@ -69,4 +69,4 @@ class PriceInput extends React.Component {
   }
 }
 
-export default PriceInput
+export default PriceInput;
