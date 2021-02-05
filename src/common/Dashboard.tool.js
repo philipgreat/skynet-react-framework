@@ -17,6 +17,7 @@ import {
   Divider,
   Collapse,
   Tabs,
+  Avatar,
   Menu,
 } from 'antd';
 import styles from './Dashboard.tool.less';
@@ -866,7 +867,7 @@ const functionItem = (cardsData, item) => {
   return (
     <Col key={item.displayName} span={4} className={styles.functionItem}>
       <Tooltip title={`进入${item.displayName}列表${showNumber(item)}`} placement="bottom">
-        <Link to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}>
+        <Link style={{fontSize:"18px"}} to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}>
           {keepShort(item.displayName, 9)}
         </Link>
       </Tooltip>
@@ -885,7 +886,7 @@ const fixName = name => {
 };
 
 const viewGroupName = name => {
-  return <span style={{ fontWeight: 'bolder' }}>{fixName(name)}</span>;
+  return <span style={{ fontSize:"20px",fontWeight: 'bolder' }}>{fixName(name)}</span>;
 };
 
 const viewGroupTitle = item => {
@@ -928,7 +929,7 @@ const CustomFunction = cardsData => {
   );
 };
 
-const defaultQuickFunctions = cardsData => {
+const defaultQuickFunctions4 = cardsData => {
   return (
     <div style={{ marginLeft: '-28px', marginRight: '-28px' }}>
       {CustomFunction(cardsData)}
@@ -940,6 +941,120 @@ const defaultQuickFunctions = cardsData => {
             </Col>
             <Col span={21}>{groupItem.subItems.map(item => functionItem(cardsData, item))}</Col>
           </Card>
+        </Row>
+      ))}
+    </div>
+  );
+};
+
+const groupBy = function(xs, key) {
+  return xs.reduce(function(rv, x) {
+    (rv[x[key]] = rv[x[key]] || []).push(x);
+    return rv;
+  }, {});
+};
+
+const prepareGroupedActionList = mainObject => {
+  if (!mainObject) {
+    return null;
+  }
+  if (!mainObject.actionList) {
+    return null;
+  }
+  const actionList = mainObject.actionList.filter(item => item.actionGroup === 'changerequesttype');
+  // const actionList = platform.actionList
+
+  if (!actionList) {
+    return null;
+  }
+  if (actionList.length === 0) {
+    return null;
+  }
+
+  return groupBy(actionList,'group')
+
+
+
+}
+
+const buildGroupedActionList=(groupedActionList, groupName)=>{
+
+  console.log("buildGroupedActionList", groupedActionList, groupName)
+
+  if(groupedActionList==null){
+    return null;
+  }
+
+  if(!groupedActionList[groupName]){
+    return null
+  }
+
+  return (<List
+    grid={{ gutter: 16, column: 6 }}
+    dataSource={groupedActionList[groupName]}
+    styles={{ backgroundColor: 'white' }}
+    renderItem={item => (
+      <List.Item>
+        <Card className={styles.crCard}>
+          <Link to={item.actionPath}>
+            <Icon type={item.actionIcon} style={{ fontSize: 40, color: 'green' }} />
+          </Link>
+          <br />
+          <br />
+          {item.actionName}
+        </Card>
+      </List.Item>
+    )}
+  />)
+
+
+}
+
+const colorList = ['#f56a00', '#7265e6', '#ffbf00', 'green'];
+let counter = 0;
+const genColor=()=>{
+	counter++;
+	return colorList[counter%colorList.length];
+}
+
+const viewGroupAvatar=(text)=>{
+
+  return <Avatar size={90} style={{ color: 'white', backgroundColor: genColor(),fontSize:"40px" }}>
+    {text.substring(0,1)}
+    </Avatar>
+    
+}
+
+const defaultQuickFunctions = cardsData => {
+
+  const groupedActionList = prepareGroupedActionList(cardsData.cardsSource)
+
+
+  return (
+    <div >
+      {CustomFunction(cardsData)}
+      {groupMenuOf(cardsData).map(groupItem => (
+        <Row key={groupItem.viewGroup} gutter={16} className={styles.functionRow}>
+          <Card span={6} style={{ fontSize: '14px' }}>
+          <Col span={3} style={{ textColor: 'grey', marginTop: '5px', marginBotton: '5px' }}>
+              {viewGroupName(groupItem.viewGroup)}
+            </Col>
+            <Col span={21}>{groupItem.subItems.map(item => functionItem(cardsData, item))}</Col>
+           
+              
+            
+          </Card>
+
+          {groupedActionList&&groupedActionList[groupItem.viewGroup]&&<Card span={6} style={{ fontSize: '14px' }}>
+
+
+          <Col span={3} style={{ textColor: 'grey', marginTop: '5px', marginBotton: '5px',alignItems:"center" }}>
+          {viewGroupAvatar(groupItem.viewGroup)}
+            </Col>
+            
+          <Col span={21}>{buildGroupedActionList(groupedActionList,groupItem.viewGroup)}</Col>
+
+          </Card>}
         </Row>
       ))}
     </div>

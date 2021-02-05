@@ -40,16 +40,25 @@ const handleServerError = data => {
   }
   return true;
 };
+
+
 const setupModel = ({ dispatch, history, location, modelName }) => {
   const { pathname } = location;
   const prefix = modelName; //not start with /
   if (!pathname.startsWith(`/${modelName}`)) {
     return;
   }
+  const workbenchmatch = pathToRegexp(`/${modelName}/:id/workbench`).exec(pathname);
+  if (workbenchmatch) {
+    const id = workbenchmatch[1];
+    dispatch({ type: 'view', payload: { id, pathname } });
+    return;
+  }
+  
   const dashboardmatch = pathToRegexp(`/${modelName}/:id/dashboard`).exec(pathname);
   if (dashboardmatch) {
     const id = dashboardmatch[1];
-    dispatch({ type: 'view', payload: { id, pathname } });
+    dispatch({ type: 'analyze', payload: { id, pathname } });
     return;
   }
 
@@ -65,12 +74,7 @@ const setupModel = ({ dispatch, history, location, modelName }) => {
     dispatch({ type: 'view', payload: { id, pathname } });
     return;
   }
-  const workbenchmatch = pathToRegexp(`/${modelName}/:id/workbench`).exec(pathname);
-  if (workbenchmatch) {
-    const id = workbenchmatch[1];
-    dispatch({ type: 'view', payload: { id, pathname } });
-    return;
-  }
+
   const editDetailMatch = pathToRegexp(`/${modelName}/:id/editDetail`).exec(pathname);
   if (editDetailMatch) {
     const id = editDetailMatch[1];
