@@ -1029,10 +1029,16 @@ const defaultQuickFunctions = cardsData => {
 
   const groupedActionList = prepareGroupedActionList(cardsData.cardsSource)
 
+  console.log("groupedActionList", groupedActionList)
 
   return (
     <div >
       {CustomFunction(cardsData)}
+     
+          
+
+     
+      
       {groupMenuOf(cardsData).map(groupItem => (
         <Row key={groupItem.viewGroup} gutter={16} className={styles.functionRow}>
           <Card span={6} style={{ fontSize: '14px' }}>
