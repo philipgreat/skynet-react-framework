@@ -977,21 +977,22 @@ const prepareGroupedActionList = mainObject => {
 
 }
 
-const buildGroupedActionList=(groupedActionList, groupName)=>{
 
-  console.log("buildGroupedActionList", groupedActionList, groupName)
 
-  if(groupedActionList==null){
+const buildActionList=(actionList, groupName)=>{
+
+  console.log("buildActionList actionList", actionList, groupName)
+
+  if(actionList==null){
     return null;
   }
 
-  if(!groupedActionList[groupName]){
-    return null
-  }
+
+  
 
   return (<List
     grid={{ gutter: 16, column: 6 }}
-    dataSource={groupedActionList[groupName]}
+    dataSource={actionList}
     styles={{ backgroundColor: 'white' }}
     renderItem={item => (
       <List.Item>
@@ -1006,6 +1007,25 @@ const buildGroupedActionList=(groupedActionList, groupName)=>{
       </List.Item>
     )}
   />)
+
+
+}
+
+
+const buildGroupedActionList=(groupedActionList, groupName)=>{
+
+  console.log("buildGroupedActionList", groupedActionList, groupName)
+
+  if(groupedActionList==null){
+    return null;
+  }
+
+  if(!groupedActionList[groupName]){
+    return null
+  }
+
+  return buildActionList(groupedActionList[groupName],groupName)
+  
 
 
 }
@@ -1025,21 +1045,63 @@ const viewGroupAvatar=(text)=>{
     
 }
 
+const mergeGroupItem=(cardsData)=>{
+  const groupedActionList = prepareGroupedActionList(cardsData.cardsSource)
+  return groupMenuOf(cardsData).map(groupItem => {
+    if(groupedActionList&&groupedActionList[groupItem.viewGroup]){
+      groupItem.subActionList=groupedActionList[groupItem.viewGroup]
+    }
+    
+    return groupItem
+  });
+
+
+}
+//Object.entries
+const orphanGroupItemList=(cardsData)=>{
+  const groupedActionList = prepareGroupedActionList(cardsData.cardsSource)
+  groupMenuOf(cardsData).map(groupItem => {
+    if(groupedActionList&&groupedActionList[groupItem.viewGroup]){
+      //groupItem.subActionList=groupedActionList[groupItem.viewGroup]
+      delete groupedActionList[groupItem.viewGroup]
+    }
+    
+     
+  });
+
+  return groupedActionList
+
+}
+
+
 const defaultQuickFunctions = cardsData => {
 
   const groupedActionList = prepareGroupedActionList(cardsData.cardsSource)
+  const orphanGroupItems = orphanGroupItemList(cardsData)
 
   console.log("groupedActionList", groupedActionList)
+  console.log("orphanGroupItems", orphanGroupItems)
 
   return (
     <div >
       {CustomFunction(cardsData)}
      
-          
+      {Object.entries(orphanGroupItemList(cardsData)).map(([viewGroupName,actionList]) =>(
+      <Row key={viewGroupName} gutter={16} className={styles.functionRow}>
+        <Card span={6} style={{ fontSize: '14px' }}>
+          <Col span={3} style={{ textColor: 'grey', marginTop: '5px', marginBotton: '5px' }}>
+              {viewGroupAvatar(viewGroupName)}
+            </Col>
+            <Col span={21}>{buildActionList(actionList,viewGroupName)}</Col>
+           
+              
+            
+          </Card>
+      </Row>))}
 
      
       
-      {groupMenuOf(cardsData).map(groupItem => (
+      {mergeGroupItem(cardsData).map(groupItem => (
         <Row key={groupItem.viewGroup} gutter={16} className={styles.functionRow}>
           <Card span={6} style={{ fontSize: '14px' }}>
           <Col span={3} style={{ textColor: 'grey', marginTop: '5px', marginBotton: '5px' }}>
@@ -1058,7 +1120,7 @@ const defaultQuickFunctions = cardsData => {
           {viewGroupAvatar(groupItem.viewGroup)}
             </Col>
             
-          <Col span={21}>{buildGroupedActionList(groupedActionList,groupItem.viewGroup)}</Col>
+          <Col span={21}>{buildActionList(groupItem.subActionList,groupItem.viewGroup)}</Col>
 
           </Card>}
         </Row>
