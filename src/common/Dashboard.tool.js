@@ -1086,7 +1086,7 @@ const defaultQuickFunctions = cardsData => {
     <div >
       {CustomFunction(cardsData)}
      
-      {Object.entries(orphanGroupItemList(cardsData)).map(([viewGroupName,actionList]) =>(
+      {orphanGroupItems&&Object.entries(orphanGroupItems).map(([viewGroupName,actionList]) =>(
       <Row key={viewGroupName} gutter={16} className={styles.functionRow}>
         <Card span={6} style={{ fontSize: '14px' }}>
           <Col span={3} style={{ textColor: 'grey', marginTop: '5px', marginBotton: '5px' }}>
