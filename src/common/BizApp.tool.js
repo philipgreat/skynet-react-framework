@@ -55,15 +55,16 @@ const defaultFilteredMenuItemsGroup = (targetObject, targetComponent) => {
 const defaultRenderMenuItem = (item, targetObject, targetComponent) => {
   const menuData = sessionObject('menuData');
   const targetApp = sessionObject('targetApp');
-  const { objectId } = targetApp;
+  const { objectId, appId } = targetApp;
+  const finalAppId = appId || objectId;
+
   const userContext = null;
   return (
     <Menu.Item key={item.name}>
       <Link
-        to={`/${menuData.menuFor}/${objectId}/list/${item.name}/${item.displayName}${appLocaleName(
-          userContext,
-          'List'
-        )}`}
+        to={`/${menuData.menuFor}/${finalAppId}/list/${item.name}/${
+          item.displayName
+        }${appLocaleName(userContext, 'List')}`}
       >
         <Icon type="bars" style={{ marginRight: '20px' }} />
         <span>{item.displayName}</span>

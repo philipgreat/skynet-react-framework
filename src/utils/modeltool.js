@@ -41,7 +41,6 @@ const handleServerError = data => {
   return true;
 };
 
-
 const setupModel = ({ dispatch, history, location, modelName }) => {
   const { pathname } = location;
   const prefix = modelName; //not start with /
@@ -54,7 +53,7 @@ const setupModel = ({ dispatch, history, location, modelName }) => {
     dispatch({ type: 'view', payload: { id, pathname } });
     return;
   }
-  
+
   const dashboardmatch = pathToRegexp(`/${modelName}/:id/dashboard`).exec(pathname);
   if (dashboardmatch) {
     const id = dashboardmatch[1];

@@ -151,11 +151,11 @@ const filterForMenuPermission = (item, targetObject, targetComponent) => {
 
   const metaInfo = targetObject[itemName + 'MetaInfo'];
   if (!metaInfo) {
-    return true;
+    return false;
   }
 
   if (!metaInfo.accessInfo) {
-    return true; //for old code
+    return false; //for old code
   }
   console.log('item', item, 'metaInfo', metaInfo);
   if (!metaInfo.accessInfo.readPermission) {

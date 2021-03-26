@@ -603,7 +603,7 @@ const renderFunctions = mainObject => {
   if (actionList.length === 0) {
     return null;
   }
-  
+
   return (
     <List
       grid={{ gutter: 16, column: 6 }}
@@ -867,8 +867,11 @@ const functionItem = (cardsData, item) => {
   return (
     <Col key={item.displayName} span={4} className={styles.functionItem}>
       <Tooltip title={`进入${item.displayName}列表${showNumber(item)}`} placement="bottom">
-        <Link style={{fontSize:"18px"}} to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}>
-          {keepShort(item.displayName, 9)}
+        <Link
+          style={{ fontSize: '14px' }}
+          to={`/${cardsData.cardsFor}/${id}/list/${item.name}/${item.displayName}列表`}
+        >
+          {keepShort(item.displayName,6)}
         </Link>
       </Tooltip>
     </Col>
@@ -886,7 +889,7 @@ const fixName = name => {
 };
 
 const viewGroupName = name => {
-  return <span style={{ fontSize:"20px",fontWeight: 'bolder' }}>{fixName(name)}</span>;
+  return <span style={{ fontSize: '20px', fontWeight: 'bolder' }}>{fixName(name)}</span>;
 };
 
 const viewGroupTitle = item => {
@@ -971,158 +974,154 @@ const prepareGroupedActionList = mainObject => {
     return null;
   }
 
-  return groupBy(actionList,'group')
+  return groupBy(actionList, 'group');
+};
+
+
+const buildIcon=(item)=>{
+
+  if(item.actionIcon.indexOf(".svg")>0){
+
+    return <img src={`./icons/${item.actionIcon}`} width="40" height="40"/>
+
+  }
+  return (<Icon type={item.actionIcon} style={{ fontSize: 32, color: 'green' }} />)
+
 
 
 
 }
 
+const buildActionList = (actionList, groupName) => {
+  console.log('buildActionList actionList', actionList, groupName);
 
+  if (actionList == null) {
+    return null;
+  }
+  
+  return (
+    <List
+      grid={{ gutter: 16, column: 6 }}
+      dataSource={actionList}
+      styles={{ backgroundColor: 'white' }}
+      renderItem={item => (
+        <List.Item>
+          <Card className={styles.crCard} style={{border:"0px"}}>
+            <Link to={item.actionPath} title={item.actionName}>
+              <div className={styles.crCard.icon}>{buildIcon(item)}</div>
+            </Link>
+           
+            <span className={styles.crCard.shortText} >{keepShort(item.actionName,4)}</span>
+           
+          </Card>
+        </List.Item>
+      )}
+    />
+  );
+};
 
-const buildActionList=(actionList, groupName)=>{
+const buildGroupedActionList = (groupedActionList, groupName) => {
+  console.log('buildGroupedActionList', groupedActionList, groupName);
 
-  console.log("buildActionList actionList", actionList, groupName)
-
-  if(actionList==null){
+  if (groupedActionList == null) {
     return null;
   }
 
-
-  
-
-  return (<List
-    grid={{ gutter: 16, column: 6 }}
-    dataSource={actionList}
-    styles={{ backgroundColor: 'white' }}
-    renderItem={item => (
-      <List.Item>
-        <Card className={styles.crCard}>
-          <Link to={item.actionPath}>
-            <Icon type={item.actionIcon} style={{ fontSize: 40, color: 'green' }} />
-          </Link>
-          <br />
-          <br />
-          {item.actionName}
-        </Card>
-      </List.Item>
-    )}
-  />)
-
-
-}
-
-
-const buildGroupedActionList=(groupedActionList, groupName)=>{
-
-  console.log("buildGroupedActionList", groupedActionList, groupName)
-
-  if(groupedActionList==null){
+  if (!groupedActionList[groupName]) {
     return null;
   }
 
-  if(!groupedActionList[groupName]){
-    return null
-  }
-
-  return buildActionList(groupedActionList[groupName],groupName)
-  
-
-
-}
+  return buildActionList(groupedActionList[groupName], groupName);
+};
 
 const colorList = ['#f56a00', '#7265e6', '#ffbf00', 'green'];
 let counter = 0;
-const genColor=()=>{
-	counter++;
-	return colorList[counter%colorList.length];
-}
+const genColor = () => {
+  counter++;
+  return colorList[counter % colorList.length];
+};
 
-const viewGroupAvatar=(text)=>{
-
-  return <Avatar size={90} style={{ color: 'white', backgroundColor: genColor(),fontSize:"40px" }}>
-    {text.substring(0,1)}
+const viewGroupAvatar = text => {
+  return (
+    <Avatar size={90} style={{ color: 'white', backgroundColor: genColor(), fontSize: '40px' }}>
+      {text.substring(0, 1)}
     </Avatar>
-    
-}
+  );
+};
 
-const mergeGroupItem=(cardsData)=>{
-  const groupedActionList = prepareGroupedActionList(cardsData.cardsSource)
+const mergeGroupItem = cardsData => {
+  const groupedActionList = prepareGroupedActionList(cardsData.cardsSource);
   return groupMenuOf(cardsData).map(groupItem => {
-    if(groupedActionList&&groupedActionList[groupItem.viewGroup]){
-      groupItem.subActionList=groupedActionList[groupItem.viewGroup]
+    if (groupedActionList && groupedActionList[groupItem.viewGroup]) {
+      groupItem.subActionList = groupedActionList[groupItem.viewGroup];
     }
-    
-    return groupItem
+
+    return groupItem;
   });
-
-
-}
+};
 //Object.entries
-const orphanGroupItemList=(cardsData)=>{
-  const groupedActionList = prepareGroupedActionList(cardsData.cardsSource)
+const orphanGroupItemList = cardsData => {
+  const groupedActionList = prepareGroupedActionList(cardsData.cardsSource);
   groupMenuOf(cardsData).map(groupItem => {
-    if(groupedActionList&&groupedActionList[groupItem.viewGroup]){
+    if (groupedActionList && groupedActionList[groupItem.viewGroup]) {
       //groupItem.subActionList=groupedActionList[groupItem.viewGroup]
-      delete groupedActionList[groupItem.viewGroup]
+      delete groupedActionList[groupItem.viewGroup];
     }
-    
-     
   });
 
-  return groupedActionList
-
-}
-
+  return groupedActionList;
+};
 
 const defaultQuickFunctions = cardsData => {
+  const groupedActionList = prepareGroupedActionList(cardsData.cardsSource);
+  const orphanGroupItems = orphanGroupItemList(cardsData);
 
-  const groupedActionList = prepareGroupedActionList(cardsData.cardsSource)
-  const orphanGroupItems = orphanGroupItemList(cardsData)
-
-  console.log("groupedActionList", groupedActionList)
-  console.log("orphanGroupItems", orphanGroupItems)
+  console.log('groupedActionList', groupedActionList);
+  console.log('orphanGroupItems', orphanGroupItems);
 
   return (
-    <div >
+    <div>
       {CustomFunction(cardsData)}
-     
-      {orphanGroupItems&&Object.entries(orphanGroupItems).map(([viewGroupName,actionList]) =>(
-      <Row key={viewGroupName} gutter={16} className={styles.functionRow}>
-        <Card span={6} style={{ fontSize: '14px' }}>
-          <Col span={3} style={{ textColor: 'grey', marginTop: '5px', marginBotton: '5px' }}>
-              {viewGroupAvatar(viewGroupName)}
-            </Col>
-            <Col span={21}>{buildActionList(actionList,viewGroupName)}</Col>
-           
-              
-            
-          </Card>
-      </Row>))}
 
-     
-      
+      {orphanGroupItems &&
+        Object.entries(orphanGroupItems).map(([viewGroupName, actionList]) => (
+          <Row key={viewGroupName} gutter={16} className={styles.functionRow}>
+            <Card span={6} style={{ fontSize: '14px' }}>
+              <Col span={3} style={{ textColor: 'grey', marginTop: '5px', marginBotton: '5px' }}>
+                {viewGroupAvatar(viewGroupName)}
+              </Col>
+              <Col span={21}>{buildActionList(actionList, viewGroupName)}</Col>
+            </Card>
+          </Row>
+        ))}
+
       {mergeGroupItem(cardsData).map(groupItem => (
         <Row key={groupItem.viewGroup} gutter={16} className={styles.functionRow}>
           <Card span={6} style={{ fontSize: '14px' }}>
-          <Col span={3} style={{ textColor: 'grey', marginTop: '5px', marginBotton: '5px' }}>
+            <Col span={3} style={{ textColor: 'grey', marginTop: '5px', marginBotton: '5px' }}>
               {viewGroupName(groupItem.viewGroup)}
             </Col>
             <Col span={21}>{groupItem.subItems.map(item => functionItem(cardsData, item))}</Col>
-           
-              
-            
           </Card>
 
-          {groupedActionList&&groupedActionList[groupItem.viewGroup]&&<Card span={6} style={{ fontSize: '14px' }}>
+          {groupedActionList &&
+            groupedActionList[groupItem.viewGroup] && (
+              <Card span={6} style={{ fontSize: '14px' }}>
+                <Col
+                  span={3}
+                  style={{
+                    textColor: 'grey',
+                    marginTop: '5px',
+                    marginBotton: '5px',
+                    alignItems: 'center',
+                  }}
+                >
+                  {viewGroupAvatar(groupItem.viewGroup)}
+                </Col>
 
-
-          <Col span={3} style={{ textColor: 'grey', marginTop: '5px', marginBotton: '5px',alignItems:"center" }}>
-          {viewGroupAvatar(groupItem.viewGroup)}
-            </Col>
-            
-          <Col span={21}>{buildActionList(groupItem.subActionList,groupItem.viewGroup)}</Col>
-
-          </Card>}
+                <Col span={21}>{buildActionList(groupItem.subActionList, groupItem.viewGroup)}</Col>
+              </Card>
+            )}
         </Row>
       ))}
     </div>

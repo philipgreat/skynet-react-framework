@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   AutoComplete,
   TreeSelect,
+  Radio,
   Cascader,
   Card,
   Button,
@@ -145,6 +146,16 @@ export default class CandidateList extends React.Component {
     const finalPlaceholder = placeholder || '请选择列表中或者输入搜索';
     if (!candidateValues) {
       return <div>正在载入候选项......</div>;
+    }
+
+    if (candidateValues.length <= 10) {
+      return (
+        <Radio.Group value={value} onChange={v => this.handleChange(v)}>
+          {candidateValues.map(item => (
+            <Radio value={item.id}>{item.name}</Radio>
+          ))}
+        </Radio.Group>
+      );
     }
 
     const calcSize = () => {
