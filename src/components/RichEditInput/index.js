@@ -77,7 +77,7 @@ function RichEditInput(props) {
         visible={drawerVisible}
         width={720}
       >
-        <HTMLEditor value={theContent} onChange={setContent} />
+        <HTMLEditor  value={theContent} onChange={setContent} />
         <div className={styles.popupDrawerActionList}>
           <Button onClick={handleSave} type='primary'>确定</Button>
           <Button onClick={handleCloseDrawer}>取消</Button>
