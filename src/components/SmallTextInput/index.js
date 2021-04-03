@@ -16,8 +16,11 @@ const calcStyle=({value, minLength, maxLength})=>{
 }
 const calcTips=({value, minLength, maxLength})=>{
 
+  if(value.length===0&&minLength===0){
+    return <span className={calcStyle({value, minLength, maxLength})}>最多可以输入{maxLength}字</span>
+  }
   if(value.length<minLength&&value.length===0){
-    return <span className={calcStyle({value, minLength, maxLength})}>这是必填字段，需要{minLength-value.length}字</span>
+    return <span className={calcStyle({value, minLength, maxLength})}>这是必填字段，需要{minLength}-{maxLength}字</span>
   }
   if(value.length<minLength){
       return <span className={calcStyle({value, minLength, maxLength})}>输入太短了，还需要{minLength-value.length}字</span>
@@ -26,7 +29,7 @@ const calcTips=({value, minLength, maxLength})=>{
     return <span className={calcStyle({value, minLength, maxLength})}>输入太长了，多了 {value.length-maxLength}字</span>
   }
   return <span className={calcStyle({value, minLength, maxLength})}>已经输入{value.length}字</span>
-  
+
 }
 export default class SmallTextInput extends React.Component {
   /*
