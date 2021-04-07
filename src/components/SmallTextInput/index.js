@@ -33,8 +33,8 @@ const calcTips=({value, minLength, maxLength})=>{
   if(value.length>maxLength){
     return <span className={calcStyle({value, minLength, maxLength})}>输入太长了，多了 {value.length-maxLength}字</span>
   }
-  return <span className={calcStyle({value, minLength, maxLength})}>已经输入{value.length}字</span>
-  
+  return <span className={calcStyle({value, minLength, maxLength})}>可以输入{maxLength}字</span>
+
 }
 export default class SmallTextInput extends React.Component {
   /*
