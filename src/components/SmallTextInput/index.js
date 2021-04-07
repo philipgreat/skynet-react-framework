@@ -1,10 +1,13 @@
-import { Input, Select } from 'antd';
+import { Input, Select,Tooltip } from 'antd';
 import React from 'react'
 import styles from './index.less';
 const { Option } = Select;
 
 const calcStyle=({value, minLength, maxLength})=>{
 
+  if(!value){
+    return styles.normal
+  }
   if(value.length<minLength){
       return styles.tooShort
   }
@@ -15,11 +18,13 @@ const calcStyle=({value, minLength, maxLength})=>{
 
 }
 const calcTips=({value, minLength, maxLength})=>{
-
-  if(value.length===0&&minLength===0){
+  if(!value){
+      return null;
+  }
+  if((!value||value.length===0)&&minLength===0){
     return <span className={calcStyle({value, minLength, maxLength})}>可选，最多可以输入{maxLength}字</span>
   }
-  if(value.length<minLength&&value.length===0){
+  if(value.length<minLength&&(!value||value.length===0)){
     return <span className={calcStyle({value, minLength, maxLength})}>这是必填字段，需要{minLength}-{maxLength}字</span>
   }
   if(value.length<minLength){
@@ -29,7 +34,7 @@ const calcTips=({value, minLength, maxLength})=>{
     return <span className={calcStyle({value, minLength, maxLength})}>输入太长了，多了 {value.length-maxLength}字</span>
   }
   return <span className={calcStyle({value, minLength, maxLength})}>已经输入{value.length}字</span>
-
+  
 }
 export default class SmallTextInput extends React.Component {
   /*
@@ -49,6 +54,8 @@ export default class SmallTextInput extends React.Component {
 
   handleTextChange = e => {
     const changedValue = e.target.value;
+    e.preventDefault();
+    
     console.log("handleTextChange value",changedValue);
     this.triggerChange( changedValue );
   };
@@ -67,18 +74,16 @@ export default class SmallTextInput extends React.Component {
 
 
     return (
-      <span>
+      <Tooltip trigger={['focus']} placement="topLeft" title={calcTips({value,minLength,maxLength})}>
         <Input
           type="text"
           size={size}
           value={value}
-          suffix={calcTips({value,minLength,maxLength})}
-          
           onChange={this.handleTextChange}
           style={{ width: '65%', marginRight: '3%' }}
         />
-       
-      </span>
+      
+       </Tooltip>
     );
   }
 }
