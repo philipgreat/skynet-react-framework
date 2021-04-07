@@ -80,7 +80,7 @@ export default class SmallTextInput extends React.Component {
           size={size}
           value={value}
           onChange={this.handleTextChange}
-          style={{ width: '65%', marginRight: '3%' }}
+         
         />
         
        </Tooltip>
