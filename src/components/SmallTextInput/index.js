@@ -73,7 +73,8 @@ export default class SmallTextInput extends React.Component {
 
 
 
-    return (<div>
+    return (
+      <Tooltip style={{backgroundColor:"white"}}trigger={['focus','hover','click']} placement="topLeft" title={calcTips({value,minLength,maxLength})}>
         <Input
           type="text"
           size={size}
@@ -81,8 +82,9 @@ export default class SmallTextInput extends React.Component {
           onChange={this.handleTextChange}
           style={{ width: '65%', marginRight: '3%' }}
         />
-        <span style={{width:"35%"}}>{calcTips({value,minLength,maxLength})}</span>
-        </div>
+        
+       </Tooltip>
     );
   }
 }
+
