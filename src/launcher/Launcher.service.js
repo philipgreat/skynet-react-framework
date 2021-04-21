@@ -31,7 +31,7 @@ const logout = (username, password) => {
 
 const gotoApp = appId => {
   return get({
-    url: PREFIX + `secUserManager/selectApp/${appId}/`,
+    url: PREFIX + `secUserManager/accessUserApp/${appId}/`,
   });
 };
 
