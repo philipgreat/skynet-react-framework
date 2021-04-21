@@ -61,7 +61,7 @@ const defaultRenderMenuItem = (item, targetObject, targetComponent) => {
   const userContext = null;
   return (
     <Menu.Item key={item.name}>
-      <Link key={`${menuData.menuFor}-${finalAppId}-${item.name}`}
+      <Link id={`${menuData.menuFor}-${finalAppId}-${item.name}`}
         to={`/${menuData.menuFor}/${finalAppId}/list/${item.name}/${
           item.displayName
         }${appLocaleName(userContext, 'List')}`}
