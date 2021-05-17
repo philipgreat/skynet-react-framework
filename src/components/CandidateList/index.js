@@ -133,6 +133,7 @@ export default class CandidateList extends React.Component {
   render() {
     const { candidateValues, placeholder } = this.state;
     const {
+      id,
       value,
       disabled,
       useForSearch,
@@ -197,7 +198,7 @@ export default class CandidateList extends React.Component {
         // eslint-disable-next-line react/react-in-jsx-scope
         suffix={<Icon type="search" />}
       >
-        <Input suffix={<Icon type="bars" />} />
+        <Input suffix={<Icon type="bars" id={`${id}-icon`}/>} />} />
       </AutoComplete>
     );
   }
